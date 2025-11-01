@@ -1,0 +1,68 @@
+import { motion } from 'framer-motion';
+import type { Project } from '../../types';
+
+interface ProjectCardProps {
+  project: Project;
+  onClick?: () => void;
+}
+
+const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
+  const categoryColors = {
+    kitchens: 'bg-blue-500',
+    closets: 'bg-purple-500',
+    vanities: 'bg-pink-500',
+    custom: 'bg-green-500',
+  };
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="card overflow-hidden cursor-pointer group"
+      onClick={onClick}
+    >
+      {/* Image */}
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={project.thumbnail}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+        />
+        {/* Category Badge */}
+        <div className="absolute top-4 right-4">
+          <span className={`${categoryColors[project.category]} text-white text-xs font-semibold px-3 py-1 rounded-full capitalize`}>
+            {project.category}
+          </span>
+        </div>
+        {/* Overlay on Hover */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <span className="text-white font-semibold text-lg">View Details</span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-neutral-900 mb-2">{project.title}</h3>
+        {project.location && (
+          <p className="text-sm text-neutral-600 mb-3">{project.location}</p>
+        )}
+        <p className="text-neutral-700 text-sm mb-4 line-clamp-2">{project.description}</p>
+
+        {/* Features */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-neutral-600">Finish:</span>
+            <span className="font-medium text-neutral-900">{project.finish}</span>
+          </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-neutral-600">Turnaround:</span>
+            <span className="font-medium text-primary">{project.turnaroundTime}</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default ProjectCard;
