@@ -7,20 +7,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Minimal Luxury Palette
+        // Minimal Luxury Palette with Forest Green
         primary: {
-          DEFAULT: '#1A1A1A', // Charcoal (main text, headers)
-          light: '#2C2C2C',    // Lighter charcoal
-          dark: '#0F0F0F',     // Deep black
+          DEFAULT: '#0f4c3a', // Forest green (brand color)
+          light: '#14664f',   // Lighter green
+          dark: '#0a3629',    // Darker green
         },
         accent: {
-          DEFAULT: '#B8956A', // Refined gold (used sparingly)
-          light: '#C7A67D',   // Lighter gold
-          dark: '#9C8A7C',    // Warm taupe
+          DEFAULT: '#d4a574', // Warm gold
+          light: '#e0b88a',   // Lighter gold
+          dark: '#b88d5f',    // Darker gold
         },
         luxury: {
-          white: '#FAFAFA',    // Warm white (main background)
-          cream: '#F8F8F8',    // Subtle cream
+          cream: '#F9F7F4',    // Warm cream (main background)
+          beige: '#F5F3EF',    // Subtle beige
+          sand: '#EBE8E3',     // Light sand
+          white: '#FFFFFF',    // Pure white (for cards/contrast)
           gray: {
             50: '#F5F5F5',     // Lightest gray
             100: '#E5E5E5',    // Light gray (borders, dividers)
@@ -30,8 +32,8 @@ export default {
             500: '#6B6B6B',    // Primary gray (body text)
             600: '#525252',    // Dark gray
             700: '#404040',    // Darker gray
-            800: '#262626',    // Very dark gray
-            900: '#171717',    // Almost black
+            800: '#2C2C2C',    // Very dark gray (text)
+            900: '#1A1A1A',    // Almost black (headers)
           }
         },
         // Keep legacy colors for gradual migration

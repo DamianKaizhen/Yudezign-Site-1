@@ -121,15 +121,15 @@ export const SpecCard = ({
   return (
     <div className={`text-center ${className}`}>
       {/* Icon */}
-      <div className="inline-flex items-center justify-center w-12 h-12 mb-4 text-accent">
+      <div className="inline-flex items-center justify-center w-12 h-12 mb-4 text-primary">
         {icon}
       </div>
 
       {/* Title */}
-      <h3 className="text-h4 font-medium text-primary mb-2">{title}</h3>
+      <h3 className="text-h4 font-medium text-luxury-gray-900 mb-2">{title}</h3>
 
       {/* Description */}
-      <p className="text-body text-luxury-gray-500">{description}</p>
+      <p className="text-body text-luxury-gray-600">{description}</p>
     </div>
   );
 };
