@@ -7,16 +7,34 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Minimal Luxury Palette
         primary: {
-          DEFAULT: '#0f4c3a',
-          dark: '#0a3629',
-          light: '#14664f',
+          DEFAULT: '#1A1A1A', // Charcoal (main text, headers)
+          light: '#2C2C2C',    // Lighter charcoal
+          dark: '#0F0F0F',     // Deep black
         },
         accent: {
-          DEFAULT: '#d4a574',
-          dark: '#b88d5f',
-          light: '#e0b88a',
+          DEFAULT: '#B8956A', // Refined gold (used sparingly)
+          light: '#C7A67D',   // Lighter gold
+          dark: '#9C8A7C',    // Warm taupe
         },
+        luxury: {
+          white: '#FAFAFA',    // Warm white (main background)
+          cream: '#F8F8F8',    // Subtle cream
+          gray: {
+            50: '#F5F5F5',     // Lightest gray
+            100: '#E5E5E5',    // Light gray (borders, dividers)
+            200: '#D4D4D4',    // Medium-light gray
+            300: '#A3A3A3',    // Medium gray
+            400: '#8E8E8E',    // Soft gray (captions)
+            500: '#6B6B6B',    // Primary gray (body text)
+            600: '#525252',    // Dark gray
+            700: '#404040',    // Darker gray
+            800: '#262626',    // Very dark gray
+            900: '#171717',    // Almost black
+          }
+        },
+        // Keep legacy colors for gradual migration
         neutral: {
           50: '#fafaf9',
           100: '#f5f5f4',
@@ -31,17 +49,42 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      fontSize: {
+        // Luxury Typography Scale
+        'hero': ['96px', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '300' }],
+        'hero-mobile': ['72px', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '300' }],
+        'display': ['60px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
+        'display-mobile': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
+        'h1': ['40px', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'h2': ['32px', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'h3': ['28px', { lineHeight: '1.3', fontWeight: '500' }],
+        'h4': ['24px', { lineHeight: '1.4', fontWeight: '500' }],
+        'body-lg': ['18px', { lineHeight: '1.6', fontWeight: '400' }],
+        'body': ['16px', { lineHeight: '1.6', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '1.5', fontWeight: '400' }],
+        'caption': ['14px', { lineHeight: '1.4', fontWeight: '400' }],
+        'label': ['12px', { lineHeight: '1.3', fontWeight: '500', letterSpacing: '0.1em', textTransform: 'uppercase' }],
+      },
+      spacing: {
+        // Luxury spacing scale
+        '18': '4.5rem',  // 72px
+        '22': '5.5rem',  // 88px
+        '26': '6.5rem',  // 104px
+        '30': '7.5rem',  // 120px
+        '34': '8.5rem',  // 136px
+        '38': '9.5rem',  // 152px
+        '42': '10.5rem', // 168px
+        '46': '11.5rem', // 184px
+        '50': '12.5rem', // 200px
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-in-out',
+        // Minimal, purposeful animations only
+        'fade-in': 'fadeIn 0.6s ease-out',
         'slide-up': 'slideUp 0.6s ease-out',
         'scale-in': 'scaleIn 0.5s ease-out',
-        'gradient-x': 'gradient-x 3s ease infinite',
-        'gradient-y': 'gradient-y 3s ease infinite',
-        'gradient-xy': 'gradient-xy 3s ease infinite',
-        'float': 'float 3s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-up': 'fadeUp 0.8s ease-out',
       },
       keyframes: {
         fadeIn: {
@@ -56,24 +99,25 @@ export default {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
-        'gradient-x': {
-          '0%, 100%': { 'background-position': '0% 50%' },
-          '50%': { 'background-position': '100% 50%' },
+        fadeUp: {
+          '0%': { transform: 'translateY(30px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
         },
-        'gradient-y': {
-          '0%, 100%': { 'background-position': '50% 0%' },
-          '50%': { 'background-position': '50% 100%' },
-        },
-        'gradient-xy': {
-          '0%, 100%': { 'background-position': '0% 0%' },
-          '25%': { 'background-position': '100% 0%' },
-          '50%': { 'background-position': '100% 100%' },
-          '75%': { 'background-position': '0% 100%' },
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
+      },
+      boxShadow: {
+        // Luxury shadows (subtle)
+        'luxury-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        'luxury': '0 2px 8px 0 rgba(0, 0, 0, 0.08)',
+        'luxury-md': '0 4px 12px 0 rgba(0, 0, 0, 0.1)',
+        'luxury-lg': '0 8px 24px 0 rgba(0, 0, 0, 0.12)',
+        'luxury-xl': '0 12px 40px 0 rgba(0, 0, 0, 0.15)',
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '600': '600ms',
+      },
+      transitionTimingFunction: {
+        'luxury': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },

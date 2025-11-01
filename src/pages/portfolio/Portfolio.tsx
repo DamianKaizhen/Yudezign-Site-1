@@ -23,41 +23,41 @@ const Portfolio = () => {
     : projects.filter((project: Project) => project.category === activeFilter);
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-primary to-primary-dark text-white">
-        <div className="container-custom text-center">
+    <div className="min-h-screen pt-24 bg-luxury-white">
+      {/* Hero Section - Minimal */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="heading-xl mb-4"
+            className="text-display-mobile md:text-display font-medium text-primary mb-6"
           >
-            Our Portfolio
+            Portfolio
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl text-neutral-200 max-w-2xl mx-auto"
+            className="text-body-lg text-luxury-gray-500 max-w-2xl mx-auto leading-relaxed"
           >
-            Explore our collection of custom European cabinets crafted for homes across Houston.
+            Custom European cabinets crafted for homes and businesses across Houston.
           </motion.p>
         </div>
       </section>
 
-      {/* Filter Bar */}
-      <section className="sticky top-20 z-40 bg-white shadow-md py-4">
-        <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4">
+      {/* Filter Bar - Clean, minimal */}
+      <section className="sticky top-20 z-40 bg-white border-b border-luxury-gray-100 py-6">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-3">
             {filters.map((filter) => (
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
-                className={`px-6 py-2 rounded-lg font-medium transition-all ${
+                className={`px-8 py-2.5 rounded-md font-medium transition-all duration-300 ${
                   activeFilter === filter.value
-                    ? 'bg-primary text-white shadow-lg'
-                    : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                    ? 'bg-primary text-white shadow-luxury'
+                    : 'bg-luxury-cream text-luxury-gray-600 hover:bg-luxury-gray-50 hover:text-primary'
                 }`}
               >
                 {filter.label}
@@ -67,9 +67,9 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Projects Grid */}
-      <section className="section-padding bg-neutral-50">
-        <div className="container-custom">
+      {/* Projects Grid - Spacious */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             key={activeFilter}
             initial={{ opacity: 0 }}
@@ -90,8 +90,8 @@ const Portfolio = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <p className="text-neutral-600 text-lg">No projects found in this category.</p>
+              <div className="text-center py-20">
+                <p className="text-body-lg text-luxury-gray-400">No projects found in this category.</p>
               </div>
             )}
           </motion.div>
