@@ -33,10 +33,11 @@ const Navigation = () => {
         { name: 'Closets', path: '/portfolio/closets' },
         { name: 'Vanities', path: '/portfolio/vanities' },
         { name: 'Custom Projects', path: '/portfolio/custom' },
+        { name: 'Commercial', path: '/portfolio/commercial' },
       ]
     },
     { name: 'Finishes & Materials', path: '/finishes' },
-    { name: 'KD Lite Software', path: '/kdlite' },
+    { name: 'Closet Program', path: '/kdlite' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];

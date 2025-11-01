@@ -1,58 +1,131 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Clock, Package, Truck, Wrench, ChevronRight } from 'lucide-react';
-import ValueCard from '../components/ui/ValueCard';
+import { Clock, Package, Truck, Wrench, ChevronRight, Sparkles, Zap, Award, TrendingUp } from 'lucide-react';
+import { AnimatedGradientBg, FloatingParticles, GridPattern } from '../components/ui/AnimatedBackgrounds';
+import { SpotlightCard, BentoCard, NeonCard } from '../components/ui/ModernCard';
 import ProjectCard from '../components/ui/ProjectCard';
 import { projects } from '../data/projects';
 
 const Home = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const featuredProjects = projects.slice(0, 4);
 
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+  };
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
+    <div className="min-h-screen" onMouseMove={handleMouseMove}>
+      {/* Hero Section with Modern Animations */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image (Placeholder for video) */}
-        <div className="absolute inset-0 z-0">
+        {/* Animated Background Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-black">
+          <AnimatedGradientBg />
+          <FloatingParticles />
+          <GridPattern />
+        </div>
+
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-10">
           <img
             src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1600"
             alt="Custom European Cabinets"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-primary/40 to-primary/90"></div>
         </div>
 
+        {/* Spotlight Effect */}
+        <div
+          className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(800px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(212, 165, 116, 0.15), transparent 40%)`,
+          }}
+        />
+
         {/* Hero Content */}
-        <div className="relative z-10 text-center text-white px-4">
+        <div className="relative z-30 text-center text-white px-4">
+          {/* Animated Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 mb-6"
+          >
+            <Sparkles className="w-4 h-4 text-accent" />
+            <span className="text-sm font-medium">Premium European Craftsmanship</span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="heading-xl mb-6"
           >
             Custom European Cabinets,<br />
-            <span className="text-accent">Crafted in Houston</span>
+            <span className="bg-gradient-to-r from-accent via-accent-light to-white bg-clip-text text-transparent">
+              Crafted in Houston
+            </span>
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 text-neutral-200 max-w-3xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-xl md:text-2xl mb-8 text-neutral-200 max-w-3xl mx-auto leading-relaxed"
           >
-            Frameless Design. Supply-Only Excellence. 2-3 Week Delivery.
+            Frameless Design • Supply-Only Excellence • 2-3 Week Delivery
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link to="/portfolio" className="btn-primary">
-              View Portfolio
+            <Link
+              to="/portfolio"
+              className="group relative px-8 py-4 bg-gradient-to-r from-accent to-accent-dark text-white font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-accent-light to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative flex items-center justify-center space-x-2">
+                <span>View Portfolio</span>
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Link>
-            <Link to="/contact" className="btn-outline bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-primary">
-              Get Free Quote
+
+            <Link
+              to="/contact"
+              className="group relative px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white hover:text-primary hover:scale-105 hover:shadow-2xl"
+            >
+              <span className="flex items-center justify-center space-x-2">
+                <span>Get Free Quote</span>
+                <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              </span>
             </Link>
+          </motion.div>
+
+          {/* Stats Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+          >
+            {[
+              { number: '500+', label: 'Projects' },
+              { number: '2-3', label: 'Week Delivery' },
+              { number: '25+', label: 'Finishes' },
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-accent mb-1">{stat.number}</div>
+                <div className="text-sm text-neutral-300">{stat.label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
 
@@ -60,68 +133,96 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ delay: 1.2, duration: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
         >
-          <div className="flex flex-col items-center text-white">
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-            >
-              <ChevronRight className="w-6 h-6 rotate-90" />
-            </motion.div>
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+            className="flex flex-col items-center text-white/60"
+          >
+            <span className="text-sm mb-2">Discover More</span>
+            <ChevronRight className="w-6 h-6 rotate-90" />
+          </motion.div>
         </motion.div>
       </section>
 
-      {/* Value Propositions Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
+      {/* Value Propositions with Modern Cards */}
+      <section className="section-padding bg-neutral-50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="heading-lg mb-4">Why Choose YuDeZign?</h2>
+            <div className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <Award className="w-4 h-4" />
+              <span>Why Choose Us</span>
+            </div>
+            <h2 className="heading-lg mb-4">
+              Unmatched <span className="text-gradient">Quality & Speed</span>
+            </h2>
             <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
-              We combine European craftsmanship with Houston efficiency to deliver exceptional custom cabinets.
+              We combine European craftsmanship with Houston efficiency
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <ValueCard
-              icon={Clock}
-              title="2-3 Week Turnaround"
-              description="Lightning-fast local manufacturing in Houston. No overseas delays."
-              delay={0.1}
-            />
-            <ValueCard
-              icon={Package}
-              title="European Frameless Design"
-              description="Modern, space-maximizing construction with sleek, seamless aesthetics."
-              delay={0.2}
-            />
-            <ValueCard
-              icon={Truck}
-              title="Flexible Delivery"
-              description="Choose assembled or flat-pack (KD) options to fit your project needs."
-              delay={0.3}
-            />
-            <ValueCard
-              icon={Wrench}
-              title="Supply-Only Savings"
-              description="Direct factory pricing without showroom markup. Work with your own installer."
-              delay={0.4}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Clock,
+                title: '2-3 Week Turnaround',
+                description: 'Lightning-fast local manufacturing. No overseas delays.',
+                color: 'from-blue-500 to-blue-600',
+              },
+              {
+                icon: Package,
+                title: 'European Frameless',
+                description: 'Modern, space-maximizing construction with seamless aesthetics.',
+                color: 'from-purple-500 to-purple-600',
+              },
+              {
+                icon: Truck,
+                title: 'Flexible Delivery',
+                description: 'Assembled or flat-pack options to fit your needs.',
+                color: 'from-pink-500 to-pink-600',
+              },
+              {
+                icon: Wrench,
+                title: 'Supply-Only Savings',
+                description: 'Direct factory pricing without showroom markup.',
+                color: 'from-green-500 to-green-600',
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <NeonCard className="h-full">
+                  <div className="p-6">
+                    <div className={`inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl mb-4 shadow-lg`}>
+                      <item.icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-neutral-900 mb-2">{item.title}</h3>
+                    <p className="text-neutral-600 leading-relaxed">{item.description}</p>
+                  </div>
+                </NeonCard>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="section-padding bg-neutral-50">
+      {/* Featured Projects with Bento Grid */}
+      <section className="section-padding bg-white relative">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -130,18 +231,22 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="heading-lg mb-4">Featured Projects</h2>
+            <div className="inline-flex items-center space-x-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <TrendingUp className="w-4 h-4" />
+              <span>Featured Work</span>
+            </div>
+            <h2 className="heading-lg mb-4">Recent Masterpieces</h2>
             <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
-              Explore our latest custom cabinet installations across Houston.
+              Explore our latest custom cabinet installations across Houston
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
@@ -151,30 +256,37 @@ const Home = () => {
           </div>
 
           <div className="text-center">
-            <Link to="/portfolio" className="btn-primary">
-              View All Projects
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center space-x-2 bg-gradient-to-r from-primary to-primary-dark text-white font-semibold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            >
+              <span>View All Projects</span>
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why YuDeZign Section */}
-      <section className="section-padding bg-white">
+      {/* Why YuDeZign - Modern Bento Layout */}
+      <section className="section-padding bg-gradient-to-br from-neutral-50 to-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Image */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Image with Floating Effect */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-2xl"
+              className="relative"
             >
-              <img
-                src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800"
-                alt="YuDeZign Quality"
-                className="w-full h-full object-cover"
-              />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
+              <BentoCard glow className="relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800"
+                  alt="YuDeZign Quality"
+                  className="w-full h-[500px] object-cover"
+                />
+              </BentoCard>
             </motion.div>
 
             {/* Content */}
@@ -183,131 +295,126 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="space-y-6"
             >
-              <h2 className="heading-lg mb-6">Uncompromising Quality, Local Craftsmanship</h2>
-              <div className="space-y-6 text-neutral-700">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">¾"</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Premium 3/4" Plywood Construction</h3>
-                    <p className="text-neutral-600">
-                      We use only high-grade 3/4" plywood, never particle board. Built to last decades.
-                    </p>
-                  </div>
-                </div>
+              <h2 className="heading-lg">
+                Uncompromising <span className="text-gradient">Quality</span>,<br />
+                Local Craftsmanship
+              </h2>
 
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent font-bold text-xl">25+</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">25+ Finish Options in Stock</h3>
-                    <p className="text-neutral-600">
-                      Melamine, laminate, acrylic, and wood grain finishes. See them all in our showroom.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <span className="text-primary font-bold text-xl">HTX</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Made in Houston</h3>
-                    <p className="text-neutral-600">
-                      Local manufacturing means faster turnaround, easy communication, and supporting Texas jobs.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <span className="text-accent font-bold text-xl">KD</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Free KD Lite Design Software</h3>
-                    <p className="text-neutral-600">
-                      Design your dream closet yourself with our intuitive software. Get instant pricing and order directly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <Link to="/about" className="btn-primary">
-                  Learn More About Us
-                </Link>
-              </div>
+              {[
+                {
+                  badge: '¾"',
+                  title: 'Premium Plywood Construction',
+                  description: 'We use only high-grade 3/4" plywood, never particle board. Built to last decades.',
+                },
+                {
+                  badge: '25+',
+                  title: '25+ Finish Options in Stock',
+                  description: 'Melamine, laminate, acrylic, and wood grain. See them all in our showroom.',
+                },
+                {
+                  badge: 'HTX',
+                  title: 'Made in Houston',
+                  description: 'Local manufacturing means faster turnaround and supporting Texas jobs.',
+                },
+                {
+                  badge: 'PRO',
+                  title: 'Free Closet Program',
+                  description: 'Design your dream closet with our intuitive software. Get instant pricing.',
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <SpotlightCard>
+                    <div className="p-6 flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        {item.badge}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-1 text-neutral-900">{item.title}</h3>
+                        <p className="text-neutral-600">{item.description}</p>
+                      </div>
+                    </div>
+                  </SpotlightCard>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* KD Lite Software Teaser */}
-      <section className="section-padding bg-primary text-white">
-        <div className="container-custom">
+      {/* Closet Program Teaser - Modern Dark Section */}
+      <section className="section-padding bg-gradient-to-br from-primary via-primary-dark to-black text-white relative overflow-hidden">
+        <AnimatedGradientBg />
+        <FloatingParticles />
+
+        <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="heading-lg mb-6">Design Your Own Closet with KD Lite</h2>
+              <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-6">
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span className="text-sm font-semibold">Free Design Tool</span>
+              </div>
+
+              <h2 className="heading-lg mb-6">Design Your Closet with Our Free Program</h2>
               <p className="text-xl text-neutral-200 mb-6">
-                Our free closet design software puts professional-grade tools in your hands. Drag, drop, visualize, and order.
+                Professional-grade design tools at your fingertips. Drag, drop, visualize, and order.
               </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">✓</span>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  'Drag-and-drop interface',
+                  'Real-time 3D visualization',
+                  'Instant pricing quotes',
+                  'Order directly from factory',
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-xs">✓</span>
+                    </div>
+                    <span className="text-neutral-200 text-sm">{feature}</span>
                   </div>
-                  <span className="text-neutral-200">Intuitive drag-and-drop interface</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-neutral-200">Real-time 3D visualization</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-neutral-200">Instant pricing and quotes</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-neutral-200">Order directly from the factory</span>
-                </li>
-              </ul>
-              <Link to="/kdlite" className="btn-secondary">
-                Try KD Lite Free
+                ))}
+              </div>
+
+              <Link
+                to="/kdlite"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-accent to-accent-dark text-white font-semibold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-xl"
+              >
+                <span>Try Closet Program Free</span>
+                <ChevronRight className="w-5 h-5" />
               </Link>
             </motion.div>
 
-            {/* Image/Video Placeholder */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-2xl"
+              className="relative"
             >
-              <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800"
-                alt="KD Lite Software"
-                className="w-full h-full object-cover"
-              />
-              {/* Play button overlay */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent ml-1"></div>
+              <div className="relative h-[500px] rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800"
+                  alt="Closet Program"
+                  className="w-full h-full object-cover"
+                />
+                {/* Play button */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/10 transition-colors cursor-pointer group">
+                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
+                    <div className="w-0 h-0 border-t-10 border-t-transparent border-l-16 border-l-primary border-b-10 border-b-transparent ml-1"></div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -315,28 +422,32 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="section-padding bg-neutral-50">
+      {/* Final CTA */}
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            className="relative"
           >
-            <h2 className="heading-lg mb-4">Ready to Start Your Project?</h2>
-            <p className="text-xl text-neutral-600 mb-8">
-              Get a free quote today and discover how YuDeZign can transform your space with custom European cabinets.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
-                Request Free Quote
-              </Link>
-              <Link to="/portfolio" className="btn-outline">
-                View Our Work
-              </Link>
-            </div>
+            <BentoCard glow className="text-center max-w-4xl mx-auto">
+              <div className="p-12">
+                <h2 className="heading-lg mb-4">Ready to Transform Your Space?</h2>
+                <p className="text-xl text-neutral-600 mb-8">
+                  Get a free quote and discover how YuDeZign can bring your vision to life
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/contact" className="btn-primary text-lg px-8 py-4">
+                    Request Free Quote
+                  </Link>
+                  <Link to="/portfolio" className="btn-outline text-lg px-8 py-4">
+                    View Our Work
+                  </Link>
+                </div>
+              </div>
+            </BentoCard>
           </motion.div>
         </div>
       </section>

@@ -12,6 +12,7 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
     closets: 'bg-purple-500',
     vanities: 'bg-pink-500',
     custom: 'bg-green-500',
+    commercial: 'bg-orange-500',
   };
 
   return (

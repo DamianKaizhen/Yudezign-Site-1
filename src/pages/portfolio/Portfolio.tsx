@@ -4,7 +4,7 @@ import ProjectCard from '../../components/ui/ProjectCard';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 
-type FilterCategory = 'all' | 'kitchens' | 'closets' | 'vanities' | 'custom';
+type FilterCategory = 'all' | 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
@@ -15,6 +15,7 @@ const Portfolio = () => {
     { label: 'Closets', value: 'closets' },
     { label: 'Vanities', value: 'vanities' },
     { label: 'Custom', value: 'custom' },
+    { label: 'Commercial', value: 'commercial' },
   ];
 
   const filteredProjects = activeFilter === 'all'

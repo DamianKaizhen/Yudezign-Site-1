@@ -11,7 +11,7 @@ const categoryInfo = {
   },
   closets: {
     title: 'Custom Closets',
-    description: 'Maximize your storage with our expertly designed closet systems. Design your perfect closet with our free KD Lite software and enjoy organized living.',
+    description: 'Maximize your storage with our expertly designed closet systems. Design your perfect closet with our free Closet Program and enjoy organized living.',
     heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600',
   },
   vanities: {
@@ -23,6 +23,11 @@ const categoryInfo = {
     title: 'Custom Projects',
     description: 'From home offices to entertainment centers, we create custom cabinetry solutions for any space in your home.',
     heroImage: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600',
+  },
+  commercial: {
+    title: 'Commercial Projects',
+    description: 'Professional-grade cabinetry solutions for offices, restaurants, retail stores, and medical facilities. Durable, compliant, and designed for high-traffic environments.',
+    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600',
   },
 };
 

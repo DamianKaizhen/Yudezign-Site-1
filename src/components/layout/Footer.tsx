@@ -105,8 +105,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/portfolio/commercial" className="text-neutral-200 hover:text-accent transition-colors">
+                  Commercial
+                </Link>
+              </li>
+              <li>
                 <Link to="/kdlite" className="text-neutral-200 hover:text-accent transition-colors">
-                  KD Lite Software
+                  Closet Program
                 </Link>
               </li>
             </ul>

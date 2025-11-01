@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'kitchens' | 'closets' | 'vanities' | 'custom';
+  category: 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
   images: string[];
   thumbnail: string;
   location?: string;
