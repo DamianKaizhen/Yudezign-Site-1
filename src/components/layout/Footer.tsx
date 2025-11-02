@@ -124,20 +124,21 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                 <span className="text-neutral-200">
-                  Houston, TX 77001<br />
+                  13230 Murphy Rd, Ste 600<br />
+                  Stafford, TX 77477<br />
                   United States
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-neutral-200 hover:text-accent transition-colors">
-                  (123) 456-7890
+                <a href="tel:+12815688000" className="text-neutral-200 hover:text-accent transition-colors">
+                  (281) 568-8000
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="mailto:info@yudezign.com" className="text-neutral-200 hover:text-accent transition-colors">
-                  info@yudezign.com
+                <a href="mailto:orders@yudezign.com" className="text-neutral-200 hover:text-accent transition-colors">
+                  orders@yudezign.com
                 </a>
               </li>
             </ul>

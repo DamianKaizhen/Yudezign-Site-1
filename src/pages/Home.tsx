@@ -241,17 +241,17 @@ const Home = () => {
                 </Link>
 
                 <a
-                  href="tel:+11234567890"
+                  href="tel:+12815688000"
                   className="inline-block px-12 py-4 border-2 border-primary text-primary text-body-lg font-medium rounded-md hover:bg-primary hover:text-white transition-all duration-300"
                 >
-                  (123) 456-7890
+                  (281) 568-8000
                 </a>
               </div>
 
               <div className="mt-12 pt-8 border-t border-luxury-gray-100">
                 <p className="text-body text-luxury-gray-500">
-                  <a href="mailto:info@yudezign.com" className="hover:text-primary transition-colors font-medium">
-                    info@yudezign.com
+                  <a href="mailto:orders@yudezign.com" className="hover:text-primary transition-colors font-medium">
+                    orders@yudezign.com
                   </a>
                 </p>
               </div>

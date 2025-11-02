@@ -447,7 +447,7 @@ const Contact = () => {
                       ✗ {errorMessage}
                     </p>
                     <p className="text-body-sm text-red-700 text-center mt-1">
-                      You can also reach us at (123) 456-7890 or info@yudezign.com
+                      You can also reach us at (281) 568-8000 or orders@yudezign.com
                     </p>
                   </motion.div>
                 )}
@@ -479,10 +479,16 @@ const Contact = () => {
                     <div>
                       <h3 className="font-medium text-h4 text-luxury-gray-900 mb-2">Visit Our Showroom</h3>
                       <p className="text-body text-luxury-gray-600 leading-relaxed">
-                        Houston, TX 77001<br />
+                        13230 Murphy Rd, Ste 600<br />
+                        Stafford, TX 77477<br />
                         United States
                       </p>
-                      <a href="#" className="text-primary hover:text-primary-dark text-body-sm mt-2 inline-block font-medium">
+                      <a
+                        href="https://www.google.com/maps/dir/?api=1&destination=13230+Murphy+Rd+Ste+600+Stafford+TX+77477"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-primary-dark text-body-sm mt-2 inline-block font-medium"
+                      >
                         Get Directions →
                       </a>
                     </div>
@@ -494,8 +500,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-h4 text-luxury-gray-900 mb-2">Call Us</h3>
-                      <a href="tel:+1234567890" className="text-body text-luxury-gray-600 hover:text-primary transition-colors">
-                        (123) 456-7890
+                      <a href="tel:+12815688000" className="text-body text-luxury-gray-600 hover:text-primary transition-colors">
+                        (281) 568-8000
                       </a>
                     </div>
                   </div>
@@ -506,8 +512,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-h4 text-luxury-gray-900 mb-2">Email Us</h3>
-                      <a href="mailto:info@yudezign.com" className="text-body text-luxury-gray-600 hover:text-primary transition-colors">
-                        info@yudezign.com
+                      <a href="mailto:orders@yudezign.com" className="text-body text-luxury-gray-600 hover:text-primary transition-colors">
+                        orders@yudezign.com
                       </a>
                     </div>
                   </div>
@@ -528,15 +534,18 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Google Maps Embed */}
               <div className="bg-white rounded-lg overflow-hidden h-80 shadow-luxury border border-luxury-sand">
-                <div className="w-full h-full bg-luxury-beige flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-luxury-gray-400 mx-auto mb-3" strokeWidth={1.5} />
-                    <p className="text-body text-luxury-gray-600">Google Map Embed</p>
-                    <p className="text-body-sm text-luxury-gray-500">Houston, TX Location</p>
-                  </div>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.8697832745777!2d-95.56934492349396!3d29.616758975219067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e7a1b1b1b1b1%3A0x1234567890abcdef!2s13230%20Murphy%20Rd%20Ste%20600%2C%20Stafford%2C%20TX%2077477!5e0!3m2!1sen!2sus!4v1699123456789!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Yudezign Location - 13230 Murphy Rd Ste 600, Stafford, TX 77477"
+                />
               </div>
 
               {/* Schedule Showroom Visit */}
