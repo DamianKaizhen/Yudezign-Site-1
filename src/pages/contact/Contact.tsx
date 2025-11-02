@@ -12,11 +12,55 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    alert('Thank you! We will contact you shortly.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://n8n.kaizhen8n.cloud/webhook/quote-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          submittedAt: new Date().toISOString(),
+          source: 'Yudezign Website',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit form: ${response.status}`);
+      }
+
+      // Success!
+      setSubmitStatus('success');
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        timeline: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setErrorMessage(
+        error instanceof Error
+          ? 'Unable to submit form. Please try again or contact us directly.'
+          : 'An unexpected error occurred. Please try again.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -195,13 +239,51 @@ const Contact = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="w-full px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury hover:shadow-luxury-lg">
-                  Request Free Quote
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury hover:shadow-luxury-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Request Free Quote'}
                 </button>
 
-                <p className="text-body-sm text-luxury-gray-500 text-center">
-                  We typically respond within 24 hours on business days.
-                </p>
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-50 border border-green-200 rounded-md"
+                  >
+                    <p className="text-body text-green-800 text-center font-medium">
+                      ✓ Thank you! Your quote request has been submitted successfully.
+                    </p>
+                    <p className="text-body-sm text-green-700 text-center mt-1">
+                      We'll contact you within 24 hours on business days.
+                    </p>
+                  </motion.div>
+                )}
+
+                {/* Error Message */}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-50 border border-red-200 rounded-md"
+                  >
+                    <p className="text-body text-red-800 text-center font-medium">
+                      ✗ {errorMessage}
+                    </p>
+                    <p className="text-body-sm text-red-700 text-center mt-1">
+                      You can also reach us at (123) 456-7890 or info@yudezign.com
+                    </p>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'idle' && (
+                  <p className="text-body-sm text-luxury-gray-500 text-center">
+                    We typically respond within 24 hours on business days.
+                  </p>
+                )}
               </form>
             </motion.div>
 

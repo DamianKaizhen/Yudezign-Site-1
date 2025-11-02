@@ -1,0 +1,1 @@
+- make sure to update linear anytime you make changes, fixes, or need to make comments. And, before you begin doing anything, make sure to check linear
