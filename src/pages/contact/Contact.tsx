@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Upload } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2 } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +16,13 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  // File upload state
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({});
+  const [fileErrors, setFileErrors] = useState<string[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -23,6 +30,13 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
+      // Upload files first if any are selected
+      let attachmentUrls: string[] = [];
+      if (selectedFiles.length > 0) {
+        attachmentUrls = await uploadFiles();
+      }
+
+      // Submit form data + file URLs to webhook
       const response = await fetch('https://n8n.kaizhen8n.cloud/webhook/quote-form', {
         method: 'POST',
         headers: {
@@ -30,6 +44,7 @@ const Contact = () => {
         },
         body: JSON.stringify({
           ...formData,
+          attachments: attachmentUrls,
           submittedAt: new Date().toISOString(),
           source: 'Yudezign Website',
         }),
@@ -41,7 +56,7 @@ const Contact = () => {
 
       // Success!
       setSubmitStatus('success');
-      // Reset form
+      // Reset form and files
       setFormData({
         name: '',
         email: '',
@@ -50,12 +65,17 @@ const Contact = () => {
         timeline: '',
         message: '',
       });
+      setSelectedFiles([]);
+      setFileErrors([]);
+      setUploadProgress({});
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
       setErrorMessage(
         error instanceof Error
-          ? 'Unable to submit form. Please try again or contact us directly.'
+          ? error.message.includes('upload')
+            ? 'Failed to upload files. Please try again or contact us directly.'
+            : 'Unable to submit form. Please try again or contact us directly.'
           : 'An unexpected error occurred. Please try again.'
       );
     } finally {
@@ -68,6 +88,81 @@ const Contact = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  // File handling functions
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    const newFiles: File[] = [];
+    const errors: string[] = [];
+
+    // Validate each file
+    Array.from(files).forEach((file) => {
+      // Check file size (4MB limit)
+      if (file.size > 4 * 1024 * 1024) {
+        errors.push(`${file.name}: File size exceeds 4MB limit`);
+        return;
+      }
+
+      // Check file type
+      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
+        errors.push(`${file.name}: Invalid file type. Only PDF, JPG, and PNG allowed`);
+        return;
+      }
+
+      newFiles.push(file);
+    });
+
+    setFileErrors(errors);
+    setSelectedFiles((prev) => [...prev, ...newFiles]);
+
+    // Reset input
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleRemoveFile = (index: number) => {
+    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const uploadFiles = async (): Promise<string[]> => {
+    if (selectedFiles.length === 0) return [];
+
+    setIsUploading(true);
+    const urls: string[] = [];
+
+    try {
+      // Upload each file
+      for (const file of selectedFiles) {
+        setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
+
+        const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
+          method: 'POST',
+          body: file,
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to upload file');
+        }
+
+        const result = await response.json();
+        urls.push(result.url);
+
+        setUploadProgress((prev) => ({ ...prev, [file.name]: 100 }));
+      }
+
+      return urls;
+    } catch (error) {
+      console.error('File upload error:', error);
+      throw error;
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   return (
@@ -229,22 +324,100 @@ const Contact = () => {
                   <label className="block text-body-sm font-medium text-luxury-gray-700 mb-2">
                     Attach Files (Optional)
                   </label>
-                  <div className="border-2 border-dashed border-luxury-gray-200 rounded-md p-8 text-center hover:border-primary bg-luxury-beige transition-colors cursor-pointer">
+
+                  {/* Hidden file input */}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+
+                  {/* Upload area */}
+                  <div
+                    onClick={() => fileInputRef.current?.click()}
+                    className="border-2 border-dashed border-luxury-gray-200 rounded-md p-8 text-center hover:border-primary bg-luxury-beige transition-colors cursor-pointer"
+                  >
                     <Upload className="w-10 h-10 text-luxury-gray-400 mx-auto mb-3" strokeWidth={1.5} />
                     <p className="text-body text-luxury-gray-600 mb-1">
                       Click to upload plans, inspiration photos, or measurements
                     </p>
-                    <p className="text-body-sm text-luxury-gray-500">PDF, JPG, PNG up to 10MB</p>
+                    <p className="text-body-sm text-luxury-gray-500">PDF, JPG, PNG up to 4MB per file</p>
                   </div>
+
+                  {/* File errors */}
+                  {fileErrors.length > 0 && (
+                    <div className="mt-3 space-y-1">
+                      {fileErrors.map((error, index) => (
+                        <p key={index} className="text-body-sm text-red-600">
+                          ⚠ {error}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Selected files list */}
+                  {selectedFiles.length > 0 && (
+                    <div className="mt-4 space-y-2">
+                      {selectedFiles.map((file, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between p-3 bg-white rounded-md border border-luxury-gray-200"
+                        >
+                          <div className="flex items-center space-x-3 flex-1 min-w-0">
+                            <FileText className="w-5 h-5 text-primary flex-shrink-0" />
+                            <div className="flex-1 min-w-0">
+                              <p className="text-body-sm text-luxury-gray-900 truncate">{file.name}</p>
+                              <p className="text-body-sm text-luxury-gray-500">
+                                {(file.size / 1024 / 1024).toFixed(2)} MB
+                              </p>
+                            </div>
+                            {isUploading && uploadProgress[file.name] !== undefined && (
+                              <div className="flex items-center space-x-2">
+                                {uploadProgress[file.name] === 100 ? (
+                                  <span className="text-green-600 text-body-sm">✓</span>
+                                ) : (
+                                  <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                                )}
+                              </div>
+                            )}
+                          </div>
+                          {!isUploading && (
+                            <button
+                              type="button"
+                              onClick={() => handleRemoveFile(index)}
+                              className="ml-2 p-1 hover:bg-red-50 rounded-md transition-colors"
+                            >
+                              <X className="w-5 h-5 text-red-500" />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury hover:shadow-luxury-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting || isUploading}
+                  className="w-full px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury hover:shadow-luxury-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Request Free Quote'}
+                  {isUploading ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Uploading files...</span>
+                    </>
+                  ) : isSubmitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Submitting...</span>
+                    </>
+                  ) : (
+                    <span>Request Free Quote</span>
+                  )}
                 </button>
 
                 {/* Success Message */}
