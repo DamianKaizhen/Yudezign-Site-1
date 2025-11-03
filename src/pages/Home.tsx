@@ -580,8 +580,8 @@ const Home = () => {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1600&q=90"
-            alt="YuDezign Craftsmanship"
+            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1600&q=90"
+            alt="Modern Frameless Kitchen Craftsmanship"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-accent/30"></div>
