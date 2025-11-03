@@ -170,5 +170,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjon0amejk',
+    name: 'Luxe Black',
+    styleId: 'artisan-shine',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207110927-HG_Luxe_Black.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
