@@ -50,21 +50,6 @@ export const projects: Project[] = [
     description: 'A sophisticated dark kitchen with high-gloss finishes and modern hardware.',
   },
   {
-    id: '6',
-    title: 'Master Closet System',
-    category: 'closets',
-    images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
-    location: 'Pearland',
-    finish: 'White Gloss Acrylic',
-    cabinetStyle: 'Frameless European',
-    features: ['Valet rod', 'Hamper integration', 'Accessory drawers', 'Mirror panel'],
-    turnaroundTime: '2 weeks',
-    description: 'An efficient closet system maximizing every inch of space.',
-  },
-  {
     id: '7',
     title: 'Corporate Office Breakroom',
     category: 'commercial',
