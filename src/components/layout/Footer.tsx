@@ -181,8 +181,7 @@ const Footer = () => {
             </ul>
             <div className="mt-4">
               <p className="text-sm text-neutral-200">Business Hours:</p>
-              <p className="text-sm text-neutral-300">Mon-Fri: 8AM - 6PM</p>
-              <p className="text-sm text-neutral-300">Sat: 9AM - 4PM</p>
+              <p className="text-sm text-neutral-300">Mon-Fri: 9:00 AM - 5:30 PM</p>
             </div>
           </div>
         </div>
