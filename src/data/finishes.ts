@@ -150,5 +150,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 2,
+  },
+  {
+    id: 'f_mhjomd7nrv8',
+    name: 'Dark Grey',
+    styleId: 'artisan-shine',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207076916-HG_Dark_Grey.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
