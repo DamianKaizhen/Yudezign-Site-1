@@ -18,22 +18,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '7',
-    title: 'Corporate Office Breakroom',
-    category: 'commercial',
-    images: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400',
-    location: 'Downtown Houston',
-    finish: 'Grey Laminate with White Accents',
-    cabinetStyle: 'Frameless European',
-    features: ['Commercial-grade hardware', 'ADA compliant', 'Heavy-duty soft-close', 'Antimicrobial finish'],
-    turnaroundTime: '4 weeks',
-    description: 'Modern breakroom cabinetry for a 200-person corporate office with durability and style.',
-  },
-  {
     id: '8',
     title: 'Medical Office Storage',
     category: 'commercial',
