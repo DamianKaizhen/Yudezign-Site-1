@@ -13,6 +13,10 @@ import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import ProjectsList from './pages/admin/ProjectsList';
 import ProjectForm from './pages/admin/ProjectForm';
+import FinishStylesList from './pages/admin/FinishStylesList';
+import FinishStyleForm from './pages/admin/FinishStyleForm';
+import FinishesList from './pages/admin/FinishesList';
+import FinishForm from './pages/admin/FinishForm';
 
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
@@ -45,6 +49,12 @@ function App() {
           <Route path="/admin/projects" element={<ProjectsList />} />
           <Route path="/admin/projects/new" element={<ProjectForm />} />
           <Route path="/admin/projects/:id" element={<ProjectForm />} />
+          <Route path="/admin/finish-styles" element={<FinishStylesList />} />
+          <Route path="/admin/finish-styles/new" element={<FinishStyleForm />} />
+          <Route path="/admin/finish-styles/:id" element={<FinishStyleForm />} />
+          <Route path="/admin/finishes" element={<FinishesList />} />
+          <Route path="/admin/finishes/new" element={<FinishForm />} />
+          <Route path="/admin/finishes/:id" element={<FinishForm />} />
 
           {/* Public Routes - With Navigation/Footer */}
           <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

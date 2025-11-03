@@ -12,14 +12,23 @@ export interface Project {
   description: string;
 }
 
+export interface FinishStyle {
+  id: string;
+  name: string;
+  description?: string;
+  visible: boolean;
+  order: number;
+}
+
 export interface Finish {
   id: string;
   name: string;
-  type: 'melamine' | 'laminate' | 'acrylic' | 'wood-grain';
-  color: string;
+  styleId: string; // References FinishStyle.id
+  color: string; // Hex color code
   image: string;
   inStock: boolean;
   description?: string;
+  order: number; // Display order within style
 }
 
 export interface ValueProposition {

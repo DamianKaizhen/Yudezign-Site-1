@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { InView } from '../../components/ui/InViewAnimations';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
-import type { Project } from '../../types';
+import type { Project, Finish, FinishStyle } from '../../types';
 
 const Dashboard = () => {
   // Fetch projects count
@@ -21,6 +21,32 @@ const Dashboard = () => {
     },
   });
 
+  // Fetch finishes count
+  const { data: finishesData } = useQuery({
+    queryKey: ['finishes'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/finishes', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch finishes');
+      const result = await response.json();
+      return result.data as Finish[];
+    },
+  });
+
+  // Fetch finish styles count
+  const { data: stylesData } = useQuery({
+    queryKey: ['finishStyles'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/finish-styles', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch finish styles');
+      const result = await response.json();
+      return result.data as FinishStyle[];
+    },
+  });
+
   const stats = [
     {
       name: 'Projects',
@@ -32,8 +58,8 @@ const Dashboard = () => {
     },
     {
       name: 'Finishes',
-      count: 26,
-      description: 'Material finishes and options',
+      count: finishesData?.length || 0,
+      description: `${stylesData?.length || 0} styles, ${finishesData?.length || 0} colors`,
       icon: Palette,
       link: '/admin/finishes',
       color: 'from-accent to-accent/80',
@@ -136,13 +162,26 @@ const Dashboard = () => {
                   </Link>
 
                   <Link
+                    to="/admin/finish-styles"
+                    className="flex items-center justify-between p-4 bg-luxury-cream rounded-lg hover:bg-luxury-beige transition-colors group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Palette className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                      <span className="text-body font-medium text-luxury-gray-900">
+                        Manage Finish Styles
+                      </span>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-luxury-gray-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
                     to="/admin/finishes"
                     className="flex items-center justify-between p-4 bg-luxury-cream rounded-lg hover:bg-luxury-beige transition-colors group"
                   >
                     <div className="flex items-center gap-3">
                       <Palette className="w-5 h-5 text-primary" strokeWidth={1.5} />
                       <span className="text-body font-medium text-luxury-gray-900">
-                        Add New Finish
+                        Manage Finishes
                       </span>
                     </div>
                     <ArrowRight className="w-5 h-5 text-luxury-gray-400 group-hover:translate-x-1 transition-transform" />

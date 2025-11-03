@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { finishStyles } from '../../data/finishStyles';
+import { getStyleById } from '../../lib/utils/finishesUtils';
 import type { Finish } from '../../types';
 
 interface FinishSwatchProps {
@@ -9,6 +11,8 @@ interface FinishSwatchProps {
 }
 
 const FinishSwatch = ({ finish, isSelected, onClick }: FinishSwatchProps) => {
+  // Get the style name for this finish
+  const style = getStyleById(finish.styleId, finishStyles);
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -49,7 +53,9 @@ const FinishSwatch = ({ finish, isSelected, onClick }: FinishSwatchProps) => {
       {/* Info */}
       <div>
         <h4 className="font-semibold text-neutral-900 mb-1">{finish.name}</h4>
-        <p className="text-sm text-neutral-600 capitalize mb-1">{finish.type.replace('-', ' ')}</p>
+        {style && (
+          <p className="text-sm text-neutral-600 mb-1">{style.name}</p>
+        )}
         {finish.description && (
           <p className="text-xs text-neutral-500">{finish.description}</p>
         )}

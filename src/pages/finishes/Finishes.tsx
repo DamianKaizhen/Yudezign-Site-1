@@ -3,25 +3,24 @@ import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import FinishSwatch from '../../components/ui/FinishSwatch';
 import { finishes } from '../../data/finishes';
+import { finishStyles } from '../../data/finishStyles';
+import { getVisibleStyles, getFinishesGroupedByStyle } from '../../lib/utils/finishesUtils';
 import type { Finish } from '../../types';
 
-type FinishFilter = 'all' | 'melamine' | 'laminate' | 'acrylic' | 'wood-grain';
-
 const Finishes = () => {
-  const [activeFilter, setActiveFilter] = useState<FinishFilter>('all');
+  const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedFinish, setSelectedFinish] = useState<Finish | null>(null);
 
-  const filters: { label: string; value: FinishFilter }[] = [
-    { label: 'All Finishes', value: 'all' },
-    { label: 'Melamine', value: 'melamine' },
-    { label: 'Laminate', value: 'laminate' },
-    { label: 'Acrylic High Gloss', value: 'acrylic' },
-    { label: 'Wood Grain', value: 'wood-grain' },
-  ];
+  // Get visible styles for filtering
+  const visibleStyles = getVisibleStyles(finishStyles);
 
+  // Get finishes grouped by style
+  const groupedFinishes = getFinishesGroupedByStyle(finishes, visibleStyles);
+
+  // Filter finishes based on active filter
   const filteredFinishes = activeFilter === 'all'
     ? finishes
-    : finishes.filter((finish) => finish.type === activeFilter);
+    : finishes.filter((finish) => finish.styleId === activeFilter);
 
   return (
     <div className="min-h-screen pt-24 bg-luxury-cream">
@@ -57,19 +56,34 @@ const Finishes = () => {
       <section className="sticky top-20 z-40 bg-luxury-beige/95 backdrop-blur-sm border-b border-luxury-sand py-6 shadow-luxury-sm">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-3">
-            {filters.map((filter) => (
+            {/* All Finishes button */}
+            <motion.button
+              onClick={() => setActiveFilter('all')}
+              className={`px-8 py-2.5 rounded-md font-medium transition-all duration-300 ${
+                activeFilter === 'all'
+                  ? 'bg-primary text-white shadow-luxury'
+                  : 'bg-white text-luxury-gray-600 hover:bg-luxury-gray-50 hover:text-primary border border-luxury-gray-100'
+              }`}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              All Finishes
+            </motion.button>
+
+            {/* Dynamic style filter buttons */}
+            {visibleStyles.map((style) => (
               <motion.button
-                key={filter.value}
-                onClick={() => setActiveFilter(filter.value)}
+                key={style.id}
+                onClick={() => setActiveFilter(style.id)}
                 className={`px-8 py-2.5 rounded-md font-medium transition-all duration-300 ${
-                  activeFilter === filter.value
+                  activeFilter === style.id
                     ? 'bg-primary text-white shadow-luxury'
                     : 'bg-white text-luxury-gray-600 hover:bg-luxury-gray-50 hover:text-primary border border-luxury-gray-100'
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {filter.label}
+                {style.name}
               </motion.button>
             ))}
           </div>
@@ -85,22 +99,62 @@ const Finishes = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-              {filteredFinishes.map((finish, index) => (
-                <motion.div
-                  key={finish.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.05 }}
-                >
-                  <FinishSwatch
-                    finish={finish}
-                    isSelected={selectedFinish?.id === finish.id}
-                    onClick={() => setSelectedFinish(finish)}
-                  />
-                </motion.div>
-              ))}
-            </div>
+            {activeFilter === 'all' ? (
+              // Show grouped by style when "All Finishes" is selected
+              <div className="space-y-20">
+                {Array.from(groupedFinishes.entries()).map(([style, styleFinishes]) => (
+                  <div key={style.id}>
+                    {/* Style Header */}
+                    <div className="mb-10 text-center">
+                      <h2 className="text-h2 font-medium text-luxury-gray-900 mb-3">
+                        {style.name}
+                      </h2>
+                      {style.description && (
+                        <p className="text-body text-luxury-gray-600 max-w-2xl mx-auto">
+                          {style.description}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Finishes Grid for this style */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                      {styleFinishes.map((finish, index) => (
+                        <motion.div
+                          key={finish.id}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.6, delay: index * 0.05 }}
+                        >
+                          <FinishSwatch
+                            finish={finish}
+                            isSelected={selectedFinish?.id === finish.id}
+                            onClick={() => setSelectedFinish(finish)}
+                          />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              // Show flat grid when a specific style is selected
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                {filteredFinishes.map((finish, index) => (
+                  <motion.div
+                    key={finish.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.05 }}
+                  >
+                    <FinishSwatch
+                      finish={finish}
+                      isSelected={selectedFinish?.id === finish.id}
+                      onClick={() => setSelectedFinish(finish)}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
