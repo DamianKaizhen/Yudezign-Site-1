@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'am4',
-    name: 'Beige Linen',
-    styleId: 'artisan-matte',
-    color: '#E8DCC4',
-    images: [],
-    inStock: true,
-    description: 'Warm neutral beige matte',
-    order: 4,
-  },
-  {
     id: 'am5',
     name: 'Dove Grey',
     styleId: 'artisan-matte',
