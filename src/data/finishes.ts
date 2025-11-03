@@ -180,5 +180,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjongiisut',
+    name: 'White',
+    styleId: 'artisan-shine',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207131384-HG_White.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
