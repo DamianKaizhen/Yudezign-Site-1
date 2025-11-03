@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 import SEO from '../components/SEO';
+import { useEffect } from 'react';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -14,6 +15,28 @@ const Home = () => {
   // Parallax effect - image moves slower than scroll
   const imageY = useTransform(scrollY, [0, 1000], [0, 200]);
   const overlayOpacity = useTransform(scrollY, [0, 300], [0.3, 0.7]);
+
+  // Mouse tracking for interactive animations
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth spring animation for cursor tracking
+  const smoothMouseX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const smoothMouseY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+
+      // Normalize to -1 to 1 range
+      mouseX.set((clientX / innerWidth - 0.5) * 2);
+      mouseY.set((clientY / innerHeight - 0.5) * 2);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
     <>
@@ -27,56 +50,89 @@ const Home = () => {
 
       {/* HERO - Full viewport with parallax animation */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated background image with parallax */}
+        {/* Animated mesh gradient background - darker and more textured */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-[#0a1f1a] via-[#0f4c3a] to-[#1a2f2a]"
+          animate={{
+            background: [
+              'linear-gradient(135deg, #0a1f1a 0%, #0f4c3a 50%, #1a2f2a 100%)',
+              'linear-gradient(135deg, #0f4c3a 0%, #1a2f2a 50%, #0a1f1a 100%)',
+              'linear-gradient(135deg, #1a2f2a 0%, #0a1f1a 50%, #0f4c3a 100%)',
+              'linear-gradient(135deg, #0a1f1a 0%, #0f4c3a 50%, #1a2f2a 100%)',
+            ]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+
+        {/* Noise/grain texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.15] mix-blend-overlay"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+          }}
+        />
+
+        {/* Animated accent gradient overlay */}
         <motion.div
           className="absolute inset-0"
+          animate={{
+            background: [
+              'radial-gradient(circle at 20% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
+              'radial-gradient(circle at 80% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
+              'radial-gradient(circle at 50% 80%, rgba(212,165,116,0.15) 0%, transparent 50%)',
+              'radial-gradient(circle at 20% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
+            ]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        {/* Subtle image overlay with parallax */}
+        <motion.div
+          className="absolute inset-0 opacity-20"
           style={{ y: imageY }}
         >
-          <motion.img
+          <img
             src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1600&q=90"
             alt="Custom European Cabinets"
-            className="w-full h-[120vh] object-cover"
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
+            className="w-full h-[120vh] object-cover mix-blend-soft-light"
           />
         </motion.div>
 
-        {/* Gradient overlay that darkens on scroll */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-primary/10"
-          style={{ opacity: overlayOpacity }}
-        />
-
-        {/* Animated floating geometric shapes */}
+        {/* Interactive cursor-responsive geometric shapes */}
         <motion.div
           className="absolute inset-0 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          {/* Large circle - top right */}
+          {/* Large circle - top right - responds to cursor */}
           <motion.div
-            className="absolute top-20 right-20 w-96 h-96 rounded-full border border-white/10"
+            className="absolute top-20 right-20 w-96 h-96 rounded-full border-2 border-white/20 shadow-[0_0_80px_rgba(212,165,116,0.2)]"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [-30, 30]),
+              y: useTransform(smoothMouseY, [-1, 1], [-30, 30]),
+            }}
             animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-              rotate: [0, 90, 0],
+              scale: [1, 1.05, 1],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut",
+              scale: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 40, repeat: Infinity, ease: "linear" },
             }}
           />
 
-          {/* Medium circle - bottom left */}
+          {/* Medium circle - bottom left - opposite cursor movement */}
           <motion.div
-            className="absolute bottom-40 left-40 w-64 h-64 rounded-full border border-accent/20"
+            className="absolute bottom-40 left-40 w-64 h-64 rounded-full border-2 border-accent/30 backdrop-blur-sm bg-accent/5"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [20, -20]),
+              y: useTransform(smoothMouseY, [-1, 1], [20, -20]),
+            }}
             animate={{
               scale: [1, 1.15, 1],
-              opacity: [0.2, 0.4, 0.2],
-              y: [0, -30, 0],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
               duration: 15,
@@ -86,28 +142,51 @@ const Home = () => {
             }}
           />
 
-          {/* Small accent circle - mid right */}
+          {/* Small accent circle - mid right - faster cursor response */}
           <motion.div
-            className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-accent/10 backdrop-blur-sm"
+            className="absolute top-1/2 right-1/4 w-40 h-40 rounded-full bg-gradient-to-br from-accent/20 to-accent/5 backdrop-blur-md shadow-[0_0_60px_rgba(212,165,116,0.3)]"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [-50, 50]),
+              y: useTransform(smoothMouseY, [-1, 1], [-50, 50]),
+            }}
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.4, 0.6, 0.4],
-              x: [0, 20, 0],
+              rotate: [0, -90, 0],
             }}
             transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2,
+              scale: { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 },
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" },
             }}
           />
 
-          {/* Decorative lines */}
+          {/* Additional animated circle - top left */}
           <motion.div
-            className="absolute top-1/3 left-10 w-64 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full border border-white/10"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [15, -15]),
+              y: useTransform(smoothMouseY, [-1, 1], [15, -15]),
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 3,
+            }}
+          />
+
+          {/* Decorative animated lines */}
+          <motion.div
+            className="absolute top-1/3 left-10 w-72 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [-10, 10]),
+            }}
             animate={{
               scaleX: [0.8, 1.2, 0.8],
-              opacity: [0.3, 0.6, 0.3],
+              opacity: [0.3, 0.7, 0.3],
             }}
             transition={{
               duration: 12,
@@ -115,20 +194,24 @@ const Home = () => {
               ease: "easeInOut",
             }}
           />
-        </motion.div>
 
-        {/* Subtle animated gradient for depth */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10"
-          animate={{
-            background: [
-              'linear-gradient(to bottom right, rgba(15,76,58,0.2), transparent, rgba(212,165,116,0.1))',
-              'linear-gradient(to bottom right, rgba(15,76,58,0.15), transparent, rgba(212,165,116,0.15))',
-              'linear-gradient(to bottom right, rgba(15,76,58,0.2), transparent, rgba(212,165,116,0.1))',
-            ]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
+          <motion.div
+            className="absolute bottom-1/3 right-10 w-56 h-px bg-gradient-to-l from-transparent via-accent/40 to-transparent"
+            style={{
+              x: useTransform(smoothMouseX, [-1, 1], [10, -10]),
+            }}
+            animate={{
+              scaleX: [0.9, 1.1, 0.9],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 14,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+        </motion.div>
 
         {/* Hero content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
