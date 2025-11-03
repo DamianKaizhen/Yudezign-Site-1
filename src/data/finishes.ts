@@ -140,5 +140,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjoqoq9nl2',
+    name: 'Soft Touch Pebble Grey',
+    styleId: 'artisan-matte',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207282383-Matte_Soft_Touch_Pebble_Grey.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
