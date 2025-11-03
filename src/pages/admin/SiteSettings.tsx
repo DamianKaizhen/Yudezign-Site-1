@@ -1,18 +1,35 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { Save, AlertCircle, CheckCircle, Upload } from 'lucide-react';
-import FormField from '../../components/admin/ui/FormField';
-import FormInput from '../../components/admin/ui/FormInput';
-import FormButton from '../../components/admin/ui/FormButton';
-import ImageUpload from '../../components/admin/ui/ImageUpload';
+import { Save, AlertCircle, CheckCircle, Upload, Loader2, X } from 'lucide-react';
+import AdminLayout from '../../components/admin/AdminLayout';
 import type { SiteSettings } from '../../types';
+
+const siteSettingsSchema = z.object({
+  logo: z.string(),
+  favicon: z.string(),
+  companyName: z.string().min(1, 'Company name is required'),
+  socialLinks: z.object({
+    facebook: z.string().url().optional().or(z.literal('')),
+    instagram: z.string().url().optional().or(z.literal('')),
+    linkedin: z.string().url().optional().or(z.literal('')),
+    twitter: z.string().url().optional().or(z.literal('')),
+    youtube: z.string().url().optional().or(z.literal('')),
+  }),
+});
+
+type SiteSettingsFormData = z.infer<typeof siteSettingsSchema>;
 
 const SiteSettingsPage = () => {
   const queryClient = useQueryClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [faviconUploading, setFaviconUploading] = useState(false);
 
   // Fetch current settings
   const { data: settings, isLoading } = useQuery<SiteSettings>({
@@ -27,37 +44,51 @@ const SiteSettingsPage = () => {
     },
   });
 
-  // Form state
-  const [formData, setFormData] = useState<SiteSettings>({
-    logo: '',
-    favicon: '',
-    companyName: 'YuDeZign',
-    socialLinks: {
-      facebook: '',
-      instagram: '',
-      linkedin: '',
-      twitter: '',
-      youtube: '',
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm<SiteSettingsFormData>({
+    resolver: zodResolver(siteSettingsSchema),
+    defaultValues: {
+      logo: '',
+      favicon: '',
+      companyName: 'YuDeZign',
+      socialLinks: {
+        facebook: '',
+        instagram: '',
+        linkedin: '',
+        twitter: '',
+        youtube: '',
+      },
     },
   });
 
-  // Update form data when settings load
+  const logoValue = watch('logo');
+  const faviconValue = watch('favicon');
+
+  // Update form when settings load
   useEffect(() => {
     if (settings) {
-      setFormData(settings);
+      setValue('logo', settings.logo);
+      setValue('favicon', settings.favicon);
+      setValue('companyName', settings.companyName);
+      setValue('socialLinks', settings.socialLinks);
     }
-  }, [settings]);
+  }, [settings, setValue]);
 
   // Update mutation
   const updateMutation = useMutation({
-    mutationFn: async (updatedSettings: SiteSettings) => {
+    mutationFn: async (data: SiteSettingsFormData) => {
       const response = await fetch('/api/admin/settings', {
         method: 'PUT',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedSettings),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
@@ -84,209 +115,312 @@ const SiteSettingsPage = () => {
     },
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: SiteSettingsFormData) => {
     setIsSubmitting(true);
     setSuccessMessage('');
     setErrorMessage('');
-    updateMutation.mutate(formData);
+    updateMutation.mutate(data);
   };
 
-  const handleLogoChange = (url: string) => {
-    setFormData({ ...formData, logo: url });
-  };
+  const handleImageUpload = async (
+    file: File,
+    fieldName: 'logo' | 'favicon'
+  ): Promise<void> => {
+    const setUploading = fieldName === 'logo' ? setLogoUploading : setFaviconUploading;
+    setUploading(true);
 
-  const handleFaviconChange = (url: string) => {
-    setFormData({ ...formData, favicon: url });
-  };
+    try {
+      const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
+        method: 'POST',
+        body: file,
+      });
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value });
-  };
+      if (!response.ok) {
+        throw new Error('Upload failed');
+      }
 
-  const handleSocialLinkChange = (platform: string, value: string) => {
-    setFormData({
-      ...formData,
-      socialLinks: {
-        ...formData.socialLinks,
-        [platform]: value,
-      },
-    });
+      const data = await response.json();
+      setValue(fieldName, data.url);
+    } catch (error) {
+      console.error('Upload error:', error);
+      alert('Failed to upload image. Please try again.');
+    } finally {
+      setUploading(false);
+    }
   };
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-luxury-gray-600">Loading settings...</div>
-      </div>
+      <AdminLayout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-luxury-gray-600">Loading settings...</div>
+        </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="max-w-4xl">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8"
-      >
-        <h1 className="text-3xl font-bold text-luxury-gray-900 mb-2">Site Settings</h1>
-        <p className="text-luxury-gray-600">
-          Manage your logo, favicon, and social media links. Changes will be reflected across the
-          entire website.
-        </p>
-      </motion.div>
-
-      {/* Success Message */}
-      {successMessage && (
+    <AdminLayout>
+      <div className="max-w-4xl">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
+          transition={{ duration: 0.5 }}
+          className="mb-8"
         >
-          <CheckCircle className="w-5 h-5 text-green-600" />
-          <p className="text-green-800">{successMessage}</p>
-        </motion.div>
-      )}
-
-      {/* Error Message */}
-      {errorMessage && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3"
-        >
-          <AlertCircle className="w-5 h-5 text-red-600" />
-          <p className="text-red-800">{errorMessage}</p>
-        </motion.div>
-      )}
-
-      {/* Form */}
-      <motion.form
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        onSubmit={handleSubmit}
-        className="space-y-8"
-      >
-        {/* Branding Section */}
-        <div className="bg-white rounded-lg p-6 shadow-luxury">
-          <h2 className="text-xl font-bold text-luxury-gray-900 mb-4 flex items-center gap-2">
-            <Upload className="w-5 h-5" />
-            Branding
-          </h2>
-
-          <div className="space-y-6">
-            {/* Company Name */}
-            <FormField label="Company Name" required>
-              <FormInput
-                value={formData.companyName}
-                onChange={(e) => handleInputChange('companyName', e.target.value)}
-                placeholder="YuDeZign"
-                required
-              />
-            </FormField>
-
-            {/* Logo Upload */}
-            <FormField
-              label="Company Logo"
-              required={false}
-            >
-              <p className="text-sm text-luxury-gray-600 mb-3">
-                Upload your company logo. This will replace the text logo across the website. Leave
-                empty to use text-based logo.
-              </p>
-              <ImageUpload
-                currentImage={formData.logo}
-                onImageChange={handleLogoChange}
-                label="Upload Logo"
-                acceptedFormats="PNG, SVG, or JPG (transparent background recommended)"
-              />
-            </FormField>
-
-            {/* Favicon Upload */}
-            <FormField
-              label="Favicon"
-              required={false}
-            >
-              <p className="text-sm text-luxury-gray-600 mb-3">
-                Upload a favicon (the small icon shown in browser tabs). Recommended size: 32x32 or
-                64x64 pixels.
-              </p>
-              <ImageUpload
-                currentImage={formData.favicon}
-                onImageChange={handleFaviconChange}
-                label="Upload Favicon"
-                acceptedFormats="ICO, PNG, or SVG"
-              />
-            </FormField>
-          </div>
-        </div>
-
-        {/* Social Media Section */}
-        <div className="bg-white rounded-lg p-6 shadow-luxury">
-          <h2 className="text-xl font-bold text-luxury-gray-900 mb-4">Social Media Links</h2>
-          <p className="text-sm text-luxury-gray-600 mb-6">
-            Add your social media profile URLs. These will be displayed in the footer.
+          <h1 className="text-3xl font-bold text-luxury-gray-900 mb-2">Site Settings</h1>
+          <p className="text-luxury-gray-600">
+            Manage your logo, favicon, and social media links. Changes will be reflected across the
+            entire website.
           </p>
+        </motion.div>
 
-          <div className="space-y-4">
-            <FormField label="Facebook">
-              <FormInput
-                value={formData.socialLinks.facebook || ''}
-                onChange={(e) => handleSocialLinkChange('facebook', e.target.value)}
-                placeholder="https://facebook.com/yudezign"
-                type="url"
-              />
-            </FormField>
+        {/* Success Message */}
+        {successMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
+          >
+            <CheckCircle className="w-5 h-5 text-green-600" />
+            <p className="text-green-800">{successMessage}</p>
+          </motion.div>
+        )}
 
-            <FormField label="Instagram">
-              <FormInput
-                value={formData.socialLinks.instagram || ''}
-                onChange={(e) => handleSocialLinkChange('instagram', e.target.value)}
-                placeholder="https://www.instagram.com/yudezignez/"
-                type="url"
-              />
-            </FormField>
+        {/* Error Message */}
+        {errorMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3"
+          >
+            <AlertCircle className="w-5 h-5 text-red-600" />
+            <p className="text-red-800">{errorMessage}</p>
+          </motion.div>
+        )}
 
-            <FormField label="LinkedIn">
-              <FormInput
-                value={formData.socialLinks.linkedin || ''}
-                onChange={(e) => handleSocialLinkChange('linkedin', e.target.value)}
-                placeholder="https://linkedin.com/company/yudezign"
-                type="url"
-              />
-            </FormField>
+        {/* Form */}
+        <motion.form
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-8"
+        >
+          {/* Branding Section */}
+          <div className="bg-white rounded-lg p-6 shadow-luxury">
+            <h2 className="text-xl font-bold text-luxury-gray-900 mb-4 flex items-center gap-2">
+              <Upload className="w-5 h-5" />
+              Branding
+            </h2>
 
-            <FormField label="Twitter / X">
-              <FormInput
-                value={formData.socialLinks.twitter || ''}
-                onChange={(e) => handleSocialLinkChange('twitter', e.target.value)}
-                placeholder="https://twitter.com/yudezign"
-                type="url"
-              />
-            </FormField>
+            <div className="space-y-6">
+              {/* Company Name */}
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">
+                  Company Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  {...register('companyName')}
+                  type="text"
+                  placeholder="YuDeZign"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.companyName && (
+                  <p className="mt-2 text-sm text-red-600">{errors.companyName.message}</p>
+                )}
+              </div>
 
-            <FormField label="YouTube">
-              <FormInput
-                value={formData.socialLinks.youtube || ''}
-                onChange={(e) => handleSocialLinkChange('youtube', e.target.value)}
-                placeholder="https://youtube.com/@yudezign"
-                type="url"
-              />
-            </FormField>
+              {/* Logo Upload */}
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">
+                  Company Logo
+                </label>
+                <p className="text-sm text-luxury-gray-600 mb-3">
+                  Upload your company logo. This will replace the text logo across the website.
+                </p>
+                <div className="flex items-center gap-4">
+                  {logoValue && (
+                    <div className="relative w-32 h-32 border border-luxury-sand rounded-lg overflow-hidden">
+                      <img src={logoValue} alt="Logo preview" className="w-full h-full object-contain" />
+                      <button
+                        type="button"
+                        onClick={() => setValue('logo', '')}
+                        className="absolute top-1 right-1 bg-red-600 text-white rounded-full p-1 hover:bg-red-700"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
+                  <label className="cursor-pointer">
+                    <div className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2">
+                      {logoUploading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Uploading...
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-5 h-5" />
+                          {logoValue ? 'Change Logo' : 'Upload Logo'}
+                        </>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/png,image/svg+xml,image/jpeg"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleImageUpload(file, 'logo');
+                      }}
+                      className="hidden"
+                      disabled={logoUploading}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              {/* Favicon Upload */}
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">
+                  Favicon
+                </label>
+                <p className="text-sm text-luxury-gray-600 mb-3">
+                  Upload a favicon (the small icon shown in browser tabs). Recommended size: 32x32 or 64x64 pixels.
+                </p>
+                <div className="flex items-center gap-4">
+                  {faviconValue && (
+                    <div className="relative w-16 h-16 border border-luxury-sand rounded-lg overflow-hidden">
+                      <img src={faviconValue} alt="Favicon preview" className="w-full h-full object-contain" />
+                      <button
+                        type="button"
+                        onClick={() => setValue('favicon', '')}
+                        className="absolute top-0 right-0 bg-red-600 text-white rounded-full p-0.5 hover:bg-red-700"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  )}
+                  <label className="cursor-pointer">
+                    <div className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2">
+                      {faviconUploading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Uploading...
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-5 h-5" />
+                          {faviconValue ? 'Change Favicon' : 'Upload Favicon'}
+                        </>
+                      )}
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/x-icon,image/png,image/svg+xml"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) handleImageUpload(file, 'favicon');
+                      }}
+                      className="hidden"
+                      disabled={faviconUploading}
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Submit Button */}
-        <div className="flex justify-end">
-          <FormButton type="submit" disabled={isSubmitting} icon={Save}>
-            {isSubmitting ? 'Saving...' : 'Save Settings'}
-          </FormButton>
-        </div>
-      </motion.form>
-    </div>
+          {/* Social Media Section */}
+          <div className="bg-white rounded-lg p-6 shadow-luxury">
+            <h2 className="text-xl font-bold text-luxury-gray-900 mb-4">Social Media Links</h2>
+            <p className="text-sm text-luxury-gray-600 mb-6">
+              Add your social media profile URLs. These will be displayed in the footer.
+            </p>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">Facebook</label>
+                <input
+                  {...register('socialLinks.facebook')}
+                  type="url"
+                  placeholder="https://facebook.com/yudezign"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.socialLinks?.facebook && (
+                  <p className="mt-2 text-sm text-red-600">{errors.socialLinks.facebook.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">Instagram</label>
+                <input
+                  {...register('socialLinks.instagram')}
+                  type="url"
+                  placeholder="https://www.instagram.com/yudezignez/"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.socialLinks?.instagram && (
+                  <p className="mt-2 text-sm text-red-600">{errors.socialLinks.instagram.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">LinkedIn</label>
+                <input
+                  {...register('socialLinks.linkedin')}
+                  type="url"
+                  placeholder="https://linkedin.com/company/yudezign"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.socialLinks?.linkedin && (
+                  <p className="mt-2 text-sm text-red-600">{errors.socialLinks.linkedin.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">Twitter / X</label>
+                <input
+                  {...register('socialLinks.twitter')}
+                  type="url"
+                  placeholder="https://twitter.com/yudezign"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.socialLinks?.twitter && (
+                  <p className="mt-2 text-sm text-red-600">{errors.socialLinks.twitter.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-900 mb-2">YouTube</label>
+                <input
+                  {...register('socialLinks.youtube')}
+                  type="url"
+                  placeholder="https://youtube.com/@yudezign"
+                  className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                />
+                {errors.socialLinks?.youtube && (
+                  <p className="mt-2 text-sm text-red-600">{errors.socialLinks.youtube.message}</p>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="flex justify-end">
+            <button
+              type="submit"
+              disabled={isSubmitting || logoUploading || faviconUploading}
+              className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50 flex items-center gap-2"
+            >
+              <Save className="w-5 h-5" />
+              {isSubmitting ? 'Saving...' : 'Save Settings'}
+            </button>
+          </div>
+        </motion.form>
+      </div>
+    </AdminLayout>
   );
 };
 
