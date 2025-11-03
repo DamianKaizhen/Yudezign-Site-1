@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Upload, X, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { FormField } from './FormField';
+import { compressImage } from '../../../lib/utils/imageCompression';
 
 interface ImageUploadProps {
   label: string;
@@ -49,17 +50,27 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const formData = new FormData();
-      formData.append('file', file);
 
       try {
-        const response = await fetch('/api/upload-attachment', {
+        // Compress image before upload (max 1MB)
+        console.log(`Original file size: ${(file.size / 1024 / 1024).toFixed(2)}MB`);
+        const compressedFile = await compressImage(file, {
+          maxWidth: 1920,
+          maxHeight: 1920,
+          quality: 0.85,
+          maxSizeMB: 1,
+        });
+        console.log(`Compressed file size: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
+
+        // Upload to Vercel Blob (send file as raw body with filename in query)
+        const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
           method: 'POST',
-          body: formData,
+          body: compressedFile,
         });
 
         if (!response.ok) {
-          throw new Error('Upload failed');
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || 'Upload failed');
         }
 
         const data = await response.json();
@@ -172,6 +183,9 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
                 </p>
                 <p className="text-xs text-luxury-gray-500">
                   JPG, PNG, or WebP (max {maxFiles} files)
+                </p>
+                <p className="text-xs text-luxury-gray-400 mt-1">
+                  Images will be automatically compressed for optimal upload
                 </p>
               </>
             )}
