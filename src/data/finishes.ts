@@ -190,5 +190,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 2,
+  },
+  {
+    id: 'f_mhjokhm1gzg',
+    name: 'White Tossini Elm',
+    styleId: 'touch-nature-plus',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206992116-White_Tossini_Elm.png'],
+    inStock: true,
+    
+    order: 2,
   }
 ];
