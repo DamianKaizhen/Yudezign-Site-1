@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -13,6 +14,17 @@ import Dashboard from './pages/admin/Dashboard';
 import ProjectsList from './pages/admin/ProjectsList';
 import ProjectForm from './pages/admin/ProjectForm';
 
+// Create a client for TanStack Query
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+    },
+  },
+});
+
 // Layout wrapper for public pages with navigation and footer
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col min-h-screen">
@@ -24,25 +36,27 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => (
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Admin Routes - No Navigation/Footer */}
-        <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/dashboard" element={<Dashboard />} />
-        <Route path="/admin/projects" element={<ProjectsList />} />
-        <Route path="/admin/projects/new" element={<ProjectForm />} />
-        <Route path="/admin/projects/:id" element={<ProjectForm />} />
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Routes>
+          {/* Admin Routes - No Navigation/Footer */}
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/admin/projects" element={<ProjectsList />} />
+          <Route path="/admin/projects/new" element={<ProjectForm />} />
+          <Route path="/admin/projects/:id" element={<ProjectForm />} />
 
-        {/* Public Routes - With Navigation/Footer */}
-        <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
-        <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
-        <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
-        <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
-        <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
-        <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
-        <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
-      </Routes>
-    </Router>
+          {/* Public Routes - With Navigation/Footer */}
+          <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
+          <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
+          <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
+          <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
+          <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
+          <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+          <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+        </Routes>
+      </Router>
+    </QueryClientProvider>
   );
 }
 
