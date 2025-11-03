@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Upload, X } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import { useFileUploadHandler } from '../../lib/hooks/useFileUploadHandler';
 import type { TeamMember } from '../../types';
 
 const teamMemberSchema = z.object({
@@ -27,7 +28,12 @@ const TeamMemberForm = () => {
   const isEditMode = !!id;
 
   const [headshotUrl, setHeadshotUrl] = useState<string>('');
-  const [isUploading, setIsUploading] = useState(false);
+
+  // File upload handler
+  const headshotUpload = useFileUploadHandler({
+    endpoint: '/api/upload',
+    compress: true,
+  });
 
   const {
     register,
@@ -71,29 +77,12 @@ const TeamMemberForm = () => {
   // Image upload handler
   const handleImageUpload = async (file: File) => {
     try {
-      setIsUploading(true);
-
-      // Upload to Vercel Blob
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const uploadResponse = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!uploadResponse.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const { url } = await uploadResponse.json();
+      const url = await headshotUpload.uploadFile(file);
       setHeadshotUrl(url);
       setValue('headshot', url);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Failed to upload headshot. Please try again.');
-    } finally {
-      setIsUploading(false);
+      alert(headshotUpload.error || 'Failed to upload headshot. Please try again.');
     }
   };
 
@@ -268,7 +257,7 @@ const TeamMemberForm = () => {
               <label className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-luxury-sand rounded-lg cursor-pointer hover:border-primary transition-colors">
                 <Upload className="w-5 h-5 text-luxury-gray-400" />
                 <span className="text-sm text-luxury-gray-600">
-                  {isUploading ? 'Uploading...' : 'Upload Headshot'}
+                  {headshotUpload.uploading ? 'Uploading...' : 'Upload Headshot'}
                 </span>
                 <input
                   type="file"
@@ -278,7 +267,7 @@ const TeamMemberForm = () => {
                     if (file) handleImageUpload(file);
                   }}
                   className="hidden"
-                  disabled={isUploading}
+                  disabled={headshotUpload.uploading}
                 />
               </label>
             )}
@@ -291,7 +280,7 @@ const TeamMemberForm = () => {
           <div className="flex items-center gap-4 pt-6 border-t border-luxury-sand">
             <button
               type="submit"
-              disabled={isSubmitting || isUploading}
+              disabled={isSubmitting || headshotUpload.uploading}
               className="btn-primary disabled:opacity-50"
             >
               {isSubmitting

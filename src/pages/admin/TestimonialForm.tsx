@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Upload, Star, X } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import { useFileUploadHandler } from '../../lib/hooks/useFileUploadHandler';
 import type { Testimonial } from '../../types';
 
 const testimonialSchema = z.object({
@@ -28,9 +29,17 @@ const TestimonialForm = () => {
 
   const [customerImageUrl, setCustomerImageUrl] = useState<string>('');
   const [projectImageUrl, setProjectImageUrl] = useState<string>('');
-  const [isUploadingCustomer, setIsUploadingCustomer] = useState(false);
-  const [isUploadingProject, setIsUploadingProject] = useState(false);
   const [selectedRating, setSelectedRating] = useState(5);
+
+  // File upload handlers
+  const customerUpload = useFileUploadHandler({
+    endpoint: '/api/upload',
+    compress: true,
+  });
+  const projectUpload = useFileUploadHandler({
+    endpoint: '/api/upload',
+    compress: true,
+  });
 
   const {
     register,
@@ -83,34 +92,17 @@ const TestimonialForm = () => {
     file: File,
     type: 'customer' | 'project'
   ) => {
-    const setUploading = type === 'customer' ? setIsUploadingCustomer : setIsUploadingProject;
+    const upload = type === 'customer' ? customerUpload : projectUpload;
     const setUrl = type === 'customer' ? setCustomerImageUrl : setProjectImageUrl;
     const fieldName = type === 'customer' ? 'image' : 'projectImage';
 
     try {
-      setUploading(true);
-
-      // Upload to Vercel Blob
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const uploadResponse = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!uploadResponse.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const { url } = await uploadResponse.json();
+      const url = await upload.uploadFile(file);
       setUrl(url);
       setValue(fieldName, url);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Failed to upload image. Please try again.');
-    } finally {
-      setUploading(false);
+      alert(upload.error || 'Failed to upload image. Please try again.');
     }
   };
 
@@ -277,7 +269,7 @@ const TestimonialForm = () => {
               <label className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-luxury-sand rounded-lg cursor-pointer hover:border-primary transition-colors">
                 <Upload className="w-5 h-5 text-luxury-gray-400" />
                 <span className="text-sm text-luxury-gray-600">
-                  {isUploadingCustomer ? 'Uploading...' : 'Upload Customer Photo'}
+                  {customerUpload.uploading ? 'Uploading...' : 'Upload Customer Photo'}
                 </span>
                 <input
                   type="file"
@@ -287,7 +279,7 @@ const TestimonialForm = () => {
                     if (file) handleImageUpload(file, 'customer');
                   }}
                   className="hidden"
-                  disabled={isUploadingCustomer}
+                  disabled={customerUpload.uploading}
                 />
               </label>
             )}
@@ -320,7 +312,7 @@ const TestimonialForm = () => {
               <label className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-luxury-sand rounded-lg cursor-pointer hover:border-primary transition-colors">
                 <Upload className="w-5 h-5 text-luxury-gray-400" />
                 <span className="text-sm text-luxury-gray-600">
-                  {isUploadingProject ? 'Uploading...' : 'Upload Project Image'}
+                  {projectUpload.uploading ? 'Uploading...' : 'Upload Project Image'}
                 </span>
                 <input
                   type="file"
@@ -330,7 +322,7 @@ const TestimonialForm = () => {
                     if (file) handleImageUpload(file, 'project');
                   }}
                   className="hidden"
-                  disabled={isUploadingProject}
+                  disabled={projectUpload.uploading}
                 />
               </label>
             )}
@@ -340,7 +332,7 @@ const TestimonialForm = () => {
           <div className="flex items-center gap-4 pt-6 border-t border-luxury-sand">
             <button
               type="submit"
-              disabled={isSubmitting || isUploadingCustomer || isUploadingProject}
+              disabled={isSubmitting || customerUpload.uploading || projectUpload.uploading}
               className="btn-primary disabled:opacity-50"
             >
               {isSubmitting

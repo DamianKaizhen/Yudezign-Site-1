@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Save, AlertCircle, CheckCircle, Upload, Loader2, X } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { useSiteSettings } from '../../contexts/SiteSettingsContext';
+import { useFileUploadHandler } from '../../lib/hooks/useFileUploadHandler';
 import type { SiteSettings } from '../../types';
 
 const siteSettingsSchema = z.object({
@@ -30,8 +31,14 @@ const SiteSettingsPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [logoUploading, setLogoUploading] = useState(false);
-  const [faviconUploading, setFaviconUploading] = useState(false);
+
+  // File upload handlers
+  const logoUpload = useFileUploadHandler({
+    compress: true,
+  });
+  const faviconUpload = useFileUploadHandler({
+    compress: true,
+  });
 
   // Fetch current settings
   const { data: settings, isLoading } = useQuery<SiteSettings>({
@@ -134,26 +141,14 @@ const SiteSettingsPage = () => {
     file: File,
     fieldName: 'logo' | 'favicon'
   ): Promise<void> => {
-    const setUploading = fieldName === 'logo' ? setLogoUploading : setFaviconUploading;
-    setUploading(true);
+    const upload = fieldName === 'logo' ? logoUpload : faviconUpload;
 
     try {
-      const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
-        method: 'POST',
-        body: file,
-      });
-
-      if (!response.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const data = await response.json();
-      setValue(fieldName, data.url);
+      const url = await upload.uploadFile(file);
+      setValue(fieldName, url);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Failed to upload image. Please try again.');
-    } finally {
-      setUploading(false);
+      alert(upload.error || 'Failed to upload image. Please try again.');
     }
   };
 
@@ -263,7 +258,7 @@ const SiteSettingsPage = () => {
                   )}
                   <label className="cursor-pointer">
                     <div className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2">
-                      {logoUploading ? (
+                      {logoUpload.uploading ? (
                         <>
                           <Loader2 className="w-5 h-5 animate-spin" />
                           Uploading...
@@ -283,7 +278,7 @@ const SiteSettingsPage = () => {
                         if (file) handleImageUpload(file, 'logo');
                       }}
                       className="hidden"
-                      disabled={logoUploading}
+                      disabled={logoUpload.uploading}
                     />
                   </label>
                 </div>
@@ -312,7 +307,7 @@ const SiteSettingsPage = () => {
                   )}
                   <label className="cursor-pointer">
                     <div className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors flex items-center gap-2">
-                      {faviconUploading ? (
+                      {faviconUpload.uploading ? (
                         <>
                           <Loader2 className="w-5 h-5 animate-spin" />
                           Uploading...
@@ -332,7 +327,7 @@ const SiteSettingsPage = () => {
                         if (file) handleImageUpload(file, 'favicon');
                       }}
                       className="hidden"
-                      disabled={faviconUploading}
+                      disabled={faviconUpload.uploading}
                     />
                   </label>
                 </div>
@@ -419,7 +414,7 @@ const SiteSettingsPage = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              disabled={isSubmitting || logoUploading || faviconUploading}
+              disabled={isSubmitting || logoUpload.uploading || faviconUpload.uploading}
               className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50 flex items-center gap-2"
             >
               <Save className="w-5 h-5" />
