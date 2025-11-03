@@ -152,7 +152,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Verify authentication
-  const token = req.cookies['admin-token'];
+  const token = req.cookies.admin_token;
   if (!token) {
     return res.status(401).json({ success: false, error: 'Unauthorized' });
   }
