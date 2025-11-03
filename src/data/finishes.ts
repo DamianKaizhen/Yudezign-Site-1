@@ -170,5 +170,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjojkdfnor',
+    name: 'Brown Warmia Walnut',
+    styleId: 'touch-nature-plus',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206949640-Brown_Warmia_Walnut.jpg'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
