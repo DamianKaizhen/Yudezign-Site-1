@@ -183,7 +183,7 @@ export const projects: Project[] = [
     location: 'Houston',
     finish: 'Matte White and Dark Grey',
     cabinetStyle: 'Frameless European',
-    features: ['Soft Touch Finish'],
+    features: ['Soft Touch Finish', 'J-Pull Handles', 'Custom Made'],
     turnaroundTime: '3 weeks',
     description: 'Modern two-tone dining room storage wall featuring sleek charcoal gray and crisp white frameless cabinets. Custom-built to maximize wall space with integrated J-pull handles for a seamless, contemporary look. The design includes upper display cabinets, open shelving for decor, a central serving area with floating shelves, and ample lower storage with soft-close drawers.',
   }
