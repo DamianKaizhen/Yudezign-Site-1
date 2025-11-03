@@ -111,21 +111,6 @@ export const projects: Project[] = [
     description: 'Sleek display cabinets for an upscale retail boutique showcasing luxury products.',
   },
   {
-    id: 'proj_1762138818256_imgmx1efp',
-    title: 'Test',
-    category: 'kitchens',
-    images: [
-      'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762138600262-Image_20250109204739.jpg'
-    ],
-    thumbnail: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762138600262-Image_20250109204739.jpg',
-    
-    finish: 'White Gloss',
-    cabinetStyle: 'Frameless European',
-    features: ['Soft-close hinges'],
-    turnaroundTime: '2 weeks',
-    description: 'sample forproject',
-  },
-  {
     id: 'proj_1762210660767_vdveltc0r',
     title: 'Dining Room Cabinet',
     category: 'custom',
