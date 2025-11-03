@@ -120,5 +120,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjopix2yg6',
+    name: 'Soft Touch Black',
+    styleId: 'artisan-matte',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207227339-Matte_Soft_Touch_Black.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
