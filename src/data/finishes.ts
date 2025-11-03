@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tnp2',
-    name: 'Dark Mahogany',
-    styleId: 'touch-nature-plus',
-    color: '#420D09',
-    images: [],
-    inStock: true,
-    description: 'Sophisticated deep mahogany',
-    order: 2,
-  },
-  {
     id: 'tnp3',
     name: 'Premium Cherry',
     styleId: 'touch-nature-plus',
