@@ -7,7 +7,7 @@ export const projects: Project[] = [
     category: 'kitchens',
     images: [
       'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
-      'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=800',
+      'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400',
     location: 'Memorial, Houston',
@@ -23,7 +23,7 @@ export const projects: Project[] = [
     category: 'closets',
     images: [
       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
-      'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800',
+      'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
     location: 'River Oaks, Houston',
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     category: 'vanities',
     images: [
       'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
-      'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+      'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400',
     location: 'Heights, Houston',
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     category: 'custom',
     images: [
       'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800',
-      'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=800',
+      'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400',
     location: 'Katy, Houston',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     category: 'kitchens',
     images: [
       'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800',
-      'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800',
+      'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400',
     location: 'Sugar Land',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     title: 'Master Closet System',
     category: 'closets',
     images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
     location: 'Pearland',
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     category: 'commercial',
     images: [
       'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800',
+      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400',
     location: 'Downtown Houston',
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     title: 'Medical Office Storage',
     category: 'commercial',
     images: [
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800',
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400',
     location: 'Medical Center, Houston',
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     title: 'Restaurant Kitchen Cabinets',
     category: 'commercial',
     images: [
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
+      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400',
     location: 'Montrose, Houston',
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     title: 'Retail Store Display Cabinets',
     category: 'commercial',
     images: [
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800',
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800'
     ],
     thumbnail: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400',
     location: 'Galleria Area, Houston',
@@ -157,4 +157,19 @@ export const projects: Project[] = [
     turnaroundTime: '4 weeks',
     description: 'Sleek display cabinets for an upscale retail boutique showcasing luxury products.',
   },
+  {
+    id: 'proj_1762138818256_imgmx1efp',
+    title: 'Test',
+    category: 'kitchens',
+    images: [
+      'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762138600262-Image_20250109204739.jpg'
+    ],
+    thumbnail: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762138600262-Image_20250109204739.jpg',
+    
+    finish: 'White Gloss',
+    cabinetStyle: 'Frameless European',
+    features: ['Soft-close hinges'],
+    turnaroundTime: '2 weeks',
+    description: 'sample forproject',
+  }
 ];
