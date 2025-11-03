@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { siteSettings } from '../../data/siteSettings';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,14 +55,22 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl md:text-3xl font-bold">
-              <span className={`transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}>
-                YuDe
-              </span>
-              <span className={`transition-colors ${isScrolled ? 'text-accent' : 'text-accent-light'}`}>
-                Zign
-              </span>
-            </div>
+            {siteSettings.logo ? (
+              <img
+                src={siteSettings.logo}
+                alt={siteSettings.companyName}
+                className="h-10 md:h-12 w-auto"
+              />
+            ) : (
+              <div className="text-2xl md:text-3xl font-bold">
+                <span className={`transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}>
+                  YuDe
+                </span>
+                <span className={`transition-colors ${isScrolled ? 'text-accent' : 'text-accent-light'}`}>
+                  Zign
+                </span>
+              </div>
+            )}
           </Link>
 
           {/* Desktop Navigation */}

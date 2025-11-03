@@ -139,3 +139,18 @@ export interface DataTableAction<T> {
   onClick: (row: T) => void;
   variant?: 'primary' | 'secondary' | 'danger';
 }
+
+// Site Settings Types
+
+export interface SiteSettings {
+  logo: string;
+  favicon: string;
+  companyName: string;
+  socialLinks: {
+    facebook?: string;
+    instagram?: string;
+    linkedin?: string;
+    twitter?: string;
+    youtube?: string;
+  };
+}

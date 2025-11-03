@@ -8,10 +8,12 @@ import {
   Mail,
   MessageSquare,
   Users,
+  Settings,
   LogOut,
   Menu,
   X,
 } from 'lucide-react';
+import { siteSettings } from '../../data/siteSettings';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -68,6 +70,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       path: '/admin/team',
       icon: Users,
     },
+    {
+      name: 'Site Settings',
+      path: '/admin/settings',
+      icon: Settings,
+    },
   ];
 
   return (
@@ -85,10 +92,18 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             {/* Logo */}
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">
-                  <span>YuDe</span>
-                  <span className="text-accent">Zign</span>
-                </h1>
+                {siteSettings.logo ? (
+                  <img
+                    src={siteSettings.logo}
+                    alt={siteSettings.companyName}
+                    className="h-8 w-auto"
+                  />
+                ) : (
+                  <h1 className="text-2xl font-bold">
+                    <span>YuDe</span>
+                    <span className="text-accent">Zign</span>
+                  </h1>
+                )}
                 <button
                   onClick={() => setIsSidebarOpen(false)}
                   className="lg:hidden text-white hover:text-accent transition-colors"

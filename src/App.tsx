@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
+import { siteSettings } from './data/siteSettings';
 import Home from './pages/Home';
 import Portfolio from './pages/portfolio/Portfolio';
 import CategoryPage from './pages/portfolio/CategoryPage';
@@ -23,6 +25,7 @@ import TestimonialsList from './pages/admin/TestimonialsList';
 import TestimonialForm from './pages/admin/TestimonialForm';
 import TeamMembersList from './pages/admin/TeamMembersList';
 import TeamMemberForm from './pages/admin/TeamMemberForm';
+import SiteSettings from './pages/admin/SiteSettings';
 
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
@@ -45,6 +48,14 @@ const PublicLayout = ({ children }: { children: React.ReactNode }) => (
 );
 
 function App() {
+  // Update favicon dynamically on mount
+  useEffect(() => {
+    const faviconLink = document.getElementById('favicon') as HTMLLinkElement;
+    if (faviconLink && siteSettings.favicon) {
+      faviconLink.href = siteSettings.favicon;
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -69,6 +80,7 @@ function App() {
           <Route path="/admin/team" element={<TeamMembersList />} />
           <Route path="/admin/team/new" element={<TeamMemberForm />} />
           <Route path="/admin/team/:id" element={<TeamMemberForm />} />
+          <Route path="/admin/settings" element={<SiteSettings />} />
 
           {/* Public Routes - With Navigation/Footer */}
           <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

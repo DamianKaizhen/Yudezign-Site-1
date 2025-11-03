@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { siteSettings } from '../../data/siteSettings';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,41 +11,77 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <div className="text-2xl font-bold mb-4">
-              <span className="text-white">YuDe</span>
-              <span className="text-accent">Zign</span>
-            </div>
+            {siteSettings.logo ? (
+              <img
+                src={siteSettings.logo}
+                alt={siteSettings.companyName}
+                className="h-10 w-auto mb-4"
+              />
+            ) : (
+              <div className="text-2xl font-bold mb-4">
+                <span className="text-white">YuDe</span>
+                <span className="text-accent">Zign</span>
+              </div>
+            )}
             <p className="text-neutral-200 mb-4">
               Custom European frameless cabinets, crafted in Houston. Supply-only excellence with 2-3 week delivery.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+              {siteSettings.socialLinks.facebook && (
+                <a
+                  href={siteSettings.socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              )}
+              {siteSettings.socialLinks.instagram && (
+                <a
+                  href={siteSettings.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {siteSettings.socialLinks.linkedin && (
+                <a
+                  href={siteSettings.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {siteSettings.socialLinks.twitter && (
+                <a
+                  href={siteSettings.socialLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-5 h-5" />
+                </a>
+              )}
+              {siteSettings.socialLinks.youtube && (
+                <a
+                  href={siteSettings.socialLinks.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+              )}
             </div>
           </div>
 
