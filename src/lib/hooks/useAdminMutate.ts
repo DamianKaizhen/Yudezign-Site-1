@@ -1,7 +1,7 @@
-import { useMutation, useQueryClient, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, useQueryClient, type UseMutationOptions } from '@tanstack/react-query';
 
 interface AdminMutateOptions<TData, TVariables>
-  extends Omit<UseMutationOptions<TData, Error, TVariables>, 'mutationFn'> {
+  extends Omit<UseMutationOptions<TData, Error, TVariables, unknown>, 'mutationFn'> {
   /** HTTP method (default: 'POST') */
   method?: 'POST' | 'PUT';
   /** Query keys to invalidate on success */
@@ -55,7 +55,7 @@ export function useAdminMutate<TData = unknown, TVariables = unknown>(
 
   const queryClient = useQueryClient();
 
-  return useMutation<TData, Error, TVariables>({
+  return useMutation<TData, Error, TVariables, unknown>({
     mutationFn: async (variables: TVariables) => {
       const response = await fetch(`/api/admin/${resource}`, {
         method,
@@ -73,7 +73,7 @@ export function useAdminMutate<TData = unknown, TVariables = unknown>(
 
       return response.json();
     },
-    onSuccess: (data, variables, context) => {
+    onSuccess: (data, variables, onMutateResult, context) => {
       // Invalidate specified queries
       invalidateQueries.forEach((queryKey) => {
         queryClient.invalidateQueries({ queryKey: [queryKey] });
@@ -89,7 +89,7 @@ export function useAdminMutate<TData = unknown, TVariables = unknown>(
 
       // Call custom onSuccess if provided
       if (onSuccess) {
-        onSuccess(data, variables, context);
+        onSuccess(data, variables, onMutateResult, context);
       }
     },
     ...mutationOptions,

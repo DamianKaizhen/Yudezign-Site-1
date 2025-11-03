@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { compressImage } from '../utils/imageCompression';
 
 interface UploadOptions {
@@ -73,7 +73,11 @@ const DEFAULT_OPTIONS: Required<UploadOptions> = {
 export function useFileUploadHandler(
   options: UploadOptions = {}
 ): UseFileUploadHandlerReturn {
-  const opts = { ...DEFAULT_OPTIONS, ...options };
+  // Memoize options to prevent callbacks from being recreated on every render
+  const opts = useMemo(
+    () => ({ ...DEFAULT_OPTIONS, ...options }),
+    [options]
+  );
 
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);

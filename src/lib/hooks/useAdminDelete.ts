@@ -1,6 +1,6 @@
-import { useMutation, useQueryClient, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, useQueryClient, type UseMutationOptions } from '@tanstack/react-query';
 
-interface AdminDeleteOptions extends Omit<UseMutationOptions<unknown, Error, string>, 'mutationFn'> {
+interface AdminDeleteOptions extends Omit<UseMutationOptions<unknown, Error, string, unknown>, 'mutationFn'> {
   /** Query keys to invalidate on success */
   invalidateQueries?: string[];
   /** Success message to display */
@@ -45,7 +45,7 @@ export function useAdminDelete(
 
   const queryClient = useQueryClient();
 
-  return useMutation<unknown, Error, string>({
+  return useMutation<unknown, Error, string, unknown>({
     mutationFn: async (id: string) => {
       const response = await fetch(`/api/admin/${resource}?id=${encodeURIComponent(id)}`, {
         method: 'DELETE',
@@ -59,7 +59,7 @@ export function useAdminDelete(
 
       return response.json();
     },
-    onSuccess: (data, id, context) => {
+    onSuccess: (data, id, onMutateResult, context) => {
       // Invalidate specified queries
       invalidateQueries.forEach((queryKey) => {
         queryClient.invalidateQueries({ queryKey: [queryKey] });
@@ -73,7 +73,7 @@ export function useAdminDelete(
 
       // Call custom onSuccess if provided
       if (onSuccess) {
-        onSuccess(data, id, context);
+        onSuccess(data, id, onMutateResult, context);
       }
     },
     ...mutationOptions,

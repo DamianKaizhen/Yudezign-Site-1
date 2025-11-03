@@ -1,4 +1,4 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query';
+import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 
 interface AdminFetchOptions<TData> extends Omit<UseQueryOptions<TData>, 'queryKey' | 'queryFn'> {
   /** Additional query parameters */
