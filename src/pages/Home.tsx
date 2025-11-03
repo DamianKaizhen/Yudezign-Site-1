@@ -14,7 +14,6 @@ const Home = () => {
 
   // Parallax effect - image moves slower than scroll
   const imageY = useTransform(scrollY, [0, 1000], [0, 200]);
-  const overlayOpacity = useTransform(scrollY, [0, 300], [0.3, 0.7]);
 
   // Mouse tracking for interactive animations
   const mouseX = useMotionValue(0);
