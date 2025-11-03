@@ -4,10 +4,12 @@ import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
 import { StickyPhoneButton } from '../components/ui/StickyPhoneButton';
+import { ProjectModal } from '../components/ui/ProjectModal';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 import SEO from '../components/SEO';
 import { useEffect, useState } from 'react';
+import type { Project } from '../types';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -22,6 +24,21 @@ const Home = () => {
 
   // Hero cursor reveal effect
   const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
+
+  // Project modal state
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    // Wait for animation to complete before clearing project
+    setTimeout(() => setSelectedProject(null), 300);
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -408,13 +425,12 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredProjects.map((project, index) => (
               <InView key={project.id} variant="fadeUp" delay={index * 0.1}>
-                <Link to={`/portfolio/${project.category}`}>
-                  <ImageCard
-                    image={project.images[0] || project.thumbnail}
-                    title={project.title}
-                    subtitle={project.location}
-                  />
-                </Link>
+                <ImageCard
+                  image={project.images[0] || project.thumbnail}
+                  title={project.title}
+                  subtitle={project.location}
+                  onClick={() => handleProjectClick(project)}
+                />
               </InView>
             ))}
           </div>
@@ -635,6 +651,13 @@ const Home = () => {
 
       {/* Sticky Mobile Click-to-Call Button */}
       <StickyPhoneButton phoneNumber="(281) 568-8000" showAfterScroll={300} />
+
+      {/* Project Details Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
 
     </div>
     </>

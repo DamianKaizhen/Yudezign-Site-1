@@ -49,6 +49,7 @@ interface ImageCardProps {
   title: string;
   subtitle?: string;
   href?: string;
+  onClick?: () => void;
   className?: string;
 }
 
@@ -57,6 +58,7 @@ export const ImageCard = ({
   title,
   subtitle,
   href,
+  onClick,
   className = ''
 }: ImageCardProps) => {
   const CardContent = (
@@ -64,6 +66,7 @@ export const ImageCard = ({
       className={`relative overflow-hidden rounded-lg group cursor-pointer ${className}`}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+      onClick={onClick}
     >
       {/* Image */}
       <div className="aspect-[4/3] overflow-hidden">
