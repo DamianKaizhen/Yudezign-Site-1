@@ -1,5 +1,45 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { verifyAdminPassword, createAdminToken, verifyAdminToken } from '../../src/lib/auth';
+import { SignJWT, jwtVerify } from 'jose';
+
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET || 'yudezign_admin_jwt_secret_2025_secure_random_key_8f4a3c2d1e9b7a6f'
+);
+
+interface AdminSession {
+  authenticated: boolean;
+  expiresAt: number;
+}
+
+async function verifyAdminPassword(password: string): Promise<boolean> {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (!adminPassword) {
+    console.error('ADMIN_PASSWORD not configured');
+    return false;
+  }
+  return password === adminPassword;
+}
+
+async function createAdminToken(): Promise<string> {
+  const token = await new SignJWT({ authenticated: true })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime('24h')
+    .sign(JWT_SECRET);
+  return token;
+}
+
+async function verifyAdminToken(token: string): Promise<AdminSession | null> {
+  try {
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    return {
+      authenticated: payload.authenticated as boolean,
+      expiresAt: (payload.exp || 0) * 1000,
+    };
+  } catch (error) {
+    console.error('Token verification failed:', error);
+    return null;
+  }
+}
 
 export default async function handler(
   request: VercelRequest,

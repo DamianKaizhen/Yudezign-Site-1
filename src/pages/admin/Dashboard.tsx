@@ -204,7 +204,7 @@ const Dashboard = () => {
                 </p>
                 <div className="flex items-center gap-2 text-body-sm text-luxury-gray-500">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Connected to {process.env.GITHUB_REPO || 'GitHub'}</span>
+                  <span>Connected to GitHub</span>
                 </div>
               </div>
             </InView>
