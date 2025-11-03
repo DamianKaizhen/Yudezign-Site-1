@@ -12,9 +12,9 @@ export interface SiteSettings {
 }
 
 export const siteSettings: SiteSettings = {
-  logo: '', // Empty - will use text-based logo until image uploaded
-  favicon: '/vite.svg', // Default Vite favicon
-  companyName: 'YuDeZign',
+  logo: '',
+  favicon: '/vite.svg',
+  companyName: 'YuDezign',
   socialLinks: {
     facebook: 'https://facebook.com',
     instagram: 'https://www.instagram.com/yudezignez/',
