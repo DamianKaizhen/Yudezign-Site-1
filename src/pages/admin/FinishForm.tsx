@@ -32,7 +32,7 @@ type FinishFormData = z.infer<typeof finishSchema>;
 export default function FinishForm() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const isEditMode = id !== 'new';
+  const isEditMode = id !== undefined && id !== 'new';
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
