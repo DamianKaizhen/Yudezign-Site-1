@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tnp4',
-    name: 'Exotic Teak',
-    styleId: 'touch-nature-plus',
-    color: '#B8860B',
-    images: [],
-    inStock: true,
-    description: 'Premium teak with golden undertones',
-    order: 4,
-  },
-  {
     id: 'tnp5',
     name: 'Grey Oak Premium',
     styleId: 'touch-nature-plus',
