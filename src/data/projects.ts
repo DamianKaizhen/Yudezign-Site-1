@@ -18,22 +18,6 @@ export const projects: Project[] = [
     description: 'A stunning modern kitchen featuring clean lines and maximized storage.',
   },
   {
-    id: '2',
-    title: 'Luxury Walk-In Closet',
-    category: 'closets',
-    images: [
-      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
-      'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
-    location: 'River Oaks, Houston',
-    finish: 'Natural Oak Wood Grain',
-    cabinetStyle: 'Frameless European',
-    features: ['LED lighting', 'Custom drawer dividers', 'Jewelry organization', 'Pull-out shoe racks'],
-    turnaroundTime: '3 weeks',
-    description: 'A beautiful walk-in closet with custom organization solutions designed in KD Lite.',
-  },
-  {
     id: '3',
     title: 'Contemporary Bathroom Vanity',
     category: 'vanities',
