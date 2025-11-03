@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { Save, AlertCircle, CheckCircle, Upload, Loader2, X } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 import type { SiteSettings } from '../../types';
 
 const siteSettingsSchema = z.object({
@@ -25,6 +26,7 @@ type SiteSettingsFormData = z.infer<typeof siteSettingsSchema>;
 
 const SiteSettingsPage = () => {
   const queryClient = useQueryClient();
+  const { refreshSettings } = useSiteSettings();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -98,13 +100,19 @@ const SiteSettingsPage = () => {
 
       return response.json();
     },
-    onSuccess: () => {
+    onSuccess: async () => {
+      // Invalidate admin query cache
       queryClient.invalidateQueries({ queryKey: ['siteSettings'] });
-      setSuccessMessage('Settings updated successfully!');
+
+      // Refresh the site settings context for public pages
+      await refreshSettings();
+
+      // Show success message
+      setSuccessMessage('Settings updated successfully! Changes will appear across the site shortly. Note: If you don\'t see changes immediately, please wait 30-60 seconds for deployment to complete, then refresh the page.');
       setErrorMessage('');
-      setTimeout(() => setSuccessMessage(''), 3000);
-      // Force page reload to update logos everywhere
-      setTimeout(() => window.location.reload(), 1000);
+
+      // Clear success message after 10 seconds
+      setTimeout(() => setSuccessMessage(''), 10000);
     },
     onError: (error: Error) => {
       setErrorMessage(error.message);
