@@ -160,5 +160,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjomoigfgr',
+    name: 'Gentle Grey',
+    styleId: 'artisan-shine',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207095444-HG_Gentle_Grey.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
