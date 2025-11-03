@@ -7,7 +7,7 @@ import { StickyPhoneButton } from '../components/ui/StickyPhoneButton';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 import SEO from '../components/SEO';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -24,14 +24,23 @@ const Home = () => {
   const smoothMouseX = useSpring(mouseX, { stiffness: 100, damping: 20 });
   const smoothMouseY = useSpring(mouseY, { stiffness: 100, damping: 20 });
 
+  // Hero cursor reveal effect
+  const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
 
-      // Normalize to -1 to 1 range
+      // Normalize to -1 to 1 range for geometric shapes
       mouseX.set((clientX / innerWidth - 0.5) * 2);
       mouseY.set((clientY / innerHeight - 0.5) * 2);
+
+      // Track cursor position for hero reveal effect (in percentage)
+      setCursorPosition({
+        x: (clientX / innerWidth) * 100,
+        y: (clientY / innerHeight) * 100,
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -48,56 +57,34 @@ const Home = () => {
       />
       <div className="min-h-screen bg-luxury-cream">
 
-      {/* HERO - Full viewport with parallax animation */}
+      {/* HERO - Full viewport with cursor reveal effect */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated mesh gradient background - darker and more textured */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-[#0a1f1a] via-[#0f4c3a] to-[#1a2f2a]"
-          animate={{
-            background: [
-              'linear-gradient(135deg, #0a1f1a 0%, #0f4c3a 50%, #1a2f2a 100%)',
-              'linear-gradient(135deg, #0f4c3a 0%, #1a2f2a 50%, #0a1f1a 100%)',
-              'linear-gradient(135deg, #1a2f2a 0%, #0a1f1a 50%, #0f4c3a 100%)',
-              'linear-gradient(135deg, #0a1f1a 0%, #0f4c3a 50%, #1a2f2a 100%)',
-            ]
+        {/* Base kitchen image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=90"
+            alt="European Frameless Kitchen"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Green overlay with cursor reveal effect */}
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-[#0a1f1a] via-[#0f4c3a] to-[#1a2f2a] transition-all duration-100"
+          style={{
+            maskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
+            WebkitMaskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
 
         {/* Noise/grain texture overlay */}
         <div
-          className="absolute inset-0 opacity-[0.15] mix-blend-overlay"
+          className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
             backgroundRepeat: 'repeat',
           }}
         />
-
-        {/* Animated accent gradient overlay */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 80%, rgba(212,165,116,0.15) 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, rgba(212,165,116,0.15) 0%, transparent 50%)',
-            ]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Subtle image overlay with parallax */}
-        <motion.div
-          className="absolute inset-0 opacity-20"
-          style={{ y: imageY }}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1600&q=90"
-            alt="Custom European Cabinets"
-            className="w-full h-[120vh] object-cover mix-blend-soft-light"
-          />
-        </motion.div>
 
         {/* Interactive cursor-responsive geometric shapes */}
         <motion.div
@@ -256,10 +243,10 @@ const Home = () => {
             <motion.h1
               className="text-hero-mobile md:text-hero mb-6 font-light leading-tight"
             >
-              Precision Crafted in Houston,
+              Custom Frameless Cabinets
               <br />
               <span className="relative inline-block">
-                Delivered in Weeks
+                Precision Crafted in Houston
                 <motion.span
                   className="absolute -bottom-2 left-0 right-0 h-1 bg-accent rounded-full"
                   initial={{ scaleX: 0 }}
@@ -280,7 +267,9 @@ const Home = () => {
               ease: [0.22, 1, 0.36, 1]
             }}
           >
-            Custom frameless cabinetry delivered in 2-3 weeks, not months. Built locally, designed for luxury.
+            Residential and Commercial Projects
+            <br />
+            Built locally, designed for luxury.
           </motion.p>
 
           <motion.div
