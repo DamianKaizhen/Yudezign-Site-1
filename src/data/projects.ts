@@ -170,5 +170,20 @@ export const projects: Project[] = [
     features: ['Soft Touch Finish', 'J-Pull Handles', 'Custom Made'],
     turnaroundTime: '3 weeks',
     description: 'Modern two-tone dining room storage wall featuring sleek charcoal gray and crisp white frameless cabinets. Custom-built to maximize wall space with integrated J-pull handles for a seamless, contemporary look. The design includes upper display cabinets, open shelving for decor, a central serving area with floating shelves, and ample lower storage with soft-close drawers.',
+  },
+  {
+    id: 'proj_1762210921334_53gbli33o',
+    title: 'Mud Room Cabinet',
+    category: 'custom',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210910064-Mudroom.jpg'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210910064-Mudroom.jpg',
+    location: 'Houston',
+    finish: 'Matte White and Dark Grey',
+    cabinetStyle: 'Frameless European',
+    features: ['Soft Touch Finish', 'J-Pull Handles', 'Custom Made'],
+    turnaroundTime: '3 weeks',
+    description: 'Custom mudroom featuring sleek light gray frameless cabinets with contrasting black accents. The design includes a striking black slat wall panel for hanging accessories, a floating bench with integrated LED underlighting, and floor-to-ceiling storage maximizing every inch. Upper cabinets provide seasonal storage while lower units offer everyday access.',
   }
 ];
