@@ -10,6 +10,8 @@ import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
+import ProjectsList from './pages/admin/ProjectsList';
+import ProjectForm from './pages/admin/ProjectForm';
 
 // Layout wrapper for public pages with navigation and footer
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
@@ -27,6 +29,9 @@ function App() {
         {/* Admin Routes - No Navigation/Footer */}
         <Route path="/admin/login" element={<Login />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/projects" element={<ProjectsList />} />
+        <Route path="/admin/projects/new" element={<ProjectForm />} />
+        <Route path="/admin/projects/:id" element={<ProjectForm />} />
 
         {/* Public Routes - With Navigation/Footer */}
         <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

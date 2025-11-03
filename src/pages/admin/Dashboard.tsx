@@ -1,15 +1,30 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FolderOpen, Palette, MessageSquare, Users, ArrowRight } from 'lucide-react';
+import { useQuery } from '@tanstack/react-query';
 import { InView } from '../../components/ui/InViewAnimations';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
+import type { Project } from '../../types';
 
 const Dashboard = () => {
+  // Fetch projects count
+  const { data: projectsData } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/projects', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch projects');
+      const result = await response.json();
+      return result.data as Project[];
+    },
+  });
+
   const stats = [
     {
       name: 'Projects',
-      count: 37,
+      count: projectsData?.length || 0,
       description: 'Portfolio projects across all categories',
       icon: FolderOpen,
       link: '/admin/projects',

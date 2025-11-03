@@ -15,7 +15,7 @@ interface DataTableProps<T> {
  * DataTable - Advanced data table with sorting, search, and actions
  * Supports custom column rendering and row actions
  */
-export function DataTable<T extends Record<string, unknown>>({
+export function DataTable<T = any>({
   data,
   columns,
   actions = [],
