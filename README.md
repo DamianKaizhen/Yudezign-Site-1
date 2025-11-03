@@ -268,43 +268,60 @@ npm run lint
 
 ### Required Variables (Production)
 
-Create `.env.local` file in project root:
+Create `.env.local` file in project root (or use `.env.example` as template):
 
 ```env
-# Google Analytics
-VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+# Vercel Blob Storage (automatically provided by Vercel in production)
+# For local development, get token from: https://vercel.com/dashboard → Storage
+BLOB_READ_WRITE_TOKEN=vercel_blob_rw_XXXXXXXXXXXXXX
 
-# Contact Form (Formspree or similar)
-VITE_FORMSPREE_ID=your-formspree-id
-
-# Admin Panel (when implemented)
+# Admin Panel Authentication
 VITE_ADMIN_PASSWORD=secure-password-here
 
-# Vercel Blob Storage (when implemented)
-VITE_BLOB_READ_WRITE_TOKEN=vercel_blob_token
-
 # GitHub API (for admin panel auto-commit)
-VITE_GITHUB_TOKEN=github_token_with_repo_access
+GITHUB_TOKEN=ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+GITHUB_REPO_OWNER=DamianKaizhen
+GITHUB_REPO_NAME=Yudezign-Site-1
+GITHUB_BRANCH=main
+```
+
+### Current Vercel Blob Store Configuration
+
+```
+Store ID:       store_OwcahJZz8KIDIUwp
+Storage Region: iad1 (US East)
+Base URL:       https://owcahjzz8kidiuwp.public.blob.vercel-storage.com
+Store Name:     yudezign-blob
 ```
 
 ### Optional Variables
 
 ```env
+# Google Analytics
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
 # Development mode (enables extra debugging)
 VITE_DEV_MODE=true
-
-# API Base URL (if using external API)
-VITE_API_BASE_URL=https://api.yudezign.com
 ```
 
 ### Using Environment Variables
 
-In your code:
+**Client-side** (prefixed with `VITE_`):
 ```typescript
 const gaId = import.meta.env.VITE_GA_MEASUREMENT_ID
+const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD
 ```
 
-**Note**: All Vite env variables must be prefixed with `VITE_`
+**Server-side** (API routes, no prefix):
+```typescript
+const blobToken = process.env.BLOB_READ_WRITE_TOKEN
+const githubToken = process.env.GITHUB_TOKEN
+```
+
+**Important**:
+- Client-side variables must be prefixed with `VITE_`
+- Server-side API variables (blob, github) should NOT have `VITE_` prefix
+- Vercel automatically provides `BLOB_READ_WRITE_TOKEN` when blob store is linked
 
 ---
 
