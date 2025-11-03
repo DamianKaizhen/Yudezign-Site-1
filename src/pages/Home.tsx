@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
@@ -11,10 +11,6 @@ import { useEffect, useState } from 'react';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
-  const { scrollY } = useScroll();
-
-  // Parallax effect - image moves slower than scroll
-  const imageY = useTransform(scrollY, [0, 1000], [0, 200]);
 
   // Mouse tracking for interactive animations
   const mouseX = useMotionValue(0);
