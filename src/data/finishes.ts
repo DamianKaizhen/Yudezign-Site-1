@@ -1,17 +1,6 @@
 import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
-  // A Touch of Nature - Natural wood-inspired finishes
-  {
-    id: 'tn1',
-    name: 'Natural Oak',
-    styleId: 'touch-nature',
-    color: '#DEB887',
-    images: [],
-    inStock: true,
-    description: 'Classic light oak with subtle grain pattern',
-    order: 1,
-  },
   {
     id: 'tn2',
     name: 'Light Maple',
@@ -42,8 +31,6 @@ export const finishes: Finish[] = [
     description: 'Sustainable bamboo with natural texture',
     order: 4,
   },
-
-  // A Touch of Nature Plus - Premium natural finishes
   {
     id: 'tnp1',
     name: 'Rich Walnut',
@@ -94,8 +81,6 @@ export const finishes: Finish[] = [
     description: 'Contemporary grey oak finish',
     order: 5,
   },
-
-  // Artisan Shine - High-gloss premium finishes
   {
     id: 'as1',
     name: 'High Gloss White',
@@ -146,8 +131,6 @@ export const finishes: Finish[] = [
     description: 'Shimmering pearl grey finish',
     order: 5,
   },
-
-  // Artisan Matte - Elegant matte finishes
   {
     id: 'am1',
     name: 'Pure White Matte',
@@ -217,5 +200,5 @@ export const finishes: Finish[] = [
     inStock: true,
     description: 'Deep black with matte finish',
     order: 7,
-  },
+  }
 ];
