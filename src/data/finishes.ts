@@ -160,5 +160,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 7,
+  },
+  {
+    id: 'f_mhjoj41qizd',
+    name: 'Lorenzo Oak',
+    styleId: 'touch-nature-plus',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206927185-Beige_Grey_Lorenzo_Oak.jpg'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
