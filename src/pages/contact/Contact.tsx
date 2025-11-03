@@ -622,11 +622,11 @@ const Contact = () => {
               },
               {
                 question: 'What is your turnaround time?',
-                answer: 'Most projects are completed in 2-3 weeks from order confirmation. Complex or large projects may take 3-4 weeks.',
+                answer: 'Most projects are completed in 2-3 weeks from order confirmation. This is for an average Kitchen + 1-2 Bathroom Vanities. Larger Projects or those with Custom Finishes may take longer.',
               },
               {
                 question: 'Do you ship outside of Houston?',
-                answer: 'Yes! While we\'re based in Houston, we can ship to anywhere in Texas and surrounding states.',
+                answer: 'We only ship within the Greater Houston Area.',
               },
             ].map((faq, index) => (
               <motion.div
