@@ -11,6 +11,8 @@ import { FormSelect } from '../../components/admin/ui/FormSelect';
 import { FormButton } from '../../components/admin/ui/FormButton';
 import { ImageUpload } from '../../components/admin/ui/ImageUpload';
 import { ArrayFieldInput } from '../../components/admin/ui/ArrayFieldInput';
+import AdminLayout from '../../components/admin/AdminLayout';
+import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Project, SelectOption } from '../../types';
 import { formatFeaturesForForm, formatFeaturesForApi } from '../../lib/utils/projectUtils';
 
@@ -208,33 +210,39 @@ export default function ProjectForm() {
 
   if (isEditMode && !currentProject && projects) {
     return (
-      <div className="text-center py-12">
-        <p className="text-red-600">Project not found</p>
-        <FormButton onClick={() => navigate('/admin/projects')} variant="secondary">
-          Back to Projects
-        </FormButton>
-      </div>
+      <ProtectedRoute>
+        <AdminLayout>
+          <div className="text-center py-12">
+            <p className="text-red-600">Project not found</p>
+            <FormButton onClick={() => navigate('/admin/projects')} variant="secondary">
+              Back to Projects
+            </FormButton>
+          </div>
+        </AdminLayout>
+      </ProtectedRoute>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => navigate('/admin/projects')}
-            className="p-2 hover:bg-luxury-sand rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-6 h-6" />
-          </button>
-          <div>
-            <h1 className="text-3xl font-bold text-luxury-gray-900">
-              {isEditMode ? 'Edit Project' : 'Create New Project'}
-            </h1>
-            <p className="text-luxury-gray-600 mt-1">
-              {isEditMode ? 'Update project details' : 'Add a new project to your portfolio'}
-            </p>
+    <ProtectedRoute>
+      <AdminLayout>
+        <div className="max-w-4xl mx-auto space-y-6">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => navigate('/admin/projects')}
+                className="p-2 hover:bg-luxury-sand rounded-lg transition-colors"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+              <div>
+                <h1 className="text-3xl font-bold text-luxury-gray-900">
+                  {isEditMode ? 'Edit Project' : 'Create New Project'}
+                </h1>
+                <p className="text-luxury-gray-600 mt-1">
+                  {isEditMode ? 'Update project details' : 'Add a new project to your portfolio'}
+                </p>
           </div>
         </div>
       </div>
@@ -367,6 +375,8 @@ export default function ProjectForm() {
           </FormButton>
         </div>
       </form>
-    </div>
+        </div>
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }

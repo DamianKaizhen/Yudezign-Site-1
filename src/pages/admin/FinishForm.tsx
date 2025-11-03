@@ -10,6 +10,8 @@ import { FormTextarea } from '../../components/admin/ui/FormTextarea';
 import { FormSelect } from '../../components/admin/ui/FormSelect';
 import { FormButton } from '../../components/admin/ui/FormButton';
 import { ColorPicker } from '../../components/admin/ui/ColorPicker';
+import AdminLayout from '../../components/admin/AdminLayout';
+import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Finish, FinishStyle, SelectOption } from '../../types';
 import { generateFinishId, getNextFinishOrder } from '../../lib/utils/finishesUtils';
 
@@ -148,33 +150,39 @@ export default function FinishForm() {
 
   if (stylesLoading) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-luxury-gray-600">Loading...</p>
-        </div>
-      </div>
+      <ProtectedRoute>
+        <AdminLayout>
+          <div className="flex items-center justify-center h-96">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+              <p className="mt-4 text-luxury-gray-600">Loading...</p>
+            </div>
+          </div>
+        </AdminLayout>
+      </ProtectedRoute>
     );
   }
 
   if (!styles || styles.length === 0) {
     return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => navigate('/admin/finishes')}
-            className="p-2 hover:bg-luxury-gray-100 rounded-lg transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-3xl font-bold text-luxury-gray-900">Add New Finish</h1>
-        </div>
+      <ProtectedRoute>
+        <AdminLayout>
+          <div className="space-y-6">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => navigate('/admin/finishes')}
+                className="p-2 hover:bg-luxury-gray-100 rounded-lg transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <h1 className="text-3xl font-bold text-luxury-gray-900">Add New Finish</h1>
+            </div>
 
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-          <div className="flex items-start gap-4">
-            <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="text-lg font-semibold text-amber-900 mb-2">
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="text-lg font-semibold text-amber-900 mb-2">
                 No Finish Styles Available
               </h3>
               <p className="text-amber-700 mb-4">
@@ -188,12 +196,16 @@ export default function FinishForm() {
             </div>
           </div>
         </div>
-      </div>
+          </div>
+        </AdminLayout>
+      </ProtectedRoute>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <ProtectedRoute>
+      <AdminLayout>
+        <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
         <button
@@ -333,6 +345,8 @@ export default function FinishForm() {
           </FormButton>
         </div>
       </form>
-    </div>
+        </div>
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }

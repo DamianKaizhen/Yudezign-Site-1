@@ -4,6 +4,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Plus, Edit, Trash2, AlertCircle } from 'lucide-react';
 import { DataTable } from '../../components/admin/ui/DataTable';
 import { FormButton } from '../../components/admin/ui/FormButton';
+import AdminLayout from '../../components/admin/AdminLayout';
+import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Project } from '../../types';
 import type { DataTableColumn, DataTableAction, SelectOption } from '../../types';
 
@@ -149,22 +151,24 @@ export default function ProjectsList() {
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-luxury-gray-900">Projects</h1>
-          <p className="text-luxury-gray-600 mt-1">
-            Manage your portfolio projects ({data?.length || 0} total)
-          </p>
-        </div>
-        <FormButton
-          onClick={() => navigate('/admin/projects/new')}
-          icon={<Plus className="w-5 h-5" />}
-        >
-          Add New Project
-        </FormButton>
-      </div>
+    <ProtectedRoute>
+      <AdminLayout>
+        <div className="space-y-6">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-luxury-gray-900">Projects</h1>
+              <p className="text-luxury-gray-600 mt-1">
+                Manage your portfolio projects ({data?.length || 0} total)
+              </p>
+            </div>
+            <FormButton
+              onClick={() => navigate('/admin/projects/new')}
+              icon={<Plus className="w-5 h-5" />}
+            >
+              Add New Project
+            </FormButton>
+          </div>
 
       {/* Category Filter */}
       <div className="bg-white rounded-lg p-4 shadow-sm border border-luxury-sand">
@@ -246,6 +250,8 @@ export default function ProjectsList() {
           </div>
         </div>
       )}
-    </div>
+        </div>
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }

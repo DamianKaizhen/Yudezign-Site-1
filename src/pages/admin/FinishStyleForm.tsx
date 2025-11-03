@@ -8,6 +8,8 @@ import { ArrowLeft, Save } from 'lucide-react';
 import { FormInput } from '../../components/admin/ui/FormInput';
 import { FormTextarea } from '../../components/admin/ui/FormTextarea';
 import { FormButton } from '../../components/admin/ui/FormButton';
+import AdminLayout from '../../components/admin/AdminLayout';
+import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { FinishStyle } from '../../types';
 import { generateStyleId, getNextStyleOrder } from '../../lib/utils/finishesUtils';
 
@@ -115,26 +117,28 @@ export default function FinishStyleForm() {
   const watchVisible = watch('visible');
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center gap-4">
-        <button
-          onClick={() => navigate('/admin/finish-styles')}
-          className="p-2 hover:bg-luxury-gray-100 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        <div>
-          <h1 className="text-3xl font-bold text-luxury-gray-900">
-            {isEditMode ? 'Edit Finish Style' : 'Add New Finish Style'}
-          </h1>
-          <p className="text-luxury-gray-600 mt-1">
-            {isEditMode
-              ? `Editing: ${currentStyle?.name || ''}`
-              : 'Create a new finish style category'}
-          </p>
-        </div>
-      </div>
+    <ProtectedRoute>
+      <AdminLayout>
+        <div className="space-y-6">
+          {/* Header */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => navigate('/admin/finish-styles')}
+              className="p-2 hover:bg-luxury-gray-100 rounded-lg transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <div>
+              <h1 className="text-3xl font-bold text-luxury-gray-900">
+                {isEditMode ? 'Edit Finish Style' : 'Add New Finish Style'}
+              </h1>
+              <p className="text-luxury-gray-600 mt-1">
+                {isEditMode
+                  ? `Editing: ${currentStyle?.name || ''}`
+                  : 'Create a new finish style category'}
+              </p>
+            </div>
+          </div>
 
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -242,6 +246,8 @@ export default function FinishStyleForm() {
           </FormButton>
         </div>
       </form>
-    </div>
+        </div>
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }

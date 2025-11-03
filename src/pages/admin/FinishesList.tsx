@@ -4,6 +4,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Plus, Edit, Trash2, AlertCircle, Palette } from 'lucide-react';
 import { DataTable } from '../../components/admin/ui/DataTable';
 import { FormButton } from '../../components/admin/ui/FormButton';
+import AdminLayout from '../../components/admin/AdminLayout';
+import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Finish, FinishStyle, SelectOption } from '../../types';
 import type { DataTableColumn, DataTableAction } from '../../types';
 
@@ -200,31 +202,33 @@ export default function FinishesList() {
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-luxury-gray-900">Finishes</h1>
-          <p className="text-luxury-gray-600 mt-1">
-            Manage finish colors and options ({finishes?.length || 0} total)
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <FormButton
-            onClick={() => navigate('/admin/finish-styles')}
-            icon={<Palette className="w-5 h-5" />}
-            variant="secondary"
-          >
-            Manage Styles
-          </FormButton>
-          <FormButton
-            onClick={() => navigate('/admin/finishes/new')}
-            icon={<Plus className="w-5 h-5" />}
-          >
-            Add New Finish
-          </FormButton>
-        </div>
-      </div>
+    <ProtectedRoute>
+      <AdminLayout>
+        <div className="space-y-6">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-luxury-gray-900">Finishes</h1>
+              <p className="text-luxury-gray-600 mt-1">
+                Manage finish colors and options ({finishes?.length || 0} total)
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <FormButton
+                onClick={() => navigate('/admin/finish-styles')}
+                icon={<Palette className="w-5 h-5" />}
+                variant="secondary"
+              >
+                Manage Styles
+              </FormButton>
+              <FormButton
+                onClick={() => navigate('/admin/finishes/new')}
+                icon={<Plus className="w-5 h-5" />}
+              >
+                Add New Finish
+              </FormButton>
+            </div>
+          </div>
 
       {/* Style Filter */}
       <div className="bg-white rounded-lg p-4 shadow-sm border border-luxury-sand">
@@ -333,6 +337,8 @@ export default function FinishesList() {
           </div>
         </div>
       )}
-    </div>
+        </div>
+      </AdminLayout>
+    </ProtectedRoute>
   );
 }
