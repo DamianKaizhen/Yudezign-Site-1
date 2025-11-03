@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tn2',
-    name: 'Light Maple',
-    styleId: 'touch-nature',
-    color: '#F5DEB3',
-    images: [],
-    inStock: true,
-    description: 'Bright and warm maple finish',
-    order: 2,
-  },
-  {
     id: 'tn3',
     name: 'Honey Pine',
     styleId: 'touch-nature',
