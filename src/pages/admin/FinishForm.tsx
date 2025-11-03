@@ -118,6 +118,12 @@ export default function FinishForm() {
     setSubmitting(true);
     setError(null);
 
+    // Debug logging
+    console.log('=== FINISH FORM DEBUG ===');
+    console.log('URL id parameter:', id);
+    console.log('isEditMode:', isEditMode);
+    console.log('Will use method:', isEditMode ? 'PUT' : 'POST');
+
     try {
       const finish: Finish = {
         id: isEditMode ? id! : generateFinishId(),
@@ -129,6 +135,8 @@ export default function FinishForm() {
         description: data.description,
         order: data.order,
       };
+
+      console.log('Finish object being sent:', finish);
 
       const response = await fetch('/api/admin/finishes', {
         method: isEditMode ? 'PUT' : 'POST',
