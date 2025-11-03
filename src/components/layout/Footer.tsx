@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { siteSettings } from '../../data/siteSettings';
 
 const Footer = () => {
@@ -47,17 +47,6 @@ const Footer = () => {
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
-                </a>
-              )}
-              {siteSettings.socialLinks.linkedin && (
-                <a
-                  href={siteSettings.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-5 h-5" />
                 </a>
               )}
               {siteSettings.socialLinks.twitter && (
