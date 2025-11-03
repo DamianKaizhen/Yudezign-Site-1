@@ -2,22 +2,6 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
-    id: '3',
-    title: 'Contemporary Bathroom Vanity',
-    category: 'vanities',
-    images: [
-      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
-      'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400',
-    location: 'Heights, Houston',
-    finish: 'Grey Laminate',
-    cabinetStyle: 'Frameless European',
-    features: ['Dual sinks', 'Soft-close drawers', 'Built-in electrical outlets'],
-    turnaroundTime: '2 weeks',
-    description: 'A sleek double vanity with ample storage and modern aesthetics.',
-  },
-  {
     id: 'proj_1762210660767_vdveltc0r',
     title: 'Dining Room Cabinet',
     category: 'custom',
