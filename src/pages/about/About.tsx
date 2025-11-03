@@ -7,9 +7,9 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Us - Premium Cabinet Manufacturing"
-        description="YuDeZign is a Houston-based custom European frameless cabinet manufacturer. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
-        keywords="cabinet manufacturer houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
+        title="About Us - Houston Cabinet Craftsmen"
+        description="YuDeZign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
+        keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
         url="https://yudezign.com/about"
         image="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200"
       />
@@ -46,7 +46,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90"
           >
-            Houston's premier European frameless cabinet manufacturer since 2015
+            Houston's premier European frameless cabinet craftsmen since 2019
           </motion.p>
         </div>
       </section>
@@ -65,21 +65,21 @@ const About = () => {
               <h2 className="text-display-mobile md:text-h1 font-medium text-luxury-gray-900 mb-8">Our Story</h2>
               <div className="space-y-6 text-body-lg text-luxury-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2015, YuDeZign was born from a simple observation: homeowners and contractors in Houston
+                  Since 2019, YuDeZign has been born from a simple observation: homeowners and contractors in Houston
                   deserved better access to high-quality European cabinetry without the astronomical showroom markups.
                 </p>
                 <p>
                   We set out to combine Old World European craftsmanship with American efficiency and transparency.
-                  By manufacturing locally in Houston and operating on a supply-only model, we've helped thousands
-                  of customers transform their spaces with premium cabinets at honest prices.
+                  By crafting locally in Houston and operating on a supply-only model, we've helped countless
+                  customers transform their spaces with premium cabinets at honest prices.
                 </p>
                 <p>
                   Our commitment to 3/4&quot; plywood construction, frameless European design, and rapid 2-3 week turnaround
                   has made us the trusted choice for contractors, designers, and DIY homeowners across the Greater Houston area.
                 </p>
                 <p>
-                  Today, we're proud to manufacture over 500 custom cabinet projects annually, maintaining the same
-                  dedication to quality and customer service that defined our first installation.
+                  Today, we maintain the same dedication to quality and customer service that defined our beginning,
+                  building relationships one project at a time.
                 </p>
               </div>
             </motion.div>
@@ -108,10 +108,10 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {[
-              { number: '9+', label: 'Years in Business' },
-              { number: '500+', label: 'Projects Annually' },
-              { number: '25+', label: 'Finish Options' },
+              { number: '2019', label: 'Serving Houston' },
               { number: '2-3', label: 'Week Turnaround' },
+              { number: '25+', label: 'Finish Options' },
+              { number: '3/4"', label: 'Plywood Quality' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -160,7 +160,7 @@ const About = () => {
               },
               {
                 icon: Factory,
-                title: 'Manufacturing',
+                title: 'Crafting',
                 description: 'We craft your cabinets in our Houston facility using premium 3/4&quot; plywood and European hardware.',
               },
               {
