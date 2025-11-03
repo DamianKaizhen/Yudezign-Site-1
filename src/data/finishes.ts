@@ -200,5 +200,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 7,
+  },
+  {
+    id: 'f_mhjohdrw9d8',
+    name: 'Rock Solid',
+    styleId: 'touch-nature',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206847904-Rock_Solid.png'],
+    inStock: true,
+    
+    order: 7,
   }
 ];
