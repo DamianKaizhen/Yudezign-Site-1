@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { MousePointer, Eye, DollarSign, Download, Share2, FileText } from 'lucide-react';
+import SEO from '../../components/SEO';
 
 const KDLite = () => {
   const features = [
@@ -36,7 +37,14 @@ const KDLite = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-24">
+    <>
+      <SEO
+        title="Free Closet Design Program - 3D Closet Designer"
+        description="Design your custom closet for free with our KD-Lite Closet Program. 3D visualization, instant pricing, and direct factory ordering. No CAD experience required. Create your perfect closet system in Houston with drag-and-drop tools."
+        keywords="closet design software, free closet designer, 3D closet tool, custom closet planner, closet configurator, online closet design, closet quote calculator"
+        url="https://yudezign.com/kdlite"
+      />
+      <div className="min-h-screen pt-24">
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="container-custom text-center">
@@ -296,6 +304,7 @@ const KDLite = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

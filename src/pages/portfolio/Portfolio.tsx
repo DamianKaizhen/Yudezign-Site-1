@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import ProjectCard from '../../components/ui/ProjectCard';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
+import SEO from '../../components/SEO';
 
 type FilterCategory = 'all' | 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
 
@@ -23,7 +24,14 @@ const Portfolio = () => {
     : projects.filter((project: Project) => project.category === activeFilter);
 
   return (
-    <div className="min-h-screen pt-24 bg-luxury-cream">
+    <>
+      <SEO
+        title="Portfolio - Custom Cabinet Projects"
+        description="Browse our portfolio of custom European frameless cabinets. Kitchen cabinets, closets, vanities, and custom cabinetry projects in Houston. Premium 3/4 plywood construction with luxury finishes."
+        keywords="cabinet portfolio, kitchen cabinets houston, custom closets, luxury vanities, cabinet projects, european cabinets gallery"
+        url="https://yudezign.com/portfolio"
+      />
+      <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}
       <section className="py-20 px-4 bg-luxury-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -106,6 +114,7 @@ const Portfolio = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

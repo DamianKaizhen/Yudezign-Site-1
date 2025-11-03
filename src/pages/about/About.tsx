@@ -1,10 +1,19 @@
 import { motion } from 'framer-motion';
 import { Award, Users, Factory, TrendingUp, Mail, Phone } from 'lucide-react';
 import { teamMembers } from '../../data/team';
+import SEO from '../../components/SEO';
 
 const About = () => {
   return (
-    <div className="min-h-screen pt-24 bg-luxury-cream">
+    <>
+      <SEO
+        title="About Us - Premium Cabinet Manufacturing"
+        description="YuDeZign is a Houston-based custom European frameless cabinet manufacturer. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
+        keywords="cabinet manufacturer houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
+        url="https://yudezign.com/about"
+        image="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200"
+      />
+      <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green overlay */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -411,6 +420,7 @@ const About = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -15,7 +16,14 @@ const Home = () => {
   const overlayOpacity = useTransform(scrollY, [0, 300], [0.3, 0.7]);
 
   return (
-    <div className="min-h-screen bg-luxury-cream">
+    <>
+      <SEO
+        title="Custom European Frameless Cabinets | Houston"
+        description="Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4 plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing."
+        keywords="european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets"
+        url="https://yudezign.com"
+      />
+      <div className="min-h-screen bg-luxury-cream">
 
       {/* HERO - Full viewport with parallax animation */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -40,6 +48,75 @@ const Home = () => {
           style={{ opacity: overlayOpacity }}
         />
 
+        {/* Animated floating geometric shapes */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          {/* Large circle - top right */}
+          <motion.div
+            className="absolute top-20 right-20 w-96 h-96 rounded-full border border-white/10"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: [0, 90, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Medium circle - bottom left */}
+          <motion.div
+            className="absolute bottom-40 left-40 w-64 h-64 rounded-full border border-accent/20"
+            animate={{
+              scale: [1, 1.15, 1],
+              opacity: [0.2, 0.4, 0.2],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          />
+
+          {/* Small accent circle - mid right */}
+          <motion.div
+            className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-accent/10 backdrop-blur-sm"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.4, 0.6, 0.4],
+              x: [0, 20, 0],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2,
+            }}
+          />
+
+          {/* Decorative lines */}
+          <motion.div
+            className="absolute top-1/3 left-10 w-64 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            animate={{
+              scaleX: [0.8, 1.2, 0.8],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
+
         {/* Subtle animated gradient for depth */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10"
@@ -55,37 +132,79 @@ const Home = () => {
 
         {/* Hero content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          <motion.h1
-            className="text-hero-mobile md:text-hero mb-6 font-light"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.3,
+              ease: [0.22, 1, 0.36, 1]
+            }}
           >
-            Custom European
-            <br />
-            Cabinets
-          </motion.h1>
+            <motion.h1
+              className="text-hero-mobile md:text-hero mb-6 font-light leading-tight"
+              animate={{
+                y: [0, -8, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            >
+              Custom European
+              <br />
+              <span className="relative inline-block">
+                Cabinets
+                <motion.span
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-accent rounded-full"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </span>
+            </motion.h1>
+          </motion.div>
 
           <motion.p
             className="text-body-lg md:text-h3 font-light mb-12 text-white/90"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{
+              duration: 1,
+              delay: 0.7,
+              ease: [0.22, 1, 0.36, 1]
+            }}
           >
             Crafted in Houston
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{
+              duration: 1,
+              delay: 0.9,
+              ease: [0.22, 1, 0.36, 1]
+            }}
           >
-            <Link
-              to="/portfolio"
-              className="inline-block px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl border border-primary-light/30"
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              View Portfolio
-            </Link>
+              <Link
+                to="/portfolio"
+                className="inline-block px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl border border-primary-light/30 relative overflow-hidden group"
+              >
+                <span className="relative z-10">View Portfolio</span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary-light to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={false}
+                />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -352,6 +471,7 @@ const Home = () => {
       </section>
 
     </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2 } from 'lucide-react';
+import SEO from '../../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -193,7 +194,14 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 bg-luxury-cream">
+    <>
+      <SEO
+        title="Contact Us - Get Free Cabinet Quote"
+        description="Get in touch with YuDeZign for custom European frameless cabinets in Houston. Free quotes, fast 2-3 week turnaround, supply-only pricing. Call (832) 516-5650 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
+        keywords="contact cabinet maker, houston cabinet quote, custom cabinet pricing, european cabinet supplier, frameless cabinet quote, houston cabinetry"
+        url="https://yudezign.com/contact"
+      />
+      <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}
       <section className="py-20 px-4 bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -639,6 +647,7 @@ const Contact = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import { finishes } from '../../data/finishes';
 import { finishStyles } from '../../data/finishStyles';
 import { getVisibleStyles, getFinishesGroupedByStyle } from '../../lib/utils/finishesUtils';
 import type { Finish } from '../../types';
+import SEO from '../../components/SEO';
 
 const Finishes = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
@@ -23,7 +24,14 @@ const Finishes = () => {
     : finishes.filter((finish) => finish.styleId === activeFilter);
 
   return (
-    <div className="min-h-screen pt-24 bg-luxury-cream">
+    <>
+      <SEO
+        title="Finishes & Materials - 25+ Premium Cabinet Finishes"
+        description="Browse our collection of 25+ premium cabinet finishes and materials. European-quality woods, laminates, and specialty finishes for custom frameless cabinets. Matte, gloss, and textured options available in Houston."
+        keywords="cabinet finishes, wood finishes, laminate cabinets, cabinet colors, european finishes, matte cabinets, gloss cabinets, luxury cabinet finishes"
+        url="https://yudezign.com/finishes"
+      />
+      <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}
       <section className="py-20 px-4 bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -316,6 +324,7 @@ const Finishes = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

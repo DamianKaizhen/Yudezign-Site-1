@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
 import ProjectCard from '../../components/ui/ProjectCard';
 import { projects } from '../../data/projects';
+import SEO from '../../components/SEO';
 
 const categoryInfo = {
   kitchens: {
@@ -50,7 +51,15 @@ const CategoryPage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-24">
+    <>
+      <SEO
+        title={`${info.title} - Custom European Cabinets`}
+        description={info.description}
+        keywords={`${category} cabinets, custom ${category}, houston ${category}, european ${category}, luxury ${category}`}
+        url={`https://yudezign.com/portfolio/${category}`}
+        image={info.heroImage}
+      />
+      <div className="min-h-screen pt-24">
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -107,6 +116,7 @@ const CategoryPage = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 
