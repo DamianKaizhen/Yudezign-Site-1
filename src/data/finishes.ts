@@ -150,5 +150,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjor1tera1',
+    name: 'Soft Touch White',
+    styleId: 'artisan-matte',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207299190-Matte_Soft_Touch_White.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
