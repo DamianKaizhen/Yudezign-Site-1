@@ -180,5 +180,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjok1gmwxe',
+    name: 'Vicenza Oak',
+    styleId: 'touch-nature-plus',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png'],
+    inStock: true,
+    
+    order: 2,
   }
 ];
