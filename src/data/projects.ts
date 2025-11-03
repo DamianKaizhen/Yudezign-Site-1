@@ -185,5 +185,22 @@ export const projects: Project[] = [
     features: ['Push Open', 'Hydraulic Pull down Doors'],
     turnaroundTime: '1 week',
     description: 'Striking floating media console in pristine high-gloss white with push-to-open hydraulic doors for a seamless, handle-free design. Custom-built frameless construction features soft-close mechanisms and adjustable interior shelving for AV equipment. The minimalist profile creates a sophisticated entertainment center that appears to hover against dramatic marble walls.',
+  },
+  {
+    id: 'proj_1762211520796_ehtp6t384',
+    title: 'Crystal Slate Kitchen',
+    category: 'kitchens',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211470844-IMG_9137.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211472927-IMG_9142.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211475899-IMG_9146.JPG'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211470844-IMG_9137.JPG',
+    location: 'Houston',
+    finish: 'Crystal Slate (Dark Grey)',
+    cabinetStyle: 'Frameless European',
+    features: ['Push Open', 'Glossy Shine Finish'],
+    turnaroundTime: '3 weeks',
+    description: 'Luxurious kitchen featuring high-gloss crystal slate grey frameless cabinets with push-to-open technology for a sleek, handle-free design. The reflective finish creates dramatic depth while floor-to-ceiling storage maximizes functionality. Upper and lower cabinets offer generous storage with soft-close mechanisms throughout. European-style construction using premium 3/4" plywood ensures durability. The seamless integration and mirror-like finish complement the striking marble surfaces.',
   }
 ];
