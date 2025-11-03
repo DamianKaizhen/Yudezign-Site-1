@@ -451,7 +451,7 @@ const Contact = () => {
                       <span>Submitting...</span>
                     </>
                   ) : (
-                    <span>Request Free Quote</span>
+                    <span>Get My Free Design</span>
                   )}
                 </button>
 

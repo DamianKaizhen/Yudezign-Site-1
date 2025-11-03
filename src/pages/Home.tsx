@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'fram
 import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
+import { StickyPhoneButton } from '../components/ui/StickyPhoneButton';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 import SEO from '../components/SEO';
@@ -214,6 +215,35 @@ const Home = () => {
 
         {/* Hero content */}
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
+          {/* Trust Bar */}
+          <motion.div
+            className="mb-8 text-sm md:text-base font-medium text-white/90 flex flex-wrap items-center justify-center gap-4 md:gap-8"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Serving Houston Since 2019
+            </span>
+            <span className="hidden md:inline text-white/40">•</span>
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              500+ Projects Delivered
+            </span>
+            <span className="hidden md:inline text-white/40">•</span>
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              Free Design Software
+            </span>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -235,10 +265,10 @@ const Home = () => {
                 delay: 2,
               }}
             >
-              Custom European
+              Precision Crafted in Houston,
               <br />
               <span className="relative inline-block">
-                Cabinets
+                Delivered in Weeks
                 <motion.span
                   className="absolute -bottom-2 left-0 right-0 h-1 bg-accent rounded-full"
                   initial={{ scaleX: 0 }}
@@ -250,7 +280,7 @@ const Home = () => {
           </motion.div>
 
           <motion.p
-            className="text-body-lg md:text-h3 font-light mb-12 text-white/90"
+            className="text-body-lg md:text-h3 font-light mb-6 text-white/95"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -259,15 +289,29 @@ const Home = () => {
               ease: [0.22, 1, 0.36, 1]
             }}
           >
-            Crafted in Houston
+            Custom frameless cabinetry delivered in 2-3 weeks, not months. Built locally, designed for luxury.
           </motion.p>
 
-          <motion.div
+          <motion.p
+            className="text-base md:text-body-lg font-light mb-12 text-white/80 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 1,
               delay: 0.9,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+          >
+            From River Oaks estates to Texas Medical Center offices, we craft European-style cabinetry with Houston efficiency and pride.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              delay: 1.1,
               ease: [0.22, 1, 0.36, 1]
             }}
           >
@@ -277,17 +321,91 @@ const Home = () => {
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link
-                to="/portfolio"
-                className="inline-block px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-md hover:bg-primary-light transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl border border-primary-light/30 relative overflow-hidden group"
+                to="/contact"
+                className="inline-block px-12 py-4 bg-accent text-primary-dark text-body-lg font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl relative overflow-hidden group"
               >
-                <span className="relative z-10">View Portfolio</span>
+                <span className="relative z-10">Start Your Project</span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-light to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-accent/90 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   initial={false}
                 />
               </Link>
             </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <Link
+                to="/portfolio"
+                className="inline-block px-12 py-4 bg-white/10 backdrop-blur-sm text-white text-body-lg font-medium rounded-md hover:bg-white/20 transition-all duration-300 shadow-luxury border border-white/30 relative overflow-hidden group"
+              >
+                <span className="relative z-10">View Our Work</span>
+              </Link>
+            </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* VALUE PROPOSITION TRINITY - Three key differentiators */}
+      <section className="py-20 px-4 bg-luxury-white -mt-16 relative z-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* 2-3 Week Delivery */}
+            <InView variant="fadeUp">
+              <motion.div
+                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                whileHover={{ y: -8 }}
+              >
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                  <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">2-3 Week Delivery</h3>
+                <p className="text-body text-luxury-gray-600 leading-relaxed">
+                  Lightning-fast turnaround compared to the industry standard of 8-12 weeks. Your project completed when you need it.
+                </p>
+              </motion.div>
+            </InView>
+
+            {/* European Frameless Design */}
+            <InView variant="fadeUp">
+              <motion.div
+                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                whileHover={{ y: -8 }}
+              >
+                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors">
+                  <svg className="w-8 h-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">European Frameless Design</h3>
+                <p className="text-body text-luxury-gray-600 leading-relaxed">
+                  Premium construction with 15% more storage space. Modern, seamless aesthetics that maximize every inch.
+                </p>
+              </motion.div>
+            </InView>
+
+            {/* Houston Made, Houston Proud */}
+            <InView variant="fadeUp">
+              <motion.div
+                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                whileHover={{ y: -8 }}
+              >
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                  <svg className="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">Houston Made, Houston Proud</h3>
+                <p className="text-body text-luxury-gray-600 leading-relaxed">
+                  Local crafting means no shipping delays, personalized service, and support for Houston businesses.
+                </p>
+              </motion.div>
+            </InView>
+          </div>
         </div>
       </section>
 
@@ -449,7 +567,7 @@ const Home = () => {
               <SpecCard
                 icon={<Clock className="w-full h-full" strokeWidth={1.5} />}
                 title="2-3 Weeks"
-                description="Fast local manufacturing, no overseas delays"
+                description="Fast local crafting, no overseas delays"
               />
             </InView>
 
@@ -551,6 +669,9 @@ const Home = () => {
           </InView>
         </div>
       </section>
+
+      {/* Sticky Mobile Click-to-Call Button */}
+      <StickyPhoneButton phoneNumber="(281) 568-8000" showAfterScroll={300} />
 
     </div>
     </>

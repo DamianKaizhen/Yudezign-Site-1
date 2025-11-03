@@ -134,7 +134,7 @@ const Navigation = () => {
               to="/contact"
               className="btn-primary"
             >
-              Get Free Quote
+              Start Your Project
             </Link>
           </div>
 
@@ -209,7 +209,7 @@ const Navigation = () => {
                     to="/contact"
                     className="block text-center btn-primary w-full"
                   >
-                    Get Free Quote
+                    Start Your Project
                   </Link>
                 </div>
               </div>
