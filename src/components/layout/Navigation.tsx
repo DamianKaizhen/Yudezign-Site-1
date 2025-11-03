@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { siteSettings } from '../../data/siteSettings';
+import { useSiteSettings } from '../../contexts/SiteSettingsContext';
 
 const Navigation = () => {
+  const { settings } = useSiteSettings();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
@@ -55,10 +56,10 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            {siteSettings.logo ? (
+            {settings.logo ? (
               <img
-                src={siteSettings.logo}
-                alt={siteSettings.companyName}
+                src={settings.logo}
+                alt={settings.companyName}
                 className="h-10 md:h-12 w-auto"
               />
             ) : (
