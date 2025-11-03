@@ -255,15 +255,6 @@ const Home = () => {
           >
             <motion.h1
               className="text-hero-mobile md:text-hero mb-6 font-light leading-tight"
-              animate={{
-                y: [0, -8, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2,
-              }}
             >
               Precision Crafted in Houston,
               <br />
