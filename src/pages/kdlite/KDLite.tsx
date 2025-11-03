@@ -267,7 +267,7 @@ const KDLite = () => {
                   <span className="text-2xl font-bold text-neutral-400">$5,000</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b border-neutral-200">
-                  <span className="text-neutral-600">YuDeZign Supply-Only</span>
+                  <span className="text-neutral-600">YuDezign Supply-Only</span>
                   <span className="text-2xl font-bold text-neutral-700">$3,500</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b-2 border-primary">

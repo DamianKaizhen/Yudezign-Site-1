@@ -64,7 +64,7 @@ const SiteSettingsPage = () => {
     defaultValues: {
       logo: '',
       favicon: '',
-      companyName: 'YuDeZign',
+      companyName: 'YuDezign',
       socialLinks: {
         facebook: '',
         instagram: '',
@@ -227,7 +227,7 @@ const SiteSettingsPage = () => {
                 <input
                   {...register('companyName')}
                   type="text"
-                  placeholder="YuDeZign"
+                  placeholder="YuDezign"
                   className="w-full px-4 py-3 border border-luxury-sand rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
                 />
                 {errors.companyName && (

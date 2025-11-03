@@ -11,7 +11,7 @@ interface SiteSettingsContextType {
 const defaultSettings: SiteSettings = {
   logo: '',
   favicon: '/vite.svg',
-  companyName: 'YuDeZign',
+  companyName: 'YuDezign',
   socialLinks: {
     facebook: 'https://facebook.com',
     instagram: 'https://www.instagram.com/yudezignez/',

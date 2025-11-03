@@ -10,14 +10,14 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = 'YuDeZign - Custom European Frameless Cabinets | Houston',
+  title = 'YuDezign - Custom European Frameless Cabinets | Houston',
   description = 'Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4" plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing.',
   keywords = 'european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets',
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
   url = 'https://yudezign.com',
   type = 'website',
 }: SEOProps) => {
-  const siteTitle = title.includes('YuDeZign') ? title : `${title} | YuDeZign`;
+  const siteTitle = title.includes('YuDezign') ? title : `${title} | YuDezign`;
 
   useEffect(() => {
     // Update document title
@@ -48,7 +48,7 @@ const SEO = ({
     updateMetaTag('og:title', siteTitle, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', image, true);
-    updateMetaTag('og:site_name', 'YuDeZign', true);
+    updateMetaTag('og:site_name', 'YuDezign', true);
 
     // Twitter
     updateMetaTag('twitter:card', 'summary_large_image', true);
@@ -60,7 +60,7 @@ const SEO = ({
     // Additional SEO tags
     updateMetaTag('robots', 'index, follow');
     updateMetaTag('language', 'English');
-    updateMetaTag('author', 'YuDeZign');
+    updateMetaTag('author', 'YuDezign');
 
     // Geo tags for local Houston business
     updateMetaTag('geo.region', 'US-TX');

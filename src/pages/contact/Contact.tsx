@@ -197,7 +197,7 @@ const Contact = () => {
     <>
       <SEO
         title="Contact Us - Get Free Cabinet Quote"
-        description="Get in touch with YuDeZign for custom European frameless cabinets in Houston. Free quotes, fast 2-3 week turnaround, supply-only pricing. Call (832) 516-5650 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
+        description="Get in touch with YuDezign for custom European frameless cabinets in Houston. Free quotes, fast 2-3 week turnaround, supply-only pricing. Call (832) 516-5650 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
         keywords="contact cabinet maker, houston cabinet quote, custom cabinet pricing, european cabinet supplier, frameless cabinet quote, houston cabinetry"
         url="https://yudezign.com/contact"
       />

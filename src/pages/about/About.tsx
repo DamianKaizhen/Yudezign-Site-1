@@ -8,7 +8,7 @@ const About = () => {
     <>
       <SEO
         title="About Us - Houston Cabinet Craftsmen"
-        description="YuDeZign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
+        description="YuDezign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
         keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
         url="https://yudezign.com/about"
         image="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200"
@@ -19,7 +19,7 @@ const About = () => {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1600"
-            alt="YuDeZign Factory"
+            alt="YuDezign Factory"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-primary-dark/60"></div>
@@ -38,7 +38,7 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-display-mobile md:text-display font-medium mb-6"
           >
-            About YuDeZign
+            About YuDezign
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ const About = () => {
               <h2 className="text-display-mobile md:text-h1 font-medium text-luxury-gray-900 mb-8">Our Story</h2>
               <div className="space-y-6 text-body-lg text-luxury-gray-600 leading-relaxed">
                 <p>
-                  Since 2019, YuDeZign has been born from a simple observation: homeowners and contractors in Houston
+                  Since 2019, YuDezign has been born from a simple observation: homeowners and contractors in Houston
                   deserved better access to high-quality European cabinetry without the astronomical showroom markups.
                 </p>
                 <p>
@@ -93,7 +93,7 @@ const About = () => {
             >
               <motion.img
                 src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800"
-                alt="YuDeZign Workshop"
+                alt="YuDezign Workshop"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}

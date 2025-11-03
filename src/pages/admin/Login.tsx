@@ -122,7 +122,7 @@ const Login = () => {
           {/* Security Note */}
           <div className="mt-6 pt-6 border-t border-luxury-gray-100">
             <p className="text-body-sm text-luxury-gray-500 text-center">
-              Secure admin access for YuDeZign content management
+              Secure admin access for YuDezign content management
             </p>
           </div>
         </div>

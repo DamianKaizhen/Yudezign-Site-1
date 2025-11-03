@@ -581,7 +581,7 @@ const Home = () => {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1600&q=90"
-            alt="YuDeZign Craftsmanship"
+            alt="YuDezign Craftsmanship"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-accent/30"></div>
@@ -616,7 +616,7 @@ const Home = () => {
               </h2>
 
               <p className="text-body-lg text-luxury-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-                Get a free quote and discover how YuDeZign can bring your vision to life with
+                Get a free quote and discover how YuDezign can bring your vision to life with
                 custom European cabinets crafted right here in Houston.
               </p>
 

@@ -144,7 +144,7 @@ const Dashboard = () => {
           <InView variant="fadeUp">
             <div className="bg-gradient-to-r from-primary to-primary-light text-white rounded-2xl p-8 shadow-luxury-lg">
               <h1 className="text-display-mobile md:text-display font-medium mb-3">
-                Welcome to YuDeZign Admin
+                Welcome to YuDezign Admin
               </h1>
               <p className="text-body-lg text-white/90 max-w-2xl">
                 Manage your website content, projects, finishes, and team information all in one place.
