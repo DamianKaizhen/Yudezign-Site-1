@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Save, Mail, Phone, Calendar, FileText, Download, Tag } from 'lucide-react';
-import { FormButton } from '../../components/admin/ui/FormButton';
-import { FormSelect } from '../../components/admin/ui/FormSelect';
-import { FormTextarea } from '../../components/admin/ui/FormTextarea';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
-import type { ContactMessage, SelectOption } from '../../types';
+import type { ContactMessage } from '../../types';
 
-const statusOptions: SelectOption[] = [
+const statusOptions = [
   { value: 'new', label: 'New' },
   { value: 'read', label: 'Read' },
   { value: 'responded', label: 'Responded' },
@@ -130,13 +127,12 @@ export default function ContactMessageDetail() {
         <AdminLayout>
           <div className="text-center py-12">
             <p className="text-red-600 font-medium">Message not found</p>
-            <FormButton
+            <button
               onClick={() => navigate('/admin/contact-messages')}
-              variant="secondary"
-              className="mt-4"
+              className="mt-4 btn-secondary"
             >
               Back to Messages
-            </FormButton>
+            </button>
           </div>
         </AdminLayout>
       </ProtectedRoute>
@@ -289,40 +285,55 @@ export default function ContactMessageDetail() {
             </h2>
 
             <div className="space-y-6">
-              <FormSelect
-                label="Status"
-                name="status"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-                options={statusOptions}
-                required
-              />
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-700 mb-2">
+                  Status *
+                </label>
+                <select
+                  name="status"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  className="input-field"
+                  required
+                >
+                  {statusOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-              <FormTextarea
-                label="Internal Notes"
-                name="notes"
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="Add notes about this inquiry (not visible to customer)..."
-                rows={4}
-              />
+              <div>
+                <label className="block text-sm font-medium text-luxury-gray-700 mb-2">
+                  Internal Notes
+                </label>
+                <textarea
+                  name="notes"
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder="Add notes about this inquiry (not visible to customer)..."
+                  rows={4}
+                  className="input-field resize-none"
+                />
+              </div>
 
               <div className="flex gap-4">
-                <FormButton
+                <button
                   onClick={handleSave}
-                  icon={<Save className="w-5 h-5" />}
-                  loading={updateMutation.isPending}
-                  disabled={!hasChanges}
+                  disabled={!hasChanges || updateMutation.isPending}
+                  className="btn-primary flex items-center gap-2 disabled:opacity-50"
                 >
-                  Save Changes
-                </FormButton>
-                <FormButton
-                  variant="secondary"
+                  <Save className="w-5 h-5" />
+                  {updateMutation.isPending ? 'Saving...' : 'Save Changes'}
+                </button>
+                <button
                   onClick={() => navigate('/admin/contact-messages')}
                   disabled={updateMutation.isPending}
+                  className="btn-secondary"
                 >
                   Back to Messages
-                </FormButton>
+                </button>
               </div>
 
               {updateMutation.isSuccess && (
