@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tnp3',
-    name: 'Premium Cherry',
-    styleId: 'touch-nature-plus',
-    color: '#8B4513',
-    images: [],
-    inStock: false,
-    description: 'Elegant cherry wood with rich red tones',
-    order: 3,
-  },
-  {
     id: 'tnp4',
     name: 'Exotic Teak',
     styleId: 'touch-nature-plus',
