@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tnp5',
-    name: 'Grey Oak Premium',
-    styleId: 'touch-nature-plus',
-    color: '#B3A99A',
-    images: [],
-    inStock: true,
-    description: 'Contemporary grey oak finish',
-    order: 5,
-  },
-  {
     id: 'as1',
     name: 'High Gloss White',
     styleId: 'artisan-shine',
