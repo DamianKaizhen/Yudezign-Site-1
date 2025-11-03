@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FolderOpen, Palette, MessageSquare, Users, ArrowRight } from 'lucide-react';
+import { FolderOpen, Palette, MessageSquare, Users, ArrowRight, Mail } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { InView } from '../../components/ui/InViewAnimations';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
-import type { Project, Finish, FinishStyle } from '../../types';
+import type { Project, Finish, FinishStyle, ContactMessage, Testimonial, TeamMember } from '../../types';
 
 const Dashboard = () => {
   // Fetch projects count
@@ -47,6 +47,47 @@ const Dashboard = () => {
     },
   });
 
+  // Fetch contact messages count
+  const { data: contactMessagesData } = useQuery({
+    queryKey: ['contactMessages'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/contact-messages', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch contact messages');
+      const result = await response.json();
+      return result.data as ContactMessage[];
+    },
+  });
+
+  // Fetch testimonials count
+  const { data: testimonialsData } = useQuery({
+    queryKey: ['testimonials'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/testimonials', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch testimonials');
+      const result = await response.json();
+      return result.data as Testimonial[];
+    },
+  });
+
+  // Fetch team members count
+  const { data: teamMembersData } = useQuery({
+    queryKey: ['team'],
+    queryFn: async () => {
+      const response = await fetch('/api/admin/team', {
+        credentials: 'include',
+      });
+      if (!response.ok) throw new Error('Failed to fetch team members');
+      const result = await response.json();
+      return result.data as TeamMember[];
+    },
+  });
+
+  const unreadMessages = contactMessagesData?.filter(m => m.status === 'new').length || 0;
+
   const stats = [
     {
       name: 'Projects',
@@ -65,8 +106,17 @@ const Dashboard = () => {
       color: 'from-accent to-accent/80',
     },
     {
+      name: 'Contact Messages',
+      count: contactMessagesData?.length || 0,
+      description: unreadMessages > 0 ? `${unreadMessages} unread message${unreadMessages !== 1 ? 's' : ''}` : 'All messages read',
+      icon: Mail,
+      link: '/admin/contact-messages',
+      color: 'from-blue-600 to-blue-400',
+      badge: unreadMessages > 0 ? unreadMessages : undefined,
+    },
+    {
       name: 'Testimonials',
-      count: 0,
+      count: testimonialsData?.length || 0,
       description: 'Customer reviews and feedback',
       icon: MessageSquare,
       link: '/admin/testimonials',
@@ -74,7 +124,7 @@ const Dashboard = () => {
     },
     {
       name: 'Team Members',
-      count: 0,
+      count: teamMembersData?.length || 0,
       description: 'Staff profiles for About page',
       icon: Users,
       link: '/admin/team',
@@ -183,6 +233,26 @@ const Dashboard = () => {
                       <span className="text-body font-medium text-luxury-gray-900">
                         Manage Finishes
                       </span>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-luxury-gray-400 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    to="/admin/contact-messages"
+                    className="flex items-center justify-between p-4 bg-luxury-cream rounded-lg hover:bg-luxury-beige transition-colors group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Mail className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                      <div className="flex items-center gap-2">
+                        <span className="text-body font-medium text-luxury-gray-900">
+                          View Contact Messages
+                        </span>
+                        {unreadMessages > 0 && (
+                          <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-semibold rounded-full">
+                            {unreadMessages}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <ArrowRight className="w-5 h-5 text-luxury-gray-400 group-hover:translate-x-1 transition-transform" />
                   </Link>

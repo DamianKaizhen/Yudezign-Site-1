@@ -75,6 +75,20 @@ export interface TeamMember {
   headshot?: string;
 }
 
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  timeline: string;
+  message: string;
+  attachments?: string[];
+  submittedAt: string;
+  status: 'new' | 'read' | 'responded' | 'archived';
+  notes?: string;
+}
+
 // API Response Types
 
 export interface ApiResponse<T = unknown> {

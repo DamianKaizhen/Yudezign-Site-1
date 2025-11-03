@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   FolderOpen,
   Palette,
+  Mail,
   MessageSquare,
   Users,
   LogOut,
@@ -51,6 +52,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       name: 'Finishes',
       path: '/admin/finishes',
       icon: Palette,
+    },
+    {
+      name: 'Contact Messages',
+      path: '/admin/contact-messages',
+      icon: Mail,
     },
     {
       name: 'Testimonials',

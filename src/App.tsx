@@ -17,6 +17,12 @@ import FinishStylesList from './pages/admin/FinishStylesList';
 import FinishStyleForm from './pages/admin/FinishStyleForm';
 import FinishesList from './pages/admin/FinishesList';
 import FinishForm from './pages/admin/FinishForm';
+import ContactMessagesList from './pages/admin/ContactMessagesList';
+import ContactMessageDetail from './pages/admin/ContactMessageDetail';
+import TestimonialsList from './pages/admin/TestimonialsList';
+import TestimonialForm from './pages/admin/TestimonialForm';
+import TeamMembersList from './pages/admin/TeamMembersList';
+import TeamMemberForm from './pages/admin/TeamMemberForm';
 
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
@@ -55,6 +61,14 @@ function App() {
           <Route path="/admin/finishes" element={<FinishesList />} />
           <Route path="/admin/finishes/new" element={<FinishForm />} />
           <Route path="/admin/finishes/:id" element={<FinishForm />} />
+          <Route path="/admin/contact-messages" element={<ContactMessagesList />} />
+          <Route path="/admin/contact-messages/:id" element={<ContactMessageDetail />} />
+          <Route path="/admin/testimonials" element={<TestimonialsList />} />
+          <Route path="/admin/testimonials/new" element={<TestimonialForm />} />
+          <Route path="/admin/testimonials/:id" element={<TestimonialForm />} />
+          <Route path="/admin/team" element={<TeamMembersList />} />
+          <Route path="/admin/team/new" element={<TeamMemberForm />} />
+          <Route path="/admin/team/:id" element={<TeamMemberForm />} />
 
           {/* Public Routes - With Navigation/Footer */}
           <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

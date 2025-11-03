@@ -36,25 +36,52 @@ const Contact = () => {
         attachmentUrls = await uploadFiles();
       }
 
-      // Submit form data + file URLs to webhook
-      const response = await fetch('https://n8n.kaizhen8n.cloud/webhook/quote-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          attachments: attachmentUrls,
-          submittedAt: new Date().toISOString(),
-          source: 'Yudezign Website',
-        }),
-      });
+      const submissionData = {
+        ...formData,
+        attachments: attachmentUrls,
+        submittedAt: new Date().toISOString(),
+        source: 'Yudezign Website',
+      };
 
-      if (!response.ok) {
-        throw new Error(`Failed to submit form: ${response.status}`);
+      // Dual submission: Send to both admin API and n8n webhook (in parallel)
+      const [adminResponse, webhookResponse] = await Promise.allSettled([
+        // Send to admin API for storage
+        fetch('/api/admin/contact-messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        }),
+        // Send to n8n webhook for notifications
+        fetch('https://n8n.kaizhen8n.cloud/webhook/quote-form', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(submissionData),
+        }),
+      ]);
+
+      // Check if at least one succeeded
+      const adminSuccess =
+        adminResponse.status === 'fulfilled' && adminResponse.value.ok;
+      const webhookSuccess =
+        webhookResponse.status === 'fulfilled' && webhookResponse.value.ok;
+
+      if (!adminSuccess && !webhookSuccess) {
+        throw new Error('Failed to submit form to both systems');
       }
 
-      // Success!
+      // Log any partial failures (for debugging)
+      if (!adminSuccess) {
+        console.warn('Admin API submission failed, but n8n webhook succeeded');
+      }
+      if (!webhookSuccess) {
+        console.warn('n8n webhook submission failed, but admin API succeeded');
+      }
+
+      // Success! (at least one submission worked)
       setSubmitStatus('success');
       // Reset form and files
       setFormData({

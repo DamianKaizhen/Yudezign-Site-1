@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Clock, Package, Ruler, Wrench } from 'lucide-react';
+import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
 import { projects } from '../data/projects';
+import { testimonials } from '../data/testimonials';
 
 const Home = () => {
   const featuredProjects = projects.slice(0, 4);
@@ -148,6 +149,96 @@ const Home = () => {
           </InView>
         </div>
       </section>
+
+      {/* TESTIMONIALS - Customer Reviews */}
+      {testimonials.length > 0 && (
+        <section className="py-30 px-4 bg-luxury-white">
+          <div className="max-w-7xl mx-auto">
+            <InView variant="fadeUp">
+              <div className="text-center mb-16">
+                <span className="text-label text-primary mb-4 block">Client Reviews</span>
+                <h2 className="text-display-mobile md:text-display font-medium text-luxury-gray-900">
+                  What Our Clients Say
+                </h2>
+              </div>
+            </InView>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {testimonials.slice(0, 3).map((testimonial, index) => (
+                <InView key={testimonial.id} variant="fadeUp" delay={index * 0.1}>
+                  <div className="bg-luxury-cream rounded-xl p-8 shadow-luxury hover:shadow-luxury-lg transition-shadow duration-300 border border-luxury-sand/30 h-full flex flex-col">
+                    {/* Rating Stars */}
+                    <div className="flex gap-1 mb-6">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          className={`w-5 h-5 ${
+                            star <= testimonial.rating
+                              ? 'fill-yellow-400 text-yellow-400'
+                              : 'fill-luxury-gray-200 text-luxury-gray-200'
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Quote Icon */}
+                    <Quote className="w-10 h-10 text-primary/20 mb-4" />
+
+                    {/* Testimonial Content */}
+                    <p className="text-body text-luxury-gray-700 leading-relaxed mb-8 flex-grow italic">
+                      "{testimonial.content}"
+                    </p>
+
+                    {/* Author Info */}
+                    <div className="flex items-center gap-4 pt-6 border-t border-luxury-sand">
+                      {testimonial.image ? (
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center text-lg font-semibold">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-semibold text-luxury-gray-900">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-sm text-luxury-gray-600">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Project Image if available */}
+                    {testimonial.projectImage && (
+                      <div className="mt-6 -mx-8 -mb-8">
+                        <img
+                          src={testimonial.projectImage}
+                          alt="Project"
+                          className="w-full h-48 object-cover rounded-b-xl"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </InView>
+              ))}
+            </div>
+
+            {testimonials.length > 3 && (
+              <InView variant="fadeUp">
+                <div className="text-center mt-16">
+                  <p className="text-body text-luxury-gray-600">
+                    And {testimonials.length - 3} more satisfied clients
+                  </p>
+                </div>
+              </InView>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* SPECIFICATIONS - Icon row */}
       <section className="py-30 px-4 bg-luxury-white">

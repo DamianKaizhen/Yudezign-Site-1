@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Award, Users, Factory, TrendingUp } from 'lucide-react';
+import { Award, Users, Factory, TrendingUp, Mail, Phone } from 'lucide-react';
+import { teamMembers } from '../../data/team';
 
 const About = () => {
   return (
@@ -177,6 +178,102 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Meet Our Team */}
+      {teamMembers.length > 0 && (
+        <section className="py-30 px-4 bg-luxury-white">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <div className="w-16 h-1 bg-primary mx-auto mb-8"></div>
+              <h2 className="text-display-mobile md:text-display font-medium text-luxury-gray-900 mb-6">
+                Meet Our Team
+              </h2>
+              <p className="text-body-lg text-luxury-gray-600 max-w-2xl mx-auto leading-relaxed">
+                The craftspeople and professionals dedicated to bringing your vision to life.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-luxury-cream rounded-lg overflow-hidden shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand/30"
+                >
+                  {/* Headshot */}
+                  <div className="aspect-square overflow-hidden bg-luxury-sand">
+                    {member.headshot ? (
+                      <motion.img
+                        src={member.headshot}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+                        <div className="w-32 h-32 rounded-full bg-primary text-white flex items-center justify-center text-6xl font-semibold">
+                          {member.name.charAt(0)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-8">
+                    <h3 className="text-h3 font-semibold text-luxury-gray-900 mb-2">
+                      {member.name}
+                    </h3>
+                    <p className="text-body font-medium text-primary mb-4">
+                      {member.role}
+                    </p>
+                    <p className="text-body text-luxury-gray-600 leading-relaxed mb-6">
+                      {member.bio}
+                    </p>
+
+                    {/* Contact Info */}
+                    {(member.email || member.phone) && (
+                      <div className="pt-6 border-t border-luxury-sand space-y-2">
+                        {member.email && (
+                          <a
+                            href={`mailto:${member.email}`}
+                            className="flex items-center gap-3 text-sm text-luxury-gray-600 hover:text-primary transition-colors group"
+                          >
+                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                              <Mail className="w-4 h-4 text-primary" />
+                            </div>
+                            <span>{member.email}</span>
+                          </a>
+                        )}
+                        {member.phone && (
+                          <a
+                            href={`tel:${member.phone}`}
+                            className="flex items-center gap-3 text-sm text-luxury-gray-600 hover:text-primary transition-colors group"
+                          >
+                            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                              <Phone className="w-4 h-4 text-primary" />
+                            </div>
+                            <span>{member.phone}</span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Why Supply-Only */}
       <section className="py-30 px-4 bg-luxury-white">
