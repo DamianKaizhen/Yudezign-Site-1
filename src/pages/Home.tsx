@@ -233,7 +233,7 @@ const Home = () => {
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              500+ Projects Delivered
+              Supply-Only Pricing
             </span>
             <span className="hidden md:inline text-white/40">•</span>
             <span className="flex items-center gap-2">
@@ -290,19 +290,6 @@ const Home = () => {
             }}
           >
             Custom frameless cabinetry delivered in 2-3 weeks, not months. Built locally, designed for luxury.
-          </motion.p>
-
-          <motion.p
-            className="text-base md:text-body-lg font-light mb-12 text-white/80 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.9,
-              ease: [0.22, 1, 0.36, 1]
-            }}
-          >
-            From River Oaks estates to Texas Medical Center offices, we craft European-style cabinetry with Houston efficiency and pride.
           </motion.p>
 
           <motion.div
