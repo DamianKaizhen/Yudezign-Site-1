@@ -11,7 +11,7 @@ interface Finish {
   name: string;
   styleId: string;
   color: string;
-  image: string;
+  images: string[];
   inStock: boolean;
   description?: string;
   order: number;
@@ -74,12 +74,15 @@ async function getFinishesFromGitHub(): Promise<Finish[]> {
 function formatFinishForExport(finish: Finish): string {
   const escapeString = (str: string) => str.replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
+  // Format images array
+  const imagesArray = finish.images.map(img => `'${img}'`).join(', ');
+
   return `  {
     id: '${finish.id}',
     name: '${escapeString(finish.name)}',
     styleId: '${finish.styleId}',
     color: '${finish.color}',
-    image: '${finish.image}',
+    images: [${imagesArray}],
     inStock: ${finish.inStock},
     ${finish.description ? `description: '${escapeString(finish.description)}',` : ''}
     order: ${finish.order},

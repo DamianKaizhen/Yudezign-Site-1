@@ -10,6 +10,7 @@ import { FormTextarea } from '../../components/admin/ui/FormTextarea';
 import { FormSelect } from '../../components/admin/ui/FormSelect';
 import { FormButton } from '../../components/admin/ui/FormButton';
 import { ColorPicker } from '../../components/admin/ui/ColorPicker';
+import { ImageUpload } from '../../components/admin/ui/ImageUpload';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Finish, FinishStyle, SelectOption } from '../../types';
@@ -20,7 +21,7 @@ const finishSchema = z.object({
   name: z.string().min(1, 'Finish name is required').max(100, 'Name must be less than 100 characters'),
   styleId: z.string().min(1, 'Please select a finish style'),
   color: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Must be a valid hex color (e.g., #FF5733)'),
-  image: z.string().optional(),
+  images: z.array(z.string()).min(1, 'At least one image is required'),
   inStock: z.boolean(),
   description: z.string().max(300, 'Description must be less than 300 characters').optional(),
   order: z.number().int().min(1, 'Order must be at least 1'),
@@ -81,7 +82,7 @@ export default function FinishForm() {
       name: '',
       styleId: '',
       color: '#FFFFFF',
-      image: '',
+      images: [],
       inStock: true,
       description: '',
       order: 1,
@@ -90,6 +91,7 @@ export default function FinishForm() {
 
   const watchStyleId = watch('styleId');
   const watchColor = watch('color');
+  const watchImages = watch('images');
 
   // Update default order when finishes and styleId load
   useEffect(() => {
@@ -104,7 +106,7 @@ export default function FinishForm() {
       setValue('name', currentFinish.name);
       setValue('styleId', currentFinish.styleId);
       setValue('color', currentFinish.color);
-      setValue('image', currentFinish.image || '');
+      setValue('images', currentFinish.images || []);
       setValue('inStock', currentFinish.inStock);
       setValue('description', currentFinish.description || '');
       setValue('order', currentFinish.order);
@@ -122,7 +124,7 @@ export default function FinishForm() {
         name: data.name,
         styleId: data.styleId,
         color: data.color,
-        image: data.image || '',
+        images: data.images,
         inStock: data.inStock,
         description: data.description,
         order: data.order,
@@ -259,13 +261,29 @@ export default function FinishForm() {
               register={register}
             />
 
-            {/* Color Picker */}
+            {/* Color Picker - For preview/fallback */}
             <ColorPicker
-              label="Color"
+              label="Preview Color (fallback)"
               value={watchColor}
               onChange={(color) => setValue('color', color)}
               required
               error={errors.color?.message}
+            />
+
+            {/* Image Upload */}
+            <ImageUpload
+              label="Finish Material Photos"
+              required
+              multiple={true}
+              maxFiles={8}
+              currentImages={watchImages}
+              onUpload={(urls) => {
+                setValue('images', [...watchImages, ...urls]);
+              }}
+              onRemove={(url) => {
+                setValue('images', watchImages.filter((img) => img !== url));
+              }}
+              error={errors.images?.message}
             />
 
             {/* Description */}
@@ -313,20 +331,32 @@ export default function FinishForm() {
           </div>
         </div>
 
-        {/* Color Preview Card */}
+        {/* Preview Card */}
         <div className="bg-white rounded-lg shadow-sm border border-luxury-sand p-6">
           <h3 className="text-lg font-semibold text-luxury-gray-900 mb-4">Preview</h3>
-          <div className="flex items-center gap-6">
-            <div
-              className="w-32 h-32 rounded-lg border-2 border-luxury-sand shadow-lg"
-              style={{ backgroundColor: watchColor }}
-            />
-            <div>
-              <p className="text-sm text-luxury-gray-600 mb-1">Color Code</p>
-              <code className="text-lg font-mono font-semibold text-luxury-gray-900">
-                {watchColor}
-              </code>
+          <div className="space-y-4">
+            <div className="flex items-center gap-6">
+              <div
+                className="w-24 h-24 rounded-lg border-2 border-luxury-sand shadow-lg"
+                style={{ backgroundColor: watchColor }}
+              />
+              <div>
+                <p className="text-sm text-luxury-gray-600 mb-1">Fallback Color Code</p>
+                <code className="text-base font-mono font-semibold text-luxury-gray-900">
+                  {watchColor}
+                </code>
+                <p className="text-xs text-luxury-gray-500 mt-2">
+                  Used when images are loading or unavailable
+                </p>
+              </div>
             </div>
+            {watchImages.length > 0 && (
+              <div>
+                <p className="text-sm text-luxury-gray-600 mb-2">
+                  {watchImages.length} image{watchImages.length !== 1 ? 's' : ''} uploaded
+                </p>
+              </div>
+            )}
           </div>
         </div>
 

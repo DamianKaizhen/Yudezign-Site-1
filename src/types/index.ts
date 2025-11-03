@@ -24,8 +24,8 @@ export interface Finish {
   id: string;
   name: string;
   styleId: string; // References FinishStyle.id
-  color: string; // Hex color code
-  image: string;
+  color: string; // Hex color code for fallback/preview
+  images: string[]; // Multiple finish material photos
   inStock: boolean;
   description?: string;
   order: number; // Display order within style

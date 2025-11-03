@@ -22,32 +22,43 @@ const FinishSwatch = ({ finish, isSelected, onClick }: FinishSwatchProps) => {
       }`}
       onClick={onClick}
     >
-      {/* Color Swatch */}
+      {/* Finish Image or Color Swatch */}
       <div className="relative">
-        <div
-          className="w-full h-32 rounded-lg mb-3 shadow-inner"
-          style={{ backgroundColor: finish.color }}
-        >
-          {/* In Stock Badge */}
-          {finish.inStock && (
-            <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
-              In Stock
+        {finish.images && finish.images.length > 0 ? (
+          // Display actual finish image
+          <div className="w-full h-32 rounded-lg mb-3 shadow-inner overflow-hidden">
+            <img
+              src={finish.images[0]}
+              alt={finish.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          // Fallback to color swatch
+          <div
+            className="w-full h-32 rounded-lg mb-3 shadow-inner"
+            style={{ backgroundColor: finish.color }}
+          />
+        )}
+        {/* In Stock Badge */}
+        {finish.inStock && (
+          <div className="absolute top-2 right-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
+            In Stock
+          </div>
+        )}
+        {!finish.inStock && (
+          <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs font-semibold px-2 py-1 rounded">
+            Special Order
+          </div>
+        )}
+        {/* Selected Indicator */}
+        {isSelected && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg">
+            <div className="bg-white rounded-full p-2">
+              <Check className="w-6 h-6 text-primary" />
             </div>
-          )}
-          {!finish.inStock && (
-            <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs font-semibold px-2 py-1 rounded">
-              Special Order
-            </div>
-          )}
-          {/* Selected Indicator */}
-          {isSelected && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg">
-              <div className="bg-white rounded-full p-2">
-                <Check className="w-6 h-6 text-primary" />
-              </div>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
 
       {/* Info */}
