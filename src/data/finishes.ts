@@ -200,5 +200,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 5,
+  },
+  {
+    id: 'f_mhjof2j18je',
+    name: 'First Class',
+    styleId: 'touch-nature',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png'],
+    inStock: true,
+    
+    order: 6,
   }
 ];
