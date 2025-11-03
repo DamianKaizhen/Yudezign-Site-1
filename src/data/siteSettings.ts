@@ -12,7 +12,7 @@ export interface SiteSettings {
 }
 
 export const siteSettings: SiteSettings = {
-  logo: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762150100267-yudezign%20logo.png',
+  logo: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762150920994-YU%20DEZIGN%20LOGO%20CUSTOMIZED%20CABINETRY%202021.png',
   favicon: '/vite.svg',
   companyName: 'YuDezign',
   socialLinks: {
