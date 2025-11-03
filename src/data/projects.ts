@@ -18,21 +18,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '9',
-    title: 'Restaurant Kitchen Cabinets',
-    category: 'commercial',
-    images: [
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400',
-    location: 'Montrose, Houston',
-    finish: 'Stainless Steel with HPL Interior',
-    cabinetStyle: 'Frameless European',
-    features: ['NSF certified', 'Waterproof construction', 'Heavy-duty hinges', 'Easy maintenance'],
-    turnaroundTime: '5 weeks',
-    description: 'Commercial-grade kitchen storage for a high-volume restaurant operation.',
-  },
-  {
     id: '10',
     title: 'Retail Store Display Cabinets',
     category: 'commercial',
