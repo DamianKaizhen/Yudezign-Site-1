@@ -130,5 +130,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 1,
+  },
+  {
+    id: 'f_mhjoqas99f5',
+    name: 'Soft Touch Dark Grey',
+    styleId: 'artisan-matte',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207264351-Matte_Soft_Touch_Dark_Grey.png'],
+    inStock: true,
+    
+    order: 1,
   }
 ];
