@@ -18,22 +18,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '5',
-    title: 'Elegant Dark Kitchen',
-    category: 'kitchens',
-    images: [
-      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800',
-      'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400',
-    location: 'Sugar Land',
-    finish: 'Charcoal Acrylic High Gloss',
-    cabinetStyle: 'Frameless European',
-    features: ['Touch-to-open drawers', 'Integrated LED lighting', 'Custom pantry organization'],
-    turnaroundTime: '2 weeks',
-    description: 'A sophisticated dark kitchen with high-gloss finishes and modern hardware.',
-  },
-  {
     id: '7',
     title: 'Corporate Office Breakroom',
     category: 'commercial',
