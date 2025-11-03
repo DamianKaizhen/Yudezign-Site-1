@@ -2,22 +2,6 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
-    id: '1',
-    title: 'Modern Houston Kitchen',
-    category: 'kitchens',
-    images: [
-      'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
-      'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400',
-    location: 'Memorial, Houston',
-    finish: 'White Matte Melamine',
-    cabinetStyle: 'Frameless European',
-    features: ['Soft-close hinges', 'Pull-out spice racks', 'Built-in appliance garage'],
-    turnaroundTime: '2 weeks',
-    description: 'A stunning modern kitchen featuring clean lines and maximized storage.',
-  },
-  {
     id: '3',
     title: 'Contemporary Bathroom Vanity',
     category: 'vanities',
