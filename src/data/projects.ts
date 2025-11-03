@@ -18,21 +18,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '8',
-    title: 'Medical Office Storage',
-    category: 'commercial',
-    images: [
-      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400',
-    location: 'Medical Center, Houston',
-    finish: 'White High-Pressure Laminate',
-    cabinetStyle: 'Frameless European',
-    features: ['Medical-grade materials', 'Easy-clean surfaces', 'Lockable storage', 'Custom organizational inserts'],
-    turnaroundTime: '3 weeks',
-    description: 'Hygienic, functional storage solutions for a busy medical practice.',
-  },
-  {
     id: '9',
     title: 'Restaurant Kitchen Cabinets',
     category: 'commercial',
