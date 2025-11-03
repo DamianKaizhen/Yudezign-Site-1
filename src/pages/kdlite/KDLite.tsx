@@ -100,17 +100,13 @@ const KDLite = () => {
             transition={{ duration: 0.6 }}
             className="relative aspect-video max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl"
           >
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200"
-              alt="KD Lite Demo"
-              className="w-full h-full object-cover"
+            <iframe
+              src="https://www.youtube.com/embed/kXwi2MEN55A"
+              title="KD Lite Closet Design Program Demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full"
             />
-            {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/20 transition-colors cursor-pointer">
-              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <div className="w-0 h-0 border-t-12 border-t-transparent border-l-20 border-l-primary border-b-12 border-b-transparent ml-2"></div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
