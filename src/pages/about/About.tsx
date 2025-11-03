@@ -11,15 +11,15 @@ const About = () => {
         description="YuDezign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
         keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
         url="https://yudezign.com/about"
-        image="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200"
+        image="https://source.unsplash.com/S6THpvdYpIo/1200x630"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green overlay */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1600"
-            alt="YuDezign Factory"
+            src="https://source.unsplash.com/S6THpvdYpIo/1600x900"
+            alt="Modern Frameless Kitchen"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-primary-dark/60"></div>
@@ -92,8 +92,8 @@ const About = () => {
               className="relative h-[500px] rounded-lg overflow-hidden"
             >
               <motion.img
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800"
-                alt="YuDezign Workshop"
+                src="/groupimage.png"
+                alt="YuDezign Team"
                 className="w-full h-full object-cover"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.6 }}
