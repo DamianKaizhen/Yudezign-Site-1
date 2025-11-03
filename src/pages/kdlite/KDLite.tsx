@@ -69,9 +69,14 @@ const KDLite = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <button className="btn-secondary text-lg px-8 py-4">
+            <a
+              href="https://kdlite.yfcad.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary text-lg px-8 py-4 inline-block"
+            >
               Launch KD Lite Software
-            </button>
+            </a>
             <p className="text-sm text-neutral-300 mt-4">No download required • Works in your browser</p>
           </motion.div>
         </div>
@@ -293,9 +298,14 @@ const KDLite = () => {
             <p className="text-xl text-neutral-600 mb-8">
               Start designing for free today. No credit card required.
             </p>
-            <button className="btn-primary text-lg px-8 py-4">
+            <a
+              href="https://kdlite.yfcad.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-lg px-8 py-4 inline-block"
+            >
               Launch KD Lite Now
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>
