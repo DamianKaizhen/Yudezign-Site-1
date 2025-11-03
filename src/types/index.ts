@@ -53,3 +53,66 @@ export interface KDLiteFeature {
   title: string;
   description: string;
 }
+
+// Admin Panel Types
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  email?: string;
+  phone?: string;
+  headshot?: string;
+}
+
+// API Response Types
+
+export interface ApiResponse<T = unknown> {
+  success: boolean;
+  data?: T;
+  error?: string;
+  message?: string;
+}
+
+// GitHub Integration Types
+
+export interface GitHubCommitRequest {
+  filePath: string;
+  content: string;
+  commitMessage: string;
+}
+
+export interface GitHubCommitResponse {
+  success: boolean;
+  sha?: string;
+  message: string;
+}
+
+// Form Types
+
+export interface FormFieldProps {
+  label: string;
+  error?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}
+
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
+export interface DataTableColumn<T> {
+  key: keyof T | string;
+  label: string;
+  sortable?: boolean;
+  render?: (value: unknown, row: T) => React.ReactNode;
+}
+
+export interface DataTableAction<T> {
+  label: string;
+  icon?: React.ReactNode;
+  onClick: (row: T) => void;
+  variant?: 'primary' | 'secondary' | 'danger';
+}
