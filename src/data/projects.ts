@@ -185,5 +185,21 @@ export const projects: Project[] = [
     features: ['Soft Touch Finish', 'J-Pull Handles', 'Custom Made'],
     turnaroundTime: '3 weeks',
     description: 'Custom mudroom featuring sleek light gray frameless cabinets with contrasting black accents. The design includes a striking black slat wall panel for hanging accessories, a floating bench with integrated LED underlighting, and floor-to-ceiling storage maximizing every inch. Upper cabinets provide seasonal storage while lower units offer everyday access.',
+  },
+  {
+    id: 'proj_1762211111126_5yq7k83lo',
+    title: 'Stand Alone Closet',
+    category: 'closets',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211047922-e7a80490d1b6f97972585e011450bfb.jpg'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
+    location: 'Houston',
+    finish: 'Cashmere',
+    cabinetStyle: 'Frameless European',
+    features: ['Soft Touch Finish', 'Shoe Drawers', 'Removable Shelves'],
+    turnaroundTime: '1 week',
+    description: 'Elegant walk-in closet system in a sophisticated matte cashmere finish with brass hardware accents. Custom-configured with dual-height hanging rods, a central tower featuring soft-close drawers and cabinet doors, plus adjustable open shelving for accessories. The frameless European-style construction maximizes storage efficiency while the warm cashmere tone and metallic hardware create a luxurious, boutique-inspired space. ',
   }
 ];
