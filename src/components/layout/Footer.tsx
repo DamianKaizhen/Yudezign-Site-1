@@ -180,6 +180,9 @@ const Footer = () => {
             <Link to="/terms" className="hover:text-accent transition-colors">
               Terms of Service
             </Link>
+            <Link to="/admin/login" className="hover:text-accent transition-colors opacity-60 hover:opacity-100">
+              Admin
+            </Link>
           </div>
         </div>
       </div>

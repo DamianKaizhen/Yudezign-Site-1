@@ -11,6 +11,15 @@ import Contact from './pages/contact/Contact';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 
+// Layout wrapper for public pages with navigation and footer
+const PublicLayout = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex flex-col min-h-screen">
+    <Navigation />
+    <main className="flex-grow">{children}</main>
+    <Footer />
+  </div>
+);
+
 function App() {
   return (
     <Router>
@@ -20,26 +29,13 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard />} />
 
         {/* Public Routes - With Navigation/Footer */}
-        <Route
-          path="/*"
-          element={
-            <div className="flex flex-col min-h-screen">
-              <Navigation />
-              <main className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/portfolio" element={<Portfolio />} />
-                  <Route path="/portfolio/:category" element={<CategoryPage />} />
-                  <Route path="/finishes" element={<Finishes />} />
-                  <Route path="/kdlite" element={<KDLite />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          }
-        />
+        <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
+        <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
+        <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
+        <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
+        <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
+        <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
+        <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
       </Routes>
     </Router>
   );
