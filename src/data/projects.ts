@@ -170,5 +170,20 @@ export const projects: Project[] = [
     features: ['Soft Touch Finish', 'Shoe Drawers', 'Removable Shelves'],
     turnaroundTime: '1 week',
     description: 'Elegant walk-in closet system in a sophisticated matte cashmere finish with brass hardware accents. Custom-configured with dual-height hanging rods, a central tower featuring soft-close drawers and cabinet doors, plus adjustable open shelving for accessories. The frameless European-style construction maximizes storage efficiency while the warm cashmere tone and metallic hardware create a luxurious, boutique-inspired space. ',
+  },
+  {
+    id: 'proj_1762211365860_abfq3mufl',
+    title: 'Floating TV Cabinet',
+    category: 'custom',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211335381-IMG_9153.JPG'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211335381-IMG_9153.JPG',
+    location: 'Houston',
+    finish: 'Glossy White',
+    cabinetStyle: 'Frameless European',
+    features: ['Push Open', 'Hydraulic Pull down Doors'],
+    turnaroundTime: '1 week',
+    description: 'Striking floating media console in pristine high-gloss white with push-to-open hydraulic doors for a seamless, handle-free design. Custom-built frameless construction features soft-close mechanisms and adjustable interior shelving for AV equipment. The minimalist profile creates a sophisticated entertainment center that appears to hover against dramatic marble walls.',
   }
 ];
