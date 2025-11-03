@@ -2,16 +2,6 @@ import type { Finish } from '../types';
 
 export const finishes: Finish[] = [
   {
-    id: 'tn4',
-    name: 'Natural Bamboo',
-    styleId: 'touch-nature',
-    color: '#D4C5A9',
-    images: [],
-    inStock: true,
-    description: 'Sustainable bamboo with natural texture',
-    order: 4,
-  },
-  {
     id: 'tnp1',
     name: 'Rich Walnut',
     styleId: 'touch-nature-plus',
