@@ -190,5 +190,15 @@ export const finishes: Finish[] = [
     inStock: true,
     
     order: 6,
+  },
+  {
+    id: 'f_mhjoh31b3gz',
+    name: 'Fashionista',
+    styleId: 'touch-nature',
+    color: '#FFFFFF',
+    images: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206833889-Karisma_Fashionista.png'],
+    inStock: true,
+    
+    order: 7,
   }
 ];
