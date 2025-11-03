@@ -190,5 +190,15 @@ export const finishes: Finish[] = [
     inStock: true,
     description: 'Deep black with matte finish',
     order: 7,
+  },
+  {
+    id: 'f_mhjl7qjb22u',
+    name: 'Acacia Honey',
+    styleId: 'touch-nature',
+    color: '#FFFFFF',
+    images: ['https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png'],
+    inStock: true,
+    
+    order: 5,
   }
 ];
