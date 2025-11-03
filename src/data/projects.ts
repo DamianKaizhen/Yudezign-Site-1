@@ -18,21 +18,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '10',
-    title: 'Retail Store Display Cabinets',
-    category: 'commercial',
-    images: [
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400',
-    location: 'Galleria Area, Houston',
-    finish: 'Black Acrylic with Glass Doors',
-    cabinetStyle: 'Frameless European',
-    features: ['LED integrated lighting', 'Glass display doors', 'Adjustable shelving', 'Lock system'],
-    turnaroundTime: '4 weeks',
-    description: 'Sleek display cabinets for an upscale retail boutique showcasing luxury products.',
-  },
-  {
     id: 'proj_1762210660767_vdveltc0r',
     title: 'Dining Room Cabinet',
     category: 'custom',
