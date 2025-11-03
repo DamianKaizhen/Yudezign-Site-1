@@ -24,3 +24,10 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# Test artifacts
+playwright-report
+test-results
+test-results.json
+tests/.auth
+test-output.log
