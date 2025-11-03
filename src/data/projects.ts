@@ -50,22 +50,6 @@ export const projects: Project[] = [
     description: 'A sleek double vanity with ample storage and modern aesthetics.',
   },
   {
-    id: '4',
-    title: 'Custom Home Office',
-    category: 'custom',
-    images: [
-      'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800',
-      'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?w=800'
-    ],
-    thumbnail: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400',
-    location: 'Katy, Houston',
-    finish: 'Walnut Wood Grain',
-    cabinetStyle: 'Frameless European',
-    features: ['Built-in desk', 'File storage', 'Display shelving', 'Cable management'],
-    turnaroundTime: '3 weeks',
-    description: 'A custom-designed home office with integrated workspace and storage solutions.',
-  },
-  {
     id: '5',
     title: 'Elegant Dark Kitchen',
     category: 'kitchens',
