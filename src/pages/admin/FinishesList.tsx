@@ -93,14 +93,27 @@ export default function FinishesList() {
   const columns: DataTableColumn<Finish>[] = [
     {
       key: 'color',
-      label: 'Color',
-      render: (value) => (
+      label: 'Preview',
+      render: (value, finish) => (
         <div className="flex items-center gap-3">
-          <div
-            className="w-12 h-12 rounded-lg border-2 border-luxury-sand shadow-sm"
-            style={{ backgroundColor: value as string }}
-          />
-          <code className="text-xs font-mono text-luxury-gray-600">{value as string}</code>
+          {finish.images && finish.images.length > 0 ? (
+            <img
+              src={finish.images[0]}
+              alt={finish.name}
+              className="w-12 h-12 rounded-lg border-2 border-luxury-sand shadow-sm object-cover"
+            />
+          ) : (
+            <div
+              className="w-12 h-12 rounded-lg border-2 border-luxury-sand shadow-sm"
+              style={{ backgroundColor: value as string }}
+            />
+          )}
+          <code className="text-xs font-mono text-luxury-gray-600">
+            {finish.images && finish.images.length > 0
+              ? `${finish.images.length} image${finish.images.length > 1 ? 's' : ''}`
+              : value as string
+            }
+          </code>
         </div>
       ),
     },

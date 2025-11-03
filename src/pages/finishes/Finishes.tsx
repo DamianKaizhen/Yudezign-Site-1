@@ -5,12 +5,10 @@ import FinishSwatch from '../../components/ui/FinishSwatch';
 import { finishes } from '../../data/finishes';
 import { finishStyles } from '../../data/finishStyles';
 import { getVisibleStyles, getFinishesGroupedByStyle } from '../../lib/utils/finishesUtils';
-import type { Finish } from '../../types';
 import SEO from '../../components/SEO';
 
 const Finishes = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
-  const [selectedFinish, setSelectedFinish] = useState<Finish | null>(null);
 
   // Get visible styles for filtering
   const visibleStyles = getVisibleStyles(finishStyles);
@@ -135,8 +133,7 @@ const Finishes = () => {
                         >
                           <FinishSwatch
                             finish={finish}
-                            isSelected={selectedFinish?.id === finish.id}
-                            onClick={() => setSelectedFinish(finish)}
+                            enableLightbox={true}
                           />
                         </motion.div>
                       ))}
@@ -156,8 +153,7 @@ const Finishes = () => {
                   >
                     <FinishSwatch
                       finish={finish}
-                      isSelected={selectedFinish?.id === finish.id}
-                      onClick={() => setSelectedFinish(finish)}
+                      enableLightbox={true}
                     />
                   </motion.div>
                 ))}
