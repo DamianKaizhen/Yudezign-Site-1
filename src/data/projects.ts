@@ -94,5 +94,24 @@ export const projects: Project[] = [
     features: ['Push Open', 'Soft Close Hinges'],
     turnaroundTime: '1 week',
     description: 'Sleek European-style vanity fresh off our Houston production floor! 🔨\n✨ Honey Carini Walnut finish brings warm, natural elegance\n✨ Push-to-open drawers & doors - no handles, all style\n✨ Frameless construction maximizes storage space\n✨ 3/4" plywood boxes built to last',
+  },
+  {
+    id: 'proj_1762374370113_c0cqt40z4',
+    title: 'Wood look Kitchen Cabinets',
+    category: 'kitchens',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374237374-a208ae395b0e53f2cd4e6a652ed8775.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374240345-a9a683e6065b7d41a0d5759f8c21b49.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374245708-f745a099a8d9c7d132007572f4fd31b.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374249831-c4cdccf74626428f80d20583f872652.jpg'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
+    location: 'College Station',
+    finish: 'Touch of Nature',
+    cabinetStyle: 'Frameless European',
+    features: ['Wood Grain Finish', 'Soft Close Hinges', 'Custom Made'],
+    turnaroundTime: '4 weeks',
+    description: 'Two College Station homes coming together this week. Client chose Acacia Honey for that warm, natural grain. Frameless construction with soft-close hardware throughout, floor-to-ceiling uppers for maximum storage.\nAlways satisfying to see consistent quality across multiple installs. Four-week turnaround from our Houston facility kept both projects on schedule.',
   }
 ];
