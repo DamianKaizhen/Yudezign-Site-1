@@ -29,4 +29,11 @@ export const finishStyles: FinishStyle[] = [
     visible: true,
     order: 4,
   },
+  {
+    id: 'limited-edition-finishes',
+    name: 'Limited Edition Finishes',
+    
+    visible: true,
+    order: 5,
+  }
 ];
