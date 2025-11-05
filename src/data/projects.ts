@@ -78,5 +78,21 @@ export const projects: Project[] = [
     features: ['Push Open', 'Glossy Shine Finish'],
     turnaroundTime: '3 weeks',
     description: 'Luxurious kitchen featuring high-gloss crystal slate grey frameless cabinets with push-to-open technology for a sleek, handle-free design. The reflective finish creates dramatic depth while floor-to-ceiling storage maximizes functionality. Upper and lower cabinets offer generous storage with soft-close mechanisms throughout. European-style construction using premium 3/4" plywood ensures durability. The seamless integration and mirror-like finish complement the striking marble surfaces.',
+  },
+  {
+    id: 'proj_1762374033714_wno0hso8p',
+    title: 'Bathroom Vanity',
+    category: 'vanities',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374000550-IMG_2573.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374006977-IMG_2570.JPG'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374000550-IMG_2573.JPG',
+    location: 'Houston',
+    finish: 'Honey Carini Walnut',
+    cabinetStyle: 'Frameless European',
+    features: ['Push Open', 'Soft Close Hinges'],
+    turnaroundTime: '1 week',
+    description: 'Sleek European-style vanity fresh off our Houston production floor! 🔨\n✨ Honey Carini Walnut finish brings warm, natural elegance\n✨ Push-to-open drawers & doors - no handles, all style\n✨ Frameless construction maximizes storage space\n✨ 3/4" plywood boxes built to last',
   }
 ];
