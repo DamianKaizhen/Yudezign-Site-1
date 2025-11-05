@@ -59,7 +59,6 @@ function App() {
           <Route path="/admin/projects/new" element={<ProjectForm />} />
           <Route path="/admin/projects/:id" element={<ProjectForm />} />
           <Route path="/admin/finish-styles" element={<FinishStylesList />} />
-          <Route path="/admin/finish-styles/new" element={<FinishStyleForm />} />
           <Route path="/admin/finish-styles/:id" element={<FinishStyleForm />} />
           <Route path="/admin/finishes" element={<FinishesList />} />
           <Route path="/admin/finishes/new" element={<FinishForm />} />
