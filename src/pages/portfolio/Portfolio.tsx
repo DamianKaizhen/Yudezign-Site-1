@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../../components/ui/ProjectCard';
+import { ProjectModal } from '../../components/ui/ProjectModal';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 import SEO from '../../components/SEO';
@@ -9,6 +10,8 @@ type FilterCategory = 'all' | 'kitchens' | 'closets' | 'vanities' | 'custom' | '
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filters: { label: string; value: FilterCategory }[] = [
     { label: 'All Projects', value: 'all' },
@@ -22,6 +25,16 @@ const Portfolio = () => {
   const filteredProjects = activeFilter === 'all'
     ? projects
     : projects.filter((project: Project) => project.category === activeFilter);
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <>
@@ -101,7 +114,10 @@ const Portfolio = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <ProjectCard project={project} />
+                    <ProjectCard
+                      project={project}
+                      onClick={() => handleProjectClick(project)}
+                    />
                   </motion.div>
                 ))}
               </div>
@@ -114,6 +130,13 @@ const Portfolio = () => {
         </div>
       </section>
     </div>
+
+    {/* Project Detail Modal */}
+    <ProjectModal
+      project={selectedProject}
+      isOpen={isModalOpen}
+      onClose={handleCloseModal}
+    />
     </>
   );
 };
