@@ -47,6 +47,73 @@
 
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://yudezign.com/#organization",
+          "name": "Yudezign",
+          "alternateName": "YuDezign Custom Cabinets",
+          "description": "Houston's premier custom European frameless cabinet manufacturer specializing in kitchens, closets, vanities, and commercial projects.",
+          "url": "https://yudezign.com",
+          "telephone": "+12815688000",
+          "email": "damian.k@yudezign.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "13230 Murphy Rd, Ste 600",
+            "addressLocality": "Stafford",
+            "addressRegion": "TX",
+            "postalCode": "77477",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 29.7604,
+            "longitude": -95.3698
+          },
+          "areaServed": [
+            {"@type": "City", "name": "Houston, TX"},
+            {"@type": "City", "name": "Stafford, TX"},
+            {"@type": "City", "name": "Sugar Land, TX"},
+            {"@type": "City", "name": "Katy, TX"},
+            {"@type": "City", "name": "Pearland, TX"},
+            {"@type": "City", "name": "The Woodlands, TX"},
+            {"@type": "City", "name": "Missouri City, TX"},
+            {"@type": "City", "name": "Spring, TX"},
+            {"@type": "City", "name": "Cypress, TX"},
+            {"@type": "City", "name": "Bellaire, TX"}
+          ],
+          "priceRange": "$$-$$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "openingHours": "Mo-Fr 09:00-17:00",
+          "image": "https://yudezign.com/groupimage.png",
+          "logo": "https://yudezign.com/vite.svg",
+          "sameAs": [
+            "https://github.com/DamianKaizhen/Yukon"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://yudezign.com/#website",
+          "url": "https://yudezign.com",
+          "name": "Yudezign - Custom European Cabinets",
+          "description": "Premium European frameless cabinets crafted in Houston",
+          "publisher": {
+            "@id": "https://yudezign.com/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://yudezign.com/portfolio?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

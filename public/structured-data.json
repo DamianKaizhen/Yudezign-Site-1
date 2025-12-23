@@ -8,12 +8,14 @@
       "alternateName": "YuDezign Custom Cabinets",
       "description": "Houston's premier custom European frameless cabinet manufacturer specializing in kitchens, closets, vanities, and commercial projects.",
       "url": "https://yudezign.com",
-      "telephone": "+1-XXX-XXX-XXXX",
+      "telephone": "+12815688000",
       "email": "damian.k@yudezign.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Houston",
+        "streetAddress": "13230 Murphy Rd, Ste 600",
+        "addressLocality": "Stafford",
         "addressRegion": "TX",
+        "postalCode": "77477",
         "addressCountry": "US"
       },
       "geo": {
@@ -21,15 +23,18 @@
         "latitude": 29.7604,
         "longitude": -95.3698
       },
-      "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": 29.7604,
-          "longitude": -95.3698
-        },
-        "geoRadius": "50000"
-      },
+      "areaServed": [
+        {"@type": "City", "name": "Houston, TX"},
+        {"@type": "City", "name": "Stafford, TX"},
+        {"@type": "City", "name": "Sugar Land, TX"},
+        {"@type": "City", "name": "Katy, TX"},
+        {"@type": "City", "name": "Pearland, TX"},
+        {"@type": "City", "name": "The Woodlands, TX"},
+        {"@type": "City", "name": "Missouri City, TX"},
+        {"@type": "City", "name": "Spring, TX"},
+        {"@type": "City", "name": "Cypress, TX"},
+        {"@type": "City", "name": "Bellaire, TX"}
+      ],
       "priceRange": "$$-$$$",
       "paymentAccepted": "Cash, Check, Credit Card",
       "openingHours": "Mo-Fr 09:00-17:00",

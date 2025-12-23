@@ -381,7 +381,7 @@ const Home = () => {
                 </div>
                 <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">Houston Made, Houston Proud</h3>
                 <p className="text-body text-luxury-gray-600 leading-relaxed">
-                  Local crafting means no shipping delays, personalized service, and support for Houston businesses.
+                  Local crafting means no shipping delays, personalized service, and support for Houston businesses. Serving Memorial, Sugar Land, Katy, The Woodlands, and all of Greater Houston.
                 </p>
               </motion.div>
             </InView>

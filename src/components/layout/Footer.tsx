@@ -175,6 +175,50 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Areas We Serve */}
+        <div className="border-t border-white/20 pt-8 mb-8">
+          <h3 className="text-lg font-semibold mb-4 text-center">Proudly Serving Greater Houston</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-neutral-200">
+            <div>
+              <h4 className="text-accent font-medium mb-2">Inner Loop</h4>
+              <ul className="space-y-1">
+                <li>Memorial</li>
+                <li>River Oaks</li>
+                <li>Galleria</li>
+                <li>Bellaire</li>
+                <li>West University</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-accent font-medium mb-2">Southwest</h4>
+              <ul className="space-y-1">
+                <li>Sugar Land</li>
+                <li>Missouri City</li>
+                <li>Pearland</li>
+                <li>Stafford</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-accent font-medium mb-2">West</h4>
+              <ul className="space-y-1">
+                <li>Katy</li>
+                <li>Cinco Ranch</li>
+                <li>Cypress</li>
+                <li>Energy Corridor</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-accent font-medium mb-2">North</h4>
+              <ul className="space-y-1">
+                <li>The Woodlands</li>
+                <li>Spring</li>
+                <li>Champions</li>
+                <li>Tomball</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* Newsletter Signup */}
         <div className="border-t border-white/20 pt-8 mb-8">
           <div className="max-w-xl">
