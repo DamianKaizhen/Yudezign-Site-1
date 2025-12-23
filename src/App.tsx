@@ -12,6 +12,8 @@ import Finishes from './pages/finishes/Finishes';
 import KDLite from './pages/kdlite/KDLite';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import Privacy from './pages/legal/Privacy';
+import TermsOfService from './pages/legal/TermsOfService';
 import Login from './pages/admin/Login';
 import Dashboard from './pages/admin/Dashboard';
 import ProjectsList from './pages/admin/ProjectsList';
@@ -83,6 +85,8 @@ function App() {
           <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+          <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
+          <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
         </Routes>
         </Router>
         {/* Vercel Analytics - Track page views and user interactions */}
