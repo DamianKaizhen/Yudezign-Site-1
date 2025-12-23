@@ -1,0 +1,293 @@
+import React from 'react';
+import { useParams, Navigate } from 'react-router-dom';
+import SEO from '../../components/SEO';
+import ServiceHero from './components/ServiceHero';
+import { services } from '../../data/services';
+import { generateServiceSchema, generateFAQSchema } from '../../lib/schema';
+import {
+  CheckCircle,
+  ArrowRight,
+  Star,
+  Award,
+  Clock,
+  DollarSign,
+  Palette,
+  Package,
+  Wrench
+} from 'lucide-react';
+
+const ServicePage: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+
+  // Find service by slug
+  const service = Object.values(services).find(s => s.slug === slug);
+
+  // If service not found, redirect
+  if (!service) {
+    return <Navigate to="/" replace />;
+  }
+
+  // Generate structured data
+  const serviceSchema = generateServiceSchema({
+    name: service.title,
+    description: service.description,
+    provider: 'YuDezign Custom Cabinets',
+    areaServed: 'Houston, TX',
+    priceRange: service.priceRange,
+  });
+
+  const faqSchema = service.faqs ? generateFAQSchema(service.faqs) : null;
+
+  return (
+    <>
+      <SEO
+        title={service.seo.title}
+        description={service.seo.metaDescription}
+        keywords={service.seo.keywords}
+        canonical={`https://yudezign.com/services/${service.slug}`}
+        ogType="service"
+        structuredData={[serviceSchema, faqSchema].filter(Boolean)}
+      />
+
+      {/* Hero */}
+      <ServiceHero service={service} />
+
+      {/* Design Options */}
+      {service.designOptions && service.designOptions.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <Palette className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Design Options
+              </h2>
+              <p className="text-lg text-slate-600">
+                Choose the style that perfectly fits your home
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {service.designOptions.map((option, idx) => (
+                <div key={idx} className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-amber-600 hover:shadow-lg transition-all">
+                  <h3 className="font-semibold text-xl text-slate-900 mb-3">{option.style}</h3>
+                  <p className="text-slate-600 mb-4">{option.description}</p>
+                  <div className="space-y-2">
+                    {option.features.map((feature, fidx) => (
+                      <div key={fidx} className="flex items-start text-sm">
+                        <CheckCircle className="w-4 h-4 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-700">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Materials */}
+      {service.materials && service.materials.length > 0 && (
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <Package className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Premium Materials
+              </h2>
+              <p className="text-lg text-slate-600">
+                Quality construction that lasts a lifetime
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {service.materials.map((material, idx) => (
+                <div key={idx} className="bg-white rounded-xl p-6 shadow-md">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="font-semibold text-lg text-slate-900">{material.name}</h3>
+                    <Award className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <p className="text-sm text-slate-600 mb-4">{material.description}</p>
+                  <div className="pt-4 border-t border-slate-200">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-slate-600">Price Range</span>
+                      <span className="font-semibold text-slate-900">{material.priceRange}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Process */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Wrench className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Our Process
+            </h2>
+            <p className="text-lg text-slate-600">
+              From consultation to installation, we make it easy
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                step: '1',
+                title: 'Free Consultation',
+                desc: 'Meet with our designer to discuss your vision, measure space, and explore options.',
+                icon: Star,
+              },
+              {
+                step: '2',
+                title: 'Design & Quote',
+                desc: 'Receive 3D renderings and detailed proposal with transparent pricing.',
+                icon: Palette,
+              },
+              {
+                step: '3',
+                title: 'Manufacturing',
+                desc: 'Your cabinets are precision-built in 6-8 weeks with quality control.',
+                icon: Award,
+              },
+              {
+                step: '4',
+                title: 'Installation',
+                desc: 'Professional installation with final walkthrough and satisfaction guarantee.',
+                icon: CheckCircle,
+              },
+            ].map((step) => (
+              <div key={step.step} className="text-center">
+                <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  {step.step}
+                </div>
+                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-6 h-6 text-amber-600" />
+                </div>
+                <h3 className="font-semibold text-lg text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-sm text-slate-600">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              What's Included
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.features.map((feature, idx) => (
+              <div key={idx} className="flex items-start bg-white rounded-lg p-4 shadow-sm">
+                <CheckCircle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-700">{feature}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      {service.faqs && service.faqs.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {service.faqs.map((faq, idx) => (
+                <details key={idx} className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
+                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+                    <span>{faq.question}</span>
+                    <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                  </summary>
+                  <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related Services */}
+      {service.relatedServices && service.relatedServices.length > 0 && (
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                You Might Also Like
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {service.relatedServices.map((relatedSlug, idx) => {
+                const related = services[relatedSlug];
+                if (!related) return null;
+                return (
+                  <a
+                    key={idx}
+                    href={`/services/${related.slug}`}
+                    className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border-2 border-transparent hover:border-amber-600 group"
+                  >
+                    <h3 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 transition-colors mb-2">
+                      {related.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mb-4">{related.description}</p>
+                    <div className="flex items-center text-amber-600 font-medium text-sm">
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Get Started?
+          </h2>
+          <p className="text-xl text-slate-300 mb-8">
+            Schedule your free consultation and see how we can transform your space.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+            >
+              Get Free Consultation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
+            <a
+              href="/pricing"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
+            >
+              <DollarSign className="mr-2 w-5 h-5" />
+              View Pricing
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default ServicePage;

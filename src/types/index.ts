@@ -154,3 +154,27 @@ export interface SiteSettings {
     youtube?: string;
   };
 }
+
+// SEO Page Types (for new location, service, blog, FAQ, and comparison pages)
+
+// Location Types
+export type { LocationData, NeighborhoodGroup } from './location';
+
+// Service Types
+export type { ServiceData, PricingTier } from './service';
+
+// Blog Types
+export type { BlogPost, BlogCategory } from './blog';
+export { blogCategories } from './blog';
+
+// FAQ Types
+export type { FAQ, FAQCategory, FAQCategoryInfo } from './faq';
+export { faqCategories } from './faq';
+
+// Comparison Types
+export type {
+  ComparisonData,
+  ComparisonOption,
+  ComparisonRow,
+  ComparisonType
+} from './comparison';

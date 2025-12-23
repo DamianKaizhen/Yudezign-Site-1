@@ -30,6 +30,17 @@ import TeamMembersList from './pages/admin/TeamMembersList';
 import TeamMemberForm from './pages/admin/TeamMemberForm';
 import SiteSettings from './pages/admin/SiteSettings';
 
+// SEO Pages
+import PricingPage from './pages/quick-wins/PricingPage';
+import ShowroomPage from './pages/quick-wins/ShowroomPage';
+import WarrantyPage from './pages/quick-wins/WarrantyPage';
+import LocationPage from './pages/locations/LocationPage';
+import ServicePage from './pages/services/ServicePage';
+import BlogIndex from './pages/blog/BlogIndex';
+import BlogPost from './pages/blog/BlogPost';
+import FAQPage from './pages/faq/FAQPage';
+import ComparisonPage from './pages/comparison/ComparisonPage';
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -87,6 +98,27 @@ function App() {
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
           <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
           <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
+
+          {/* Quick Win Pages */}
+          <Route path="/pricing" element={<PublicLayout><PricingPage /></PublicLayout>} />
+          <Route path="/showroom" element={<PublicLayout><ShowroomPage /></PublicLayout>} />
+          <Route path="/warranty" element={<PublicLayout><WarrantyPage /></PublicLayout>} />
+
+          {/* Location Pages */}
+          <Route path="/locations/:slug" element={<PublicLayout><LocationPage /></PublicLayout>} />
+
+          {/* Service Pages */}
+          <Route path="/services/:slug" element={<PublicLayout><ServicePage /></PublicLayout>} />
+
+          {/* Blog Pages */}
+          <Route path="/blog" element={<PublicLayout><BlogIndex /></PublicLayout>} />
+          <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
+
+          {/* FAQ */}
+          <Route path="/faq" element={<PublicLayout><FAQPage /></PublicLayout>} />
+
+          {/* Comparison Pages */}
+          <Route path="/vs/:slug" element={<PublicLayout><ComparisonPage /></PublicLayout>} />
         </Routes>
         </Router>
         {/* Vercel Analytics - Track page views and user interactions */}

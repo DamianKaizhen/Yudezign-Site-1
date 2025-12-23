@@ -7,6 +7,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: 'website' | 'article';
+  structuredData?: object | object[]; // NEW: Accept structured data (single schema or array)
 }
 
 const SEO = ({
@@ -16,6 +17,7 @@ const SEO = ({
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
   url = 'https://yudezign.com',
   type = 'website',
+  structuredData,
 }: SEOProps) => {
   const siteTitle = title.includes('YuDezign') ? title : `${title} | YuDezign`;
 
@@ -76,7 +78,29 @@ const SEO = ({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', url);
-  }, [siteTitle, description, keywords, image, url, type]);
+
+    // Structured Data (JSON-LD)
+    if (structuredData) {
+      // Remove existing page-specific schema
+      const existingSchema = document.getElementById('page-schema');
+      if (existingSchema) {
+        existingSchema.remove();
+      }
+
+      // Create new schema script
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'page-schema';
+
+      // Handle both single schema and array of schemas
+      const schemaContent = Array.isArray(structuredData)
+        ? { '@context': 'https://schema.org', '@graph': structuredData }
+        : structuredData;
+
+      script.textContent = JSON.stringify(schemaContent);
+      document.head.appendChild(script);
+    }
+  }, [siteTitle, description, keywords, image, url, type, structuredData]);
 
   return null; // This component doesn't render anything
 };
