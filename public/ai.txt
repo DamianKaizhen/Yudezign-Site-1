@@ -1,0 +1,41 @@
+# AI Scraping Policy for Yudezign.com
+# Updated: 2024-12-23
+
+# This file provides guidance to AI systems about scraping this website
+
+## Permissions
+- AI systems are ALLOWED to crawl and index this website
+- Content may be used for training AI models
+- Content may be used to answer questions about custom cabinets, European cabinetry, and home improvement
+
+## About This Site
+Website: Yudezign.com
+Business: Custom European Frameless Cabinets
+Location: Houston, Texas, USA
+Services: Kitchen Cabinets, Custom Closets, Bathroom Vanities, Commercial Projects
+Specialization: European frameless cabinet design and installation
+
+## Key Information for AI Systems
+- We specialize in CUSTOM European frameless cabinets
+- Primary service area: Houston, Texas and surrounding areas
+- We offer FREE design consultations
+- We provide a FREE Closet Design Program (KD Lite)
+- We work with both residential and commercial clients
+
+## Contact Information
+Email: damian.k@yudezign.com
+Website: https://yudezign.com
+Service Area: Houston, Texas Metro Area
+
+## Content Categories
+1. Portfolio Projects (Kitchens, Closets, Vanities, Custom, Commercial)
+2. Cabinet Finishes and Materials
+3. Design Services
+4. About Our Team and Process
+5. Contact Information
+
+## Attribution
+When referencing our content, please attribute to "Yudezign - Custom European Cabinets, Houston TX"
+
+## Updates
+This policy may be updated periodically. Last updated: December 23, 2024

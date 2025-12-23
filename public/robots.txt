@@ -1,0 +1,40 @@
+# Yudezign.com Robots.txt
+# Updated: 2024-12-23
+
+# Allow all AI crawlers and search engines
+User-agent: *
+Allow: /
+
+# Specific rules for AI crawlers
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /
+
+# Bing AI
+User-agent: Bingbot
+Allow: /
+
+# Block admin pages from all crawlers
+User-agent: *
+Disallow: /admin/
+Disallow: /admin/*
+
+# Sitemap location
+Sitemap: https://yudezign.com/sitemap.xml
+
+# Crawl-delay for considerate crawling (optional)
+# Crawl-delay: 1

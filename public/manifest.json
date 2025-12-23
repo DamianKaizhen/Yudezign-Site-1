@@ -1,0 +1,28 @@
+{
+  "name": "Yudezign - Custom European Cabinets",
+  "short_name": "Yudezign",
+  "description": "Houston's premier custom European frameless cabinet maker. Specializing in kitchens, closets, vanities, and commercial projects.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a1a1a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": [
+    "business",
+    "home improvement",
+    "design",
+    "construction"
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
+}

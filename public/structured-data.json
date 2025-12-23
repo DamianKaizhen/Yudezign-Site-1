@@ -1,0 +1,147 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://yudezign.com/#organization",
+      "name": "Yudezign",
+      "alternateName": "YuDezign Custom Cabinets",
+      "description": "Houston's premier custom European frameless cabinet manufacturer specializing in kitchens, closets, vanities, and commercial projects.",
+      "url": "https://yudezign.com",
+      "telephone": "+1-XXX-XXX-XXXX",
+      "email": "damian.k@yudezign.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 29.7604,
+        "longitude": -95.3698
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 29.7604,
+          "longitude": -95.3698
+        },
+        "geoRadius": "50000"
+      },
+      "priceRange": "$$-$$$",
+      "paymentAccepted": "Cash, Check, Credit Card",
+      "openingHours": "Mo-Fr 09:00-17:00",
+      "image": "https://yudezign.com/groupimage.png",
+      "logo": "https://yudezign.com/vite.svg",
+      "sameAs": [
+        "https://github.com/DamianKaizhen/Yukon"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yudezign.com/#website",
+      "url": "https://yudezign.com",
+      "name": "Yudezign - Custom European Cabinets",
+      "description": "Premium European frameless cabinets crafted in Houston",
+      "publisher": {
+        "@id": "https://yudezign.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://yudezign.com/portfolio?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Custom Cabinet Manufacturing",
+      "provider": {
+        "@id": "https://yudezign.com/#organization"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Houston",
+        "containedIn": {
+          "@type": "State",
+          "name": "Texas"
+        }
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Cabinet Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Kitchen Cabinets",
+              "description": "European frameless kitchen cabinet design and installation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Closet Systems",
+              "description": "Custom closet design with free KD Lite program"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bathroom Vanities",
+              "description": "Custom bathroom vanity design and manufacturing"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Cabinetry",
+              "description": "Commercial cabinet solutions for offices, restaurants, and retail"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://yudezign.com/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://yudezign.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Portfolio",
+          "item": "https://yudezign.com/portfolio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Finishes",
+          "item": "https://yudezign.com/finishes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "About",
+          "item": "https://yudezign.com/about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Contact",
+          "item": "https://yudezign.com/contact"
+        }
+      ]
+    }
+  ]
+}

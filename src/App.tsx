@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SiteSettingsProvider } from './contexts/SiteSettingsContext';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
@@ -83,6 +85,10 @@ function App() {
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
         </Routes>
         </Router>
+        {/* Vercel Analytics - Track page views and user interactions */}
+        <Analytics />
+        {/* Vercel Speed Insights - Monitor real user performance metrics */}
+        <SpeedInsights />
       </SiteSettingsProvider>
     </QueryClientProvider>
   );
