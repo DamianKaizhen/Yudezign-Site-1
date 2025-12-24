@@ -19,7 +19,7 @@ const ShowroomPage: React.FC = () => {
   const businessInfo = {
     name: 'YuDezign Custom Cabinets',
     address: '123 Design Boulevard, Houston, TX 77001', // TODO: Replace with actual address
-    phone: '(713) 555-0123', // TODO: Replace with actual phone
+    phone: '(281) 568-8000',
     email: 'info@yudezign.com',
     hours: {
       monday: '9:00 AM - 6:00 PM',

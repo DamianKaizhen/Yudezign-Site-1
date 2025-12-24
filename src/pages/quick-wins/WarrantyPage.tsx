@@ -267,7 +267,7 @@ const WarrantyPage: React.FC = () => {
                 step: '1',
                 title: 'Contact Us',
                 desc: 'Call or email our service team with details about the issue. Include photos if possible.',
-                action: 'Phone: (713) 555-0123 or Email: service@yudezign.com',
+                action: 'Phone: (281) 568-8000 or Email: service@yudezign.com',
               },
               {
                 step: '2',
@@ -403,11 +403,11 @@ const WarrantyPage: React.FC = () => {
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
-              href="tel:7135550123"
+              href="tel:2815688000"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
             >
               <Phone className="mr-2 w-5 h-5" />
-              (713) 555-0123
+              (281) 568-8000
             </a>
           </div>
         </div>
