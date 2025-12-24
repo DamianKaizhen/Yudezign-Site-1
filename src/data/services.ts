@@ -460,7 +460,7 @@ export const services: ServiceData[] = [
       'desk and cabinets houston',
       'home office furniture houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1920&q=90',
+    heroImage: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1920&q=80',
     icon: 'Laptop',
     portfolioCategory: 'custom',
     overview:
@@ -577,7 +577,7 @@ export const services: ServiceData[] = [
       'custom garage cabinets',
       'garage workbench cabinets'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1558618666-f76a99d0b0b6?w=1920&q=90',
+    heroImage: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=1920&q=80',
     icon: 'Wrench',
     portfolioCategory: 'custom',
     overview:

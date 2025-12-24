@@ -9,7 +9,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-01-14',
     updatedDate: '2025-01-14',
@@ -42,7 +42,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-03-22',
     updatedDate: '2025-03-22',
@@ -75,7 +75,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-05-18',
     updatedDate: '2025-05-18',
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-07-09',
     updatedDate: '2025-07-09',
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-09-25',
     updatedDate: '2025-09-25',
@@ -174,7 +174,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: 'YuDezign Team',
       bio: 'Houston custom cabinet specialists with 15+ years experience',
-      avatar: '/images/team/yudezign-team.jpg',
+      avatar: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
     },
     publishedDate: '2025-11-12',
     updatedDate: '2025-11-12',

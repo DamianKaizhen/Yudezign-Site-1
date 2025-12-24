@@ -33,7 +33,7 @@ const CostGuide2025: React.FC = () => {
           </h1>
           <div className="flex items-center gap-6 text-sm text-slate-600">
             <div className="flex items-center gap-2">
-              <img src="/images/team/yudezign-team.jpg" alt="YuDezign Team" className="w-10 h-10 rounded-full" />
+              <img src="https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png" alt="YuDezign Team" className="w-10 h-10 rounded-full" />
               <span>By YuDezign Team</span>
             </div>
             <span>•</span>
