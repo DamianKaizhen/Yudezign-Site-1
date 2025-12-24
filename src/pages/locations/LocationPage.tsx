@@ -66,7 +66,7 @@ const LocationPage: React.FC = () => {
               {
                 icon: Clock,
                 title: 'Fast Service',
-                desc: `Quick response times for ${location.name} area. Most projects completed in 6-8 weeks.`,
+                desc: `Quick response times for ${location.name} area. Most projects completed in 2-4 weeks.`,
               },
               {
                 icon: Star,

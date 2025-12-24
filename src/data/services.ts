@@ -104,7 +104,7 @@ export const services: ServiceData[] = [
       },
       {
         icon: 'Clock',
-        title: '2-3 Week Turnaround',
+        title: '2-4 Week Turnaround',
         description: 'Local Houston manufacturing means fast delivery. No 8-12 week waits for imports.'
       }
     ],
@@ -125,7 +125,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Once approved, we manufacture your cabinets locally in Houston. You\'ll receive progress updates.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,
@@ -191,7 +191,7 @@ export const services: ServiceData[] = [
       },
       {
         question: 'How long does the process take?',
-        answer: 'From consultation to delivery: 3-4 weeks total. Design and quote takes 3-5 days, manufacturing takes 2-3 weeks. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores.'
+        answer: 'From consultation to delivery: 3-5 weeks total. Design and quote takes 3-5 days, manufacturing takes 2-4 weeks. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores.'
       }
     ],
     relatedProjects: [],
@@ -281,7 +281,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Precision-cut components with pre-drilled adjustable shelf holes.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,
@@ -402,7 +402,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Built with marine-grade materials and sealed for moisture resistance.',
-        duration: '2-3 weeks'
+        duration: '2 weeks'
       },
       {
         step: 4,
@@ -518,7 +518,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Built-in desk, cabinets, and shelving fabricated as one integrated system.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,
@@ -634,7 +634,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Heavy-duty construction with wall-mounting systems.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,
@@ -750,7 +750,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Cabinets with integrated wire management and ventilation.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,
@@ -866,7 +866,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Moisture-resistant materials, custom sizing around machines.',
-        duration: '2-3 weeks'
+        duration: '2-4 weeks'
       },
       {
         step: 4,

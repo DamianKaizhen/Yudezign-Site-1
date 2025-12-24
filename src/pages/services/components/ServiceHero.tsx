@@ -64,7 +64,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
                 </div>
                 <div>
                   <div className="text-sm text-slate-400">Typical Timeline</div>
-                  <div className="text-2xl font-bold text-white">6-8 weeks</div>
+                  <div className="text-2xl font-bold text-white">2-4 weeks</div>
                 </div>
               </div>
             </div>
