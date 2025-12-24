@@ -79,11 +79,11 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
 
           {/* Hero Image */}
           <div className="relative">
-            <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="rounded-2xl overflow-hidden shadow-2xl h-[500px]">
               <img
                 src={service.heroImage}
                 alt={service.name}
-                className="w-full h-96 object-cover"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
             </div>
