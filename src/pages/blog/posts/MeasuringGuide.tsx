@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { Ruler, CheckCircle, AlertCircle, ArrowRight, Calculator, ClipboardList, Camera, FileText } from 'lucide-react';
+import { CheckCircle, AlertCircle, ArrowRight, ClipboardList, Camera } from 'lucide-react';
 
 const MeasuringGuide: React.FC = () => {
   return (

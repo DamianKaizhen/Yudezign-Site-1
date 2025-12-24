@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { Layout, Maximize2, DollarSign, CheckCircle, XCircle, ArrowRight, Package, Hammer, TrendingUp } from 'lucide-react';
+import { Layout, Maximize2, CheckCircle, XCircle, ArrowRight, Package, TrendingUp } from 'lucide-react';
 
 const FramelessVsFramed: React.FC = () => {
   return (

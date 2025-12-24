@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { Globe, Hammer, TrendingUp, CheckCircle, DollarSign, ArrowRight, Palette, Wrench } from 'lucide-react';
+import { Globe, Hammer, CheckCircle, DollarSign, ArrowRight, Palette, Wrench } from 'lucide-react';
 
 const EuropeanVsAmerican: React.FC = () => {
   return (

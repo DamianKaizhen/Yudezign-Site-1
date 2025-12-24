@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { TrendingUp, Palette, Lightbulb, CheckCircle, ArrowRight, Sparkles, Home, Leaf } from 'lucide-react';
+import { TrendingUp, Palette, Lightbulb, CheckCircle, ArrowRight, Sparkles, Leaf } from 'lucide-react';
 
 const KitchenTrends2025: React.FC = () => {
   return (

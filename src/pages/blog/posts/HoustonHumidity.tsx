@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { Droplet, AlertTriangle, Shield, CheckCircle, XCircle, ArrowRight, ThermometerSun, Wind } from 'lucide-react';
+import { Droplet, AlertTriangle, Shield, CheckCircle, XCircle, ArrowRight, ThermometerSun } from 'lucide-react';
 
 const HoustonHumidity: React.FC = () => {
   return (
