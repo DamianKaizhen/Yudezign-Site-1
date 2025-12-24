@@ -122,9 +122,9 @@ function App() {
           <Route path="/blog" element={<PublicLayout><BlogIndex /></PublicLayout>} />
           <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<PublicLayout><CostGuide2025 /></PublicLayout>} />
           <Route path="/blog/frameless-vs-framed-cabinets" element={<PublicLayout><FramelessVsFramed /></PublicLayout>} />
-          <Route path="/blog/kitchen-cabinet-trends-houston-2025" element={<PublicLayout><KitchenTrends2025 /></PublicLayout>} />
-          <Route path="/blog/houston-humidity-cabinet-care" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
-          <Route path="/blog/how-to-measure-for-custom-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
+          <Route path="/blog/kitchen-trends-2025" element={<PublicLayout><KitchenTrends2025 /></PublicLayout>} />
+          <Route path="/blog/houston-humidity-cabinets" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
+          <Route path="/blog/how-to-measure-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
           <Route path="/blog/european-vs-american-cabinets" element={<PublicLayout><EuropeanVsAmerican /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
 

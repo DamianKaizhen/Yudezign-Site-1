@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
     relatedServices: ['kitchen-cabinets', 'bathroom-vanities'],
   },
   {
-    slug: 'kitchen-cabinet-trends-houston-2025',
+    slug: 'kitchen-trends-2025',
     title: 'Best Kitchen Cabinet Trends for Houston Homes 2025',
     excerpt: 'Discover the hottest kitchen cabinet trends for 2025 including colors, styles, materials, and features that work beautifully in Houston\'s diverse home styles from modern high-rises to classic Heights bungalows.',
     content: '',
