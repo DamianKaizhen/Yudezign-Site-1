@@ -6,29 +6,12 @@
 
 export interface ServiceData {
   slug: string;
-  title: string;
-  category: string;
-  description: string;
-  priceRange: string;
-  features: string[];
-  designOptions?: {
-    style: string;
-    description: string;
-    features: string[];
-  }[];
-  materials?: {
-    name: string;
-    description: string;
-    priceRange: string;
-  }[];
-  faqs?: {
-    question: string;
-    answer: string;
-  }[];
-  relatedServices?: string[];
-  seo: {
-    title: string;
-    metaDescription: string;
-    keywords: string[];
-  };
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  heroImage: string;
+  icon: string;
+  overview: string;
+  [key: string]: any; // Allow additional properties for flexibility
 }

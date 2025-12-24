@@ -6,26 +6,17 @@
 
 export interface LocationData {
   slug: string;
-  city: string;
-  zipCode: string;
-  description: string;
+  name: string;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
+  heroImage: string;
   coordinates: {
     lat: number;
     lng: number;
   };
   neighborhoods: string[];
-  faqs?: {
-    question: string;
-    answer: string;
-  }[];
-  relatedLocations?: string[];
-  seo: {
-    title: string;
-    metaDescription: string;
-    keywords: string[];
-    h2Heading: string;
-    content: string;
-  };
+  [key: string]: any; // Allow additional properties
 }
 
 export interface NeighborhoodGroup {

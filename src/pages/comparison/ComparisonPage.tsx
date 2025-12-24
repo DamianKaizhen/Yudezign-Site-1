@@ -3,7 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import { comparisons } from '../../data/comparisons';
 import { generateFAQSchema } from '../../lib/schema';
-import { CheckCircle, X, ArrowRight, Award, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Award } from 'lucide-react';
 
 const ComparisonPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();

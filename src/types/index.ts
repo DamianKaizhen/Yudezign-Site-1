@@ -161,10 +161,10 @@ export interface SiteSettings {
 export type { LocationData, NeighborhoodGroup } from './location';
 
 // Service Types
-export type { ServiceData, PricingTier } from './service';
+export type { ServiceData } from './service';
 
 // Blog Types
-export type { BlogPost, BlogCategory } from './blog';
+export type { BlogPost, BlogAuthor, BlogCategory } from './blog';
 export { blogCategories } from './blog';
 
 // FAQ Types
@@ -174,7 +174,6 @@ export { faqCategories } from './faq';
 // Comparison Types
 export type {
   ComparisonData,
-  ComparisonOption,
   ComparisonRow,
   ComparisonType
 } from './comparison';

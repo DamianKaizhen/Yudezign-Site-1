@@ -45,7 +45,7 @@ const SEO = ({
     // Primary Meta Tags
     updateMetaTag('title', siteTitle);
     updateMetaTag('description', description);
-    updateMetaTag('keywords', keywords);
+    updateMetaTag('keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
 
     // Open Graph / Facebook
     updateMetaTag('og:type', type, true);
