@@ -319,7 +319,7 @@ export const services: ServiceData[] = [
       }
     ],
     relatedProjects: [],
-    relatedServices: ['bedroom-murphy-beds', 'laundry-room-cabinets'],
+    relatedServices: ['laundry-room-cabinets', 'bathroom-vanities'],
     houstonAngle:
       'Houston\'s high AC usage creates unique closet challenges. We design for airflow to prevent mold on leather goods and avoid heavy winter storage (you don\'t need it!).'
   },
@@ -556,7 +556,7 @@ export const services: ServiceData[] = [
       }
     ],
     relatedProjects: [],
-    relatedServices: ['murphy-beds', 'entertainment-centers'],
+    relatedServices: ['entertainment-centers'],
     houstonAngle:
       'Houston\'s remote work boom demands professional home offices. Our built-ins create Zoom-ready backgrounds while maximizing productivity.'
   },
@@ -675,122 +675,6 @@ export const services: ServiceData[] = [
     relatedServices: ['laundry-room-cabinets', 'mudroom-storage'],
     houstonAngle:
       'Houston garages face flooding and extreme heat. Our floating cabinet design (6" off floor) protects against water damage while sealed finishes withstand temperature swings.'
-  },
-
-  {
-    slug: 'murphy-beds',
-    name: 'Murphy Beds',
-    metaTitle: 'Murphy Bed Cabinets Houston | Wall Bed Systems | YuDezign',
-    metaDescription:
-      'Custom Murphy bed cabinets Houston. Wall bed with surrounding storage. Guest rooms, home offices, studios. Space-saving solutions.',
-    keywords: [
-      'murphy bed cabinets houston',
-      'wall bed houston',
-      'murphy bed with cabinets',
-      'guest room murphy bed'
-    ],
-    heroImage: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=90',
-    icon: 'Bed',
-    overview:
-      'Transform spare rooms into dual-purpose spaces with Murphy bed systems. Custom surrounding cabinetry provides storage while the bed folds away to create a home office, craft room, or playroom during the day.',
-    designOptions: [
-      {
-        title: 'Office by Day, Bedroom by Night',
-        description: 'Desk and shelving that work with bed down',
-        image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=90'
-      },
-      {
-        title: 'Hidden Bed System',
-        description: 'Bed concealed behind cabinet doors, looks like wall unit',
-        image: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=800&q=90'
-      },
-      {
-        title: 'With Wardrobe Storage',
-        description: 'Flanking wardrobes for guest clothing storage',
-        image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=90'
-      }
-    ],
-    materials: ['Durable Melamine or HPL', 'Heavy-Duty Hardware', 'Quality Bed Mechanisms'],
-    features: [
-      {
-        icon: 'Home',
-        title: 'Dual-Purpose Rooms',
-        description: 'Guest bedroom when needed, home office or craft room the rest of the time.'
-      },
-      {
-        icon: 'Minimize2',
-        title: 'Space Saving',
-        description: 'Reclaim 50+ square feet when bed is up. Perfect for Houston townhomes and condos.'
-      },
-      {
-        icon: 'Shield',
-        title: 'Safety Features',
-        description: 'Piston lifts, safety straps, locking mechanisms. Easy one-person operation.'
-      },
-      {
-        icon: 'Box',
-        title: 'Surrounding Storage',
-        description: 'Shelving, wardrobes, desks integrated with the bed system.'
-      }
-    ],
-    process: [
-      {
-        step: 1,
-        title: 'Room Planning',
-        description: 'Measure room, discuss primary and secondary uses (office + guest, craft + guest, etc.).',
-        duration: '1 hour'
-      },
-      {
-        step: 2,
-        title: 'Design Integration',
-        description: 'Design cabinets around bed mechanism, ensure clearances and functionality.',
-        duration: '3-5 days'
-      },
-      {
-        step: 3,
-        title: 'Manufacturing',
-        description: 'Cabinets built to integrate with bed hardware.',
-        duration: '2-3 weeks'
-      },
-      {
-        step: 4,
-        title: 'Bed Mechanism',
-        description: 'We provide cabinet system, you order bed mechanism separately or we can coordinate.',
-        duration: 'Varies'
-      }
-    ],
-    pricingGuide: [
-      {
-        level: 'Basic Murphy Bed Surround',
-        range: '$3,000-$5,000',
-        features: ['Simple flanking cabinets', 'Shelving only', 'Bed hardware not included']
-      },
-      {
-        level: 'Complete System',
-        range: '$5,000-$8,000',
-        features: ['Full wall unit', 'Desk or wardrobe integration', 'Premium finishes', 'Bed hardware coordination'],
-        popular: true
-      },
-      {
-        level: 'Luxury Suite',
-        range: '$8,000-$15,000+',
-        features: ['Floor-to-ceiling built-ins', 'TV integration', 'Hidden bed design', 'Custom features']
-      }
-    ],
-    faqs: [
-      {
-        question: 'Do you supply the Murphy bed mechanism?',
-        answer: 'We build the cabinet surround system. You can order the bed mechanism (mattress platform and pistons) from suppliers like Murphy Bed Depot, or we can coordinate the order for you. Most mechanisms cost $1,000-$2,000.'
-      },
-      {
-        question: 'What mattress sizes do Murphy beds accommodate?',
-        answer: 'Most common are Twin (39"x75"), Full (54"x75"), and Queen (60"x80"). We design the surround to fit your chosen size. Queen is most popular for guest rooms.'
-      }
-    ],
-    relatedProjects: [],
-    relatedServices: ['home-office-cabinets', 'closet-systems'],
-    houstonAngle:
-      'Houston\'s smaller urban homes and townhomes benefit from Murphy beds. Convert guest rooms into functional daily spaces without sacrificing overnight guest capability.'
   },
 
   {

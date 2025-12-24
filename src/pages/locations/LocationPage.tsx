@@ -128,11 +128,6 @@ const LocationPage: React.FC = () => {
                 desc: 'Durable garage storage systems that withstand Houston humidity.',
                 link: '/services/garage-cabinets',
               },
-              {
-                title: 'Murphy Beds',
-                desc: 'Space-saving Murphy bed systems with integrated storage and workspace.',
-                link: '/services/murphy-beds',
-              },
             ].map((service, idx) => (
               <a
                 key={idx}

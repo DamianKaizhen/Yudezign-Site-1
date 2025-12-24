@@ -18,17 +18,17 @@ import { generateLocalBusinessSchema } from '../../lib/schema';
 const ShowroomPage: React.FC = () => {
   const businessInfo = {
     name: 'YuDezign Custom Cabinets',
-    address: '123 Design Boulevard, Houston, TX 77001', // TODO: Replace with actual address
+    address: '13230 Murphy Rd, Ste 600, Stafford, TX 77477',
     phone: '(281) 568-8000',
-    email: 'info@yudezign.com',
+    email: 'orders@yudezign.com',
     hours: {
-      monday: '9:00 AM - 6:00 PM',
-      tuesday: '9:00 AM - 6:00 PM',
-      wednesday: '9:00 AM - 6:00 PM',
-      thursday: '9:00 AM - 6:00 PM',
-      friday: '9:00 AM - 6:00 PM',
-      saturday: '10:00 AM - 4:00 PM',
-      sunday: 'By Appointment Only',
+      monday: '9:00 AM - 5:30 PM',
+      tuesday: '9:00 AM - 5:30 PM',
+      wednesday: '9:00 AM - 5:30 PM',
+      thursday: '9:00 AM - 5:30 PM',
+      friday: '9:00 AM - 5:30 PM',
+      saturday: 'Closed',
+      sunday: 'Closed',
     },
   };
 
@@ -36,7 +36,7 @@ const ShowroomPage: React.FC = () => {
     name: businessInfo.name,
     address: businessInfo.address,
     phone: businessInfo.phone,
-    hours: 'Mo-Fr 09:00-18:00, Sa 10:00-16:00',
+    hours: 'Mo-Fr 09:00-17:30',
     priceRange: '$$$',
   });
 
