@@ -7,7 +7,7 @@
  * Based on SEO research from docs/SEO OptimizedPagesResearch.md
  */
 
-import type { ServiceData } from '@/types';
+import type { ServiceData } from '../types';
 
 export const services: ServiceData[] = [
   {

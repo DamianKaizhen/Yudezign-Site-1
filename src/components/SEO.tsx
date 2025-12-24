@@ -3,11 +3,14 @@ import { useEffect } from 'react';
 interface SEOProps {
   title?: string;
   description?: string;
-  keywords?: string;
+  keywords?: string | string[];
   image?: string;
   url?: string;
-  type?: 'website' | 'article';
-  structuredData?: object | object[]; // NEW: Accept structured data (single schema or array)
+  canonical?: string;
+  ogType?: string;
+  ogImage?: string;
+  type?: 'website' | 'article' | 'place' | 'service';
+  structuredData?: object | object[] | null;
 }
 
 const SEO = ({

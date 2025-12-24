@@ -7,7 +7,7 @@
  * Based on SEO research from docs/SEO OptimizedPagesResearch.md
  */
 
-import type { LocationData } from '@/types';
+import type { LocationData } from '../types';
 
 export const locations: LocationData[] = [
   {

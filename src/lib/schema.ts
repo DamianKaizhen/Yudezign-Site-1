@@ -11,7 +11,7 @@ import type {
   BlogPost,
   FAQ,
   ComparisonData
-} from '@/types';
+} from '../types';
 
 /**
  * Generates LocalBusiness schema for location pages

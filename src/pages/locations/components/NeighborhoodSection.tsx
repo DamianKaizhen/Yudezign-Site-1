@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home, TrendingUp, Users, DollarSign } from 'lucide-react';
-import { LocationData } from '../../../types';
+import type { LocationData } from '../../../types';
 
 interface NeighborhoodSectionProps {
   location: LocationData;

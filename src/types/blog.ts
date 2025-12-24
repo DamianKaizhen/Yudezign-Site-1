@@ -2,47 +2,37 @@
  * Blog Post Type Definitions
  *
  * Defines the structure for blog content and metadata.
- * Each blog post is a static React component for simplicity.
  */
 
-import { ComponentType } from 'react';
+export interface BlogAuthor {
+  name: string;
+  bio: string;
+  avatar: string;
+}
 
 export interface BlogPost {
-  slug: string; // URL-friendly identifier (e.g., 'custom-cabinet-cost-guide-houston-2025')
-
-  // Content Metadata
-  title: string; // Post title
-  excerpt: string; // Short summary (2-3 sentences)
-  author: string; // Author name
-  authorRole?: string; // Optional author role/title
-  date: string; // Publication date (ISO format: YYYY-MM-DD)
-  updatedDate?: string; // Optional last updated date
-
-  // Categorization
-  category: 'design-inspiration' | 'how-to' | 'cost-pricing' | 'local-houston' | 'education';
-  tags: string[]; // Keyword tags for filtering
-
-  // Media
-  heroImage: string; // Featured image URL
-  ogImage?: string; // Optional custom OG image (defaults to heroImage)
-
-  // Reading Info
-  readTime: string; // Estimated read time (e.g., '5 min read')
-
-  // Content Component
-  content: ComponentType; // React component containing the post content
-
-  // SEO
-  metaDescription?: string; // Optional custom meta description (defaults to excerpt)
-  keywords?: string[]; // Optional SEO keywords (supplements category/tags)
-
-  // Internal Linking
-  relatedPosts?: string[]; // Slugs of related blog posts
-  relatedServices?: string[]; // Related service page slugs
-  relatedLocations?: string[]; // Related location page slugs
-
-  // Featured Status
-  featured?: boolean; // Flag for homepage/featured display
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string; // HTML or markdown content
+  author: BlogAuthor;
+  publishedDate: string; // ISO format: YYYY-MM-DD
+  updatedDate: string;
+  category: string; // Free-form category
+  tags: string[];
+  featuredImage?: {
+    url: string;
+    alt: string;
+  };
+  readTime: number; // Minutes
+  seo: {
+    metaDescription: string;
+    keywords: string[];
+    ogImage?: string;
+  };
+  relatedPosts?: string[];
+  relatedServices?: string[];
+  featured?: boolean;
 }
 
 export interface BlogCategory {

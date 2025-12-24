@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle, ArrowRight, Phone } from 'lucide-react';
-import { ServiceData } from '../../../types';
+import type { ServiceData } from '../../../types';
 
 interface ServiceHeroProps {
   service: ServiceData;

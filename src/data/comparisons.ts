@@ -1,4 +1,4 @@
-import { ComparisonData } from '../types';
+import type { ComparisonData } from '../types';
 
 export const comparisons: Record<string, ComparisonData> = {
   'frameless-vs-framed-cabinets': {

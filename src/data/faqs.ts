@@ -7,7 +7,7 @@
  * Based on SEO research from docs/SEO OptimizedPagesResearch.md
  */
 
-import type { FAQ } from '@/types';
+import type { FAQ } from '../types';
 
 export const faqs: FAQ[] = [
   // GENERAL QUESTIONS

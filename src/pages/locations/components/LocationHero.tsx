@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, ArrowRight } from 'lucide-react';
-import { LocationData } from '../../../types';
+import type { LocationData } from '../../../types';
 
 interface LocationHeroProps {
   location: LocationData;
