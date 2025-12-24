@@ -103,7 +103,7 @@ export const faqs: FAQ[] = [
   {
     id: 'can-i-install-myself',
     question: 'Can I install the cabinets myself?',
-    answer: 'Yes! Our cabinets come with detailed installation instructions and all necessary hardware. If you\'re handy with tools and have a helper, DIY installation is possible. However, professional installation ensures perfect leveling and alignment, especially important for frameless cabinets.',
+    answer: 'While it\'s technically possible if you\'re experienced with cabinetry, we strongly recommend professional installation. Frameless cabinets require precise leveling and alignment for proper door operation and appearance. We don\'t provide installation guides, but we can recommend experienced installers who are familiar with our products and European frameless construction.',
     category: 'installation',
     order: 3
   },

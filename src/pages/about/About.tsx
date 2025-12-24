@@ -74,8 +74,8 @@ const About = () => {
                   customers transform their spaces with premium cabinets at honest prices.
                 </p>
                 <p>
-                  Our commitment to 3/4&quot; plywood construction, frameless European design, and rapid 2-3 week turnaround
-                  has made us the trusted choice for contractors, designers, and DIY homeowners across the Greater Houston area.
+                  Our commitment to 3/4&quot; plywood construction, frameless European design, and rapid 2-4 week turnaround
+                  has made us the trusted choice for contractors, designers, and homeowners across the Greater Houston area.
                 </p>
                 <p>
                   Today, we maintain the same dedication to quality and customer service that defined our beginning,
@@ -359,9 +359,9 @@ const About = () => {
                       <span className="text-white text-sm">✓</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Perfect for DIY</h4>
+                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Installer-Friendly Design</h4>
                       <p className="text-body text-luxury-gray-600 leading-relaxed">
-                        Experienced DIYers love our flat-pack option with detailed assembly instructions.
+                        Professional installers appreciate our precise manufacturing and quality hardware that makes their work easier and faster.
                       </p>
                     </div>
                   </div>

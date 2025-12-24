@@ -286,7 +286,7 @@ export const services: ServiceData[] = [
       {
         step: 4,
         title: 'Installation Ready',
-        description: 'Delivered with installation instructions and hardware.',
+        description: 'Delivered with all necessary mounting hardware. We recommend professional installers for best results.',
         duration: '1 day'
       }
     ],
@@ -638,8 +638,8 @@ export const services: ServiceData[] = [
       },
       {
         step: 4,
-        title: 'DIY-Friendly Delivery',
-        description: 'Delivered with mounting hardware and installation guide.',
+        title: 'Delivery',
+        description: 'Delivered with all mounting hardware. Professional installation recommended for proper wall mounting and safety.',
         duration: '1 day'
       }
     ],
@@ -871,7 +871,7 @@ export const services: ServiceData[] = [
       {
         step: 4,
         title: 'Installation Ready',
-        description: 'Delivered with mounting hardware and assembly guide.',
+        description: 'Delivered with mounting hardware. Professional installation recommended for proper setup.',
         duration: '1 day'
       }
     ],
