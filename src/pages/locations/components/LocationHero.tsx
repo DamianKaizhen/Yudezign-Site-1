@@ -61,17 +61,19 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             </div>
           </div>
 
-          {/* Image/Map Placeholder */}
+          {/* Interactive Map */}
           <div className="relative">
-            <div className="aspect-w-4 aspect-h-3 bg-primary-dark/30 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="w-full h-96 bg-gradient-to-br from-primary-dark/50 to-primary-dark/70 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-white/50 mx-auto mb-4" />
-                  <p className="text-white/70">
-                    {location.name} Map Placeholder
-                  </p>
-                </div>
-              </div>
+            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl h-[500px]">
+              <iframe
+                src={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}&hl=en&z=12&output=embed`}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`Map of ${location.name}, Texas`}
+              />
             </div>
 
             {/* Floating Stats Card */}
