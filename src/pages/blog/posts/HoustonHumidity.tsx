@@ -33,13 +33,13 @@ const HoustonHumidity: React.FC = () => {
           </h1>
           <div className="flex items-center gap-6 text-sm text-slate-600">
             <div className="flex items-center gap-2">
-              <img src="/images/team/damian-avatar.jpg" alt="Author" className="w-10 h-10 rounded-full" />
-              <span>By Damian K.</span>
+              <img src="/images/team/yudezign-team.jpg" alt="YuDezign Team" className="w-10 h-10 rounded-full" />
+              <span>By YuDezign Team</span>
             </div>
             <span>•</span>
-            <span>December 23, 2025</span>
+            <span>July 9, 2025</span>
             <span>•</span>
-            <span>13 min read</span>
+            <span>9 min read</span>
           </div>
         </header>
 

@@ -23,7 +23,7 @@ export const services: ServiceData[] = [
       'kitchen cabinet makers houston',
       'modern kitchen cabinets'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1920&q=90',
+    heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80',
     icon: 'ChefHat',
     portfolioCategory: 'kitchens',
     overview:
@@ -221,7 +221,7 @@ export const services: ServiceData[] = [
       'closet organization houston',
       'wardrobe systems houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=90',
+    heroImage: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1920&q=80',
     icon: 'ShoppingBag',
     portfolioCategory: 'closets',
     overview:
@@ -338,7 +338,7 @@ export const services: ServiceData[] = [
       'double vanity cabinets',
       'floating vanity houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1920&q=90',
+    heroImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80',
     icon: 'Bath',
     portfolioCategory: 'vanities',
     overview:
