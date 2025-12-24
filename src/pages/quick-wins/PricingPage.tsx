@@ -242,14 +242,14 @@ const PricingPage: React.FC = () => {
                     custom: 'Unlimited • any design'
                   },
                   {
-                    feature: 'Wood Species',
-                    semiCustom: 'Maple, oak, cherry, walnut',
-                    custom: 'Any species including exotic'
+                    feature: 'Finish Options',
+                    semiCustom: 'Melamine, laminate, acrylic - 100+ colors',
+                    custom: 'Unlimited specialty finishes'
                   },
                   {
                     feature: 'Construction',
-                    semiCustom: 'Frameless European • plywood/particleboard',
-                    custom: 'Premium plywood • dovetail'
+                    semiCustom: 'Frameless European • plywood/particleboard/MDF',
+                    custom: 'Premium construction • dovetail'
                   },
                   {
                     feature: 'Warranty',

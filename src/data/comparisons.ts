@@ -144,9 +144,9 @@ export const comparisons: Record<string, ComparisonData> = {
         option2: '50+ curated styles',
       },
       {
-        feature: 'Wood Species',
-        option1: 'Any species including exotic',
-        option2: 'Maple, oak, cherry, walnut',
+        feature: 'Finish Options',
+        option1: 'Unlimited custom finishes',
+        option2: 'Melamine, laminate, acrylic - extensive colors',
       },
       {
         feature: 'Construction',
@@ -171,11 +171,11 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'What is Fully Custom?',
-        content: 'Fully custom cabinets are handcrafted by skilled woodworkers to your exact specifications with no design limitations. Want curved doors, exotic wood species, or historically accurate period details? Custom is the only option. This is like having a master tailor create a bespoke suit from scratch - unlimited possibilities but at premium pricing and extended timelines.',
+        content: 'Fully custom cabinets are handcrafted to your exact specifications with no design limitations. Want curved doors, unique specialty finishes, or historically accurate period details? Custom is the only option. This is like having a master tailor create a bespoke suit from scratch - unlimited possibilities but at premium pricing and extended timelines.',
       },
       {
         heading: 'Price Reality Check',
-        content: 'For a typical Houston kitchen (15-20 linear feet), YuDezign\'s semi-custom cabinets cost $2,600-$6,000 for materials, while fully custom runs $5,000-$10,000+. For larger commercial projects or premium residential installations (25-30 linear feet), semi-custom ranges from $3,900-$9,000 versus $7,500-$15,000+ for fully custom. Semi-custom delivers professional-grade frameless construction at substantially lower cost. Unless you need truly unique elements (curved doors, exotic woods, historical reproductions), semi-custom provides exceptional value.',
+        content: 'For a typical Houston kitchen (15-20 linear feet), YuDezign\'s semi-custom cabinets cost $2,600-$6,000 for materials, while fully custom runs $5,000-$10,000+. For larger commercial projects or premium residential installations (25-30 linear feet), semi-custom ranges from $3,900-$9,000 versus $7,500-$15,000+ for fully custom. Semi-custom delivers professional-grade frameless construction at substantially lower cost. Unless you need truly unique elements (curved doors, specialty finishes, historical reproductions), semi-custom provides exceptional value.',
       },
       {
         heading: 'Timeline Differences',
@@ -183,11 +183,11 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'Design Flexibility Comparison',
-        content: 'YuDezign\'s semi-custom cabinets offer extensive flexibility: cabinet sizes in 3" increments, 50+ door styles, frameless European construction with plywood or particleboard cores, 100+ finish colors, premium soft-close hardware, and specialized features (pull-outs, organizers, wine racks). Perfect for residential kitchens, bathrooms, and commercial installations. Fully custom adds unlimited sizing precision (to 1/16"), curved or carved door profiles, exotic wood species, hand-crafted details, and historically accurate reproductions for unique architectural projects.',
+        content: 'YuDezign\'s semi-custom cabinets offer extensive flexibility: cabinet sizes in 3" increments, 50+ door styles, frameless European construction with plywood, particleboard, or MDF cores, melamine/laminate/acrylic finishes in 100+ colors, premium soft-close hardware, and specialized features (pull-outs, organizers, wine racks). Perfect for residential kitchens, bathrooms, and commercial installations. Fully custom adds unlimited sizing precision (to 1/16"), curved or carved door profiles, unique specialty finishes, hand-crafted details, and historically accurate reproductions for unique architectural projects.',
       },
       {
         heading: 'When to Choose Custom',
-        content: 'Choose fully custom if you: need non-standard sizes (odd angles, sloped ceilings, unique architectural features), want exotic wood species (teak, zebrawood, koa), require historically accurate period details for restoration work, have a truly unique artistic vision, or budget flexibility allows for extended timelines. For most Houston residential and commercial projects, YuDezign\'s semi-custom cabinets exceed expectations.',
+        content: 'Choose fully custom if you: need non-standard sizes (odd angles, sloped ceilings, unique architectural features), want unique specialty finishes, require historically accurate period details for restoration work, have a truly unique artistic vision, or budget flexibility allows for extended timelines. For most Houston residential and commercial projects, YuDezign\'s semi-custom cabinets exceed expectations.',
       },
       {
         heading: 'When Semi-Custom is Perfect',
@@ -205,7 +205,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'How much can I customize semi-custom?',
-        answer: 'Extensively. With YuDezign\'s semi-custom line, you choose from 50+ door styles, extensive finish options, wood species (maple, oak, cherry, walnut), frameless construction, premium soft-close hardware, and specialized accessories. You can modify cabinet sizes in 3" increments and add custom features like wine racks, pull-out organizers, and appliance garages. Perfect for both residential and commercial applications.',
+        answer: 'Extensively. With YuDezign\'s semi-custom line, you choose from 50+ door styles, melamine/laminate/acrylic finishes in 100+ colors, frameless European construction, premium soft-close hardware, and specialized accessories. You can modify cabinet sizes in 3" increments and add custom features like wine racks, pull-out organizers, and appliance garages. Perfect for both residential and commercial applications.',
       },
       {
         question: 'Will semi-custom look "cookie cutter"?',

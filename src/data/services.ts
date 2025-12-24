@@ -94,8 +94,8 @@ export const services: ServiceData[] = [
       },
       {
         icon: 'Palette',
-        title: '25+ Finish Options',
-        description: 'From high-gloss white to natural walnut. Custom color matching available.'
+        title: '100+ Finish Options',
+        description: 'Melamine, laminate, and acrylic finishes. From high-gloss white to wood-grain patterns. Custom color matching available.'
       },
       {
         icon: 'Settings',
@@ -163,11 +163,11 @@ export const services: ServiceData[] = [
         level: 'Luxury',
         range: '$1,300-$1,800+/linear ft',
         features: [
-          'High-gloss acrylic or wood veneer',
+          'High-gloss acrylic or textured finishes',
           'Top-tier Hettich hardware',
           'Full custom accessories',
           'Integrated LED lighting',
-          'Walnut or exotic wood interiors',
+          'Premium finishes with advanced surfaces',
           'Show-stopping modern design'
         ]
       }
