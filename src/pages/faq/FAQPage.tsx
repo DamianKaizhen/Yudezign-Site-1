@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SEO from '../../components/SEO';
 import { faqs } from '../../data/faqs';
 import { generateFAQSchema } from '../../lib/schema';
-import { HelpCircle, Search, ArrowRight, Filter } from 'lucide-react';
+import { Search, ArrowRight, Filter } from 'lucide-react';
 
 const FAQPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');

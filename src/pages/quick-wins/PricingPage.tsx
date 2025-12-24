@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Calculator,
   CheckCircle,
-  DollarSign,
   TrendingUp,
   Info,
   ArrowRight
