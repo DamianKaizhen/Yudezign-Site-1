@@ -29,11 +29,11 @@ const ServicePage: React.FC = () => {
 
   // Generate structured data
   const serviceSchema = generateServiceSchema({
-    name: service.title,
-    description: service.description,
+    name: service.name,
+    description: service.metaDescription,
     provider: 'YuDezign Custom Cabinets',
     areaServed: 'Houston, TX',
-    priceRange: service.priceRange,
+    priceRange: '$$$',
   });
 
   const faqSchema = service.faqs ? generateFAQSchema(service.faqs) : null;
@@ -41,9 +41,9 @@ const ServicePage: React.FC = () => {
   return (
     <>
       <SEO
-        title={service.seo.title}
-        description={service.seo.metaDescription}
-        keywords={service.seo.keywords}
+        title={service.metaTitle}
+        description={service.metaDescription}
+        keywords={service.keywords}
         canonical={`https://yudezign.com/services/${service.slug}`}
         ogType="service"
         structuredData={[serviceSchema, faqSchema].filter(Boolean)}

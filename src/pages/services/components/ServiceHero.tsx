@@ -14,26 +14,28 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
           {/* Text Content */}
           <div>
             <div className="inline-block bg-amber-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              {service.category}
+              Custom Cabinetry
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {service.title}
+              {service.name}
             </h1>
 
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              {service.description}
+              {service.overview}
             </p>
 
             {/* Key Features */}
-            <div className="space-y-3 mb-8">
-              {service.features.slice(0, 4).map((feature, idx) => (
-                <div key={idx} className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-amber-400 mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-200">{feature}</span>
-                </div>
-              ))}
-            </div>
+            {service.features && service.features.length > 0 && (
+              <div className="space-y-3 mb-8">
+                {service.features.slice(0, 4).map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <CheckCircle className="w-6 h-6 text-amber-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-200">{typeof feature === 'string' ? feature : feature.title}</span>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -58,7 +60,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-slate-400">Starting From</div>
-                  <div className="text-2xl font-bold text-amber-400">{service.priceRange}</div>
+                  <div className="text-2xl font-bold text-amber-400">Contact for Quote</div>
                 </div>
                 <div>
                   <div className="text-sm text-slate-400">Typical Timeline</div>
@@ -74,7 +76,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
               <div className="w-full h-96 bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center">
                 <div className="text-center">
                   <p className="text-slate-400 text-lg">
-                    {service.title} Image
+                    {service.name} Image
                   </p>
                 </div>
               </div>
