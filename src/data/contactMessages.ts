@@ -26,5 +26,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2025-12-24T22:17:46.484Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1766617264458_eve9gzy',
+    name: 'Test Person',
+    email: 'sample@email.com',
+    phone: '1234567890',
+    projectType: 'kitchen',
+    timeline: '1-2months',
+    message: 'Testing, sample description for a kitchen project.',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766617262641-Vicenza_Oak.png', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766617263492-groupimage.png'],
+    submittedAt: '2025-12-24T23:01:04.458Z',
+    status: 'new',
+    
   }
 ];
