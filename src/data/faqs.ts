@@ -44,7 +44,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-much-custom-cabinets-cost',
     question: 'How much do custom cabinets cost in Houston?',
-    answer: 'Custom frameless cabinets range from $800-$1,800 per linear foot depending on finish and features. A typical 10x12 kitchen (20 linear feet) costs $16,000-$36,000. Essential tier (melamine) is $800-$1,000/LF, Premium tier (HPL/acrylic) is $1,000-$1,300/LF, and Luxury tier (high-gloss/veneer) is $1,300-$1,800+/LF.',
+    answer: 'Custom frameless cabinets range from $800-$1,800 per linear foot depending on finish and features. A typical 10x12 kitchen (20 linear feet) costs $16,000-$36,000. Essential tier (melamine) is $800-$1,000/LF, Premium tier (HPL/acrylic) is $1,000-$1,300/LF, and Luxury tier (high-gloss acrylic/textured finishes) is $1,300-$1,800+/LF.',
     category: 'pricing',
     tags: ['cost', 'pricing', 'kitchen'],
     order: 1
@@ -126,7 +126,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-materials-do-you-use',
     question: 'What materials do you use for cabinet construction?',
-    answer: 'Cabinet boxes: 3/4" plywood or moisture-resistant MDF. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), high-gloss acrylic, or wood veneer. All cabinets have soft-close Blum or Hettich hinges and undermount drawer slides. Shelves are 3/4" adjustable.',
+    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All cabinets have soft-close Blum or Hettich hinges and undermount drawer slides. Shelves are 3/4" adjustable.',
     category: 'materials',
     order: 1
   },
@@ -147,8 +147,8 @@ export const faqs: FAQ[] = [
   },
   {
     id: 'do-you-use-real-wood',
-    question: 'Do you use real wood?',
-    answer: 'We offer wood veneer door fronts (real wood over engineered core) but we don\'t recommend solid wood in Houston due to humidity. Solid wood expands/contracts with moisture causing doors to warp and rub. Our engineered cores with wood veneer give you the beauty of wood with dimensional stability.',
+    question: 'Do you use real wood or wood veneer?',
+    answer: 'No, we don\'t use solid wood or wood veneer. We specialize in modern engineered materials - plywood, particleboard, or MDF cores with melamine, laminate, or acrylic finishes. These materials are superior for Houston\'s climate because they don\'t expand/contract with humidity like solid wood. We offer wood-grain pattern finishes that give you the look of wood without the warping, cracking, or maintenance issues.',
     category: 'materials',
     order: 4
   },

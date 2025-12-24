@@ -164,7 +164,7 @@ export const locations: LocationData[] = [
       'Earth-tone finishes and natural wood looks blend with forested settings',
       'Large estates often need kitchen + study + butler\'s pantry solutions',
       'Golf course community homes require sophisticated entertaining spaces',
-      'Premium walnut interiors and integrated LED lighting'
+      'Premium high-gloss acrylic finishes and integrated LED lighting'
     ],
     localAngle:
       'The Woodlands\' natural luxury aesthetic calls for sophisticated cabinetry. Our custom designs complement the area\'s unique blend of nature and upscale living.',
@@ -276,7 +276,7 @@ export const locations: LocationData[] = [
     housingStyle:
       'Luxury renovation market - older homes with high budgets for modern updates',
     keyPoints: [
-      'High-end finishes - walnut interiors, integrated LED lighting',
+      'High-end finishes - premium acrylic/laminate, integrated LED lighting',
       'Traditional + modern fusion - inset cabinetry meets sleek hardware',
       'Architect collaboration experience for custom estate projects',
       'Premium features - soft-close, full-extension drawers, custom inserts'
