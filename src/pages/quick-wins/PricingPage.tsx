@@ -17,11 +17,11 @@ const PricingPage: React.FC = () => {
 
   // Pricing ranges per linear foot
   const pricing = {
-    kitchen: { 'stock': 100, 'semi-custom': 200, 'custom': 350 },
-    bathroom: { 'stock': 120, 'semi-custom': 220, 'custom': 380 },
-    closet: { 'stock': 80, 'semi-custom': 150, 'custom': 280 },
-    'home-office': { 'stock': 90, 'semi-custom': 180, 'custom': 320 },
-    garage: { 'stock': 70, 'semi-custom': 130, 'custom': 250 },
+    kitchen: { 'semi-custom': 215, 'custom': 375 },
+    bathroom: { 'semi-custom': 215, 'custom': 375 },
+    closet: { 'semi-custom': 165, 'custom': 315 },
+    'home-office': { 'semi-custom': 190, 'custom': 340 },
+    garage: { 'semi-custom': 150, 'custom': 265 },
   };
 
   const estimatedCost = pricing[projectType as keyof typeof pricing][quality as keyof typeof pricing.kitchen] * linearFeet;
@@ -57,11 +57,11 @@ const PricingPage: React.FC = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Custom Cabinet Pricing <br />
               <span className="text-white">
-                for Houston Homes
+                for Residential & Commercial
               </span>
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Transparent pricing, honest estimates, and exceptional value. Calculate your project cost instantly and schedule a free design consultation.
+              Transparent pricing for homes and businesses. Calculate your project cost instantly and schedule a free design consultation.
             </p>
           </div>
         </div>
@@ -108,10 +108,9 @@ const PricingPage: React.FC = () => {
               <label className="block text-sm font-semibold text-slate-900 mb-3">
                 Quality Level
               </label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { value: 'stock', label: 'Stock', desc: 'Pre-made, basic' },
-                  { value: 'semi-custom', label: 'Semi-Custom', desc: 'Our specialty • Best value', recommended: true },
+                  { value: 'semi-custom', label: 'Semi-Custom', desc: 'Our specialty • 2-4 weeks', recommended: true },
                   { value: 'custom', label: 'Fully Custom', desc: 'Ultimate flexibility' },
                 ].map((tier) => (
                   <button
@@ -199,10 +198,10 @@ const PricingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Stock vs Semi-Custom vs Fully Custom
+              Semi-Custom vs Fully Custom Cabinets
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Understand the quality and value differences to make the right choice for your project.
+              YuDezign specializes in frameless European-style cabinets. Compare our two tiers to choose the right fit for your project.
             </p>
           </div>
 
@@ -211,7 +210,6 @@ const PricingPage: React.FC = () => {
               <thead>
                 <tr className="bg-slate-900 text-white">
                   <th className="px-6 py-4 text-left font-semibold">Feature</th>
-                  <th className="px-6 py-4 text-center font-semibold">Stock Cabinets</th>
                   <th className="px-6 py-4 text-center font-semibold bg-primary">
                     <div className="flex flex-col items-center">
                       <span>Semi-Custom</span>
@@ -225,56 +223,47 @@ const PricingPage: React.FC = () => {
                 {[
                   {
                     feature: 'Price Range (per linear foot)',
-                    stock: '$70-120',
                     semiCustom: '$130-300',
                     custom: '$250-500+'
                   },
                   {
                     feature: 'Lead Time',
-                    stock: '1-2 weeks',
-                    semiCustom: '6-8 weeks',
-                    custom: '10-16 weeks'
+                    semiCustom: '2-4 weeks - rapid local manufacturing',
+                    custom: 'Longer timeline for complex designs'
                   },
                   {
                     feature: 'Size Options',
-                    stock: 'Limited standard sizes',
                     semiCustom: '3" increments • fits most spaces',
-                    custom: 'Any size to 1/16"'
+                    custom: 'Any size to 1/16" precision'
                   },
                   {
                     feature: 'Door Styles',
-                    stock: '5-10 basic styles',
                     semiCustom: '50+ curated styles',
                     custom: 'Unlimited • any design'
                   },
                   {
                     feature: 'Wood Species',
-                    stock: 'Oak, maple only',
                     semiCustom: 'Maple, oak, cherry, walnut',
                     custom: 'Any species including exotic'
                   },
                   {
                     feature: 'Construction',
-                    stock: 'Particleboard core • stapled',
-                    semiCustom: 'Plywood core • doweled/dado',
+                    semiCustom: 'Frameless European • plywood/particleboard',
                     custom: 'Premium plywood • dovetail'
                   },
                   {
                     feature: 'Warranty',
-                    stock: '1-5 years limited',
                     semiCustom: 'Lifetime structural • 5-year finish',
-                    custom: 'Varies by maker • typically 5-10 years'
+                    custom: 'Varies by maker'
                   },
                   {
                     feature: 'Best For',
-                    stock: 'Rentals • tight budgets',
-                    semiCustom: 'Most homeowners • best value',
+                    semiCustom: 'Residential/Commercial • best value',
                     custom: 'Unique designs • unlimited budget'
                   },
                 ].map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-900">{row.feature}</td>
-                    <td className="px-6 py-4 text-center text-slate-600">{row.stock}</td>
                     <td className="px-6 py-4 text-center bg-accent-light font-medium text-slate-900">
                       {row.semiCustom}
                     </td>
@@ -293,6 +282,84 @@ const PricingPage: React.FC = () => {
               Read Full Comparison Guide
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Commercial Projects Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Commercial Cabinet Solutions
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              YuDezign serves commercial clients with durable, cost-effective cabinet solutions perfect for offices, restaurants, retail spaces, and multi-family properties.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Commercial Features */}
+            <div className="bg-slate-50 rounded-xl p-8 border border-slate-200">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Commercial Features</h3>
+              <div className="space-y-4">
+                {[
+                  { title: 'Custom Laminates', desc: 'High-pressure laminates with glue-on application for durability and easy maintenance. Perfect for high-traffic commercial environments.' },
+                  { title: 'Frameless Construction', desc: 'European-style frameless cabinets maximize interior space and create a modern, professional aesthetic.' },
+                  { title: 'Rapid Production', desc: '2-4 week turnaround helps keep commercial projects on schedule and minimizes business downtime.' },
+                  { title: 'Bulk Pricing', desc: 'Competitive pricing for large commercial orders. Volume discounts available for multi-unit projects.' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900 mb-1">{item.title}</h4>
+                      <p className="text-sm text-slate-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Commercial Applications */}
+            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-xl p-8 text-white">
+              <h3 className="text-2xl font-bold mb-6">Ideal For</h3>
+              <div className="space-y-4">
+                {[
+                  { title: 'Office Build-Outs', desc: 'Reception desks, break rooms, storage solutions' },
+                  { title: 'Restaurants & Cafes', desc: 'Bar counters, server stations, storage cabinets' },
+                  { title: 'Retail Spaces', desc: 'Display cabinets, back-of-house storage, checkout counters' },
+                  { title: 'Multi-Family Properties', desc: 'Apartment kitchens, laundry rooms, clubhouse cabinetry' },
+                  { title: 'Medical Offices', desc: 'Exam room cabinets, lab storage, reception areas' },
+                  { title: 'Hotels & Hospitality', desc: 'Guest room vanities, housekeeping storage, lobby millwork' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-accent mr-3 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold mb-1">{item.title}</h4>
+                      <p className="text-sm text-white/90">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="bg-accent-light rounded-xl p-6 max-w-3xl mx-auto">
+              <p className="text-slate-900 font-semibold mb-2">
+                Commercial Project Inquiry
+              </p>
+              <p className="text-slate-600 mb-4">
+                Contact us for volume pricing, custom laminate samples, and project consultation. We work with contractors, property managers, and commercial designers.
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
+              >
+                Request Commercial Quote
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </section>

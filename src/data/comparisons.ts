@@ -124,50 +124,50 @@ export const comparisons: Record<string, ComparisonData> = {
     winner: 'semi-custom',
     comparisonTable: [
       {
-        feature: 'Price Range',
-        option1: '$250-500+ per linear foot',
-        option2: '$150-300 per linear foot - 40% cost savings',
+        feature: 'Price Range (per linear foot)',
+        option1: '$250-500+',
+        option2: '$130-300 (YuDezign Specialty)',
       },
       {
         feature: 'Lead Time',
-        option1: '10-16 weeks from design approval',
-        option2: '6-8 weeks - faster delivery',
+        option1: 'Longer timeline for complex designs',
+        option2: '2-4 weeks - rapid local manufacturing',
       },
       {
-        feature: 'Size Flexibility',
-        option1: 'Any size - made to exact dimensions',
-        option2: '3" increments - accommodates most spaces',
+        feature: 'Size Options',
+        option1: 'Any size to 1/16" precision',
+        option2: '3" increments • fits most spaces',
       },
       {
-        feature: 'Design Options',
-        option1: 'Unlimited - any style, material, detail',
-        option2: '50+ door styles, 100+ colors - extensive but curated',
+        feature: 'Door Styles',
+        option1: 'Unlimited • any design',
+        option2: '50+ curated styles',
       },
       {
         feature: 'Wood Species',
-        option1: 'Any species - including rare/exotic woods',
-        option2: 'Standard species (maple, oak, cherry, walnut)',
+        option1: 'Any species including exotic',
+        option2: 'Maple, oak, cherry, walnut',
       },
       {
-        feature: 'Modifications',
-        option1: 'Fully customizable - any detail possible',
-        option2: 'Extensive modifications within system parameters',
-      },
-      {
-        feature: 'Quality Control',
-        option1: 'Handcrafted - quality depends on craftsman',
-        option2: 'Factory-controlled quality - consistent results',
+        feature: 'Construction',
+        option1: 'Premium plywood • dovetail',
+        option2: 'Plywood core • doweled/dado',
       },
       {
         feature: 'Warranty',
-        option1: 'Varies by maker - typically 5-10 years',
-        option2: 'Manufacturer warranty - typically lifetime limited',
+        option1: 'Varies by maker • typically 5-10 years',
+        option2: 'Lifetime structural • 5-year finish',
+      },
+      {
+        feature: 'Best For',
+        option1: 'Unique designs • unlimited budget',
+        option2: 'Most homeowners • best value (Residential/Commercial)',
       },
     ],
     detailedSections: [
       {
         heading: 'What is Semi-Custom?',
-        content: 'Semi-custom cabinets are factory-manufactured to your specifications from a catalog of design options. Think of it as ordering a tailored suit - you choose from quality fabrics, colors, and styles, with sizing adjusted to fit you perfectly. YuDezign\'s semi-custom line offers over 50 door styles, 100+ colors, and cabinets sized in 3-inch increments to fit virtually any space. You get extensive customization at a fraction of true custom pricing.',
+        content: 'Semi-custom cabinets are precision-manufactured frameless European-style cabinets with professional-grade plywood or particleboard construction. YuDezign specializes in rapid semi-custom production, offering 50+ door styles, extensive finish options, and cabinets sized in 3-inch increments. With a 2-4 week turnaround and pricing at $130-300 per linear foot, our semi-custom line delivers exceptional value for both residential and commercial projects.',
       },
       {
         heading: 'What is Fully Custom?',
@@ -175,29 +175,29 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'Price Reality Check',
-        content: 'For a typical Houston kitchen (15-20 linear feet), semi-custom costs $9,000-$18,000 installed, while fully custom runs $15,000-$35,000+. The price gap widens with larger kitchens or premium finishes. Semi-custom delivers 90% of the custom look at 60% of the cost. Unless you need truly unique elements (curved doors, exotic woods, historical reproductions), semi-custom provides exceptional value.',
+        content: 'For a typical Houston kitchen (15-20 linear feet), YuDezign\'s semi-custom cabinets cost $2,600-$6,000 for materials, while fully custom runs $5,000-$10,000+. For larger commercial projects or premium residential installations (25-30 linear feet), semi-custom ranges from $3,900-$9,000 versus $7,500-$15,000+ for fully custom. Semi-custom delivers professional-grade frameless construction at substantially lower cost. Unless you need truly unique elements (curved doors, exotic woods, historical reproductions), semi-custom provides exceptional value.',
       },
       {
         heading: 'Timeline Differences',
-        content: 'Semi-custom cabinets ship in 6-8 weeks, allowing Houston homeowners to complete kitchen renovations in 8-10 weeks total. Fully custom requires 10-16 weeks just for cabinet fabrication, extending your project to 4-5 months. In Houston\'s competitive real estate market, faster timelines mean less disruption for families and quicker ROI for investors.',
+        content: 'YuDezign\'s semi-custom cabinets are manufactured and ready in just 2-4 weeks, enabling both residential and commercial clients to complete projects quickly. Fully custom requires longer timelines for handcrafted elements and complex designs. For Houston homeowners and commercial contractors, faster turnaround means less disruption, quicker project completion, and faster ROI for investments.',
       },
       {
         heading: 'Design Flexibility Comparison',
-        content: 'Semi-custom offers extensive flexibility within a curated system: any cabinet size in 3" increments, 50+ door styles, frameless or framed construction, 100+ finish colors, premium upgrades (soft-close, pull-outs, organizers), and custom modifications like wine racks or appliance garages. Fully custom adds: any cabinet size to 1/16", unlimited door profiles including curved/arched, any wood species including exotic, hand-carved details, and historically accurate reproductions.',
+        content: 'YuDezign\'s semi-custom cabinets offer extensive flexibility: cabinet sizes in 3" increments, 50+ door styles, frameless European construction with plywood or particleboard cores, 100+ finish colors, premium soft-close hardware, and specialized features (pull-outs, organizers, wine racks). Perfect for residential kitchens, bathrooms, and commercial installations. Fully custom adds unlimited sizing precision (to 1/16"), curved or carved door profiles, exotic wood species, hand-crafted details, and historically accurate reproductions for unique architectural projects.',
       },
       {
         heading: 'When to Choose Custom',
-        content: 'Choose fully custom if you: need non-standard sizes (odd angles, sloped ceilings, spaces under 6" or over 48" wide), want exotic wood species (teak, zebrawood, koa), require historically accurate period details for restoration work, have a truly unique artistic vision, or budget is not a primary concern. For 90% of Houston homeowners, semi-custom exceeds expectations.',
+        content: 'Choose fully custom if you: need non-standard sizes (odd angles, sloped ceilings, unique architectural features), want exotic wood species (teak, zebrawood, koa), require historically accurate period details for restoration work, have a truly unique artistic vision, or budget flexibility allows for extended timelines. For most Houston residential and commercial projects, YuDezign\'s semi-custom cabinets exceed expectations.',
       },
       {
         heading: 'When Semi-Custom is Perfect',
-        content: 'Semi-custom is ideal if you: want high-quality cabinets at reasonable pricing, need completion within 2-3 months, value consistent factory quality control, appreciate extensive but curated design options, want strong manufacturer warranties, or are working with designers who specify standard sizes. This describes most Houston kitchen and bathroom renovations.',
+        content: 'YuDezign\'s semi-custom cabinets are ideal if you: want professional-grade frameless construction at competitive pricing ($130-300/LF), need rapid completion (2-4 weeks), value precision manufacturing and quality control, appreciate extensive design options (50+ door styles), want strong warranties (lifetime structural, 5-year finish), or are working on residential or commercial projects with standard space requirements. This describes most Houston kitchen renovations, bathroom vanities, commercial fit-outs, and office installations.',
       },
     ],
     faqSection: [
       {
         question: 'Is semi-custom lower quality than custom?',
-        answer: 'No. Semi-custom is factory-manufactured with precision machinery and quality control, often resulting in more consistent quality than hand-built custom. Both use the same plywood construction and quality hardware - the difference is design flexibility, not quality.',
+        answer: 'No. YuDezign\'s semi-custom cabinets use professional-grade frameless European construction with plywood or particleboard cores and precision manufacturing. The difference between semi-custom and fully custom is design flexibility and timeline, not quality. Both offer durable construction, quality hardware, and strong warranties.',
       },
       {
         question: 'Can semi-custom fit my odd-sized space?',
@@ -205,7 +205,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'How much can I customize semi-custom?',
-        answer: 'Extensively. You choose door style, wood species (from standard options), finish color, construction type (frameless/framed), all hardware, and interior accessories. You can also modify heights, depths, and add custom features like wine racks.',
+        answer: 'Extensively. With YuDezign\'s semi-custom line, you choose from 50+ door styles, extensive finish options, wood species (maple, oak, cherry, walnut), frameless construction, premium soft-close hardware, and specialized accessories. You can modify cabinet sizes in 3" increments and add custom features like wine racks, pull-out organizers, and appliance garages. Perfect for both residential and commercial applications.',
       },
       {
         question: 'Will semi-custom look "cookie cutter"?',
