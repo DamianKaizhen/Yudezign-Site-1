@@ -101,8 +101,12 @@ const BlogIndex: React.FC = () => {
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 {/* Image */}
-                <div className="bg-gradient-to-br from-slate-300 to-slate-400 h-64 lg:h-auto flex items-center justify-center">
-                  <p className="text-slate-600">Featured Image</p>
+                <div className="h-64 lg:h-auto overflow-hidden">
+                  <img
+                    src={featuredPost.featuredImage.url}
+                    alt={featuredPost.featuredImage.alt}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Content */}
@@ -158,8 +162,12 @@ const BlogIndex: React.FC = () => {
               {filteredPosts.map(post => (
                 <article key={post.slug} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all border border-slate-200 overflow-hidden group">
                   {/* Image */}
-                  <div className="bg-gradient-to-br from-slate-200 to-slate-300 h-48 flex items-center justify-center">
-                    <p className="text-slate-500 text-sm">Article Image</p>
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={post.featuredImage.url}
+                      alt={post.featuredImage.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
 
                   {/* Content */}
