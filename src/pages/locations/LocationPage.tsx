@@ -227,7 +227,7 @@ const LocationPage: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your {location.name} Home?
           </h2>
-          <p className="text-xl text-accent-light mb-8">
+          <p className="text-xl text-white/90 mb-8">
             Schedule a free consultation and get a detailed proposal with no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

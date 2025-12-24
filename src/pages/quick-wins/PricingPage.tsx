@@ -50,20 +50,18 @@ const PricingPage: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+      <section className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <DollarSign className="w-5 h-5 mr-2 text-accent" />
-              <span className="text-sm font-medium">Transparent Pricing • No Hidden Fees</span>
-            </div>
+            <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Custom Cabinet Pricing <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+              <span className="text-white">
                 for Houston Homes
               </span>
             </h1>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               Transparent pricing, honest estimates, and exceptional value. Calculate your project cost instantly and schedule a free design consultation.
             </p>
           </div>

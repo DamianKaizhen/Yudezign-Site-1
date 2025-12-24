@@ -58,23 +58,18 @@ const ShowroomPage: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/images/showroom/pattern.svg')] bg-repeat opacity-20"></div>
-        </div>
+      <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <MapPin className="w-5 h-5 mr-2 text-accent" />
-              <span className="text-sm font-medium">Houston, Texas</span>
-            </div>
+            <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Experience Quality <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+              <span className="text-white">
                 At Our Showroom
               </span>
             </h1>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-white/90 mb-8">
               See, touch, and compare 50+ cabinet displays. Meet with expert designers and bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -357,7 +352,7 @@ const ShowroomPage: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Schedule Your Showroom Visit
           </h2>
-          <p className="text-xl text-accent-light mb-8">
+          <p className="text-xl text-white/90 mb-8">
             Book a time that works for you. We'll have a designer ready to give you their full attention.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

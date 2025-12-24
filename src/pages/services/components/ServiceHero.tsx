@@ -8,20 +8,18 @@ interface ServiceHeroProps {
 
 const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
   return (
-    <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
+    <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
-            <div className="inline-block bg-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              Custom Cabinetry
-            </div>
+            <div className="w-16 h-1 bg-accent mb-8"></div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {service.name}
             </h1>
 
-            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
               {service.overview}
             </p>
 
@@ -31,7 +29,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
                 {service.features.slice(0, 4).map((feature: any, idx: number) => (
                   <div key={idx} className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-200">{typeof feature === 'string' ? feature : feature.title}</span>
+                    <span className="text-white/90">{typeof feature === 'string' ? feature : feature.title}</span>
                   </div>
                 ))}
               </div>

@@ -8,13 +8,13 @@ interface LocalProjectsProps {
 
 const LocalProjects: React.FC<LocalProjectsProps> = ({ location }) => {
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+    <section className="py-16 bg-gradient-to-br from-primary to-primary-dark text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <Image className="w-16 h-16 mx-auto mb-6 text-accent" />
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           See Our Work in {location.name}
         </h2>
-        <p className="text-xl text-slate-300 mb-8">
+        <p className="text-xl text-white/90 mb-8">
           Explore our portfolio of custom cabinet projects from kitchens and bathrooms to closets and home offices.
         </p>
         <a
