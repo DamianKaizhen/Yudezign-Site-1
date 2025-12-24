@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['door styles', 'flat panel', 'shaker', 'design', 'construction'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556909114-7e1f180b2d03?w=1200&q=90',
+      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1200&q=90',
       alt: 'Comparison of flat panel and shaker cabinet door styles',
     },
     readTime: 9,
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['finishes', 'melamine', 'laminate', 'acrylic', 'RTF', 'paint'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf?w=1200&q=90',
+      url: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1200&q=90',
       alt: 'Various cabinet finish samples and textures',
     },
     readTime: 11,
