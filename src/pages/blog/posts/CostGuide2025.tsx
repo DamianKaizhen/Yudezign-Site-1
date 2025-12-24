@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { DollarSign, Calculator, TrendingUp, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
+import { Calculator, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
 
 const CostGuide2025: React.FC = () => {
   return (
