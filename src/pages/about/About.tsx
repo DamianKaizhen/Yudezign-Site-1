@@ -74,7 +74,7 @@ const About = () => {
                   customers transform their spaces with premium cabinets at honest prices.
                 </p>
                 <p>
-                  Our commitment to 3/4&quot; plywood construction, frameless European design, and rapid 2-4 week turnaround
+                  Our commitment to 3/4" plywood construction, frameless European design, and rapid 2-4 week turnaround
                   has made us the trusted choice for contractors, designers, and homeowners across the Greater Houston area.
                 </p>
                 <p>
@@ -161,7 +161,7 @@ const About = () => {
               {
                 icon: Factory,
                 title: 'Crafting',
-                description: 'We craft your cabinets in our Houston facility using premium 3/4&quot; plywood and European hardware.',
+                description: 'We craft your cabinets in our Houston facility using premium 3/4" plywood and European hardware.',
               },
               {
                 icon: Award,

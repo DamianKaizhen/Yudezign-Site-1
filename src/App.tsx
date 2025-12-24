@@ -48,6 +48,9 @@ import KitchenTrends2025 from './pages/blog/posts/KitchenTrends2025';
 import HoustonHumidity from './pages/blog/posts/HoustonHumidity';
 import MeasuringGuide from './pages/blog/posts/MeasuringGuide';
 import EuropeanVsAmerican from './pages/blog/posts/EuropeanVsAmerican';
+import CabinetMaterialsGuide from './pages/blog/posts/CabinetMaterialsGuide';
+import CabinetDoorStylesGuide from './pages/blog/posts/CabinetDoorStylesGuide';
+import CabinetFinishesGuide from './pages/blog/posts/CabinetFinishesGuide';
 
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
@@ -127,6 +130,9 @@ function App() {
           <Route path="/blog/houston-humidity-cabinets" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
           <Route path="/blog/how-to-measure-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
           <Route path="/blog/european-vs-american-cabinets" element={<PublicLayout><EuropeanVsAmerican /></PublicLayout>} />
+          <Route path="/blog/cabinet-materials-plywood-particleboard-mdf" element={<PublicLayout><CabinetMaterialsGuide /></PublicLayout>} />
+          <Route path="/blog/flat-panel-vs-shaker-cabinet-doors" element={<PublicLayout><CabinetDoorStylesGuide /></PublicLayout>} />
+          <Route path="/blog/cabinet-finishes-explained-melamine-laminate-acrylic" element={<PublicLayout><CabinetFinishesGuide /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
 
           {/* FAQ */}

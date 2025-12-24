@@ -53,7 +53,7 @@ const Finishes = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90 max-w-2xl mx-auto"
           >
-            Choose from 25+ premium finishes. All cabinets built with 3/4&quot; plywood for lasting quality.
+            Choose from 25+ premium finishes. All cabinets built with 3/4" plywood for lasting quality.
           </motion.p>
         </div>
       </section>
@@ -193,7 +193,7 @@ const Finishes = () => {
                 <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
                   <Check className="w-6 h-6 text-white" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-h3 font-medium text-luxury-gray-900">3/4&quot; Plywood Construction</h3>
+                <h3 className="text-h3 font-medium text-luxury-gray-900">3/4" Plywood Construction</h3>
               </div>
               <ul className="space-y-4 text-body text-luxury-gray-600 leading-relaxed">
                 <li className="flex items-start space-x-3">
