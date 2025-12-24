@@ -15,7 +15,7 @@ export interface FAQ {
   order?: number; // Display order within category
 }
 
-export type FAQCategory = 'general' | 'pricing' | 'installation' | 'materials' | 'process' | 'warranty';
+export type FAQCategory = 'general' | 'pricing' | 'installation' | 'materials' | 'process' | 'warranty' | 'technical' | 'delivery';
 
 export interface FAQCategoryInfo {
   slug: FAQCategory;
@@ -60,5 +60,17 @@ export const faqCategories: FAQCategoryInfo[] = [
     name: 'Warranty & Support',
     description: 'Questions about warranties, guarantees, and after-sales support',
     icon: 'Shield'
+  },
+  {
+    slug: 'technical',
+    name: 'Technical Specifications',
+    description: 'Detailed technical information about cabinet construction and dimensions',
+    icon: 'Settings'
+  },
+  {
+    slug: 'delivery',
+    name: 'Delivery & Logistics',
+    description: 'Questions about delivery, pickup, and logistics',
+    icon: 'Truck'
   }
 ];

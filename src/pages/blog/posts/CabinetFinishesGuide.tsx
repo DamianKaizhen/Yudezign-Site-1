@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
-import { ArrowLeft, CheckCircle, XCircle, DollarSign, Shield, Droplets, Sun } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, Shield, Droplets, Sun } from 'lucide-react';
 
 const CabinetFinishesGuide: React.FC = () => {
   return (
