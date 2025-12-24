@@ -8,7 +8,7 @@ const Navigation = () => {
   const { settings } = useSiteSettings();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,6 +27,18 @@ const Navigation = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     {
+      name: 'Services',
+      path: '/services/kitchen-cabinets',
+      subLinks: [
+        { name: 'Kitchen Cabinets', path: '/services/kitchen-cabinets' },
+        { name: 'Closet Systems', path: '/services/closet-systems' },
+        { name: 'Bathroom Vanities', path: '/services/bathroom-vanities' },
+        { name: 'Home Office', path: '/services/home-office' },
+        { name: 'Garage Cabinets', path: '/services/garage-cabinets' },
+        { name: 'Murphy Beds', path: '/services/murphy-beds' },
+      ]
+    },
+    {
       name: 'Portfolio',
       path: '/portfolio',
       subLinks: [
@@ -38,8 +50,29 @@ const Navigation = () => {
         { name: 'Commercial', path: '/portfolio/commercial' },
       ]
     },
+    {
+      name: 'Locations',
+      path: '/locations/houston',
+      subLinks: [
+        { name: 'Houston', path: '/locations/houston' },
+        { name: 'Katy', path: '/locations/katy' },
+        { name: 'Sugar Land', path: '/locations/sugar-land' },
+        { name: 'The Woodlands', path: '/locations/the-woodlands' },
+        { name: 'Memorial', path: '/locations/memorial' },
+      ]
+    },
+    {
+      name: 'Resources',
+      path: '/blog',
+      subLinks: [
+        { name: 'Blog', path: '/blog' },
+        { name: 'Pricing Guide', path: '/pricing' },
+        { name: 'FAQ', path: '/faq' },
+        { name: 'Showroom', path: '/showroom' },
+        { name: 'Warranty Info', path: '/warranty' },
+      ]
+    },
     { name: 'Finishes & Materials', path: '/finishes' },
-    { name: 'Closet Program', path: '/kdlite' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -84,8 +117,8 @@ const Navigation = () => {
                       className={`flex items-center space-x-1 font-medium transition-colors ${
                         isScrolled ? 'text-neutral-700 hover:text-primary' : 'text-white hover:text-accent'
                       }`}
-                      onMouseEnter={() => setIsPortfolioOpen(true)}
-                      onMouseLeave={() => setIsPortfolioOpen(false)}
+                      onMouseEnter={() => setOpenDropdown(link.name)}
+                      onMouseLeave={() => setOpenDropdown(null)}
                     >
                       <span>{link.name}</span>
                       <ChevronDown className="w-4 h-4" />
@@ -93,15 +126,15 @@ const Navigation = () => {
 
                     {/* Dropdown */}
                     <AnimatePresence>
-                      {isPortfolioOpen && (
+                      {openDropdown === link.name && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2"
-                          onMouseEnter={() => setIsPortfolioOpen(true)}
-                          onMouseLeave={() => setIsPortfolioOpen(false)}
+                          onMouseEnter={() => setOpenDropdown(link.name)}
+                          onMouseLeave={() => setOpenDropdown(null)}
                         >
                           {link.subLinks.map((subLink) => (
                             <Link
@@ -165,14 +198,14 @@ const Navigation = () => {
                     {link.subLinks ? (
                       <>
                         <button
-                          onClick={() => setIsPortfolioOpen(!isPortfolioOpen)}
+                          onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
                           className="w-full px-6 py-3 text-left font-medium text-neutral-700 hover:bg-neutral-50 flex items-center justify-between"
                         >
                           <span>{link.name}</span>
-                          <ChevronDown className={`w-4 h-4 transition-transform ${isPortfolioOpen ? 'rotate-180' : ''}`} />
+                          <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.name ? 'rotate-180' : ''}`} />
                         </button>
                         <AnimatePresence>
-                          {isPortfolioOpen && (
+                          {openDropdown === link.name && (
                             <motion.div
                               initial={{ height: 0 }}
                               animate={{ height: 'auto' }}

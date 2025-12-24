@@ -41,6 +41,14 @@ import BlogPost from './pages/blog/BlogPost';
 import FAQPage from './pages/faq/FAQPage';
 import ComparisonPage from './pages/comparison/ComparisonPage';
 
+// Blog Posts
+import CostGuide2025 from './pages/blog/posts/CostGuide2025';
+import FramelessVsFramed from './pages/blog/posts/FramelessVsFramed';
+import KitchenTrends2025 from './pages/blog/posts/KitchenTrends2025';
+import HoustonHumidity from './pages/blog/posts/HoustonHumidity';
+import MeasuringGuide from './pages/blog/posts/MeasuringGuide';
+import EuropeanVsAmerican from './pages/blog/posts/EuropeanVsAmerican';
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -112,6 +120,12 @@ function App() {
 
           {/* Blog Pages */}
           <Route path="/blog" element={<PublicLayout><BlogIndex /></PublicLayout>} />
+          <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<PublicLayout><CostGuide2025 /></PublicLayout>} />
+          <Route path="/blog/frameless-vs-framed-cabinets" element={<PublicLayout><FramelessVsFramed /></PublicLayout>} />
+          <Route path="/blog/kitchen-cabinet-trends-houston-2025" element={<PublicLayout><KitchenTrends2025 /></PublicLayout>} />
+          <Route path="/blog/houston-humidity-cabinet-care" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
+          <Route path="/blog/how-to-measure-for-custom-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
+          <Route path="/blog/european-vs-american-cabinets" element={<PublicLayout><EuropeanVsAmerican /></PublicLayout>} />
           <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
 
           {/* FAQ */}
