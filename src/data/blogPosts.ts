@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['European cabinets', 'American cabinets', 'design styles', 'comparison'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90',
+      url: 'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=1200&q=90',
       alt: 'Comparison of European and American cabinet styles',
     },
     readTime: 10,
@@ -248,7 +248,7 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['door styles', 'flat panel', 'shaker', 'design', 'construction'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=90',
+      url: 'https://images.unsplash.com/photo-1556909114-7e1f180b2d03?w=1200&q=90',
       alt: 'Comparison of flat panel and shaker cabinet door styles',
     },
     readTime: 9,
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['finishes', 'melamine', 'laminate', 'acrylic', 'RTF', 'paint'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
+      url: 'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf?w=1200&q=90',
       alt: 'Various cabinet finish samples and textures',
     },
     readTime: 11,
