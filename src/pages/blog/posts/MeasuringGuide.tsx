@@ -39,7 +39,7 @@ const MeasuringGuide: React.FC = () => {
             <span>•</span>
             <span>December 23, 2025</span>
             <span>•</span>
-            <span>16 min read</span>
+            <span>22 min read</span>
           </div>
         </header>
 
@@ -503,6 +503,331 @@ const MeasuringGuide: React.FC = () => {
             walls with shims and scribes. Custom cabinets can accommodate these imperfections—but designers need to
             know about them upfront.
           </p>
+
+          <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
+            Room-by-Room Measurement Guides
+          </h2>
+
+          <p>
+            Different rooms have unique measurement requirements. Here's detailed guidance for each space:
+          </p>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Kitchen Measurements</h3>
+
+          <p>
+            Kitchens are the most complex rooms to measure due to multiple appliances, plumbing, and electrical requirements:
+          </p>
+
+          <div className="not-prose my-6">
+            <div className="bg-slate-50 rounded-xl p-6 border-2 border-slate-200">
+              <h4 className="font-bold text-lg text-slate-900 mb-4">Kitchen-Specific Measurements</h4>
+              <ul className="space-y-3 text-slate-700 text-sm">
+                <li>
+                  <strong>Base cabinet runs:</strong> Measure from wall to wall at 36" height (standard countertop).
+                  Check for variations at floor level and ceiling—note if walls bow in or out. Standard base depth is 24"
+                  but measure existing depth if replacing cabinets in same footprint.
+                </li>
+                <li>
+                  <strong>Upper cabinet zones:</strong> Measure wall space from 54" to ceiling height. Standard upper
+                  cabinet bottom is 54" from floor (18" above 36" countertop). If you have taller family members or want
+                  lower uppers for accessibility, note preferred height.
+                </li>
+                <li>
+                  <strong>Island/peninsula measurements:</strong> Measure available floor space, allowing 36-48" walkway
+                  clearance on all working sides. Note if island will house sink (plumbing location) or cooktop (electrical/gas
+                  requirements). Standard island height is 36" to match counters, or 42" for bar seating.
+                </li>
+                <li>
+                  <strong>Range hood clearance:</strong> Measure from cooktop surface to bottom of hood (30" minimum for
+                  gas, 24" for electric). Note duct location if venting outside, or plan for recirculating hood. Measure
+                  width of range and add 3-6" for adequate hood coverage.
+                </li>
+                <li>
+                  <strong>Pantry cabinet space:</strong> Floor-to-ceiling pantries require exact ceiling height and width
+                  measurements. Note door swing clearance—pantry doors are typically 18-24" wide and need clear swing space.
+                  Measure depth available (12", 18", or 24" pantries are standard).
+                </li>
+                <li>
+                  <strong>Corner cabinets:</strong> Measure both walls forming corner. Note corner type (90°, 45°, or odd
+                  angle). Corner cabinets require special configurations—lazy susan, blind corner, or diagonal corner solutions.
+                  Measure access clearance for corner mechanisms.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Bathroom Vanity Measurements</h3>
+
+          <p>
+            Bathroom vanities have tight clearances and specific plumbing considerations:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>Available wall width:</strong> Measure wall-to-wall where vanity will mount. Account for door swing
+              clearances (minimum 21" clear space in front of vanity). Standard single vanities are 24-48" wide, double
+              vanities 60-72".
+            </li>
+            <li>
+              <strong>Plumbing rough-in:</strong> Measure from wall to center of drain (typically 12-18" from side wall).
+              Measure height of drain stub-out from floor (typically 20-24"). Note water supply line locations (hot and cold,
+              usually 8" apart, 20-22" from floor).
+            </li>
+            <li>
+              <strong>Depth constraints:</strong> Standard vanity depth is 21", but measure available depth. Check for
+              protruding toilet tanks, towel bars, or doors that limit depth. Shallow vanities (16-18") available for tight
+              bathrooms.
+            </li>
+            <li>
+              <strong>Mirror and medicine cabinet:</strong> Measure from vanity top to ceiling or light fixture. Medicine
+              cabinets typically mount 48-54" from floor to bottom edge. Note electrical outlet locations for lighted mirrors.
+            </li>
+            <li>
+              <strong>Toilet clearance:</strong> Measure distance between vanity edge and toilet center (minimum 15" toilet
+              code clearance, 18" preferred for comfort). Check that vanity doors/drawers don't hit toilet when open.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Closet System Measurements</h3>
+
+          <p>
+            Custom closet systems maximize every inch of storage space through precise measurements:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>Interior dimensions:</strong> Measure width, depth, and height of closet interior (not door opening).
+              Measure wall-to-wall at multiple heights—closets in older homes often have uneven walls. Note any slopes or
+              irregularities.
+            </li>
+            <li>
+              <strong>Door opening and type:</strong> Measure door width and height. Note door type (hinged, sliding, bi-fold).
+              Hinged doors need swing clearance. Sliding doors limit access to half the closet at once—affects layout planning.
+            </li>
+            <li>
+              <strong>Clothing inventory:</strong> Count hanging clothes (short hang 40-45", long hang 60-72"). Count folded
+              items, shoes, accessories. This determines shelf, drawer, and rod quantities. Typical person needs 4-6 linear
+              feet of hanging space.
+            </li>
+            <li>
+              <strong>Corner configurations:</strong> Walk-in closets have corners. Measure corner angle (usually 90° but
+              verify). Note depth available on each wall. Corners can use corner rods, corner shelves, or remain open for access.
+            </li>
+            <li>
+              <strong>Floor and ceiling clearances:</strong> Measure from floor to lowest point of ceiling (often sloped in
+              bedroom closets). Closet systems can be floor-mounted, wall-mounted, or floor-to-ceiling. Note baseboards and
+              crown molding—may need removal or accommodation.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Home Office Cabinet Measurements</h3>
+
+          <p>
+            Built-in home offices require ergonomic measurements for comfortable work:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>Desk height and depth:</strong> Standard desk height is 29-30" (lower than kitchen counters). Measure
+              available wall length and depth. Minimum comfortable desk depth is 24", 30" preferred for dual monitors. Note
+              if standing desk or adjustable height desired.
+            </li>
+            <li>
+              <strong>Leg clearance:</strong> Under desk knee space should be 24" wide minimum, 27" high, 19" deep. If adding
+              file drawers under desk, allow clearance on at least one side for chair access.
+            </li>
+            <li>
+              <strong>Monitor placement:</strong> Measure from desk surface to eye level when seated (monitor top should be
+              at or slightly below eye level). Upper cabinets or open shelving should clear monitor height plus 4-6".
+            </li>
+            <li>
+              <strong>Electrical and data:</strong> Measure location of existing outlets. Offices need multiple outlets—plan
+              for computers, monitors, printers, chargers, desk lamps. Note if CAT6 or fiber optic runs needed for hardwired
+              internet. Built-in cable management requires planning.
+            </li>
+            <li>
+              <strong>Storage requirements:</strong> Measure file drawers needed (legal or letter size), printer space (measure
+              printer dimensions plus paper clearance), book shelving (measure tallest books plus 1-2" clearance). Note if
+              lateral file cabinets or vertical files preferred.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Garage Cabinet Measurements</h3>
+
+          <p>
+            Garage cabinets handle heavy loads and have different requirements than interior cabinets:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>Wall construction:</strong> Determine if garage walls are drywall (requires stud mounting), concrete
+              block, or exposed studs. Measure stud spacing with stud finder (16" or 24" on-center). Concrete requires special
+              anchors—note wall type for installer.
+            </li>
+            <li>
+              <strong>Floor conditions:</strong> Garage floors are often uneven. Measure floor slope (garage floors slope
+              toward door for drainage). Cabinet bases can be shimmed but excessive slopes (more than 2" across cabinet run)
+              may require leveling solutions.
+            </li>
+            <li>
+              <strong>Overhead clearance:</strong> Measure from floor to garage door tracks and opener. Wall cabinets can't
+              interfere with door operation. Measure car hood height when parked—cabinets shouldn't protrude where car parks.
+              Consider overhead storage racks above garage door.
+            </li>
+            <li>
+              <strong>Door and window clearances:</strong> Measure garage entry door swing, man door locations, windows.
+              Note garage door opener location—may affect cabinet placement. Measure water heater, HVAC, electrical panel
+              locations—must remain accessible.
+            </li>
+            <li>
+              <strong>Heavy storage needs:</strong> Measure and note heavy items to store (tool boxes, paint cans, automotive
+              fluids, seasonal equipment). Heavy-duty garage cabinets have reinforced backs and shelves—designer needs to know
+              load requirements. Plan for slatwall, pegboard, or tool organization systems.
+            </li>
+          </ul>
+
+          <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
+            Advanced Measurement Techniques
+          </h2>
+
+          <p>
+            Professional cabinet makers use these techniques for difficult measurements:
+          </p>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Diagonal Measurements for Squareness</h3>
+
+          <p>
+            To verify if a room is square, measure diagonals. In a perfectly square room, opposite diagonal measurements
+            should be equal. For example, in a rectangular kitchen:
+          </p>
+
+          <ol className="space-y-2">
+            <li>Measure from top-left corner to bottom-right corner (diagonal A)</li>
+            <li>Measure from top-right corner to bottom-left corner (diagonal B)</li>
+            <li>Compare measurements: If diagonal A = 180 1/4" and diagonal B = 179 3/4", room is out of square by 1/2"</li>
+            <li>Document this—cabinets in corners will need scribing to accommodate out-of-square walls</li>
+          </ol>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">The 3-4-5 Triangle Method</h3>
+
+          <p>
+            To check if a corner is exactly 90 degrees without a protractor:
+          </p>
+
+          <ol className="space-y-2">
+            <li>Mark a point 3 feet from corner along one wall</li>
+            <li>Mark a point 4 feet from corner along the other wall</li>
+            <li>Measure distance between these two marks—should be exactly 5 feet if corner is 90°</li>
+            <li>For larger spaces, use multiples: 6-8-10 feet, or 9-12-15 feet</li>
+            <li>If measurement differs from 5 feet, corner angle is not 90°—document actual angle or difference</li>
+          </ol>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Story Pole Technique</h3>
+
+          <p>
+            Professional installers create "story poles"—long straight boards marked with exact measurements:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>What it is:</strong> A 1x2 or 1x3 board cut slightly longer than wall length. Instead of writing
+              measurements, you mark actual positions of windows, doors, outlets directly on the board.
+            </li>
+            <li>
+              <strong>Benefits:</strong> Eliminates transcription errors. Visual representation of space. Can lay story
+              pole against wall during installation to verify cabinet placement. Particularly useful for complex walls
+              with many obstacles.
+            </li>
+            <li>
+              <strong>How to create:</strong> Cut board to wall length. Hold against wall. Mark window edges, door edges,
+              outlet positions, switch positions directly on board with pencil. Label each mark clearly. Create separate
+              story poles for base cabinet height and upper cabinet height.
+            </li>
+            <li>
+              <strong>When to use:</strong> Long walls with many features. Angled walls or unusual layouts. When multiple
+              people are involved in measuring and installation. Bring story pole to cabinet design consultation.
+            </li>
+          </ul>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Digital Measuring Tools and Apps</h3>
+
+          <p>
+            Modern technology offers measurement assistance, but has limitations:
+          </p>
+
+          <ul className="space-y-2">
+            <li>
+              <strong>Laser distance measurers:</strong> Accurate to 1/16" for distances up to 100+ feet. Ideal for long
+              walls, ceiling heights, diagonal measurements. Limitations: Needs target surface (doesn't work well on
+              windows or dark surfaces). Costs $30-$200 depending on features.
+            </li>
+            <li>
+              <strong>3D room scanning apps:</strong> Apps like Magicplan, RoomScan, or Canvas use phone camera/LiDAR to
+              create floor plans. Pros: Fast, creates digital floor plan, useful for preliminary space understanding. Cons:
+              Not accurate enough for cabinet fabrication (typical accuracy ±2-4"), misses details like outlet locations,
+              plumbing positions.
+            </li>
+            <li>
+              <strong>Augmented reality (AR) visualization:</strong> Apps like Houzz, IKEA Place show how cabinets look in
+              space. Great for design visualization and style decisions. Not suitable for measurement—use for inspiration
+              and planning, not for dimensional accuracy.
+            </li>
+            <li>
+              <strong>Digital calipers:</strong> For measuring small gaps, appliance openings, or hardware positions.
+              Accurate to 1/32" or better. Useful when measuring existing cabinet hardware spacing to match new cabinets
+              to old style.
+            </li>
+          </ul>
+
+          <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
+            Common Measurement Scenarios and Solutions
+          </h2>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Scenario 1: Kitchen with Sloped Floor</h3>
+
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-6">
+            <p className="text-slate-700 mb-3">
+              <strong>Problem:</strong> Houston home on clay soil, kitchen floor slopes 1.5" from one wall to opposite wall.
+              How do you measure for level cabinets?
+            </p>
+            <p className="text-slate-700 mb-0">
+              <strong>Solution:</strong> Measure floor height at multiple points along each wall. Mark highest and lowest
+              points. On your sketch, note "floor slopes 1.5" high to low from north wall to south wall." Cabinets will be
+              shimmed level during installation—installers need to know slope severity to bring correct shim materials. Severe
+              slopes may require platform/false floor. Your measurements show the problem; professional solves it.
+            </p>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Scenario 2: Window Above Kitchen Sink</h3>
+
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-6">
+            <p className="text-slate-700 mb-3">
+              <strong>Problem:</strong> Planning sink under window. Need to ensure faucet doesn't hit window when operating.
+            </p>
+            <p className="text-slate-700 mb-0">
+              <strong>Solution:</strong> Measure: (1) Window sill height from floor, (2) Window sill depth/projection into
+              room, (3) Desired sink location (typically centered under window). Calculate: Standard counter height 36" +
+              sink depth 8-10" + faucet height 8-12" = 52-58" total. If window sill is 42" from floor, faucet will hit
+              window. Solutions: Use low-profile faucet, offset sink slightly, or lower window sill (requires reframing).
+              Document measurements and discuss options with designer.
+            </p>
+          </div>
+
+          <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Scenario 3: Odd-Angled Corner</h3>
+
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-6">
+            <p className="text-slate-700 mb-3">
+              <strong>Problem:</strong> Kitchen corner is 85° instead of 90° (older home settled, walls shifted). How to
+              measure and specify?
+            </p>
+            <p className="text-slate-700 mb-0">
+              <strong>Solution:</strong> Measure both wall lengths as normal. Use 3-4-5 triangle method or protractor to
+              measure actual angle. Document: "Southwest corner measures 85° (5° off square)." Take photos showing gap at
+              ceiling or floor where walls don't meet squarely. Custom cabinets can be built to odd angles—common solutions
+              include angled corner cabinet, filler strip to square up corner, or scribing cabinet to angle. Designer will
+              propose solution, but needs angle measurement.
+            </p>
+          </div>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
             Measurement Checklist
