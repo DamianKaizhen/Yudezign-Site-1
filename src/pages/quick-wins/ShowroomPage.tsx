@@ -189,23 +189,17 @@ const ShowroomPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-slate-900 mb-8">
                 Find Us
               </h2>
-              <div className="bg-slate-100 rounded-xl overflow-hidden shadow-lg h-[500px] flex items-center justify-center">
-                {/* Static Map Placeholder - Replace with actual map image or embedded map */}
-                <div className="text-center p-8">
-                  <MapPin className="w-16 h-16 text-slate-400 mx-auto mb-4" />
-                  <p className="text-slate-600 mb-4">
-                    Interactive map or static map image goes here
-                  </p>
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(businessInfo.address)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
-                  >
-                    <Navigation className="mr-2 w-5 h-5" />
-                    Open in Google Maps
-                  </a>
-                </div>
+              <div className="bg-slate-100 rounded-xl overflow-hidden shadow-lg h-[500px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.8697832745777!2d-95.56934492349396!3d29.616758975219067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e7a1b1b1b1b1%3A0x1234567890abcdef!2s13230%20Murphy%20Rd%20Ste%20600%2C%20Stafford%2C%20TX%2077477!5e0!3m2!1sen!2sus!4v1699123456789!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="YuDezign Location - 13230 Murphy Rd Ste 600, Stafford, TX 77477"
+                />
               </div>
 
               <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
