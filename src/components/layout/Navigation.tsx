@@ -33,7 +33,7 @@ const Navigation = () => {
         { name: 'Kitchen Cabinets', path: '/services/kitchen-cabinets' },
         { name: 'Closet Systems', path: '/services/closet-systems' },
         { name: 'Bathroom Vanities', path: '/services/bathroom-vanities' },
-        { name: 'Home Office', path: '/services/home-office' },
+        { name: 'Home Office', path: '/services/home-office-cabinets' },
         { name: 'Garage Cabinets', path: '/services/garage-cabinets' },
         { name: 'Murphy Beds', path: '/services/murphy-beds' },
       ]

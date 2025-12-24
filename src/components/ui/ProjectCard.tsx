@@ -8,11 +8,11 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
   const categoryColors = {
-    kitchens: 'bg-blue-500',
-    closets: 'bg-purple-500',
-    vanities: 'bg-pink-500',
-    custom: 'bg-green-500',
-    commercial: 'bg-orange-500',
+    kitchens: 'bg-primary',
+    closets: 'bg-primary-light',
+    vanities: 'bg-accent',
+    custom: 'bg-primary-dark',
+    commercial: 'bg-accent-dark',
   };
 
   return (
