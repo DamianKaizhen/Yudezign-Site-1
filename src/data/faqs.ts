@@ -52,7 +52,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-affects-pricing',
     question: 'What affects the final price of custom cabinets?',
-    answer: 'Price is determined by: (1) Linear footage - total length of cabinets, (2) Finish material - melamine is most affordable, high-gloss acrylic is premium, (3) Features - soft-close, pull-outs, custom inserts add cost, (4) Complexity - corner solutions and specialty cabinets cost more, (5) Hardware quality - basic vs premium Blum/Hettich.',
+    answer: 'Price is determined by: (1) Materials used - melamine is most affordable, high-gloss acrylic is premium, (2) Production time - complexity and customization affect manufacturing time, (3) Features - soft-close hardware, pull-outs, custom inserts add cost, (4) Specialty cabinets - corner solutions and custom configurations cost more, (5) Hardware quality - basic vs premium Blum/Hettich. Linear footage is used for rough estimates only.',
     category: 'pricing',
     order: 2
   },
