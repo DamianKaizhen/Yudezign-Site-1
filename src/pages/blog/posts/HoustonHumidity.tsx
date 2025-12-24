@@ -62,9 +62,9 @@ const HoustonHumidity: React.FC = () => {
           </p>
 
           {/* Quick Facts Box */}
-          <div className="bg-blue-50 border-2 border-blue-600 rounded-xl p-6 my-8">
+          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Droplet className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+              <Droplet className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Houston Climate Facts</h3>
                 <ul className="text-slate-700 mb-0 space-y-1">
@@ -241,7 +241,7 @@ const HoustonHumidity: React.FC = () => {
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Moisture-Resistant MDF</td>
-                    <td className="px-6 py-4 text-blue-600 font-bold">GOOD</td>
+                    <td className="px-6 py-4 text-amber-600 font-bold">GOOD</td>
                     <td className="px-6 py-4 text-slate-700 text-sm">Painted doors, panels</td>
                     <td className="px-6 py-4 text-slate-700">$$</td>
                   </tr>
@@ -306,9 +306,9 @@ const HoustonHumidity: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-blue-600">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-amber-600">
                 <h4 className="font-bold text-lg text-slate-900 mb-3 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-blue-600" />
+                  <Shield className="w-5 h-5 text-amber-600" />
                   Shelves (Good)
                 </h4>
                 <p className="text-slate-700 text-sm mb-3">

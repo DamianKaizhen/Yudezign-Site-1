@@ -303,30 +303,30 @@ const KitchenTrends2025: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-blue-50 rounded-xl p-6 shadow-md border-2 border-blue-600">
+              <div className="bg-amber-50 rounded-xl p-6 shadow-md border-2 border-amber-600">
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="w-6 h-6 text-blue-600" />
+                  <Sparkles className="w-6 h-6 text-amber-600" />
                   <h4 className="font-bold text-lg text-slate-900">Sustainable Finishes</h4>
                 </div>
                 <ul className="space-y-2 text-slate-700 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Zero-VOC and low-VOC paints and stains</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Water-based finishing systems</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>Natural oil finishes (tung oil, linseed oil)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>UV-cured finishes (no off-gassing)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                     <span>GREENGUARD certified products</span>
                   </li>
                 </ul>
@@ -618,7 +618,7 @@ const KitchenTrends2025: React.FC = () => {
                     <td className="px-6 py-4 font-semibold text-slate-900">Warm White</td>
                     <td className="px-6 py-4 text-slate-700">Traditional, farmhouse</td>
                     <td className="px-6 py-4 text-slate-600 text-sm">All colors, wood tones</td>
-                    <td className="px-6 py-4 text-blue-600 font-semibold text-sm">TIMELESS</td>
+                    <td className="px-6 py-4 text-amber-600 font-semibold text-sm">TIMELESS</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Matte Black</td>
