@@ -48,7 +48,7 @@ const LocalProjects: React.FC<LocalProjectsProps> = ({ location }) => {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <div className="inline-block bg-amber-600 px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                  <div className="inline-block bg-primary px-3 py-1 rounded-full text-xs font-semibold mb-2">
                     {location.city}
                   </div>
                 </div>

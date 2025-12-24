@@ -24,7 +24,7 @@ const CostGuide2025: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>Cost Guide</span>
           </div>
@@ -61,9 +61,9 @@ const CostGuide2025: React.FC = () => {
           </p>
 
           {/* Quick Answer Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Calculator className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Calculator className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
                 <p className="text-slate-700 mb-0">
@@ -110,7 +110,7 @@ const CostGuide2025: React.FC = () => {
                     <td className="px-6 py-4 text-slate-700">$8,000-$25,000</td>
                     <td className="px-6 py-4 text-slate-600 text-sm">Most homeowners</td>
                   </tr>
-                  <tr className="hover:bg-slate-50 bg-amber-50">
+                  <tr className="hover:bg-slate-50 bg-accent-light">
                     <td className="px-6 py-4 font-semibold text-slate-900">Custom Frameless</td>
                     <td className="px-6 py-4 text-slate-700">$500-$1,200</td>
                     <td className="px-6 py-4 text-slate-700">$20,000-$40,000</td>
@@ -127,7 +127,7 @@ const CostGuide2025: React.FC = () => {
             </div>
           </div>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Houston-Specific Note:</strong> Houston's high humidity requires moisture-resistant materials.
               Expect to pay 10-15% more for engineered cores and proper sealing compared to national averages.
@@ -161,7 +161,7 @@ const CostGuide2025: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            Learn more about material options in our guide: <Link to="/vs/melamine-vs-laminate-vs-acrylic" className="text-amber-600 hover:text-amber-700 font-semibold">Melamine vs Laminate vs Acrylic Comparison</Link>
+            Learn more about material options in our guide: <Link to="/vs/melamine-vs-laminate-vs-acrylic" className="text-primary hover:text-primary-dark font-semibold">Melamine vs Laminate vs Acrylic Comparison</Link>
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">2. Door Style & Finish</h3>
@@ -192,15 +192,15 @@ const CostGuide2025: React.FC = () => {
                 <h4 className="font-bold text-lg text-slate-900 mb-3">Premium Options</h4>
                 <ul className="space-y-2 text-slate-700">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span>Raised panel: $80-$150 per door</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span>Glass inserts: Add $100-$300 each</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span>High-gloss acrylic: UV-stable, premium</span>
                   </li>
                 </ul>
@@ -236,9 +236,9 @@ const CostGuide2025: React.FC = () => {
             <li>Installing hardware and making final adjustments</li>
           </ul>
 
-          <div className="not-prose bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="not-prose bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-slate-900 mb-2">DIY Installation: Proceed with Caution</h4>
                 <p className="text-slate-700 mb-0">
@@ -265,7 +265,7 @@ const CostGuide2025: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Countertop Installation</h4>
                       <p className="text-slate-600 text-sm">New cabinets usually require new countertops</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$2,000-$8,000</span>
+                    <span className="text-primary font-bold">$2,000-$8,000</span>
                   </div>
                 </div>
 
@@ -275,7 +275,7 @@ const CostGuide2025: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Electrical & Plumbing Updates</h4>
                       <p className="text-slate-600 text-sm">Relocating outlets, under-cabinet lighting</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$500-$2,500</span>
+                    <span className="text-primary font-bold">$500-$2,500</span>
                   </div>
                 </div>
 
@@ -285,7 +285,7 @@ const CostGuide2025: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Flooring Repairs</h4>
                       <p className="text-slate-600 text-sm">Gaps left by old cabinet footprint</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$300-$1,500</span>
+                    <span className="text-primary font-bold">$300-$1,500</span>
                   </div>
                 </div>
 
@@ -295,7 +295,7 @@ const CostGuide2025: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Backsplash Installation</h4>
                       <p className="text-slate-600 text-sm">New cabinets show old backsplash gaps</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$800-$3,000</span>
+                    <span className="text-primary font-bold">$800-$3,000</span>
                   </div>
                 </div>
 
@@ -305,7 +305,7 @@ const CostGuide2025: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Permits & Inspections</h4>
                       <p className="text-slate-600 text-sm">Required for structural changes in Houston</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$100-$500</span>
+                    <span className="text-primary font-bold">$100-$500</span>
                   </div>
                 </div>
               </div>
@@ -331,7 +331,7 @@ const CostGuide2025: React.FC = () => {
             <li>
               <strong>Choose frameless construction:</strong> Frameless (European-style) cabinets provide 10-15% more
               storage space than framed cabinets, giving you more value per dollar. Learn more:
-              <Link to="/vs/frameless-vs-framed-cabinets" className="text-amber-600 hover:text-amber-700 font-semibold ml-1">Frameless vs Framed Comparison</Link>
+              <Link to="/vs/frameless-vs-framed-cabinets" className="text-primary hover:text-primary-dark font-semibold ml-1">Frameless vs Framed Comparison</Link>
             </li>
             <li>
               <strong>Mix cabinet types strategically:</strong> Use custom for focal points (range hood, island) and
@@ -361,7 +361,7 @@ const CostGuide2025: React.FC = () => {
 
           <div className="not-prose my-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-amber-600">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary">
                 <h4 className="font-bold text-lg text-slate-900 mb-4">Semi-Custom Advantages</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
@@ -387,19 +387,19 @@ const CostGuide2025: React.FC = () => {
                 <h4 className="font-bold text-lg text-slate-900 mb-4">When to Go Fully Custom</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Unusual ceiling heights or angles</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Specific exotic wood or finish</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Unique design features or details</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Luxury home with unlimited budget</span>
                   </li>
                 </ul>
@@ -408,7 +408,7 @@ const CostGuide2025: React.FC = () => {
           </div>
 
           <p>
-            Read our detailed comparison: <Link to="/vs/custom-vs-semi-custom-cabinets" className="text-amber-600 hover:text-amber-700 font-semibold">Custom vs Semi-Custom Cabinets</Link>
+            Read our detailed comparison: <Link to="/vs/custom-vs-semi-custom-cabinets" className="text-primary hover:text-primary-dark font-semibold">Custom vs Semi-Custom Cabinets</Link>
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -438,7 +438,7 @@ const CostGuide2025: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            Find location-specific information: <Link to="/locations/houston" className="text-amber-600 hover:text-amber-700 font-semibold">Custom Cabinets in Houston</Link>
+            Find location-specific information: <Link to="/locations/houston" className="text-primary hover:text-primary-dark font-semibold">Custom Cabinets in Houston</Link>
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -476,7 +476,7 @@ const CostGuide2025: React.FC = () => {
             </div>
 
             {/* Mid-Range Project */}
-            <div className="bg-amber-50 rounded-xl p-6 shadow-lg border-2 border-amber-600">
+            <div className="bg-accent-light rounded-xl p-6 shadow-lg border-2 border-primary">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="font-bold text-xl text-slate-900">Mid-Range Upgrade</h4>
                 <span className="text-2xl font-bold text-slate-900">$32,000</span>
@@ -544,9 +544,9 @@ const CostGuide2025: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How much do kitchen cabinets cost per linear foot in Houston?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Custom cabinets in Houston range from $500-$1,500 per linear foot installed. Semi-custom options cost
@@ -556,9 +556,9 @@ const CostGuide2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>What's the average cost to remodel a 10x12 kitchen in Houston?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 A complete 10×12 kitchen remodel in Houston typically costs $25,000-$45,000, including cabinets ($15,000-$30,000),
@@ -568,9 +568,9 @@ const CostGuide2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are custom cabinets worth the extra cost?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Custom cabinets are worth it if you have unusual dimensions, want specific features, or are investing in a
@@ -580,9 +580,9 @@ const CostGuide2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How can I reduce kitchen cabinet costs without sacrificing quality?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Choose semi-custom over fully custom (saves 40%), use frameless construction (10-15% more storage per dollar),
@@ -625,24 +625,24 @@ const CostGuide2025: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Get Your Free Custom Cabinet Estimate
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 Professional design, accurate pricing, and expert guidance for your Houston kitchen
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/pricing"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   View Pricing Calculator
                 </Link>
@@ -678,8 +678,8 @@ const CostGuide2025: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/vs/custom-vs-semi-custom-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom vs Semi-Custom Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -689,8 +689,8 @@ const CostGuide2025: React.FC = () => {
             </Link>
 
             <Link to="/blog/frameless-vs-framed-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Frameless vs Framed Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -700,8 +700,8 @@ const CostGuide2025: React.FC = () => {
             </Link>
 
             <Link to="/services/kitchen-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Kitchen Cabinet Services
                 </h4>
                 <p className="text-sm text-slate-600">

@@ -24,7 +24,7 @@ const FramelessVsFramed: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>Cabinet Comparison</span>
           </div>
@@ -61,9 +61,9 @@ const FramelessVsFramed: React.FC = () => {
           </p>
 
           {/* Quick Answer Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Layout className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Layout className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
                 <p className="text-slate-700 mb-0">
@@ -86,9 +86,9 @@ const FramelessVsFramed: React.FC = () => {
 
           <div className="not-prose my-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-amber-600">
+              <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-primary">
                 <div className="flex items-center gap-3 mb-4">
-                  <Layout className="w-8 h-8 text-amber-600" />
+                  <Layout className="w-8 h-8 text-primary" />
                   <h3 className="font-bold text-xl text-slate-900">Frameless Construction</h3>
                 </div>
                 <p className="text-slate-700 mb-4">
@@ -172,34 +172,34 @@ const FramelessVsFramed: React.FC = () => {
                     <td className="px-6 py-4 font-semibold text-slate-900">24" Base Cabinet Opening</td>
                     <td className="px-6 py-4 text-slate-700">~23" usable width</td>
                     <td className="px-6 py-4 text-slate-700">~20" usable width</td>
-                    <td className="px-6 py-4 text-amber-600 font-bold">3" wider access</td>
+                    <td className="px-6 py-4 text-primary font-bold">3" wider access</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Drawer Width (24" cabinet)</td>
                     <td className="px-6 py-4 text-slate-700">22.5" wide drawers</td>
                     <td className="px-6 py-4 text-slate-700">19.5" wide drawers</td>
-                    <td className="px-6 py-4 text-amber-600 font-bold">15% more capacity</td>
+                    <td className="px-6 py-4 text-primary font-bold">15% more capacity</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Door Clearance</td>
                     <td className="px-6 py-4 text-slate-700">Full-width access</td>
                     <td className="px-6 py-4 text-slate-700">Frame blocks 1.5" each side</td>
-                    <td className="px-6 py-4 text-amber-600 font-bold">Easier reach-in</td>
+                    <td className="px-6 py-4 text-primary font-bold">Easier reach-in</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">10' Kitchen Storage Gain</td>
                     <td className="px-6 py-4 text-slate-700">Baseline</td>
                     <td className="px-6 py-4 text-slate-700">10-15% less total</td>
-                    <td className="px-6 py-4 text-amber-600 font-bold">~3-5 cu ft more</td>
+                    <td className="px-6 py-4 text-primary font-bold">~3-5 cu ft more</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div className="not-prose bg-amber-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-accent-light border-l-4 border-primary p-6 my-8">
             <div className="flex items-start gap-3">
-              <Maximize2 className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Maximize2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <p className="text-slate-700 mb-0">
                 <strong>Storage Efficiency:</strong> In a typical 10×12 kitchen, frameless cabinets provide approximately
                 3-5 cubic feet more usable storage space than framed cabinets. This is equivalent to adding an extra base
@@ -220,7 +220,7 @@ const FramelessVsFramed: React.FC = () => {
             <li>Modern, contemporary, and minimalist aesthetic</li>
             <li>Doors sit flush with cabinet box creating sleek lines</li>
             <li>Better suited for slab doors, high-gloss finishes, and handleless designs</li>
-            <li>Popular in <Link to="/blog/kitchen-trends-2025" className="text-amber-600 hover:text-amber-700 font-semibold">modern Houston kitchen designs</Link></li>
+            <li>Popular in <Link to="/blog/kitchen-trends-2025" className="text-primary hover:text-primary-dark font-semibold">modern Houston kitchen designs</Link></li>
           </ul>
 
           <p className="mt-6"><strong>Framed Cabinets:</strong></p>
@@ -273,7 +273,7 @@ const FramelessVsFramed: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Houston Climate Consideration:</strong> Both styles perform well if built with moisture-resistant
               materials. However, frameless cabinets' monolithic construction (fewer joints) and requirement for thicker
@@ -358,7 +358,7 @@ const FramelessVsFramed: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Semi-Custom Frameless</h4>
                       <p className="text-slate-600 text-sm">3/4" plywood boxes, melamine/laminate finish</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$200-$450/lf</span>
+                    <span className="text-primary font-bold">$200-$450/lf</span>
                   </div>
                 </div>
 
@@ -368,7 +368,7 @@ const FramelessVsFramed: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Semi-Custom Framed</h4>
                       <p className="text-slate-600 text-sm">Hardwood frame, plywood or MDF boxes</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$180-$400/lf</span>
+                    <span className="text-primary font-bold">$180-$400/lf</span>
                   </div>
                 </div>
 
@@ -378,7 +378,7 @@ const FramelessVsFramed: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Custom Frameless (High-Gloss)</h4>
                       <p className="text-slate-600 text-sm">Premium acrylic or lacquer finish</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$500-$1,200/lf</span>
+                    <span className="text-primary font-bold">$500-$1,200/lf</span>
                   </div>
                 </div>
 
@@ -388,7 +388,7 @@ const FramelessVsFramed: React.FC = () => {
                       <h4 className="font-bold text-slate-900 mb-2">Custom Framed (Inset)</h4>
                       <p className="text-slate-600 text-sm">Full inset doors, custom hardwood</p>
                     </div>
-                    <span className="text-amber-600 font-bold">$600-$1,500/lf</span>
+                    <span className="text-primary font-bold">$600-$1,500/lf</span>
                   </div>
                 </div>
               </div>
@@ -416,7 +416,7 @@ const FramelessVsFramed: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-amber-600 hover:text-amber-700 font-semibold">2025 Custom Cabinet Cost Guide</Link>.
+            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-primary hover:text-primary-dark font-semibold">2025 Custom Cabinet Cost Guide</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -425,7 +425,7 @@ const FramelessVsFramed: React.FC = () => {
 
           <div className="not-prose my-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 shadow-lg border-2 border-amber-600">
+              <div className="bg-gradient-to-br from-accent-light to-accent-light rounded-xl p-6 shadow-lg border-2 border-primary">
                 <h4 className="font-bold text-xl text-slate-900 mb-4">Choose Frameless If You Want:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
@@ -459,27 +459,27 @@ const FramelessVsFramed: React.FC = () => {
                 <h4 className="font-bold text-xl text-slate-900 mb-4">Choose Framed If You Want:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Traditional, classic, or farmhouse styling</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Visible decorative hinges and hardware</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Easier installation and wall fitting</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Shaker, raised panel, or inset door styles</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Slightly lower upfront material cost</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">Match existing traditional home architecture</span>
                   </li>
                 </ul>
@@ -515,7 +515,7 @@ const FramelessVsFramed: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            Learn more about current design preferences in our article on <Link to="/blog/kitchen-trends-2025" className="text-amber-600 hover:text-amber-700 font-semibold">Best Kitchen Cabinet Trends for Houston Homes 2025</Link>.
+            Learn more about current design preferences in our article on <Link to="/blog/kitchen-trends-2025" className="text-primary hover:text-primary-dark font-semibold">Best Kitchen Cabinet Trends for Houston Homes 2025</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -679,9 +679,9 @@ const FramelessVsFramed: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are frameless cabinets more expensive than framed?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Frameless cabinets typically cost 10-20% more than comparable framed cabinets due to thicker materials
@@ -692,9 +692,9 @@ const FramelessVsFramed: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Which style is better for Houston's humid climate?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Both styles can perform well with proper materials, but frameless cabinets have a slight edge in Houston's
@@ -705,9 +705,9 @@ const FramelessVsFramed: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Do frameless cabinets really provide more storage?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Yes, frameless cabinets provide approximately 10-15% more usable storage space. The face frame on traditional
@@ -718,9 +718,9 @@ const FramelessVsFramed: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Can I get a traditional Shaker style in frameless construction?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Absolutely! Frameless construction refers to how the cabinet box is built, not the door style. You can have
@@ -731,9 +731,9 @@ const FramelessVsFramed: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are frameless cabinets harder to install?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Frameless cabinets require more precise installation since there's no face frame to hide imperfections.
@@ -744,9 +744,9 @@ const FramelessVsFramed: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Which style is more popular in Houston right now?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Frameless cabinets are gaining significant market share in Houston, especially in new construction and
@@ -784,24 +784,24 @@ const FramelessVsFramed: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 See Both Styles in Our Houston Showroom
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 Compare frameless and framed cabinets side-by-side with expert guidance
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Showroom Visit
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/services/kitchen-cabinets"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   Explore Cabinet Options
                 </Link>
@@ -837,8 +837,8 @@ const FramelessVsFramed: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom Cabinet Cost Guide 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -848,8 +848,8 @@ const FramelessVsFramed: React.FC = () => {
             </Link>
 
             <Link to="/blog/kitchen-trends-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Kitchen Cabinet Trends 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -859,8 +859,8 @@ const FramelessVsFramed: React.FC = () => {
             </Link>
 
             <Link to="/vs/european-vs-american-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   European vs American Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">

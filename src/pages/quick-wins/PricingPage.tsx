@@ -54,12 +54,12 @@ const PricingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <DollarSign className="w-5 h-5 mr-2 text-amber-400" />
+              <DollarSign className="w-5 h-5 mr-2 text-accent" />
               <span className="text-sm font-medium">Transparent Pricing • No Hidden Fees</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Custom Cabinet Pricing <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
                 for Houston Homes
               </span>
             </h1>
@@ -74,7 +74,7 @@ const PricingPage: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Calculator className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+            <Calculator className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Instant Cost Calculator
             </h2>
@@ -83,7 +83,7 @@ const PricingPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="bg-gradient-to-br from-slate-50 to-amber-50 rounded-2xl p-8 shadow-lg border border-amber-100">
+          <div className="bg-gradient-to-br from-slate-50 to-accent-light rounded-2xl p-8 shadow-lg border border-accent-light">
             {/* Project Type Selector */}
             <div className="mb-8">
               <label className="block text-sm font-semibold text-slate-900 mb-3">
@@ -96,8 +96,8 @@ const PricingPage: React.FC = () => {
                     onClick={() => setProjectType(type)}
                     className={`px-4 py-3 rounded-lg font-medium transition-all ${
                       projectType === type
-                        ? 'bg-amber-600 text-white shadow-lg scale-105'
-                        : 'bg-white text-slate-700 hover:bg-amber-50 border border-slate-200'
+                        ? 'bg-primary text-white shadow-lg scale-105'
+                        : 'bg-white text-slate-700 hover:bg-accent-light border border-slate-200'
                     }`}
                   >
                     {type.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
@@ -122,13 +122,13 @@ const PricingPage: React.FC = () => {
                     onClick={() => setQuality(tier.value)}
                     className={`p-4 rounded-lg text-left transition-all relative ${
                       quality === tier.value
-                        ? 'bg-amber-600 text-white shadow-xl scale-105 border-2 border-amber-600'
-                        : 'bg-white text-slate-700 hover:bg-amber-50 border-2 border-slate-200'
+                        ? 'bg-primary text-white shadow-xl scale-105 border-2 border-primary'
+                        : 'bg-white text-slate-700 hover:bg-accent-light border-2 border-slate-200'
                     }`}
                   >
                     {tier.recommended && (
                       <span className={`absolute -top-2 -right-2 text-xs font-bold px-2 py-1 rounded-full ${
-                        quality === tier.value ? 'bg-white text-amber-600' : 'bg-amber-600 text-white'
+                        quality === tier.value ? 'bg-white text-primary' : 'bg-primary text-white'
                       }`}>
                         Recommended
                       </span>
@@ -145,7 +145,7 @@ const PricingPage: React.FC = () => {
             {/* Linear Feet Slider */}
             <div className="mb-8">
               <label className="block text-sm font-semibold text-slate-900 mb-3">
-                Estimated Linear Feet: <span className="text-amber-600">{linearFeet} ft</span>
+                Estimated Linear Feet: <span className="text-primary">{linearFeet} ft</span>
               </label>
               <input
                 type="range"
@@ -153,7 +153,7 @@ const PricingPage: React.FC = () => {
                 max="50"
                 value={linearFeet}
                 onChange={(e) => setLinearFeet(parseInt(e.target.value))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600"
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
               />
               <div className="flex justify-between text-xs text-slate-500 mt-2">
                 <span>5 ft (Small)</span>
@@ -162,7 +162,7 @@ const PricingPage: React.FC = () => {
             </div>
 
             {/* Estimated Cost Display */}
-            <div className="bg-white rounded-xl p-6 shadow-md border-2 border-amber-600">
+            <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-slate-600 mb-1">Estimated Investment</p>
@@ -173,7 +173,7 @@ const PricingPage: React.FC = () => {
                     ${pricing[projectType as keyof typeof pricing][quality as keyof typeof pricing.kitchen]}/linear foot × {linearFeet} ft
                   </p>
                 </div>
-                <TrendingUp className="w-16 h-16 text-amber-600 opacity-20" />
+                <TrendingUp className="w-16 h-16 text-primary opacity-20" />
               </div>
               <div className="mt-4 pt-4 border-t border-slate-200">
                 <p className="text-xs text-slate-600 flex items-start">
@@ -215,7 +215,7 @@ const PricingPage: React.FC = () => {
                 <tr className="bg-slate-900 text-white">
                   <th className="px-6 py-4 text-left font-semibold">Feature</th>
                   <th className="px-6 py-4 text-center font-semibold">Stock Cabinets</th>
-                  <th className="px-6 py-4 text-center font-semibold bg-amber-600">
+                  <th className="px-6 py-4 text-center font-semibold bg-primary">
                     <div className="flex flex-col items-center">
                       <span>Semi-Custom</span>
                       <span className="text-xs font-normal mt-1">(YuDezign Specialty)</span>
@@ -278,7 +278,7 @@ const PricingPage: React.FC = () => {
                   <tr key={idx} className="hover:bg-slate-50 transition-colors">
                     <td className="px-6 py-4 font-semibold text-slate-900">{row.feature}</td>
                     <td className="px-6 py-4 text-center text-slate-600">{row.stock}</td>
-                    <td className="px-6 py-4 text-center bg-amber-50 font-medium text-slate-900">
+                    <td className="px-6 py-4 text-center bg-accent-light font-medium text-slate-900">
                       {row.semiCustom}
                     </td>
                     <td className="px-6 py-4 text-center text-slate-600">{row.custom}</td>
@@ -291,7 +291,7 @@ const PricingPage: React.FC = () => {
           <div className="mt-8 text-center">
             <a
               href="/vs/custom-vs-semi-custom-cabinets"
-              className="inline-flex items-center text-amber-600 hover:text-amber-700 font-semibold"
+              className="inline-flex items-center text-primary hover:text-primary-dark font-semibold"
             >
               Read Full Comparison Guide
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -321,9 +321,9 @@ const PricingPage: React.FC = () => {
               { title: 'Project Management', desc: 'Dedicated project coordinator • timeline management • quality inspections' },
               { title: 'Customer Support', desc: 'Direct access to our team • responsive communication • satisfaction guarantee' },
             ].map((item, idx) => (
-              <div key={idx} className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-amber-600 hover:shadow-lg transition-all">
+              <div key={idx} className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-primary hover:shadow-lg transition-all">
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1" />
+                  <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
                     <p className="text-sm text-slate-600">{item.desc}</p>
@@ -347,9 +347,9 @@ const PricingPage: React.FC = () => {
           <div className="space-y-4">
             {pricingFAQs.map((faq, idx) => (
               <details key={idx} className="bg-white rounded-xl shadow-md overflow-hidden group">
-                <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+                <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                   <span>{faq.question}</span>
-                  <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                  <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
                 </summary>
                 <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-slate-50">
                   {faq.answer}
@@ -361,7 +361,7 @@ const PricingPage: React.FC = () => {
           <div className="mt-8 text-center">
             <a
               href="/faq/pricing"
-              className="inline-flex items-center text-amber-600 hover:text-amber-700 font-semibold"
+              className="inline-flex items-center text-primary hover:text-primary-dark font-semibold"
             >
               View All Pricing FAQs
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -371,25 +371,25 @@ const PricingPage: React.FC = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-br from-amber-600 to-amber-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready for an Accurate Quote?
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-xl text-accent-light mb-8">
             Schedule your free consultation and get a detailed, itemized proposal with no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
             >
               Schedule Free Consultation
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href="/showroom"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
             >
               Visit Our Showroom
             </a>

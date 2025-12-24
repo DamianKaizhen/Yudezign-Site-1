@@ -46,7 +46,7 @@ const BlogPost: React.FC = () => {
         <div className="bg-slate-50 py-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Category Badge */}
-            <div className="inline-block bg-amber-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
               {post.category}
             </div>
 
@@ -98,7 +98,7 @@ const BlogPost: React.FC = () => {
                 Article content would go here. In production, this would be the full article with rich formatting, images, and embedded content.
               </p>
 
-              <div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-600 rounded-r-lg">
+              <div className="my-8 p-6 bg-accent-light border-l-4 border-primary rounded-r-lg">
                 <p className="text-slate-700 font-medium">
                   <strong>Key Takeaway:</strong> This blog post structure includes all necessary SEO elements, structured data, and is ready for content population.
                 </p>
@@ -138,7 +138,7 @@ const BlogPost: React.FC = () => {
             <div className="flex items-center justify-between">
               <h3 className="font-semibold text-slate-900">Share this article</h3>
               <div className="flex gap-3">
-                <button className="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:bg-amber-600 hover:text-white transition-colors shadow-sm">
+                <button className="w-10 h-10 bg-white rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors shadow-sm">
                   <Share2 className="w-5 h-5" />
                 </button>
               </div>
@@ -175,16 +175,16 @@ const BlogPost: React.FC = () => {
                     <p className="text-slate-500 text-sm">Image</p>
                   </div>
                   <div className="p-6">
-                    <div className="inline-block bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                    <div className="inline-block bg-accent-light text-primary-dark px-3 py-1 rounded-full text-xs font-semibold mb-3">
                       {related.category}
                     </div>
-                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
+                    <h3 className="font-bold text-lg text-slate-900 mb-2 group-hover:text-primary transition-colors">
                       {related.title}
                     </h3>
                     <p className="text-sm text-slate-600 mb-4 line-clamp-2">
                       {related.excerpt}
                     </p>
-                    <div className="inline-flex items-center text-amber-600 font-semibold text-sm">
+                    <div className="inline-flex items-center text-primary font-semibold text-sm">
                       Read Article
                       <ArrowRight className="ml-2 w-4 h-4" />
                     </div>
@@ -207,7 +207,7 @@ const BlogPost: React.FC = () => {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+            className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
           >
             Schedule Free Consultation
             <ArrowRight className="ml-2 w-5 h-5" />

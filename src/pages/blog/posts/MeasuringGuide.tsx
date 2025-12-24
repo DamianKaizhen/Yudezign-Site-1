@@ -24,7 +24,7 @@ const MeasuringGuide: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>How-To Guide</span>
           </div>
@@ -62,9 +62,9 @@ const MeasuringGuide: React.FC = () => {
           </p>
 
           {/* Important Notice Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Important Note</h3>
                 <p className="text-slate-700 mb-0">
@@ -113,27 +113,27 @@ const MeasuringGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-amber-50 rounded-xl p-6 shadow-md border-2 border-amber-600">
+              <div className="bg-accent-light rounded-xl p-6 shadow-md border-2 border-primary">
                 <h4 className="font-bold text-lg text-slate-900 mb-4">Optional But Helpful</h4>
                 <ul className="space-y-2 text-slate-700 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span><strong>Laser distance measurer</strong> - Fast, accurate for long runs</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span><strong>Level (2' or 4')</strong> - Check walls, floors, ceilings</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span><strong>Stud finder</strong> - Locate studs for mounting</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span><strong>Measuring app</strong> - Digital floor plan creation</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span><strong>Helper</strong> - Second person for long measurements</span>
                   </li>
                 </ul>
@@ -181,9 +181,9 @@ const MeasuringGuide: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <div className="flex items-start gap-3">
-              <Camera className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Camera className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-slate-900 mb-2">Pro Tip: Take Photos</h4>
                 <p className="text-slate-700 mb-0">
@@ -343,7 +343,7 @@ const MeasuringGuide: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Houston homes note:</strong> Many Houston homes built 1970s-1990s have 8' ceilings. Newer construction
               typically has 9-10' ceilings. This affects upper cabinet height options. Standard upper cabinets are 30",
@@ -458,9 +458,9 @@ const MeasuringGuide: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="not-prose bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-slate-900 mb-2">Relocating Utilities</h4>
                 <p className="text-slate-700 mb-0">
@@ -511,75 +511,75 @@ const MeasuringGuide: React.FC = () => {
           <div className="not-prose my-8">
             <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-xl p-6 shadow-lg border-2 border-slate-300">
               <div className="flex items-center gap-3 mb-4">
-                <ClipboardList className="w-8 h-8 text-amber-600" />
+                <ClipboardList className="w-8 h-8 text-primary" />
                 <h3 className="text-xl font-bold text-slate-900">Complete Measurement Checklist</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Floor plan sketch with walls, doors, windows</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Overall wall lengths (corner to corner)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Running dimensions to windows/doors</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Window widths, sill heights, header heights</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Door widths, heights, swing directions</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Ceiling heights (multiple locations per wall)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Soffit dimensions and locations</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Appliance dimensions and clearances</span>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Plumbing locations (sink, dishwasher, gas)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Electrical outlets and switches</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">HVAC vents and returns</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Floor/wall/ceiling level checks</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Photos of each wall and problem areas</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Notes on existing cabinet layout</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Special requests or problem areas noted</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" className="w-4 h-4 text-amber-600" />
+                    <input type="checkbox" className="w-4 h-4 text-primary" />
                     <span className="text-slate-700">Appliance spec sheets (if buying new)</span>
                   </div>
                 </div>
@@ -628,7 +628,7 @@ const MeasuringGuide: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Create a Measurement Package</h3>
 
           <div className="not-prose my-6">
-            <div className="bg-white rounded-xl p-6 shadow-md border-2 border-amber-600">
+            <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary">
               <h4 className="font-bold text-lg text-slate-900 mb-3">What to Include</h4>
               <ol className="space-y-2 text-slate-700 text-sm list-decimal list-inside">
                 <li>
@@ -694,7 +694,7 @@ const MeasuringGuide: React.FC = () => {
           </ol>
 
           <p className="mt-6">
-            Learn more about the process in our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-amber-600 hover:text-amber-700 font-semibold">Custom Cabinet Cost Guide</Link>.
+            Learn more about the process in our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-primary hover:text-primary-dark font-semibold">Custom Cabinet Cost Guide</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -703,9 +703,9 @@ const MeasuringGuide: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Do I really need to measure if professional will re-measure anyway?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Yes. Your measurements serve multiple purposes: (1) Help you understand your space and what's possible,
@@ -716,9 +716,9 @@ const MeasuringGuide: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How accurate do my measurements need to be?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 For preliminary quotes and planning, measurements within 1/4" are sufficient. For final fabrication,
@@ -729,9 +729,9 @@ const MeasuringGuide: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>What if my kitchen is an unusual shape or has odd angles?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Document it as best you can with photos and measurements. Measure angles using protractor or smartphone
@@ -742,9 +742,9 @@ const MeasuringGuide: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Should I measure with existing cabinets in place or removed?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Measure with existing cabinets in place for preliminary planning. Measure from wall-to-wall behind
@@ -756,9 +756,9 @@ const MeasuringGuide: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How long does the measurement and design process take?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Timeline: DIY measurements (2-3 hours), submit to suppliers (same day), receive preliminary quotes
@@ -772,24 +772,24 @@ const MeasuringGuide: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Skip the Measuring—We'll Handle It
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 Free in-home measurement and 3D design with every Houston cabinet consultation
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Free Measurement
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/services/kitchen-cabinets"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   View Cabinet Options
                 </Link>
@@ -826,8 +826,8 @@ const MeasuringGuide: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom Cabinet Cost Guide 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -837,8 +837,8 @@ const MeasuringGuide: React.FC = () => {
             </Link>
 
             <Link to="/blog/kitchen-trends-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Kitchen Cabinet Trends 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -848,8 +848,8 @@ const MeasuringGuide: React.FC = () => {
             </Link>
 
             <Link to="/blog/frameless-vs-framed-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Frameless vs Framed Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">

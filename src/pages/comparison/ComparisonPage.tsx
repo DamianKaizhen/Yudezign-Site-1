@@ -145,9 +145,9 @@ const ComparisonPage: React.FC = () => {
             <div className="space-y-4">
               {comparison.faqSection.map((faq, idx) => (
                 <details key={idx} className="bg-white rounded-xl shadow-md overflow-hidden group">
-                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                     <span>{faq.question}</span>
-                    <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                    <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
                   </summary>
                   <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-slate-50">
                     {faq.answer}
@@ -175,7 +175,7 @@ const ComparisonPage: React.FC = () => {
                       <a
                         key={idx}
                         href={`/vs/${related.slug}`}
-                        className="block bg-slate-50 rounded-lg p-4 hover:bg-amber-50 hover:border-amber-600 border-2 border-transparent transition-all"
+                        className="block bg-slate-50 rounded-lg p-4 hover:bg-accent-light hover:border-primary border-2 border-transparent transition-all"
                       >
                         <h4 className="font-semibold text-slate-900 mb-1">{related.title}</h4>
                         <p className="text-sm text-slate-600">{related.description.substring(0, 100)}...</p>
@@ -195,12 +195,12 @@ const ComparisonPage: React.FC = () => {
                     <a
                       key={idx}
                       href={`/services/${slug}`}
-                      className="block bg-slate-50 rounded-lg p-4 hover:bg-amber-50 hover:border-amber-600 border-2 border-transparent transition-all"
+                      className="block bg-slate-50 rounded-lg p-4 hover:bg-accent-light hover:border-primary border-2 border-transparent transition-all"
                     >
                       <h4 className="font-semibold text-slate-900 capitalize">
                         {slug.replace(/-/g, ' ')}
                       </h4>
-                      <div className="flex items-center text-amber-600 font-medium text-sm mt-2">
+                      <div className="flex items-center text-primary font-medium text-sm mt-2">
                         View Service
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </div>
@@ -214,25 +214,25 @@ const ComparisonPage: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-amber-600 to-amber-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Need Help Deciding?
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-xl text-accent-light mb-8">
             Schedule a free consultation with our experts to find the perfect solution for your home.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
             >
               Get Free Consultation
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href="/showroom"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
             >
               Visit Showroom
             </a>

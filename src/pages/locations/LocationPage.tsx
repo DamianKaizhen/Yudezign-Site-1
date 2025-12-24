@@ -75,7 +75,7 @@ const LocationPage: React.FC = () => {
               },
             ].map((benefit, idx) => (
               <div key={idx} className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
                   <benefit.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2">{benefit.title}</h3>
@@ -137,13 +137,13 @@ const LocationPage: React.FC = () => {
               <a
                 key={idx}
                 href={service.link}
-                className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-amber-600 hover:shadow-lg transition-all group"
+                className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-primary hover:shadow-lg transition-all group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">
+                  <h3 className="font-semibold text-lg text-slate-900 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-amber-600 transition-colors" />
+                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-primary transition-colors" />
                 </div>
                 <p className="text-sm text-slate-600">{service.desc}</p>
               </a>
@@ -169,7 +169,7 @@ const LocationPage: React.FC = () => {
                 {location.climateConsiderations && <p>{location.climateConsiderations}</p>}
                 {location.keyPoints && location.keyPoints.map((point: string, idx: number) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
                     <p>{point}</p>
                   </div>
                 ))}
@@ -177,7 +177,7 @@ const LocationPage: React.FC = () => {
             </div>
 
             {/* Why We Love [City] */}
-            <div className="mt-8 bg-amber-50 border-2 border-amber-600 rounded-xl p-8">
+            <div className="mt-8 bg-accent-light border-2 border-primary rounded-xl p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
                 Why We Love Serving {location.name}
               </h3>
@@ -189,7 +189,7 @@ const LocationPage: React.FC = () => {
                   `Families who appreciate the value of custom cabinetry done right`,
                 ].map((reason, idx) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
                     <p className="text-slate-700">{reason}</p>
                   </div>
                 ))}
@@ -212,9 +212,9 @@ const LocationPage: React.FC = () => {
             <div className="space-y-4">
               {location.faqs.map((faq: any, idx: number) => (
                 <details key={idx} className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                     <span>{faq.question}</span>
-                    <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                    <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
                   </summary>
                   <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                     {faq.answer}
@@ -227,25 +227,25 @@ const LocationPage: React.FC = () => {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-amber-600 to-amber-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your {location.name} Home?
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-xl text-accent-light mb-8">
             Schedule a free consultation and get a detailed proposal with no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
             >
               Get Free Consultation
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href="/showroom"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
             >
               Visit Showroom
             </a>

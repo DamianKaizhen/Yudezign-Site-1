@@ -65,12 +65,12 @@ const ShowroomPage: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <MapPin className="w-5 h-5 mr-2 text-amber-400" />
+              <MapPin className="w-5 h-5 mr-2 text-accent" />
               <span className="text-sm font-medium">Houston, Texas</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Experience Quality <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
                 At Our Showroom
               </span>
             </h1>
@@ -80,7 +80,7 @@ const ShowroomPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#book-appointment"
-                className="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
               >
                 <Calendar className="mr-2 w-5 h-5" />
                 Book Your Visit
@@ -110,15 +110,15 @@ const ShowroomPage: React.FC = () => {
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-amber-600" />
+                  <div className="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div className="ml-4">
                     <h3 className="font-semibold text-slate-900 mb-1">Address</h3>
                     <p className="text-slate-600">{businessInfo.address}</p>
                     <a
                       href="#directions"
-                      className="text-amber-600 hover:text-amber-700 font-medium text-sm mt-1 inline-block"
+                      className="text-primary hover:text-primary-dark font-medium text-sm mt-1 inline-block"
                     >
                       Get Directions →
                     </a>
@@ -127,14 +127,14 @@ const ShowroomPage: React.FC = () => {
 
                 {/* Phone */}
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-amber-600" />
+                  <div className="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div className="ml-4">
                     <h3 className="font-semibold text-slate-900 mb-1">Phone</h3>
                     <a
                       href={`tel:${businessInfo.phone.replace(/\D/g, '')}`}
-                      className="text-slate-600 hover:text-amber-600 transition-colors"
+                      className="text-slate-600 hover:text-primary transition-colors"
                     >
                       {businessInfo.phone}
                     </a>
@@ -143,14 +143,14 @@ const ShowroomPage: React.FC = () => {
 
                 {/* Email */}
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-amber-600" />
+                  <div className="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div className="ml-4">
                     <h3 className="font-semibold text-slate-900 mb-1">Email</h3>
                     <a
                       href={`mailto:${businessInfo.email}`}
-                      className="text-slate-600 hover:text-amber-600 transition-colors"
+                      className="text-slate-600 hover:text-primary transition-colors"
                     >
                       {businessInfo.email}
                     </a>
@@ -159,8 +159,8 @@ const ShowroomPage: React.FC = () => {
 
                 {/* Hours */}
                 <div className="flex items-start">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-amber-600" />
+                  <div className="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-primary" />
                   </div>
                   <div className="ml-4">
                     <h3 className="font-semibold text-slate-900 mb-3">Showroom Hours</h3>
@@ -177,7 +177,7 @@ const ShowroomPage: React.FC = () => {
               </div>
 
               {/* Special Note */}
-              <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="mt-8 p-4 bg-accent-light border border-accent-light rounded-lg">
                 <p className="text-sm text-slate-700">
                   <strong>Walk-ins welcome!</strong> However, scheduling an appointment ensures a designer is available to give you their full attention.
                 </p>
@@ -200,7 +200,7 @@ const ShowroomPage: React.FC = () => {
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(businessInfo.address)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all"
+                    className="inline-flex items-center px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                   >
                     <Navigation className="mr-2 w-5 h-5" />
                     Open in Google Maps
@@ -263,8 +263,8 @@ const ShowroomPage: React.FC = () => {
               },
             ].map((item, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-amber-600" />
+                <div className="w-12 h-12 bg-accent-light rounded-lg flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-sm text-slate-600">{item.desc}</p>
@@ -278,7 +278,7 @@ const ShowroomPage: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Camera className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+            <Camera className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Virtual Showroom Tour
             </h2>
@@ -348,7 +348,7 @@ const ShowroomPage: React.FC = () => {
               'No pressure, no obligation - we want you to be confident in your decision',
             ].map((benefit, idx) => (
               <div key={idx} className="flex items-start bg-white rounded-lg p-4 shadow-sm">
-                <CheckCircle className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" />
                 <p className="text-slate-700">{benefit}</p>
               </div>
             ))}
@@ -357,26 +357,26 @@ const ShowroomPage: React.FC = () => {
       </section>
 
       {/* Book Appointment */}
-      <section id="book-appointment" className="py-16 bg-gradient-to-br from-amber-600 to-amber-700 text-white">
+      <section id="book-appointment" className="py-16 bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Calendar className="w-16 h-16 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Schedule Your Showroom Visit
           </h2>
-          <p className="text-xl text-amber-100 mb-8">
+          <p className="text-xl text-accent-light mb-8">
             Book a time that works for you. We'll have a designer ready to give you their full attention.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
             >
               Book Appointment Online
               <ArrowRight className="ml-2 w-5 h-5" />
             </a>
             <a
               href={`tel:${businessInfo.phone.replace(/\D/g, '')}`}
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
             >
               <Phone className="mr-2 w-5 h-5" />
               Call {businessInfo.phone}

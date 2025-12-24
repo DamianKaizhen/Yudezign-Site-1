@@ -13,7 +13,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div>
-            <div className="inline-block bg-amber-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
               Custom Cabinetry
             </div>
 
@@ -30,7 +30,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
               <div className="space-y-3 mb-8">
                 {service.features.slice(0, 4).map((feature: any, idx: number) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-amber-400 mr-3 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-200">{typeof feature === 'string' ? feature : feature.title}</span>
                   </div>
                 ))}
@@ -41,7 +41,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
               >
                 Get Free Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -60,7 +60,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-sm text-slate-400">Starting From</div>
-                  <div className="text-2xl font-bold text-amber-400">Contact for Quote</div>
+                  <div className="text-2xl font-bold text-accent">Contact for Quote</div>
                 </div>
                 <div>
                   <div className="text-sm text-slate-400">Typical Timeline</div>

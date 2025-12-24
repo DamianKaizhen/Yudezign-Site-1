@@ -24,7 +24,7 @@ const HoustonHumidity: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>Houston Climate Guide</span>
           </div>
@@ -62,9 +62,9 @@ const HoustonHumidity: React.FC = () => {
           </p>
 
           {/* Quick Facts Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Droplet className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Droplet className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Houston Climate Facts</h3>
                 <ul className="text-slate-700 mb-0 space-y-1">
@@ -241,7 +241,7 @@ const HoustonHumidity: React.FC = () => {
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Moisture-Resistant MDF</td>
-                    <td className="px-6 py-4 text-amber-600 font-bold">GOOD</td>
+                    <td className="px-6 py-4 text-primary font-bold">GOOD</td>
                     <td className="px-6 py-4 text-slate-700 text-sm">Painted doors, panels</td>
                     <td className="px-6 py-4 text-slate-700">$$</td>
                   </tr>
@@ -306,9 +306,9 @@ const HoustonHumidity: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-amber-600">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-primary">
                 <h4 className="font-bold text-lg text-slate-900 mb-3 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-amber-600" />
+                  <Shield className="w-5 h-5 text-primary" />
                   Shelves (Good)
                 </h4>
                 <p className="text-slate-700 text-sm mb-3">
@@ -378,13 +378,13 @@ const HoustonHumidity: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            Read our detailed comparison: <Link to="/blog/frameless-vs-framed-cabinets" className="text-amber-600 hover:text-amber-700 font-semibold">Frameless vs Framed Cabinets</Link>.
+            Read our detailed comparison: <Link to="/blog/frameless-vs-framed-cabinets" className="text-primary hover:text-primary-dark font-semibold">Frameless vs Framed Cabinets</Link>.
           </p>
 
           <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Critical Construction Details</h3>
 
           <div className="not-prose my-6">
-            <div className="bg-slate-50 rounded-xl p-6 border-l-4 border-amber-600">
+            <div className="bg-slate-50 rounded-xl p-6 border-l-4 border-primary">
               <h4 className="font-bold text-slate-900 mb-3">Moisture Barriers You Need</h4>
               <ul className="space-y-2 text-slate-700 text-sm">
                 <li className="flex items-start gap-2">
@@ -558,9 +558,9 @@ const HoustonHumidity: React.FC = () => {
             <li>Re-seal any exposed wood from new cutouts or repairs</li>
           </ul>
 
-          <div className="not-prose bg-amber-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-accent-light border-l-4 border-primary p-6 my-8">
             <div className="flex items-start gap-3">
-              <ThermometerSun className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <ThermometerSun className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-slate-900 mb-2">Humidity Control is Critical</h4>
                 <p className="text-slate-700 mb-0">
@@ -715,7 +715,7 @@ const HoustonHumidity: React.FC = () => {
           </p>
 
           <p className="mt-6">
-            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-amber-600 hover:text-amber-700 font-semibold">2025 Custom Cabinet Cost Guide</Link>.
+            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-primary hover:text-primary-dark font-semibold">2025 Custom Cabinet Cost Guide</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -724,9 +724,9 @@ const HoustonHumidity: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Can I use stock cabinets from big box stores in Houston?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 You can, but expect shorter lifespan. Most stock cabinets use particleboard boxes and thin finishes that
@@ -737,9 +737,9 @@ const HoustonHumidity: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How can I tell if my current cabinets are damaged by humidity?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Look for: (1) Doors that don't close properly or have uneven gaps, (2) Drawers that stick or bind,
@@ -750,9 +750,9 @@ const HoustonHumidity: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Do I need a whole-home dehumidifier for my cabinets?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 If your A/C maintains 40-55% humidity, a dehumidifier isn't mandatory but extends cabinet life. Homes
@@ -763,9 +763,9 @@ const HoustonHumidity: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are painted or stained cabinets better for Houston humidity?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Either works if properly finished. Painted cabinets with catalyzed conversion varnish or 2K polyurethane
@@ -776,9 +776,9 @@ const HoustonHumidity: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Should I replace or repair humidity-damaged cabinets?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Depends on damage extent. Minor issues (door alignment, loose hinges, finish touchup) are repairable.
@@ -791,24 +791,24 @@ const HoustonHumidity: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Get Houston-Ready Cabinets Built to Last
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 Expert guidance on humidity-resistant materials and construction for Houston's climate
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/services/kitchen-cabinets"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   View Cabinet Options
                 </Link>
@@ -845,8 +845,8 @@ const HoustonHumidity: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/blog/frameless-vs-framed-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Frameless vs Framed Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -856,8 +856,8 @@ const HoustonHumidity: React.FC = () => {
             </Link>
 
             <Link to="/vs/melamine-vs-laminate-vs-acrylic" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Cabinet Material Comparison
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -867,8 +867,8 @@ const HoustonHumidity: React.FC = () => {
             </Link>
 
             <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom Cabinet Cost Guide 2025
                 </h4>
                 <p className="text-sm text-slate-600">

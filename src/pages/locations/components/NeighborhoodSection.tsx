@@ -23,17 +23,17 @@ const NeighborhoodSection: React.FC<NeighborhoodSectionProps> = ({ location }) =
           {location.neighborhoods.map((neighborhood, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 hover:border-amber-600 group"
+              className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 hover:border-primary group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">
+                  <h3 className="font-semibold text-lg text-slate-900 group-hover:text-primary transition-colors">
                     {neighborhood}
                   </h3>
                   <p className="text-sm text-slate-600">{location.name}, TX</p>
                 </div>
-                <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center group-hover:bg-amber-600 transition-colors">
-                  <Home className="w-5 h-5 text-amber-600 group-hover:text-white" />
+                <div className="w-10 h-10 bg-accent-light rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <Home className="w-5 h-5 text-primary group-hover:text-white" />
                 </div>
               </div>
 
@@ -63,10 +63,10 @@ const NeighborhoodSection: React.FC<NeighborhoodSectionProps> = ({ location }) =
 
         {/* Service Area Note */}
         <div className="mt-12 text-center">
-          <div className="inline-block bg-white rounded-xl px-6 py-4 shadow-md border border-amber-600">
+          <div className="inline-block bg-white rounded-xl px-6 py-4 shadow-md border border-primary">
             <p className="text-slate-700">
               <strong>Don't see your neighborhood?</strong> We serve all of {location.name} and surrounding areas.{' '}
-              <a href="/contact" className="text-amber-600 hover:text-amber-700 font-semibold">
+              <a href="/contact" className="text-primary hover:text-primary-dark font-semibold">
                 Contact us
               </a>{' '}
               to confirm service availability.

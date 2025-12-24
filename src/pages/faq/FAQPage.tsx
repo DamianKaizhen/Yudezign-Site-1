@@ -44,10 +44,10 @@ const FAQPage: React.FC = () => {
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <HelpCircle className="w-16 h-16 text-amber-400 mx-auto mb-6" />
+            <HelpCircle className="w-16 h-16 text-accent mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Frequently Asked <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
                 Questions
               </span>
             </h1>
@@ -69,7 +69,7 @@ const FAQPage: React.FC = () => {
                 placeholder="Search questions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-600 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
 
@@ -81,7 +81,7 @@ const FAQPage: React.FC = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-lg font-medium transition-all text-sm ${
                     selectedCategory === category
-                      ? 'bg-amber-600 text-white shadow-lg'
+                      ? 'bg-primary text-white shadow-lg'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
@@ -107,13 +107,13 @@ const FAQPage: React.FC = () => {
                   key={idx}
                   className="bg-white rounded-xl shadow-md overflow-hidden group"
                 >
-                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                     <span className="flex-1 pr-4">{faq.question}</span>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-normal bg-amber-100 text-amber-700 px-3 py-1 rounded-full">
+                      <span className="text-xs font-normal bg-accent-light text-primary-dark px-3 py-1 rounded-full">
                         {faq.category}
                       </span>
-                      <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform flex-shrink-0" />
+                      <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform flex-shrink-0" />
                     </div>
                   </summary>
                   <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-slate-50 leading-relaxed">
@@ -130,7 +130,7 @@ const FAQPage: React.FC = () => {
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
             >
               Contact Us
               <ArrowRight className="ml-2 w-5 h-5" />

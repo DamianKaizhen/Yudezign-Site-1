@@ -20,13 +20,13 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
           {/* Text Content */}
           <div>
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <MapPin className="w-5 h-5 mr-2 text-amber-400" />
+              <MapPin className="w-5 h-5 mr-2 text-accent" />
               <span className="text-sm font-medium">Serving {location.name}</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Custom Cabinets in <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
                 {location.name}, Texas
               </span>
             </h1>
@@ -38,7 +38,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
               >
                 Get Free Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -55,15 +55,15 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             {/* Quick Stats */}
             <div className="grid grid-cols-3 gap-4 mt-12 pt-12 border-t border-white/20">
               <div>
-                <div className="text-3xl font-bold text-amber-400">500+</div>
+                <div className="text-3xl font-bold text-accent">500+</div>
                 <div className="text-sm text-slate-300 mt-1">Projects</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-amber-400">15+</div>
+                <div className="text-3xl font-bold text-accent">15+</div>
                 <div className="text-sm text-slate-300 mt-1">Years</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-amber-400">5★</div>
+                <div className="text-3xl font-bold text-accent">5★</div>
                 <div className="text-sm text-slate-300 mt-1">Rated</div>
               </div>
             </div>
@@ -85,7 +85,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             {/* Floating Stats Card */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-2xl max-w-xs">
               <div className="flex items-start">
-                <div className="w-12 h-12 bg-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div className="ml-4">

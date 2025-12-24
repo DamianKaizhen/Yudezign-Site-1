@@ -34,12 +34,12 @@ const WarrantyPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Shield className="w-5 h-5 mr-2 text-amber-400" />
+              <Shield className="w-5 h-5 mr-2 text-accent" />
               <span className="text-sm font-medium">Industry-Leading Protection</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Warranty That <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
                 Protects Your Investment
               </span>
             </h1>
@@ -64,17 +64,17 @@ const WarrantyPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Lifetime Structural */}
-            <div className="bg-gradient-to-br from-amber-50 to-white rounded-2xl p-8 shadow-lg border-2 border-amber-600 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-amber-600 text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
+            <div className="bg-gradient-to-br from-accent-light to-white rounded-2xl p-8 shadow-lg border-2 border-primary relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-xs font-bold rounded-bl-lg">
                 BEST IN CLASS
               </div>
-              <div className="w-16 h-16 bg-amber-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Lifetime Structural
               </h3>
-              <div className="text-4xl font-bold text-amber-600 mb-6">
+              <div className="text-4xl font-bold text-primary mb-6">
                 Forever
               </div>
               <p className="text-slate-600 mb-6">
@@ -82,26 +82,26 @@ const WarrantyPage: React.FC = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Cabinet box construction</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Joinery and dados</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Door and drawer construction</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Shelf support systems</span>
                 </div>
               </div>
             </div>
 
             {/* 5-Year Finish */}
-            <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg border-2 border-slate-200 hover:border-amber-600 transition-colors">
+            <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg border-2 border-slate-200 hover:border-primary transition-colors">
               <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center mb-6">
                 <Award className="w-8 h-8 text-white" />
               </div>
@@ -116,26 +116,26 @@ const WarrantyPage: React.FC = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Paint and stain finish</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Laminate and acrylic surfaces</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Edge banding adhesion</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Clear coat protection</span>
                 </div>
               </div>
             </div>
 
             {/* 2-Year Hardware */}
-            <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg border-2 border-slate-200 hover:border-amber-600 transition-colors">
+            <div className="bg-gradient-to-br from-slate-50 to-white rounded-2xl p-8 shadow-lg border-2 border-slate-200 hover:border-primary transition-colors">
               <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center mb-6">
                 <Zap className="w-8 h-8 text-white" />
               </div>
@@ -150,19 +150,19 @@ const WarrantyPage: React.FC = () => {
               </p>
               <div className="space-y-3">
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Soft-close hinges</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Drawer glides and slides</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Pull-out mechanisms</span>
                 </div>
                 <div className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-sm text-slate-700">Handles and knobs</span>
                 </div>
               </div>
@@ -170,9 +170,9 @@ const WarrantyPage: React.FC = () => {
           </div>
 
           {/* Extended Protection Note */}
-          <div className="mt-12 max-w-3xl mx-auto p-6 bg-amber-50 border-2 border-amber-600 rounded-xl">
+          <div className="mt-12 max-w-3xl mx-auto p-6 bg-accent-light border-2 border-primary rounded-xl">
             <div className="flex items-start">
-              <Award className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1" />
+              <Award className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-semibold text-slate-900 mb-2">
                   Plus: Manufacturer Warranties
@@ -218,7 +218,7 @@ const WarrantyPage: React.FC = () => {
             {/* What's Not Covered */}
             <div>
               <div className="flex items-center mb-6">
-                <AlertCircle className="w-8 h-8 text-amber-600 mr-3" />
+                <AlertCircle className="w-8 h-8 text-primary mr-3" />
                 <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
                   What's Not Covered
                 </h2>
@@ -238,7 +238,7 @@ const WarrantyPage: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <div className="mt-6 p-4 bg-white rounded-lg border-2 border-amber-600">
+              <div className="mt-6 p-4 bg-white rounded-lg border-2 border-primary">
                 <p className="text-sm text-slate-700">
                   <strong>Important:</strong> Warranty coverage requires following our care and maintenance guidelines provided at installation. Proper cleaning and reasonable use preserve your warranty rights.
                 </p>
@@ -252,7 +252,7 @@ const WarrantyPage: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <FileText className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+            <FileText className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               How to File a Warranty Claim
             </h2>
@@ -289,13 +289,13 @@ const WarrantyPage: React.FC = () => {
               },
             ].map((step) => (
               <div key={step.step} className="flex items-start bg-slate-50 rounded-xl p-6 border border-slate-200">
-                <div className="w-12 h-12 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
                   {step.step}
                 </div>
                 <div className="ml-6 flex-1">
                   <h3 className="font-semibold text-slate-900 text-lg mb-2">{step.title}</h3>
                   <p className="text-slate-600 mb-2">{step.desc}</p>
-                  <p className="text-sm text-amber-600 font-medium">{step.action}</p>
+                  <p className="text-sm text-primary font-medium">{step.action}</p>
                 </div>
               </div>
             ))}
@@ -340,7 +340,7 @@ const WarrantyPage: React.FC = () => {
             ].map((tip, idx) => (
               <div key={idx} className="bg-white rounded-lg p-5 shadow-sm border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-2 flex items-center">
-                  <CheckCircle className="w-5 h-5 text-amber-600 mr-2" />
+                  <CheckCircle className="w-5 h-5 text-primary mr-2" />
                   {tip.title}
                 </h3>
                 <p className="text-sm text-slate-600 ml-7">{tip.desc}</p>
@@ -360,7 +360,7 @@ const WarrantyPage: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Shield className="w-12 h-12 text-amber-600 mx-auto mb-4" />
+            <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               Why Our Warranty Stands Out
             </h2>
@@ -374,7 +374,7 @@ const WarrantyPage: React.FC = () => {
               { title: 'Quality First', desc: 'We can offer lifetime structural warranty because we use premium materials and expert craftsmanship. Our warranty reflects our confidence.' },
             ].map((reason, idx) => (
               <div key={idx} className="flex items-start bg-slate-50 rounded-lg p-5 border border-slate-200">
-                <CheckCircle className="w-6 h-6 text-amber-600 mr-3 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-semibold text-slate-900 mb-1">{reason.title}</h3>
                   <p className="text-sm text-slate-600">{reason.desc}</p>
@@ -397,7 +397,7 @@ const WarrantyPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
             >
               Contact Us
               <ArrowRight className="ml-2 w-5 h-5" />

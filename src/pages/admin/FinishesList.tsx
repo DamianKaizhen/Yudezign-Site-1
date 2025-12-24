@@ -154,7 +154,7 @@ export default function FinishesList() {
             In Stock
           </span>
         ) : (
-          <span className="px-2 py-1 bg-amber-100 text-amber-700 rounded text-sm font-medium">
+          <span className="px-2 py-1 bg-accent-light text-primary-dark rounded text-sm font-medium">
             Special Order
           </span>
         ),

@@ -24,7 +24,7 @@ const KitchenTrends2025: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>Design Trends</span>
           </div>
@@ -61,9 +61,9 @@ const KitchenTrends2025: React.FC = () => {
           </p>
 
           {/* Quick Trends Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Sparkles className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Sparkles className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Top 2025 Trends at a Glance</h3>
                 <ul className="text-slate-700 mb-0 space-y-1">
@@ -93,46 +93,46 @@ const KitchenTrends2025: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 shadow-lg text-white">
                 <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-amber-400" />
+                  <Palette className="w-5 h-5 text-accent" />
                   Navy + White
                 </h4>
                 <p className="text-slate-300 text-sm mb-3">
                   Deep navy blue base cabinets paired with crisp white upper cabinets create a timeless nautical elegance
                 </p>
-                <span className="text-xs text-amber-400 font-semibold">TRENDING UP 45%</span>
+                <span className="text-xs text-accent font-semibold">TRENDING UP 45%</span>
               </div>
 
               <div className="bg-gradient-to-br from-green-800 to-green-900 rounded-xl p-6 shadow-lg text-white">
                 <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-amber-400" />
+                  <Palette className="w-5 h-5 text-accent" />
                   Sage Green + Natural Wood
                 </h4>
                 <p className="text-slate-300 text-sm mb-3">
                   Soft sage green cabinets combined with natural wood tones bring organic warmth and tranquility
                 </p>
-                <span className="text-xs text-amber-400 font-semibold">NEW FOR 2025</span>
+                <span className="text-xs text-accent font-semibold">NEW FOR 2025</span>
               </div>
 
-              <div className="bg-gradient-to-br from-amber-100 to-amber-200 rounded-xl p-6 shadow-lg">
+              <div className="bg-gradient-to-br from-accent-light to-accent rounded-xl p-6 shadow-lg">
                 <h4 className="font-bold text-lg mb-3 flex items-center gap-2 text-slate-900">
-                  <Palette className="w-5 h-5 text-amber-600" />
+                  <Palette className="w-5 h-5 text-primary" />
                   Warm White + Gray
                 </h4>
                 <p className="text-slate-700 text-sm mb-3">
                   Creamy warm whites paired with soft gray create a sophisticated neutral palette
                 </p>
-                <span className="text-xs text-amber-600 font-semibold">CLASSIC CHOICE</span>
+                <span className="text-xs text-primary font-semibold">CLASSIC CHOICE</span>
               </div>
 
               <div className="bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl p-6 shadow-lg text-white">
                 <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
-                  <Palette className="w-5 h-5 text-amber-400" />
+                  <Palette className="w-5 h-5 text-accent" />
                   Black + Brass Accents
                 </h4>
                 <p className="text-slate-300 text-sm mb-3">
                   Matte black cabinets with warm brass hardware deliver modern luxury and drama
                 </p>
-                <span className="text-xs text-amber-400 font-semibold">LUXURY TREND</span>
+                <span className="text-xs text-accent font-semibold">LUXURY TREND</span>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ const KitchenTrends2025: React.FC = () => {
           </p>
 
           <div className="not-prose my-8">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 shadow-lg border-2 border-amber-600">
+            <div className="bg-gradient-to-br from-accent-light to-orange-50 rounded-xl p-6 shadow-lg border-2 border-primary">
               <h4 className="font-bold text-xl text-slate-900 mb-4">Trending Wood Species for 2025</h4>
               <div className="space-y-3">
                 <div className="bg-white rounded-lg p-4">
@@ -180,7 +180,7 @@ const KitchenTrends2025: React.FC = () => {
                     Light, airy grain with contemporary feel. Clear coat or light stain shows beautiful natural variation.
                     Extremely popular in modern farmhouse and transitional kitchens.
                   </p>
-                  <span className="text-xs font-semibold text-amber-600">MOST REQUESTED</span>
+                  <span className="text-xs font-semibold text-primary">MOST REQUESTED</span>
                 </div>
 
                 <div className="bg-white rounded-lg p-4">
@@ -189,7 +189,7 @@ const KitchenTrends2025: React.FC = () => {
                     Rich chocolate brown with dramatic grain patterns. Creates warmth and luxury. Often used for islands
                     or accent cabinets in two-tone designs.
                   </p>
-                  <span className="text-xs font-semibold text-amber-600">LUXURY CHOICE</span>
+                  <span className="text-xs font-semibold text-primary">LUXURY CHOICE</span>
                 </div>
 
                 <div className="bg-white rounded-lg p-4">
@@ -198,7 +198,7 @@ const KitchenTrends2025: React.FC = () => {
                     Straight, consistent grain with minimal cathedral patterns. Perfect for contemporary and minimalist
                     aesthetics. Delivers clean, linear appearance.
                   </p>
-                  <span className="text-xs font-semibold text-amber-600">MODERN STYLE</span>
+                  <span className="text-xs font-semibold text-primary">MODERN STYLE</span>
                 </div>
 
                 <div className="bg-white rounded-lg p-4">
@@ -207,7 +207,7 @@ const KitchenTrends2025: React.FC = () => {
                     Character-grade wood with knots, nail holes, and weathering. Sustainable option with unique history.
                     Ideal for rustic, industrial, and eco-conscious designs.
                   </p>
-                  <span className="text-xs font-semibold text-amber-600">ECO-FRIENDLY</span>
+                  <span className="text-xs font-semibold text-primary">ECO-FRIENDLY</span>
                 </div>
               </div>
             </div>
@@ -256,7 +256,7 @@ const KitchenTrends2025: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Island sizing for Houston homes:</strong> Standard Houston new construction kitchens (10×12 to 12×14)
               comfortably accommodate 4×7' to 4×8' islands with seating. Memorial and River Oaks luxury homes often feature
@@ -303,30 +303,30 @@ const KitchenTrends2025: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-amber-50 rounded-xl p-6 shadow-md border-2 border-amber-600">
+              <div className="bg-accent-light rounded-xl p-6 shadow-md border-2 border-primary">
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="w-6 h-6 text-amber-600" />
+                  <Sparkles className="w-6 h-6 text-primary" />
                   <h4 className="font-bold text-lg text-slate-900">Sustainable Finishes</h4>
                 </div>
                 <ul className="space-y-2 text-slate-700 text-sm">
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>Zero-VOC and low-VOC paints and stains</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>Water-based finishing systems</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>Natural oil finishes (tung oil, linseed oil)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>UV-cured finishes (no off-gassing)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>GREENGUARD certified products</span>
                   </li>
                 </ul>
@@ -353,10 +353,10 @@ const KitchenTrends2025: React.FC = () => {
 
           <div className="not-prose my-8">
             <div className="space-y-4">
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Vertical Pull-Out Spice Racks</h4>
@@ -368,10 +368,10 @@ const KitchenTrends2025: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Deep Drawer Organizers</h4>
@@ -383,10 +383,10 @@ const KitchenTrends2025: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Corner Solutions Beyond Lazy Susans</h4>
@@ -398,10 +398,10 @@ const KitchenTrends2025: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Hidden Charging Stations</h4>
@@ -413,10 +413,10 @@ const KitchenTrends2025: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Integrated Trash/Recycling Centers</h4>
@@ -428,10 +428,10 @@ const KitchenTrends2025: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-amber-600 transition-colors">
+              <div className="bg-white rounded-xl p-6 shadow-md border-2 border-slate-200 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="bg-amber-100 rounded-lg p-3">
-                    <Lightbulb className="w-6 h-6 text-amber-600" />
+                  <div className="bg-accent-light rounded-lg p-3">
+                    <Lightbulb className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-slate-900 mb-2">Appliance Garages with Lift-Up Doors</h4>
@@ -511,7 +511,7 @@ const KitchenTrends2025: React.FC = () => {
             </li>
           </ul>
 
-          <div className="not-prose bg-amber-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-accent-light border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Houston consideration:</strong> While open shelving is trendy, Houston's humidity can make
               dusting more frequent. Limit open shelving to 15-20% of total storage and use for items accessed daily
@@ -618,7 +618,7 @@ const KitchenTrends2025: React.FC = () => {
                     <td className="px-6 py-4 font-semibold text-slate-900">Warm White</td>
                     <td className="px-6 py-4 text-slate-700">Traditional, farmhouse</td>
                     <td className="px-6 py-4 text-slate-600 text-sm">All colors, wood tones</td>
-                    <td className="px-6 py-4 text-amber-600 font-semibold text-sm">TIMELESS</td>
+                    <td className="px-6 py-4 text-primary font-semibold text-sm">TIMELESS</td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Matte Black</td>
@@ -720,7 +720,7 @@ const KitchenTrends2025: React.FC = () => {
           </div>
 
           <p>
-            Learn more about construction differences in our guide: <Link to="/blog/frameless-vs-framed-cabinets" className="text-amber-600 hover:text-amber-700 font-semibold">Frameless vs Framed Cabinets</Link>.
+            Learn more about construction differences in our guide: <Link to="/blog/frameless-vs-framed-cabinets" className="text-primary hover:text-primary-dark font-semibold">Frameless vs Framed Cabinets</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -729,9 +729,9 @@ const KitchenTrends2025: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>What is the most popular cabinet color for 2025?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Two-tone designs lead the market, with navy blue + white being the most requested combination. For
@@ -742,9 +742,9 @@ const KitchenTrends2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are white cabinets still in style for 2025?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Yes, but with evolution. All-white kitchens are losing popularity, but warm white (cream, off-white, ivory)
@@ -754,9 +754,9 @@ const KitchenTrends2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>How much do trendy storage features add to cabinet cost?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Organization accessories add $100-$400 per feature. Pull-out spice racks cost $100-$200, deep drawer
@@ -767,9 +767,9 @@ const KitchenTrends2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Should I follow trends or choose timeless design?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Balance is key. Use timeless choices for expensive, permanent elements (cabinet boxes, construction quality,
@@ -780,9 +780,9 @@ const KitchenTrends2025: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>What cabinet trends work best in Houston's climate?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Frameless construction with plywood boxes and moisture-resistant finishes performs best in Houston's
@@ -795,24 +795,24 @@ const KitchenTrends2025: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Design Your Trend-Forward Houston Kitchen
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 Expert design consultation and 2025's hottest cabinet trends in our showroom
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Book Design Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/services/kitchen-cabinets"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   Explore Cabinet Options
                 </Link>
@@ -849,8 +849,8 @@ const KitchenTrends2025: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/blog/frameless-vs-framed-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Frameless vs Framed Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -860,8 +860,8 @@ const KitchenTrends2025: React.FC = () => {
             </Link>
 
             <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom Cabinet Cost Guide 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -871,8 +871,8 @@ const KitchenTrends2025: React.FC = () => {
             </Link>
 
             <Link to="/blog/houston-humidity-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Houston's Humidity & Your Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">

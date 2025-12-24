@@ -24,7 +24,7 @@ const EuropeanVsAmerican: React.FC = () => {
         {/* Header */}
         <header className="mb-12">
           <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-amber-600">Blog</Link>
+            <Link to="/blog" className="hover:text-primary">Blog</Link>
             <span>/</span>
             <span>Style Comparison</span>
           </div>
@@ -63,9 +63,9 @@ const EuropeanVsAmerican: React.FC = () => {
           </p>
 
           {/* Quick Comparison Box */}
-          <div className="bg-amber-50 border-2 border-amber-600 rounded-xl p-6 my-8">
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
-              <Globe className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <Globe className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">At a Glance</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -242,7 +242,7 @@ const EuropeanVsAmerican: React.FC = () => {
 
           <p>
             For detailed frameless vs. framed construction comparison, see our article:
-            <Link to="/blog/frameless-vs-framed-cabinets" className="text-amber-600 hover:text-amber-700 font-semibold ml-1">Frameless vs Framed Cabinets</Link>.
+            <Link to="/blog/frameless-vs-framed-cabinets" className="text-primary hover:text-primary-dark font-semibold ml-1">Frameless vs Framed Cabinets</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -258,7 +258,7 @@ const EuropeanVsAmerican: React.FC = () => {
           <div className="not-prose my-6">
             <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 shadow-lg text-white">
               <h4 className="font-bold text-xl mb-4 flex items-center gap-2">
-                <Palette className="w-6 h-6 text-amber-400" />
+                <Palette className="w-6 h-6 text-accent" />
                 European Aesthetic Characteristics
               </h4>
               <ul className="space-y-3 text-slate-200">
@@ -311,49 +311,49 @@ const EuropeanVsAmerican: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">American Design Philosophy</h3>
 
           <div className="not-prose my-6">
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 shadow-lg border-2 border-amber-600">
+            <div className="bg-gradient-to-br from-accent-light to-orange-50 rounded-xl p-6 shadow-lg border-2 border-primary">
               <h4 className="font-bold text-xl text-slate-900 mb-4 flex items-center gap-2">
-                <Palette className="w-6 h-6 text-amber-600" />
+                <Palette className="w-6 h-6 text-primary" />
                 American Aesthetic Characteristics
               </h4>
               <ul className="space-y-3 text-slate-700">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Traditional warmth:</strong> Emphasis on wood grain, painted
                     finishes, and furniture-like details.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Decorative hardware:</strong> Knobs and pulls as design
                     features—oil-rubbed bronze, polished nickel, antique brass.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Matte finishes:</strong> Painted surfaces with satin or matte
                     sheen, natural wood stains showing grain.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Frame-and-panel doors:</strong> Shaker style, raised panels,
                     beadboard—visible craftsmanship and detail.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Furniture details:</strong> Crown molding, corbels, legs, turned
                     posts add architectural character.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900">Freestanding look:</strong> Islands with legs, hutch-style
                     upper cabinets mimic furniture pieces.
@@ -363,7 +363,7 @@ const EuropeanVsAmerican: React.FC = () => {
             </div>
           </div>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <p className="text-slate-700 mb-0">
               <strong>Modern convergence:</strong> Many contemporary cabinets blend both traditions. European manufacturers
               now offer Shaker-style doors, while American brands produce frameless boxes. "Transitional" style—combining
@@ -462,7 +462,7 @@ const EuropeanVsAmerican: React.FC = () => {
 
               <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-slate-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <Wrench className="w-6 h-6 text-amber-600" />
+                  <Wrench className="w-6 h-6 text-primary" />
                   <h4 className="font-bold text-lg text-slate-900">American Manufacturing</h4>
                 </div>
                 <ul className="space-y-3 text-sm text-slate-700">
@@ -513,44 +513,44 @@ const EuropeanVsAmerican: React.FC = () => {
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Budget/Entry</td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$150-$300/lf</div>
+                      <div className="text-primary font-bold mb-1">$150-$300/lf</div>
                       <span className="text-xs">IKEA-style flat-pack, melamine</span>
                     </td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$100-$250/lf</div>
+                      <div className="text-primary font-bold mb-1">$100-$250/lf</div>
                       <span className="text-xs">Stock cabinets, particleboard</span>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Mid-Range</td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$300-$600/lf</div>
+                      <div className="text-primary font-bold mb-1">$300-$600/lf</div>
                       <span className="text-xs">Semi-custom, plywood boxes, quality hardware</span>
                     </td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$250-$500/lf</div>
+                      <div className="text-primary font-bold mb-1">$250-$500/lf</div>
                       <span className="text-xs">Semi-custom framed, hardwood frames</span>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Premium</td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$600-$1,200/lf</div>
+                      <div className="text-primary font-bold mb-1">$600-$1,200/lf</div>
                       <span className="text-xs">High-gloss acrylic, premium hardware, German/Italian</span>
                     </td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$500-$1,000/lf</div>
+                      <div className="text-primary font-bold mb-1">$500-$1,000/lf</div>
                       <span className="text-xs">Custom hardwood, quality finish, local craftsman</span>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="px-6 py-4 font-semibold text-slate-900">Luxury</td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$1,200-$2,500+/lf</div>
+                      <div className="text-primary font-bold mb-1">$1,200-$2,500+/lf</div>
                       <span className="text-xs">Bulthaup, Poggenpohl, SieMatic—ultimate quality</span>
                     </td>
                     <td className="px-6 py-4 text-slate-700">
-                      <div className="text-amber-600 font-bold mb-1">$1,000-$2,000+/lf</div>
+                      <div className="text-primary font-bold mb-1">$1,000-$2,000+/lf</div>
                       <span className="text-xs">Full custom inset, exotic woods, furniture-grade</span>
                     </td>
                   </tr>
@@ -559,9 +559,9 @@ const EuropeanVsAmerican: React.FC = () => {
             </div>
           </div>
 
-          <div className="not-prose bg-slate-50 border-l-4 border-amber-600 p-6 my-8">
+          <div className="not-prose bg-slate-50 border-l-4 border-primary p-6 my-8">
             <div className="flex items-start gap-3">
-              <DollarSign className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+              <DollarSign className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h4 className="font-bold text-slate-900 mb-2">Price Factors</h4>
                 <p className="text-slate-700 mb-0">
@@ -575,7 +575,7 @@ const EuropeanVsAmerican: React.FC = () => {
           </div>
 
           <p>
-            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-amber-600 hover:text-amber-700 font-semibold">2025 Custom Cabinet Cost Guide</Link>.
+            For detailed pricing information, see our <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="text-primary hover:text-primary-dark font-semibold">2025 Custom Cabinet Cost Guide</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -649,7 +649,7 @@ const EuropeanVsAmerican: React.FC = () => {
           </p>
 
           <div className="not-prose my-8">
-            <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 shadow-lg border-2 border-amber-600">
+            <div className="bg-gradient-to-br from-accent-light to-accent-light rounded-xl p-6 shadow-lg border-2 border-primary">
               <h4 className="font-bold text-xl text-slate-900 mb-4">Transitional Style Combines:</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -814,7 +814,7 @@ const EuropeanVsAmerican: React.FC = () => {
           </ul>
 
           <p className="mt-6">
-            See current design preferences in <Link to="/blog/kitchen-trends-2025" className="text-amber-600 hover:text-amber-700 font-semibold">Best Kitchen Cabinet Trends for Houston Homes 2025</Link>.
+            See current design preferences in <Link to="/blog/kitchen-trends-2025" className="text-primary hover:text-primary-dark font-semibold">Best Kitchen Cabinet Trends for Houston Homes 2025</Link>.
           </p>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
@@ -823,9 +823,9 @@ const EuropeanVsAmerican: React.FC = () => {
 
           <div className="not-prose space-y-4 my-8">
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Can I get Shaker-style doors on frameless cabinets?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Absolutely. Door style and box construction are independent choices. You can have traditional Shaker,
@@ -835,9 +835,9 @@ const EuropeanVsAmerican: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Are European cabinets better quality than American?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Not inherently—quality depends on materials and craftsmanship, not geographic origin. Budget IKEA-style
@@ -848,9 +848,9 @@ const EuropeanVsAmerican: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Which style is better for Houston's humidity?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 European frameless construction has slight advantage—monolithic design with fewer joints means less
@@ -861,9 +861,9 @@ const EuropeanVsAmerican: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Can I mix European and American cabinets in the same kitchen?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Not recommended. Different box constructions create incompatible door reveals, inconsistent gaps between
@@ -874,9 +874,9 @@ const EuropeanVsAmerican: React.FC = () => {
             </details>
 
             <details className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
+              <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
                 <span>Do European cabinets really provide more storage space?</span>
-                <ArrowRight className="w-5 h-5 text-amber-600 transform group-open:rotate-90 transition-transform" />
+                <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
               </summary>
               <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                 Yes—measurably. The face frame on American cabinets reduces opening width by approximately 1.5" on each
@@ -889,24 +889,24 @@ const EuropeanVsAmerican: React.FC = () => {
 
           {/* CTA Section */}
           <div className="not-prose my-12">
-            <div className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-2xl p-8 text-center">
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">
                 Explore Both Styles in Our Houston Showroom
               </h3>
-              <p className="text-xl text-amber-100 mb-6">
+              <p className="text-xl text-accent-light mb-6">
                 See European and American cabinets side-by-side with expert design guidance
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 rounded-lg font-semibold hover:bg-amber-50 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-accent-light transition-all shadow-lg hover:shadow-xl"
                 >
                   Schedule Showroom Visit
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link
                   to="/services/kitchen-cabinets"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-amber-800 text-white rounded-lg font-semibold hover:bg-amber-900 transition-all"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-dark text-white rounded-lg font-semibold hover:bg-primary-dark transition-all"
                 >
                   View Cabinet Options
                 </Link>
@@ -948,8 +948,8 @@ const EuropeanVsAmerican: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mb-6">Related Articles</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/blog/frameless-vs-framed-cabinets" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Frameless vs Framed Cabinets
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -959,8 +959,8 @@ const EuropeanVsAmerican: React.FC = () => {
             </Link>
 
             <Link to="/blog/kitchen-trends-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Kitchen Cabinet Trends 2025
                 </h4>
                 <p className="text-sm text-slate-600">
@@ -970,8 +970,8 @@ const EuropeanVsAmerican: React.FC = () => {
             </Link>
 
             <Link to="/blog/custom-cabinet-cost-guide-houston-2025" className="group">
-              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-amber-600">
-                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-amber-600 mb-2">
+              <div className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all border-2 border-transparent hover:border-primary">
+                <h4 className="font-semibold text-lg text-slate-900 group-hover:text-primary mb-2">
                   Custom Cabinet Cost Guide 2025
                 </h4>
                 <p className="text-sm text-slate-600">
