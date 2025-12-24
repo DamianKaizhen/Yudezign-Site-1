@@ -436,7 +436,7 @@ export const services: ServiceData[] = [
       },
       {
         question: 'Can you match my existing bathroom cabinets?',
-        answer: 'Yes, we can match existing finishes and door styles. Bring us a door or photo and we\'ll create a sample to ensure a perfect match before manufacturing.'
+        answer: 'Unfortunately, we cannot guarantee an exact match to existing cabinets. Finishes change color over time due to UV exposure, moisture, and aging - even if we use the same original finish, it won\'t look identical to older cabinets. For additions, we recommend either replacing all visible cabinets or choosing a complementary finish.'
       }
     ],
     relatedProjects: [],

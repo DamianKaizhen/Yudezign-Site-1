@@ -231,7 +231,7 @@ export const faqs: FAQ[] = [
   {
     id: 'can-you-match-existing-cabinets',
     question: 'Can you match my existing cabinets for additions?',
-    answer: 'Yes! Bring us a door sample or detailed photos. We\'ll create a sample to ensure a perfect color and style match before manufacturing. Note that finishes can change slightly over time due to UV exposure, so exact matches on older cabinets may be challenging.',
+    answer: 'Unfortunately, we cannot guarantee an exact match to existing cabinets. Even if you know the exact finish that was used, finishes change color over time due to UV exposure, cleaning products, and aging. This means that even with the same material and color, new cabinets will look different from older ones. For additions, we recommend either replacing all visible cabinets or choosing a complementary finish that works as an intentional design choice.',
     category: 'warranty',
     order: 4
   }
