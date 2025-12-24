@@ -1040,8 +1040,8 @@ export const getRelatedServices = (slug: string): ServiceData[] => {
   if (!service || !service.relatedServices) return [];
 
   return service.relatedServices
-    .map(relatedSlug => getServiceBySlug(relatedSlug))
-    .filter((svc): svc is ServiceData => svc !== undefined);
+    .map((relatedSlug: string) => getServiceBySlug(relatedSlug))
+    .filter((svc: ServiceData | undefined): svc is ServiceData => svc !== undefined);
 };
 
 // Get services by category for navigation

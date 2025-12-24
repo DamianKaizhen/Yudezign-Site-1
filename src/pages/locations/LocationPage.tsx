@@ -167,7 +167,7 @@ const LocationPage: React.FC = () => {
               <div className="space-y-4 text-slate-700 leading-relaxed">
                 {location.localAngle && <p>{location.localAngle}</p>}
                 {location.climateConsiderations && <p>{location.climateConsiderations}</p>}
-                {location.keyPoints && location.keyPoints.map((point, idx) => (
+                {location.keyPoints && location.keyPoints.map((point: string, idx: number) => (
                   <div key={idx} className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
                     <p>{point}</p>
@@ -210,7 +210,7 @@ const LocationPage: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              {location.faqs.map((faq, idx) => (
+              {location.faqs.map((faq: any, idx: number) => (
                 <details key={idx} className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
                   <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-amber-50 transition-colors flex items-center justify-between">
                     <span>{faq.question}</span>

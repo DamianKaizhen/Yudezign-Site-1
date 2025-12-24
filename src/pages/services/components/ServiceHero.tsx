@@ -28,7 +28,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
             {/* Key Features */}
             {service.features && service.features.length > 0 && (
               <div className="space-y-3 mb-8">
-                {service.features.slice(0, 4).map((feature, idx) => (
+                {service.features.slice(0, 4).map((feature: any, idx: number) => (
                   <div key={idx} className="flex items-start">
                     <CheckCircle className="w-6 h-6 text-amber-400 mr-3 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-200">{typeof feature === 'string' ? feature : feature.title}</span>

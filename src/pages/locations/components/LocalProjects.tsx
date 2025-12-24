@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import type { LocationData } from '../../../types';
 
 interface LocalProjectsProps {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SEO from '../../components/SEO';
-import { blogPosts, getLatestBlogPosts, getBlogPostsByCategory } from '../../data/blogPosts';
+import { blogPosts } from '../../data/blogPosts';
 import { Clock, Calendar, ArrowRight, Search, Filter } from 'lucide-react';
 
 const BlogIndex: React.FC = () => {

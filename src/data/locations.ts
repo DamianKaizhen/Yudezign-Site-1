@@ -417,6 +417,6 @@ export const getNearbyLocations = (slug: string): LocationData[] => {
   if (!location || !location.relatedLocations) return [];
 
   return location.relatedLocations
-    .map(relatedSlug => getLocationBySlug(relatedSlug))
-    .filter((loc): loc is LocationData => loc !== undefined);
+    .map((relatedSlug: string) => getLocationBySlug(relatedSlug))
+    .filter((loc: LocationData | undefined): loc is LocationData => loc !== undefined);
 };
