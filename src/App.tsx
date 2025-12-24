@@ -33,7 +33,7 @@ import SiteSettings from './pages/admin/SiteSettings';
 // SEO Pages
 import PricingPage from './pages/quick-wins/PricingPage';
 import ShowroomPage from './pages/quick-wins/ShowroomPage';
-import WarrantyPage from './pages/quick-wins/WarrantyPage';
+// import WarrantyPage from './pages/quick-wins/WarrantyPage'; // REMOVED - Warranty page temporarily disabled
 import LocationPage from './pages/locations/LocationPage';
 import ServicePage from './pages/services/ServicePage';
 import BlogIndex from './pages/blog/BlogIndex';
@@ -110,7 +110,8 @@ function App() {
           {/* Quick Win Pages */}
           <Route path="/pricing" element={<PublicLayout><PricingPage /></PublicLayout>} />
           <Route path="/showroom" element={<PublicLayout><ShowroomPage /></PublicLayout>} />
-          <Route path="/warranty" element={<PublicLayout><WarrantyPage /></PublicLayout>} />
+          {/* <Route path="/warranty" element={<PublicLayout><WarrantyPage /></PublicLayout>} /> */}
+          {/* REMOVED - Warranty page temporarily disabled */}
 
           {/* Location Pages */}
           <Route path="/locations/:slug" element={<PublicLayout><LocationPage /></PublicLayout>} />

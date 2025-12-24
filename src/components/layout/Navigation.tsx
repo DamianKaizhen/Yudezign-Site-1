@@ -68,7 +68,6 @@ const Navigation = () => {
         { name: 'Pricing Guide', path: '/pricing' },
         { name: 'FAQ', path: '/faq' },
         { name: 'Showroom', path: '/showroom' },
-        { name: 'Warranty Info', path: '/warranty' },
       ]
     },
     { name: 'Finishes & Materials', path: '/finishes' },
