@@ -4,7 +4,10 @@ import {
   CheckCircle,
   TrendingUp,
   Info,
-  ArrowRight
+  ArrowRight,
+  Truck,
+  Clock,
+  MapPin
 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { generateFAQSchema } from '../../lib/schema';
@@ -360,6 +363,88 @@ const PricingPage: React.FC = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery & Timeline */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Truck className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Delivery & Production Timeline
+            </h2>
+            <p className="text-lg text-slate-600">
+              Fast local manufacturing and flexible delivery options
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Production Time */}
+            <div className="bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Production Time</h3>
+              <p className="text-slate-600 mb-4">
+                2-3 weeks for standard residential projects using in-stock materials. Special finishes or custom colors may add additional time depending on vendor availability.
+              </p>
+              <p className="text-sm text-slate-500 font-semibold">
+                Much faster than 8-12 weeks for imported cabinets!
+              </p>
+            </div>
+
+            {/* Delivery Service */}
+            <div className="bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <Truck className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Delivery Service</h3>
+              <p className="text-slate-600 mb-4">
+                $350 per trip within the Greater Houston Area. A typical trip can accommodate one standard kitchen plus bathroom vanities and a small closet.
+              </p>
+              <p className="text-sm text-slate-500">
+                Larger projects may require multiple trips. Price includes delivery and placement.
+              </p>
+            </div>
+
+            {/* Free Pickup */}
+            <div className="bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Free Pickup Option</h3>
+              <p className="text-slate-600 mb-4">
+                Pick up your cabinets at no charge from our factory at 5802 Colfax St, Houston, TX 77477.
+              </p>
+              <p className="text-sm text-slate-500">
+                Save on delivery costs and inspect your cabinets in person before taking them home.
+              </p>
+            </div>
+          </div>
+
+          {/* Timeline Factors */}
+          <div className="mt-12 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+            <h4 className="font-semibold text-blue-900 mb-3">Factors Affecting Timeline:</h4>
+            <ul className="space-y-2 text-blue-800 text-sm">
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Material availability:</strong> In-stock finishes ship in 2-3 weeks; special orders may take longer</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Custom colors:</strong> Color matching requires vendor sourcing, adding days to weeks</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Project complexity:</strong> Highly custom configurations may require additional production time</span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                <span><strong>Local manufacturing advantage:</strong> No overseas shipping delays or customs issues</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

@@ -126,7 +126,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-materials-do-you-use',
     question: 'What materials do you use for cabinet construction?',
-    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All cabinets have soft-close Blum or Hettich hinges and undermount drawer slides. Shelves are 3/4" adjustable.',
+    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF (1/4" for back panels and drawer bottoms). We use frameless European construction with no face frame. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All doors include color-matched edge-banding to seal edges and create a uniform appearance. Standard board sizes are 4\'x8\' plywood sheets. All cabinets include soft-close Blum or Hettich hinges and undermount drawer slides. Shelves are 3/4" adjustable.',
     category: 'materials',
     order: 1
   },
@@ -155,7 +155,7 @@ export const faqs: FAQ[] = [
   {
     id: 'whats-best-for-humid-climate',
     question: 'What material is best for Houston\'s humid climate?',
-    answer: 'Engineered materials (MDF/plywood cores with laminate or acrylic) are best. They\'re dimensionally stable and won\'t expand with humidity like solid wood. For sink bases and bathroom vanities, we use marine-grade plywood and seal all edges. Avoid solid wood doors in Houston.',
+    answer: 'Engineered materials (MDF/plywood cores with laminate or acrylic) are best for Houston\'s 75-90% humidity. They\'re dimensionally stable and won\'t expand/contract with humidity like solid wood. Edge-banding is critical - it seals exposed core edges from moisture penetration and prevents warping. For sink bases and bathroom vanities, we use marine-grade plywood and seal all edges with waterproof edge-banding. This is why we don\'t use solid wood - it would expand, warp, and crack in Houston\'s climate. Our engineered materials maintain their shape and finish for decades.',
     category: 'materials',
     tags: ['houston', 'climate'],
     order: 5
@@ -186,7 +186,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-long-does-it-take',
     question: 'How long from order to delivery?',
-    answer: 'Total timeline is 3-4 weeks. Design and quote: 3-5 days. Manufacturing: 2-3 weeks. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores. Local Houston manufacturing means no shipping delays.',
+    answer: 'Total timeline is 3-4 weeks. Design and quote: 3-5 days. Manufacturing: 2-3 weeks for standard residential kitchens using materials we have in stock. Special finishes or custom colors require vendor sourcing, which can add days to weeks depending on availability. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores. Local Houston manufacturing means no shipping delays.',
     category: 'process',
     tags: ['turnaround', 'timeline'],
     order: 3
@@ -234,6 +234,114 @@ export const faqs: FAQ[] = [
     answer: 'Unfortunately, we cannot guarantee an exact match to existing cabinets. Even if you know the exact finish that was used, finishes change color over time due to UV exposure, cleaning products, and aging. This means that even with the same material and color, new cabinets will look different from older ones. For additions, we recommend either replacing all visible cabinets or choosing a complementary finish that works as an intentional design choice.',
     category: 'warranty',
     order: 4
+  },
+
+  // TECHNICAL SPECIFICATIONS
+  {
+    id: 'what-is-frameless-construction',
+    question: 'What is frameless cabinet construction?',
+    answer: 'Frameless cabinets (European style) have no face frame on the front - the doors attach directly to the cabinet box sides. This provides more storage space, easier access, and a sleek modern look. Traditional American cabinets have a face frame that reduces the opening size. Frameless construction requires precise installation for proper door alignment, but offers superior storage capacity and contemporary aesthetics.',
+    category: 'technical',
+    tags: ['construction', 'frameless', 'European'],
+    order: 1
+  },
+  {
+    id: 'full-overlay-vs-half-overlay',
+    question: 'What is the difference between full overlay and half overlay hinges?',
+    answer: 'Full overlay hinges allow doors to completely cover the cabinet side panels - we use these for kitchens and bathroom vanities for a seamless modern look. Half overlay hinges only partially cover the side panels, allowing you to share a single panel between two cabinets or have doors on both sides - we use these for closet systems. The hinge type determines the door placement and overall cabinet appearance.',
+    category: 'technical',
+    tags: ['hinges', 'overlay', 'construction'],
+    order: 2
+  },
+  {
+    id: 'kitchen-base-cabinet-dimensions',
+    question: 'What are the standard dimensions for kitchen base cabinets?',
+    answer: 'Kitchen base cabinets are 24 inches deep and 34.5 inches high (32.5 inches for ADA-compliant installations). The height allows for a 1.5-inch countertop to reach the standard 36-inch total height. Cabinet widths are available in 3-inch increments starting at 9 inches up to 42 inches, depending on the cabinet type (drawers, doors, or open shelves).',
+    category: 'technical',
+    tags: ['dimensions', 'kitchen', 'specifications'],
+    order: 3
+  },
+  {
+    id: 'kitchen-wall-cabinet-dimensions',
+    question: 'What are the standard dimensions for kitchen wall cabinets?',
+    answer: 'Kitchen wall cabinets are 13 inches deep. Heights and widths come in 3-inch increments (12", 15", 18", 21", 24" up to 42"). The most common heights are 36", 42", 30", and 24 inches. Most common widths are 12", 15", and 18" for single-door units, and 24", 30", and 36" for double-door units.',
+    category: 'technical',
+    tags: ['dimensions', 'kitchen', 'specifications'],
+    order: 4
+  },
+  {
+    id: 'tall-cabinet-dimensions',
+    question: 'What are the standard dimensions for tall cabinets?',
+    answer: 'Tall cabinets (pantries, linen cabinets) are 24 inches deep and typically 96 inches tall - the maximum height possible with standard 4\'x8\' plywood sheets. Common widths are 15", 18", and 21" for single-door units, 24", 30", and 36" for double-door units, and 30" or 36" for oven/microwave housing units.',
+    category: 'technical',
+    tags: ['dimensions', 'tall cabinets', 'specifications'],
+    order: 5
+  },
+  {
+    id: 'bathroom-vanity-dimensions',
+    question: 'What are standard bathroom vanity dimensions?',
+    answer: 'Bathroom vanities are 21 inches deep and either 34.5 inches or 32.5 inches high. The 34.5-inch height allows for a 1.5-inch countertop to reach 36 inches total, while 32.5 inches is used for ADA-compliant installations (34 inches total with countertop). Widths vary based on your bathroom space and design preferences.',
+    category: 'technical',
+    tags: ['dimensions', 'bathroom', 'specifications'],
+    order: 6
+  },
+  {
+    id: 'what-is-rtf-finish',
+    question: 'What is RTF (Rigid Thermofoil) and when is it used?',
+    answer: 'RTF (Rigid Thermofoil) is a vinyl film that\'s vacuum-pressed over MDF to create a seamless, moisture-resistant finish. It mimics the look of paint or wood grain without the maintenance issues. We use RTF exclusively for door and drawer fronts, particularly for Shaker-style profiles. It\'s durable, easy to clean, and performs well in Houston\'s humid climate.',
+    category: 'materials',
+    tags: ['finishes', 'RTF', 'materials'],
+    order: 7
+  },
+  {
+    id: 'why-mdf-for-shaker-doors',
+    question: 'Why do you use MDF for Shaker doors instead of real wood?',
+    answer: 'We carve Shaker profiles from a single piece of MDF rather than using traditional multi-piece real wood construction. MDF doesn\'t expand or contract with humidity changes like real wood does - critical for Houston\'s climate. MDF allows us to create the Shaker profile without joints that could separate over time. While not "real wood," MDF with RTF or paint finish provides superior dimensional stability and durability.',
+    category: 'materials',
+    tags: ['MDF', 'Shaker doors', 'construction'],
+    order: 8
+  },
+  {
+    id: 'what-is-edge-banding',
+    question: 'What is edge-banding and why is it important?',
+    answer: 'Edge-banding is a thin strip applied to the exposed edges of cabinet doors and panels. It serves two critical purposes: (1) Seals the exposed core from moisture, preventing water damage and warping - especially important in humid Houston, and (2) Matches the surface finish color for a uniform, professional appearance. All our doors and visible panels include color-matched edge-banding.',
+    category: 'technical',
+    tags: ['edge-banding', 'construction', 'finishing'],
+    order: 7
+  },
+  {
+    id: 'cabinet-board-thickness',
+    question: 'What thickness boards do you use for cabinets?',
+    answer: 'We use 3/4-inch thick plywood or particleboard for all structural components: cabinet boxes, doors, drawer fronts, and shelves. The only exceptions are back panels and drawer bottom panels, which use 1/4-inch plywood for weight reduction while maintaining stability. The 3/4-inch thickness provides superior strength and durability compared to thinner materials used in stock cabinets.',
+    category: 'technical',
+    tags: ['specifications', 'materials', 'construction'],
+    order: 8
+  },
+  {
+    id: 'why-not-taller-than-96-inches',
+    question: 'Why can\'t you make cabinets taller than 96 inches?',
+    answer: 'Standard plywood sheets are 48 inches wide by 96 inches tall (4\'x8\'). To maintain structural integrity and avoid seams, we don\'t make single cabinets taller than 96 inches. For spaces requiring more height, we can stack shorter cabinets or design custom solutions. Most residential ceilings are 8-10 feet, so 96-inch tall cabinets work for the majority of applications.',
+    category: 'technical',
+    tags: ['specifications', 'limitations', 'construction'],
+    order: 9
+  },
+  {
+    id: 'what-soft-close-hardware',
+    question: 'What hardware do you use for soft-close functionality?',
+    answer: 'All our cabinets include soft-close hinges and undermount drawer slides as standard equipment. We use premium European hardware (Blum or Hettich equivalent) with lifetime warranties. Soft-close prevents slamming, reduces wear and tear, and provides a premium feel. The undermount slides are hidden beneath the drawer for a cleaner appearance and full-extension access.',
+    category: 'technical',
+    tags: ['hardware', 'soft-close', 'quality'],
+    order: 10
+  },
+
+  // DELIVERY & LOGISTICS
+  {
+    id: 'delivery-cost-and-areas',
+    question: 'How much does delivery cost and what areas do you cover?',
+    answer: 'Delivery costs $350 per trip within the Greater Houston Area (Houston, Katy, Sugar Land, The Woodlands, Pearland, Cypress, etc.). A typical trip can accommodate one standard kitchen plus a couple bathroom vanities and a small closet. For larger projects, multiple trips may be needed. Alternatively, you can pick up your cabinets free of charge from our factory at 5802 Colfax St, Houston, TX 77477.',
+    category: 'delivery',
+    tags: ['delivery', 'cost', 'Houston', 'logistics'],
+    order: 1
   }
 ];
 

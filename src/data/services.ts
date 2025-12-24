@@ -53,12 +53,36 @@ export const services: ServiceData[] = [
       }
     ],
     materials: [
-      '3/4" Plywood Construction',
-      'Moisture-Resistant MDF Cores',
-      'High-Pressure Laminate (HPL)',
-      'Thermally Fused Laminate (TFL/Melamine)',
-      'High-Gloss Acrylic',
-      'Wood Veneer Options'
+      {
+        name: '3/4" Plywood Construction',
+        description: 'Cabinet boxes built with 3/4" plywood (1/4" for back panels). Frameless European construction with no face frame for maximum storage. Standard 4\'x8\' sheets allow cabinets up to 96" tall.',
+        priceRange: 'Premium'
+      },
+      {
+        name: 'Moisture-Resistant MDF Cores',
+        description: 'Door cores use moisture-resistant MDF, perfect for Houston\'s 75-90% humidity. Can be carved for Shaker profiles. All edges sealed with color-matched edge-banding to prevent moisture penetration.',
+        priceRange: 'Standard'
+      },
+      {
+        name: 'High-Pressure Laminate (HPL)',
+        description: 'Multi-layer construction for superior impact resistance. Thicker than melamine, available as sheets. Ideal for high-traffic kitchens. Wide variety of textures and patterns.',
+        priceRange: '$1,000-$1,300/LF'
+      },
+      {
+        name: 'Thermally Fused Laminate (TFL/Melamine)',
+        description: 'Budget-friendly finish fused directly to substrate. Scratch-resistant, easy maintenance. Great for closets and utility areas. Most affordable option.',
+        priceRange: '$800-$1,000/LF'
+      },
+      {
+        name: 'High-Gloss Acrylic',
+        description: 'Premium glass-like finish with UV stability. Mirror-like reflectivity, incredible color depth. Won\'t yellow from sunlight. Shows fingerprints but creates stunning modern aesthetic.',
+        priceRange: '$1,300-$1,800+/LF'
+      },
+      {
+        name: 'RTF (Rigid Thermofoil)',
+        description: 'Vinyl film vacuum-pressed over MDF for seamless, moisture-resistant finish. Perfect for Shaker doors. Won\'t chip or peel like paint. Performs excellently in Houston\'s humid climate.',
+        priceRange: 'Standard'
+      }
     ],
     finishes: [
       {
@@ -91,7 +115,7 @@ export const services: ServiceData[] = [
       {
         icon: 'Zap',
         title: 'Soft-Close Hardware',
-        description: 'Premium Blum or Hettich hinges and undermount slides. Whisper-quiet, guaranteed for life.'
+        description: 'Premium European hardware (Blum or Hettich) with lifetime warranties. Full overlay hinges for kitchens. Undermount drawer slides hidden beneath drawer for cleaner appearance and full-extension access.'
       },
       {
         icon: 'Palette',
@@ -105,8 +129,8 @@ export const services: ServiceData[] = [
       },
       {
         icon: 'Clock',
-        title: '2-4 Week Turnaround',
-        description: 'Local Houston manufacturing means fast delivery. No 8-12 week waits for imports.'
+        title: '2-3 Week Turnaround',
+        description: 'Local Houston manufacturing means fast delivery for standard materials. Special finishes may add time. Much faster than 8-12 week waits for imports. Delivery $350/trip or free pickup at 5802 Colfax St.'
       }
     ],
     process: [

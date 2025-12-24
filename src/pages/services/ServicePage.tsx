@@ -12,7 +12,10 @@ import {
   DollarSign,
   Palette,
   Package,
-  Wrench
+  Wrench,
+  Truck,
+  Clock,
+  MapPin
 } from 'lucide-react';
 
 const ServicePage: React.FC = () => {
@@ -158,7 +161,7 @@ const ServicePage: React.FC = () => {
               {
                 step: '3',
                 title: 'Manufacturing',
-                desc: 'Your cabinets are precision-built in 6-8 weeks with quality control.',
+                desc: 'Your cabinets are precision-built in 2-3 weeks (standard materials) with quality control. Special finishes may add additional time.',
                 icon: Award,
               },
               {
@@ -179,6 +182,65 @@ const ServicePage: React.FC = () => {
                 <p className="text-sm text-slate-600">{step.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Delivery & Timeline Information */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Truck className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Delivery & Timeline
+            </h2>
+            <p className="text-lg text-slate-600">
+              Fast turnaround and convenient delivery options
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Production Timeline */}
+            <div className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <Clock className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Production Time</h3>
+              <p className="text-slate-600 mb-4">
+                2-3 weeks for standard residential projects using in-stock materials. Special finishes or custom colors may add additional time.
+              </p>
+              <p className="text-sm text-slate-500">
+                Much faster than the 8-12 weeks typical for imported cabinets!
+              </p>
+            </div>
+
+            {/* Delivery Service */}
+            <div className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <Truck className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Delivery Service</h3>
+              <p className="text-slate-600 mb-4">
+                $350 per trip within Greater Houston Area. A typical trip accommodates one kitchen plus bathroom vanities and a small closet.
+              </p>
+              <p className="text-sm text-slate-500">
+                Larger projects may require multiple trips.
+              </p>
+            </div>
+
+            {/* Pickup Option */}
+            <div className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="font-semibold text-xl text-slate-900 mb-3">Free Pickup</h3>
+              <p className="text-slate-600 mb-4">
+                Pick up your cabinets at no charge from our factory at 5802 Colfax St, Houston, TX 77477.
+              </p>
+              <p className="text-sm text-slate-500">
+                Save on delivery and inspect your cabinets before taking them home.
+              </p>
+            </div>
           </div>
         </div>
       </section>
