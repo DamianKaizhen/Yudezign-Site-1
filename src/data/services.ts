@@ -25,6 +25,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1920&q=90',
     icon: 'ChefHat',
+    portfolioCategory: 'kitchens',
     overview:
       'Transform your kitchen with custom European frameless cabinets. Engineered for Houston\'s climate with moisture-resistant cores, our cabinets offer 10-15% more storage than traditional framed construction.',
     longDescription:
@@ -222,6 +223,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=90',
     icon: 'ShoppingBag',
+    portfolioCategory: 'closets',
     overview:
       'Transform your closet into a luxury boutique with custom organizational systems. Maximize space with adjustable shelving, drawer inserts, and accessory organizers designed for your specific wardrobe.',
     designOptions: [
@@ -338,6 +340,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1920&q=90',
     icon: 'Bath',
+    portfolioCategory: 'vanities',
     overview:
       'Custom bathroom vanities built for Houston\'s humidity with marine-grade materials. From compact powder rooms to luxurious double vanities, sized perfectly for your plumbing layout.',
     designOptions: [
@@ -459,6 +462,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1920&q=90',
     icon: 'Laptop',
+    portfolioCategory: 'custom',
     overview:
       'Create your ideal remote workspace with custom built-in office systems. Integrated desks, file storage, display shelving, and cable management designed for productivity.',
     designOptions: [
@@ -575,6 +579,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1558618666-f76a99d0b0b6?w=1920&q=90',
     icon: 'Wrench',
+    portfolioCategory: 'custom',
     overview:
       'Heavy-duty garage storage designed for Houston. Floating cabinets protect against flooding, durable finishes withstand temperature swings, integrated workbenches for projects.',
     designOptions: [
@@ -691,6 +696,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1920&q=90',
     icon: 'Tv',
+    portfolioCategory: 'custom',
     overview:
       'Modern entertainment centers with clean cable management and AV equipment storage. Floating shelves, hidden wire raceways, and speaker integration for a sophisticated media experience.',
     designOptions: [
@@ -807,6 +813,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=1920&q=90',
     icon: 'Shirt',
+    portfolioCategory: 'custom',
     overview:
       'Maximize your laundry room with custom storage for detergents, cleaning supplies, and hanging solutions. Countertops over machines for folding, pull-out hampers, and multi-function mudroom integration.',
     designOptions: [

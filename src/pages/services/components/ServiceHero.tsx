@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, ArrowRight, Phone } from 'lucide-react';
+import { CheckCircle, ArrowRight, Phone, Images } from 'lucide-react';
 import type { ServiceData } from '../../../types';
 
 interface ServiceHeroProps {
@@ -36,7 +36,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
             )}
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
               <a
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
@@ -51,6 +51,15 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
                 <Phone className="mr-2 w-5 h-5" />
                 (281) 568-8000
               </a>
+              {service.portfolioCategory && (
+                <a
+                  href={`/portfolio/${service.portfolioCategory}`}
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-all"
+                >
+                  <Images className="mr-2 w-5 h-5" />
+                  View Our Work
+                </a>
+              )}
             </div>
 
             {/* Price Range */}
@@ -68,16 +77,15 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
             </div>
           </div>
 
-          {/* Image Placeholder */}
+          {/* Hero Image */}
           <div className="relative">
-            <div className="aspect-w-4 aspect-h-3 bg-slate-700 rounded-2xl overflow-hidden shadow-2xl">
-              <div className="w-full h-96 bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-slate-400 text-lg">
-                    {service.name} Image
-                  </p>
-                </div>
-              </div>
+            <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={service.heroImage}
+                alt={service.name}
+                className="w-full h-96 object-cover"
+                loading="eager"
+              />
             </div>
           </div>
         </div>

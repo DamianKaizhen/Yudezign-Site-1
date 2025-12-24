@@ -13,5 +13,6 @@ export interface ServiceData {
   heroImage: string;
   icon: string;
   overview: string;
+  portfolioCategory?: 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
   [key: string]: any; // Allow additional properties for flexibility
 }

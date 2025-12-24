@@ -105,8 +105,8 @@ const BlogIndex: React.FC = () => {
                 {/* Image */}
                 <div className="h-64 lg:h-auto overflow-hidden">
                   <img
-                    src={featuredPost.featuredImage.url}
-                    alt={featuredPost.featuredImage.alt}
+                    src={featuredPost.featuredImage?.url || '/images/blog/default.jpg'}
+                    alt={featuredPost.featuredImage?.alt || 'Featured blog post'}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -166,8 +166,8 @@ const BlogIndex: React.FC = () => {
                   {/* Image */}
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={post.featuredImage.url}
-                      alt={post.featuredImage.alt}
+                      src={post.featuredImage?.url || '/images/blog/default.jpg'}
+                      alt={post.featuredImage?.alt || 'Blog post image'}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
