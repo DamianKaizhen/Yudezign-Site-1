@@ -21,8 +21,8 @@ const LocationPage: React.FC = () => {
 
   // Generate structured data
   const structuredData = generateLocalBusinessSchema({
-    name: `YuDezign Custom Cabinets - ${location.city}`,
-    address: `Serving ${location.city}, TX ${location.zipCode}`,
+    name: `YuDezign Custom Cabinets - ${location.name}`,
+    address: `Serving ${location.name}, TX`,
     phone: '(713) 555-0123',
     hours: 'Mo-Fr 09:00-18:00, Sa 10:00-16:00',
     priceRange: '$$$',
@@ -31,9 +31,9 @@ const LocationPage: React.FC = () => {
   return (
     <>
       <SEO
-        title={location.seo.title}
-        description={location.seo.metaDescription}
-        keywords={location.seo.keywords}
+        title={location.metaTitle}
+        description={location.metaDescription}
+        keywords={location.keywords}
         canonical={`https://yudezign.com/locations/${location.slug}`}
         ogType="place"
         structuredData={structuredData}
@@ -47,7 +47,7 @@ const LocationPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Why {location.city} Homeowners Choose YuDezign
+              Why {location.name} Homeowners Choose YuDezign
             </h2>
           </div>
 
@@ -56,7 +56,7 @@ const LocationPage: React.FC = () => {
               {
                 icon: Users,
                 title: 'Local Experts',
-                desc: `We understand ${location.city} home styles and have completed 500+ projects in the area.`,
+                desc: `We understand ${location.name} home styles and have completed 500+ projects in the area.`,
               },
               {
                 icon: Award,
@@ -66,7 +66,7 @@ const LocationPage: React.FC = () => {
               {
                 icon: Clock,
                 title: 'Fast Service',
-                desc: `Quick response times for ${location.city} area. Most projects completed in 6-8 weeks.`,
+                desc: `Quick response times for ${location.name} area. Most projects completed in 6-8 weeks.`,
               },
               {
                 icon: Star,
@@ -94,7 +94,7 @@ const LocationPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Cabinet Services in {location.city}
+              Cabinet Services in {location.name}
             </h2>
             <p className="text-lg text-slate-600">
               Complete cabinetry solutions for every room in your home
@@ -105,7 +105,7 @@ const LocationPage: React.FC = () => {
             {[
               {
                 title: 'Kitchen Cabinets',
-                desc: `Custom and semi-custom kitchen cabinets designed for ${location.city} homes. Modern, traditional, and transitional styles.`,
+                desc: `Custom and semi-custom kitchen cabinets designed for ${location.name} homes. Modern, traditional, and transitional styles.`,
                 link: '/services/kitchen-cabinets',
               },
               {
@@ -160,13 +160,18 @@ const LocationPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-slate max-w-none">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">
-              {location.seo.h2Heading}
+              Custom Cabinets Designed for {location.name}
             </h2>
 
             <div className="bg-white rounded-xl p-8 shadow-md">
               <div className="space-y-4 text-slate-700 leading-relaxed">
-                {location.seo.content.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
+                {location.localAngle && <p>{location.localAngle}</p>}
+                {location.climateConsiderations && <p>{location.climateConsiderations}</p>}
+                {location.keyPoints && location.keyPoints.map((point, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
+                    <p>{point}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -174,11 +179,11 @@ const LocationPage: React.FC = () => {
             {/* Why We Love [City] */}
             <div className="mt-8 bg-amber-50 border-2 border-amber-600 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                Why We Love Serving {location.city}
+                Why We Love Serving {location.name}
               </h3>
               <div className="space-y-3">
                 {[
-                  `${location.city}'s diverse architectural styles inspire creative cabinet designs`,
+                  `${location.name}'s diverse architectural styles inspire creative cabinet designs`,
                   `Strong community of homeowners who value quality and craftsmanship`,
                   `Growing neighborhoods with both new construction and remodels`,
                   `Families who appreciate the value of custom cabinetry done right`,
@@ -200,7 +205,7 @@ const LocationPage: React.FC = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                Frequently Asked Questions About Cabinets in {location.city}
+                Frequently Asked Questions About Cabinets in {location.name}
               </h2>
             </div>
 
@@ -225,7 +230,7 @@ const LocationPage: React.FC = () => {
       <section className="py-16 bg-gradient-to-br from-amber-600 to-amber-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your {location.city} Home?
+            Ready to Transform Your {location.name} Home?
           </h2>
           <p className="text-xl text-amber-100 mb-8">
             Schedule a free consultation and get a detailed proposal with no obligation.

@@ -21,18 +21,18 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
           <div>
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
               <MapPin className="w-5 h-5 mr-2 text-amber-400" />
-              <span className="text-sm font-medium">Serving {location.city}</span>
+              <span className="text-sm font-medium">Serving {location.name}</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Custom Cabinets in <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
-                {location.city}, Texas
+                {location.name}, Texas
               </span>
             </h1>
 
             <p className="text-xl text-slate-300 mb-8 leading-relaxed">
-              {location.description}
+              {location.metaDescription}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -76,7 +76,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
                 <div className="text-center">
                   <MapPin className="w-16 h-16 text-slate-500 mx-auto mb-4" />
                   <p className="text-slate-400">
-                    {location.city} Map Placeholder
+                    {location.name} Map Placeholder
                   </p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
                 </div>
                 <div className="ml-4">
                   <div className="text-sm text-slate-600">Service Area</div>
-                  <div className="font-semibold text-slate-900">{location.city} & Surrounding</div>
+                  <div className="font-semibold text-slate-900">{location.name} & Surrounding</div>
                   <div className="text-xs text-slate-500 mt-1">
                     {location.neighborhoods.length} neighborhoods
                   </div>
