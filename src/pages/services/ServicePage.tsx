@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import ServiceHero from './components/ServiceHero';
-import { services } from '../../data/services';
+import { getServiceBySlug } from '../../data/services';
 import { generateServiceSchema, generateFAQSchema } from '../../lib/schema';
 import {
   CheckCircle,
@@ -20,7 +20,7 @@ const ServicePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
 
   // Find service by slug
-  const service = Object.values(services).find(s => s.slug === slug);
+  const service = getServiceBySlug(slug || '');
 
   // If service not found, redirect
   if (!service) {

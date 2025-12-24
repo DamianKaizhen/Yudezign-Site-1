@@ -4,7 +4,7 @@ import SEO from '../../components/SEO';
 import LocationHero from './components/LocationHero';
 import NeighborhoodSection from './components/NeighborhoodSection';
 import LocalProjects from './components/LocalProjects';
-import { locations } from '../../data/locations';
+import { getLocationBySlug } from '../../data/locations';
 import { generateLocalBusinessSchema } from '../../lib/schema';
 import { CheckCircle, ArrowRight, Star, Award, Users, Clock } from 'lucide-react';
 
@@ -12,7 +12,7 @@ const LocationPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
 
   // Find location by slug
-  const location = Object.values(locations).find(loc => loc.slug === slug);
+  const location = getLocationBySlug(slug || '');
 
   // If location not found, redirect to 404 or home
   if (!location) {
