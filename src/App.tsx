@@ -67,7 +67,7 @@ const queryClient = new QueryClient({
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col min-h-screen">
     <Navigation />
-    <main className="flex-grow">{children}</main>
+    <main role="main" aria-label="Main content" className="flex-grow">{children}</main>
     <Footer />
   </div>
 );

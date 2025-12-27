@@ -11,6 +11,14 @@ interface SEOProps {
   ogImage?: string;
   type?: 'website' | 'article' | 'place' | 'service';
   structuredData?: object | object[] | null;
+  // Article-specific props (for blog posts)
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    author?: string;
+    section?: string;
+    tags?: string[];
+  };
 }
 
 const SEO = ({
@@ -18,11 +26,15 @@ const SEO = ({
   description = 'Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4" plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing.',
   keywords = 'european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets',
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
+  ogImage,
   url = 'https://yudezign.com',
   type = 'website',
   structuredData,
+  article,
 }: SEOProps) => {
   const siteTitle = title.includes('YuDezign') ? title : `${title} | YuDezign`;
+  // Use ogImage if provided, otherwise fall back to image prop
+  const effectiveImage = ogImage || image;
 
   useEffect(() => {
     // Update document title
@@ -52,15 +64,38 @@ const SEO = ({
     updateMetaTag('og:url', url, true);
     updateMetaTag('og:title', siteTitle, true);
     updateMetaTag('og:description', description, true);
-    updateMetaTag('og:image', image, true);
+    updateMetaTag('og:image', effectiveImage, true);
     updateMetaTag('og:site_name', 'YuDezign', true);
+    updateMetaTag('og:locale', 'en_US', true);
+
+    // Article-specific Open Graph tags (for blog posts)
+    if (type === 'article' && article) {
+      if (article.publishedTime) {
+        updateMetaTag('article:published_time', article.publishedTime, true);
+      }
+      if (article.modifiedTime) {
+        updateMetaTag('article:modified_time', article.modifiedTime, true);
+      }
+      if (article.author) {
+        updateMetaTag('article:author', article.author, true);
+      }
+      if (article.section) {
+        updateMetaTag('article:section', article.section, true);
+      }
+      if (article.tags && article.tags.length > 0) {
+        // Add first few tags as article:tag meta elements
+        article.tags.slice(0, 5).forEach((tag, index) => {
+          updateMetaTag(`article:tag:${index}`, tag, true);
+        });
+      }
+    }
 
     // Twitter
     updateMetaTag('twitter:card', 'summary_large_image', true);
     updateMetaTag('twitter:url', url, true);
     updateMetaTag('twitter:title', siteTitle, true);
     updateMetaTag('twitter:description', description, true);
-    updateMetaTag('twitter:image', image, true);
+    updateMetaTag('twitter:image', effectiveImage, true);
 
     // Additional SEO tags
     updateMetaTag('robots', 'index, follow');
@@ -103,7 +138,7 @@ const SEO = ({
       script.textContent = JSON.stringify(schemaContent);
       document.head.appendChild(script);
     }
-  }, [siteTitle, description, keywords, image, url, type, structuredData]);
+  }, [siteTitle, description, keywords, effectiveImage, url, type, structuredData, article]);
 
   return null; // This component doesn't render anything
 };

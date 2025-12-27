@@ -60,17 +60,23 @@ export const generateArticleSchema = (params: {
   description: string;
   author: string;
   publishedDate: string;
+  modifiedDate?: string;
   imageUrl: string;
+  canonicalUrl?: string;
+  category?: string;
+  tags?: string[];
+  wordCount?: number;
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'Article',
-  '@id': 'https://yudezign.com/blog#article',
+  '@id': params.canonicalUrl ? `${params.canonicalUrl}#article` : 'https://yudezign.com/blog#article',
   headline: params.title,
   description: params.description,
   image: params.imageUrl,
   author: {
     '@type': 'Person',
-    name: params.author
+    name: params.author,
+    url: 'https://yudezign.com/about'
   },
   publisher: {
     '@type': 'Organization',
@@ -81,7 +87,25 @@ export const generateArticleSchema = (params: {
     }
   },
   datePublished: params.publishedDate,
-  dateModified: params.publishedDate
+  dateModified: params.modifiedDate || params.publishedDate,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': params.canonicalUrl || 'https://yudezign.com/blog'
+  },
+  ...(params.category && { articleSection: params.category }),
+  ...(params.tags && { keywords: params.tags.join(', ') }),
+  ...(params.wordCount && { wordCount: params.wordCount })
+});
+
+export const generateBreadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url
+  }))
 });
 
 export const generateFAQSchema = (faqs: Array<{ question: string; answer: string }>) => ({

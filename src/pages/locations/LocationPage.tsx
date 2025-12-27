@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import SEO from '../../components/SEO';
+import Breadcrumb from '../../components/ui/Breadcrumb';
 import LocationHero from './components/LocationHero';
 import NeighborhoodSection from './components/NeighborhoodSection';
 import LocalProjects from './components/LocalProjects';
 import { getLocationBySlug } from '../../data/locations';
-import { generateLocalBusinessSchema } from '../../lib/schema';
+import { generateLocalBusinessSchema, generateFAQSchema } from '../../lib/schema';
 import { CheckCircle, ArrowRight, Star, Award, Users, Clock } from 'lucide-react';
 
 const LocationPage: React.FC = () => {
@@ -20,13 +21,32 @@ const LocationPage: React.FC = () => {
   }
 
   // Generate structured data
-  const structuredData = generateLocalBusinessSchema({
+  const localBusinessSchema = generateLocalBusinessSchema({
     name: `YuDezign Custom Cabinets - ${location.name}`,
     address: `Serving ${location.name}, TX`,
     phone: '(281) 568-8000',
     hours: 'Mo-Fr 09:00-18:00, Sa 10:00-16:00',
     priceRange: '$$$',
   });
+
+  // Generate FAQ schema if FAQs exist
+  const faqSchema = location.faqs && location.faqs.length > 0
+    ? generateFAQSchema(location.faqs.map((faq: { question: string; answer: string }) => ({
+        question: faq.question,
+        answer: faq.answer
+      })))
+    : null;
+
+  // Combine schemas
+  const structuredData = faqSchema
+    ? [localBusinessSchema, faqSchema]
+    : localBusinessSchema;
+
+  // Breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Locations', href: '/locations/houston' },
+    { label: location.name }
+  ];
 
   return (
     <>
@@ -41,6 +61,13 @@ const LocationPage: React.FC = () => {
 
       {/* Hero Section */}
       <LocationHero location={location} />
+
+      {/* Breadcrumb Navigation */}
+      <div className="bg-slate-50 py-3 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
+      </div>
 
       {/* Why Choose YuDezign in [City] */}
       <section className="py-16 bg-white">
@@ -204,12 +231,19 @@ const LocationPage: React.FC = () => {
               </h2>
             </div>
 
-            <div className="space-y-4">
-              {location.faqs.map((faq: any, idx: number) => (
-                <details key={idx} className="bg-slate-50 rounded-xl shadow-md overflow-hidden group">
-                  <summary className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between">
+            <div className="space-y-4" role="list" aria-label="Frequently asked questions">
+              {location.faqs.map((faq: { question: string; answer: string }, idx: number) => (
+                <details
+                  key={idx}
+                  className="bg-slate-50 rounded-xl shadow-md overflow-hidden group"
+                  role="listitem"
+                >
+                  <summary
+                    className="px-6 py-4 font-semibold text-slate-900 cursor-pointer hover:bg-accent-light transition-colors flex items-center justify-between"
+                    aria-label={faq.question}
+                  >
                     <span>{faq.question}</span>
-                    <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" />
+                    <ArrowRight className="w-5 h-5 text-primary transform group-open:rotate-90 transition-transform" aria-hidden="true" />
                   </summary>
                   <div className="px-6 py-4 text-slate-600 border-t border-slate-200 bg-white">
                     {faq.answer}

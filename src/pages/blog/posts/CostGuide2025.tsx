@@ -1,9 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import Breadcrumb from '../../../components/ui/Breadcrumb';
+import { generateArticleSchema } from '../../../lib/schema';
 import { Calculator, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
 
 const CostGuide2025: React.FC = () => {
+  const articleData = {
+    title: 'Custom Cabinet Cost Guide for Houston (2025)',
+    description: 'Complete 2025 pricing guide for custom cabinets in Houston. Learn about costs, factors affecting prices, and how to budget for your kitchen remodel.',
+    author: 'YuDezign Team',
+    publishedDate: '2025-01-14',
+    modifiedDate: '2025-01-14',
+    imageUrl: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90',
+    canonicalUrl: 'https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025',
+    category: 'Pricing & Budgeting',
+    tags: ['cabinet costs', 'houston pricing', 'kitchen budget', 'custom cabinets'],
+    wordCount: 2500
+  };
+
+  const structuredData = generateArticleSchema(articleData);
+
   return (
     <>
       <SEO
@@ -16,18 +33,29 @@ const CostGuide2025: React.FC = () => {
           'houston cabinet pricing',
           'custom cabinet budget'
         ]}
-        canonical="https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025"
-        ogType="article"
+        url="https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025"
+        type="article"
+        ogImage={articleData.imageUrl}
+        structuredData={structuredData}
+        article={{
+          publishedTime: '2025-01-14T00:00:00Z',
+          modifiedTime: '2025-01-14T00:00:00Z',
+          author: 'YuDezign Team',
+          section: 'Pricing & Budgeting',
+          tags: ['cabinet costs', 'houston pricing', 'kitchen budget', 'custom cabinets']
+        }}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <header className="mb-12">
-          <div className="flex items-center gap-2 text-sm text-slate-600 mb-4">
-            <Link to="/blog" className="hover:text-primary">Blog</Link>
-            <span>/</span>
-            <span>Cost Guide</span>
-          </div>
+          <Breadcrumb
+            items={[
+              { label: 'Blog', href: '/blog' },
+              { label: 'Cost Guide' }
+            ]}
+            className="mb-4"
+          />
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Custom Cabinet Cost Guide for Houston (2025)
           </h1>

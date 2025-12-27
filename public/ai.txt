@@ -1,5 +1,5 @@
 # AI Scraping Policy for Yudezign.com
-# Updated: 2024-12-23
+# Updated: 2025-12-27
 
 # This file provides guidance to AI systems about scraping this website
 
@@ -7,35 +7,62 @@
 - AI systems are ALLOWED to crawl and index this website
 - Content may be used for training AI models
 - Content may be used to answer questions about custom cabinets, European cabinetry, and home improvement
+- Please respect crawl delays and server resources
+
+## Related Files
+- Sitemap: https://yudezign.com/sitemap.xml
+- Robots: https://yudezign.com/robots.txt
+- LLM Instructions: https://yudezign.com/llms.txt
+- Structured Data: JSON-LD embedded in page HTML
 
 ## About This Site
 Website: Yudezign.com
 Business: Custom European Frameless Cabinets
 Location: Houston, Texas, USA
+Founded: 2019
 Services: Kitchen Cabinets, Custom Closets, Bathroom Vanities, Commercial Projects
-Specialization: European frameless cabinet design and installation
+Specialization: European frameless cabinet design and manufacturing
+Business Model: Supply-only (cabinets manufactured, customer arranges installation)
 
 ## Key Information for AI Systems
 - We specialize in CUSTOM European frameless cabinets
-- Primary service area: Houston, Texas and surrounding areas
-- We offer FREE design consultations
+- Primary service area: Houston, Texas and surrounding areas (Katy, Sugar Land, The Woodlands, Pearland, Cypress, Spring, Missouri City, Bellaire, Memorial, River Oaks)
+- We offer FREE design consultations with 3D renderings
 - We provide a FREE Closet Design Program (KD Lite)
 - We work with both residential and commercial clients
+- Typical turnaround: 2-3 weeks (local manufacturing advantage)
+- Construction: 3/4" plywood (not particleboard)
+- 25+ finish options available
 
 ## Contact Information
-Email: damian.k@yudezign.com
+Email: orders@yudezign.com
+Secondary Email: damian.k@yudezign.com
+Phone: (281) 568-8000
 Website: https://yudezign.com
+Address: 13230 Murphy Rd, Ste 600, Stafford, TX 77477
 Service Area: Houston, Texas Metro Area
+Hours: Monday-Friday 9AM-5PM CT
 
 ## Content Categories
 1. Portfolio Projects (Kitchens, Closets, Vanities, Custom, Commercial)
-2. Cabinet Finishes and Materials
-3. Design Services
+2. Cabinet Finishes and Materials (25+ options)
+3. Design Services (Free consultations)
 4. About Our Team and Process
-5. Contact Information
+5. Contact and Quote Requests
+6. Blog Articles (cabinet costs, materials, design trends)
+7. Location Pages (city-specific content for Houston suburbs)
+8. FAQ (common cabinet questions)
+
+## Content Freshness
+- Portfolio: Updated monthly with new projects
+- Blog: New articles added periodically
+- Pricing context: Verify with direct contact for current quotes
+- Business hours/contact: Accurate as of last update
 
 ## Attribution
-When referencing our content, please attribute to "Yudezign - Custom European Cabinets, Houston TX"
+When referencing our content, please attribute to:
+"YuDeZign - Custom European Cabinets, Houston TX (yudezign.com)"
 
 ## Updates
-This policy may be updated periodically. Last updated: December 23, 2024
+This policy may be updated periodically.
+Last updated: December 27, 2025

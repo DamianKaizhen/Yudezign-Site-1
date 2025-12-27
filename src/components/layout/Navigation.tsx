@@ -77,6 +77,8 @@ const Navigation = () => {
 
   return (
     <nav
+      role="navigation"
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-custom shadow-lg py-4'
@@ -112,6 +114,9 @@ const Navigation = () => {
                 {link.subLinks ? (
                   <>
                     <button
+                      aria-expanded={openDropdown === link.name}
+                      aria-haspopup="true"
+                      aria-label={`${link.name} menu`}
                       className={`flex items-center space-x-1 font-medium transition-colors ${
                         isScrolled ? 'text-neutral-700 hover:text-primary' : 'text-white hover:text-accent'
                       }`}
@@ -119,7 +124,7 @@ const Navigation = () => {
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
                       <span>{link.name}</span>
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-4 h-4" aria-hidden="true" />
                     </button>
 
                     {/* Dropdown */}
@@ -172,11 +177,14 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
               isScrolled ? 'text-neutral-700 hover:bg-neutral-100' : 'text-white hover:bg-white/10'
             }`}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
 
@@ -184,6 +192,9 @@ const Navigation = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-menu"
+              role="menu"
+              aria-label="Mobile navigation menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -197,10 +208,13 @@ const Navigation = () => {
                       <>
                         <button
                           onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
+                          aria-expanded={openDropdown === link.name}
+                          aria-haspopup="true"
+                          role="menuitem"
                           className="w-full px-6 py-3 text-left font-medium text-neutral-700 hover:bg-neutral-50 flex items-center justify-between"
                         >
                           <span>{link.name}</span>
-                          <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.name ? 'rotate-180' : ''}`} />
+                          <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.name ? 'rotate-180' : ''}`} aria-hidden="true" />
                         </button>
                         <AnimatePresence>
                           {openDropdown === link.name && (
