@@ -9,6 +9,14 @@
 
 ---
 
+## 🔑 Git & SSH Configuration
+
+**SSH Key Location**: `~/.ssh/id_ed25519_yudezign`
+- If key not in WSL, copy from Windows: `cp /mnt/c/Users/user/.ssh/id_ed25519_yudezign ~/.ssh/ && chmod 600 ~/.ssh/id_ed25519_yudezign`
+- Push command: `GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519_yudezign -o IdentitiesOnly=yes" git push`
+
+---
+
 ## 📚 Project Context
 
 ### What is YuDeZign?
