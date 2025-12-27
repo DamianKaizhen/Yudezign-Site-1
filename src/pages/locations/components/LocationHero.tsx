@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import { Phone, ArrowRight, MapPin, Home, Truck } from 'lucide-react';
 import type { LocationData } from '../../../types';
 
 interface LocationHeroProps {
@@ -61,34 +61,47 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             </div>
           </div>
 
-          {/* Interactive Map */}
+          {/* Service Area Info Card */}
           <div className="relative">
-            <div className="bg-white rounded-2xl overflow-hidden shadow-2xl h-[500px]">
-              <iframe
-                src={`https://www.google.com/maps?q=${location.coordinates.lat},${location.coordinates.lng}&hl=en&z=12&output=embed`}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`Map of ${location.name}, Texas`}
-              />
-            </div>
-
-            {/* Floating Stats Card */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-2xl max-w-xs">
-              <div className="flex items-start">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6 text-white" />
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-10 h-10 text-accent" />
                 </div>
-                <div className="ml-4">
-                  <div className="text-sm text-slate-600">Service Area</div>
-                  <div className="font-semibold text-slate-900">{location.name} & Surrounding</div>
-                  <div className="text-xs text-slate-500 mt-1">
-                    {location.neighborhoods.length} neighborhoods
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  Proudly Serving {location.name}
+                </h2>
+                <p className="text-white/80">
+                  & {location.neighborhoods.length} surrounding neighborhoods
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center bg-white/10 rounded-lg p-4">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Home className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="ml-4">
+                    <div className="font-semibold text-white">In-Home Consultations</div>
+                    <div className="text-sm text-white/70">We come to you for free design meetings</div>
                   </div>
                 </div>
+
+                <div className="flex items-center bg-white/10 rounded-lg p-4">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Truck className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="ml-4">
+                    <div className="font-semibold text-white">Professional Installation</div>
+                    <div className="text-sm text-white/70">Expert installation by our local team</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/20 text-center">
+                <p className="text-white/80 text-sm">
+                  Houston-based workshop • Local expertise since 2009
+                </p>
               </div>
             </div>
           </div>
