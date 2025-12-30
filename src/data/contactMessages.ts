@@ -39,5 +39,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2025-12-24T23:01:04.458Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1767120028618_9jv9quf',
+    name: 'Scott Jones',
+    email: 'info@msmvdesign.com',
+    phone: '3072000669',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'We offer a design tool (like 2020/ProKitchen) that you can use for your online customers or integrate it to your website for your clients to use similar to Ikea\'s and Lowe\'s kitchen design tool. You can find us at https://business.msmvdesign.com and https://msmvdesign.com\nPlease send me your number to talk more over the phone.',
+    
+    submittedAt: '2025-12-30T18:40:28.619Z',
+    status: 'new',
+    
   }
 ];
