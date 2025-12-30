@@ -52,5 +52,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2025-12-30T18:40:28.619Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1767131786349_9vg937w',
+    name: 'Marlene Stump  ',
+    email: 'mstump@swe.com',
+    phone: '2812403563',
+    projectType: 'other',
+    timeline: 'asap',
+    message: 'Looking for Qty 1 of each fixture',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767131784795-FXTR6130-21MM_REV_X4.pdf', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767131785516-FXTR6130-25MM_REV_X4.pdf'],
+    submittedAt: '2025-12-30T21:56:26.350Z',
+    status: 'new',
+    
   }
 ];
