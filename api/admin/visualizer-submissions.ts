@@ -6,17 +6,36 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'yudezign_admin_jwt_secret_2025_secure_random_key_8f4a3c2d1e9b7a6f'
 );
 
+interface VisualizerFinishSelection {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
+
 interface VisualizerSubmission {
   id: string;
   name: string;
   email: string;
   phone: string;
-  finishId: string;
-  finishName: string;
+  finishes: VisualizerFinishSelection[];
   roomImage: string;
   submittedAt: string;
   status: 'new' | 'processing' | 'completed' | 'archived';
   notes?: string;
+  // Legacy fields for backwards compatibility
+  finishId?: string;
+  finishName?: string;
+}
+
+interface WebhookPayload {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  finishes: VisualizerFinishSelection[];
+  submittedAt: string;
+  source: string;
+  attachments: string[]; // [roomImage, primaryFinishImage, secondaryFinishImage?]
 }
 
 async function verifyAdminToken(token: string): Promise<boolean> {
@@ -76,18 +95,38 @@ async function getVisualizerSubmissionsFromGitHub(): Promise<VisualizerSubmissio
   }
 }
 
+function formatFinishesForExport(finishes: VisualizerFinishSelection[]): string {
+  if (!finishes || finishes.length === 0) return '[]';
+
+  const formatted = finishes.map(f =>
+    `{ id: '${f.id}', name: '${f.name.replace(/'/g, "\\'")}', imageUrl: '${f.imageUrl}' }`
+  ).join(', ');
+
+  return `[${formatted}]`;
+}
+
 function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): string {
   const escapeString = (str: string) => str.replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
   const notesStr = submission.notes ? `notes: '${escapeString(submission.notes)}',` : '';
+
+  // Handle both new format (finishes array) and legacy format (finishId/finishName)
+  let finishesStr = '';
+  if (submission.finishes && submission.finishes.length > 0) {
+    finishesStr = `finishes: ${formatFinishesForExport(submission.finishes)},`;
+  } else if (submission.finishId) {
+    // Legacy format - convert to new format
+    finishesStr = `finishes: [{ id: '${submission.finishId}', name: '${escapeString(submission.finishName || '')}', imageUrl: '' }],`;
+  } else {
+    finishesStr = 'finishes: [],';
+  }
 
   return `  {
     id: '${submission.id}',
     name: '${escapeString(submission.name)}',
     email: '${submission.email}',
     phone: '${submission.phone}',
-    finishId: '${submission.finishId}',
-    finishName: '${escapeString(submission.finishName)}',
+    ${finishesStr}
     roomImage: '${submission.roomImage}',
     submittedAt: '${submission.submittedAt}',
     status: '${submission.status}',
@@ -169,13 +208,38 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
       headers['Authorization'] = `Basic ${credentials}`;
     }
 
+    // Build attachments array:
+    // 1. Room image (required)
+    // 2. Primary finish image (required)
+    // 3. Secondary finish image (optional)
+    const attachments: string[] = [submission.roomImage];
+
+    if (submission.finishes && submission.finishes.length > 0) {
+      // Add primary finish image
+      if (submission.finishes[0].imageUrl) {
+        attachments.push(submission.finishes[0].imageUrl);
+      }
+      // Add secondary finish image if exists
+      if (submission.finishes[1]?.imageUrl) {
+        attachments.push(submission.finishes[1].imageUrl);
+      }
+    }
+
+    const webhookPayload: WebhookPayload = {
+      id: submission.id,
+      name: submission.name,
+      email: submission.email,
+      phone: submission.phone,
+      finishes: submission.finishes || [],
+      submittedAt: submission.submittedAt,
+      source: 'YuDeZign Room Visualizer',
+      attachments,
+    };
+
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers,
-      body: JSON.stringify({
-        ...submission,
-        source: 'YuDeZign Room Visualizer',
-      }),
+      body: JSON.stringify(webhookPayload),
     });
 
     if (!response.ok) {
@@ -254,9 +318,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (req.method === 'POST') {
       // Create new visualizer submission (called by visualizer form)
+      const { name, email, phone, finishes, roomImage } = req.body;
+
       const newSubmission: VisualizerSubmission = {
-        ...req.body,
         id: `vis_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
+        name,
+        email,
+        phone,
+        finishes: finishes || [],
+        roomImage,
         submittedAt: new Date().toISOString(),
         status: 'new' as const,
       };

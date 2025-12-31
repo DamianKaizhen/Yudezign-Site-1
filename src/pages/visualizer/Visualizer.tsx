@@ -1,17 +1,23 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download } from 'lucide-react';
+import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download, Camera, Palette, Wand2 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FinishDropdown from '../../components/ui/FinishDropdown';
+
+interface FinishSelection {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
 
 const Visualizer = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    finishId: '',
-    finishName: '',
   });
+
+  const [selectedFinishes, setSelectedFinishes] = useState<FinishSelection[]>([]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -45,8 +51,8 @@ const Visualizer = () => {
       errors.phone = 'Phone number is required';
     }
 
-    if (!formData.finishId) {
-      errors.finishId = 'Please select a finish';
+    if (selectedFinishes.length === 0) {
+      errors.finishes = 'Please select at least one finish';
     }
 
     if (!roomImage) {
@@ -79,8 +85,7 @@ const Visualizer = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        finishId: formData.finishId,
-        finishName: formData.finishName,
+        finishes: selectedFinishes,
         roomImage: roomImageUrl,
       };
 
@@ -111,9 +116,8 @@ const Visualizer = () => {
         name: '',
         email: '',
         phone: '',
-        finishId: '',
-        finishName: '',
       });
+      setSelectedFinishes([]);
       setRoomImage(null);
       setImagePreview(null);
       setFormErrors({});
@@ -139,10 +143,10 @@ const Visualizer = () => {
     }
   };
 
-  const handleFinishChange = (finishId: string, finishName: string) => {
-    setFormData((prev) => ({ ...prev, finishId, finishName }));
-    if (formErrors.finishId) {
-      setFormErrors((prev) => ({ ...prev, finishId: '' }));
+  const handleFinishChange = (selections: FinishSelection[]) => {
+    setSelectedFinishes(selections);
+    if (formErrors.finishes) {
+      setFormErrors((prev) => ({ ...prev, finishes: '' }));
     }
   };
 
@@ -223,73 +227,93 @@ const Visualizer = () => {
     <>
       <SEO
         title="Free Room Visualizer - See Your Cabinets Before You Buy"
-        description="Upload a photo of your room and see how YuDezign's premium cabinet finishes will look in your space. Free visualization tool for kitchens, closets, and bathrooms."
-        keywords="cabinet visualizer, room design tool, kitchen visualization, cabinet preview, free design tool, houston cabinets"
+        description="Upload a photo of your room and see how YuDezign's premium cabinet finishes will look in your space. Free AI-powered visualization tool for kitchens, closets, and bathrooms."
+        keywords="cabinet visualizer, room design tool, kitchen visualization, cabinet preview, free design tool, houston cabinets, AI room design"
         url="https://yudezign.com/visualizer"
       />
-      <div className="min-h-screen pt-24 bg-luxury-cream">
-        {/* Hero Section */}
-        <section className="py-20 px-4 bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              className="w-16 h-1 bg-accent mx-auto mb-8"
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: 64, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            />
+
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+        {/* Modern Hero Section */}
+        <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+          </div>
+
+          <div className="max-w-5xl mx-auto text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center justify-center gap-3 mb-6"
+              className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-8"
             >
-              <Sparkles className="w-8 h-8 text-accent" />
-              <span className="text-body-lg font-medium text-accent uppercase tracking-wider">
-                Free Tool
-              </span>
+              <Wand2 className="w-4 h-4" />
+              <span className="text-sm font-semibold uppercase tracking-wider">AI-Powered • Free Tool</span>
             </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-display-mobile md:text-display font-medium mb-6"
+              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
             >
-              Room Visualizer
+              Visualize Your Dream
+              <span className="block text-primary">Cabinets Instantly</span>
             </motion.h1>
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-body-lg md:text-h4 font-light text-white/90 max-w-2xl mx-auto"
+              className="text-xl text-gray-600 max-w-2xl mx-auto mb-12"
             >
-              See how our premium cabinet finishes will look in your space. Upload a photo, pick a finish, and we'll create a visualization just for you.
+              Upload a photo of your room, choose up to 2 cabinet finishes, and see your space transformed with our premium European-style cabinets.
             </motion.p>
+
+            {/* Feature pills */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap justify-center gap-4 mb-12"
+            >
+              {[
+                { icon: Camera, text: 'Upload Any Room' },
+                { icon: Palette, text: 'Mix & Match Colors' },
+                { icon: Sparkles, text: 'Instant Results' },
+              ].map((feature, i) => (
+                <div key={i} className="flex items-center gap-2 bg-white shadow-md rounded-full px-5 py-2.5">
+                  <feature.icon className="w-5 h-5 text-primary" />
+                  <span className="text-gray-700 font-medium">{feature.text}</span>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
         {/* Form Section */}
-        <section className="py-20 px-4 bg-luxury-white">
-          <div className="max-w-3xl mx-auto">
+        <section className="py-12 px-4">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-lg p-8 md:p-12 shadow-luxury-lg border border-luxury-sand"
+              className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 overflow-hidden"
             >
-              <div className="w-16 h-1 bg-primary mb-8"></div>
-              <h2 className="text-h2 font-medium text-luxury-gray-900 mb-4">
-                Get Your Free Visualization
-              </h2>
-              <p className="text-body text-luxury-gray-600 mb-8">
-                Upload a photo of your room and select your preferred cabinet finish. Our team will create a visualization showing how your space could look with YuDezign cabinets.
-              </p>
+              {/* Form Header */}
+              <div className="bg-gradient-to-r from-primary via-primary to-primary-dark px-8 py-6">
+                <h2 className="text-2xl font-bold text-white">Create Your Visualization</h2>
+                <p className="text-white/80 mt-1">Fill in the details below to get started</p>
+              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Room Image Upload */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Room Photo <span className="text-red-500">*</span>
-                  </label>
+              <form onSubmit={handleSubmit} className="p-8 space-y-8">
+                {/* Step 1: Room Image */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</div>
+                    <h3 className="text-lg font-semibold text-gray-900">Upload Your Room Photo</h3>
+                  </div>
 
                   <input
                     ref={fileInputRef}
@@ -302,33 +326,39 @@ const Visualizer = () => {
                   {!imagePreview ? (
                     <div
                       onClick={() => fileInputRef.current?.click()}
-                      className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
-                        ${formErrors.roomImage ? 'border-red-500 bg-red-50' : 'border-gray-300 hover:border-primary bg-luxury-beige'}
+                      className={`relative border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 group
+                        ${formErrors.roomImage
+                          ? 'border-red-400 bg-red-50'
+                          : 'border-gray-200 hover:border-primary hover:bg-primary/5'
+                        }
                       `}
                     >
-                      <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" strokeWidth={1.5} />
-                      <p className="text-body text-gray-600 mb-2">
-                        Click to upload your room photo
+                      <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 group-hover:bg-primary/10 flex items-center justify-center transition-colors">
+                        <Upload className="w-10 h-10 text-gray-400 group-hover:text-primary transition-colors" strokeWidth={1.5} />
+                      </div>
+                      <p className="text-lg font-medium text-gray-700 mb-2">
+                        Drop your room photo here
                       </p>
-                      <p className="text-body-sm text-gray-500">
-                        JPG, PNG, or WebP up to 10MB
+                      <p className="text-sm text-gray-500">
+                        or click to browse • JPG, PNG, WebP up to 10MB
                       </p>
                     </div>
                   ) : (
-                    <div className="relative rounded-lg overflow-hidden border border-gray-200">
+                    <div className="relative rounded-2xl overflow-hidden shadow-lg group">
                       <img
                         src={imagePreview}
                         alt="Room preview"
-                        className="w-full h-64 object-cover"
+                        className="w-full h-72 object-cover"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <button
                         type="button"
                         onClick={handleRemoveImage}
-                        className="absolute top-3 right-3 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                        className="absolute top-4 right-4 p-2.5 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors shadow-lg"
                       >
                         <X className="w-5 h-5" />
                       </button>
-                      <div className="absolute bottom-3 left-3 bg-black/70 text-white px-3 py-1 rounded text-sm flex items-center gap-2">
+                      <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2">
                         <ImageIcon className="w-4 h-4" />
                         {roomImage?.name}
                       </div>
@@ -336,151 +366,178 @@ const Visualizer = () => {
                   )}
 
                   {(imageError || formErrors.roomImage) && (
-                    <p className="mt-2 text-sm text-red-500">
+                    <p className="text-sm text-red-500 flex items-center gap-2">
+                      <span className="w-1 h-1 bg-red-500 rounded-full" />
                       {imageError || formErrors.roomImage}
                     </p>
                   )}
                 </div>
 
-                {/* Finish Dropdown */}
-                <FinishDropdown
-                  value={formData.finishId}
-                  onChange={handleFinishChange}
-                  error={formErrors.finishId}
-                />
+                {/* Step 2: Finish Selection */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</div>
+                    <h3 className="text-lg font-semibold text-gray-900">Choose Your Cabinet Finishes</h3>
+                  </div>
 
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-lg bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all
-                      ${formErrors.name ? 'border-red-500' : 'border-gray-300'}
-                    `}
-                    placeholder="John Smith"
+                  <FinishDropdown
+                    value={selectedFinishes}
+                    onChange={handleFinishChange}
+                    error={formErrors.finishes}
+                    maxSelections={2}
                   />
-                  {formErrors.name && (
-                    <p className="mt-1 text-sm text-red-500">{formErrors.name}</p>
-                  )}
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-lg bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all
-                      ${formErrors.email ? 'border-red-500' : 'border-gray-300'}
-                    `}
-                    placeholder="john@example.com"
-                  />
-                  {formErrors.email && (
-                    <p className="mt-1 text-sm text-red-500">{formErrors.email}</p>
-                  )}
-                </div>
+                {/* Step 3: Contact Info */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">3</div>
+                    <h3 className="text-lg font-semibold text-gray-900">Your Contact Information</h3>
+                  </div>
 
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 border rounded-lg bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all
-                      ${formErrors.phone ? 'border-red-500' : 'border-gray-300'}
-                    `}
-                    placeholder="(123) 456-7890"
-                  />
-                  {formErrors.phone && (
-                    <p className="mt-1 text-sm text-red-500">{formErrors.phone}</p>
-                  )}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Name */}
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3.5 border-2 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-0 focus:border-primary transition-all
+                          ${formErrors.name ? 'border-red-400' : 'border-gray-200'}
+                        `}
+                        placeholder="John Smith"
+                      />
+                      {formErrors.name && (
+                        <p className="mt-1.5 text-sm text-red-500">{formErrors.name}</p>
+                      )}
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3.5 border-2 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-0 focus:border-primary transition-all
+                          ${formErrors.email ? 'border-red-400' : 'border-gray-200'}
+                        `}
+                        placeholder="john@example.com"
+                      />
+                      {formErrors.email && (
+                        <p className="mt-1.5 text-sm text-red-500">{formErrors.email}</p>
+                      )}
+                    </div>
+
+                    {/* Phone */}
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3.5 border-2 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-0 focus:border-primary transition-all
+                          ${formErrors.phone ? 'border-red-400' : 'border-gray-200'}
+                        `}
+                        placeholder="(123) 456-7890"
+                      />
+                      {formErrors.phone && (
+                        <p className="mt-1.5 text-sm text-red-500">{formErrors.phone}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
 
                 {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isUploading}
-                  className="w-full px-12 py-4 bg-primary text-white text-body-lg font-medium rounded-lg hover:bg-primary-light transition-all duration-300 shadow-luxury hover:shadow-luxury-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-                >
-                  {isUploading ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Uploading image...</span>
-                    </>
-                  ) : isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Submitting...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-5 h-5" />
-                      <span>Get My Free Visualization</span>
-                    </>
-                  )}
-                </button>
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || isUploading}
+                    className="w-full px-12 py-5 bg-gradient-to-r from-primary to-primary-dark text-white text-lg font-semibold rounded-2xl hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none flex items-center justify-center gap-3"
+                  >
+                    {isUploading ? (
+                      <>
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        <span>Uploading image...</span>
+                      </>
+                    ) : isSubmitting ? (
+                      <>
+                        <Loader2 className="w-6 h-6 animate-spin" />
+                        <span>Generating visualization...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Wand2 className="w-6 h-6" />
+                        <span>Generate My Visualization</span>
+                      </>
+                    )}
+                  </button>
+                </div>
 
                 {/* Success Message with Generated Image */}
                 {submitStatus === 'success' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="space-y-6"
                   >
                     {/* Generated Image Display */}
                     {generatedImage && (
-                      <div className="bg-white rounded-lg border-2 border-primary shadow-luxury-lg overflow-hidden">
-                        <div className="bg-primary px-4 py-3 flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <Sparkles className="w-5 h-5 text-accent" />
-                            <span className="text-white font-medium">Your Room Visualization</span>
+                      <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-6 border border-primary/10">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                              <Sparkles className="w-5 h-5 text-primary" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-gray-900">Your Visualization is Ready!</h4>
+                              <p className="text-sm text-gray-500">AI-generated preview of your room</p>
+                            </div>
                           </div>
                           <a
                             href={generatedImage}
-                            download="room-visualization.png"
-                            className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-lg text-sm transition-colors"
+                            download="yudezign-room-visualization.png"
+                            className="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl hover:bg-primary-dark transition-colors font-medium"
                           >
                             <Download className="w-4 h-4" />
                             Download
                           </a>
                         </div>
-                        <div className="p-4">
-                          <img
-                            src={generatedImage}
-                            alt="Your room with YuDezign cabinets"
-                            className="w-full rounded-lg shadow-md"
-                          />
-                        </div>
+                        <img
+                          src={generatedImage}
+                          alt="Your room with YuDezign cabinets"
+                          className="w-full rounded-xl shadow-lg"
+                        />
                       </div>
                     )}
 
                     {/* Success Message */}
-                    <div className="p-6 bg-green-50 border border-green-200 rounded-lg">
-                      <p className="text-body text-green-800 text-center font-medium mb-2">
+                    <div className="p-6 bg-green-50 border border-green-100 rounded-2xl text-center">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                        <Sparkles className="w-6 h-6 text-green-600" />
+                      </div>
+                      <p className="text-lg font-semibold text-green-800 mb-2">
                         {generatedImage
-                          ? 'Your visualization is ready! Download it above.'
-                          : 'Thank you! Your visualization request has been submitted.'}
+                          ? 'Your visualization is ready!'
+                          : 'Thank you! Your request has been submitted.'}
                       </p>
-                      <p className="text-body-sm text-green-700 text-center">
+                      <p className="text-green-700">
                         {generatedImage
-                          ? "We'll also send this to your email for your records."
-                          : 'Our team will create your personalized visualization and send it to your email within 1-2 business days.'}
+                          ? 'Download your visualization above to save it.'
+                          : 'Our team will create your personalized visualization shortly.'}
                       </p>
                     </div>
 
@@ -491,7 +548,7 @@ const Visualizer = () => {
                         setSubmitStatus('idle');
                         setGeneratedImage(null);
                       }}
-                      className="w-full px-8 py-3 bg-luxury-cream text-primary border-2 border-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
+                      className="w-full px-8 py-4 bg-gray-100 text-gray-700 font-semibold rounded-xl hover:bg-gray-200 transition-colors"
                     >
                       Create Another Visualization
                     </button>
@@ -501,14 +558,14 @@ const Visualizer = () => {
                 {/* Error Message */}
                 {submitStatus === 'error' && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-6 bg-red-50 border border-red-200 rounded-lg"
+                    className="p-6 bg-red-50 border border-red-100 rounded-2xl text-center"
                   >
-                    <p className="text-body text-red-800 text-center font-medium mb-2">
+                    <p className="text-lg font-semibold text-red-800 mb-2">
                       {errorMessage}
                     </p>
-                    <p className="text-body-sm text-red-700 text-center">
+                    <p className="text-red-600">
                       Please try again or contact us at (281) 568-8000
                     </p>
                   </motion.div>
@@ -516,43 +573,56 @@ const Visualizer = () => {
               </form>
             </motion.div>
 
-            {/* How It Works */}
+            {/* How It Works - Modern Cards */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-12 text-center"
+              className="mt-20"
             >
-              <h3 className="text-h3 font-medium text-luxury-gray-900 mb-8">How It Works</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">How It Works</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
                   {
+                    icon: Camera,
                     step: '1',
                     title: 'Upload Your Photo',
-                    description: 'Take a photo of your kitchen, closet, or any room you want to transform.',
+                    description: 'Snap a photo of your kitchen, bathroom, or any room you want to upgrade.',
+                    gradient: 'from-blue-500 to-blue-600',
                   },
                   {
+                    icon: Palette,
                     step: '2',
-                    title: 'Choose a Finish',
-                    description: 'Browse our premium finishes and select the one that matches your vision.',
+                    title: 'Pick Your Finishes',
+                    description: 'Choose 1-2 cabinet finishes to see how they blend in your space.',
+                    gradient: 'from-primary to-primary-dark',
                   },
                   {
+                    icon: Sparkles,
                     step: '3',
-                    title: 'Receive Your Visualization',
-                    description: 'Our team creates a personalized rendering and sends it to your email.',
+                    title: 'Get Your Preview',
+                    description: 'Our AI generates a realistic visualization of your transformed room.',
+                    gradient: 'from-accent to-amber-600',
                   },
                 ].map((item, index) => (
-                  <div key={index} className="text-center">
-                    <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-h4 font-medium mx-auto mb-4">
-                      {item.step}
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    className="bg-white rounded-2xl p-8 shadow-lg shadow-gray-100 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300"
+                  >
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+                      <item.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h4 className="text-h4 font-medium text-luxury-gray-900 mb-2">
+                    <div className="text-sm font-bold text-gray-400 mb-2">STEP {item.step}</div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">
                       {item.title}
                     </h4>
-                    <p className="text-body text-luxury-gray-600">
+                    <p className="text-gray-600 leading-relaxed">
                       {item.description}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

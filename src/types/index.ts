@@ -89,17 +89,25 @@ export interface ContactMessage {
   notes?: string;
 }
 
+export interface VisualizerFinishSelection {
+  id: string;
+  name: string;
+  imageUrl: string;
+}
+
 export interface VisualizerSubmission {
   id: string;
   name: string;
   email: string;
   phone: string;
-  finishId: string;
-  finishName: string;
+  finishes: VisualizerFinishSelection[]; // 1-2 finish selections
   roomImage: string;
   submittedAt: string;
   status: 'new' | 'processing' | 'completed' | 'archived';
   notes?: string;
+  // Legacy fields for backwards compatibility
+  finishId?: string;
+  finishName?: string;
 }
 
 // API Response Types

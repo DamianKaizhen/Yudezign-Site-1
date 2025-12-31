@@ -4,7 +4,6 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ArrowLeft, Save, Mail, Phone, Palette, Image as ImageIcon, Download } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
-import { finishes } from '../../data/finishes';
 import type { VisualizerSubmission } from '../../types';
 
 const statusOptions = [
@@ -41,7 +40,6 @@ export default function VisualizerSubmissionDetail() {
   });
 
   const submission = submissions?.find((s) => s.id === id);
-  const selectedFinish = finishes.find((f) => f.id === submission?.finishId);
 
   // Initialize form when submission loads
   useEffect(() => {
@@ -108,6 +106,22 @@ export default function VisualizerSubmissionDetail() {
     return badges[statusValue as keyof typeof badges] || 'bg-gray-100 text-gray-700 border-gray-200';
   };
 
+  // Get finishes from new format or legacy format
+  const getFinishes = () => {
+    if (submission?.finishes && submission.finishes.length > 0) {
+      return submission.finishes;
+    }
+    // Legacy format fallback
+    if (submission?.finishId && submission?.finishName) {
+      return [{
+        id: submission.finishId,
+        name: submission.finishName,
+        imageUrl: '',
+      }];
+    }
+    return [];
+  };
+
   if (isLoading) {
     return (
       <ProtectedRoute>
@@ -140,6 +154,8 @@ export default function VisualizerSubmissionDetail() {
       </ProtectedRoute>
     );
   }
+
+  const finishes = getFinishes();
 
   return (
     <ProtectedRoute>
@@ -226,32 +242,57 @@ export default function VisualizerSubmissionDetail() {
                 </div>
               </div>
 
-              {/* Selected Finish */}
+              {/* Selected Finishes */}
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Palette className="w-5 h-5 text-accent mt-0.5" />
-                  <div>
-                    <p className="text-sm font-medium text-luxury-gray-700">Selected Finish</p>
-                    <p className="text-luxury-gray-900">{submission.finishName}</p>
-                  </div>
-                </div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-luxury-gray-700 mb-3">
+                      Selected Finish{finishes.length > 1 ? 'es' : ''} ({finishes.length})
+                    </p>
 
-                {/* Finish Preview */}
-                {selectedFinish && selectedFinish.images?.[0] && (
-                  <div className="flex items-center gap-3 p-3 bg-luxury-cream rounded-lg">
-                    <img
-                      src={selectedFinish.images[0]}
-                      alt={selectedFinish.name}
-                      className="w-16 h-16 object-cover rounded border border-luxury-sand"
-                    />
-                    <div>
-                      <p className="font-medium text-luxury-gray-900">{selectedFinish.name}</p>
-                      <p className="text-sm text-luxury-gray-600">
-                        {selectedFinish.inStock ? 'In Stock' : 'Special Order'}
-                      </p>
+                    {/* Finish Cards */}
+                    <div className="space-y-3">
+                      {finishes.map((finish, index) => (
+                        <div
+                          key={finish.id}
+                          className="flex items-center gap-3 p-3 bg-luxury-cream rounded-lg border border-luxury-sand"
+                        >
+                          {finish.imageUrl ? (
+                            <img
+                              src={finish.imageUrl}
+                              alt={finish.name}
+                              className="w-14 h-14 object-cover rounded-lg border border-luxury-sand"
+                            />
+                          ) : (
+                            <div className="w-14 h-14 bg-gray-200 rounded-lg flex items-center justify-center">
+                              <Palette className="w-6 h-6 text-gray-400" />
+                            </div>
+                          )}
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs font-semibold text-primary/70 uppercase">
+                                {index === 0 ? 'Primary' : 'Secondary'}
+                              </span>
+                            </div>
+                            <p className="font-medium text-luxury-gray-900">{finish.name}</p>
+                          </div>
+                          {finish.imageUrl && (
+                            <a
+                              href={finish.imageUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2 hover:bg-luxury-sand rounded-lg transition-colors"
+                              title="View finish image"
+                            >
+                              <Download className="w-4 h-4 text-primary" />
+                            </a>
+                          )}
+                        </div>
+                      ))}
                     </div>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
