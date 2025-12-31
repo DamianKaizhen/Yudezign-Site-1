@@ -111,10 +111,6 @@ function formatFinishesForExport(finishes: VisualizerFinishSelection[]): string 
 function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): string {
   const escapeString = (str: string) => str.replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
-  const notesStr = submission.notes ? `notes: '${escapeString(submission.notes)}',` : '';
-  const descriptionStr = submission.description ? `description: '${escapeString(submission.description)}',` : '';
-  const generatedImageStr = submission.generatedImage ? `generatedImage: '${submission.generatedImage}',` : '';
-
   // Handle both new format (finishes array) and legacy format (finishId/finishName)
   let finishesStr = '';
   if (submission.finishes && submission.finishes.length > 0) {
@@ -126,6 +122,22 @@ function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): 
     finishesStr = 'finishes: [],';
   }
 
+  // Build optional fields only if they have values
+  const optionalFields: string[] = [];
+  if (submission.description) {
+    optionalFields.push(`description: '${escapeString(submission.description)}',`);
+  }
+  if (submission.generatedImage) {
+    optionalFields.push(`generatedImage: '${submission.generatedImage}',`);
+  }
+  if (submission.notes) {
+    optionalFields.push(`notes: '${escapeString(submission.notes)}',`);
+  }
+
+  const optionalFieldsStr = optionalFields.length > 0
+    ? '\n    ' + optionalFields.join('\n    ')
+    : '';
+
   return `  {
     id: '${submission.id}',
     name: '${escapeString(submission.name)}',
@@ -133,11 +145,8 @@ function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): 
     phone: '${submission.phone}',
     ${finishesStr}
     roomImage: '${submission.roomImage}',
-    ${descriptionStr}
-    ${generatedImageStr}
     submittedAt: '${submission.submittedAt}',
-    status: '${submission.status}',
-    ${notesStr}
+    status: '${submission.status}',${optionalFieldsStr}
   }`;
 }
 
