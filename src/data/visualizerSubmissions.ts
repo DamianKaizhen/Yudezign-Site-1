@@ -33,5 +33,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2025-12-31T23:04:11.761Z',
     status: 'new',
     
+  },
+  {
+    id: 'vis_1767222819197_pj3endi',
+    name: 'Test',
+    email: 'test@email.com',
+    phone: '123546894',
+    finishes: [{ id: 'f_mhjongiisut', name: 'White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207131384-HG_White.png' }, { id: 'f_mhjomd7nrv8', name: 'Dark Grey', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207076916-HG_Dark_Grey.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767222818676-image.jpg',
+    submittedAt: '2025-12-31T23:13:39.207Z',
+    status: 'new',
+    
   }
 ];
