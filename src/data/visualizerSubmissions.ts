@@ -8,6 +8,8 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     phone: '123457876',
     finishes: [{ id: 'f_mhjof2j18je', name: 'First Class', imageUrl: '' }],
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767220936319-Image_20250424145342.jpg',
+    
+    
     submittedAt: '2025-12-31T22:42:16.794Z',
     status: 'new',
     
@@ -19,6 +21,8 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     phone: '123344443',
     finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767221892198-Image_20250424145342.jpg',
+    
+    
     submittedAt: '2025-12-31T22:58:12.651Z',
     status: 'new',
     
@@ -30,6 +34,8 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     phone: '111111111111',
     finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767222251393-Image_20250424145342.jpg',
+    
+    
     submittedAt: '2025-12-31T23:04:11.761Z',
     status: 'new',
     
@@ -41,7 +47,22 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     phone: '123546894',
     finishes: [{ id: 'f_mhjongiisut', name: 'White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207131384-HG_White.png' }, { id: 'f_mhjomd7nrv8', name: 'Dark Grey', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207076916-HG_Dark_Grey.png' }],
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767222818676-image.jpg',
+    
+    
     submittedAt: '2025-12-31T23:13:39.207Z',
+    status: 'new',
+    
+  },
+  {
+    id: 'vis_1767223818586_ttmw5kg',
+    name: 'test',
+    email: 'test@email.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjojkdfnor', name: 'Brown Warmia Walnut', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206949640-Brown_Warmia_Walnut.jpg' }, { id: 'f_mhjok1gmwxe', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767223818066-Image_20250424145342.jpg',
+    
+    
+    submittedAt: '2025-12-31T23:30:18.586Z',
     status: 'new',
     
   }
