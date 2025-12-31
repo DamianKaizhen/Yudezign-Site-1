@@ -71,11 +71,22 @@ async function getVisualizerSubmissionsFromGitHub(): Promise<VisualizerSubmissio
     ref: branch,
   });
 
-  if (!('content' in data)) {
-    throw new Error('File not found');
-  }
+  let content: string;
 
-  const content = Buffer.from(data.content, 'base64').toString('utf-8');
+  if ('content' in data && data.content) {
+    // File is small enough to be returned inline
+    content = Buffer.from(data.content, 'base64').toString('utf-8');
+  } else if ('download_url' in data && data.download_url) {
+    // File is too large, need to fetch via download_url
+    console.log('File too large for inline content, fetching via download_url');
+    const response = await fetch(data.download_url);
+    if (!response.ok) {
+      throw new Error('Failed to download file from GitHub');
+    }
+    content = await response.text();
+  } else {
+    throw new Error('File not found or content unavailable');
+  }
 
   console.log('File content length:', content.length);
   console.log('File starts with:', content.substring(0, 100));
