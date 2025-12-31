@@ -47,7 +47,6 @@ export default async function handler(
     return response.status(200).json({
       url: blob.url,
       filename: uniqueFilename,
-      size: blob.size,
     });
   } catch (error) {
     console.error('Upload error:', error);
