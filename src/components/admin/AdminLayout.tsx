@@ -12,6 +12,7 @@ import {
   LogOut,
   Menu,
   X,
+  Image,
 } from 'lucide-react';
 import { siteSettings } from '../../data/siteSettings';
 
@@ -59,6 +60,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       name: 'Contact Messages',
       path: '/admin/contact-messages',
       icon: Mail,
+    },
+    {
+      name: 'Visualizer Requests',
+      path: '/admin/visualizer-submissions',
+      icon: Image,
     },
     {
       name: 'Testimonials',

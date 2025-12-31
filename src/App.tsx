@@ -12,6 +12,7 @@ import Finishes from './pages/finishes/Finishes';
 import KDLite from './pages/kdlite/KDLite';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import Visualizer from './pages/visualizer/Visualizer';
 import Privacy from './pages/legal/Privacy';
 import TermsOfService from './pages/legal/TermsOfService';
 import Login from './pages/admin/Login';
@@ -24,6 +25,8 @@ import FinishesList from './pages/admin/FinishesList';
 import FinishForm from './pages/admin/FinishForm';
 import ContactMessagesList from './pages/admin/ContactMessagesList';
 import ContactMessageDetail from './pages/admin/ContactMessageDetail';
+import VisualizerSubmissionsList from './pages/admin/VisualizerSubmissionsList';
+import VisualizerSubmissionDetail from './pages/admin/VisualizerSubmissionDetail';
 import TestimonialsList from './pages/admin/TestimonialsList';
 import TestimonialForm from './pages/admin/TestimonialForm';
 import TeamMembersList from './pages/admin/TeamMembersList';
@@ -91,6 +94,8 @@ function App() {
           <Route path="/admin/finishes/:id" element={<FinishForm />} />
           <Route path="/admin/contact-messages" element={<ContactMessagesList />} />
           <Route path="/admin/contact-messages/:id" element={<ContactMessageDetail />} />
+          <Route path="/admin/visualizer-submissions" element={<VisualizerSubmissionsList />} />
+          <Route path="/admin/visualizer-submissions/:id" element={<VisualizerSubmissionDetail />} />
           <Route path="/admin/testimonials" element={<TestimonialsList />} />
           <Route path="/admin/testimonials/new" element={<TestimonialForm />} />
           <Route path="/admin/testimonials/:id" element={<TestimonialForm />} />
@@ -107,6 +112,7 @@ function App() {
           <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
+          <Route path="/visualizer" element={<PublicLayout><Visualizer /></PublicLayout>} />
           <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
           <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
 

@@ -89,6 +89,19 @@ export interface ContactMessage {
   notes?: string;
 }
 
+export interface VisualizerSubmission {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  finishId: string;
+  finishName: string;
+  roomImage: string;
+  submittedAt: string;
+  status: 'new' | 'processing' | 'completed' | 'archived';
+  notes?: string;
+}
+
 // API Response Types
 
 export interface ApiResponse<T = unknown> {
