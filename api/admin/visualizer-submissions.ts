@@ -77,10 +77,15 @@ async function getVisualizerSubmissionsFromGitHub(): Promise<VisualizerSubmissio
 
   const content = Buffer.from(data.content, 'base64').toString('utf-8');
 
+  console.log('File content length:', content.length);
+  console.log('File starts with:', content.substring(0, 100));
+  console.log('File ends with:', content.substring(content.length - 100));
+
   // Parse TypeScript file to extract visualizerSubmissions array
   const arrayMatch = content.match(/export const visualizerSubmissions: VisualizerSubmission\[\] = \[([\s\S]*?)\];/);
 
   if (!arrayMatch) {
+    console.error('Regex did not match. Content preview:', content.substring(0, 500));
     throw new Error('Could not parse visualizerSubmissions array');
   }
 
