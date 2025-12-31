@@ -102,6 +102,8 @@ export interface VisualizerSubmission {
   phone: string;
   finishes: VisualizerFinishSelection[]; // 1-2 finish selections
   roomImage: string;
+  description?: string; // Optional description of desired features
+  generatedImage?: string; // AI-generated visualization result (URL or base64)
   submittedAt: string;
   status: 'new' | 'processing' | 'completed' | 'archived';
   notes?: string;

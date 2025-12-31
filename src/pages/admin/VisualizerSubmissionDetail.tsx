@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Save, Mail, Phone, Palette, Image as ImageIcon, Download } from 'lucide-react';
+import { ArrowLeft, Save, Mail, Phone, Palette, Image as ImageIcon, Download, Sparkles, FileText } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { VisualizerSubmission } from '../../types';
@@ -210,6 +210,47 @@ export default function VisualizerSubmissionDetail() {
               </a>
             </div>
           </div>
+
+          {/* Generated Visualization Card (if available) */}
+          {submission.generatedImage && (
+            <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg shadow-sm border border-primary/20 p-6">
+              <h2 className="text-xl font-semibold text-luxury-gray-900 mb-4 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-primary" />
+                AI-Generated Visualization
+              </h2>
+              <div className="relative">
+                <img
+                  src={submission.generatedImage}
+                  alt="Generated visualization"
+                  className="w-full max-h-[500px] object-contain rounded-lg border border-primary/20"
+                />
+                <a
+                  href={submission.generatedImage}
+                  download={`visualization-${submission.id}.png`}
+                  className="absolute top-4 right-4 p-2 bg-primary text-white hover:bg-primary-dark rounded-lg shadow transition-colors flex items-center gap-2"
+                  title="Download visualization"
+                >
+                  <Download className="w-5 h-5" />
+                  <span className="text-sm font-medium">Download</span>
+                </a>
+              </div>
+            </div>
+          )}
+
+          {/* Customer Description Card (if provided) */}
+          {submission.description && (
+            <div className="bg-white rounded-lg shadow-sm border border-luxury-sand p-6">
+              <h2 className="text-xl font-semibold text-luxury-gray-900 mb-4 flex items-center gap-2">
+                <FileText className="w-5 h-5 text-primary" />
+                Customer's Vision Description
+              </h2>
+              <div className="bg-luxury-cream rounded-lg p-4 border border-luxury-sand">
+                <p className="text-luxury-gray-800 whitespace-pre-wrap leading-relaxed">
+                  {submission.description}
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Details Card */}
           <div className="bg-white rounded-lg shadow-sm border border-luxury-sand p-6">

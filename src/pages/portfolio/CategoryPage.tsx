@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { Wand2, ArrowRight } from 'lucide-react';
 import ProjectCard from '../../components/ui/ProjectCard';
 import { projects } from '../../data/projects';
 import SEO from '../../components/SEO';
@@ -113,6 +114,40 @@ const CategoryPage = () => {
               <p className="text-neutral-600 text-lg">No projects available in this category yet.</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Room Visualizer CTA */}
+      <section className="py-16 px-4 bg-gradient-to-r from-primary to-primary-dark text-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-center justify-between gap-8"
+          >
+            <div className="flex items-center gap-6">
+              <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <Wand2 className="w-7 h-7 text-accent" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  See Your {category === 'kitchens' ? 'Kitchen' : category === 'closets' ? 'Closet' : category === 'vanities' ? 'Bathroom' : 'Space'} Transformed
+                </h3>
+                <p className="text-white/80 max-w-xl">
+                  Upload a photo of your room and visualize how our premium cabinet finishes will look in your space.
+                </p>
+              </div>
+            </div>
+            <Link
+              to="/visualizer"
+              className="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300 flex-shrink-0"
+            >
+              Try Free Visualizer
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

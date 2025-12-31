@@ -19,6 +19,8 @@ interface VisualizerSubmission {
   phone: string;
   finishes: VisualizerFinishSelection[];
   roomImage: string;
+  description?: string; // Optional description of desired features
+  generatedImage?: string; // AI-generated visualization result
   submittedAt: string;
   status: 'new' | 'processing' | 'completed' | 'archived';
   notes?: string;
@@ -33,6 +35,7 @@ interface WebhookPayload {
   email: string;
   phone: string;
   finishes: VisualizerFinishSelection[];
+  description?: string; // User's description of what they want
   submittedAt: string;
   source: string;
   attachments: string[]; // [roomImage, primaryFinishImage, secondaryFinishImage?]
@@ -109,6 +112,8 @@ function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): 
   const escapeString = (str: string) => str.replace(/'/g, "\\'").replace(/\n/g, '\\n');
 
   const notesStr = submission.notes ? `notes: '${escapeString(submission.notes)}',` : '';
+  const descriptionStr = submission.description ? `description: '${escapeString(submission.description)}',` : '';
+  const generatedImageStr = submission.generatedImage ? `generatedImage: '${submission.generatedImage}',` : '';
 
   // Handle both new format (finishes array) and legacy format (finishId/finishName)
   let finishesStr = '';
@@ -128,6 +133,8 @@ function formatVisualizerSubmissionForExport(submission: VisualizerSubmission): 
     phone: '${submission.phone}',
     ${finishesStr}
     roomImage: '${submission.roomImage}',
+    ${descriptionStr}
+    ${generatedImageStr}
     submittedAt: '${submission.submittedAt}',
     status: '${submission.status}',
     ${notesStr}
@@ -231,6 +238,7 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
       email: submission.email,
       phone: submission.phone,
       finishes: submission.finishes || [],
+      description: submission.description,
       submittedAt: submission.submittedAt,
       source: 'YuDeZign Room Visualizer',
       attachments,
@@ -356,7 +364,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (req.method === 'POST') {
       // Create new visualizer submission (called by visualizer form)
-      const { name, email, phone, finishes, roomImage } = req.body;
+      const { name, email, phone, finishes, roomImage, description } = req.body;
 
       const newSubmission: VisualizerSubmission = {
         id: `vis_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
@@ -365,6 +373,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         phone,
         finishes: finishes || [],
         roomImage,
+        description: description || undefined,
         submittedAt: new Date().toISOString(),
         status: 'new' as const,
       };
@@ -380,6 +389,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ),
         sendToWebhookAndGetImage(newSubmission),
       ]);
+
+      // If we got a generated image, update the submission with it
+      if (generatedImage) {
+        newSubmission.generatedImage = generatedImage;
+        // Update the submission in GitHub with the generated image
+        const updatedSubmissions = await getVisualizerSubmissionsFromGitHub();
+        const idx = updatedSubmissions.findIndex(s => s.id === newSubmission.id);
+        if (idx !== -1) {
+          updatedSubmissions[idx].generatedImage = generatedImage;
+          await commitVisualizerSubmissionsToGitHub(
+            updatedSubmissions,
+            `Add generated image for ${newSubmission.name}`
+          );
+        }
+      }
 
       return res.status(200).json({
         success: true,

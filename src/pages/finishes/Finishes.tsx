@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Check, Wand2, ArrowRight } from 'lucide-react';
 import FinishSwatch from '../../components/ui/FinishSwatch';
 import { finishes } from '../../data/finishes';
 import { finishStyles } from '../../data/finishStyles';
@@ -317,6 +318,35 @@ const Finishes = () => {
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Room Visualizer CTA */}
+      <section className="py-20 px-4 bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Wand2 className="w-8 h-8 text-accent" />
+            </div>
+            <h2 className="text-h2 md:text-display-mobile font-medium mb-4">
+              See These Finishes in Your Room
+            </h2>
+            <p className="text-body-lg text-white/90 max-w-2xl mx-auto mb-8 leading-relaxed">
+              Love what you see? Upload a photo of your kitchen, bathroom, or any room and our AI will show you exactly how these finishes will look in your space.
+            </p>
+            <Link
+              to="/visualizer"
+              className="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-accent hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Try the Free Room Visualizer
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

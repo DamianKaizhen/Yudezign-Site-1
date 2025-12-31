@@ -15,6 +15,7 @@ const Visualizer = () => {
     name: '',
     email: '',
     phone: '',
+    description: '',
   });
 
   const [selectedFinishes, setSelectedFinishes] = useState<FinishSelection[]>([]);
@@ -85,6 +86,7 @@ const Visualizer = () => {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+        description: formData.description || undefined,
         finishes: selectedFinishes,
         roomImage: roomImageUrl,
       };
@@ -116,6 +118,7 @@ const Visualizer = () => {
         name: '',
         email: '',
         phone: '',
+        description: '',
       });
       setSelectedFinishes([]);
       setRoomImage(null);
@@ -134,7 +137,7 @@ const Visualizer = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error when user starts typing
@@ -388,10 +391,36 @@ const Visualizer = () => {
                   />
                 </div>
 
-                {/* Step 3: Contact Info */}
+                {/* Step 3: Description (Optional) */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">3</div>
+                    <h3 className="text-lg font-semibold text-gray-900">Describe Your Vision <span className="text-gray-400 font-normal text-base">(Optional)</span></h3>
+                  </div>
+
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                      What features would you like to see in your new space?
+                    </label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-3.5 border-2 rounded-xl bg-gray-50 focus:bg-white focus:outline-none focus:ring-0 focus:border-primary transition-all border-gray-200 resize-none"
+                      placeholder="E.g., I'd like to see shaker-style cabinet doors, soft-close drawers, a kitchen island with seating, and under-cabinet lighting..."
+                    />
+                    <p className="mt-2 text-sm text-gray-500">
+                      Share any specific cabinet styles, features, or design ideas you'd like included in your visualization.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 4: Contact Info */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">4</div>
                     <h3 className="text-lg font-semibold text-gray-900">Your Contact Information</h3>
                   </div>
 
