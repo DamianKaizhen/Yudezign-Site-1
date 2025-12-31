@@ -9,6 +9,7 @@ const Contact = () => {
     email: '',
     phone: '',
     projectType: '',
+    budget: '',
     timeline: '',
     message: '',
   });
@@ -90,6 +91,7 @@ const Contact = () => {
         email: '',
         phone: '',
         projectType: '',
+        budget: '',
         timeline: '',
         message: '',
       });
@@ -242,7 +244,10 @@ const Contact = () => {
               className="bg-white rounded-lg p-10 shadow-luxury-lg border border-luxury-sand"
             >
               <div className="w-16 h-1 bg-primary mb-8"></div>
-              <h2 className="text-h2 font-medium text-luxury-gray-900 mb-8">Request a Quote</h2>
+              <h2 className="text-h2 font-medium text-luxury-gray-900 mb-4">Request a Quote</h2>
+              <p className="text-body text-luxury-gray-600 mb-8">
+                We specialize in custom European frameless <strong>cabinets</strong> — kitchens, closets, vanities, and built-in storage solutions.
+              </p>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
@@ -308,13 +313,39 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-luxury-gray-200 rounded-md bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   >
-                    <option value="">Select a project type</option>
+                    <option value="">Select a cabinet project type</option>
                     <option value="kitchen">Kitchen Cabinets</option>
-                    <option value="closet">Custom Closet</option>
+                    <option value="closet">Custom Closet System</option>
                     <option value="vanity">Bathroom Vanity</option>
-                    <option value="custom">Custom Project</option>
-                    <option value="other">Other</option>
+                    <option value="laundry-mudroom">Laundry / Mudroom Cabinets</option>
+                    <option value="entertainment">Entertainment Center / Media Cabinet</option>
+                    <option value="garage">Garage Storage Cabinets</option>
+                    <option value="commercial">Commercial / Multi-unit</option>
                   </select>
+                </div>
+
+                {/* Budget Range */}
+                <div>
+                  <label htmlFor="budget" className="block text-body-sm font-medium text-luxury-gray-700 mb-2">
+                    Estimated Budget (Optional)
+                  </label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-luxury-gray-200 rounded-md bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  >
+                    <option value="">Prefer not to say</option>
+                    <option value="under-5k">Under $5,000</option>
+                    <option value="5k-10k">$5,000 - $10,000</option>
+                    <option value="10k-20k">$10,000 - $20,000</option>
+                    <option value="20k-35k">$20,000 - $35,000</option>
+                    <option value="35k-plus">$35,000+</option>
+                  </select>
+                  <p className="text-body-sm text-luxury-gray-500 mt-1">
+                    Helps us tailor recommendations to your project scope.
+                  </p>
                 </div>
 
                 {/* Timeline */}
