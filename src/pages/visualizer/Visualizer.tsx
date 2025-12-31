@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, X, Loader2, Image as ImageIcon, Sparkles } from 'lucide-react';
+import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FinishDropdown from '../../components/ui/FinishDropdown';
 
@@ -16,6 +16,7 @@ const Visualizer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [generatedImage, setGeneratedImage] = useState<string | null>(null);
 
   // Image upload state
   const [roomImage, setRoomImage] = useState<File | null>(null);
@@ -94,6 +95,13 @@ const Visualizer = () => {
 
       if (!response.ok) {
         throw new Error('Failed to submit visualization request');
+      }
+
+      const result = await response.json();
+
+      // Check if we got a generated image back from the webhook
+      if (result.generatedImage) {
+        setGeneratedImage(result.generatedImage);
       }
 
       // Success!
@@ -428,19 +436,65 @@ const Visualizer = () => {
                   )}
                 </button>
 
-                {/* Success Message */}
+                {/* Success Message with Generated Image */}
                 {submitStatus === 'success' && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-6 bg-green-50 border border-green-200 rounded-lg"
+                    className="space-y-6"
                   >
-                    <p className="text-body text-green-800 text-center font-medium mb-2">
-                      Thank you! Your visualization request has been submitted.
-                    </p>
-                    <p className="text-body-sm text-green-700 text-center">
-                      Our team will create your personalized visualization and send it to your email within 1-2 business days.
-                    </p>
+                    {/* Generated Image Display */}
+                    {generatedImage && (
+                      <div className="bg-white rounded-lg border-2 border-primary shadow-luxury-lg overflow-hidden">
+                        <div className="bg-primary px-4 py-3 flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <Sparkles className="w-5 h-5 text-accent" />
+                            <span className="text-white font-medium">Your Room Visualization</span>
+                          </div>
+                          <a
+                            href={generatedImage}
+                            download="room-visualization.png"
+                            className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-3 py-1.5 rounded-lg text-sm transition-colors"
+                          >
+                            <Download className="w-4 h-4" />
+                            Download
+                          </a>
+                        </div>
+                        <div className="p-4">
+                          <img
+                            src={generatedImage}
+                            alt="Your room with YuDezign cabinets"
+                            className="w-full rounded-lg shadow-md"
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Success Message */}
+                    <div className="p-6 bg-green-50 border border-green-200 rounded-lg">
+                      <p className="text-body text-green-800 text-center font-medium mb-2">
+                        {generatedImage
+                          ? 'Your visualization is ready! Download it above.'
+                          : 'Thank you! Your visualization request has been submitted.'}
+                      </p>
+                      <p className="text-body-sm text-green-700 text-center">
+                        {generatedImage
+                          ? "We'll also send this to your email for your records."
+                          : 'Our team will create your personalized visualization and send it to your email within 1-2 business days.'}
+                      </p>
+                    </div>
+
+                    {/* Start New Button */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmitStatus('idle');
+                        setGeneratedImage(null);
+                      }}
+                      className="w-full px-8 py-3 bg-luxury-cream text-primary border-2 border-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all duration-300"
+                    >
+                      Create Another Visualization
+                    </button>
                   </motion.div>
                 )}
 

@@ -148,20 +148,30 @@ async function commitVisualizerSubmissionsToGitHub(
   });
 }
 
-async function sendToWebhook(submission: VisualizerSubmission): Promise<void> {
+async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promise<string | null> {
   const webhookUrl = process.env.VISUALIZER_WEBHOOK_URL;
+  const webhookUser = process.env.VISUALIZER_WEBHOOK_USER;
+  const webhookPassword = process.env.VISUALIZER_WEBHOOK_PASSWORD;
 
   if (!webhookUrl) {
     console.warn('VISUALIZER_WEBHOOK_URL not configured, skipping webhook');
-    return;
+    return null;
   }
 
   try {
+    // Build headers with basic auth if credentials are provided
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    };
+
+    if (webhookUser && webhookPassword) {
+      const credentials = Buffer.from(`${webhookUser}:${webhookPassword}`).toString('base64');
+      headers['Authorization'] = `Basic ${credentials}`;
+    }
+
     const response = await fetch(webhookUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify({
         ...submission,
         source: 'YuDeZign Room Visualizer',
@@ -170,9 +180,21 @@ async function sendToWebhook(submission: VisualizerSubmission): Promise<void> {
 
     if (!response.ok) {
       console.error('Webhook request failed:', response.status, response.statusText);
+      return null;
     }
+
+    // The webhook returns binary image data
+    const imageBuffer = await response.arrayBuffer();
+
+    // Convert to base64 data URL
+    const base64 = Buffer.from(imageBuffer).toString('base64');
+    const contentType = response.headers.get('content-type') || 'image/png';
+    const dataUrl = `data:${contentType};base64,${base64}`;
+
+    return dataUrl;
   } catch (error) {
     console.error('Webhook error:', error);
+    return null;
   }
 }
 
@@ -242,18 +264,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const submissions = await getVisualizerSubmissionsFromGitHub();
       submissions.push(newSubmission);
 
-      // Save to GitHub and send to webhook in parallel
-      await Promise.all([
+      // Save to GitHub while waiting for webhook to generate image
+      const [, generatedImage] = await Promise.all([
         commitVisualizerSubmissionsToGitHub(
           submissions,
           `New visualizer submission from ${newSubmission.name}`
         ),
-        sendToWebhook(newSubmission),
+        sendToWebhookAndGetImage(newSubmission),
       ]);
 
       return res.status(200).json({
         success: true,
         data: newSubmission,
+        generatedImage, // Base64 data URL of the generated visualization
         message: 'Visualizer submission saved successfully',
       });
     }
