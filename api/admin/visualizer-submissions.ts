@@ -236,28 +236,66 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
       attachments,
     };
 
+    console.log('Sending webhook to:', webhookUrl);
+    console.log('Webhook payload attachments:', attachments);
+
+    // Use AbortController for timeout (55 seconds to stay under Vercel's 60s limit)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 55000);
+
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers,
       body: JSON.stringify(webhookPayload),
+      signal: controller.signal,
     });
 
+    clearTimeout(timeoutId);
+
+    console.log('Webhook response status:', response.status);
+    console.log('Webhook response content-type:', response.headers.get('content-type'));
+
     if (!response.ok) {
-      console.error('Webhook request failed:', response.status, response.statusText);
+      const errorText = await response.text();
+      console.error('Webhook request failed:', response.status, response.statusText, errorText);
       return null;
     }
 
-    // The webhook returns binary image data
-    const imageBuffer = await response.arrayBuffer();
+    const contentType = response.headers.get('content-type') || '';
 
-    // Convert to base64 data URL
-    const base64 = Buffer.from(imageBuffer).toString('base64');
-    const contentType = response.headers.get('content-type') || 'image/png';
-    const dataUrl = `data:${contentType};base64,${base64}`;
+    // Check if response is an image
+    if (contentType.startsWith('image/')) {
+      // The webhook returns binary image data
+      const imageBuffer = await response.arrayBuffer();
+      const base64 = Buffer.from(imageBuffer).toString('base64');
+      const dataUrl = `data:${contentType};base64,${base64}`;
+      console.log('Received image from webhook, size:', imageBuffer.byteLength, 'bytes');
+      return dataUrl;
+    }
 
-    return dataUrl;
+    // Check if response is JSON (might contain image URL or base64)
+    if (contentType.includes('application/json')) {
+      const jsonResponse = await response.json();
+      console.log('Received JSON response from webhook:', Object.keys(jsonResponse));
+
+      // Check common fields where image might be returned
+      if (jsonResponse.image) return jsonResponse.image;
+      if (jsonResponse.generatedImage) return jsonResponse.generatedImage;
+      if (jsonResponse.data?.image) return jsonResponse.data.image;
+      if (jsonResponse.url) return jsonResponse.url;
+
+      console.warn('JSON response did not contain expected image field');
+      return null;
+    }
+
+    console.warn('Unexpected content type from webhook:', contentType);
+    return null;
   } catch (error) {
-    console.error('Webhook error:', error);
+    if (error instanceof Error && error.name === 'AbortError') {
+      console.error('Webhook request timed out after 55 seconds');
+    } else {
+      console.error('Webhook error:', error);
+    }
     return null;
   }
 }
