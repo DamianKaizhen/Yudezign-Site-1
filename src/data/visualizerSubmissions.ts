@@ -65,5 +65,18 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2025-12-31T23:30:18.586Z',
     status: 'new',
     
+  },
+  {
+    id: 'vis_1767223938487_f6iej0y',
+    name: 'Damian',
+    email: 'test@tgest.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjok1gmwxe', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767223938035-Image_20250424145342.jpg',
+    description: 'be more generous with the drawers. and i want a pantry cabinet on the right.',
+    
+    submittedAt: '2025-12-31T23:32:18.487Z',
+    status: 'new',
+    
   }
 ];
