@@ -84,5 +84,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767225887660-3e5b39a69b716a51c0b287fa99590785.jpeg',
     submittedAt: '2026-01-01T00:04:48.242Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767277836271_vhv6xr6',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '12345567890',
+    finishes: [{ id: 'f_mhjohdrw9d8', name: 'Rock Solid', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206847904-Rock_Solid.png' }, { id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767277835825-3e5b39a69b716a51c0b287fa99590785.jpeg',
+    submittedAt: '2026-01-01T14:30:36.271Z',
+    status: 'new',
+    description: 'I need this kitchen space to be changed into a modern tv room',
   }
 ];
