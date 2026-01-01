@@ -95,5 +95,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-01T14:30:36.271Z',
     status: 'new',
     description: 'I need this kitchen space to be changed into a modern tv room',
+  },
+  {
+    id: 'vis_1767311825413_u73absc',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567860',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767311824862-image.jpg',
+    submittedAt: '2026-01-01T23:57:05.413Z',
+    status: 'new',
+    description: 'And a tall linen cabinet to thenright side',
   }
 ];
