@@ -74,5 +74,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2025-12-31T23:58:31.329Z',
     status: 'new',
     description: 'Revamp my office desk',
+  },
+  {
+    id: 'vis_1767225888242_ns6ghm2',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567860',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767225887660-3e5b39a69b716a51c0b287fa99590785.jpeg',
+    submittedAt: '2026-01-01T00:04:48.242Z',
+    status: 'new',
   }
 ];
