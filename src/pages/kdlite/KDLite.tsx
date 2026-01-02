@@ -245,10 +245,10 @@ const KDLite = () => {
             <iframe
               src="https://kdlite.yfcad.com/"
               title="KD Lite Closet Design Software"
-              width="1200"
-              height="800"
+              width="1920"
+              height="1080"
               className="w-full"
-              style={{ aspectRatio: '3/2' }}
+              style={{ aspectRatio: '16/9' }}
               allow="fullscreen; clipboard-write"
             />
           </motion.div>
