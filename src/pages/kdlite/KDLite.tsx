@@ -64,20 +64,54 @@ const KDLite = () => {
           >
             KD Lite is our free closet design software. Create professional designs, get instant pricing, and order directly from our factory.
           </motion.p>
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-sm text-neutral-300"
           >
-            <a
-              href="https://kdlite.yfcad.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary text-lg px-8 py-4 inline-block"
-            >
-              Launch KD Lite Software
-            </a>
-            <p className="text-sm text-neutral-300 mt-4">No download required • Works in your browser</p>
+            No download required • Works in your browser
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Embedded KD Lite App Section */}
+      <section className="section-padding bg-neutral-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 className="heading-lg mb-4">Start Designing Now</h2>
+            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
+              Use the KD Lite design tool directly below. For the best experience, you can also{' '}
+              <a
+                href="https://kdlite.yfcad.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-primary-dark"
+              >
+                open it in a new tab
+              </a>.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-neutral-200 aspect-video"
+          >
+            <iframe
+              src="https://kdlite.yfcad.com/"
+              title="KD Lite Closet Design Software"
+              className="absolute inset-0 w-full h-full"
+              allow="fullscreen; clipboard-write"
+            />
           </motion.div>
         </div>
       </section>
@@ -208,47 +242,6 @@ const KDLite = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Embedded KD Lite App Section */}
-      <section className="section-padding bg-neutral-50">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h2 className="heading-lg mb-4">Start Designing Now</h2>
-            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
-              Use the KD Lite design tool directly below. For the best experience, you can also{' '}
-              <a
-                href="https://kdlite.yfcad.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary underline hover:text-primary-dark"
-              >
-                open it in a new tab
-              </a>.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-neutral-200 aspect-video"
-          >
-            <iframe
-              src="https://kdlite.yfcad.com/"
-              title="KD Lite Closet Design Software"
-              className="absolute inset-0 w-full h-full"
-              allow="fullscreen; clipboard-write"
-            />
-          </motion.div>
         </div>
       </section>
 
