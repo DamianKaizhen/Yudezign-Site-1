@@ -240,15 +240,12 @@ const KDLite = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-neutral-200"
+            className="relative w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-neutral-200 aspect-video"
           >
             <iframe
               src="https://kdlite.yfcad.com/"
               title="KD Lite Closet Design Software"
-              width="1920"
-              height="1080"
-              className="w-full"
-              style={{ aspectRatio: '16/9' }}
+              className="absolute inset-0 w-full h-full"
               allow="fullscreen; clipboard-write"
             />
           </motion.div>
