@@ -211,6 +211,48 @@ const KDLite = () => {
         </div>
       </section>
 
+      {/* Embedded KD Lite App Section */}
+      <section className="section-padding bg-neutral-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <h2 className="heading-lg mb-4">Start Designing Now</h2>
+            <p className="text-neutral-600 text-lg max-w-2xl mx-auto">
+              Use the KD Lite design tool directly below. For the best experience, you can also{' '}
+              <a
+                href="https://kdlite.yfcad.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline hover:text-primary-dark"
+              >
+                open it in a new tab
+              </a>.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full rounded-xl overflow-hidden shadow-2xl border border-neutral-200"
+            style={{ height: '80vh', minHeight: '600px' }}
+          >
+            <iframe
+              src="https://kdlite.yfcad.com/"
+              title="KD Lite Closet Design Software"
+              className="w-full h-full"
+              allow="fullscreen; clipboard-write"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Pricing Advantage Section */}
       <section className="section-padding bg-primary text-white">
         <div className="container-custom">
