@@ -106,5 +106,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-01T23:57:05.413Z',
     status: 'new',
     description: 'And a tall linen cabinet to thenright side',
+  },
+  {
+    id: 'vis_1767553043639_jy3u3fp',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjongiisut', name: 'White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207131384-HG_White.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767553042947-image.jpg',
+    submittedAt: '2026-01-04T18:57:23.640Z',
+    status: 'new',
+    description: 'Recreate a tv room cabinet',
   }
 ];
