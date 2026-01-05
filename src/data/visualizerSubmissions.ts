@@ -148,5 +148,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-05T19:30:23.285Z',
     status: 'new',
     description: 'Contemporary kitchen with the same appliances. ',
+  },
+  {
+    id: 'vis_1767644926183_tqkkx17',
+    name: 'Damian',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjopix2yg6', name: 'Soft Touch Black', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207227339-Matte_Soft_Touch_Black.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767644925797-IMG_1018.png',
+    submittedAt: '2026-01-05T20:28:46.183Z',
+    status: 'new',
+    description: 'Brown seat, but flat panel black cabinets for this mudroom. Only replace the shaker doors. Handles should be the same',
   }
 ];
