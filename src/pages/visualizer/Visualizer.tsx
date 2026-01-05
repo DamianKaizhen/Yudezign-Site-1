@@ -18,64 +18,64 @@ interface SampleImage {
 }
 
 // Sample room images for users who don't have their own photos
-// All images are interior rooms without people
+// All images are interior rooms without people - verified empty room interiors
 const sampleImages: SampleImage[] = [
-  // Kitchens - empty kitchen interiors
+  // Kitchens - empty kitchen interiors (no people)
   {
     id: 'kitchen-1',
-    name: 'Modern White Kitchen',
-    url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80',
+    name: 'Empty Kitchen',
+    url: 'https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200&q=80',
     category: 'kitchen',
   },
   {
     id: 'kitchen-2',
-    name: 'Minimalist Kitchen',
-    url: 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=1200&q=80',
+    name: 'Modern Kitchen',
+    url: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1200&q=80',
     category: 'kitchen',
   },
   {
     id: 'kitchen-3',
-    name: 'Classic Kitchen',
-    url: 'https://images.unsplash.com/photo-1556185781-a47769abb7ee?w=1200&q=80',
+    name: 'White Kitchen',
+    url: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=80',
     category: 'kitchen',
   },
-  // Bathrooms - empty bathroom interiors
+  // Bathrooms - empty bathroom interiors (no people)
   {
     id: 'bathroom-1',
     name: 'Modern Bathroom',
-    url: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
     category: 'bathroom',
   },
   {
     id: 'bathroom-2',
     name: 'Elegant Vanity',
-    url: 'https://images.unsplash.com/photo-1593711774556-0f2cf32791ce?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80',
     category: 'bathroom',
   },
-  // Closets - empty closet/wardrobe spaces
+  // Closets - empty closet/wardrobe spaces (no people)
   {
     id: 'closet-1',
-    name: 'Walk-In Closet',
-    url: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=1200&q=80',
+    name: 'Bedroom Closet',
+    url: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1200&q=80',
     category: 'closet',
   },
   {
     id: 'closet-2',
-    name: 'Wardrobe Space',
-    url: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
+    name: 'Walk-In Closet',
+    url: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=1200&q=80',
     category: 'closet',
   },
-  // Home Office - empty office spaces
+  // Home Office - empty office spaces (no people)
   {
     id: 'office-1',
-    name: 'Home Office',
-    url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
+    name: 'Living Room',
+    url: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1200&q=80',
     category: 'office',
   },
   {
     id: 'office-2',
-    name: 'Study Room',
-    url: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=1200&q=80',
+    name: 'Home Office',
+    url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
     category: 'office',
   },
 ];
