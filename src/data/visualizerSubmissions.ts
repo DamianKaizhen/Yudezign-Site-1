@@ -169,5 +169,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767646063412-fe32ad3338cfba4c9a52f2e38dc2668%20%281%29.jpg',
     submittedAt: '2026-01-05T20:47:43.867Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767647420789_8riy2ed',
+    name: 'doreen',
+    email: 'doreen.t@yukoncabinet.com',
+    phone: '3464095905',
+    finishes: [{ id: 'f_mhjok1gmwxe', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767647420458-Weixin%20Image_20260105150833.png',
+    submittedAt: '2026-01-05T21:10:20.789Z',
+    status: 'new',
   }
 ];
