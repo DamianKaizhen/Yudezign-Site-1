@@ -117,5 +117,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-04T18:57:23.640Z',
     status: 'new',
     description: 'Recreate a tv room cabinet',
+  },
+  {
+    id: 'vis_1767572795361_larzor2',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567860',
+    finishes: [{ id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }, { id: 'f_mhjokhm1gzg', name: 'White Tossini Elm', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206992116-White_Tossini_Elm.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767572794745-3d0b1dee7b8045e414369d7a41bb6b2d.jpeg',
+    submittedAt: '2026-01-05T00:26:35.366Z',
+    status: 'new',
   }
 ];
