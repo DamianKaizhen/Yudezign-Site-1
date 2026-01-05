@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download, Camera, Palette, Wand2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download, Camera, Palette, Wand2, ChevronDown, Grid3X3 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FinishDropdown from '../../components/ui/FinishDropdown';
 
@@ -9,6 +9,82 @@ interface FinishSelection {
   name: string;
   imageUrl: string;
 }
+
+interface SampleImage {
+  id: string;
+  name: string;
+  url: string;
+  category: 'kitchen' | 'bathroom' | 'closet' | 'office';
+}
+
+// Sample room images for users who don't have their own photos
+const sampleImages: SampleImage[] = [
+  // Kitchens
+  {
+    id: 'kitchen-1',
+    name: 'Modern White Kitchen',
+    url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80',
+    category: 'kitchen',
+  },
+  {
+    id: 'kitchen-2',
+    name: 'Contemporary Kitchen',
+    url: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=80',
+    category: 'kitchen',
+  },
+  {
+    id: 'kitchen-3',
+    name: 'Bright Open Kitchen',
+    url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+    category: 'kitchen',
+  },
+  // Bathrooms
+  {
+    id: 'bathroom-1',
+    name: 'Modern Bathroom',
+    url: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
+    category: 'bathroom',
+  },
+  {
+    id: 'bathroom-2',
+    name: 'Elegant Vanity Space',
+    url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80',
+    category: 'bathroom',
+  },
+  // Closets
+  {
+    id: 'closet-1',
+    name: 'Walk-In Closet',
+    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80',
+    category: 'closet',
+  },
+  {
+    id: 'closet-2',
+    name: 'Organized Wardrobe',
+    url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=80',
+    category: 'closet',
+  },
+  // Home Office
+  {
+    id: 'office-1',
+    name: 'Home Office Space',
+    url: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1200&q=80',
+    category: 'office',
+  },
+  {
+    id: 'office-2',
+    name: 'Built-In Office',
+    url: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200&q=80',
+    category: 'office',
+  },
+];
+
+const categoryLabels = {
+  kitchen: 'Kitchens',
+  bathroom: 'Bathrooms',
+  closet: 'Closets',
+  office: 'Home Office',
+};
 
 const Visualizer = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +107,10 @@ const Visualizer = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [imageError, setImageError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Sample image state
+  const [selectedSampleImage, setSelectedSampleImage] = useState<SampleImage | null>(null);
+  const [showSampleImages, setShowSampleImages] = useState(false);
 
   // Form validation
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
@@ -56,12 +136,25 @@ const Visualizer = () => {
       errors.finishes = 'Please select at least one finish';
     }
 
-    if (!roomImage) {
-      errors.roomImage = 'Please upload a room image';
+    if (!roomImage && !selectedSampleImage) {
+      errors.roomImage = 'Please upload a room image or select a sample';
     }
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
+  };
+
+  // Handle sample image selection
+  const handleSampleImageSelect = (sample: SampleImage) => {
+    setSelectedSampleImage(sample);
+    setImagePreview(sample.url);
+    setRoomImage(null); // Clear any uploaded file
+    setImageError('');
+    setShowSampleImages(false);
+    // Clear form error
+    if (formErrors.roomImage) {
+      setFormErrors((prev) => ({ ...prev, roomImage: '' }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -76,10 +169,12 @@ const Visualizer = () => {
     setErrorMessage('');
 
     try {
-      // Upload room image first
+      // Get room image URL - either upload user's image or use sample image URL
       let roomImageUrl = '';
       if (roomImage) {
         roomImageUrl = await uploadImage();
+      } else if (selectedSampleImage) {
+        roomImageUrl = selectedSampleImage.url;
       }
 
       const submissionData = {
@@ -122,6 +217,7 @@ const Visualizer = () => {
       });
       setSelectedFinishes([]);
       setRoomImage(null);
+      setSelectedSampleImage(null);
       setImagePreview(null);
       setFormErrors({});
     } catch (error) {
@@ -173,6 +269,7 @@ const Visualizer = () => {
     }
 
     setRoomImage(file);
+    setSelectedSampleImage(null); // Clear any sample image selection
 
     // Create preview
     const reader = new FileReader();
@@ -194,6 +291,7 @@ const Visualizer = () => {
 
   const handleRemoveImage = () => {
     setRoomImage(null);
+    setSelectedSampleImage(null);
     setImagePreview(null);
   };
 
@@ -363,7 +461,7 @@ const Visualizer = () => {
                       </button>
                       <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2">
                         <ImageIcon className="w-4 h-4" />
-                        {roomImage?.name}
+                        {roomImage?.name || selectedSampleImage?.name || 'Room Image'}
                       </div>
                     </div>
                   )}
@@ -374,6 +472,68 @@ const Visualizer = () => {
                       {imageError || formErrors.roomImage}
                     </p>
                   )}
+
+                  {/* Sample Images Section */}
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      onClick={() => setShowSampleImages(!showSampleImages)}
+                      className="flex items-center gap-2 text-sm text-gray-600 hover:text-primary transition-colors"
+                    >
+                      <Grid3X3 className="w-4 h-4" />
+                      <span>Don't have a photo? Use a sample room</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${showSampleImages ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    <AnimatePresence>
+                      {showSampleImages && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-4 space-y-4">
+                            {(['kitchen', 'bathroom', 'closet', 'office'] as const).map((category) => {
+                              const categoryImages = sampleImages.filter((img) => img.category === category);
+                              return (
+                                <div key={category}>
+                                  <h4 className="text-sm font-medium text-gray-700 mb-2">
+                                    {categoryLabels[category]}
+                                  </h4>
+                                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    {categoryImages.map((sample) => (
+                                      <button
+                                        key={sample.id}
+                                        type="button"
+                                        onClick={() => handleSampleImageSelect(sample)}
+                                        className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all hover:scale-[1.02] ${
+                                          selectedSampleImage?.id === sample.id
+                                            ? 'border-primary ring-2 ring-primary/20'
+                                            : 'border-gray-200 hover:border-primary/50'
+                                        }`}
+                                      >
+                                        <img
+                                          src={sample.url}
+                                          alt={sample.name}
+                                          className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                        <span className="absolute bottom-2 left-2 text-xs text-white font-medium">
+                                          {sample.name}
+                                        </span>
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
 
                 {/* Step 2: Finish Selection */}
