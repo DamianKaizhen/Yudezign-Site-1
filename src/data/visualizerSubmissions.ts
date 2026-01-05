@@ -129,13 +129,13 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     status: 'new',
   },
   {
-    id: 'vis_1767641116531_fxw2xr5',
-    name: 'd',
-    email: 'damian.k@yudezign.com',
-    phone: '7135020399',
-    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
-    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767641116046-Image_20241204164402.jpg',
-    submittedAt: '2026-01-05T19:25:16.534Z',
+    id: 'vis_1767641288097_8y0c9bl',
+    name: 'a',
+    email: 'l.leung@universalfloorsupply.com',
+    phone: '8328682880',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjohdrw9d8', name: 'Rock Solid', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206847904-Rock_Solid.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767641287635-1767641252275.jpg',
+    submittedAt: '2026-01-05T19:28:08.097Z',
     status: 'new',
   }
 ];
