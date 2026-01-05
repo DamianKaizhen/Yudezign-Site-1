@@ -179,5 +179,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767647420458-Weixin%20Image_20260105150833.png',
     submittedAt: '2026-01-05T21:10:20.789Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767647745886_y8m30fl',
+    name: 'K',
+    email: 'kent.z@universalfloorsupply.com',
+    phone: '8325689000',
+    finishes: [{ id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767647745425-How-Modern-Kitchen-Design-Ideas-Influence-Cooking-Habits-Creativity-00004-1-1.jpg',
+    submittedAt: '2026-01-05T21:15:45.886Z',
+    status: 'new',
+    description: 'I would like to see the kitchen in whole view, with the color I see, and then please make a clean and new farm house design style for me. and also laminate yellowish color flooring for me.',
   }
 ];
