@@ -65,5 +65,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2025-12-30T21:56:26.350Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1767649312731_9my9bhb',
+    name: 'Natalie Jones',
+    email: 'information@homeownerbliss.info',
+    phone: '(303) 358-6531',
+    projectType: 'commercial',
+    timeline: 'planning',
+    message: 'Hi,\n\nMy husband Jason and I love the new home we recently purchased, and without a doubt, we’re relieved the home buying process is over.\n\nWhen we began our search, I think Jason and I expected to make general compromises based on our mutual wishlist, such as having a carport instead of a garage. But we quickly found that the biggest compromises had to be made between the two of us.\n\nFor example, I had no idea how passionate Jason was about having a double sink bathroom vanity until we were arguing about it in front of our real estate agent!\n\nI think this is a great topic because almost every couple deals with it when buying a new home. Can I write about it for your website? I’ll offer tips and advice based on experience and online resources that will help couples navigate the home buying process without damaging their relationship.\n\nIf you like this idea, please let me know. I’d love to start working on the article right away.\n\nThank you!\nNatalie Jones\nHomeownerbliss.info\n\n\n– Not sure this topic fits? I can easily adapt it or offer fresh ideas that suit your readers while maintaining SEO and AI-friendly structure. If you’d rather not hear from me in the future, a quick reply will do the trick.',
+    
+    submittedAt: '2026-01-05T21:41:52.731Z',
+    status: 'new',
+    
   }
 ];
