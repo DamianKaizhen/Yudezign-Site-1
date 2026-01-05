@@ -18,8 +18,9 @@ interface SampleImage {
 }
 
 // Sample room images for users who don't have their own photos
+// All images are interior rooms without people
 const sampleImages: SampleImage[] = [
-  // Kitchens
+  // Kitchens - empty kitchen interiors
   {
     id: 'kitchen-1',
     name: 'Modern White Kitchen',
@@ -28,53 +29,53 @@ const sampleImages: SampleImage[] = [
   },
   {
     id: 'kitchen-2',
-    name: 'Contemporary Kitchen',
-    url: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=80',
+    name: 'Minimalist Kitchen',
+    url: 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?w=1200&q=80',
     category: 'kitchen',
   },
   {
     id: 'kitchen-3',
-    name: 'Bright Open Kitchen',
-    url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80',
+    name: 'Classic Kitchen',
+    url: 'https://images.unsplash.com/photo-1556185781-a47769abb7ee?w=1200&q=80',
     category: 'kitchen',
   },
-  // Bathrooms
+  // Bathrooms - empty bathroom interiors
   {
     id: 'bathroom-1',
     name: 'Modern Bathroom',
-    url: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&q=80',
     category: 'bathroom',
   },
   {
     id: 'bathroom-2',
-    name: 'Elegant Vanity Space',
-    url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80',
+    name: 'Elegant Vanity',
+    url: 'https://images.unsplash.com/photo-1593711774556-0f2cf32791ce?w=1200&q=80',
     category: 'bathroom',
   },
-  // Closets
+  // Closets - empty closet/wardrobe spaces
   {
     id: 'closet-1',
     name: 'Walk-In Closet',
-    url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=1200&q=80',
     category: 'closet',
   },
   {
     id: 'closet-2',
-    name: 'Organized Wardrobe',
-    url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=80',
+    name: 'Wardrobe Space',
+    url: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
     category: 'closet',
   },
-  // Home Office
+  // Home Office - empty office spaces
   {
     id: 'office-1',
-    name: 'Home Office Space',
-    url: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1200&q=80',
+    name: 'Home Office',
+    url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
     category: 'office',
   },
   {
     id: 'office-2',
-    name: 'Built-In Office',
-    url: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1200&q=80',
+    name: 'Study Room',
+    url: 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=1200&q=80',
     category: 'office',
   },
 ];
