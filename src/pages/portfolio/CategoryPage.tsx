@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
-import { Wand2, ArrowRight } from 'lucide-react';
+import { Wand2, ArrowRight, Layout } from 'lucide-react';
 import ProjectCard from '../../components/ui/ProjectCard';
 import { projects } from '../../data/projects';
 import SEO from '../../components/SEO';
@@ -150,6 +150,42 @@ const CategoryPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* KD Lite Design Tool CTA - Only for Closets */}
+      {category === 'closets' && (
+        <section className="py-16 px-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white">
+          <div className="container-custom">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col md:flex-row items-center justify-between gap-8"
+            >
+              <div className="flex items-center gap-6">
+                <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Layout className="w-7 h-7 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2">
+                    Design Your Perfect Closet
+                  </h3>
+                  <p className="text-white/80 max-w-xl">
+                    Use our free KD Lite design tool to plan your custom closet layout before your consultation.
+                  </p>
+                </div>
+              </div>
+              <Link
+                to="/kdlite"
+                className="flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300 flex-shrink-0"
+              >
+                Try KD Lite Free
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
     </div>
     </>
   );

@@ -69,6 +69,7 @@ const Navigation = () => {
         { name: 'FAQ', path: '/faq' },
         { name: 'Showroom', path: '/showroom' },
         { name: 'Room Visualizer', path: '/visualizer' },
+        { name: 'KD Lite Design Tool', path: '/kdlite' },
       ]
     },
     { name: 'Finishes & Materials', path: '/finishes' },

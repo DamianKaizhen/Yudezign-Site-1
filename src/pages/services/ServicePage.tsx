@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import SEO from '../../components/SEO';
 import ServiceHero from './components/ServiceHero';
 import { getServiceBySlug } from '../../data/services';
@@ -15,7 +15,8 @@ import {
   Wrench,
   Truck,
   Clock,
-  MapPin
+  MapPin,
+  Layout
 } from 'lucide-react';
 
 const ServicePage: React.FC = () => {
@@ -85,6 +86,36 @@ const ServicePage: React.FC = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* KD Lite Design Tool CTA - Only for Closet Systems */}
+      {slug === 'closet-systems' && (
+        <section className="py-16 px-4 bg-gradient-to-r from-primary to-primary-dark text-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex items-center gap-6">
+                <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Layout className="w-7 h-7 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold mb-2">
+                    Design Your Closet with KD Lite
+                  </h3>
+                  <p className="text-white/80 max-w-xl">
+                    Try our free closet design tool to visualize and plan your perfect custom closet system before your consultation.
+                  </p>
+                </div>
+              </div>
+              <Link
+                to="/kdlite"
+                className="flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300 flex-shrink-0"
+              >
+                Try KD Lite Free
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
         </section>
