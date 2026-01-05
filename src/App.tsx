@@ -32,6 +32,7 @@ import TestimonialForm from './pages/admin/TestimonialForm';
 import TeamMembersList from './pages/admin/TeamMembersList';
 import TeamMemberForm from './pages/admin/TeamMemberForm';
 import SiteSettings from './pages/admin/SiteSettings';
+import SampleImages from './pages/admin/SampleImages';
 
 // SEO Pages
 import PricingPage from './pages/quick-wins/PricingPage';
@@ -103,6 +104,7 @@ function App() {
           <Route path="/admin/team/new" element={<TeamMemberForm />} />
           <Route path="/admin/team/:id" element={<TeamMemberForm />} />
           <Route path="/admin/settings" element={<SiteSettings />} />
+          <Route path="/admin/sample-images" element={<SampleImages />} />
 
           {/* Public Routes - With Navigation/Footer */}
           <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

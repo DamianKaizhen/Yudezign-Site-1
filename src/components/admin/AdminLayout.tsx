@@ -81,6 +81,11 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       path: '/admin/settings',
       icon: Settings,
     },
+    {
+      name: 'Sample Images',
+      path: '/admin/sample-images',
+      icon: Image,
+    },
   ];
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Upload, X, Loader2, Image as ImageIcon, Sparkles, Download, Camera, Palette, Wand2, ChevronDown, Grid3X3 } from 'lucide-react';
 import SEO from '../../components/SEO';
@@ -17,9 +17,12 @@ interface SampleImage {
   category: 'kitchen' | 'bathroom' | 'closet' | 'office';
 }
 
-// Sample room images for users who don't have their own photos
+// Storage key for sample images (must match admin page)
+const SAMPLE_IMAGES_STORAGE_KEY = 'visualizer_sample_images';
+
+// Default sample room images for users who don't have their own photos
 // All images are interior rooms without people - verified empty room interiors
-const sampleImages: SampleImage[] = [
+const defaultSampleImages: SampleImage[] = [
   // Kitchens - empty kitchen interiors (no people)
   {
     id: 'kitchen-1',
@@ -43,7 +46,7 @@ const sampleImages: SampleImage[] = [
   {
     id: 'bathroom-1',
     name: 'Modern Bathroom',
-    url: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
     category: 'bathroom',
   },
   {
@@ -56,29 +59,45 @@ const sampleImages: SampleImage[] = [
   {
     id: 'closet-1',
     name: 'Bedroom Closet',
-    url: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
     category: 'closet',
   },
   {
     id: 'closet-2',
     name: 'Walk-In Closet',
-    url: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80',
     category: 'closet',
   },
   // Home Office - empty office spaces (no people)
   {
     id: 'office-1',
     name: 'Living Room',
-    url: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1200&q=80',
     category: 'office',
   },
   {
     id: 'office-2',
     name: 'Home Office',
-    url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80',
+    url: 'https://images.unsplash.com/photo-1486946255434-2466348c2166?w=1200&q=80',
     category: 'office',
   },
 ];
+
+// Helper to load sample images from localStorage or fall back to defaults
+const loadSampleImages = (): SampleImage[] => {
+  try {
+    const stored = localStorage.getItem(SAMPLE_IMAGES_STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (error) {
+    console.error('Failed to load sample images from localStorage:', error);
+  }
+  return defaultSampleImages;
+};
 
 const categoryLabels = {
   kitchen: 'Kitchens',
@@ -88,6 +107,14 @@ const categoryLabels = {
 };
 
 const Visualizer = () => {
+  // Sample images state - loads from localStorage or defaults
+  const [sampleImages, setSampleImages] = useState<SampleImage[]>(defaultSampleImages);
+
+  // Load sample images from localStorage on mount
+  useEffect(() => {
+    setSampleImages(loadSampleImages());
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
