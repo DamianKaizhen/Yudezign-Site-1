@@ -190,5 +190,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-05T21:15:45.886Z',
     status: 'new',
     description: 'I would like to see the kitchen in whole view, with the color I see, and then please make a clean and new farm house design style for me. and also laminate yellowish color flooring for me.',
+  },
+  {
+    id: 'vis_1767652743650_9c5p0zq',
+    name: 'd',
+    email: 'yudezignez@gmail.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjojkdfnor', name: 'Brown Warmia Walnut', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206949640-Brown_Warmia_Walnut.jpg' }],
+    roomImage: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    submittedAt: '2026-01-05T22:39:03.652Z',
+    status: 'new',
   }
 ];
