@@ -127,5 +127,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767572794745-3d0b1dee7b8045e414369d7a41bb6b2d.jpeg',
     submittedAt: '2026-01-05T00:26:35.366Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767641116531_fxw2xr5',
+    name: 'd',
+    email: 'damian.k@yudezign.com',
+    phone: '7135020399',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767641116046-Image_20241204164402.jpg',
+    submittedAt: '2026-01-05T19:25:16.534Z',
+    status: 'new',
   }
 ];
