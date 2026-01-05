@@ -137,5 +137,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767641287635-1767641252275.jpg',
     submittedAt: '2026-01-05T19:28:08.097Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767641423284_aq7inhl',
+    name: 'Chin Pang Leung',
+    email: 'Lawrencecpleung@gmail.com',
+    phone: '8328682880',
+    finishes: [{ id: 'f_mhjokhm1gzg', name: 'White Tossini Elm', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206992116-White_Tossini_Elm.png' }, { id: 'f_mhjon0amejk', name: 'Luxe Black', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207110927-HG_Luxe_Black.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767641422833-1000040332.jpg',
+    submittedAt: '2026-01-05T19:30:23.285Z',
+    status: 'new',
+    description: 'Contemporary kitchen with the same appliances. ',
   }
 ];
