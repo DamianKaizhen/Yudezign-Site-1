@@ -159,5 +159,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-05T20:28:46.183Z',
     status: 'new',
     description: 'Brown seat, but flat panel black cabinets for this mudroom. Only replace the shaker doors. Handles should be the same',
+  },
+  {
+    id: 'vis_1767646063866_x4wziao',
+    name: 'd',
+    email: 'yudezignez@gmail.com',
+    phone: '7135020399',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767646063412-fe32ad3338cfba4c9a52f2e38dc2668%20%281%29.jpg',
+    submittedAt: '2026-01-05T20:47:43.867Z',
+    status: 'new',
   }
 ];
