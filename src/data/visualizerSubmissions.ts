@@ -211,5 +211,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-07T17:16:08.342Z',
     status: 'new',
     description: 'All white cabinets',
+  },
+  {
+    id: 'vis_1767807241772_818cqjn',
+    name: 'Lisheng Yu',
+    email: 'l.leung@universalfloorsupply.com',
+    phone: '8328638899',
+    finishes: [{ id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }, { id: 'f_mhjomd7nrv8', name: 'Dark Grey', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207076916-HG_Dark_Grey.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807241061-IMG_20200703_101212.jpg',
+    submittedAt: '2026-01-07T17:34:01.773Z',
+    status: 'new',
   }
 ];
