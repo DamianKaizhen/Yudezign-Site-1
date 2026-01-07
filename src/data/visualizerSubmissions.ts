@@ -200,5 +200,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     submittedAt: '2026-01-05T22:39:03.652Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1767806102716_l95dj4b',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '15855',
+    finishes: [{ id: 'f_mhjor1tera1', name: 'Soft Touch White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207299190-Matte_Soft_Touch_White.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767806102149-image.jpg',
+    submittedAt: '2026-01-07T17:15:02.716Z',
+    status: 'new',
   }
 ];
