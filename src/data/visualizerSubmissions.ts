@@ -222,5 +222,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-07T17:36:07.828Z',
     status: 'new',
     description: 'contemporary kitchen. light color at the top and dark color at the bottom. Add appliances',
+  },
+  {
+    id: 'vis_1767807572733_y469y41',
+    name: 'Lisheng Yu',
+    email: 'l.leung@universalfloorsupply.com',
+    phone: '8328638899',
+    finishes: [{ id: 'f_mhjongiisut', name: 'White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207131384-HG_White.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807572108-IMG_20200707_144349.jpg',
+    submittedAt: '2026-01-07T17:39:32.733Z',
+    status: 'new',
+    description: 'contemporary kitchen, light color at the top, dark color in the bottom, with all appliances. Island in the middle with kitchen sink and faucet.',
   }
 ];
