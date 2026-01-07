@@ -78,5 +78,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-01-05T21:41:52.731Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1767807762117_9dt1zqx',
+    name: 'Lawrence Leung',
+    email: 'lawrencecpleung@comcast.net',
+    phone: '8328682880',
+    projectType: 'kitchen',
+    timeline: '1-2months',
+    message: 'This is a test email',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807761574-IMG_20200703_101256.jpg'],
+    submittedAt: '2026-01-07T17:42:42.117Z',
+    status: 'new',
+    
   }
 ];
