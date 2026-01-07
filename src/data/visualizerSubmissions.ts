@@ -213,13 +213,14 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     description: 'All white cabinets',
   },
   {
-    id: 'vis_1767807241772_818cqjn',
+    id: 'vis_1767807367828_j3n0oko',
     name: 'Lisheng Yu',
     email: 'l.leung@universalfloorsupply.com',
     phone: '8328638899',
-    finishes: [{ id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }, { id: 'f_mhjomd7nrv8', name: 'Dark Grey', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207076916-HG_Dark_Grey.png' }],
-    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807241061-IMG_20200703_101212.jpg',
-    submittedAt: '2026-01-07T17:34:01.773Z',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjon0amejk', name: 'Luxe Black', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207110927-HG_Luxe_Black.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807367190-IMG_20200703_101212.jpg',
+    submittedAt: '2026-01-07T17:36:07.828Z',
     status: 'new',
+    description: 'contemporary kitchen. light color at the top and dark color at the bottom. Add appliances',
   }
 ];
