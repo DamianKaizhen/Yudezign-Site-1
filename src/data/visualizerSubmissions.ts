@@ -202,13 +202,14 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     status: 'new',
   },
   {
-    id: 'vis_1767806102716_l95dj4b',
+    id: 'vis_1767806168342_05liicz',
     name: 'D',
     email: 'kao.damian@gmail.com',
-    phone: '15855',
+    phone: '0713232390',
     finishes: [{ id: 'f_mhjor1tera1', name: 'Soft Touch White', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207299190-Matte_Soft_Touch_White.png' }],
-    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767806102149-image.jpg',
-    submittedAt: '2026-01-07T17:15:02.716Z',
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767806167736-image.jpg',
+    submittedAt: '2026-01-07T17:16:08.342Z',
     status: 'new',
+    description: 'All white cabinets',
   }
 ];
