@@ -233,5 +233,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-07T17:39:32.733Z',
     status: 'new',
     description: 'contemporary kitchen, light color at the top, dark color in the bottom, with all appliances. Island in the middle with kitchen sink and faucet.',
+  },
+  {
+    id: 'vis_1768583730733_c1ovrii',
+    name: 'D',
+    email: 'kao.damian@gmail.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjokhm1gzg', name: 'White Tossini Elm', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206992116-White_Tossini_Elm.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1768583729215-image.jpg',
+    submittedAt: '2026-01-16T17:15:30.733Z',
+    status: 'new',
+    description: 'Clean up the room and make a nice mini kitchen+ bar here',
   }
 ];
