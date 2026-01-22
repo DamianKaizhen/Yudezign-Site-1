@@ -113,5 +113,20 @@ export const projects: Project[] = [
     features: ['Wood Grain Finish', 'Soft Close Hinges', 'Custom Made'],
     turnaroundTime: '4 weeks',
     description: 'Two College Station homes coming together this week. Client chose Acacia Honey for that warm, natural grain. Frameless construction with soft-close hardware throughout, floor-to-ceiling uppers for maximum storage.\nAlways satisfying to see consistent quality across multiple installs. Four-week turnaround from our Houston facility kept both projects on schedule.',
+  },
+  {
+    id: 'proj_1769100583151_f98zijltg',
+    title: 'Sample',
+    category: 'kitchens',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1769100577891-Screenshot%202026-01-22%20095222.png'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1769100577891-Screenshot%202026-01-22%20095222.png',
+    
+    finish: 'Glossy White',
+    cabinetStyle: 'Frameless European',
+    features: ['Wood Grain Finish'],
+    turnaroundTime: '3 weeks',
+    description: 'sample kitchen',
   }
 ];
