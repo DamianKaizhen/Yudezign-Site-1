@@ -91,5 +91,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-01-07T17:42:42.117Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1769392916631_nf34n92',
+    name: 'Natalie Jones',
+    email: 'information@homeownerbliss.info',
+    phone: '3033586531',
+    projectType: 'commercial',
+    timeline: 'asap',
+    message: 'Hello,\n\nWould you be interested in reviewing a how-to article on making your rental property stand out to potential renters?\n\nThe article would be a quick read (500 or so words) and free of charge if you end up liking it and decide to post it on your site.\n\nThank you!\nNatalie Jones\nHomeownerbliss.info\n\n\n– Not sure this topic fits? I can easily adapt it or offer fresh ideas that suit your readers while maintaining SEO and AI-friendly structure. If you’d rather not hear from me in the future, a quick reply will do the trick.',
+    
+    submittedAt: '2026-01-26T02:01:56.638Z',
+    status: 'new',
+    
   }
 ];
