@@ -104,5 +104,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-01-26T02:01:56.638Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1770238283604_9jq0sr1',
+    name: 'Manash Chakravarty',
+    email: 'manashtx@yahoo.com',
+    phone: '346 820 3035',
+    projectType: 'kitchen',
+    timeline: '3-6months',
+    message: 'I am a builder and bidding a townhome project.',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1770238283188-FLOOR%20PLANS%20BLK%202%20Lot%201.pdf'],
+    submittedAt: '2026-02-04T20:51:23.604Z',
+    status: 'new',
+    
   }
 ];
