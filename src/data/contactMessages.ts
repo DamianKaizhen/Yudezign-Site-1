@@ -117,5 +117,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-02-04T20:51:23.604Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1770318415379_49ipzv9',
+    name: 'Sarah Velasquez',
+    email: 'sarah.velasquez@ourperfectabode.com',
+    phone: '(480) 897-4759',
+    projectType: 'laundry-mudroom',
+    timeline: 'asap',
+    message: 'Hi there!\n\nWould you be interested in a guest post for your website that will walk through the process of using one’s home as a money maker?\n\nWhether your space is already beautifully renovated or it’s a work in progress, my article will talk about several ways to leverage your hard work and investment. It will include\n\nhow to document past and/or current home improvements for followers\ncreating and monetizing your own blog and/or website\ntaking advantage of affiliate marketing opportunities\nand driving traffic via social media ads.\n\nIf you’re open to receiving this article, please let me know. I’d be happy to send it over at no charge!\n\nFrom our perfect abode to yours,\nSarah V of OurPerfectAbode.com\n\n\nP.S. Please let me know if you\'re interested but have a different topic preference. The content I provide is crafted with both human readers and AI engines in mind, increasing visibility across the web.',
+    
+    submittedAt: '2026-02-05T19:06:55.380Z',
+    status: 'new',
+    
   }
 ];
