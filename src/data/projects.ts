@@ -128,5 +128,21 @@ export const projects: Project[] = [
     features: ['Custom VentHood cabinet'],
     turnaroundTime: '4 weeks',
     description: 'Custom Kitchen Design with a wood grain texture, and spacious vent hood cabinet, and tons of storage.',
+  },
+  {
+    id: 'proj_1771967437862_yu8z5xpzv',
+    title: 'DoubleCloset',
+    category: 'closets',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967420158-closet1.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967425879-closet1b.jpg'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967420158-closet1.jpg',
+    location: 'Houston',
+    finish: 'Silver Wisp',
+    cabinetStyle: 'Frameless European',
+    features: ['Wood Grain Finish', 'Soft Close Hinges'],
+    turnaroundTime: '2 weeks',
+    description: 'Minimal and Functional Closet space, with Drawers and Clothes hanging space.',
   }
 ];
