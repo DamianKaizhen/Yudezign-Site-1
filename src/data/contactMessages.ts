@@ -130,5 +130,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-02-05T19:06:55.380Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1772295817275_upderga',
+    name: 'Katie Jones',
+    email: 'Katie@procompanyprofiles.com',
+    phone: '8149805065',
+    projectType: 'commercial',
+    timeline: 'asap',
+    message: 'Wikipedia is considered to be the World’s most significant tool for reference material. The Wiki links show up on the 1st page of Google 97% of the time. With a Page on one of the most revered reference tools, you are sure to get yourself or your business noticed. So if you\'re thinking of getting a Wikipedia Page created, it\'s the best time of the year.\n\nIf you are interested in getting more information just respond back to this email.\n\nThanks,\n\nKatie Jones\nProfessional Company Profiles\nKatie@procompanyprofiles.com\n\nRespond with stop to optout.',
+    
+    submittedAt: '2026-02-28T16:23:37.275Z',
+    status: 'new',
+    
   }
 ];
