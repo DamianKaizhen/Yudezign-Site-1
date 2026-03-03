@@ -143,5 +143,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-02-28T16:23:37.275Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1772503986166_tqobzgn',
+    name: 'Hannah Melotto',
+    email: 'hmelotto@melottogroup.com',
+    phone: '2158218810',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hello! Do you have any use for a freelance writer? I have nearly a decade of experience and am looking for new opportunities. You can book a time with me to chat if interested. Looking forward to connecting! https://calendly.com/melottogroup/30min',
+    
+    submittedAt: '2026-03-03T02:13:06.166Z',
+    status: 'new',
+    
   }
 ];
