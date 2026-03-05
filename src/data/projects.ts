@@ -119,7 +119,8 @@ export const projects: Project[] = [
     title: 'Grand Kitchen',
     category: 'kitchens',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771963682757-2028pebblebend.png'
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771963682757-2028pebblebend.png',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772672849115-4CF332AC-1D53-41A9-8D58-C3F62EAE6AFC_1_102_o.jpeg'
     ],
     thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771963682757-2028pebblebend.png',
     location: 'College Station',
