@@ -119,10 +119,17 @@ export const projects: Project[] = [
     title: 'Grand Kitchen',
     category: 'kitchens',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771963682757-2028pebblebend.png',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772672849115-4CF332AC-1D53-41A9-8D58-C3F62EAE6AFC_1_102_o.jpeg'
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673222886-IMG_1875.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673236248-IMG_1877.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673237858-IMG_1878.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673240566-IMG_1886.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673242655-IMG_1865.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673248253-IMG_1844.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673250031-IMG_1852.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673251822-IMG_1826.JPG',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673253312-IMG_1830.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771963682757-2028pebblebend.png',
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673222886-IMG_1875.JPG',
     location: 'College Station',
     finish: 'Acacia Honey',
     cabinetStyle: 'Frameless European',
