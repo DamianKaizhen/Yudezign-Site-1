@@ -161,7 +161,7 @@ export const projects: Project[] = [
       'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG'
     ],
     thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG',
-    
+    location: 'College Station',
     finish: 'Egger Black wood Grain',
     cabinetStyle: 'Frameless European',
     features: ['Wood Grain Finish', 'Soft Close Hinges'],
