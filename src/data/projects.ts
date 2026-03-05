@@ -152,5 +152,20 @@ export const projects: Project[] = [
     features: ['Wood Grain Finish', 'Soft Close Hinges'],
     turnaroundTime: '2 weeks',
     description: 'Minimal and Functional Closet space, with Drawers and Clothes hanging space.',
+  },
+  {
+    id: 'proj_1772747423361_jb84xeq83',
+    title: 'Mudroom Cabinet',
+    category: 'custom',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG',
+    
+    finish: 'Egger Black wood Grain',
+    cabinetStyle: 'Frameless European',
+    features: ['Wood Grain Finish', 'Soft Close Hinges'],
+    turnaroundTime: '3 weeks',
+    description: 'Custom Mudroom Cabinet and Bench, with Wood grain texture.',
   }
 ];
