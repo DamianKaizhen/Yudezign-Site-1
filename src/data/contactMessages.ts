@@ -156,5 +156,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-03-03T02:13:06.166Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1773344603515_giyguju',
+    name: 'Megan Cooper',
+    email: 'megan.cooper@reallifehome.net',
+    phone: '(941) 351-1663',
+    projectType: 'closet',
+    timeline: 'planning',
+    message: 'Hi, I\'d be delighted to contribute an article to your website.\n\nNow that so many of us work from home, we\'re all asking the same thing: how can I use my home for both business and relaxation?\n\nInterior design has a measurable impact on mental health, which is compounded when we use our homes for sleeping and working.\n\nWould you want to read an article that combines evidence-based findings with best practices for designing and organizing your home to fulfill your personal and professional needs? You are free to post the article on your website if you like it.\n\nThank you sincerely!\nMegan Cooper\nReal Life Home: https://reallifehome.net/\n\n\n~Please get in touch with me if you have another idea for a topic that might work better for your website if you don\'t like the one I mentioned. Nonetheless, please let me know if you\'d prefer not to hear from me in the future. I write content that’s easy for both readers and online tools to find and share.',
+    
+    submittedAt: '2026-03-12T19:43:23.515Z',
+    status: 'new',
+    
   }
 ];
