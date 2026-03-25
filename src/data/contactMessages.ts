@@ -169,5 +169,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-03-12T19:43:23.515Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1774426025751_b6xpgi2',
+    name: 'Alyssa Stone',
+    email: 'alyssa@turbojot.com',
+    phone: '2158218810',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hi! My name is Alyssa and I’d love to invite you to try TurboJot. I actually founded the company. It’s built to automate contact form submissions at scale. Simply upload a list of URLs and TurboJot automatically finds and submits contact forms on those sites. It beats cold email and paid ads on ROI and costs just $0.10 per submission. Powered by a rotating IP network, stealth browser, AI captcha solving, and human like browsing behavior. You can sign up for free and give it a try. I’d really appreciate the support. https://www.turbojot.com/',
+    
+    submittedAt: '2026-03-25T08:07:05.751Z',
+    status: 'new',
+    
   }
 ];
