@@ -167,5 +167,21 @@ export const projects: Project[] = [
     features: ['Wood Grain Finish', 'Soft Close Hinges'],
     turnaroundTime: '3 weeks',
     description: 'Custom Mudroom Cabinet and Bench, with Wood grain texture.',
+  },
+  {
+    id: 'proj_1775057075425_3wdash50m',
+    title: 'ADA Commerical Breakroom',
+    category: 'commercial',
+    images: [
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064204-wecabinetimage2.jpg',
+      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064758-wecabinetimage1.jpg'
+    ],
+    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064204-wecabinetimage2.jpg',
+    location: 'New Orleans',
+    finish: 'Custom Laminate',
+    cabinetStyle: 'Frameless European',
+    features: ['ADA compliant'],
+    turnaroundTime: '3 weeks',
+    description: 'Specially Sourced Laminate on all MDF material, made into custom sized cabinetry.',
   }
 ];
