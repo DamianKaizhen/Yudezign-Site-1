@@ -180,7 +180,7 @@ export const projects: Project[] = [
     location: 'New Orleans',
     finish: 'Custom Laminate',
     cabinetStyle: 'Frameless European',
-    features: ['ADA compliant'],
+    features: ['ADA compliant', 'Soft Close Hinges'],
     turnaroundTime: '3 weeks',
     description: 'Specially Sourced Laminate on all MDF material, made into custom sized cabinetry.',
   }
