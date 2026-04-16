@@ -50,7 +50,7 @@ const Navigation = () => {
       ]
     },
     {
-      name: 'Locations',
+      name: 'Areas Served',
       path: '/locations/houston',
       subLinks: [
         { name: 'Houston', path: '/locations/houston' },

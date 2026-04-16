@@ -44,7 +44,7 @@ const LocationPage: React.FC = () => {
 
   // Breadcrumb items
   const breadcrumbItems = [
-    { label: 'Locations', href: '/locations/houston' },
+    { label: 'Areas Served', href: '/locations/houston' },
     { label: location.name }
   ];
 
