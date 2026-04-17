@@ -195,5 +195,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-04-01T23:17:16.837Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1776460976329_av7sgk6',
+    name: 'JpwUmcCObQuZVbjqaKwdWmj',
+    email: 'peze.q.i.qi1.3@gmail.com',
+    phone: '8497316229',
+    projectType: 'entertainment',
+    timeline: 'planning',
+    message: 'GupIUYHcKqctMSta',
+    
+    submittedAt: '2026-04-17T21:22:56.329Z',
+    status: 'new',
+    
   }
 ];
