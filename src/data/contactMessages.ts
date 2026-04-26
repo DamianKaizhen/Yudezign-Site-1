@@ -208,5 +208,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-04-17T21:22:56.329Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1777205222284_vyxfgnw',
+    name: 'Srinivasan govindan',
+    email: 'srinig1@gmail.com',
+    phone: '763-516-3727',
+    projectType: 'entertainment',
+    timeline: 'asap',
+    message: 'I would like to make a 54” wide built-in media cabinet. Cabinet box is 22” high × 21” deep. It sits on a separate 4” recessed toe-kick platform . So Total base height is 26”.  (22" cabinet + 4" toe kick).  \n\nInclude concealed wiring access from rear-left and provision for LED lighting if possible.\n',
+    
+    submittedAt: '2026-04-26T12:07:02.284Z',
+    status: 'new',
+    
   }
 ];
