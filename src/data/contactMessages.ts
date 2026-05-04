@@ -221,5 +221,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-04-26T12:07:02.284Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1777903986324_11exrzl',
+    name: 'Richie Danforth',
+    email: 'richie.danforth@outlook.com',
+    phone: '7134053587',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hey, I checked your Google Maps listing, and right now you\'re showing up in one location. One. That means every homeowner searching for custom cabinets 20 minutes away from you probably never sees your name.\nOne of our partners, DreamCraft Cabinets, had the same problem. We set them up across 10 zones in Chicagoland, and now they pull 40 to 60 quote requests a month and dominate their market.\nYour craftsmanship is already there. Your visibility isn\'t.\nI can send over the case study with real lead numbers and cost per lead from contractors we currently manage. Reply YES and I\'ll drop it over.',
+    
+    submittedAt: '2026-05-04T14:13:06.325Z',
+    status: 'new',
+    
   }
 ];
