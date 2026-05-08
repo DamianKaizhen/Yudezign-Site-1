@@ -234,5 +234,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-04T14:13:06.325Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1778253984167_1ji1wf8',
+    name: 'Kelsey Higgins',
+    email: 'khiggins@remodel-expert.com',
+    phone: '(304) 535-0874',
+    projectType: 'garage',
+    timeline: '1-2months',
+    message: 'Hello,\n\nSelling the family home can be a challenging experience for everyone involved. It\'s a big change, not just financially but emotionally for the whole family.\n\nMy article provides a roadmap for families to navigate this transition smoothly and with care. It covers practical strategies like open communication, emotional support, and financial planning, all while emphasizing the importance of love, respect, and unity.\n\nI think your readers would find this piece valuable as it offers guidance and support during a potentially difficult time.\n\nWould you be open to receiving the full article for consideration?\n\nThanks a bunch,\nKelsey Higgins\nRemodel-Expert.com\n\n\nP.S. If you’re interested in featuring the article but have a different topic preference, that’s no problem! Please send your idea over, and we can move forward from there. However, if you don’t want me to contact you again, please let me know. My goal is to craft content that resonates with readers while performing strongly across AI and discovery platforms.',
+    
+    submittedAt: '2026-05-08T15:26:24.172Z',
+    status: 'new',
+    
   }
 ];
