@@ -247,5 +247,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-08T15:26:24.172Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1778256620175_nelbr2r',
+    name: 'Noah Beck',
+    email: 'rankingdigitallywithnoah@gmail.com',
+    phone: '6614556004',
+    projectType: 'laundry-mudroom',
+    timeline: 'asap',
+    message: '"I\'m Noah Beck and I work for a Digital Marketing Agency. I\'ve been researching your industry and found your website.I noticed a few issues that may be hindering your potential ranking on Google and your ability to generate online inquiries and sales. I\'ve compiled an analysis of your website showcasing all of these errors. Would you like my Digital Marketing Associate to send you a report? Either way, it is free of cost. It is my hope that he can discuss some of these findings in greater detail. Is there a good time for you to talk next week? \nThanks and best regards, \nNoah Beck, \nWebsite Analyst"',
+    
+    submittedAt: '2026-05-08T16:10:20.176Z',
+    status: 'new',
+    
   }
 ];
