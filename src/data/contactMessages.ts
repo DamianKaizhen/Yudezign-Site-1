@@ -260,5 +260,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-08T16:10:20.176Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1778864197211_alz7hvx',
+    name: 'Kelsey Higgins',
+    email: 'khiggins@remodel-expert.com',
+    phone: '(304) 535-0874',
+    projectType: 'vanity',
+    timeline: '1-2months',
+    message: 'Hi,\n\nI wanted to check if you had a chance to review the article idea I sent over. I believe it could provide great value to your readers during a challenging transition.\n\nIf you already responded, thank you and sorry for the repeat.\n\nBest,\nKelsey',
+    
+    submittedAt: '2026-05-15T16:56:37.211Z',
+    status: 'new',
+    
   }
 ];
