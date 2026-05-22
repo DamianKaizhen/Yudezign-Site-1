@@ -273,5 +273,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-15T16:56:37.211Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1779458176413_n5z5yq5',
+    name: 'rYcOstqRwRhdHuYfv',
+    email: 'ne.da.w.u.n.33.7@gmail.com',
+    phone: '6407006250',
+    projectType: 'closet',
+    timeline: 'planning',
+    message: 'dEKYxeMseNVMwrXUOZIQ',
+    
+    submittedAt: '2026-05-22T13:56:16.413Z',
+    status: 'new',
+    
   }
 ];
