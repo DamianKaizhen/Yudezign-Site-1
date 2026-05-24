@@ -286,5 +286,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-22T13:56:16.413Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1779610414579_bm59x81',
+    name: 'tGQPBNGuzyXzdmAMfwb',
+    email: 'a.h.aj.ip.a.biw81.1@gmail.com',
+    phone: '4156684047',
+    projectType: 'garage',
+    timeline: 'planning',
+    message: 'lewWwUmpouVsUwlzmiLFNqR',
+    
+    submittedAt: '2026-05-24T08:13:34.579Z',
+    status: 'new',
+    
   }
 ];
