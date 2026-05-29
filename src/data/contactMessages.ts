@@ -299,5 +299,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-24T08:13:34.579Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1780069795719_e781xkh',
+    name: 'Miroslav Kovacevic',
+    email: 'mmstudiondesign@gmail.com',
+    phone: '6304563346',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Plywood Box, Blanco SM fronts.\nPick Up ',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1780069794829-166%20E%20Fork%20Rd.pdf'],
+    submittedAt: '2026-05-29T15:49:55.719Z',
+    status: 'new',
+    
   }
 ];
