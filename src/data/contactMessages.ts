@@ -312,5 +312,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-29T15:49:55.719Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1780093721489_lkto3ib',
+    name: 'Aliyah Owens',
+    email: 'AOwens@happyhomeowner.info',
+    phone: '(712) 255-4041',
+    projectType: 'entertainment',
+    timeline: 'asap',
+    message: 'Hello there,\n\nMaintaining your home throughout the year doesn’t have to be overwhelming. Simple, proactive tasks can prevent big problems and keep your space in great shape.\n\nI’m writing an article that highlights key annual maintenance tasks, from HVAC checks to gutter cleaning, designed to help homeowners stay ahead of repairs and maintain a safe, efficient home. It’s a must-read for anyone wanting to protect their investment!\n\nPlease consider publishing this on your website. Let me know if you’d like to take a look at the first draft so I can send it over to you right away.\n\nThank you!\nAliyah Owens\n\n\nLearn about the joys of homeownership by checking out my website: happyhomeowner.info!\n\n\nP.S. If you’d like to suggest a different topic, please do so. I’m happy to write on a topic that is the best fit for your website. I create content that’s easy for readers to enjoy and for smart tools to discover, helping your articles reach wider audiences.',
+    
+    submittedAt: '2026-05-29T22:28:41.489Z',
+    status: 'new',
+    
   }
 ];
