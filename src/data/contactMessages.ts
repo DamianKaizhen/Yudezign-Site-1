@@ -325,5 +325,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-05-29T22:28:41.489Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1780753524731_epo6cl6',
+    name: 'Natalie Jones',
+    email: 'information@homeownerbliss.info',
+    phone: '(303) 358-6531',
+    projectType: 'laundry-mudroom',
+    timeline: '3-6months',
+    message: 'Hi,\n\nI wanted to quickly follow up on the article I mentioned earlier about making rental properties stand out. I think it could be a great addition to your site and would love to hear your thoughts!\n\nIf you\'ve already replied, I apologize for missing it and thank you for your time.\n\nBest,\nNatalie Jones\nHomeownerbliss.info',
+    
+    submittedAt: '2026-06-06T13:45:24.732Z',
+    status: 'new',
+    
   }
 ];
