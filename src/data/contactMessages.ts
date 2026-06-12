@@ -338,5 +338,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-06-06T13:45:24.732Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1781277969224_2wav8jh',
+    name: 'Trever Gray',
+    email: 'trever.gray@sendproud.com',
+    phone: '2155394452',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hi, I’m Trever Gray, the founder of Send Proud. We help businesses achieve measurable results like booked meetings, website traffic, and user sign-ups through highly targeted outreach powered by our database of 500M+ professional profiles and 250M+ company profiles. On our call, we’ll walk you through a clear strategy tailored specifically to your goals, whether that’s booked meetings, traffic, user sign-ups, or another measurable outcome that matters to your business. You choose the result, and we build the system to deliver it. We’re confident in our ability to execute, and if we fall short by even one agreed result, we’ll refund you in full. You can schedule a time here: https://calendly.com/sendproud/30min',
+    
+    submittedAt: '2026-06-12T15:26:09.232Z',
+    status: 'new',
+    
   }
 ];
