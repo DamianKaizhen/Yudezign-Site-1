@@ -244,5 +244,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-01-16T17:15:30.733Z',
     status: 'new',
     description: 'Clean up the room and make a nice mini kitchen+ bar here',
+  },
+  {
+    id: 'vis_1781641281341_bgqff79',
+    name: 'd',
+    email: 'damian.k@yudezign.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjon0amejk', name: 'Luxe Black', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762207110927-HG_Luxe_Black.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1781641280670-1772673222886-IMG_1875.JPG',
+    submittedAt: '2026-06-16T20:21:21.345Z',
+    status: 'new',
+    description: 'change the colors of all cabinet finishes.',
   }
 ];
