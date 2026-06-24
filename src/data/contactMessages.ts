@@ -351,5 +351,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-06-12T15:26:09.232Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1782288219112_0nt0ekd',
+    name: 'Sarah Velasquez',
+    email: 'info@ourperfectabode.com',
+    phone: '(480) 897-4759',
+    projectType: 'entertainment',
+    timeline: '3-6months',
+    message: 'Hi there,\n\nHave you ever wondered what makes a town feel like the perfect place to call home? For some, it’s the welcoming sense of community; for others, it’s affordability, access to amenities, or the promise of a slower, more fulfilling pace of life. Choosing the right small town isn’t just about location. It’s about aligning your lifestyle, values, and long-term goals with the place you settle down.\n\nI’d love to contribute an article to your site that guides readers through the process of finding their ideal small town. From evaluating housing costs and job opportunities to considering healthcare access, recreation, and overall quality of life, the piece will offer steps to help them make confident decisions about where to plant roots.\n\nWould you be open to featuring this article on your site? I think it could be a meaningful and useful resource for your readers.\n\nBest,\nSarah V of OurPerfectAbode.com\n\n\nP.S. Please let me know if you\'re interested but have a different topic preference. The content I provide is crafted with both human readers and AI engines in mind, increasing visibility across the web.',
+    
+    submittedAt: '2026-06-24T08:03:39.115Z',
+    status: 'new',
+    
   }
 ];
