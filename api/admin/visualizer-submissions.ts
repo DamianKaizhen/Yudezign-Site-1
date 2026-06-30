@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { jwtVerify } from 'jose';
 import { Octokit } from '@octokit/rest';
+import { put } from '@vercel/blob';
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'yudezign_admin_jwt_secret_2025_secure_random_key_8f4a3c2d1e9b7a6f'
@@ -219,6 +220,42 @@ async function commitVisualizerSubmissionsToGitHub(
   });
 }
 
+/**
+ * Persist a generated image to Vercel Blob and return its public URL.
+ *
+ * The webhook returns the image either as a base64 data URL or as an already-hosted
+ * URL. We must NOT store base64 data URLs inline in visualizerSubmissions.ts: each one
+ * is ~800KB, and the file is read/eval'd/rewritten on every submission. Once a couple
+ * of images were stored inline the file ballooned past ~1.6MB and the GitHub
+ * read-modify-write cycle stopped completing within Vercel's function limit, which is
+ * why image saving silently broke. Uploading to Blob keeps the data file to small URLs.
+ */
+async function persistGeneratedImage(imageUrlOrDataUrl: string, submissionId: string): Promise<string> {
+  // Already a hosted URL (webhook returned a link, not base64) - store as-is.
+  if (!imageUrlOrDataUrl.startsWith('data:')) {
+    return imageUrlOrDataUrl;
+  }
+
+  const match = imageUrlOrDataUrl.match(/^data:(image\/[a-zA-Z0-9.+-]+);base64,(.*)$/);
+  if (!match) {
+    // Unparseable data URL - return as-is rather than throwing, caller handles fallback.
+    return imageUrlOrDataUrl;
+  }
+
+  const contentType = match[1];
+  const base64 = match[2];
+  const ext = contentType.split('/')[1].replace('jpeg', 'jpg').split('+')[0];
+  const buffer = Buffer.from(base64, 'base64');
+
+  const blob = await put(
+    `visualizer/generated-${submissionId}-${Date.now()}.${ext}`,
+    buffer,
+    { access: 'public', contentType }
+  );
+
+  return blob.url;
+}
+
 async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promise<string | null> {
   const webhookUrl = process.env.VISUALIZER_WEBHOOK_URL;
   const webhookUser = process.env.VISUALIZER_WEBHOOK_USER;
@@ -415,25 +452,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         sendToWebhookAndGetImage(newSubmission),
       ]);
 
-      // If we got a generated image, update the submission with it
+      // If we got a generated image, store it in Blob (NOT inline) and record the URL.
       if (generatedImage) {
-        newSubmission.generatedImage = generatedImage;
-        // Update the submission in GitHub with the generated image
-        const updatedSubmissions = await getVisualizerSubmissionsFromGitHub();
-        const idx = updatedSubmissions.findIndex(s => s.id === newSubmission.id);
-        if (idx !== -1) {
-          updatedSubmissions[idx].generatedImage = generatedImage;
-          await commitVisualizerSubmissionsToGitHub(
-            updatedSubmissions,
-            `Add generated image for ${newSubmission.name}`
-          );
+        let storedImageUrl: string | null = null;
+        try {
+          storedImageUrl = await persistGeneratedImage(generatedImage, newSubmission.id);
+        } catch (blobError) {
+          // Don't fall back to inline base64 - that's exactly what broke this feature.
+          // The record is already saved; the image just won't be persisted to admin.
+          console.error('Failed to upload generated image to Blob:', blobError);
+        }
+
+        if (storedImageUrl) {
+          newSubmission.generatedImage = storedImageUrl;
+          // Update the submission in GitHub with the generated image URL
+          const updatedSubmissions = await getVisualizerSubmissionsFromGitHub();
+          const idx = updatedSubmissions.findIndex(s => s.id === newSubmission.id);
+          if (idx !== -1) {
+            updatedSubmissions[idx].generatedImage = storedImageUrl;
+            await commitVisualizerSubmissionsToGitHub(
+              updatedSubmissions,
+              `Add generated image for ${newSubmission.name}`
+            );
+          }
         }
       }
 
       return res.status(200).json({
         success: true,
         data: newSubmission,
-        generatedImage, // Base64 data URL of the generated visualization
+        generatedImage, // Original image (data URL or link) for immediate browser display
         message: 'Visualizer submission saved successfully',
       });
     }
