@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, Wand2, ArrowRight } from 'lucide-react';
+import { Check, Wand2, ArrowRight, Palette, FileText } from 'lucide-react';
 import FinishSwatch from '../../components/ui/FinishSwatch';
 import { finishes } from '../../data/finishes';
 import { finishStyles } from '../../data/finishStyles';
@@ -160,6 +160,43 @@ const Finishes = () => {
                 ))}
               </div>
             )}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Full Color Catalog CTA */}
+      <section className="py-20 px-4 bg-luxury-white border-t border-luxury-sand">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-luxury-cream rounded-lg p-10 md:p-12 shadow-luxury text-center"
+          >
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Palette className="w-8 h-8 text-primary" />
+            </div>
+            <h2 className="text-h2 font-medium text-luxury-gray-900 mb-4">
+              Looking for More Colors?
+            </h2>
+            <p className="text-body-lg text-luxury-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+              The finishes above are just a selection. Browse our complete finishes
+              catalog for the full range of colors and materials we offer.
+            </p>
+            <a
+              href="/YuDeZign_Finishes_Catalog.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <FileText className="w-5 h-5" />
+              See More Colors We Offer
+              <ArrowRight className="w-5 h-5" />
+            </a>
+            <p className="text-sm text-luxury-gray-500 mt-4">
+              Opens our full catalog (PDF) — view online or download
+            </p>
           </motion.div>
         </div>
       </section>
