@@ -364,5 +364,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-06-24T08:03:39.115Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1783046819704_48j7pxk',
+    name: 'Sarah Velasquez',
+    email: 'sarah.velasquez@ourperfectabode.com',
+    phone: '(480) 897-4759',
+    projectType: 'laundry-mudroom',
+    timeline: 'asap',
+    message: 'Hi there,\n\nI wanted to follow up to see if you had a chance to consider my article idea on leveraging one\'s home as an income source. I believe it could offer valuable insights to your readers.\n\nIf you already responded, thanks for that and sorry for the repeat.',
+    
+    submittedAt: '2026-07-03T02:46:59.705Z',
+    status: 'new',
+    
   }
 ];
