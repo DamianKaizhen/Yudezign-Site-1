@@ -379,7 +379,7 @@ export const services: ServiceData[] = [
     icon: 'Bath',
     portfolioCategory: 'vanities',
     overview:
-      'Custom bathroom vanities built for Houston\'s humidity with marine-grade materials. From compact powder rooms to luxurious double vanities, sized perfectly for your plumbing layout.',
+      'Custom vanities engineered for Houston\'s humidity — from compact powder rooms to double-sink primary baths, each built from moisture-resistant plywood, sized to your plumbing, and finished in any of our 50-plus colours with soft-close doors and drawers standard.',
     designOptions: [
       {
         title: 'Floating Vanity',
@@ -501,7 +501,7 @@ export const services: ServiceData[] = [
     icon: 'Laptop',
     portfolioCategory: 'custom',
     overview:
-      'Create your ideal remote workspace with custom built-in office systems. Integrated desks, file storage, display shelving, and cable management designed for productivity.',
+      'Built-in office systems designed around the way you work — integrated desks, file storage, display shelving and tidy cable management, engineered from 3/4" plywood and finished to match the rest of your home.',
     designOptions: [
       {
         title: 'Wall Unit System',
@@ -618,7 +618,7 @@ export const services: ServiceData[] = [
     icon: 'Wrench',
     portfolioCategory: 'custom',
     overview:
-      'Heavy-duty garage storage designed for Houston. Floating cabinets protect against flooding, durable finishes withstand temperature swings, integrated workbenches for projects.',
+      'Heavy-duty garage storage built for Houston. Floating cabinets keep everything off the floor and safe from flooding, durable finishes shrug off temperature swings, and integrated workbenches give every project a home.',
     designOptions: [
       {
         title: 'Wall Storage System',
@@ -735,7 +735,7 @@ export const services: ServiceData[] = [
     icon: 'Tv',
     portfolioCategory: 'custom',
     overview:
-      'Modern entertainment centers with clean cable management and AV equipment storage. Floating shelves, hidden wire raceways, and speaker integration for a sophisticated media experience.',
+      'Media walls and entertainment centers with room for every component and none of the clutter. Floating consoles, hidden wire raceways and integrated lighting create a sophisticated centerpiece — finished in matte, woodgrain or high-gloss to suit the room.',
     designOptions: [
       {
         title: 'Floating Media Wall',
@@ -852,7 +852,7 @@ export const services: ServiceData[] = [
     icon: 'Shirt',
     portfolioCategory: 'custom',
     overview:
-      'Maximize your laundry room with custom storage for detergents, cleaning supplies, and hanging solutions. Countertops over machines for folding, pull-out hampers, and multi-function mudroom integration.',
+      'Custom laundry and mudroom storage that works as hard as the room does — countertops over the machines for folding, pull-out hampers, hanging space and a cabinet for every supply, built from durable, moisture-resistant materials.',
     designOptions: [
       {
         title: 'Over Washer/Dryer',
