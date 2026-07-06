@@ -387,13 +387,19 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
  * if that returns null (missing key, generation error, or timeout) it falls back
  * to the legacy n8n webhook. Returns a data URL / hosted URL, or null if both fail.
  */
-async function generateWithFallback(submission: VisualizerSubmission): Promise<string | null> {
+async function generateWithFallback(
+  submission: VisualizerSubmission
+): Promise<{ image: string | null; diag: string }> {
   const direct = await generateVisualization(submission);
-  if (direct) {
-    return direct;
+  if (direct.image) {
+    return { image: direct.image, diag: 'gemini:ok' };
   }
-  console.warn('Direct Gemini generation unavailable — falling back to n8n webhook.');
-  return sendToWebhookAndGetImage(submission);
+  console.warn(`Direct Gemini generation unavailable (${direct.error}) — falling back to n8n webhook.`);
+  const webhookImage = await sendToWebhookAndGetImage(submission);
+  return {
+    image: webhookImage,
+    diag: `gemini:${direct.error || 'null'} | n8n:${webhookImage ? 'ok' : 'null'}`,
+  };
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -470,13 +476,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       submissions.push(newSubmission);
 
       // Save to GitHub while the image is generated (direct Gemini, n8n fallback)
-      const [, generatedImage] = await Promise.all([
+      const [, genResult] = await Promise.all([
         commitVisualizerSubmissionsToGitHub(
           submissions,
           `New visualizer submission from ${newSubmission.name}`
         ),
         generateWithFallback(newSubmission),
       ]);
+      const generatedImage = genResult.image;
 
       // If we got a generated image, store it in Blob (NOT inline) and record the URL.
       if (generatedImage) {
@@ -512,6 +519,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         // only if the Blob upload failed (newSubmission.generatedImage unset).
         generatedImage: newSubmission.generatedImage || generatedImage,
         message: 'Visualizer submission saved successfully',
+        // TEMPORARY diagnostics for debugging the generation path — remove once verified.
+        _diagnostics: {
+          geminiKeyPresent: !!process.env.GEMINI_API_KEY,
+          webhookConfigured: !!process.env.VISUALIZER_WEBHOOK_URL,
+          outcome: genResult.diag,
+        },
       });
     }
 

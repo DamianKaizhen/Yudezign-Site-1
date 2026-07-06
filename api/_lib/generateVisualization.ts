@@ -35,6 +35,13 @@ export interface VisualizationInput {
   description?: string;
 }
 
+export interface GenerationResult {
+  /** The generated image as a data URL, or null if generation did not produce one. */
+  image: string | null;
+  /** A short reason when image is null (surfaced for diagnostics; never contains secrets). */
+  error?: string;
+}
+
 /**
  * System prompt ported verbatim from the n8n Gemini node. It constrains the
  * render to what YuDeZign can actually manufacture (European frameless slab
@@ -234,15 +241,15 @@ function extractImageDataUrl(parts: Array<{ inlineData?: { mimeType?: string; da
  * Generate a visualization for a submission. Returns a base64 image data URL,
  * or `null` if generation is not possible / fails (caller falls back to n8n).
  */
-export async function generateVisualization(input: VisualizationInput): Promise<string | null> {
+export async function generateVisualization(input: VisualizationInput): Promise<GenerationResult> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     console.warn('GEMINI_API_KEY not configured — skipping direct generation, will fall back.');
-    return null;
+    return { image: null, error: 'GEMINI_API_KEY not configured' };
   }
   if (!input.roomImage || !input.finishes?.length) {
     console.warn('Visualization input missing room image or finishes — skipping direct generation.');
-    return null;
+    return { image: null, error: 'missing room image or finishes' };
   }
 
   const controller = new AbortController();
@@ -275,19 +282,21 @@ export async function generateVisualization(input: VisualizationInput): Promise<
     const parts = response.candidates?.[0]?.content?.parts ?? [];
     const dataUrl = extractImageDataUrl(parts);
     if (!dataUrl) {
-      console.error('Gemini returned no image part; response text:', response.text?.slice(0, 500));
-      return null;
+      const text = response.text?.slice(0, 300) || '';
+      console.error('Gemini returned no image part; response text:', text);
+      return { image: null, error: `no image in Gemini response${text ? `: ${text}` : ''}` };
     }
 
     console.log('Direct Gemini generation succeeded, data URL length:', dataUrl.length);
-    return dataUrl;
+    return { image: dataUrl };
   } catch (error) {
     if (error instanceof Error && error.name === 'AbortError') {
       console.error('Direct Gemini generation timed out.');
-    } else {
-      console.error('Direct Gemini generation failed:', error);
+      return { image: null, error: `timed out after ${GENERATION_TIMEOUT_MS}ms` };
     }
-    return null;
+    const message = error instanceof Error ? error.message : String(error);
+    console.error('Direct Gemini generation failed:', error);
+    return { image: null, error: `gemini call failed: ${message}` };
   } finally {
     clearTimeout(timeout);
   }
