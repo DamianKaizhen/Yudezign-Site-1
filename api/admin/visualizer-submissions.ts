@@ -2,6 +2,13 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { jwtVerify } from 'jose';
 import { Octokit } from '@octokit/rest';
 import { put } from '@vercel/blob';
+import { generateVisualization } from '../_lib/generateVisualization';
+
+// Image generation runs synchronously inside this request (Gemini can take
+// 30–60s+). Raise the timeout to the Vercel Hobby + Fluid Compute ceiling.
+export const config = {
+  maxDuration: 300,
+};
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || 'yudezign_admin_jwt_secret_2025_secure_random_key_8f4a3c2d1e9b7a6f'
@@ -345,7 +352,12 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
 
     // Check if response is JSON (might contain image URL or base64)
     if (contentType.includes('application/json')) {
-      const jsonResponse = await response.json();
+      const jsonResponse = (await response.json()) as {
+        image?: string;
+        generatedImage?: string;
+        data?: { image?: string };
+        url?: string;
+      };
       console.log('Received JSON response from webhook:', Object.keys(jsonResponse));
 
       // Check common fields where image might be returned
@@ -368,6 +380,20 @@ async function sendToWebhookAndGetImage(submission: VisualizerSubmission): Promi
     }
     return null;
   }
+}
+
+/**
+ * Produce the visualization image. Tries the in-house direct Gemini call first;
+ * if that returns null (missing key, generation error, or timeout) it falls back
+ * to the legacy n8n webhook. Returns a data URL / hosted URL, or null if both fail.
+ */
+async function generateWithFallback(submission: VisualizerSubmission): Promise<string | null> {
+  const direct = await generateVisualization(submission);
+  if (direct) {
+    return direct;
+  }
+  console.warn('Direct Gemini generation unavailable — falling back to n8n webhook.');
+  return sendToWebhookAndGetImage(submission);
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -443,13 +469,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const submissions = await getVisualizerSubmissionsFromGitHub();
       submissions.push(newSubmission);
 
-      // Save to GitHub while waiting for webhook to generate image
+      // Save to GitHub while the image is generated (direct Gemini, n8n fallback)
       const [, generatedImage] = await Promise.all([
         commitVisualizerSubmissionsToGitHub(
           submissions,
           `New visualizer submission from ${newSubmission.name}`
         ),
-        sendToWebhookAndGetImage(newSubmission),
+        generateWithFallback(newSubmission),
       ]);
 
       // If we got a generated image, store it in Blob (NOT inline) and record the URL.
@@ -481,7 +507,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({
         success: true,
         data: newSubmission,
-        generatedImage, // Original image (data URL or link) for immediate browser display
+        // Prefer the hosted Blob URL for browser display: a base64 data URL can
+        // exceed Vercel's 4.5MB response-body cap. Fall back to the raw image
+        // only if the Blob upload failed (newSubmission.generatedImage unset).
+        generatedImage: newSubmission.generatedImage || generatedImage,
         message: 'Visualizer submission saved successfully',
       });
     }
