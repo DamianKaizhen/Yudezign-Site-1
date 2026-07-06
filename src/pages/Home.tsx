@@ -12,7 +12,16 @@ import { useEffect, useState } from 'react';
 import type { Project } from '../types';
 
 const Home = () => {
-  const featuredProjects = projects.slice(0, 4);
+  // Curated homepage "Recent Projects" (explicit so it doesn't depend on data order).
+  const featuredIds = [
+    'proj_1762210660767_vdveltc0r', // Dining Room Cabinet
+    'proj_1762210921334_53gbli33o', // Mud Room Cabinet
+    'proj_1771963784295_sst4cse4d', // Grand Kitchen
+    'proj_1762211365860_abfq3mufl', // Floating TV Cabinet
+  ];
+  const featuredProjects = featuredIds
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p): p is Project => Boolean(p));
 
   // Mouse tracking for interactive animations
   const mouseX = useMotionValue(0);
