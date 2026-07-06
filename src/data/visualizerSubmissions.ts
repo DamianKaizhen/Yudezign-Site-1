@@ -263,5 +263,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1783374054068-5eb8a92fc537d0580eb13525fb100514.jpg',
     submittedAt: '2026-07-06T21:40:54.410Z',
     status: 'new',
+  },
+  {
+    id: 'vis_1783374179584_kysbmts',
+    name: 'Gemini Integration Test',
+    email: 'damian.k@yudezign.com',
+    phone: '0000000000',
+    finishes: [{ id: 'f_test', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767223938035-Image_20250424145342.jpg',
+    submittedAt: '2026-07-06T21:42:59.585Z',
+    status: 'new',
+    description: 'Integration test - please ignore',
   }
 ];
