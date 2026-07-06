@@ -25,6 +25,9 @@ const Home = () => {
   // Hero cursor reveal effect
   const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
 
+  // On mobile there is no cursor, so we skip the reveal animation and just show the kitchen
+  const [isMobile, setIsMobile] = useState(false);
+
   // Project modal state
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,6 +63,15 @@ const Home = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
+  // Track viewport size so we can disable the cursor-reveal effect on mobile
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const updateIsMobile = () => setIsMobile(mql.matches);
+    updateIsMobile();
+    mql.addEventListener('change', updateIsMobile);
+    return () => mql.removeEventListener('change', updateIsMobile);
+  }, []);
+
   return (
     <>
       <SEO
@@ -75,20 +87,26 @@ const Home = () => {
         {/* Base kitchen image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1920&q=90"
-            alt="European Frameless Kitchen"
+            src="/portfolio/1772673222886-IMG_1875.jpg"
+            alt="Custom European frameless kitchen crafted by YuDezign in Houston"
             className="w-full h-full object-cover"
           />
         </div>
 
-        {/* Green overlay with cursor reveal effect */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-[#0a1f1a] via-[#0f4c3a] to-[#1a2f2a] transition-all duration-100"
-          style={{
-            maskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
-            WebkitMaskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
-          }}
-        />
+        {/* Green overlay: cursor-reveal on desktop, static legibility scrim on mobile */}
+        {isMobile ? (
+          /* Mobile: no hiding animation — just show the kitchen with a light branded scrim for text legibility */
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1f1a]/70 via-[#0f4c3a]/40 to-[#0a1f1a]/75 pointer-events-none" />
+        ) : (
+          /* Desktop: reduced-opacity green so the kitchen is always faintly visible; the cursor reveals more */
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-[#0a1f1a] via-[#0f4c3a] to-[#1a2f2a] opacity-[0.82] transition-all duration-100"
+            style={{
+              maskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
+              WebkitMaskImage: `radial-gradient(circle 200px at ${cursorPosition.x}% ${cursorPosition.y}%, transparent 0%, transparent 100px, black 200px)`,
+            }}
+          />
+        )}
 
         {/* Noise/grain texture overlay */}
         <div
