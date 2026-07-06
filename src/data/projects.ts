@@ -130,6 +130,7 @@ export const projects: Project[] = [
       '/portfolio/1772673253312-IMG_1830.jpg'
     ],
     thumbnail: '/portfolio/1772673222886-IMG_1875.jpg',
+    videos: ['/portfolio/videos/kitchen-grand-tour.mp4'],
     location: 'College Station',
     finish: 'Acacia Honey',
     cabinetStyle: 'Frameless European',

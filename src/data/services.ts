@@ -24,6 +24,8 @@ export const services: ServiceData[] = [
       'modern kitchen cabinets'
     ],
     heroImage: '/portfolio/1772673222886-IMG_1875.jpg',
+    video: '/portfolio/videos/kitchen-grand-tour.mp4',
+    videoPoster: '/portfolio/kitchen-grand-tour-poster.jpg',
     icon: 'ChefHat',
     portfolioCategory: 'kitchens',
     overview:
@@ -375,7 +377,7 @@ export const services: ServiceData[] = [
     ],
     heroImage: '/portfolio/vanity-oak-tour.jpg',
     video: '/portfolio/videos/vanity-oak-tour.mp4',
-    videoPoster: '/portfolio/vanity-oak-tour.jpg',
+    videoPoster: '/portfolio/vanity-oak-tour-poster.jpg',
     icon: 'Bath',
     portfolioCategory: 'vanities',
     overview:
