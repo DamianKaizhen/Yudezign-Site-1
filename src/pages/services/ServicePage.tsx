@@ -16,7 +16,8 @@ import {
   Truck,
   Clock,
   MapPin,
-  Layout
+  Layout,
+  Play
 } from 'lucide-react';
 
 const ServicePage: React.FC = () => {
@@ -55,6 +56,33 @@ const ServicePage: React.FC = () => {
       {/* Hero */}
       <ServiceHero service={service} />
 
+      {/* Marketing Video */}
+      {service.video && (
+        <section className="py-16 bg-slate-50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <Play className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                See Our Work in Action
+              </h2>
+              <p className="text-lg text-slate-600">
+                A quick look at custom projects we've designed and built across Houston.
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-2xl bg-black">
+              <video
+                src={service.video}
+                poster={service.videoPoster}
+                className="w-full h-auto"
+                controls
+                playsInline
+                preload="metadata"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Design Options */}
       {service.designOptions && service.designOptions.length > 0 && (
         <section className="py-16 bg-white">
@@ -87,6 +115,50 @@ const ServicePage: React.FC = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Organizers & Accessories */}
+      {service.organizers && service.organizers.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <Package className="w-12 h-12 text-primary mx-auto mb-4" />
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Organizers &amp; Accessories
+              </h2>
+              <p className="text-lg text-slate-600">
+                Purpose-built inserts fitted around the way you live
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {service.organizers.map((org, idx: number) => (
+                <div key={idx} className="bg-slate-50 rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all">
+                  <div className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0 mt-1" />
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-900 mb-1">{org.name}</h3>
+                      <p className="text-sm text-slate-600">{org.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {service.hardwareOptions && service.hardwareOptions.length > 0 && (
+              <div className="mt-10 text-center">
+                <p className="text-sm font-medium text-slate-500 mb-3">Hardware Finishes</p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {service.hardwareOptions.map((hw: string, idx: number) => (
+                    <span key={idx} className="px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-700 text-sm font-medium shadow-sm">
+                      {hw}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}

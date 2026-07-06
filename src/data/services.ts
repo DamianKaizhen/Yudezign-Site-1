@@ -245,11 +245,22 @@ export const services: ServiceData[] = [
       'closet organization houston',
       'wardrobe systems houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1920&q=80',
+    heroImage: '/portfolio/closet-greige-gold-1.jpg',
     icon: 'ShoppingBag',
     portfolioCategory: 'closets',
     overview:
-      'Transform your closet into a luxury boutique with custom organizational systems. Maximize space with adjustable shelving, drawer inserts, and accessory organizers designed for your specific wardrobe.',
+      'From a tidy reach-in to a walk-in dressing room, YuDeZign closets are built from the same cabinet-grade materials as our kitchens — fitted with purpose-built organizers designed around the way you live.',
+    video: '/portfolio/videos/closet-collage.mp4',
+    videoPoster: '/portfolio/closet-collage-poster.jpg',
+    organizers: [
+      { name: 'Clothes Bars', description: 'Single or double-height hanging.' },
+      { name: 'Shoe Racks', description: 'Angled shelves, every pair in view.' },
+      { name: 'Jewelry Drawers', description: 'Felt-lined trays for fine pieces.' },
+      { name: 'Pants Racks', description: 'Pull-out bars, wrinkle-free.' },
+      { name: 'Wire Baskets', description: 'Ventilated pull-outs for essentials.' },
+      { name: 'Laundry Hampers', description: 'Concealed, removable bins.' },
+    ],
+    hardwareOptions: ['Brushed Nickel', 'Polished Chrome', 'Matte Black'],
     designOptions: [
       {
         title: 'Walk-In Master Closet',
