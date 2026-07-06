@@ -296,5 +296,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-07-06T22:03:07.048Z',
     status: 'new',
     description: 'model test',
+  },
+  {
+    id: 'vis_1783375425777_x2sasnq',
+    name: 'Model Test',
+    email: 'damian.k@yudezign.com',
+    phone: '0000000000',
+    finishes: [{ id: 'f_test', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767223938035-Image_20250424145342.jpg',
+    submittedAt: '2026-07-06T22:03:45.777Z',
+    status: 'new',
+    description: 'model test',
   }
 ];
