@@ -23,11 +23,11 @@ export const services: ServiceData[] = [
       'kitchen cabinet makers houston',
       'modern kitchen cabinets'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80',
+    heroImage: '/portfolio/1772673222886-IMG_1875.jpg',
     icon: 'ChefHat',
     portfolioCategory: 'kitchens',
     overview:
-      'Transform your kitchen with custom European frameless cabinets. Engineered for Houston\'s climate with moisture-resistant cores, our cabinets offer 10-15% more storage than traditional framed construction.',
+      'Kitchen and casework cabinetry in 50+ finishes — engineered from 3/4" plywood, finished your way, and delivered from our Houston shop in as little as two weeks. Frameless European construction gives you 10-15% more storage than traditional framed cabinets.',
     longDescription:
       'Modern kitchens have evolved beyond the traditional "work triangle" to organized work zones. Our custom kitchen cabinets are designed to perfectly engineer prep zones, cooking zones, cleanup zones, and consumable storage - something impossible with stock cabinets limited to 3-inch increments.',
     designOptions: [
@@ -373,7 +373,9 @@ export const services: ServiceData[] = [
       'double vanity cabinets',
       'floating vanity houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1920&q=80',
+    heroImage: '/portfolio/vanity-oak-tour.jpg',
+    video: '/portfolio/videos/vanity-oak-tour.mp4',
+    videoPoster: '/portfolio/vanity-oak-tour.jpg',
     icon: 'Bath',
     portfolioCategory: 'vanities',
     overview:
@@ -495,7 +497,7 @@ export const services: ServiceData[] = [
       'desk and cabinets houston',
       'home office furniture houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=1920&q=80',
+    heroImage: '/portfolio/1762210646930-Dining-Room.jpg',
     icon: 'Laptop',
     portfolioCategory: 'custom',
     overview:
@@ -729,7 +731,7 @@ export const services: ServiceData[] = [
       'tv wall unit houston',
       'entertainment cabinet houston'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1920&q=90',
+    heroImage: '/portfolio/1762211335381-IMG_9153.jpg',
     icon: 'Tv',
     portfolioCategory: 'custom',
     overview:
@@ -846,7 +848,7 @@ export const services: ServiceData[] = [
       'custom laundry cabinets',
       'utility room cabinets'
     ],
-    heroImage: 'https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=1920&q=90',
+    heroImage: '/portfolio/1762210910064-Mudroom.jpg',
     icon: 'Shirt',
     portfolioCategory: 'custom',
     overview:
