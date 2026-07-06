@@ -253,5 +253,15 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-06-16T20:21:21.345Z',
     status: 'new',
     description: 'change the colors of all cabinet finishes.',
+  },
+  {
+    id: 'vis_1783374054410_n8o0yyj',
+    name: 'd',
+    email: 'damian.k@yudezign.com',
+    phone: '1234567890',
+    finishes: [{ id: 'f_mhjl7qjb22u', name: 'Acacia Honey', imageUrl: 'https://asearepsd4iqjdj2.public.blob.vercel-storage.com/1762201356612-Acacia_Honey.png' }, { id: 'f_mhjof2j18je', name: 'First Class', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206739548-First_Class.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1783374054068-5eb8a92fc537d0580eb13525fb100514.jpg',
+    submittedAt: '2026-07-06T21:40:54.410Z',
+    status: 'new',
   }
 ];
