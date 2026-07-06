@@ -274,5 +274,16 @@ export const visualizerSubmissions: VisualizerSubmission[] = [
     submittedAt: '2026-07-06T21:42:59.585Z',
     status: 'new',
     description: 'Integration test - please ignore',
+  },
+  {
+    id: 'vis_1783374738392_2v99shz',
+    name: 'Diag Test',
+    email: 'damian.k@yudezign.com',
+    phone: '0000000000',
+    finishes: [{ id: 'f_test', name: 'Vicenza Oak', imageUrl: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762206972188-Vicenza_Oak.png' }],
+    roomImage: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767223938035-Image_20250424145342.jpg',
+    submittedAt: '2026-07-06T21:52:18.392Z',
+    status: 'new',
+    description: 'diagnostic',
   }
 ];
