@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Clock, Package, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Project } from '../../types';
 
 interface ProjectModalProps {
@@ -9,10 +9,24 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+type MediaItem = { type: 'image' | 'video'; src: string };
+
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Reset to the first slide whenever a different project is opened.
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [project?.id]);
 
   if (!project) return null;
+
+  // Unified gallery: photos first, then any videos.
+  const media: MediaItem[] = [
+    ...project.images.map((src) => ({ type: 'image' as const, src })),
+    ...(project.videos ?? []).map((src) => ({ type: 'video' as const, src })),
+  ];
+  const current = media[currentIndex] ?? media[0];
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -21,15 +35,11 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
   };
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === 0 ? project.images.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? media.length - 1 : prev - 1));
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === project.images.length - 1 ? 0 : prev + 1
-    );
+    setCurrentIndex((prev) => (prev === media.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -59,16 +69,27 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
               <X className="w-6 h-6 text-luxury-gray-700" />
             </button>
 
-            {/* Image Gallery */}
-            <div className="relative aspect-[16/10] bg-luxury-gray-100">
-              <img
-                src={project.images[currentImageIndex]}
-                alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover"
-              />
+            {/* Media Gallery (images + videos) */}
+            <div className="relative aspect-[16/10] bg-luxury-gray-900">
+              {current?.type === 'video' ? (
+                <video
+                  key={current.src}
+                  src={current.src}
+                  className="w-full h-full object-contain bg-black"
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
+              ) : (
+                <img
+                  src={current?.src}
+                  alt={`${project.title} - Image ${currentIndex + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              )}
 
-              {/* Image Navigation - Only show if multiple images */}
-              {project.images.length > 1 && (
+              {/* Navigation - Only show if multiple media items */}
+              {media.length > 1 && (
                 <>
                   {/* Previous Button */}
                   <button
@@ -92,23 +113,23 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                     </svg>
                   </button>
 
-                  {/* Image Counter */}
+                  {/* Media Counter */}
                   <div className="absolute bottom-4 right-4 px-4 py-2 bg-black/60 backdrop-blur-sm rounded-full text-white text-sm font-medium">
-                    {currentImageIndex + 1} / {project.images.length}
+                    {currentIndex + 1} / {media.length}
                   </div>
 
                   {/* Thumbnail Dots */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                    {project.images.map((_, index) => (
+                    {media.map((item, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          index === currentImageIndex
+                        onClick={() => setCurrentIndex(index)}
+                        className={`h-2 rounded-full transition-all ${
+                          index === currentIndex
                             ? 'bg-white w-6'
-                            : 'bg-white/50 hover:bg-white/75'
+                            : `w-2 bg-white/50 hover:bg-white/75 ${item.type === 'video' ? 'ring-1 ring-white/70' : ''}`
                         }`}
-                        aria-label={`Go to image ${index + 1}`}
+                        aria-label={`Go to ${item.type} ${index + 1}`}
                       />
                     ))}
                   </div>

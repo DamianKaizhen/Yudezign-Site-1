@@ -11,6 +11,7 @@ interface Project {
   title: string;
   category: 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
   images: string[];
+  videos?: string[];
   thumbnail: string;
   location?: string;
   finish: string;
@@ -85,7 +86,11 @@ function formatProjectForExport(project: Project): string {
     category: '${project.category}',
     images: [
       ${project.images.map((img) => `'${img}'`).join(',\n      ')}
-    ],
+    ],${
+      project.videos && project.videos.length
+        ? `\n    videos: [${project.videos.map((v) => `'${v}'`).join(', ')}],`
+        : ''
+    }
     thumbnail: '${project.thumbnail}',
     ${project.location ? `location: '${escapeString(project.location)}',` : ''}
     finish: '${escapeString(project.finish)}',
@@ -256,7 +261,12 @@ export default async function handler(request: VercelRequest, response: VercelRe
         });
       }
 
-      projects[projectIndex] = updatedProject;
+      // Preserve videos if the incoming update doesn't manage them (the current
+      // admin form only handles images), so editing a project won't drop its video.
+      projects[projectIndex] = {
+        ...updatedProject,
+        videos: updatedProject.videos ?? projects[projectIndex].videos,
+      };
 
       await commitProjectsToGitHub(projects, `Update project: ${updatedProject.title}`);
 

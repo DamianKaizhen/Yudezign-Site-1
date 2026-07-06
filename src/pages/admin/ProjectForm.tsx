@@ -15,6 +15,7 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import type { Project, SelectOption } from '../../types';
 import { formatFeaturesForForm, formatFeaturesForApi } from '../../lib/utils/projectUtils';
+import { imageSrcSchema } from '../../lib/utils/validation';
 
 // Zod validation schema
 const projectSchema = z.object({
@@ -27,8 +28,8 @@ const projectSchema = z.object({
   cabinetStyle: z.string().min(1, 'Cabinet style is required'),
   turnaroundTime: z.string().min(1, 'Turnaround time is required'),
   description: z.string().min(10, 'Description must be at least 10 characters').max(500),
-  images: z.array(z.string().url()).min(1, 'At least one image is required'),
-  thumbnail: z.string().url('Thumbnail is required'),
+  images: z.array(imageSrcSchema()).min(1, 'At least one image is required'),
+  thumbnail: imageSrcSchema('Thumbnail is required'),
   features: z.array(z.object({ value: z.string().min(1) })).min(1, 'At least one feature is required'),
 });
 
@@ -335,6 +336,7 @@ export default function ProjectForm() {
           error={errors.images?.message}
           multiple
           maxFiles={10}
+          folder="portfolio"
           onUpload={handleImagesUpload}
           currentImages={uploadedImages}
           onRemove={handleImageRemove}

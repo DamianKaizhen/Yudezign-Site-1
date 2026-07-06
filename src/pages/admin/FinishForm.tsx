@@ -276,6 +276,7 @@ export default function FinishForm() {
               required
               multiple={true}
               maxFiles={8}
+              folder="finishes"
               currentImages={watchImages}
               onUpload={(urls) => {
                 setValue('images', [...watchImages, ...urls]);

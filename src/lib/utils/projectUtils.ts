@@ -78,7 +78,11 @@ export function formatProjectForExport(project: Project): string {
     id: '${project.id}',
     title: '${project.title.replace(/'/g, "\\'")}',
     category: '${project.category}',
-    images: [${project.images.map((img) => `'${img}'`).join(', ')}],
+    images: [${project.images.map((img) => `'${img}'`).join(', ')}],${
+      project.videos && project.videos.length
+        ? `\n    videos: [${project.videos.map((v) => `'${v}'`).join(', ')}],`
+        : ''
+    }
     thumbnail: '${project.thumbnail}',
     ${project.location ? `location: '${project.location.replace(/'/g, "\\'")}',` : ''}
     finish: '${project.finish.replace(/'/g, "\\'")}',

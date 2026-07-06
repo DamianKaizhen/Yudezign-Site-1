@@ -6,9 +6,9 @@ export const projects: Project[] = [
     title: 'Dining Room Cabinet',
     category: 'custom',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210646930-Dining%20Room.jpg'
+      '/portfolio/1762210646930-Dining-Room.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210646930-Dining%20Room.jpg',
+    thumbnail: '/portfolio/1762210646930-Dining-Room.jpg',
     location: 'Houston',
     finish: 'Matte White and Dark Grey',
     cabinetStyle: 'Frameless European',
@@ -21,9 +21,9 @@ export const projects: Project[] = [
     title: 'Mud Room Cabinet',
     category: 'custom',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210910064-Mudroom.jpg'
+      '/portfolio/1762210910064-Mudroom.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762210910064-Mudroom.jpg',
+    thumbnail: '/portfolio/1762210910064-Mudroom.jpg',
     location: 'Houston',
     finish: 'Matte White and Dark Grey',
     cabinetStyle: 'Frameless European',
@@ -36,10 +36,10 @@ export const projects: Project[] = [
     title: 'Stand Alone Closet',
     category: 'closets',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211047922-e7a80490d1b6f97972585e011450bfb.jpg'
+      '/portfolio/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
+      '/portfolio/1762211047922-e7a80490d1b6f97972585e011450bfb.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
+    thumbnail: '/portfolio/1762211036262-53c1bf77dd4e7681eb59bf878d200cf.jpg',
     location: 'Houston',
     finish: 'Cashmere',
     cabinetStyle: 'Frameless European',
@@ -52,9 +52,9 @@ export const projects: Project[] = [
     title: 'Floating TV Cabinet',
     category: 'custom',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211335381-IMG_9153.JPG'
+      '/portfolio/1762211335381-IMG_9153.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211335381-IMG_9153.JPG',
+    thumbnail: '/portfolio/1762211335381-IMG_9153.jpg',
     location: 'Houston',
     finish: 'Glossy White',
     cabinetStyle: 'Frameless European',
@@ -67,11 +67,11 @@ export const projects: Project[] = [
     title: 'Crystal Slate Kitchen',
     category: 'kitchens',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211470844-IMG_9137.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211472927-IMG_9142.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211475899-IMG_9146.JPG'
+      '/portfolio/1762211470844-IMG_9137.jpg',
+      '/portfolio/1762211472927-IMG_9142.jpg',
+      '/portfolio/1762211475899-IMG_9146.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762211470844-IMG_9137.JPG',
+    thumbnail: '/portfolio/1762211470844-IMG_9137.jpg',
     location: 'Houston',
     finish: 'Crystal Slate (Dark Grey)',
     cabinetStyle: 'Frameless European',
@@ -84,10 +84,10 @@ export const projects: Project[] = [
     title: 'Bathroom Vanity',
     category: 'vanities',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374000550-IMG_2573.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374006977-IMG_2570.JPG'
+      '/portfolio/1762374000550-IMG_2573.jpg',
+      '/portfolio/1762374006977-IMG_2570.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374000550-IMG_2573.JPG',
+    thumbnail: '/portfolio/1762374000550-IMG_2573.jpg',
     location: 'Houston',
     finish: 'Honey Carini Walnut',
     cabinetStyle: 'Frameless European',
@@ -100,13 +100,13 @@ export const projects: Project[] = [
     title: 'Wood look Kitchen Cabinets',
     category: 'kitchens',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374237374-a208ae395b0e53f2cd4e6a652ed8775.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374240345-a9a683e6065b7d41a0d5759f8c21b49.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374245708-f745a099a8d9c7d132007572f4fd31b.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374249831-c4cdccf74626428f80d20583f872652.jpg'
+      '/portfolio/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
+      '/portfolio/1762374237374-a208ae395b0e53f2cd4e6a652ed8775.jpg',
+      '/portfolio/1762374240345-a9a683e6065b7d41a0d5759f8c21b49.jpg',
+      '/portfolio/1762374245708-f745a099a8d9c7d132007572f4fd31b.jpg',
+      '/portfolio/1762374249831-c4cdccf74626428f80d20583f872652.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
+    thumbnail: '/portfolio/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
     location: 'College Station',
     finish: 'Touch of Nature',
     cabinetStyle: 'Frameless European',
@@ -119,17 +119,17 @@ export const projects: Project[] = [
     title: 'Grand Kitchen',
     category: 'kitchens',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673222886-IMG_1875.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673236248-IMG_1877.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673237858-IMG_1878.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673240566-IMG_1886.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673242655-IMG_1865.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673248253-IMG_1844.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673250031-IMG_1852.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673251822-IMG_1826.JPG',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673253312-IMG_1830.jpg'
+      '/portfolio/1772673222886-IMG_1875.jpg',
+      '/portfolio/1772673236248-IMG_1877.jpg',
+      '/portfolio/1772673237858-IMG_1878.jpg',
+      '/portfolio/1772673240566-IMG_1886.jpg',
+      '/portfolio/1772673242655-IMG_1865.jpg',
+      '/portfolio/1772673248253-IMG_1844.jpg',
+      '/portfolio/1772673250031-IMG_1852.jpg',
+      '/portfolio/1772673251822-IMG_1826.jpg',
+      '/portfolio/1772673253312-IMG_1830.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772673222886-IMG_1875.JPG',
+    thumbnail: '/portfolio/1772673222886-IMG_1875.jpg',
     location: 'College Station',
     finish: 'Acacia Honey',
     cabinetStyle: 'Frameless European',
@@ -142,10 +142,10 @@ export const projects: Project[] = [
     title: 'DoubleCloset',
     category: 'closets',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967420158-closet1.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967425879-closet1b.jpg'
+      '/portfolio/1771967420158-closet1.jpg',
+      '/portfolio/1771967425879-closet1b.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1771967420158-closet1.jpg',
+    thumbnail: '/portfolio/1771967420158-closet1.jpg',
     location: 'Houston',
     finish: 'Silver Wisp',
     cabinetStyle: 'Frameless European',
@@ -158,9 +158,9 @@ export const projects: Project[] = [
     title: 'Mudroom Cabinet',
     category: 'custom',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG'
+      '/portfolio/1772747404651-1772673250031-IMG_1852.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1772747404651-1772673250031-IMG_1852.JPG',
+    thumbnail: '/portfolio/1772747404651-1772673250031-IMG_1852.jpg',
     location: 'College Station',
     finish: 'Egger Black wood Grain',
     cabinetStyle: 'Frameless European',
@@ -173,15 +173,141 @@ export const projects: Project[] = [
     title: 'ADA Commerical Breakroom',
     category: 'commercial',
     images: [
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064204-wecabinetimage2.jpg',
-      'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064758-wecabinetimage1.jpg'
+      '/portfolio/1775057064204-wecabinetimage2.jpg',
+      '/portfolio/1775057064758-wecabinetimage1.jpg'
     ],
-    thumbnail: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1775057064204-wecabinetimage2.jpg',
+    thumbnail: '/portfolio/1775057064204-wecabinetimage2.jpg',
     location: 'New Orleans',
     finish: 'Custom Laminate',
     cabinetStyle: 'Frameless European',
     features: ['ADA compliant', 'Soft Close Hinges'],
     turnaroundTime: '3 weeks',
     description: 'Specially Sourced Laminate on all MDF material, made into custom sized cabinetry.',
+  },
+  {
+    id: 'proj_1782000000001_clwhtbld1',
+    title: 'White Walk-In Build',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-white-build-1.jpg'
+    ],
+    thumbnail: '/portfolio/closet-white-build-1.jpg',
+    location: 'Houston',
+    finish: 'Matte White',
+    cabinetStyle: 'Frameless European',
+    features: ['Adjustable Shelving', 'Full-Height Storage', 'Chrome Closet Rods'],
+    turnaroundTime: '2 weeks',
+    description: 'A freshly installed white walk-in built floor to ceiling for maximum storage. Adjustable shelving, a bank of upper cabinets, and full-length hanging make the most of every inch, all in a clean matte white frameless design.',
+  },
+  {
+    id: 'proj_1782000000002_clcrmdrw1',
+    title: 'Cream Walk-In with Drawer Bank',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-cream-drawer-1.jpg',
+      '/portfolio/closet-cream-drawer-2.jpg'
+    ],
+    thumbnail: '/portfolio/closet-cream-drawer-1.jpg',
+    location: 'Houston',
+    finish: 'Cream / Off-White',
+    cabinetStyle: 'Frameless European',
+    features: ['Full Drawer Bank', 'Nickel Bar Pulls', 'Open Cube Shelving', 'Shoe Storage'],
+    turnaroundTime: '2 weeks',
+    description: 'A warm cream walk-in pairing a full wall of soft-close drawers with open cube shelving and a dedicated shoe tower. Brushed-nickel bar pulls and a soft carpeted finish give the space a tailored, boutique feel.',
+  },
+  {
+    id: 'proj_1782000000003_clgrggld1',
+    title: 'Greige & Gold Walk-In',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-greige-gold-1.jpg',
+      '/portfolio/closet-greige-gold-2.jpg'
+    ],
+    thumbnail: '/portfolio/closet-greige-gold-1.jpg',
+    location: 'Houston',
+    finish: 'Greige with Gold Hardware',
+    cabinetStyle: 'Frameless European',
+    features: ['Brushed Gold Pulls', 'Double-Door Cabinet', 'Drawer Bank', 'Adjustable Shelving'],
+    turnaroundTime: '2 weeks',
+    description: 'A sophisticated greige walk-in accented with brushed-gold hardware over rich dark hardwood floors. A tall double-door cabinet and drawer bank anchor the layout, with adjustable open shelving flanking for a luxe, dressing-room look.',
+  },
+  {
+    id: 'proj_1782000000004_clglswht1',
+    title: 'Gloss White Wardrobe System',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-gloss-white-1.jpg',
+      '/portfolio/closet-gloss-white-2.jpg'
+    ],
+    thumbnail: '/portfolio/closet-gloss-white-1.jpg',
+    location: 'Houston',
+    finish: 'High-Gloss White',
+    cabinetStyle: 'Frameless European',
+    features: ['High-Gloss Finish', 'Pull-Out Laundry Hamper', 'Shoe Shelves', 'Chrome Bar Pulls'],
+    turnaroundTime: '2 weeks',
+    description: 'A full-height high-gloss white wardrobe system combining double hanging bays, a pull-out laundry hamper, drawer stacks, and a dedicated shoe column. The reflective finish and chrome bar pulls create a bright, contemporary storage wall.',
+  },
+  {
+    id: 'proj_1782000000005_claqua001',
+    title: 'Aqua-Accent Wardrobe',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-aqua-1.jpg'
+    ],
+    thumbnail: '/portfolio/closet-aqua-1.jpg',
+    location: 'Houston',
+    finish: 'White with Aqua Accents',
+    cabinetStyle: 'Frameless European',
+    features: ['Two-Tone Accent Panels', 'Open Shelving', 'Soft-Close Doors'],
+    turnaroundTime: '2 weeks',
+    description: 'A crisp white wardrobe wall brought to life with soft aqua accent panels. Hanging sections, adjustable open shelving, and lower cabinet doors combine function with a playful pop of color.',
+  },
+  {
+    id: 'proj_1782000000006_clvidwht1',
+    title: 'Modern White Walk-In (Video Tour)',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-white-walkin-poster.jpg'
+    ],
+    videos: ['/portfolio/videos/closet-white-walkin.mp4'],
+    thumbnail: '/portfolio/closet-white-walkin-poster.jpg',
+    location: 'Houston',
+    finish: 'Matte White',
+    cabinetStyle: 'Frameless European',
+    features: ['Video Tour', 'LED-Lit Shelving', 'Nickel Bar Pulls', 'Marble Flooring'],
+    turnaroundTime: '2 weeks',
+    description: 'Walk through this bright, modern white closet in motion. LED-lit adjustable shelves, full-length hanging, and a drawer bank with nickel pulls sit above sleek marble flooring for an airy, high-end feel.',
+  },
+  {
+    id: 'proj_1782000000007_clvidher1',
+    title: 'Her Walk-In Closet (Video Tour)',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-her-walkin-poster.jpg'
+    ],
+    videos: ['/portfolio/videos/closet-her-walkin.mp4'],
+    thumbnail: '/portfolio/closet-her-walkin-poster.jpg',
+    location: 'Houston',
+    finish: 'Greige with Gold Hardware',
+    cabinetStyle: 'Frameless European',
+    features: ['Video Tour', 'Brushed Gold Pulls', 'Open Cube Shelving', 'Drawer Storage'],
+    turnaroundTime: '2 weeks',
+    description: 'A styled video tour of a her walk-in in warm greige with brushed-gold hardware. Open cube shelving, generous hanging, and soft-close drawers keep an extensive wardrobe organized and on display.',
+  },
+  {
+    id: 'proj_1782000000008_clvidoak1',
+    title: 'Oak Walk-In Closet (Video Tour)',
+    category: 'closets',
+    images: [
+      '/portfolio/closet-oak-walkin-poster.jpg'
+    ],
+    videos: ['/portfolio/videos/closet-oak-walkin.mp4'],
+    thumbnail: '/portfolio/closet-oak-walkin-poster.jpg',
+    location: 'Houston',
+    finish: 'Natural Oak Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Video Tour', 'Woodgrain Finish', 'Full-Length Hanging', 'Shoe Storage'],
+    turnaroundTime: '2 weeks',
+    description: 'A warm natural-oak walk-in shown in motion, with woodgrain cabinetry, black bar pulls, and full-length hanging bathed in natural window light. A relaxed, organic take on custom closet storage.',
   }
 ];

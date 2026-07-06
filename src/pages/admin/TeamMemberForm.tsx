@@ -31,8 +31,9 @@ const TeamMemberForm = () => {
 
   // File upload handler
   const headshotUpload = useFileUploadHandler({
-    endpoint: '/api/upload',
+    endpoint: '/api/upload-attachment',
     compress: true,
+    folder: 'team',
   });
 
   const {

@@ -10,6 +10,12 @@ interface ImageUploadProps {
   multiple?: boolean;
   maxFiles?: number;
   accept?: string;
+  /**
+   * Repo folder (under public/) to mirror uploads into, e.g. "portfolio".
+   * When set, the API commits the image to the repo and returns a /<folder>/<file>
+   * path. When omitted, the image is stored on Vercel Blob only.
+   */
+  folder?: string;
   onUpload: (urls: string[]) => void;
   currentImages?: string[];
   onRemove?: (url: string) => void;
@@ -26,6 +32,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
   multiple = false,
   maxFiles = 10,
   accept = 'image/jpeg,image/png,image/webp',
+  folder,
   onUpload,
   currentImages = [],
   onRemove,
@@ -62,8 +69,11 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
         });
         console.log(`Compressed file size: ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`);
 
-        // Upload to Vercel Blob (send file as raw body with filename in query)
-        const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
+        // Upload to Vercel Blob (send file as raw body with filename in query).
+        // When a folder is provided, the API also mirrors the image into the repo
+        // and returns a /<folder>/<file> path instead of the Blob URL.
+        const folderParam = folder ? `&folder=${encodeURIComponent(folder)}` : '';
+        const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}${folderParam}`, {
           method: 'POST',
           body: compressedFile,
         });

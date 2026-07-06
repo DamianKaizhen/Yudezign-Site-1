@@ -14,6 +14,12 @@ interface UploadOptions {
   maxSizeMB?: number;
   /** Upload endpoint (default: '/api/upload-attachment') */
   endpoint?: string;
+  /**
+   * Repo folder (under public/) to mirror uploads into, e.g. "team".
+   * When set, the API commits the image to the repo and returns a /<folder>/<file>
+   * path. When omitted, the image is stored on Vercel Blob only.
+   */
+  folder?: string;
 }
 
 interface UseFileUploadHandlerReturn {
@@ -38,6 +44,7 @@ const DEFAULT_OPTIONS: Required<UploadOptions> = {
   maxHeight: 1920,
   maxSizeMB: 1,
   endpoint: '/api/upload-attachment',
+  folder: '',
 };
 
 /**
@@ -126,9 +133,10 @@ export function useFileUploadHandler(
           setProgress(20);
         }
 
-        // Upload to endpoint
+        // Upload to endpoint (mirror into the repo folder when configured)
+        const folderParam = opts.folder ? `&folder=${encodeURIComponent(opts.folder)}` : '';
         const response = await fetch(
-          `${opts.endpoint}?filename=${encodeURIComponent(file.name)}`,
+          `${opts.endpoint}?filename=${encodeURIComponent(file.name)}${folderParam}`,
           {
             method: 'POST',
             body: fileToUpload,
@@ -200,9 +208,10 @@ export function useFileUploadHandler(
 
           setProgress(baseProgress + 20 / totalFiles);
 
-          // Upload file
+          // Upload file (mirror into the repo folder when configured)
+          const folderParam = opts.folder ? `&folder=${encodeURIComponent(opts.folder)}` : '';
           const response = await fetch(
-            `${opts.endpoint}?filename=${encodeURIComponent(file.name)}`,
+            `${opts.endpoint}?filename=${encodeURIComponent(file.name)}${folderParam}`,
             {
               method: 'POST',
               body: fileToUpload,

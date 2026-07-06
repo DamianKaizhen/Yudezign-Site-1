@@ -3,6 +3,8 @@ export interface Project {
   title: string;
   category: 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
   images: string[];
+  /** Optional video URLs (repo /portfolio/videos/*.mp4). Shown in the gallery. */
+  videos?: string[];
   thumbnail: string;
   location?: string;
   finish: string;

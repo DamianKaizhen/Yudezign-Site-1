@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Play } from 'lucide-react';
 import type { Project } from '../../types';
 
 interface ProjectCardProps {
@@ -7,6 +8,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
+  const hasVideo = !!project.videos && project.videos.length > 0;
   const categoryColors = {
     kitchens: 'bg-primary',
     closets: 'bg-primary-light',
@@ -36,9 +38,17 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
             {project.category}
           </span>
         </div>
+        {/* Video Play Badge */}
+        {hasVideo && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity duration-300">
+            <div className="w-16 h-16 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+              <Play className="w-7 h-7 text-white fill-white ml-1" />
+            </div>
+          </div>
+        )}
         {/* Overlay on Hover */}
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="text-white font-semibold text-lg">View Details</span>
+          <span className="text-white font-semibold text-lg">{hasVideo ? 'Watch Video' : 'View Details'}</span>
         </div>
       </div>
 

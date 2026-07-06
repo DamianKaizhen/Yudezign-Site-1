@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { Wand2, ArrowRight, Layout } from 'lucide-react';
 import ProjectCard from '../../components/ui/ProjectCard';
+import { ProjectModal } from '../../components/ui/ProjectModal';
 import { projects } from '../../data/projects';
+import type { Project } from '../../types';
 import SEO from '../../components/SEO';
 
 const categoryInfo = {
@@ -37,6 +40,14 @@ const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
   const categoryKey = category as keyof typeof categoryInfo;
   const info = categoryInfo[categoryKey];
+
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
   const categoryProjects = projects.filter((project) => project.category === category);
 
@@ -105,7 +116,7 @@ const CategoryPage = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <ProjectCard project={project} />
+                  <ProjectCard project={project} onClick={() => handleProjectClick(project)} />
                 </motion.div>
               ))}
             </div>
@@ -187,6 +198,16 @@ const CategoryPage = () => {
         </section>
       )}
     </div>
+
+    {/* Project Detail Modal */}
+    <ProjectModal
+      project={selectedProject}
+      isOpen={isModalOpen}
+      onClose={() => {
+        setIsModalOpen(false);
+        setSelectedProject(null);
+      }}
+    />
     </>
   );
 };

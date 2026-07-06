@@ -33,12 +33,14 @@ const TestimonialForm = () => {
 
   // File upload handlers
   const customerUpload = useFileUploadHandler({
-    endpoint: '/api/upload',
+    endpoint: '/api/upload-attachment',
     compress: true,
+    folder: 'testimonials',
   });
   const projectUpload = useFileUploadHandler({
-    endpoint: '/api/upload',
+    endpoint: '/api/upload-attachment',
     compress: true,
+    folder: 'testimonials',
   });
 
   const {
