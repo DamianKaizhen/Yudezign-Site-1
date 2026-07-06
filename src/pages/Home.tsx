@@ -350,9 +350,9 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* 2-3 Week Delivery */}
-            <InView variant="fadeUp">
+            <InView variant="fadeUp" className="h-full">
               <motion.div
-                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                className="h-full flex flex-col bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
                 whileHover={{ y: -8 }}
               >
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
@@ -368,9 +368,9 @@ const Home = () => {
             </InView>
 
             {/* European Frameless Design */}
-            <InView variant="fadeUp">
+            <InView variant="fadeUp" className="h-full">
               <motion.div
-                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                className="h-full flex flex-col bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
                 whileHover={{ y: -8 }}
               >
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors">
@@ -386,9 +386,9 @@ const Home = () => {
             </InView>
 
             {/* Houston Made, Houston Proud */}
-            <InView variant="fadeUp">
+            <InView variant="fadeUp" className="h-full">
               <motion.div
-                className="bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
+                className="h-full flex flex-col bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
                 whileHover={{ y: -8 }}
               >
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
