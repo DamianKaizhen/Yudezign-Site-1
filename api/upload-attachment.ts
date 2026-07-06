@@ -1,6 +1,6 @@
 import { put } from '@vercel/blob';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { commitBinaryFile } from './_lib/githubCommit';
+import { commitBinaryFile } from './_lib/githubCommit.js';
 
 export const config = {
   api: {

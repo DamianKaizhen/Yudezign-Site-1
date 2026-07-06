@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { jwtVerify } from 'jose';
 import { Octokit } from '@octokit/rest';
 import { put } from '@vercel/blob';
-import { generateVisualization } from '../_lib/generateVisualization';
+import { generateVisualization } from '../_lib/generateVisualization.js';
 
 // Image generation runs synchronously inside this request (Gemini can take
 // 30–60s+). Raise the timeout to the Vercel Hobby + Fluid Compute ceiling.
