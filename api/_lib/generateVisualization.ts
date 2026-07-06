@@ -15,7 +15,11 @@ import { GoogleGenAI } from '@google/genai';
  * can fall back to the n8n webhook.
  */
 
-const MODEL_ID = 'gemini-3-pro-image-preview';
+// Image model is env-overridable so tiers can be switched without a code change.
+// Default: gemini-2.5-flash-image (Nano Banana) — available on Google's free tier.
+// For premium quality set GEMINI_IMAGE_MODEL=gemini-3-pro-image-preview (Nano
+// Banana Pro), which requires a billing-enabled Google project.
+const MODEL_ID = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
 
 // Leave headroom under the function's 300s maxDuration (Vercel Hobby + Fluid Compute).
 const GENERATION_TIMEOUT_MS = 280_000;

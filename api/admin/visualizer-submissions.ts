@@ -523,6 +523,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         _diagnostics: {
           geminiKeyPresent: !!process.env.GEMINI_API_KEY,
           webhookConfigured: !!process.env.VISUALIZER_WEBHOOK_URL,
+          model: process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image',
           outcome: genResult.diag,
         },
       });
