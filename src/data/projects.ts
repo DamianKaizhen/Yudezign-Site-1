@@ -309,5 +309,68 @@ export const projects: Project[] = [
     features: ['Video Tour', 'Woodgrain Finish', 'Full-Length Hanging', 'Shoe Storage'],
     turnaroundTime: '2 weeks',
     description: 'A warm natural-oak walk-in shown in motion, with woodgrain cabinetry, black bar pulls, and full-length hanging bathed in natural window light. A relaxed, organic take on custom closet storage.',
+  },
+  {
+    id: 'proj_1783000000001_vnwalnut1',
+    title: 'Walnut Twin-Tower Vanity',
+    category: 'vanities',
+    images: [
+      '/portfolio/vanity-walnut-tower.jpg'
+    ],
+    thumbnail: '/portfolio/vanity-walnut-tower.jpg',
+    location: 'Houston',
+    finish: 'Warm Walnut Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Full-Height Linen Towers', 'Handleless Design', 'Natural Stone Countertop'],
+    turnaroundTime: '2 weeks',
+    description: 'A warm walnut-woodgrain vanity built as a full wall, with the floating base flanked by two full-height linen towers and topped with a light natural-stone counter. Clean handleless reveals keep the frameless European look seamless.',
+  },
+  {
+    id: 'proj_1783000000002_vnshaker1',
+    title: 'White Shaker Bath Vanities',
+    category: 'vanities',
+    images: [
+      '/portfolio/vanity-shaker-1.jpg',
+      '/portfolio/vanity-shaker-2.jpg',
+      '/portfolio/vanity-shaker-3.jpg'
+    ],
+    thumbnail: '/portfolio/vanity-shaker-1.jpg',
+    location: 'Houston',
+    finish: 'White Shaker',
+    cabinetStyle: 'Shaker',
+    features: ['Quartz Countertops', 'Undermount Sinks', 'Matte Black Pulls', 'Single & Double Configurations'],
+    turnaroundTime: '2 weeks',
+    description: 'Crisp white Shaker vanities outfitting a home\'s bathrooms — a single-sink guest vanity and an L-shaped double, each topped with veined white quartz and finished with matte-black bar pulls against warm wood-look flooring.',
+  },
+  {
+    id: 'proj_1783000000003_vnoaktour1',
+    title: 'Oak Vanity with Video Tour',
+    category: 'vanities',
+    images: [
+      '/portfolio/vanity-oak-tour.jpg'
+    ],
+    videos: ['/portfolio/videos/vanity-oak-tour.mp4'],
+    thumbnail: '/portfolio/vanity-oak-tour.jpg',
+    location: 'Houston',
+    finish: 'Natural Oak Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Video Tour', 'Full-Height Linen Tower', 'Brushed Gold Fixtures', 'Natural Stone Countertop'],
+    turnaroundTime: '2 weeks',
+    description: 'A warm natural-oak primary bath vanity with a full-height linen tower, veined grey stone countertop, undermount sink, and brushed-gold faucet and pulls. Shown here with a full video walkthrough of the finished space.',
+  },
+  {
+    id: 'proj_1783000000004_cmclinic1',
+    title: 'Medical Clinic Office (Video Tour)',
+    category: 'commercial',
+    images: [
+      '/portfolio/clinic-cabinets-poster.jpg'
+    ],
+    videos: ['/portfolio/videos/clinic-cabinets.mp4'],
+    thumbnail: '/portfolio/clinic-cabinets-poster.jpg',
+    finish: 'Charcoal / Espresso',
+    cabinetStyle: 'Frameless European',
+    features: ['Video Tour', 'Exam & Office Casework', 'Quartz Countertops', 'Brushed Nickel Pulls'],
+    turnaroundTime: '3 weeks',
+    description: 'A medical clinic office fitted with dark charcoal frameless casework throughout — upper cabinets, base runs with deep drawer banks, and quartz countertops set against a black glass partition wall. Shown as a full video walkthrough of the finished commercial space.',
   }
 ];
