@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SiteSettingsProvider } from './contexts/SiteSettingsContext';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
 import Portfolio from './pages/portfolio/Portfolio';
 import CategoryPage from './pages/portfolio/CategoryPage';
@@ -81,6 +82,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <SiteSettingsProvider>
         <Router>
+          <ScrollToTop />
           <Routes>
           {/* Admin Routes - No Navigation/Footer */}
           <Route path="/admin/login" element={<Login />} />
