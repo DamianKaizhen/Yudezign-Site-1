@@ -28,6 +28,7 @@ const SEO = ({
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
   ogImage,
   url = 'https://yudezign.com',
+  canonical,
   type = 'website',
   structuredData,
   article,
@@ -108,14 +109,14 @@ const SEO = ({
     updateMetaTag('geo.position', '29.7604;-95.3698');
     updateMetaTag('ICBM', '29.7604, -95.3698');
 
-    // Canonical link
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+    // Canonical link — prefer the explicit canonical prop, fall back to url.
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
     }
-    canonical.setAttribute('href', url);
+    canonicalEl.setAttribute('href', canonical || url);
 
     // Structured Data (JSON-LD)
     if (structuredData) {
@@ -138,7 +139,7 @@ const SEO = ({
       script.textContent = JSON.stringify(schemaContent);
       document.head.appendChild(script);
     }
-  }, [siteTitle, description, keywords, effectiveImage, url, type, structuredData, article]);
+  }, [siteTitle, description, keywords, effectiveImage, url, canonical, type, structuredData, article]);
 
   return null; // This component doesn't render anything
 };
