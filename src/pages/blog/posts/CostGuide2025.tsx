@@ -13,7 +13,7 @@ const CostGuide2025: React.FC = () => {
     publishedDate: '2025-01-14',
     modifiedDate: '2025-01-14',
     imageUrl: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90',
-    canonicalUrl: 'https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025',
+    canonicalUrl: 'https://www.yudezign.com/blog/custom-cabinet-cost-guide-houston-2025',
     category: 'Pricing & Budgeting',
     tags: ['cabinet costs', 'houston pricing', 'kitchen budget', 'custom cabinets'],
     wordCount: 2500
@@ -33,7 +33,7 @@ const CostGuide2025: React.FC = () => {
           'houston cabinet pricing',
           'custom cabinet budget'
         ]}
-        url="https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025"
+        url="https://www.yudezign.com/blog/custom-cabinet-cost-guide-houston-2025"
         type="article"
         ogImage={articleData.imageUrl}
         structuredData={structuredData}

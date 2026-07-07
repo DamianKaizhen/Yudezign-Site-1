@@ -17,7 +17,7 @@ const CabinetMaterialsGuide: React.FC = () => {
           'Houston cabinet materials',
           'moisture resistant cabinets',
         ]}
-        canonical="https://yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf"
+        canonical="https://www.yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf"
         ogType="article"
       />
 

@@ -17,7 +17,7 @@ const CabinetDoorStylesGuide: React.FC = () => {
           'modern vs traditional cabinets',
           'Houston cabinet doors',
         ]}
-        canonical="https://yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors"
+        canonical="https://www.yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors"
         ogType="article"
       />
 

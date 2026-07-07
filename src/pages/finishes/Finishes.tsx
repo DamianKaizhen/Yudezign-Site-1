@@ -28,7 +28,7 @@ const Finishes = () => {
         title="Finishes & Materials - 25+ Premium Cabinet Finishes"
         description="Browse our collection of 25+ premium cabinet finishes and materials. European-quality woods, laminates, and specialty finishes for custom frameless cabinets. Matte, gloss, and textured options available in Houston."
         keywords="cabinet finishes, wood finishes, laminate cabinets, cabinet colors, european finishes, matte cabinets, gloss cabinets, luxury cabinet finishes"
-        url="https://yudezign.com/finishes"
+        url="https://www.yudezign.com/finishes"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}

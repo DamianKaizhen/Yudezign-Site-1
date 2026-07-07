@@ -36,7 +36,7 @@ const BlogIndex: React.FC = () => {
           'cabinet design tips',
           'custom cabinet guides',
         ]}
-        canonical="https://yudezign.com/blog"
+        canonical="https://www.yudezign.com/blog"
         ogType="website"
       />
 

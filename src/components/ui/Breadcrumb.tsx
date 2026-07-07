@@ -35,7 +35,7 @@ const Breadcrumb = ({ items, className = '' }: BreadcrumbProps) => {
     .filter(item => item.href)
     .map(item => ({
       name: item.label,
-      url: `https://yudezign.com${item.href}`
+      url: `https://www.yudezign.com${item.href}`
     }));
 
   // Add current page (last item without href) to schema
@@ -44,7 +44,7 @@ const Breadcrumb = ({ items, className = '' }: BreadcrumbProps) => {
     // For the last item, we use the current page URL
     schemaItems.push({
       name: lastItem.label,
-      url: typeof window !== 'undefined' ? window.location.href : 'https://yudezign.com'
+      url: typeof window !== 'undefined' ? window.location.href : 'https://www.yudezign.com'
     });
   }
 

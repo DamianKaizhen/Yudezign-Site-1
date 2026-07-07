@@ -16,7 +16,7 @@ const FramelessVsFramed: React.FC = () => {
           'cabinet construction comparison',
           'frameless cabinets houston'
         ]}
-        canonical="https://yudezign.com/blog/frameless-vs-framed-cabinets"
+        canonical="https://www.yudezign.com/blog/frameless-vs-framed-cabinets"
         ogType="article"
       />
 

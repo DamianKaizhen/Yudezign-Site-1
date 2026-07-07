@@ -16,7 +16,7 @@ const KitchenTrends2025: React.FC = () => {
           'cabinet color trends',
           'kitchen remodel houston'
         ]}
-        canonical="https://yudezign.com/blog/kitchen-trends-2025"
+        canonical="https://www.yudezign.com/blog/kitchen-trends-2025"
         ogType="article"
       />
 

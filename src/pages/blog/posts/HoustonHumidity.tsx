@@ -16,7 +16,7 @@ const HoustonHumidity: React.FC = () => {
           'houston kitchen cabinets',
           'humid climate cabinets'
         ]}
-        canonical="https://yudezign.com/blog/houston-humidity-cabinets"
+        canonical="https://www.yudezign.com/blog/houston-humidity-cabinets"
         ogType="article"
       />
 

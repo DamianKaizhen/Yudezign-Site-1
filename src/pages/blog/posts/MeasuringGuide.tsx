@@ -16,7 +16,7 @@ const MeasuringGuide: React.FC = () => {
           'cabinet measuring guide',
           'kitchen remodel measurements'
         ]}
-        canonical="https://yudezign.com/blog/measuring-for-custom-cabinets-guide"
+        canonical="https://www.yudezign.com/blog/measuring-for-custom-cabinets-guide"
         ogType="article"
       />
 

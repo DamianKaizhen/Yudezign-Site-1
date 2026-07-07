@@ -18,7 +18,7 @@ const CabinetFinishesGuide: React.FC = () => {
           'Houston cabinet finishes',
           'RTF cabinets',
         ]}
-        canonical="https://yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic"
+        canonical="https://www.yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic"
         ogType="article"
       />
 

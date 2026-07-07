@@ -8,7 +8,7 @@ const TermsOfService = () => {
         title="Terms of Service - YuDezign Custom Cabinets"
         description="YuDezign's terms of service. Read our terms and conditions for custom European frameless cabinet manufacturing and supply services in Houston, Texas."
         keywords="terms of service, terms and conditions, yudezign terms, cabinet terms"
-        url="https://yudezign.com/terms"
+        url="https://www.yudezign.com/terms"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
         {/* Hero Section */}
@@ -27,7 +27,7 @@ const TermsOfService = () => {
                 Last Updated: December 23, 2024
               </p>
               <p className="text-body text-luxury-gray-600 leading-relaxed">
-                Welcome to YuDezign. These Terms of Service ("Terms") govern your use of our website (https://yudezign.com) and the purchase of our custom European frameless cabinet products and services. By accessing our website or purchasing our products, you agree to be bound by these Terms.
+                Welcome to YuDezign. These Terms of Service ("Terms") govern your use of our website (https://www.yudezign.com) and the purchase of our custom European frameless cabinet products and services. By accessing our website or purchasing our products, you agree to be bound by these Terms.
               </p>
             </motion.div>
           </div>

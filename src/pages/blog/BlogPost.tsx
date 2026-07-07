@@ -34,7 +34,7 @@ const BlogPost: React.FC = () => {
         title={post.title}
         description={post.seo.metaDescription}
         keywords={post.seo.keywords}
-        canonical={`https://yudezign.com/blog/${post.slug}`}
+        canonical={`https://www.yudezign.com/blog/${post.slug}`}
         ogType="article"
         ogImage={post.seo.ogImage}
         structuredData={articleSchema}

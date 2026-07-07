@@ -48,7 +48,7 @@ const ServicePage: React.FC = () => {
         title={service.metaTitle}
         description={service.metaDescription}
         keywords={service.keywords}
-        canonical={`https://yudezign.com/services/${service.slug}`}
+        canonical={`https://www.yudezign.com/services/${service.slug}`}
         ogType="service"
         structuredData={[serviceSchema, faqSchema].filter(Boolean)}
       />

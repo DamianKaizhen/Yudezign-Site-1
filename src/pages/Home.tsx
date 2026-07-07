@@ -87,7 +87,7 @@ const Home = () => {
         title="Custom European Frameless Cabinets | Houston"
         description="Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4 plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing."
         keywords="european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets"
-        url="https://yudezign.com"
+        url="https://www.yudezign.com"
       />
       <div className="min-h-screen bg-luxury-cream">
 

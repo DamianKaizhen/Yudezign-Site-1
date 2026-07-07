@@ -25,7 +25,7 @@ const WarrantyPage: React.FC = () => {
           'YuDezign warranty',
           'custom cabinet guarantee',
         ]}
-        canonical="https://yudezign.com/warranty"
+        canonical="https://www.yudezign.com/warranty"
         ogType="website"
       />
 

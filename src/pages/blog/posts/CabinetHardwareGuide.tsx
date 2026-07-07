@@ -17,7 +17,7 @@ const CabinetHardwareGuide: React.FC = () => {
           'blum vs hettich',
           'cabinet handle finishes',
         ]}
-        canonical="https://yudezign.com/blog/cabinet-hardware-guide"
+        canonical="https://www.yudezign.com/blog/cabinet-hardware-guide"
         ogType="article"
       />
 

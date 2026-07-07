@@ -35,7 +35,7 @@ const FAQPage: React.FC = () => {
           'cabinet pricing questions',
           'cabinet installation questions',
         ]}
-        canonical="https://yudezign.com/faq"
+        canonical="https://www.yudezign.com/faq"
         ogType="website"
         structuredData={faqSchema}
       />

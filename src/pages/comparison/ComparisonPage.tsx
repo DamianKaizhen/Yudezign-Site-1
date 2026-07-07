@@ -25,7 +25,7 @@ const ComparisonPage: React.FC = () => {
         title={comparison.title}
         description={comparison.metaDescription}
         keywords={comparison.seo.keywords}
-        canonical={`https://yudezign.com/vs/${comparison.slug}`}
+        canonical={`https://www.yudezign.com/vs/${comparison.slug}`}
         ogType="article"
         structuredData={faqSchema}
       />

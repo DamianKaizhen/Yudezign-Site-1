@@ -52,7 +52,7 @@ const ShowroomPage: React.FC = () => {
           'visit cabinet showroom',
           'Houston cabinetry showroom',
         ]}
-        canonical="https://yudezign.com/showroom"
+        canonical="https://www.yudezign.com/showroom"
         ogType="place"
         structuredData={localBusinessSchema}
       />

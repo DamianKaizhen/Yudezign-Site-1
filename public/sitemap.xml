@@ -5,7 +5,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://yudezign.com/</loc>
+    <loc>https://www.yudezign.com/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -13,7 +13,7 @@
 
   <!-- Portfolio Main Page -->
   <url>
-    <loc>https://yudezign.com/portfolio</loc>
+    <loc>https://www.yudezign.com/portfolio</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -21,35 +21,35 @@
 
   <!-- Portfolio Category Pages -->
   <url>
-    <loc>https://yudezign.com/portfolio/kitchens</loc>
+    <loc>https://www.yudezign.com/portfolio/kitchens</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/portfolio/closets</loc>
+    <loc>https://www.yudezign.com/portfolio/closets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/portfolio/vanities</loc>
+    <loc>https://www.yudezign.com/portfolio/vanities</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/portfolio/custom</loc>
+    <loc>https://www.yudezign.com/portfolio/custom</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/portfolio/commercial</loc>
+    <loc>https://www.yudezign.com/portfolio/commercial</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -57,7 +57,7 @@
 
   <!-- Finishes Page -->
   <url>
-    <loc>https://yudezign.com/finishes</loc>
+    <loc>https://www.yudezign.com/finishes</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -65,7 +65,7 @@
 
   <!-- KD Lite Page -->
   <url>
-    <loc>https://yudezign.com/kdlite</loc>
+    <loc>https://www.yudezign.com/kdlite</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -73,7 +73,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://yudezign.com/about</loc>
+    <loc>https://www.yudezign.com/about</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -81,7 +81,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://yudezign.com/contact</loc>
+    <loc>https://www.yudezign.com/contact</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -89,49 +89,49 @@
 
   <!-- Service Pages -->
   <url>
-    <loc>https://yudezign.com/services/kitchen-cabinets</loc>
+    <loc>https://www.yudezign.com/services/kitchen-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/closet-systems</loc>
+    <loc>https://www.yudezign.com/services/closet-systems</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/bathroom-vanities</loc>
+    <loc>https://www.yudezign.com/services/bathroom-vanities</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/home-office-cabinets</loc>
+    <loc>https://www.yudezign.com/services/home-office-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/garage-cabinets</loc>
+    <loc>https://www.yudezign.com/services/garage-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/entertainment-centers</loc>
+    <loc>https://www.yudezign.com/services/entertainment-centers</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/services/laundry-room-cabinets</loc>
+    <loc>https://www.yudezign.com/services/laundry-room-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -139,70 +139,70 @@
 
   <!-- Location Pages -->
   <url>
-    <loc>https://yudezign.com/locations/houston</loc>
+    <loc>https://www.yudezign.com/locations/houston</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/katy</loc>
+    <loc>https://www.yudezign.com/locations/katy</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/sugar-land</loc>
+    <loc>https://www.yudezign.com/locations/sugar-land</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/pearland</loc>
+    <loc>https://www.yudezign.com/locations/pearland</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/the-woodlands</loc>
+    <loc>https://www.yudezign.com/locations/the-woodlands</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/cypress</loc>
+    <loc>https://www.yudezign.com/locations/cypress</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/spring</loc>
+    <loc>https://www.yudezign.com/locations/spring</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/richmond</loc>
+    <loc>https://www.yudezign.com/locations/richmond</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/missouri-city</loc>
+    <loc>https://www.yudezign.com/locations/missouri-city</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/locations/friendswood</loc>
+    <loc>https://www.yudezign.com/locations/friendswood</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -210,35 +210,35 @@
 
   <!-- Comparison Pages -->
   <url>
-    <loc>https://yudezign.com/vs/custom-vs-semi-custom-cabinets</loc>
+    <loc>https://www.yudezign.com/vs/custom-vs-semi-custom-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/vs/melamine-vs-laminate-vs-acrylic</loc>
+    <loc>https://www.yudezign.com/vs/melamine-vs-laminate-vs-acrylic</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/vs/frameless-vs-framed-cabinets</loc>
+    <loc>https://www.yudezign.com/vs/frameless-vs-framed-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/vs/yudezign-vs-big-box-stores</loc>
+    <loc>https://www.yudezign.com/vs/yudezign-vs-big-box-stores</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/vs/plywood-vs-mdf-cabinets</loc>
+    <loc>https://www.yudezign.com/vs/plywood-vs-mdf-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -246,28 +246,28 @@
 
   <!-- Resource Pages -->
   <url>
-    <loc>https://yudezign.com/blog</loc>
+    <loc>https://www.yudezign.com/blog</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/pricing</loc>
+    <loc>https://www.yudezign.com/pricing</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/faq</loc>
+    <loc>https://www.yudezign.com/faq</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/showroom</loc>
+    <loc>https://www.yudezign.com/showroom</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -275,81 +275,81 @@
 
   <!-- Blog Posts - Active Posts -->
   <url>
-    <loc>https://yudezign.com/blog/custom-cabinet-cost-guide-houston-2025</loc>
+    <loc>https://www.yudezign.com/blog/custom-cabinet-cost-guide-houston-2025</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf</loc>
+    <loc>https://www.yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors</loc>
+    <loc>https://www.yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic</loc>
+    <loc>https://www.yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yudezign.com/blog/bathroom-vanity-guide-houston</loc>
+    <loc>https://www.yudezign.com/blog/bathroom-vanity-guide-houston</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yudezign.com/blog/cabinet-hardware-guide</loc>
+    <loc>https://www.yudezign.com/blog/cabinet-hardware-guide</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yudezign.com/blog/custom-closet-design-guide-houston</loc>
+    <loc>https://www.yudezign.com/blog/custom-closet-design-guide-houston</loc>
     <lastmod>2026-07-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/frameless-vs-framed-cabinets</loc>
+    <loc>https://www.yudezign.com/blog/frameless-vs-framed-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/kitchen-trends-2025</loc>
+    <loc>https://www.yudezign.com/blog/kitchen-trends-2025</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/houston-humidity-cabinets</loc>
+    <loc>https://www.yudezign.com/blog/houston-humidity-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/how-to-measure-cabinets</loc>
+    <loc>https://www.yudezign.com/blog/how-to-measure-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/blog/european-vs-american-cabinets</loc>
+    <loc>https://www.yudezign.com/blog/european-vs-american-cabinets</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -357,14 +357,14 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://yudezign.com/privacy</loc>
+    <loc>https://www.yudezign.com/privacy</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://yudezign.com/terms</loc>
+    <loc>https://www.yudezign.com/terms</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

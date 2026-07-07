@@ -10,7 +10,7 @@ const About = () => {
         title="About Us - Houston Cabinet Craftsmen"
         description="YuDezign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
         keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
-        url="https://yudezign.com/about"
+        url="https://www.yudezign.com/about"
         image="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">

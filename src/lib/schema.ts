@@ -15,9 +15,9 @@ export const generateLocalBusinessSchema = (params: {
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://yudezign.com/#organization',
+  '@id': 'https://www.yudezign.com/#organization',
   name: params.name,
-  url: 'https://yudezign.com',
+  url: 'https://www.yudezign.com',
   telephone: params.phone,
   priceRange: params.priceRange,
   address: {
@@ -69,28 +69,28 @@ export const generateArticleSchema = (params: {
 }) => ({
   '@context': 'https://schema.org',
   '@type': 'Article',
-  '@id': params.canonicalUrl ? `${params.canonicalUrl}#article` : 'https://yudezign.com/blog#article',
+  '@id': params.canonicalUrl ? `${params.canonicalUrl}#article` : 'https://www.yudezign.com/blog#article',
   headline: params.title,
   description: params.description,
   image: params.imageUrl,
   author: {
     '@type': 'Person',
     name: params.author,
-    url: 'https://yudezign.com/about'
+    url: 'https://www.yudezign.com/about'
   },
   publisher: {
     '@type': 'Organization',
     name: 'YuDezign',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://yudezign.com/logo.png'
+      url: 'https://www.yudezign.com/logo.png'
     }
   },
   datePublished: params.publishedDate,
   dateModified: params.modifiedDate || params.publishedDate,
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': params.canonicalUrl || 'https://yudezign.com/blog'
+    '@id': params.canonicalUrl || 'https://www.yudezign.com/blog'
   },
   ...(params.category && { articleSection: params.category }),
   ...(params.tags && { keywords: params.tags.join(', ') }),

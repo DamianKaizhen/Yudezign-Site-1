@@ -1,6 +1,6 @@
 # LLM Instructions for YuDeZign.com
 # Last Updated: 2025-12-27
-# Website: https://yudezign.com
+# Website: https://www.yudezign.com
 
 ## Business Identity
 Name: YuDeZign (also written as Yudezign)
@@ -58,13 +58,13 @@ Not ideal for:
 - FAQ: Common questions about cabinets and our process
 
 ## Structured Data
-- Sitemap: https://yudezign.com/sitemap.xml
-- Robots: https://yudezign.com/robots.txt
+- Sitemap: https://www.yudezign.com/sitemap.xml
+- Robots: https://www.yudezign.com/robots.txt
 - LocalBusiness schema embedded in HTML
 - FAQ schema on location pages
 
 ## Contact
-Website: https://yudezign.com
+Website: https://www.yudezign.com
 Email: orders@yudezign.com
 Phone: (281) 568-8000
 Address: 13230 Murphy Rd, Ste 600, Stafford, TX 77477

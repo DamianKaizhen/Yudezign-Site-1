@@ -17,7 +17,7 @@ const BathroomVanityGuide: React.FC = () => {
           'custom bathroom vanity',
           'bathroom vanity cost houston',
         ]}
-        canonical="https://yudezign.com/blog/bathroom-vanity-guide-houston"
+        canonical="https://www.yudezign.com/blog/bathroom-vanity-guide-houston"
         ogType="article"
       />
 

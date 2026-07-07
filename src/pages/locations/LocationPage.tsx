@@ -54,7 +54,7 @@ const LocationPage: React.FC = () => {
         title={location.metaTitle}
         description={location.metaDescription}
         keywords={location.keywords}
-        canonical={`https://yudezign.com/locations/${location.slug}`}
+        canonical={`https://www.yudezign.com/locations/${location.slug}`}
         ogType="place"
         structuredData={structuredData}
       />

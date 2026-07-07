@@ -10,9 +10,9 @@
 - Please respect crawl delays and server resources
 
 ## Related Files
-- Sitemap: https://yudezign.com/sitemap.xml
-- Robots: https://yudezign.com/robots.txt
-- LLM Instructions: https://yudezign.com/llms.txt
+- Sitemap: https://www.yudezign.com/sitemap.xml
+- Robots: https://www.yudezign.com/robots.txt
+- LLM Instructions: https://www.yudezign.com/llms.txt
 - Structured Data: JSON-LD embedded in page HTML
 
 ## About This Site
@@ -38,7 +38,7 @@ Business Model: Supply-only (cabinets manufactured, customer arranges installati
 Email: orders@yudezign.com
 Secondary Email: damian.k@yudezign.com
 Phone: (281) 568-8000
-Website: https://yudezign.com
+Website: https://www.yudezign.com
 Address: 13230 Murphy Rd, Ste 600, Stafford, TX 77477
 Service Area: Houston, Texas Metro Area
 Hours: Monday-Friday 9AM-5PM CT

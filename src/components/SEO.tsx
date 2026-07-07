@@ -27,7 +27,7 @@ const SEO = ({
   keywords = 'european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets',
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
   ogImage,
-  url = 'https://yudezign.com',
+  url = 'https://www.yudezign.com',
   canonical,
   type = 'website',
   structuredData,

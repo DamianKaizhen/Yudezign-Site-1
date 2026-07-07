@@ -3,11 +3,11 @@
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": "https://yudezign.com/#organization",
+      "@id": "https://www.yudezign.com/#organization",
       "name": "Yudezign",
       "alternateName": "YuDezign Custom Cabinets",
       "description": "Houston's premier custom European frameless cabinet manufacturer specializing in kitchens, closets, vanities, and commercial projects.",
-      "url": "https://yudezign.com",
+      "url": "https://www.yudezign.com",
       "telephone": "+12815688000",
       "email": "damian.k@yudezign.com",
       "address": {
@@ -38,24 +38,24 @@
       "priceRange": "$$-$$$",
       "paymentAccepted": "Cash, Check, Credit Card",
       "openingHours": "Mo-Fr 09:00-17:00",
-      "image": "https://yudezign.com/groupimage.png",
-      "logo": "https://yudezign.com/vite.svg",
+      "image": "https://www.yudezign.com/groupimage.png",
+      "logo": "https://www.yudezign.com/vite.svg",
       "sameAs": [
         "https://github.com/DamianKaizhen/Yukon"
       ]
     },
     {
       "@type": "WebSite",
-      "@id": "https://yudezign.com/#website",
-      "url": "https://yudezign.com",
+      "@id": "https://www.yudezign.com/#website",
+      "url": "https://www.yudezign.com",
       "name": "Yudezign - Custom European Cabinets",
       "description": "Premium European frameless cabinets crafted in Houston",
       "publisher": {
-        "@id": "https://yudezign.com/#organization"
+        "@id": "https://www.yudezign.com/#organization"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://yudezign.com/portfolio?search={search_term_string}",
+        "target": "https://www.yudezign.com/portfolio?search={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
@@ -63,7 +63,7 @@
       "@type": "Service",
       "serviceType": "Custom Cabinet Manufacturing",
       "provider": {
-        "@id": "https://yudezign.com/#organization"
+        "@id": "https://www.yudezign.com/#organization"
       },
       "areaServed": {
         "@type": "City",
@@ -114,37 +114,37 @@
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://yudezign.com/#breadcrumb",
+      "@id": "https://www.yudezign.com/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://yudezign.com"
+          "item": "https://www.yudezign.com"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Portfolio",
-          "item": "https://yudezign.com/portfolio"
+          "item": "https://www.yudezign.com/portfolio"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Finishes",
-          "item": "https://yudezign.com/finishes"
+          "item": "https://www.yudezign.com/finishes"
         },
         {
           "@type": "ListItem",
           "position": 4,
           "name": "About",
-          "item": "https://yudezign.com/about"
+          "item": "https://www.yudezign.com/about"
         },
         {
           "@type": "ListItem",
           "position": 5,
           "name": "Contact",
-          "item": "https://yudezign.com/contact"
+          "item": "https://www.yudezign.com/contact"
         }
       ]
     }

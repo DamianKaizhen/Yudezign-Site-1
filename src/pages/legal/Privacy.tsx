@@ -8,7 +8,7 @@ const Privacy = () => {
         title="Privacy Policy - YuDezign Custom Cabinets"
         description="YuDezign's privacy policy. Learn how we collect, use, and protect your personal information when you use our custom cabinet services in Houston, Texas."
         keywords="privacy policy, data protection, yudezign privacy, cabinet privacy policy"
-        url="https://yudezign.com/privacy"
+        url="https://www.yudezign.com/privacy"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
         {/* Hero Section */}
@@ -27,7 +27,7 @@ const Privacy = () => {
                 Last Updated: December 23, 2024
               </p>
               <p className="text-body text-luxury-gray-600 leading-relaxed">
-                At YuDezign ("we," "us," or "our"), we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (https://yudezign.com) or use our custom cabinet services.
+                At YuDezign ("we," "us," or "our"), we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (https://www.yudezign.com) or use our custom cabinet services.
               </p>
             </motion.div>
           </div>

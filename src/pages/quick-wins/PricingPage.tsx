@@ -46,7 +46,7 @@ const PricingPage: React.FC = () => {
           'cabinet pricing guide',
           'Houston cabinet costs',
         ]}
-        canonical="https://yudezign.com/pricing"
+        canonical="https://www.yudezign.com/pricing"
         ogType="website"
         structuredData={faqSchema}
       />

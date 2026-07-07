@@ -68,7 +68,7 @@ const CategoryPage = () => {
         title={`${info.title} - Custom European Cabinets`}
         description={info.description}
         keywords={`${category} cabinets, custom ${category}, houston ${category}, european ${category}, luxury ${category}`}
-        url={`https://yudezign.com/portfolio/${category}`}
+        url={`https://www.yudezign.com/portfolio/${category}`}
         image={info.heroImage}
       />
       <div className="min-h-screen pt-24">

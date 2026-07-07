@@ -42,7 +42,7 @@ const Portfolio = () => {
         title="Portfolio - Custom Cabinet Projects"
         description="Browse our portfolio of custom European frameless cabinets. Kitchen cabinets, closets, vanities, and custom cabinetry projects in Houston. Premium 3/4 plywood construction with luxury finishes."
         keywords="cabinet portfolio, kitchen cabinets houston, custom closets, luxury vanities, cabinet projects, european cabinets gallery"
-        url="https://yudezign.com/portfolio"
+        url="https://www.yudezign.com/portfolio"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}

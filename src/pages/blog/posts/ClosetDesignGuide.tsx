@@ -17,7 +17,7 @@ const ClosetDesignGuide: React.FC = () => {
           'closet layout guide',
           'master closet design',
         ]}
-        canonical="https://yudezign.com/blog/custom-closet-design-guide-houston"
+        canonical="https://www.yudezign.com/blog/custom-closet-design-guide-houston"
         ogType="article"
       />
 

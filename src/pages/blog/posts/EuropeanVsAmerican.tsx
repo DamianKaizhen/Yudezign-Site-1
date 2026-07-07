@@ -16,7 +16,7 @@ const EuropeanVsAmerican: React.FC = () => {
           'cabinet style comparison',
           'european cabinets houston'
         ]}
-        canonical="https://yudezign.com/blog/european-vs-american-cabinets"
+        canonical="https://www.yudezign.com/blog/european-vs-american-cabinets"
         ogType="article"
       />
 
