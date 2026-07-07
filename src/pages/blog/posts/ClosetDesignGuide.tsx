@@ -60,8 +60,8 @@ const ClosetDesignGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=90"
-              alt="Custom walk-in closet system with organized hanging and shelving"
+              src="/portfolio/closet-greige-gold-1.jpg"
+              alt="Custom greige walk-in closet system with gold hardware and hanging rods"
               className="w-full h-[400px] object-cover"
             />
           </div>

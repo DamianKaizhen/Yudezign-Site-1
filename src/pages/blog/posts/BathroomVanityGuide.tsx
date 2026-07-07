@@ -60,8 +60,8 @@ const BathroomVanityGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=90"
-              alt="Custom double bathroom vanity in a modern Houston home"
+              src="/portfolio/vanity-oak-tour.jpg"
+              alt="Custom oak bathroom vanity with brass hardware in a Houston home"
               className="w-full h-[400px] object-cover"
             />
           </div>

@@ -317,8 +317,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['bathroom vanity', 'vanity sizes', 'double vanity', 'floating vanity', 'Houston'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=90',
-      alt: 'Custom double bathroom vanity in a modern Houston home',
+      url: '/portfolio/vanity-oak-tour.jpg',
+      alt: 'Custom oak bathroom vanity with brass hardware in a Houston home',
     },
     readTime: 10,
     seo: {
@@ -351,8 +351,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['hardware', 'hinges', 'drawer slides', 'pulls', 'knobs', 'soft-close'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=90',
-      alt: 'Modern cabinet drawers with premium pulls and soft-close hardware',
+      url: '/portfolio/1772673222886-IMG_1875.jpg',
+      alt: 'Custom kitchen cabinets with brushed brass bar pulls',
     },
     readTime: 11,
     seo: {
@@ -385,8 +385,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['closets', 'walk-in closet', 'reach-in closet', 'organization', 'Houston'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=90',
-      alt: 'Custom walk-in closet system with organized hanging and shelving',
+      url: '/portfolio/closet-greige-gold-1.jpg',
+      alt: 'Custom greige walk-in closet system with gold hardware and hanging rods',
     },
     readTime: 11,
     seo: {

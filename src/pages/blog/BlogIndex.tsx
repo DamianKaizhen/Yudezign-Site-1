@@ -10,8 +10,16 @@ const BlogIndex: React.FC = () => {
   // Get unique categories
   const categories = ['all', ...Array.from(new Set(blogPosts.map(post => post.category)))];
 
-  // Filter posts
-  const filteredPosts = blogPosts.filter(post => {
+  // Sort posts newest-first by published date so new articles always lead
+  const sortedPosts = [...blogPosts].sort(
+    (a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+  );
+
+  // Get featured post (newest)
+  const featuredPost = sortedPosts[0];
+
+  // Filter posts (from the sorted list so the grid stays newest-first)
+  const filteredPosts = sortedPosts.filter(post => {
     const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
     const matchesSearch = searchQuery === '' ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -20,8 +28,12 @@ const BlogIndex: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  // Get featured post (latest)
-  const featuredPost = blogPosts[0];
+  // When the featured banner is showing (default view), drop the featured post
+  // from the grid so it isn't listed twice
+  const showFeatured = selectedCategory === 'all' && searchQuery === '';
+  const gridPosts = showFeatured
+    ? filteredPosts.filter(post => post.slug !== featuredPost?.slug)
+    : filteredPosts;
 
   return (
     <>
@@ -97,7 +109,7 @@ const BlogIndex: React.FC = () => {
       </section>
 
       {/* Featured Post */}
-      {featuredPost && selectedCategory === 'all' && searchQuery === '' && (
+      {featuredPost && showFeatured && (
         <section className="py-12 bg-slate-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -155,13 +167,13 @@ const BlogIndex: React.FC = () => {
       {/* Blog Grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filteredPosts.length === 0 ? (
+          {gridPosts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-lg text-slate-600">No articles found matching your criteria.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map(post => (
+              {gridPosts.map(post => (
                 <article key={post.slug} className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all border border-slate-200 overflow-hidden group">
                   {/* Image */}
                   <div className="h-48 overflow-hidden">

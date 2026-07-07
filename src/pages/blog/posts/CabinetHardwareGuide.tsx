@@ -60,8 +60,8 @@ const CabinetHardwareGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=90"
-              alt="Modern cabinet drawers with premium pulls and soft-close hardware"
+              src="/portfolio/1772673222886-IMG_1875.jpg"
+              alt="Custom kitchen cabinets with brushed brass bar pulls"
               className="w-full h-[400px] object-cover"
             />
           </div>
