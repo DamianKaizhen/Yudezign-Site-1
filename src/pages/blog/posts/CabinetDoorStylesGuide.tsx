@@ -60,8 +60,8 @@ const CabinetDoorStylesGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=90"
-              alt="Comparison of flat panel and shaker cabinet door styles"
+              src="/portfolio/vanity-shaker-1.jpg"
+              alt="White Shaker-style vanity cabinet with black hardware"
               className="w-full h-[400px] object-cover"
             />
           </div>

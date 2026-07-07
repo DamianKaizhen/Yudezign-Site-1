@@ -46,8 +46,8 @@ const KitchenTrends2025: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1200&q=90"
-            alt="Modern kitchen with trending cabinet design"
+            src="/portfolio/1772673240566-IMG_1886.jpg"
+            alt="Modern oak kitchen with brass hardware and a gas range"
             className="w-full h-96 object-cover"
           />
         </div>

@@ -61,8 +61,8 @@ const CabinetFinishesGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90"
-              alt="Various cabinet finish samples"
+              src="/portfolio/1762211335381-IMG_9153.jpg"
+              alt="High-gloss and wood-grain cabinet finishes on a media wall"
               className="w-full h-[400px] object-cover"
             />
           </div>

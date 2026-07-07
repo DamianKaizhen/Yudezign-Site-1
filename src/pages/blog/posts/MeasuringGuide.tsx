@@ -46,8 +46,8 @@ const MeasuringGuide: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=90"
-            alt="Person measuring kitchen for custom cabinets"
+            src="/portfolio/1772673242655-IMG_1865.jpg"
+            alt="Custom built-in oak cabinetry along a window wall"
             className="w-full h-96 object-cover"
           />
         </div>

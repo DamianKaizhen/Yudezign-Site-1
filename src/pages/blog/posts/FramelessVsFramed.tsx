@@ -46,8 +46,8 @@ const FramelessVsFramed: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=90"
-            alt="Modern frameless cabinet construction"
+            src="/portfolio/1772673236248-IMG_1877.jpg"
+            alt="Frameless oak kitchen cabinets with a marble backsplash"
             className="w-full h-96 object-cover"
           />
         </div>

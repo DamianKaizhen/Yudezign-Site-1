@@ -46,8 +46,8 @@ const EuropeanVsAmerican: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90"
-            alt="Modern European style kitchen"
+            src="/portfolio/1772673222886-IMG_1875.jpg"
+            alt="Frameless European-style oak kitchen with an island"
             className="w-full h-96 object-cover"
           />
         </div>

@@ -46,8 +46,8 @@ const HoustonHumidity: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1200&q=90"
-            alt="Houston kitchen with humidity-resistant cabinets"
+            src="/portfolio/1772673253312-IMG_1830.jpg"
+            alt="Moisture-resistant oak bathroom vanity in a Houston home"
             className="w-full h-96 object-cover"
           />
         </div>

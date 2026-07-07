@@ -12,7 +12,7 @@ const CostGuide2025: React.FC = () => {
     author: 'YuDezign Team',
     publishedDate: '2025-01-14',
     modifiedDate: '2025-01-14',
-    imageUrl: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90',
+    imageUrl: 'https://www.yudezign.com/portfolio/kitchen-grand-tour-poster.jpg',
     canonicalUrl: 'https://www.yudezign.com/blog/custom-cabinet-cost-guide-houston-2025',
     category: 'Pricing & Budgeting',
     tags: ['cabinet costs', 'houston pricing', 'kitchen budget', 'custom cabinets'],
@@ -74,8 +74,8 @@ const CostGuide2025: React.FC = () => {
         {/* Featured Image */}
         <div className="mb-12 rounded-2xl overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90"
-            alt="Modern kitchen with custom cabinets"
+            src="/portfolio/kitchen-grand-tour-poster.jpg"
+            alt="Custom oak kitchen cabinets in a modern Houston home"
             className="w-full h-96 object-cover"
           />
         </div>

@@ -60,8 +60,8 @@ const CabinetMaterialsGuide: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-12">
           <div className="rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=1200&q=90"
-              alt="Different cabinet construction materials"
+              src="/portfolio/1775057064758-wecabinetimage1.jpg"
+              alt="Custom walnut cabinets showing frameless construction"
               className="w-full h-[400px] object-cover"
             />
           </div>

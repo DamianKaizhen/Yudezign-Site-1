@@ -16,8 +16,8 @@ export const blogPosts: BlogPost[] = [
     category: 'Cost & Pricing',
     tags: ['pricing', 'cost guide', 'budget', 'kitchen cabinets', 'Houston'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90',
-      alt: 'Custom kitchen cabinets in modern Houston home',
+      url: '/portfolio/kitchen-grand-tour-poster.jpg',
+      alt: 'Custom oak kitchen cabinets in a modern Houston home',
     },
     readTime: 12,
     seo: {
@@ -49,8 +49,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['frameless cabinets', 'framed cabinets', 'cabinet construction', 'comparison'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=90',
-      alt: 'Side by side comparison of frameless and framed cabinet construction',
+      url: '/portfolio/1772673236248-IMG_1877.jpg',
+      alt: 'Frameless oak kitchen cabinets with a marble backsplash',
     },
     readTime: 10,
     seo: {
@@ -82,8 +82,8 @@ export const blogPosts: BlogPost[] = [
     category: 'Design & Trends',
     tags: ['trends', 'design', 'kitchen cabinets', '2025 trends', 'Houston design'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=1200&q=90',
-      alt: 'Modern kitchen with trending cabinet styles in Houston home',
+      url: '/portfolio/1772673240566-IMG_1886.jpg',
+      alt: 'Modern oak kitchen with brass hardware and a gas range',
     },
     readTime: 8,
     seo: {
@@ -115,8 +115,8 @@ export const blogPosts: BlogPost[] = [
     category: 'Local Houston',
     tags: ['Houston', 'humidity', 'climate', 'cabinet materials', 'maintenance'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1200&q=90',
-      alt: 'Moisture-resistant kitchen cabinets in Houston home',
+      url: '/portfolio/1772673253312-IMG_1830.jpg',
+      alt: 'Moisture-resistant oak bathroom vanity in a Houston home',
     },
     readTime: 9,
     seo: {
@@ -148,8 +148,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['how-to', 'measuring', 'DIY', 'planning', 'custom cabinets'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1200&q=90',
-      alt: 'Person measuring kitchen space for custom cabinets',
+      url: '/portfolio/1772673242655-IMG_1865.jpg',
+      alt: 'Custom built-in oak cabinetry along a window wall',
     },
     readTime: 11,
     seo: {
@@ -181,8 +181,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['European cabinets', 'American cabinets', 'design styles', 'comparison'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=1200&q=90',
-      alt: 'Comparison of European and American cabinet styles',
+      url: '/portfolio/1772673222886-IMG_1875.jpg',
+      alt: 'Frameless European-style oak kitchen with an island',
     },
     readTime: 10,
     seo: {
@@ -214,8 +214,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['materials', 'plywood', 'particleboard', 'MDF', 'construction', 'Houston'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=1200&q=90',
-      alt: 'Different cabinet construction materials comparison',
+      url: '/portfolio/1775057064758-wecabinetimage1.jpg',
+      alt: 'Custom walnut cabinets showing frameless construction',
     },
     readTime: 10,
     seo: {
@@ -248,8 +248,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['door styles', 'flat panel', 'shaker', 'design', 'construction'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1200&q=90',
-      alt: 'Comparison of flat panel and shaker cabinet door styles',
+      url: '/portfolio/vanity-shaker-1.jpg',
+      alt: 'White Shaker-style vanity cabinet with black hardware',
     },
     readTime: 9,
     seo: {
@@ -282,8 +282,8 @@ export const blogPosts: BlogPost[] = [
     category: 'How-To & Education',
     tags: ['finishes', 'melamine', 'laminate', 'acrylic', 'RTF', 'paint'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1200&q=90',
-      alt: 'Various cabinet finish samples and textures',
+      url: '/portfolio/1762211335381-IMG_9153.jpg',
+      alt: 'High-gloss and wood-grain cabinet finishes on a media wall',
     },
     readTime: 11,
     seo: {
