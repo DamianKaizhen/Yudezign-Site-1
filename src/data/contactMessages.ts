@@ -377,5 +377,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-03T02:46:59.705Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1783500754904_yetbz5i',
+    name: 'pVJPFFxvpTkgAsWhjIJhx',
+    email: 'p.uqu.c.e.v.o.ci.5.77@gmail.com',
+    phone: '7994688910',
+    projectType: 'closet',
+    timeline: '1-2months',
+    message: 'yCVvhvoFGzNttVdutbTuckJp',
+    
+    submittedAt: '2026-07-08T08:52:34.910Z',
+    status: 'new',
+    
   }
 ];
