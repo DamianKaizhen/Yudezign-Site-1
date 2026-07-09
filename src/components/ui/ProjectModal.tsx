@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MapPin, Clock, Package, CheckCircle } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { X, MapPin, Clock, Package, CheckCircle, Maximize2 } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import type { Project } from '../../types';
 
 interface ProjectModalProps {
@@ -13,11 +13,48 @@ type MediaItem = { type: 'image' | 'video'; src: string };
 
 export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const fsRef = useRef<HTMLDivElement>(null);
 
   // Reset to the first slide whenever a different project is opened.
   useEffect(() => {
     setCurrentIndex(0);
+    setIsFullscreen(false);
   }, [project?.id]);
+
+  // Close the fullscreen viewer when the modal itself closes.
+  useEffect(() => {
+    if (!isOpen) setIsFullscreen(false);
+  }, [isOpen]);
+
+  // Enter/exit the browser's native fullscreen alongside the CSS overlay
+  // (best-effort — where the native API is unavailable, e.g. images on iOS
+  // Safari, the full-viewport overlay alone still enlarges the media).
+  useEffect(() => {
+    if (isFullscreen) {
+      fsRef.current?.requestFullscreen?.().catch(() => {});
+    } else if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {});
+    }
+  }, [isFullscreen]);
+
+  // Sync when the user leaves native fullscreen (e.g. Esc), and allow Esc to
+  // close the viewer where there is no native fullscreen.
+  useEffect(() => {
+    if (!isFullscreen) return;
+    const onFsChange = () => {
+      if (!document.fullscreenElement) setIsFullscreen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsFullscreen(false);
+    };
+    document.addEventListener('fullscreenchange', onFsChange);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('fullscreenchange', onFsChange);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [isFullscreen]);
 
   if (!project) return null;
 
@@ -43,6 +80,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
   };
 
   return (
+    <>
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -84,9 +122,19 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
                 <img
                   src={current?.src}
                   alt={`${project.title} - Image ${currentIndex + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-zoom-in"
+                  onClick={() => setIsFullscreen(true)}
                 />
               )}
+
+              {/* Expand to fullscreen */}
+              <button
+                onClick={() => setIsFullscreen(true)}
+                className="absolute top-4 left-4 z-10 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white transition-colors"
+                aria-label="View fullscreen"
+              >
+                <Maximize2 className="w-5 h-5 text-luxury-gray-700" />
+              </button>
 
               {/* Navigation - Only show if multiple media items */}
               {media.length > 1 && (
@@ -219,5 +267,76 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
         </motion.div>
       )}
     </AnimatePresence>
+
+    {/* Fullscreen media viewer */}
+    <AnimatePresence>
+      {isOpen && isFullscreen && current && (
+        <motion.div
+          ref={fsRef}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsFullscreen(false);
+          }}
+          className="fixed inset-0 z-[60] bg-black flex items-center justify-center"
+        >
+          {current.type === 'video' ? (
+            <video
+              key={current.src}
+              src={current.src}
+              className="max-h-full max-w-full object-contain"
+              controls
+              autoPlay
+              playsInline
+            />
+          ) : (
+            <img
+              src={current.src}
+              alt={`${project.title} - Image ${currentIndex + 1}`}
+              className="max-h-full max-w-full object-contain"
+            />
+          )}
+
+          {/* Close fullscreen */}
+          <button
+            onClick={() => setIsFullscreen(false)}
+            className="absolute top-4 right-4 z-10 p-2 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-colors"
+            aria-label="Exit fullscreen"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Navigation in fullscreen */}
+          {media.length > 1 && (
+            <>
+              <button
+                onClick={handlePrevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-colors"
+                aria-label="Previous"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={handleNextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/10 hover:bg-white/20 text-white rounded-full backdrop-blur-sm transition-colors"
+                aria-label="Next"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm font-medium">
+                {currentIndex + 1} / {media.length}
+              </div>
+            </>
+          )}
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
