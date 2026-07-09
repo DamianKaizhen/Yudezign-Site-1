@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useTransform, useMotionValue, useSpring, useInView } from 'framer-motion';
 import { Clock, Package, Ruler, Wrench, Star, Quote } from 'lucide-react';
 import { InView } from '../components/ui/InViewAnimations';
 import { ImageCard, SpecCard } from '../components/ui/MinimalCard';
@@ -8,7 +8,7 @@ import { ProjectModal } from '../components/ui/ProjectModal';
 import { projects } from '../data/projects';
 import { testimonials } from '../data/testimonials';
 import SEO from '../components/SEO';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import type { Project } from '../types';
 
 const Home = () => {
@@ -52,6 +52,21 @@ const Home = () => {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
+  // Craftsmanship montage: reveal + play when scrolled into view, pause when out.
+  const craftRef = useRef<HTMLDivElement>(null);
+  const craftInView = useInView(craftRef, { once: false, margin: '-15%' });
+  const craftVideoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = craftVideoRef.current;
+    if (!v) return;
+    v.muted = true; // ensure no audio ever plays
+    if (craftInView) {
+      v.play().catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [craftInView]);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
@@ -92,7 +107,7 @@ const Home = () => {
       <div className="min-h-screen bg-luxury-cream">
 
       {/* HERO - Full viewport with cursor reveal effect */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-0">
         {/* Base kitchen image */}
         <div className="absolute inset-0">
           <img
@@ -244,7 +259,7 @@ const Home = () => {
         <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
           {/* Trust Bar */}
           <motion.div
-            className="mb-8 text-sm md:text-base font-medium text-white/90 flex flex-wrap items-center justify-center gap-4 md:gap-8"
+            className="mb-6 md:mb-8 text-sm md:text-base font-medium text-white/90 flex flex-wrap items-center justify-center gap-3 md:gap-8"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
@@ -281,7 +296,7 @@ const Home = () => {
             }}
           >
             <motion.h1
-              className="text-hero-mobile md:text-hero mb-6 font-light leading-tight"
+              className="text-[2.75rem] sm:text-[3.5rem] md:text-hero mb-6 font-light leading-tight"
             >
               Custom Frameless Cabinets
               <br />
@@ -313,7 +328,7 @@ const Home = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full max-w-md sm:max-w-none mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -323,13 +338,14 @@ const Home = () => {
             }}
           >
             <motion.div
+              className="w-full sm:w-auto"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link
                 to="/contact"
-                className="inline-block px-12 py-4 bg-accent text-primary-dark text-body-lg font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl relative overflow-hidden group"
+                className="block sm:inline-block w-full sm:w-auto text-center px-8 sm:px-12 py-4 bg-accent text-primary-dark text-body-lg font-semibold rounded-md hover:bg-accent/90 transition-all duration-300 shadow-luxury-lg hover:shadow-luxury-xl relative overflow-hidden group"
               >
                 <span className="relative z-10">Start Your Project</span>
                 <motion.div
@@ -339,13 +355,14 @@ const Home = () => {
               </Link>
             </motion.div>
             <motion.div
+              className="w-full sm:w-auto"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link
                 to="/portfolio"
-                className="inline-block px-12 py-4 bg-white/10 backdrop-blur-sm text-white text-body-lg font-medium rounded-md hover:bg-white/20 transition-all duration-300 shadow-luxury border border-white/30 relative overflow-hidden group"
+                className="block sm:inline-block w-full sm:w-auto text-center px-8 sm:px-12 py-4 bg-white/10 backdrop-blur-sm text-white text-body-lg font-medium rounded-md hover:bg-white/20 transition-all duration-300 shadow-luxury border border-white/30 relative overflow-hidden group"
               >
                 <span className="relative z-10">View Our Work</span>
               </Link>
@@ -604,29 +621,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CRAFTSMANSHIP - Large image with quote */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1600&q=90"
-            alt="Modern Frameless Kitchen Craftsmanship"
+      {/* CRAFTSMANSHIP - Project montage that reveals & plays on scroll */}
+      <section
+        ref={craftRef}
+        className="relative h-[70vh] min-h-[440px] flex items-center justify-center overflow-hidden bg-primary-dark"
+      >
+        {/* Muted, looping project montage — revealed as it scrolls into view */}
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={craftInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.08 }}
+          transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <video
+            ref={craftVideoRef}
+            src="/portfolio/videos/projects-montage.mp4"
+            poster="/portfolio/projects-montage-poster.jpg"
             className="w-full h-full object-cover"
+            muted
+            loop
+            playsInline
+            preload="metadata"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/40 to-accent/30"></div>
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-accent/30"></div>
+        </motion.div>
 
         <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-          <InView variant="fadeUp">
-            <div className="mb-6">
-              <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={craftInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>
             <p className="text-display-mobile md:text-display font-light leading-tight mb-6">
               "Built to last decades, not years."
             </p>
-            <p className="text-body-lg text-white/80">
+            <p className="text-body-lg text-white/85">
               Premium craftsmanship, European design, Houston made.
             </p>
-          </InView>
+          </motion.div>
         </div>
       </section>
 
