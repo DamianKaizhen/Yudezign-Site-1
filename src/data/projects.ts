@@ -373,5 +373,21 @@ export const projects: Project[] = [
     features: ['Video Tour', 'Exam & Office Casework', 'Quartz Countertops', 'Brushed Nickel Pulls'],
     turnaroundTime: '3 weeks',
     description: 'A medical clinic office fitted with dark charcoal frameless casework throughout — upper cabinets, base runs with deep drawer banks, and quartz countertops set against a black glass partition wall. Shown as a full video walkthrough of the finished commercial space.',
+  },
+  {
+    id: 'proj_1783000000005_cmhotel1',
+    title: 'Hotel Reception',
+    category: 'commercial',
+    images: [
+      '/portfolio/hotel-reception-1.jpg',
+      '/portfolio/hotel-reception-2.jpg'
+    ],
+    thumbnail: '/portfolio/hotel-reception-1.jpg',
+    location: 'Out of State',
+    finish: 'White Quartz & Dark Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Custom Casework', 'Quartz-Clad Canopy', 'Curved Reception Desk', 'Mesh-Front Cabinets'],
+    turnaroundTime: '4 weeks',
+    description: 'A custom hotel reception we designed hand-in-hand with the client for an out-of-state property. The centerpiece is a dramatic quartz-clad canopy and reception desk wrapped in marble-look waterfall panels, paired with dark woodgrain slat accents and mesh-front cabinets. Shown here during installation.',
   }
 ];
