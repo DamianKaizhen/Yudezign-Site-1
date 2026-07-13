@@ -390,5 +390,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-08T08:52:34.910Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1783965523166_ctkk1pe',
+    name: 'Trisha Brown',
+    email: 'campaigns@sendproud.com',
+    phone: '2155394452',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hi, I’m Trisha from Send Proud. We help businesses find their next customers. I\'m reaching out on behalf of our client Triton Infosec. They help software teams catch real vulnerabilities before release using AI-driven discovery combined with verified findings from certified pentesters, without the cost or delays of traditional pentests. Is this something you’d be open to exploring? I can help set up a quick 15-minute intro with their team if it’s relevant. You can book a time to chat here: https://campaign.sendproud.com/tritoninfosec',
+    
+    submittedAt: '2026-07-13T17:58:43.166Z',
+    status: 'new',
+    
   }
 ];
