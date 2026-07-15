@@ -403,5 +403,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-13T17:58:43.166Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1784086052617_hzbfiij',
+    name: 'gXpedtykzPjNwouLFFiiS',
+    email: 'fi.wa.w.aqi.0.9.4@gmail.com',
+    phone: '9474367346',
+    projectType: 'garage',
+    timeline: 'asap',
+    message: 'tfUYJnIeXbQnosML',
+    
+    submittedAt: '2026-07-15T03:27:32.617Z',
+    status: 'new',
+    
   }
 ];
