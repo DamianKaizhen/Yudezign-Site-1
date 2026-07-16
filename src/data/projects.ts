@@ -389,5 +389,21 @@ export const projects: Project[] = [
     features: ['Custom Casework', 'Quartz-Clad Canopy', 'Curved Reception Desk', 'Mesh-Front Cabinets'],
     turnaroundTime: '4 weeks',
     description: 'A custom hotel reception we designed hand-in-hand with the client for an out-of-state property. The centerpiece is a dramatic quartz-clad canopy and reception desk wrapped in marble-look waterfall panels, paired with dark woodgrain slat accents and mesh-front cabinets. Shown here during installation.',
+  },
+  {
+    id: 'proj_1784000000001_cuvanity1',
+    title: 'Makeup Vanity with LED Mirror',
+    category: 'custom',
+    images: [
+      '/portfolio/mirror-vanity-1.jpg',
+      '/portfolio/mirror-vanity-2.jpg'
+    ],
+    thumbnail: '/portfolio/mirror-vanity-1.jpg',
+    location: 'Houston',
+    finish: 'Greige Oak Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['LED-Lit Mirror', 'Open Display Shelving', 'Marble-Look Countertop', 'Soft-Close Drawers'],
+    turnaroundTime: '2 weeks',
+    description: 'A built-in makeup vanity and dressing station in a soft greige oak woodgrain, centered on an LED-backlit mirror framed by open display shelving. A marble-look countertop tops the knee-space desk and flanking drawer banks finished with brushed-gold pulls.',
   }
 ];
