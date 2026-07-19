@@ -429,5 +429,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-16T21:13:32.958Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1784461640802_1t5prt9',
+    name: 'UMqkUnPCcurHbFUnIsK',
+    email: 'ze.s.efo.po.0.21@gmail.com',
+    phone: '6017512721',
+    projectType: 'laundry-mudroom',
+    timeline: '1-2months',
+    message: 'AeSLrAAhGVEyHOyJFMpE',
+    
+    submittedAt: '2026-07-19T11:47:20.802Z',
+    status: 'new',
+    
   }
 ];
