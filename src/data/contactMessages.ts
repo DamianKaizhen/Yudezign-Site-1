@@ -442,5 +442,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-19T11:47:20.802Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1784606123693_8mexp63',
+    name: 'Hannah Melotto',
+    email: 'hannah.melotto@melottogroup.com',
+    phone: '2158218810',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Hi, I’m Hannah from Melotto Group. We help businesses redesign their websites and improve their content so they look more polished and convert better. I took a quick look at your site and saw a few opportunities to improve the design and messaging, and I think now could be a great time to explore a new or refreshed website. I’d be happy to share a few quick ideas. Grab a time here:⁠ http://calendar.melottogroup.com/',
+    
+    submittedAt: '2026-07-21T03:55:23.694Z',
+    status: 'new',
+    
   }
 ];
