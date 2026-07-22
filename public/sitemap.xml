@@ -63,6 +63,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Brochures & Downloads Page -->
+  <url>
+    <loc>https://www.yudezign.com/downloads</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- KD Lite Page -->
   <url>
     <loc>https://www.yudezign.com/kdlite</loc>

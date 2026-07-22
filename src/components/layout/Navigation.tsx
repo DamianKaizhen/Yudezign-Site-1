@@ -64,6 +64,7 @@ const Navigation = () => {
       name: 'Resources',
       path: '/blog',
       subLinks: [
+        { name: 'Brochures & Downloads', path: '/downloads' },
         { name: 'Blog', path: '/blog' },
         { name: 'Pricing Guide', path: '/pricing' },
         { name: 'FAQ', path: '/faq' },

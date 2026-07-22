@@ -14,6 +14,7 @@ import KDLite from './pages/kdlite/KDLite';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Visualizer from './pages/visualizer/Visualizer';
+import Downloads from './pages/downloads/Downloads';
 import Privacy from './pages/legal/Privacy';
 import TermsOfService from './pages/legal/TermsOfService';
 import Login from './pages/admin/Login';
@@ -120,6 +121,7 @@ function App() {
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
           <Route path="/visualizer" element={<PublicLayout><Visualizer /></PublicLayout>} />
+          <Route path="/downloads" element={<PublicLayout><Downloads /></PublicLayout>} />
           <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
           <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
 
