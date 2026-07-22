@@ -405,5 +405,22 @@ export const projects: Project[] = [
     features: ['LED-Lit Mirror', 'Open Display Shelving', 'Marble-Look Countertop', 'Soft-Close Drawers'],
     turnaroundTime: '2 weeks',
     description: 'A built-in makeup vanity and dressing station in a soft greige oak woodgrain, centered on an LED-backlit mirror framed by open display shelving. A marble-look countertop tops the knee-space desk and flanking drawer banks finished with brushed-gold pulls.',
+  },
+  {
+    id: 'proj_1784500000001_cmoffice1',
+    title: 'Modern Office Kitchenette',
+    category: 'commercial',
+    images: [
+      '/portfolio/office-kitchenette-1.jpg',
+      '/portfolio/office-kitchenette-2.jpg',
+      '/portfolio/office-kitchenette-3.jpg'
+    ],
+    thumbnail: '/portfolio/office-kitchenette-1.jpg',
+    location: 'Houston',
+    finish: 'Walnut Woodgrain with Charcoal Gloss',
+    cabinetStyle: 'Frameless European',
+    features: ['Under-Cabinet LED Lighting', 'Handleless Design', 'Quartz Waterfall Counter', 'Integrated Beverage Fridge'],
+    turnaroundTime: '4 weeks',
+    description: 'A sleek office breakroom kitchenette pairing warm walnut-woodgrain frameless cabinets with high-gloss charcoal upper valance boxes. Under-cabinet LED lighting washes the countertop, while a light grey quartz top wraps into a waterfall-edge peninsula with an integrated sink. Handleless routed reveals keep the look seamless, and a built-in beverage fridge rounds out a polished, functional space for the workday.',
   }
 ];
