@@ -455,5 +455,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-21T03:55:23.694Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1784748015337_c228eq1',
+    name: 'Olivia Johnson',
+    email: 'olivia@virtualteamexpert.com',
+    phone: '(217) 293-5505',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: '2172935505',
+    
+    submittedAt: '2026-07-22T19:20:15.337Z',
+    status: 'new',
+    
   }
 ];
