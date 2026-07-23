@@ -9,10 +9,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: '',
-    
     submittedAt: '2025-11-03T04:47:14.839Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1766614666484_ah2uuyb',
@@ -25,7 +23,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766614665011-Vicenza_Oak.png', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766614665864-groupimage.png', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766614666181-Potential%20Customer%2020251222%20-%20DarkGreyShiny.pdf'],
     submittedAt: '2025-12-24T22:17:46.484Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1766617264458_eve9gzy',
@@ -38,7 +35,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766617262641-Vicenza_Oak.png', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1766617263492-groupimage.png'],
     submittedAt: '2025-12-24T23:01:04.458Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1767120028618_9jv9quf',
@@ -48,10 +44,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'We offer a design tool (like 2020/ProKitchen) that you can use for your online customers or integrate it to your website for your clients to use similar to Ikea\'s and Lowe\'s kitchen design tool. You can find us at https://business.msmvdesign.com and https://msmvdesign.com\nPlease send me your number to talk more over the phone.',
-    
     submittedAt: '2025-12-30T18:40:28.619Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1767131786349_9vg937w',
@@ -64,7 +58,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767131784795-FXTR6130-21MM_REV_X4.pdf', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767131785516-FXTR6130-25MM_REV_X4.pdf'],
     submittedAt: '2025-12-30T21:56:26.350Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1767649312731_9my9bhb',
@@ -74,10 +67,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'commercial',
     timeline: 'planning',
     message: 'Hi,\n\nMy husband Jason and I love the new home we recently purchased, and without a doubt, we’re relieved the home buying process is over.\n\nWhen we began our search, I think Jason and I expected to make general compromises based on our mutual wishlist, such as having a carport instead of a garage. But we quickly found that the biggest compromises had to be made between the two of us.\n\nFor example, I had no idea how passionate Jason was about having a double sink bathroom vanity until we were arguing about it in front of our real estate agent!\n\nI think this is a great topic because almost every couple deals with it when buying a new home. Can I write about it for your website? I’ll offer tips and advice based on experience and online resources that will help couples navigate the home buying process without damaging their relationship.\n\nIf you like this idea, please let me know. I’d love to start working on the article right away.\n\nThank you!\nNatalie Jones\nHomeownerbliss.info\n\n\n– Not sure this topic fits? I can easily adapt it or offer fresh ideas that suit your readers while maintaining SEO and AI-friendly structure. If you’d rather not hear from me in the future, a quick reply will do the trick.',
-    
     submittedAt: '2026-01-05T21:41:52.731Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1767807762117_9dt1zqx',
@@ -90,7 +81,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1767807761574-IMG_20200703_101256.jpg'],
     submittedAt: '2026-01-07T17:42:42.117Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1769392916631_nf34n92',
@@ -100,10 +90,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'commercial',
     timeline: 'asap',
     message: 'Hello,\n\nWould you be interested in reviewing a how-to article on making your rental property stand out to potential renters?\n\nThe article would be a quick read (500 or so words) and free of charge if you end up liking it and decide to post it on your site.\n\nThank you!\nNatalie Jones\nHomeownerbliss.info\n\n\n– Not sure this topic fits? I can easily adapt it or offer fresh ideas that suit your readers while maintaining SEO and AI-friendly structure. If you’d rather not hear from me in the future, a quick reply will do the trick.',
-    
     submittedAt: '2026-01-26T02:01:56.638Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1770238283604_9jq0sr1',
@@ -116,7 +104,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1770238283188-FLOOR%20PLANS%20BLK%202%20Lot%201.pdf'],
     submittedAt: '2026-02-04T20:51:23.604Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1770318415379_49ipzv9',
@@ -126,10 +113,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: 'asap',
     message: 'Hi there!\n\nWould you be interested in a guest post for your website that will walk through the process of using one’s home as a money maker?\n\nWhether your space is already beautifully renovated or it’s a work in progress, my article will talk about several ways to leverage your hard work and investment. It will include\n\nhow to document past and/or current home improvements for followers\ncreating and monetizing your own blog and/or website\ntaking advantage of affiliate marketing opportunities\nand driving traffic via social media ads.\n\nIf you’re open to receiving this article, please let me know. I’d be happy to send it over at no charge!\n\nFrom our perfect abode to yours,\nSarah V of OurPerfectAbode.com\n\n\nP.S. Please let me know if you\'re interested but have a different topic preference. The content I provide is crafted with both human readers and AI engines in mind, increasing visibility across the web.',
-    
     submittedAt: '2026-02-05T19:06:55.380Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1772295817275_upderga',
@@ -139,10 +124,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'commercial',
     timeline: 'asap',
     message: 'Wikipedia is considered to be the World’s most significant tool for reference material. The Wiki links show up on the 1st page of Google 97% of the time. With a Page on one of the most revered reference tools, you are sure to get yourself or your business noticed. So if you\'re thinking of getting a Wikipedia Page created, it\'s the best time of the year.\n\nIf you are interested in getting more information just respond back to this email.\n\nThanks,\n\nKatie Jones\nProfessional Company Profiles\nKatie@procompanyprofiles.com\n\nRespond with stop to optout.',
-    
     submittedAt: '2026-02-28T16:23:37.275Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1772503986166_tqobzgn',
@@ -152,10 +135,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hello! Do you have any use for a freelance writer? I have nearly a decade of experience and am looking for new opportunities. You can book a time with me to chat if interested. Looking forward to connecting! https://calendly.com/melottogroup/30min',
-    
     submittedAt: '2026-03-03T02:13:06.166Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1773344603515_giyguju',
@@ -165,10 +146,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'closet',
     timeline: 'planning',
     message: 'Hi, I\'d be delighted to contribute an article to your website.\n\nNow that so many of us work from home, we\'re all asking the same thing: how can I use my home for both business and relaxation?\n\nInterior design has a measurable impact on mental health, which is compounded when we use our homes for sleeping and working.\n\nWould you want to read an article that combines evidence-based findings with best practices for designing and organizing your home to fulfill your personal and professional needs? You are free to post the article on your website if you like it.\n\nThank you sincerely!\nMegan Cooper\nReal Life Home: https://reallifehome.net/\n\n\n~Please get in touch with me if you have another idea for a topic that might work better for your website if you don\'t like the one I mentioned. Nonetheless, please let me know if you\'d prefer not to hear from me in the future. I write content that’s easy for both readers and online tools to find and share.',
-    
     submittedAt: '2026-03-12T19:43:23.515Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1774426025751_b6xpgi2',
@@ -178,10 +157,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hi! My name is Alyssa and I’d love to invite you to try TurboJot. I actually founded the company. It’s built to automate contact form submissions at scale. Simply upload a list of URLs and TurboJot automatically finds and submits contact forms on those sites. It beats cold email and paid ads on ROI and costs just $0.10 per submission. Powered by a rotating IP network, stealth browser, AI captcha solving, and human like browsing behavior. You can sign up for free and give it a try. I’d really appreciate the support. https://www.turbojot.com/',
-    
     submittedAt: '2026-03-25T08:07:05.751Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1775085436837_tfop8q3',
@@ -191,10 +168,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hi, I’m Sophie! I tried to find you on LinkedIn but couldn’t, so I’m reaching out here. I help businesses book meetings, drive traffic, and generate user sign ups through targeted outreach using my extensive private network, built over 12+ years, with access to over 100 million contacts. We’ll have a quick call to set a clear goal for your business, and I’ll personally work to make sure we reach it. You choose the result you want, whether that’s booked meetings, website traffic, user sign ups, or another measurable outcome, and if I fall short by even one, I’ll refund your money in full. Schedule a time with me here: https://calendly.com/sendproud/30min',
-    
     submittedAt: '2026-04-01T23:17:16.837Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1776460976329_av7sgk6',
@@ -204,10 +179,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'entertainment',
     timeline: 'planning',
     message: 'GupIUYHcKqctMSta',
-    
     submittedAt: '2026-04-17T21:22:56.329Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1777205222284_vyxfgnw',
@@ -217,10 +190,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'entertainment',
     timeline: 'asap',
     message: 'I would like to make a 54” wide built-in media cabinet. Cabinet box is 22” high × 21” deep. It sits on a separate 4” recessed toe-kick platform . So Total base height is 26”.  (22" cabinet + 4" toe kick).  \n\nInclude concealed wiring access from rear-left and provision for LED lighting if possible.\n',
-    
     submittedAt: '2026-04-26T12:07:02.284Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1777903986324_11exrzl',
@@ -230,10 +201,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hey, I checked your Google Maps listing, and right now you\'re showing up in one location. One. That means every homeowner searching for custom cabinets 20 minutes away from you probably never sees your name.\nOne of our partners, DreamCraft Cabinets, had the same problem. We set them up across 10 zones in Chicagoland, and now they pull 40 to 60 quote requests a month and dominate their market.\nYour craftsmanship is already there. Your visibility isn\'t.\nI can send over the case study with real lead numbers and cost per lead from contractors we currently manage. Reply YES and I\'ll drop it over.',
-    
     submittedAt: '2026-05-04T14:13:06.325Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1778253984167_1ji1wf8',
@@ -243,10 +212,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'garage',
     timeline: '1-2months',
     message: 'Hello,\n\nSelling the family home can be a challenging experience for everyone involved. It\'s a big change, not just financially but emotionally for the whole family.\n\nMy article provides a roadmap for families to navigate this transition smoothly and with care. It covers practical strategies like open communication, emotional support, and financial planning, all while emphasizing the importance of love, respect, and unity.\n\nI think your readers would find this piece valuable as it offers guidance and support during a potentially difficult time.\n\nWould you be open to receiving the full article for consideration?\n\nThanks a bunch,\nKelsey Higgins\nRemodel-Expert.com\n\n\nP.S. If you’re interested in featuring the article but have a different topic preference, that’s no problem! Please send your idea over, and we can move forward from there. However, if you don’t want me to contact you again, please let me know. My goal is to craft content that resonates with readers while performing strongly across AI and discovery platforms.',
-    
     submittedAt: '2026-05-08T15:26:24.172Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1778256620175_nelbr2r',
@@ -256,10 +223,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: 'asap',
     message: '"I\'m Noah Beck and I work for a Digital Marketing Agency. I\'ve been researching your industry and found your website.I noticed a few issues that may be hindering your potential ranking on Google and your ability to generate online inquiries and sales. I\'ve compiled an analysis of your website showcasing all of these errors. Would you like my Digital Marketing Associate to send you a report? Either way, it is free of cost. It is my hope that he can discuss some of these findings in greater detail. Is there a good time for you to talk next week? \nThanks and best regards, \nNoah Beck, \nWebsite Analyst"',
-    
     submittedAt: '2026-05-08T16:10:20.176Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1778864197211_alz7hvx',
@@ -269,10 +234,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'vanity',
     timeline: '1-2months',
     message: 'Hi,\n\nI wanted to check if you had a chance to review the article idea I sent over. I believe it could provide great value to your readers during a challenging transition.\n\nIf you already responded, thank you and sorry for the repeat.\n\nBest,\nKelsey',
-    
     submittedAt: '2026-05-15T16:56:37.211Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1779458176413_n5z5yq5',
@@ -282,10 +245,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'closet',
     timeline: 'planning',
     message: 'dEKYxeMseNVMwrXUOZIQ',
-    
     submittedAt: '2026-05-22T13:56:16.413Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1779610414579_bm59x81',
@@ -295,10 +256,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'garage',
     timeline: 'planning',
     message: 'lewWwUmpouVsUwlzmiLFNqR',
-    
     submittedAt: '2026-05-24T08:13:34.579Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1780069795719_e781xkh',
@@ -311,7 +270,6 @@ export const contactMessages: ContactMessage[] = [
     attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1780069794829-166%20E%20Fork%20Rd.pdf'],
     submittedAt: '2026-05-29T15:49:55.719Z',
     status: 'new',
-    
   },
   {
     id: 'msg_1780093721489_lkto3ib',
@@ -321,10 +279,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'entertainment',
     timeline: 'asap',
     message: 'Hello there,\n\nMaintaining your home throughout the year doesn’t have to be overwhelming. Simple, proactive tasks can prevent big problems and keep your space in great shape.\n\nI’m writing an article that highlights key annual maintenance tasks, from HVAC checks to gutter cleaning, designed to help homeowners stay ahead of repairs and maintain a safe, efficient home. It’s a must-read for anyone wanting to protect their investment!\n\nPlease consider publishing this on your website. Let me know if you’d like to take a look at the first draft so I can send it over to you right away.\n\nThank you!\nAliyah Owens\n\n\nLearn about the joys of homeownership by checking out my website: happyhomeowner.info!\n\n\nP.S. If you’d like to suggest a different topic, please do so. I’m happy to write on a topic that is the best fit for your website. I create content that’s easy for readers to enjoy and for smart tools to discover, helping your articles reach wider audiences.',
-    
     submittedAt: '2026-05-29T22:28:41.489Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1780753524731_epo6cl6',
@@ -334,10 +290,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: '3-6months',
     message: 'Hi,\n\nI wanted to quickly follow up on the article I mentioned earlier about making rental properties stand out. I think it could be a great addition to your site and would love to hear your thoughts!\n\nIf you\'ve already replied, I apologize for missing it and thank you for your time.\n\nBest,\nNatalie Jones\nHomeownerbliss.info',
-    
     submittedAt: '2026-06-06T13:45:24.732Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1781277969224_2wav8jh',
@@ -347,10 +301,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hi, I’m Trever Gray, the founder of Send Proud. We help businesses achieve measurable results like booked meetings, website traffic, and user sign-ups through highly targeted outreach powered by our database of 500M+ professional profiles and 250M+ company profiles. On our call, we’ll walk you through a clear strategy tailored specifically to your goals, whether that’s booked meetings, traffic, user sign-ups, or another measurable outcome that matters to your business. You choose the result, and we build the system to deliver it. We’re confident in our ability to execute, and if we fall short by even one agreed result, we’ll refund you in full. You can schedule a time here: https://calendly.com/sendproud/30min',
-    
     submittedAt: '2026-06-12T15:26:09.232Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1782288219112_0nt0ekd',
@@ -360,10 +312,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'entertainment',
     timeline: '3-6months',
     message: 'Hi there,\n\nHave you ever wondered what makes a town feel like the perfect place to call home? For some, it’s the welcoming sense of community; for others, it’s affordability, access to amenities, or the promise of a slower, more fulfilling pace of life. Choosing the right small town isn’t just about location. It’s about aligning your lifestyle, values, and long-term goals with the place you settle down.\n\nI’d love to contribute an article to your site that guides readers through the process of finding their ideal small town. From evaluating housing costs and job opportunities to considering healthcare access, recreation, and overall quality of life, the piece will offer steps to help them make confident decisions about where to plant roots.\n\nWould you be open to featuring this article on your site? I think it could be a meaningful and useful resource for your readers.\n\nBest,\nSarah V of OurPerfectAbode.com\n\n\nP.S. Please let me know if you\'re interested but have a different topic preference. The content I provide is crafted with both human readers and AI engines in mind, increasing visibility across the web.',
-    
     submittedAt: '2026-06-24T08:03:39.115Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1783046819704_48j7pxk',
@@ -373,10 +323,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: 'asap',
     message: 'Hi there,\n\nI wanted to follow up to see if you had a chance to consider my article idea on leveraging one\'s home as an income source. I believe it could offer valuable insights to your readers.\n\nIf you already responded, thanks for that and sorry for the repeat.',
-    
     submittedAt: '2026-07-03T02:46:59.705Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1783500754904_yetbz5i',
@@ -386,10 +334,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'closet',
     timeline: '1-2months',
     message: 'yCVvhvoFGzNttVdutbTuckJp',
-    
     submittedAt: '2026-07-08T08:52:34.910Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1783965523166_ctkk1pe',
@@ -399,10 +345,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hi, I’m Trisha from Send Proud. We help businesses find their next customers. I\'m reaching out on behalf of our client Triton Infosec. They help software teams catch real vulnerabilities before release using AI-driven discovery combined with verified findings from certified pentesters, without the cost or delays of traditional pentests. Is this something you’d be open to exploring? I can help set up a quick 15-minute intro with their team if it’s relevant. You can book a time to chat here: https://campaign.sendproud.com/tritoninfosec',
-    
     submittedAt: '2026-07-13T17:58:43.166Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784086052617_hzbfiij',
@@ -412,10 +356,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'garage',
     timeline: 'asap',
     message: 'tfUYJnIeXbQnosML',
-    
     submittedAt: '2026-07-15T03:27:32.617Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784236412958_raonx5b',
@@ -425,10 +367,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'closet',
     timeline: 'asap',
     message: '+17252262337',
-    
     submittedAt: '2026-07-16T21:13:32.958Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784461640802_1t5prt9',
@@ -438,10 +378,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: '1-2months',
     message: 'AeSLrAAhGVEyHOyJFMpE',
-    
     submittedAt: '2026-07-19T11:47:20.802Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784606123693_8mexp63',
@@ -451,10 +389,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: 'Hi, I’m Hannah from Melotto Group. We help businesses redesign their websites and improve their content so they look more polished and convert better. I took a quick look at your site and saw a few opportunities to improve the design and messaging, and I think now could be a great time to explore a new or refreshed website. I’d be happy to share a few quick ideas. Grab a time here:⁠ http://calendar.melottogroup.com/',
-    
     submittedAt: '2026-07-21T03:55:23.694Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784748015337_c228eq1',
@@ -464,10 +400,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: 'asap',
     message: '2172935505',
-    
     submittedAt: '2026-07-22T19:20:15.337Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784787435927_1qwis54',
@@ -477,10 +411,8 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'laundry-mudroom',
     timeline: 'planning',
     message: 'WHxdEBkdsVjwYXEdN',
-    
     submittedAt: '2026-07-23T06:17:15.933Z',
     status: 'spam',
-    
   },
   {
     id: 'msg_1784820382272_xkmcqhl',
@@ -490,9 +422,19 @@ export const contactMessages: ContactMessage[] = [
     projectType: 'kitchen',
     timeline: '1-2months',
     message: 'this is a test',
-    
     submittedAt: '2026-07-23T15:26:22.273Z',
     status: 'new',
-    
+  },
+  {
+    id: 'msg_1784820623387_76j8bbb',
+    name: 'Damian',
+    email: 'damian.k@yudezign.com',
+    phone: '1234567890',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'this is a test',
+    submittedAt: '2026-07-23T15:30:23.255Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
