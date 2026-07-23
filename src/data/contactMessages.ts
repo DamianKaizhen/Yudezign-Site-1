@@ -468,5 +468,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-22T19:20:15.337Z',
     status: 'new',
     
+  },
+  {
+    id: 'msg_1784787435927_1qwis54',
+    name: 'ImsJOVRxLNDOtRjcOeU',
+    email: 'zi.l.ajot.a.bo.311@gmail.com',
+    phone: '9100728118',
+    projectType: 'laundry-mudroom',
+    timeline: 'planning',
+    message: 'WHxdEBkdsVjwYXEdN',
+    
+    submittedAt: '2026-07-23T06:17:15.933Z',
+    status: 'new',
+    
   }
 ];
