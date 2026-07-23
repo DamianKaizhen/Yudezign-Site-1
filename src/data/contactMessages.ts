@@ -481,5 +481,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-07-23T06:17:15.933Z',
     status: 'spam',
     
+  },
+  {
+    id: 'msg_1784820382272_xkmcqhl',
+    name: 'Damian',
+    email: 'damian.k@yudezign.com',
+    phone: '1234567890',
+    projectType: 'kitchen',
+    timeline: '1-2months',
+    message: 'this is a test',
+    
+    submittedAt: '2026-07-23T15:26:22.273Z',
+    status: 'new',
+    
   }
 ];
