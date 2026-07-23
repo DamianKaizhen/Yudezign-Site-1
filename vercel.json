@@ -1,6 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ':(exclude)src/data/contactMessages.ts' ':(exclude)src/data/visualizerSubmissions.ts'",
   "rewrites": [
     {
       "source": "/(.*)",
