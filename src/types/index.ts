@@ -83,11 +83,15 @@ export interface ContactMessage {
   email: string;
   phone: string;
   projectType: string;
+  budget?: string;
   timeline: string;
   message: string;
   attachments?: string[];
   submittedAt: string;
-  status: 'new' | 'read' | 'responded' | 'archived';
+  status: 'new' | 'read' | 'responded' | 'archived' | 'spam';
+  source?: string;
+  /** Why the spam gate quarantined this message (only set when status = 'spam'). */
+  spamReason?: string;
   notes?: string;
 }
 

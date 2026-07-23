@@ -61,6 +61,7 @@ export default function ContactMessagesList() {
       read: 'bg-blue-100 text-blue-700',
       responded: 'bg-purple-100 text-purple-700',
       archived: 'bg-gray-100 text-gray-700',
+      spam: 'bg-red-100 text-red-700',
     };
     return badges[status as keyof typeof badges] || 'bg-gray-100 text-gray-700';
   };

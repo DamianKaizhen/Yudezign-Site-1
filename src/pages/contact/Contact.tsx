@@ -1,7 +1,30 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2 } from 'lucide-react';
 import SEO from '../../components/SEO';
+
+// Cloudflare Turnstile (invisible CAPTCHA). The widget only loads when a site
+// key is configured, so the form still works before keys are set.
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        el: HTMLElement,
+        opts: {
+          sitekey: string;
+          callback: (token: string) => void;
+          'expired-callback'?: () => void;
+          'error-callback'?: () => void;
+          theme?: 'light' | 'dark' | 'auto';
+        }
+      ) => string;
+      reset: (widgetId?: string) => void;
+      remove: (widgetId?: string) => void;
+    };
+  }
+}
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +48,56 @@ const Contact = () => {
   const [fileErrors, setFileErrors] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Anti-spam state
+  const [honeypot, setHoneypot] = useState('');
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | undefined>(undefined);
+  const formLoadedAtRef = useRef<number>(Date.now());
+
+  const resetTurnstile = () => {
+    setTurnstileToken('');
+    if (window.turnstile && turnstileWidgetId.current !== undefined) {
+      window.turnstile.reset(turnstileWidgetId.current);
+    }
+  };
+
+  // Load and render the Turnstile widget (only when a site key is configured).
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+
+    const scriptId = 'cf-turnstile-script';
+    const render = () => {
+      if (window.turnstile && turnstileRef.current && turnstileWidgetId.current === undefined) {
+        turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: (token: string) => setTurnstileToken(token),
+          'expired-callback': () => setTurnstileToken(''),
+          'error-callback': () => setTurnstileToken(''),
+        });
+      }
+    };
+
+    if (!document.getElementById(scriptId)) {
+      const s = document.createElement('script');
+      s.id = scriptId;
+      s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      s.async = true;
+      s.defer = true;
+      s.onload = render;
+      document.head.appendChild(s);
+    }
+
+    // Poll briefly in case the script was already present/loaded.
+    const iv = window.setInterval(() => {
+      if (window.turnstile) {
+        render();
+        if (turnstileWidgetId.current !== undefined) window.clearInterval(iv);
+      }
+    }, 300);
+    return () => window.clearInterval(iv);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -38,49 +111,41 @@ const Contact = () => {
         attachmentUrls = await uploadFiles();
       }
 
+      // Require the CAPTCHA token when Turnstile is configured.
+      if (TURNSTILE_SITE_KEY && !turnstileToken) {
+        setSubmitStatus('error');
+        setErrorMessage('Please complete the verification challenge, then submit again.');
+        setIsSubmitting(false);
+        return;
+      }
+
       const submissionData = {
         ...formData,
         attachments: attachmentUrls,
-        submittedAt: new Date().toISOString(),
-        source: 'Yudezign Website',
+        // Anti-spam fields — verified server-side in /api/contact-submit:
+        honeypot,
+        formLoadedAt: formLoadedAtRef.current,
+        turnstileToken,
       };
 
-      // Dual submission: Send to both admin API and n8n webhook (in parallel)
-      const [adminResponse, webhookResponse] = await Promise.allSettled([
-        // Send to admin API for storage
-        fetch('/api/admin/contact-messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(submissionData),
-        }),
-        // Send to n8n webhook for notifications
-        fetch('https://n8n.kaizhen8n.cloud/webhook/quote-form', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(submissionData),
-        }),
-      ]);
+      // Single gated submission: the server runs the spam checks, stores the
+      // lead, and sends the notification + confirmation emails.
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(submissionData),
+      });
 
-      // Check if at least one succeeded
-      const adminSuccess =
-        adminResponse.status === 'fulfilled' && adminResponse.value.ok;
-      const webhookSuccess =
-        webhookResponse.status === 'fulfilled' && webhookResponse.value.ok;
-
-      if (!adminSuccess && !webhookSuccess) {
-        throw new Error('Failed to submit form to both systems');
-      }
-
-      // Log any partial failures (for debugging)
-      if (!adminSuccess) {
-        console.warn('Admin API submission failed, but n8n webhook succeeded');
-      }
-      if (!webhookSuccess) {
-        console.warn('n8n webhook submission failed, but admin API succeeded');
+      if (!response.ok) {
+        let serverMessage = 'Unable to submit form. Please try again or contact us directly.';
+        try {
+          const payload = await response.json();
+          if (payload?.error) serverMessage = payload.error;
+        } catch {
+          // keep the default message if the body isn't JSON
+        }
+        resetTurnstile(); // let the user retry with a fresh challenge
+        throw new Error(serverMessage);
       }
 
       // Success! (at least one submission worked)
@@ -98,14 +163,16 @@ const Contact = () => {
       setSelectedFiles([]);
       setFileErrors([]);
       setUploadProgress({});
+      setHoneypot('');
+      resetTurnstile();
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
       setErrorMessage(
         error instanceof Error
-          ? error.message.includes('upload')
+          ? error.message.toLowerCase().includes('upload')
             ? 'Failed to upload files. Please try again or contact us directly.'
-            : 'Unable to submit form. Please try again or contact us directly.'
+            : error.message
           : 'An unexpected error occurred. Please try again.'
       );
     } finally {
@@ -464,6 +531,26 @@ const Contact = () => {
                     </div>
                   )}
                 </div>
+
+                {/* Honeypot — hidden from humans; bots that fill it are rejected */}
+                <div
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}
+                >
+                  <label htmlFor="company_website">Company Website</label>
+                  <input
+                    type="text"
+                    id="company_website"
+                    name="company_website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
+                {/* Cloudflare Turnstile (invisible CAPTCHA) — renders only when configured */}
+                {TURNSTILE_SITE_KEY && <div ref={turnstileRef} className="cf-turnstile" />}
 
                 {/* Submit Button */}
                 <button

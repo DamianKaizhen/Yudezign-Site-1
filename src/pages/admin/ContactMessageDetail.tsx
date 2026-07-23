@@ -11,6 +11,7 @@ const statusOptions = [
   { value: 'read', label: 'Read' },
   { value: 'responded', label: 'Responded' },
   { value: 'archived', label: 'Archived' },
+  { value: 'spam', label: 'Spam' },
 ];
 
 export default function ContactMessageDetail() {
@@ -102,6 +103,7 @@ export default function ContactMessageDetail() {
       read: 'bg-blue-100 text-blue-700 border-blue-200',
       responded: 'bg-purple-100 text-purple-700 border-purple-200',
       archived: 'bg-gray-100 text-gray-700 border-gray-200',
+      spam: 'bg-red-100 text-red-700 border-red-200',
     };
     return badges[statusValue as keyof typeof badges] || 'bg-gray-100 text-gray-700 border-gray-200';
   };
