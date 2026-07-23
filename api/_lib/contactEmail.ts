@@ -43,6 +43,8 @@ const PROJECT_TYPE_LABELS: Record<string, string> = {
   vanity: 'Bathroom Vanity',
   'laundry-mudroom': 'Laundry / Mudroom Cabinets',
   entertainment: 'Entertainment Center / Media Cabinet',
+  office: 'Office / Reception Casework',
+  'bar-pantry': "Wet Bar / Butler's Pantry",
   garage: 'Garage Storage Cabinets',
   commercial: 'Commercial / Multi-unit',
 };

@@ -386,6 +386,8 @@ const Contact = () => {
                     <option value="vanity">Bathroom Vanity</option>
                     <option value="laundry-mudroom">Laundry / Mudroom Cabinets</option>
                     <option value="entertainment">Entertainment Center / Media Cabinet</option>
+                    <option value="office">Office / Reception Casework</option>
+                    <option value="bar-pantry">Wet Bar / Butler's Pantry</option>
                     <option value="garage">Garage Storage Cabinets</option>
                     <option value="commercial">Commercial / Multi-unit</option>
                   </select>
