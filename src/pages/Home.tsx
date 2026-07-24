@@ -52,20 +52,18 @@ const Home = () => {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
-  // Craftsmanship montage: reveal + play when scrolled into view, pause when out.
-  const craftRef = useRef<HTMLDivElement>(null);
-  const craftInView = useInView(craftRef, { once: false, margin: '-15%' });
-  const craftVideoRef = useRef<HTMLVideoElement>(null);
+  // Hero background montage: looping, always muted, plays on load.
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
-    const v = craftVideoRef.current;
+    const v = heroVideoRef.current;
     if (!v) return;
     v.muted = true; // ensure no audio ever plays
-    if (craftInView) {
-      v.play().catch(() => {});
-    } else {
-      v.pause();
-    }
-  }, [craftInView]);
+    v.play().catch(() => {});
+  }, []);
+
+  // Craftsmanship section: reveal when scrolled into view.
+  const craftRef = useRef<HTMLDivElement>(null);
+  const craftInView = useInView(craftRef, { once: false, margin: '-15%' });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -108,12 +106,18 @@ const Home = () => {
 
       {/* HERO - Full viewport with cursor reveal effect */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-0">
-        {/* Base kitchen image */}
+        {/* Base kitchen video montage — looping, muted background */}
         <div className="absolute inset-0">
-          <img
-            src="/portfolio/1772673222886-IMG_1875.jpg"
-            alt="Custom European frameless kitchen crafted by YuDezign in Houston"
+          <video
+            ref={heroVideoRef}
+            src="/portfolio/videos/projects-montage.mp4"
+            poster="/portfolio/projects-montage-poster.jpg"
             className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
           />
         </div>
 
@@ -633,15 +637,10 @@ const Home = () => {
           animate={craftInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.08 }}
           transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <video
-            ref={craftVideoRef}
-            src="/portfolio/videos/projects-montage.mp4"
-            poster="/portfolio/projects-montage-poster.jpg"
+          <img
+            src="/portfolio/1772673222886-IMG_1875.jpg"
+            alt="Custom European frameless kitchen crafted by YuDezign in Houston"
             className="w-full h-full object-cover"
-            muted
-            loop
-            playsInline
-            preload="metadata"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-accent/30"></div>
         </motion.div>
