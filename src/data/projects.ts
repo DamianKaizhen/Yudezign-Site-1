@@ -411,11 +411,11 @@ export const projects: Project[] = [
     title: 'Modern Office Kitchenette',
     category: 'commercial',
     images: [
-      '/portfolio/office-kitchenette-1.jpg',
       '/portfolio/office-kitchenette-2.jpg',
+      '/portfolio/office-kitchenette-1.jpg',
       '/portfolio/office-kitchenette-3.jpg'
     ],
-    thumbnail: '/portfolio/office-kitchenette-1.jpg',
+    thumbnail: '/portfolio/office-kitchenette-2.jpg',
     location: 'Houston',
     finish: 'Walnut Woodgrain with Charcoal Gloss',
     cabinetStyle: 'Frameless European',
