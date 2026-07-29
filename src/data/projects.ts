@@ -439,7 +439,7 @@ export const projects: Project[] = [
     finish: 'Weathered Bark Woodgrain',
     cabinetStyle: 'Frameless European',
     features: ['Waterfall Stone Island', 'LED-Lit Glass Uppers', 'Integrated Panel Refrigerator', 'Built-In Microwave Drawer', 'Soft Close Hinges'],
-    turnaroundTime: '4 weeks',
+    turnaroundTime: '6 weeks',
     description: 'A full custom kitchen wrapped in weathered-bark woodgrain — rustic texture, clean flat-panel lines. The centerpiece is a dramatic gold-and-black veined stone island with waterfall edges and a warm LED glow washing down the base, holding an integrated sink, matte black faucet and a built-in microwave drawer. Glass-front display uppers with interior LED lighting float above a full-height stone backsplash and lit shelf niche, while a wall of tall cabinets conceals a panel-front refrigerator behind long matte black pulls. A professional gas range completes the working wall.',
   }
 ];
