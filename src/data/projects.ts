@@ -422,5 +422,24 @@ export const projects: Project[] = [
     features: ['Under-Cabinet LED Lighting', 'Handleless Design', 'Quartz Waterfall Counter', 'Integrated Beverage Fridge'],
     turnaroundTime: '4 weeks',
     description: 'A sleek office breakroom kitchenette pairing warm walnut-woodgrain frameless cabinets with high-gloss charcoal upper valance boxes. Under-cabinet LED lighting washes the countertop, while a light grey quartz top wraps into a waterfall-edge peninsula with an integrated sink. Handleless routed reveals keep the look seamless, and a built-in beverage fridge rounds out a polished, functional space for the workday.',
+  },
+  {
+    id: 'proj_1785350000001_wbkitchen1',
+    title: 'Weathered Bark Kitchen',
+    category: 'kitchens',
+    images: [
+      '/portfolio/weatheredbark-kitchen-1.jpg',
+      '/portfolio/weatheredbark-kitchen-2.jpg',
+      '/portfolio/weatheredbark-kitchen-3.jpg',
+      '/portfolio/weatheredbark-kitchen-4.jpg',
+      '/portfolio/weatheredbark-kitchen-5.jpg'
+    ],
+    thumbnail: '/portfolio/weatheredbark-kitchen-1.jpg',
+    location: 'Houston',
+    finish: 'Weathered Bark Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Waterfall Stone Island', 'LED-Lit Glass Uppers', 'Integrated Panel Refrigerator', 'Built-In Microwave Drawer', 'Soft Close Hinges'],
+    turnaroundTime: '4 weeks',
+    description: 'A full custom kitchen wrapped in weathered-bark woodgrain — rustic texture, clean flat-panel lines. The centerpiece is a dramatic gold-and-black veined stone island with waterfall edges and a warm LED glow washing down the base, holding an integrated sink, matte black faucet and a built-in microwave drawer. Glass-front display uppers with interior LED lighting float above a full-height stone backsplash and lit shelf niche, while a wall of tall cabinets conceals a panel-front refrigerator behind long matte black pulls. A professional gas range completes the working wall.',
   }
 ];
