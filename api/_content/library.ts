@@ -114,6 +114,18 @@ const training: ContentLink[] = [
 
 const documents: ContentLink[] = [
   {
+    label: 'The 2026 Line Guide',
+    href: '/downloads/YuDeZign_LineGuide_2026.pdf',
+    kind: 'doc',
+    note: '20 pages, all four cabinet lines and all three closet lines side by side — door surfaces, palettes with décor counts, openings, interiors. Customer-facing and safe to send. This is the one to open when someone asks what the difference between the lines actually is.',
+  },
+  {
+    label: 'Per-line flyers — Essential · Signature · Reserve · Atelier · Closets',
+    href: '/downloads',
+    kind: 'site',
+    note: 'One page each, on the public downloads page. Hand over the single line a customer has settled on rather than all four — a visitor with five documents reads none of them.',
+  },
+  {
     label: 'Brochures — safe to send to clients',
     href: 'https://drive.google.com/drive/folders/1QscX2tn9ubGTPwpTHaDFCEAXzWwe68jz',
     kind: 'drive',
@@ -154,6 +166,12 @@ const siteLinks: ContentLink[] = [
     href: '/finishes',
     kind: 'site',
     note: 'The public finish library, and where the booth QR points. Send anyone who asks about finishes here.',
+  },
+  {
+    label: 'Downloads — line guide, flyers, booklets',
+    href: '/downloads',
+    kind: 'site',
+    note: 'Everything customer-facing in one place, including the 2026 Line Guide and a one-page flyer for each line. You can send this link instead of attaching files.',
   },
   {
     label: 'Brochures & downloads',
