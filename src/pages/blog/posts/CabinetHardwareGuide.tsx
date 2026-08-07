@@ -168,7 +168,7 @@ const CabinetHardwareGuide: React.FC = () => {
             <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Blum vs. Hettich: Does the Brand Matter?</h3>
 
             <p className="text-slate-700 leading-relaxed mb-6">
-              Yes—more than almost any other choice. Both Blum (Austrian) and Hettich (German) are the gold standard in European cabinet hardware, and we build with both depending on tier. The mechanism is what you're really buying: the damper that never wears out, the tolerances that keep drawers gliding for decades, and the lifetime warranty that backs it.
+              Yes—more than almost any other choice. Blum (Austrian) and Hettich (German) are the best-known names in European cabinet hardware, and you will see both specified across the market. We build with DTC soft-close hinges as standard on every line. The mechanism is what you're really buying either way: the damper that keeps its resistance, the tolerances that keep drawers gliding for years, and the warranty that backs it.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -376,7 +376,7 @@ const CabinetHardwareGuide: React.FC = () => {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-900"><strong>Buy the brand.</strong> Blum and Hettich back their hardware for a lifetime—it's the part you can't swap later.</span>
+                  <span className="text-slate-900"><strong>Buy the mechanism, not the badge.</strong> Soft-close dampers and full-extension slides are the part you can't swap later—check the rating, not just the brand on the box.</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-primary mr-3 flex-shrink-0 mt-0.5" />
@@ -395,7 +395,7 @@ const CabinetHardwareGuide: React.FC = () => {
                 Feel the Difference in Person
               </h2>
               <p className="text-lg text-slate-300 mb-6">
-                Every YuDezign cabinet ships with premium soft-close Blum or Hettich hardware as standard. Visit the showroom to open a drawer, compare pull finishes, and see why the mechanism matters.
+                Every YuDezign cabinet ships with soft-close DTC hinges and full-extension undermount slides as standard—never an upcharge. Visit the showroom to open a drawer, compare pull finishes, and see why the mechanism matters.
               </p>
               <Link
                 to="/contact"

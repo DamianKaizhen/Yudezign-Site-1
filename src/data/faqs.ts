@@ -44,7 +44,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-much-custom-cabinets-cost',
     question: 'How much do custom cabinets cost in Houston?',
-    answer: 'Custom frameless cabinets range from $800-$1,800 per linear foot depending on finish and features. A typical 10x12 kitchen (20 linear feet) costs $16,000-$36,000. Essential tier (melamine) is $800-$1,000/LF, Premium tier (HPL/acrylic) is $1,000-$1,300/LF, and Luxury tier (high-gloss acrylic/textured finishes) is $1,300-$1,800+/LF.',
+    answer: 'It depends what is included. Fully installed custom cabinetry in Houston typically runs $800-$1,800 per linear foot at market rates, but that figure covers installation labour, countertops and other trades. We are supply-only: we manufacture and deliver the cabinets ready to install, so our pricing is a fraction of that. A kitchen runs roughly $215-$375 per linear foot depending on finish, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets. Bathroom vanities start around $130 per linear foot. Installation, countertops, sink, appliances and backsplash are separate.',
     category: 'pricing',
     tags: ['cost', 'pricing', 'kitchen'],
     order: 1
@@ -52,7 +52,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-affects-pricing',
     question: 'What affects the final price of custom cabinets?',
-    answer: 'Price is determined by: (1) Materials used - melamine is most affordable, high-gloss acrylic is premium, (2) Production time - complexity and customization affect manufacturing time, (3) Features - soft-close hardware, pull-outs, custom inserts add cost, (4) Specialty cabinets - corner solutions and custom configurations cost more, (5) Hardware quality - basic vs premium Blum/Hettich. Linear footage is used for rough estimates only.',
+    answer: 'Price is determined by: (1) Materials used - melamine is most affordable, high-gloss acrylic is premium, (2) Production time - complexity and customization affect manufacturing time, (3) Features - soft-close hardware, pull-outs, custom inserts add cost, (4) Specialty cabinets - corner solutions and custom configurations cost more, (5) Drawer slides - full-extension soft-close slides step up as you move through the lines. Soft-close DTC hinges are standard on every line, never an upcharge. Linear footage is used for rough estimates only.',
     category: 'pricing',
     order: 2
   },
@@ -73,7 +73,7 @@ export const faqs: FAQ[] = [
   {
     id: 'custom-vs-stock-price',
     question: 'How do your prices compare to big box stores?',
-    answer: 'Stock cabinets from Home Depot/Lowe\'s cost $150-$300/LF but are particle board, limited sizes (3-inch increments), and 8-12 week lead times. Semi-custom costs $400-$800/LF. Our custom cabinets at $800-$1,800/LF offer superior 3/4" plywood construction, any size, 25+ finishes, and 2-3 week delivery.',
+    answer: 'Stock cabinets from Home Depot/Lowe\'s cost $150-$300/LF but are particle board, limited sizes (3-inch increments), and 8-12 week lead times. Our supply-only cabinets run about $215-$375/LF for a kitchen and give you 3/4" plywood construction, any size in 3-inch increments, 25+ finishes, and a much shorter lead time. Compare that to a design-build firm quoting $800-$1,800/LF fully installed - that price includes labour, countertops and trades. We manufacture and deliver; you or your contractor install.',
     category: 'pricing',
     order: 5
   },
@@ -126,7 +126,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-materials-do-you-use',
     question: 'What materials do you use for cabinet construction?',
-    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF (1/4" for back panels and drawer bottoms). We use frameless European construction with no face frame. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All doors include color-matched edge-banding to seal edges and create a uniform appearance. Standard board sizes are 4\'x8\' plywood sheets. All cabinets include soft-close Blum or Hettich hinges and undermount drawer slides. Shelves are 3/4" adjustable.',
+    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF (1/4" for back panels and drawer bottoms). We use frameless European construction with no face frame. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All doors include color-matched edge-banding to seal edges and create a uniform appearance. Standard board sizes are 4\'x8\' plywood sheets. All cabinets include soft-close DTC hinges and undermount drawer slides as standard. Shelves are 3/4" adjustable.',
     category: 'materials',
     order: 1
   },
@@ -328,7 +328,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-soft-close-hardware',
     question: 'What hardware do you use for soft-close functionality?',
-    answer: 'All our cabinets include soft-close hinges and undermount drawer slides as standard equipment. We use premium European hardware (Blum or Hettich equivalent) with lifetime warranties. Soft-close prevents slamming, reduces wear and tear, and provides a premium feel. The undermount slides are hidden beneath the drawer for a cleaner appearance and full-extension access.',
+    answer: 'All our cabinets include soft-close DTC hinges and undermount drawer slides as standard equipment - never an upcharge. Slides are full-extension, soft-close and rated to 100 lb ball-bearing. Soft-close prevents slamming, reduces wear and tear, and provides a premium feel. The undermount slides are hidden beneath the drawer for a cleaner appearance and full-extension access. Your written warranty comes with your agreement.',
     category: 'technical',
     tags: ['hardware', 'soft-close', 'quality'],
     order: 10

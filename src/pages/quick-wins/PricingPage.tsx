@@ -18,13 +18,21 @@ const PricingPage: React.FC = () => {
   const [linearFeet, setLinearFeet] = useState<number>(15);
   const [quality, setQuality] = useState<string>('semi-custom');
 
-  // Pricing ranges per linear foot
+  // Supply-only pricing per linear foot — cabinets delivered ready to install.
+  // NOT installed pricing: the $800-$1,800/LF figures quoted elsewhere in the
+  // market include installation, countertops and trades, none of which we do.
+  //
+  // Revised 2026-08-07 by Damian:
+  //   bathroom was $215/$375, identical to kitchen — a copy-paste, and far too
+  //   high for a base-only vanity run at 21" deep.
+  //   garage was $150/$265 — too low; it sits at kitchen level. Matching
+  //   kitchen exactly here is deliberate, not the same copy-paste bug.
   const pricing = {
     kitchen: { 'semi-custom': 215, 'custom': 375 },
-    bathroom: { 'semi-custom': 215, 'custom': 375 },
+    bathroom: { 'semi-custom': 130, 'custom': 225 },
     closet: { 'semi-custom': 165, 'custom': 315 },
     'home-office': { 'semi-custom': 190, 'custom': 340 },
-    garage: { 'semi-custom': 150, 'custom': 265 },
+    garage: { 'semi-custom': 215, 'custom': 375 },
   };
 
   const estimatedCost = pricing[projectType as keyof typeof pricing][quality as keyof typeof pricing.kitchen] * linearFeet;
@@ -226,8 +234,8 @@ const PricingPage: React.FC = () => {
                 {[
                   {
                     feature: 'Price Range (per linear foot)',
-                    semiCustom: '$130-300',
-                    custom: '$250-500+'
+                    semiCustom: '$130-215',
+                    custom: '$225-375'
                   },
                   {
                     feature: 'Lead Time',

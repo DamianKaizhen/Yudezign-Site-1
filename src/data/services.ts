@@ -68,17 +68,17 @@ export const services: ServiceData[] = [
       {
         name: 'High-Pressure Laminate (HPL)',
         description: 'Multi-layer construction for superior impact resistance. Thicker than melamine, available as sheets. Ideal for high-traffic kitchens. Wide variety of textures and patterns.',
-        priceRange: '$1,000-$1,300/LF'
+        priceRange: 'Mid-range'
       },
       {
         name: 'Thermally Fused Laminate (TFL/Melamine)',
         description: 'Budget-friendly finish fused directly to substrate. Scratch-resistant, easy maintenance. Great for closets and utility areas. Most affordable option.',
-        priceRange: '$800-$1,000/LF'
+        priceRange: 'Most affordable'
       },
       {
         name: 'High-Gloss Acrylic',
         description: 'Premium glass-like finish with UV stability. Mirror-like reflectivity, incredible color depth. Won\'t yellow from sunlight. Shows fingerprints but creates stunning modern aesthetic.',
-        priceRange: '$1,300-$1,800+/LF'
+        priceRange: 'Premium'
       },
       {
         name: 'RTF (Rigid Thermofoil)',
@@ -117,7 +117,7 @@ export const services: ServiceData[] = [
       {
         icon: 'Zap',
         title: 'Soft-Close Hardware',
-        description: 'Premium European hardware (Blum or Hettich) with lifetime warranties. Full overlay hinges for kitchens. Undermount drawer slides hidden beneath drawer for cleaner appearance and full-extension access.'
+        description: 'DTC soft-close hinges as standard on every line. Full overlay hinges for kitchens, half overlay on closets. Undermount drawer slides hidden beneath the drawer for a cleaner appearance and full-extension access, rated to 100 lb.'
       },
       {
         icon: 'Palette',
@@ -161,13 +161,20 @@ export const services: ServiceData[] = [
         duration: '1 day'
       }
     ],
+    // Supply-only pricing, revised 2026-08-07. These previously carried
+    // installed market rates ($800-$1,800/LF) presented as our own, which is
+    // 4-8x what we actually charge to supply the cabinets. Ranges now sit
+    // inside the $215-$375/LF the pricing calculator quotes for a kitchen.
+    //
+    // Hardware claims corrected at the same time: we do not use Blum or
+    // Hettich. Hinges are DTC on every tier — the slide is what steps up.
     pricingGuide: [
       {
         level: 'Essential',
-        range: '$800-$1,000/linear ft',
+        range: '$215-$260/linear ft',
         features: [
           'Melamine (TFL) doors and boxes',
-          'Standard soft-close hinges',
+          'DTC soft-close hinges and undermount slides',
           'Basic drawer organizers',
           'Limited color selection',
           'Great for garages, laundry rooms, rentals'
@@ -175,10 +182,10 @@ export const services: ServiceData[] = [
       },
       {
         level: 'Premium',
-        range: '$1,000-$1,300/linear ft',
+        range: '$260-$320/linear ft',
         features: [
           'HPL or matte acrylic doors',
-          'Premium Blum hardware',
+          'DTC soft-close hinges, full-extension KV slides',
           'Custom drawer inserts',
           '25+ colors available',
           'Most popular choice for kitchens',
@@ -188,10 +195,10 @@ export const services: ServiceData[] = [
       },
       {
         level: 'Luxury',
-        range: '$1,300-$1,800+/linear ft',
+        range: '$320-$375+/linear ft',
         features: [
           'High-gloss acrylic or textured finishes',
-          'Top-tier Hettich hardware',
+          'DTC soft-close hinges, KV 8450FM full-extension slides',
           'Full custom accessories',
           'Integrated LED lighting',
           'Premium finishes with advanced surfaces',
@@ -206,7 +213,7 @@ export const services: ServiceData[] = [
       },
       {
         question: 'How much do custom kitchen cabinets cost in Houston?',
-        answer: 'Custom frameless cabinets range from $800-$1,800 per linear foot depending on finish and features. A typical 10x12 kitchen (20 linear feet) costs $16,000-$36,000. This includes soft-close hardware, plywood construction, and custom sizing. Stock cabinets from big box stores run $150-$300/LF but lack customization and quality.'
+        answer: 'It depends what is included. Fully installed custom cabinetry in Houston runs $800-$1,800 per linear foot at market rates, but that covers installation labour, countertops and other trades. We are supply-only: a kitchen runs roughly $215-$375 per linear foot, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets, delivered ready to install. That includes soft-close hardware, plywood construction and custom sizing. Stock cabinets from big box stores run $150-$300/LF but lack the customization and construction quality.'
       },
       {
         question: 'Why are engineered cores better for Houston\'s climate?',
@@ -226,7 +233,7 @@ export const services: ServiceData[] = [
     specifications: [
       { label: 'Box Construction', value: '3/4" Plywood or Moisture-Resistant MDF' },
       { label: 'Door Thickness', value: '3/4" (19mm)' },
-      { label: 'Hinge Type', value: 'Soft-close, 110° opening, Blum or Hettich' },
+      { label: 'Hinge Type', value: 'DTC soft-close, 110° opening' },
       { label: 'Drawer Slides', value: 'Undermount soft-close, full-extension' },
       { label: 'Shelf Thickness', value: '3/4" adjustable shelves' },
       { label: 'Warranty', value: 'Lifetime structural, 5-year finish' }

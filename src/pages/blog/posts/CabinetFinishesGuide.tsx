@@ -179,7 +179,7 @@ const CabinetFinishesGuide: React.FC = () => {
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
               <p className="text-blue-900">
-                <strong>Cost Range:</strong> $800-$1,000 per linear foot for complete kitchen cabinets with melamine finish. This is our Essential tier—perfect for rental properties, starter homes, or anywhere budget is the primary concern.
+                <strong>Cost Range:</strong> $800-$1,000 per linear foot is the typical <strong>installed</strong> market rate for a melamine-finished kitchen in Houston, including labour and trades. Supply-only from us, this is our Essential tier and sits at the lower end of our $215-$375 per linear foot range&mdash;perfect for rental properties, starter homes, or anywhere budget is the primary concern.
               </p>
             </div>
 
@@ -279,7 +279,7 @@ const CabinetFinishesGuide: React.FC = () => {
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
               <p className="text-blue-900">
-                <strong>Cost Range:</strong> $1,000-$1,300 per linear foot for kitchen cabinets with HPL finish. This is our Premium tier—excellent value for durability and design flexibility.
+                <strong>Cost Range:</strong> $1,000-$1,300 per linear foot is the typical <strong>installed</strong> market rate for an HPL-finished kitchen in Houston, including labour and trades. Supply-only from us, this is our Premium tier and sits mid-range within our $215-$375 per linear foot&mdash;excellent value for durability and design flexibility.
               </p>
             </div>
 
@@ -369,7 +369,7 @@ const CabinetFinishesGuide: React.FC = () => {
 
             <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
               <p className="text-blue-900">
-                <strong>Cost Range:</strong> $1,300-$1,800+ per linear foot for kitchen cabinets with high-gloss acrylic. This is our Luxury tier—for those who want the absolute best.
+                <strong>Cost Range:</strong> $1,300-$1,800+ per linear foot is the typical <strong>installed</strong> market rate for a high-gloss acrylic kitchen in Houston, including labour and trades. Supply-only from us, this is our Luxury tier and sits at the top of our $215-$375 per linear foot&mdash;for those who want the absolute best.
               </p>
             </div>
 

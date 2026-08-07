@@ -163,7 +163,7 @@ export const imageLibrary: Record<string, ImageAsset[]> = {
   details: [
     {
       url: '/images/portfolio/detail-soft-close-hinge.jpg',
-      alt: 'Blum soft-close hinge detail on cabinet door',
+      alt: 'DTC soft-close hinge detail on cabinet door',
       category: 'detail',
       tags: ['hardware', 'soft-close', 'hinge'],
     },

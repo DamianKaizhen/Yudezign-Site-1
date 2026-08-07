@@ -346,7 +346,12 @@ const FramelessVsFramed: React.FC = () => {
           <h3 className="text-2xl font-bold text-slate-900 mt-8 mb-4">5. Cost Comparison</h3>
 
           <p>
-            Pricing varies based on materials and manufacturer, but here's what you can generally expect in Houston:
+            Pricing varies based on materials and manufacturer. The figures below are typical{' '}
+            <strong>installed</strong> market rates in Houston &mdash; they include installation
+            labour and the trades that go with a cabinet job. They are not our prices: YuDezign is
+            supply-only, so we manufacture and deliver the cabinets and you or your contractor
+            install them. Our frameless kitchens run roughly $215&ndash;$375 per linear foot
+            supply-only.
           </p>
 
           <div className="not-prose my-6">
