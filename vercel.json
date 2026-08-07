@@ -3,6 +3,10 @@
   "trailingSlash": false,
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ':(exclude)src/data/contactMessages.ts' ':(exclude)src/data/visualizerSubmissions.ts'",
   "rewrites": [
+    { "source": "/sales", "destination": "/" },
+    { "source": "/sales/:path*", "destination": "/" },
+    { "source": "/admin", "destination": "/" },
+    { "source": "/admin/:path*", "destination": "/" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
