@@ -11,12 +11,13 @@ export function StickyPhoneButton({
   phoneNumber = '(281) 568-8000',
   showAfterScroll = 300
 }: StickyPhoneButtonProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      setIsVisible(scrolled > showAfterScroll);
+      setIsPastHero(scrolled > showAfterScroll);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -24,6 +25,25 @@ export function StickyPhoneButton({
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [showAfterScroll]);
+
+  // Stand down once the footer is on screen. The button is a wide pill anchored
+  // bottom-right, which on a phone lands directly on top of the footer's bottom
+  // bar — it was covering the Sales Portal and Admin links. Hiding it there
+  // costs nothing: the footer carries the same phone number as a tel: link.
+  useEffect(() => {
+    const footer = document.querySelector('footer');
+    if (!footer || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsFooterVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const isVisible = isPastHero && !isFooterVisible;
 
   return (
     <AnimatePresence>

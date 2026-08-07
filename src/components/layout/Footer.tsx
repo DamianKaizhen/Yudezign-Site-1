@@ -250,7 +250,9 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-300">
           <p>&copy; {currentYear} YuDezign. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+          {/* Wraps rather than overflowing: four links at space-x-6 do not fit
+              a 375px screen on one line. */}
+          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 md:mt-0 md:flex-nowrap">
             <Link to="/privacy" className="hover:text-accent transition-colors">
               Privacy Policy
             </Link>
