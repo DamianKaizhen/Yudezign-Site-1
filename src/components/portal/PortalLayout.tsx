@@ -6,6 +6,7 @@ import type { PortalPayload, PortalRole } from '../../types/salesPortal';
 import { buildSearchIndex } from '../../lib/salesSearch';
 import SEO from '../SEO';
 import PortalNav from './PortalNav';
+import PortalBottomNav from './PortalBottomNav';
 import SearchOverlay from './SearchOverlay';
 import type { PortalContext } from './portalContext';
 
@@ -71,14 +72,15 @@ const PortalLayout = ({
             )}
 
             <div className="ml-auto flex items-center gap-1">
+              {/* Search lives in the bottom bar on mobile, within thumb reach. */}
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
                 aria-label="Search the portal"
-                className="flex h-10 items-center gap-2 rounded-lg bg-white/10 px-3 text-body-sm text-white/90 transition-colors hover:bg-white/20"
+                className="hidden h-10 items-center gap-2 rounded-lg bg-white/10 px-3 text-body-sm text-white/90 transition-colors hover:bg-white/20 md:flex"
               >
                 <Search className="h-4 w-4" aria-hidden="true" />
-                <span className="hidden sm:inline">Search</span>
+                <span>Search</span>
               </button>
               <button
                 type="button"
@@ -92,7 +94,12 @@ const PortalLayout = ({
           </div>
         </div>
 
-        <PortalNav role={role} />
+        {/* The scrolling pill row is a desktop affordance; mobile gets the
+            bottom bar instead, so this would just be a second way to do the
+            same thing while eating the top of a small screen. */}
+        <div className="hidden md:block">
+          <PortalNav role={role} />
+        </div>
 
         {isOffline && (
           <div className="flex items-center gap-2 bg-accent/25 px-4 py-2 text-[13px] text-accent-dark">
@@ -104,11 +111,12 @@ const PortalLayout = ({
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-6 pb-20">
+      {/* pb clears the fixed bottom bar on mobile. */}
+      <main className="mx-auto max-w-6xl px-4 py-6 pb-28 md:pb-16">
         <Outlet context={context} />
       </main>
 
-      <footer className="border-t border-luxury-gray-100 px-4 py-6 print:hidden">
+      <footer className="border-t border-luxury-gray-100 px-4 py-6 pb-28 md:pb-6 print:hidden">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 text-[11px] text-luxury-gray-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             {rep.version} · content {payload.version}
@@ -121,6 +129,8 @@ const PortalLayout = ({
           </p>
         </div>
       </footer>
+
+      <PortalBottomNav role={role} onSearch={() => setSearchOpen(true)} />
 
       <SearchOverlay index={index} isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>

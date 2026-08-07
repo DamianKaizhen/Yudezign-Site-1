@@ -24,9 +24,6 @@ export interface ContentLink {
   note?: string;
   /** Videos only. Shown as a badge so a rep knows what they're starting. */
   duration?: string;
-  /** A second format of the same document — e.g. the PDF of a web handout. */
-  altHref?: string;
-  altLabel?: string;
   /** Renders a warning treatment. Used for the video that shows what we DON'T do. */
   caution?: string;
   /**

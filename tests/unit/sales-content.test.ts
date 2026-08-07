@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import { SignJWT } from 'jose';
 
 import { buildPayload, repContent, CONTENT_VERSION } from '../../api/_content/index.ts';
+import { resolveLinkTarget } from '../../src/lib/portalLinks.ts';
 import { MANAGER_CANARIES } from '../../api/_content/manager.ts';
 import {
   SALES_COOKIE,
@@ -300,11 +301,14 @@ describe('Answer Key v1.3 rulings', () => {
   });
 
   it('hosts the deck and handout on the site', () => {
-    const hrefs = repContent.library.training.flatMap((link) =>
-      [link.href, link.altHref].filter((h): h is string => Boolean(h))
-    );
+    const hrefs = repContent.library.training.map((link) => link.href);
     assert.ok(hrefs.includes('/sales-training/deck'), 'the deck is not linked');
     assert.ok(hrefs.includes('/sales-training/guide.pdf'), 'the PDF handout is not linked');
+    // PDF only — the HTML variant confused which format you were opening.
+    assert.ok(
+      !hrefs.includes('/sales-training/guide'),
+      'the HTML lesson guide is linked again alongside the PDF'
+    );
 
     // The printed pack, as PDFs.
     const pack = repContent.library.repPack.map((link) => link.href);
@@ -318,6 +322,55 @@ describe('Answer Key v1.3 rulings', () => {
       assert.ok(href.startsWith('/sales-training/'), `unexpected training href: ${href}`);
       // cleanUrls 308-redirects .html, so linking it costs a needless round trip.
       assert.ok(!href.endsWith('.html'), `${href} should drop the .html extension`);
+    }
+  });
+});
+
+describe('link routing', () => {
+  // Regression. Every path below starts with "/", and treating that as "this is
+  // a React route" rendered a blank page for the assets and broke the back
+  // button, because the router has no route for a .pdf.
+  it('sends SPA routes to the router', () => {
+    for (const href of ['/finishes', '/downloads', '/sales/answers', '/portfolio', '/kdlite']) {
+      assert.equal(resolveLinkTarget(href), 'route', `${href} should route client-side`);
+    }
+  });
+
+  it('sends files to the server, not the router', () => {
+    for (const href of [
+      '/sales-training/docs/field-card.pdf',
+      '/sales-training/guide.pdf',
+      '/downloads/YuDeZign_LineGuide_2026.pdf',
+      '/YuDeZign_Finishes_Catalog.pdf',
+      // No extension, but cleanUrls strips ".html" — still a static file.
+      '/sales-training/deck',
+    ]) {
+      assert.equal(resolveLinkTarget(href), 'asset', `${href} should be a document request`);
+    }
+  });
+
+  it('treats other origins as external', () => {
+    for (const href of ['https://youtu.be/F8x5c-6seYo', 'https://apps.apple.com/us/app/x/id1']) {
+      assert.equal(resolveLinkTarget(href), 'external');
+    }
+  });
+
+  it('routes every link in the payload somewhere sane', () => {
+    const links = [
+      ...repContent.library.training,
+      ...repContent.library.repPack,
+      ...repContent.library.videos,
+      ...repContent.library.documents,
+      ...repContent.library.siteLinks,
+      ...repContent.answerKey.flatMap((entry) => entry.links ?? []),
+    ].filter((link) => !link.pending);
+
+    for (const link of links) {
+      const target = resolveLinkTarget(link.href);
+      // A ".pdf" that resolves to 'route' is the exact bug this guards.
+      if (link.href.endsWith('.pdf')) {
+        assert.equal(target, 'asset', `${link.href} would blank the portal`);
+      }
     }
   });
 });

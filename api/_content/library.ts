@@ -99,15 +99,12 @@ const training: ContentLink[] = [
     note: 'The full presentation. Arrow keys to move, and the embedded videos play here — they do not in the offline copy. Best on a laptop; it scales to fit whatever you open it on.',
   },
   {
-    // One card, two formats. The web version is 68 KB against 8.8 MB and prints
-    // to the same 8.5x11 layout, so it is the default; the PDF is there for
-    // taking offline before the signal goes.
-    label: 'Lesson guide — the handout',
-    href: '/sales-training/guide',
+    // PDF only, by Damian's call — two formats of one document read as two
+    // documents, and which you got depended on which line you tapped.
+    label: 'Lesson guide (PDF)',
+    href: '/sales-training/guide.pdf',
     kind: 'doc',
-    note: 'The same material as a 16-page handout. Opens instantly and prints to 8.5×11 exactly as laid out.',
-    altHref: '/sales-training/guide.pdf',
-    altLabel: 'PDF, 8.8 MB — for offline',
+    note: 'The same material as a 16-page handout, laid out for 8.5×11. Prints clean and travels — worth downloading before the wifi gets bad. 8.8 MB.',
   },
 ];
 

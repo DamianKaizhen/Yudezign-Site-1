@@ -3,6 +3,7 @@ import { AlertTriangle, ExternalLink, Info } from 'lucide-react';
 
 import type { AnswerKeyEntry, NeverSayEntry } from '../../types/salesPortal';
 import { isExpired } from '../../lib/salesStatus';
+import { resolveLinkTarget } from '../../lib/portalLinks';
 import StatusChip from './StatusChip';
 import CopyButton from './CopyButton';
 
@@ -96,10 +97,12 @@ const AnswerCard = ({ entry, neverSay = [] }: AnswerCardProps) => {
       {entry.links && entry.links.length > 0 && (
         <ul className="mt-4 space-y-1.5">
           {entry.links.map((link) => {
-            const isInternal = link.href.startsWith('/');
+            // Same trap as LinkCard: a PDF path starts with "/" too, and
+            // routing it client-side blanks the portal.
+            const isRoute = resolveLinkTarget(link.href) === 'route';
             return (
               <li key={link.href}>
-                {isInternal ? (
+                {isRoute ? (
                   <Link
                     to={link.href}
                     className="inline-flex items-center gap-1.5 text-body-sm font-medium text-primary hover:underline"
