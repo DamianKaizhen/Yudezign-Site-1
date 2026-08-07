@@ -736,12 +736,26 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'money',
     question: "What's the difference between semi-custom and custom?",
     answer:
-      '"Depends on the door, the finish family and how much of it is made to your sizes — let me show you what each looks like."',
-    status: 'blocked',
-    source: 'The four lines and the semi/custom split have not been reconciled',
-    aliases: ['semi custom', 'semi-custom vs custom', 'what is custom'],
+      '"Semi-custom means we build it to your sizes off our standard programme — that\'s Essential and Signature. Custom is where the materials and the add-ons open up. Reserve and Atelier are made to your sizes as well, but the surfaces and the accessory programme put them above those numbers."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-07. Resolves the item v1.4 left BLOCKED',
+    aliases: ['semi custom', 'semi-custom vs custom', 'what is custom', 'lines vs pricing'],
     repNote:
-      'Do not map semi-custom or custom to a line name. That axis exists in the pricing table and nowhere else in the pack — nobody has said how it relates to Essential, Signature, Reserve and Atelier. Quote the ballpark by room, not by line.',
+      'The rates start at Essential; Signature sits in the same band. This was blocked until now because the semi/custom axis existed in the price table and nowhere else in the pack.',
+    links: [{ label: 'The rate table', href: '/sales/pitch?t=pricing', kind: 'portal' }],
+  },
+  {
+    id: 'ak-05-01f',
+    sectionId: 'money',
+    question: 'What does a Reserve or Atelier job cost?',
+    answer:
+      '"Those run above the numbers I just gave you — the surfaces and the accessory programme move it. Let me measure and come back with a real figure rather than guess at it."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-07',
+    neverSayIds: ['ns-price-from-memory'],
+    aliases: ['reserve price', 'atelier price', 'high gloss price', 'lacquer price', 'premium line cost'],
+    repNote:
+      'The linear-foot table is a floor, not a ceiling. There is no published rate for Reserve or Atelier, so do not extrapolate one from the table — quoting $375/LF on an Atelier kitchen under-quotes it.',
   },
   {
     id: 'ak-05-02',

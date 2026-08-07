@@ -19,6 +19,19 @@ import type { PricingContent } from './types.js';
 export const pricing: PricingContent = {
   headline: 'This is the number you give in the room. It is a ballpark, and you say so every time.',
 
+  /**
+   * Ruled by Damian 2026-08-07, resolving the open question v1.4 left BLOCKED.
+   *
+   * The important half is the second sentence: these are STARTING rates, not a
+   * band that contains the whole range. A rep who reads the table as a ceiling
+   * will under-quote a Reserve or Atelier kitchen, and there is no published
+   * rate for those to extrapolate from.
+   */
+  anchoredOn:
+    'These rates start at Essential, and Signature sits in the same band. Semi-custom means made to your sizes off the standard programme — that is what Essential and Signature offer.',
+  aboveTheTable:
+    'Reserve and Atelier are made to your sizes too, but the surfaces and the accessory programme put them ABOVE these numbers. The table is a starting point, not a ceiling. There is no published rate for those two lines — do not extrapolate one.',
+
   rates: [
     { id: 'lf-kitchen', room: 'Kitchen', semiCustom: '$215 / LF', custom: '$375 / LF' },
     { id: 'lf-garage', room: 'Garage', semiCustom: '$215 / LF', custom: '$375 / LF' },

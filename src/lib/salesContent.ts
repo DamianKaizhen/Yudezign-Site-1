@@ -24,6 +24,51 @@ interface CachedPayload {
   fetchedAt: number;
 }
 
+/**
+ * Top-level `rep` fields the current UI iterates or indexes into.
+ *
+ * A cache written before a field existed will render old-shaped data into new
+ * code, which is a crash rather than a degradation — `buildSearchIndex` did
+ * exactly that when `repPack` was added, and the portal came up blank. Checking
+ * shape is self-maintaining in a way a hand-bumped schema number is not: add a
+ * field here when the UI starts depending on it.
+ */
+const REQUIRED_REP_FIELDS = [
+  'answerKey',
+  'answerKeySections',
+  'neverSay',
+  'pitches',
+  'objections',
+  'qualifying',
+  'productLines',
+  'dimensions',
+  'pricing',
+  'sop',
+  'kpis',
+  'booth',
+  'library',
+  'notes',
+] as const;
+
+function isUsable(payload: PortalPayload | undefined): payload is PortalPayload {
+  if (!payload || typeof payload !== 'object') return false;
+  if (!payload.rep || !payload.role) return false;
+
+  const rep = payload.rep as unknown as Record<string, unknown>;
+  for (const field of REQUIRED_REP_FIELDS) {
+    if (rep[field] === undefined || rep[field] === null) return false;
+  }
+
+  // The link groups the search index walks live one level deeper.
+  const library = rep.library as Record<string, unknown> | undefined;
+  if (!library) return false;
+  for (const group of ['training', 'repPack', 'videos', 'documents', 'siteLinks']) {
+    if (!Array.isArray(library[group])) return false;
+  }
+
+  return true;
+}
+
 function readCache(): CachedPayload | null {
   try {
     const raw = window.localStorage.getItem(CACHE_KEY);
@@ -33,8 +78,12 @@ function readCache(): CachedPayload | null {
     if (typeof parsed !== 'object' || parsed === null) return null;
 
     const cached = parsed as Partial<CachedPayload>;
-    if (!cached.payload || typeof cached.payload !== 'object') return null;
-    if (!cached.payload.rep || !cached.payload.role) return null;
+    if (!isUsable(cached.payload)) {
+      // Written by an older build. Drop it and fetch fresh rather than render
+      // a shape this code cannot handle.
+      clearContentCache();
+      return null;
+    }
 
     return { payload: cached.payload, fetchedAt: cached.fetchedAt ?? 0 };
   } catch {
@@ -130,7 +179,7 @@ export function useSalesContent(enabled: boolean): SalesContentState {
         if (!response.ok) throw new Error(`Unexpected status ${response.status}`);
 
         const data = (await response.json()) as PortalPayload;
-        if (!data?.rep) throw new Error('Malformed payload');
+        if (!isUsable(data)) throw new Error('Malformed payload');
 
         writeCache(data);
         setPayload(data);

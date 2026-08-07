@@ -199,9 +199,26 @@ describe('Answer Key v1.4 pricing', () => {
     assert.match(rule.sayInstead, /ballpark/i);
   });
 
-  it('blocks mapping semi-custom and custom onto a line name', () => {
+  it('maps semi-custom onto Essential and Signature', () => {
+    // Ruled 2026-08-07, resolving what v1.4 left BLOCKED.
     const row = repContent.answerKey.find((entry) => entry.id === 'ak-05-01e');
-    assert.equal(row?.status, 'blocked');
+    assert.equal(row?.status, 'ruled');
+    assert.match(row?.answer ?? '', /Essential and Signature/);
+  });
+
+  it('treats the rate table as a floor, not a ceiling', () => {
+    // The consequential half. A rep reading the table as a band will
+    // under-quote a Reserve or Atelier kitchen, and there is no published rate
+    // for those to extrapolate from.
+    assert.match(repContent.pricing.anchoredOn, /Essential/);
+    assert.match(repContent.pricing.aboveTheTable, /Reserve and Atelier/);
+    assert.match(repContent.pricing.aboveTheTable, /ABOVE|above/);
+
+    const premium = repContent.answerKey.find((entry) => entry.id === 'ak-05-01f');
+    assert.ok(premium, 'the Reserve/Atelier pricing row is missing');
+    assert.match(premium.answer, /above/i);
+    // It must not carry a number of its own.
+    assert.ok(!/\$\d/.test(premium.answer), 'the Reserve/Atelier answer must not quote a figure');
   });
 
   it('keeps ballparks out of writing', () => {

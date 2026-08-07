@@ -182,10 +182,20 @@ const PricingPage: React.FC = () => {
                 </div>
                 <TrendingUp className="w-16 h-16 text-primary opacity-20" />
               </div>
-              <div className="mt-4 pt-4 border-t border-slate-200">
+              <div className="mt-4 pt-4 border-t border-slate-200 space-y-2">
                 <p className="text-xs text-slate-600 flex items-start">
                   <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                  This is a rough estimate. Final pricing depends on materials, finishes, hardware, and complexity. Schedule a free consultation for an accurate quote.
+                  Supply only &mdash; cabinets, assembled, delivered. Countertops, appliances, installation labour and delivery ($350 a trip inside Greater Houston) are separate.
+                </p>
+                {/* These rates start at our Essential line, with Signature in the
+                    same band. Reserve and Atelier are made to measure too, but
+                    their surfaces and accessory programme run above this — so
+                    the calculator is a floor, not a range that contains
+                    everything. Saying so here stops a customer anchoring on a
+                    number a rep will then have to walk back. */}
+                <p className="text-xs text-slate-600 flex items-start">
+                  <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
+                  A starting estimate, based on our Essential and Signature lines. Our Reserve and Atelier lines &mdash; soft-touch, handleless and lacquered finishes with the fuller accessory programme &mdash; run above these figures. Final pricing depends on finish, hardware and complexity, so book a free consultation for a real number.
                 </p>
               </div>
             </div>

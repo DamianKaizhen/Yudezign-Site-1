@@ -195,7 +195,10 @@ export const services: ServiceData[] = [
       },
       {
         level: 'Luxury',
-        range: '$320-$375+/linear ft',
+        // Open-ended on purpose. Ruled 2026-08-07: the Atelier line's surfaces
+        // and accessory programme run above the calculator's top rate, so a
+        // closed range here would understate it.
+        range: 'From $375/linear ft',
         features: [
           'High-gloss acrylic or textured finishes',
           'DTC soft-close hinges, KV 8450FM full-extension slides',

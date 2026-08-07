@@ -255,6 +255,10 @@ export interface LibraryContent {
 
 export interface PricingContent {
   headline: string;
+  /** Which lines the published rates actually cover. */
+  anchoredOn: string;
+  /** Why the table is a floor rather than a band. */
+  aboveTheTable: string;
   rates: Array<{
     id: string;
     room: string;

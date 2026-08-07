@@ -207,6 +207,18 @@ const SayThis = () => {
           />
           <p className="text-body-sm font-medium text-luxury-gray-700">{rep.pricing.range}</p>
 
+          <section className="rounded-xl border-l-4 border-accent bg-white p-5 shadow-luxury-sm">
+            <h2 className="mb-2 font-semibold text-luxury-gray-900">
+              Which lines these numbers cover
+            </h2>
+            <p className="text-body-sm leading-relaxed text-luxury-gray-700">
+              {rep.pricing.anchoredOn}
+            </p>
+            <p className="mt-3 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+              <strong>The table is a floor, not a ceiling.</strong> {rep.pricing.aboveTheTable}
+            </p>
+          </section>
+
           <section className="rounded-xl border-l-4 border-red-600 bg-white p-5 shadow-luxury-sm">
             <h2 className="mb-1 font-semibold text-luxury-gray-900">
               The four conditions — say them, don&rsquo;t skip them

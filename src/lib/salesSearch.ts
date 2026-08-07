@@ -160,12 +160,16 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
 
   // Sources are a primary reason to open this portal, so a search result lands
   // on the right sub-tab rather than the default one.
+  // `?? []` is insurance, not decoration. useSalesContent now rejects a cached
+  // payload missing any of these, but this index is the first thing to touch
+  // the data and a crash here blanks the whole portal — it should degrade to a
+  // thinner search instead.
   const linkGroups = [
-    { tab: 'training', links: rep.library.training },
-    { tab: 'pack', links: rep.library.repPack },
-    { tab: 'videos', links: rep.library.videos },
-    { tab: 'documents', links: rep.library.documents },
-    { tab: 'site', links: rep.library.siteLinks },
+    { tab: 'training', links: rep.library.training ?? [] },
+    { tab: 'pack', links: rep.library.repPack ?? [] },
+    { tab: 'videos', links: rep.library.videos ?? [] },
+    { tab: 'documents', links: rep.library.documents ?? [] },
+    { tab: 'site', links: rep.library.siteLinks ?? [] },
   ];
   for (const group of linkGroups) {
     for (const link of group.links) {
