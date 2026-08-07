@@ -40,6 +40,7 @@ import {
 import { strategy } from './strategy.js';
 import { kpis, sop, vocabulary, discoverySheet } from './process.js';
 import { booth, handOutRule, handOuts } from './booth.js';
+import { pricing } from './pricing.js';
 import { library } from './library.js';
 import { managerContent } from './manager.js';
 
@@ -63,7 +64,7 @@ import { managerContent } from './manager.js';
  * Bump on every content change — clients revalidate against this and a stale
  * version would otherwise 304 and keep serving the old payload from cache.
  */
-export const CONTENT_VERSION = '2026-08-07.6';
+export const CONTENT_VERSION = '2026-08-07.7';
 
 export const repContent: RepContent = {
   version: answerKeyVersion,
@@ -97,6 +98,7 @@ export const repContent: RepContent = {
   closets: closetLines,
   dimensions,
   strategy,
+  pricing,
   quoteRules,
   escalation,
   sop,

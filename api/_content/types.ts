@@ -24,6 +24,9 @@ export interface ContentLink {
   note?: string;
   /** Videos only. Shown as a badge so a rep knows what they're starting. */
   duration?: string;
+  /** A second format of the same document — e.g. the PDF of a web handout. */
+  altHref?: string;
+  altLabel?: string;
   /** Renders a warning treatment. Used for the video that shows what we DON'T do. */
   caution?: string;
   /**
@@ -243,9 +246,33 @@ export interface LibraryContent {
   warning: string;
   /** The product-knowledge deck and its printable handout. */
   training: ContentLink[];
+  /** The printed pack as PDFs — handbook, field card, brief, discovery sheet. */
+  repPack: ContentLink[];
   videos: ContentLink[];
   documents: ContentLink[];
   siteLinks: ContentLink[];
+}
+
+export interface PricingContent {
+  headline: string;
+  rates: Array<{
+    id: string;
+    room: string;
+    semiCustom: string;
+    custom: string;
+    note?: string;
+  }>;
+  range: string;
+  examples: Array<{
+    id: string;
+    job: string;
+    lf: string;
+    semiCustom: string;
+    custom: string;
+  }>;
+  conditions: ChecklistItem[];
+  howToSayIt: string;
+  neverInWriting: string;
 }
 
 export interface BuyerProfile {
@@ -333,6 +360,8 @@ export interface RepContent {
   };
   dimensions: DimensionRow[];
   strategy: StrategyContent;
+  /** Ballpark linear-foot pricing — the one number a rep may say from memory. */
+  pricing: PricingContent;
   quoteRules: string[];
   escalation: Array<{ situation: string; who: string; howFast: string }>;
   sop: SopStage[];

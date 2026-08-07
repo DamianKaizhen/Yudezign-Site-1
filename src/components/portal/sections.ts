@@ -19,10 +19,12 @@ import type { PortalRole } from '../../types/salesPortal';
  * a product-knowledge reference and a set of links to sources, so Product,
  * Answers and Sources lead.
  *
- * "Say this" — the pitch, objections and the never-say list — sits below them.
- * It still matters, and a rep who improvises a warranty or a deposit creates
- * real exposure, but it is not what someone opens this for. Start here carries
- * a short pointer to the never-say list rather than leading with it.
+ * "Talk tracks" — the pitch, objections, ballpark pricing and the phrases to
+ * avoid — sits below them. It still matters, and a rep who improvises a warranty
+ * or a deposit creates real exposure, but it is not what someone opens this for.
+ *
+ * Renamed from "Say this" on 2026-08-07: an imperative reads as instruction to
+ * an experienced rep. These are approved language they can pick up, not orders.
  */
 export interface PortalSection {
   to: string;
@@ -55,9 +57,9 @@ export const PORTAL_SECTIONS: PortalSection[] = [
   { to: '/sales/booth', label: 'Booth', icon: ClipboardList, blurb: 'The show, and the 48 hours after it' },
   {
     to: '/sales/pitch',
-    label: 'Say this',
+    label: 'Talk tracks',
     icon: MessageSquareQuote,
-    blurb: 'Pitch, objections, and the phrases to avoid',
+    blurb: 'Approved language for the pitch, objections, pricing and the tricky questions',
   },
   { to: '/sales/process', label: 'Process', icon: Compass, blurb: 'Nine stages, four handoffs, your numbers' },
   {

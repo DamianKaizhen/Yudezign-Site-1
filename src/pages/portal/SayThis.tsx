@@ -1,24 +1,48 @@
 import { AlertTriangle, ArrowRight, Ban, Check } from 'lucide-react';
 
+import type { RepContent } from '../../types/salesPortal';
 import { usePortal } from '../../components/portal/portalContext';
 import { SubTabs } from '../../components/portal/PortalNav';
 import { useSubTab } from '../../lib/hooks/useSubTab';
 import CopyButton from '../../components/portal/CopyButton';
+import ResponsiveTable, { type TableColumn } from '../../components/portal/ResponsiveTable';
+
+type Rate = RepContent['pricing']['rates'][number];
+type Example = RepContent['pricing']['examples'][number];
+
+const RATE_COLUMNS: TableColumn<Rate>[] = [
+  { key: 'room', header: 'Room', render: (r) => r.room, isRowTitle: true },
+  { key: 'semi', header: 'Semi-custom', render: (r) => r.semiCustom },
+  { key: 'custom', header: 'Custom', render: (r) => r.custom },
+  { key: 'note', header: 'Note', render: (r) => r.note ?? '—' },
+];
+
+const EXAMPLE_COLUMNS: TableColumn<Example>[] = [
+  { key: 'job', header: 'Job', render: (r) => r.job, isRowTitle: true },
+  { key: 'lf', header: 'Linear feet', render: (r) => r.lf },
+  { key: 'semi', header: 'Semi-custom', render: (r) => r.semiCustom },
+  { key: 'custom', header: 'Custom', render: (r) => r.custom },
+];
 
 const TABS = [
   { id: 'pitch', label: 'Pitch' },
   { id: 'objections', label: 'Objections' },
-  { id: 'qualify', label: 'Ask these' },
-  { id: 'never-say', label: 'Never say' },
+  { id: 'pricing', label: 'Ballpark pricing' },
+  { id: 'qualify', label: 'Questions worth asking' },
+  { id: 'never-say', label: 'Careful with' },
 ];
 
 /**
- * The words. Pitches, the twelve objections, the eight qualifying questions,
- * and the never-say list.
+ * Talk tracks — pitches, objections, ballpark pricing, qualifying questions,
+ * and the phrases that carry legal or commercial exposure.
  *
- * Every script here is verbatim from approved, already-printed copy — a rep is
- * learning a pitch, not inventing one — so the copy buttons matter: retyping a
- * deflection from a phone is where a word gets changed.
+ * Framing note: this was called "Say this" and read as instruction rather than
+ * resource, which is the wrong tone for experienced reps. The content is the
+ * same approved language; it is offered rather than ordered. The one place that
+ * stays blunt is the compliance list, because those genuinely are binding.
+ *
+ * Copy buttons matter here: retyping a deflection from a phone is where a word
+ * gets changed.
  */
 const SayThis = () => {
   const { rep } = usePortal();
@@ -27,10 +51,13 @@ const SayThis = () => {
   return (
     <div className="space-y-5">
       <header>
-        <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Say this</h1>
+        <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">
+          Talk tracks
+        </h1>
         <p className="mt-2 text-body-sm text-luxury-gray-600">
-          Every claim is lifted from copy already approved and in print. You are not inventing a
-          pitch — you are learning one.
+          Language that is already approved and in print, so you can reach for it rather than draft
+          it mid-conversation. Use what fits and say it your own way — except where a row is marked
+          blocked, which is a legal or commercial constraint rather than a style note.
         </p>
       </header>
 
@@ -160,6 +187,70 @@ const SayThis = () => {
               </div>
             </details>
           ))}
+        </div>
+      )}
+
+      {tab === 'pricing' && (
+        <div className="space-y-4">
+          <section className="rounded-xl bg-primary p-5 text-white shadow-luxury">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-accent">
+              New — the one number you can give from memory
+            </p>
+            <p className="mt-2 text-body leading-relaxed">{rep.pricing.headline}</p>
+          </section>
+
+          <ResponsiveTable
+            columns={RATE_COLUMNS}
+            rows={rep.pricing.rates}
+            rowKey={(row) => row.id}
+            caption="Ballpark pricing per linear foot"
+          />
+          <p className="text-body-sm font-medium text-luxury-gray-700">{rep.pricing.range}</p>
+
+          <section className="rounded-xl border-l-4 border-red-600 bg-white p-5 shadow-luxury-sm">
+            <h2 className="mb-1 font-semibold text-luxury-gray-900">
+              The four conditions — say them, don&rsquo;t skip them
+            </h2>
+            <p className="mb-3 text-body-sm text-luxury-gray-600">
+              A ballpark without these is a quote.
+            </p>
+            <dl className="space-y-2">
+              {rep.pricing.conditions.map((c) => (
+                <div key={c.id} className="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+                  <dt className="font-medium text-luxury-gray-900 sm:w-64 sm:flex-shrink-0">
+                    {c.label}
+                  </dt>
+                  <dd className="text-body-sm text-luxury-gray-600">{c.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          <section className="rounded-xl border-l-4 border-accent bg-white p-5 shadow-luxury-sm">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-accent-dark">
+              How it sounds
+            </p>
+            <p className="mt-2 text-body leading-relaxed text-luxury-gray-900">
+              {rep.pricing.howToSayIt}
+            </p>
+            <div className="mt-3 flex justify-end">
+              <CopyButton text={rep.pricing.howToSayIt} label="Copy" />
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-3 text-h4 font-medium text-luxury-gray-900">Worked examples</h2>
+            <ResponsiveTable
+              columns={EXAMPLE_COLUMNS}
+              rows={rep.pricing.examples}
+              rowKey={(row) => row.id}
+              caption="Typical jobs"
+            />
+          </section>
+
+          <p className="rounded-xl bg-red-50 p-4 text-body-sm text-red-900">
+            <strong>Never in writing.</strong> {rep.pricing.neverInWriting}
+          </p>
         </div>
       )}
 

@@ -162,6 +162,7 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
   // on the right sub-tab rather than the default one.
   const linkGroups = [
     { tab: 'training', links: rep.library.training },
+    { tab: 'pack', links: rep.library.repPack },
     { tab: 'videos', links: rep.library.videos },
     { tab: 'documents', links: rep.library.documents },
     { tab: 'site', links: rep.library.siteLinks },

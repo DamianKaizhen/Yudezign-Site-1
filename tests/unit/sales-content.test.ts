@@ -160,9 +160,60 @@ describe('hardware facts', () => {
   });
 });
 
+describe('Answer Key v1.4 pricing', () => {
+  it('lets a rep quote a ballpark, with the four conditions attached', () => {
+    // v1.4 closed the biggest gap in the pack. Before it, a rep asked "roughly
+    // what does a kitchen run?" had nothing to say.
+    assert.equal(repContent.pricing.rates.length, 5);
+    assert.equal(repContent.pricing.conditions.length, 4);
+    assert.ok(repContent.pricing.examples.length > 0);
+
+    const kitchen = repContent.pricing.rates.find((r) => r.room === 'Kitchen');
+    assert.equal(kitchen?.semiCustom, '$215 / LF');
+    assert.equal(kitchen?.custom, '$375 / LF');
+  });
+
+  it('matches the rates published on the public pricing page', () => {
+    // If these drift, a customer reads one number on the site and hears another
+    // from a rep — the exact failure the Answer Key exists to prevent.
+    const expected: Record<string, [string, string]> = {
+      Kitchen: ['$215 / LF', '$375 / LF'],
+      Garage: ['$215 / LF', '$375 / LF'],
+      'Home office': ['$190 / LF', '$340 / LF'],
+      Closet: ['$165 / LF', '$315 / LF'],
+      Bathroom: ['$130 / LF', '$225 / LF'],
+    };
+    for (const rate of repContent.pricing.rates) {
+      const want = expected[rate.room];
+      assert.ok(want, `unexpected room in the rate table: ${rate.room}`);
+      assert.deepEqual([rate.semiCustom, rate.custom], want, `${rate.room} rate drifted`);
+    }
+  });
+
+  it('amends the price-from-memory rule rather than contradicting it', () => {
+    // It used to read "never, ever". A rule a rep knows to be wrong is a rule
+    // they stop trusting.
+    const rule = repContent.neverSay.find((row) => row.id === 'ns-price-from-memory');
+    assert.ok(rule, 'the price-from-memory rule is missing');
+    assert.match(rule.neverSay, /exception/i);
+    assert.match(rule.sayInstead, /ballpark/i);
+  });
+
+  it('blocks mapping semi-custom and custom onto a line name', () => {
+    const row = repContent.answerKey.find((entry) => entry.id === 'ak-05-01e');
+    assert.equal(row?.status, 'blocked');
+  });
+
+  it('keeps ballparks out of writing', () => {
+    assert.match(repContent.pricing.neverInWriting, /spoken/i);
+    const row = repContent.answerKey.find((entry) => entry.id === 'ak-05-01d');
+    assert.match(row?.answer ?? '', /^No\./);
+  });
+});
+
 describe('Answer Key v1.3 rulings', () => {
-  it('is stamped at v1.3', () => {
-    assert.match(repContent.version, /v1\.3/);
+  it('is stamped at v1.4 or later', () => {
+    assert.match(repContent.version, /v1\.[4-9]|v[2-9]/);
   });
 
   it('says we manufacture frameless but sell a stocked framed line', () => {
@@ -232,9 +283,20 @@ describe('Answer Key v1.3 rulings', () => {
   });
 
   it('hosts the deck and handout on the site', () => {
-    const hrefs = repContent.library.training.map((link) => link.href);
+    const hrefs = repContent.library.training.flatMap((link) =>
+      [link.href, link.altHref].filter((h): h is string => Boolean(h))
+    );
     assert.ok(hrefs.includes('/sales-training/deck'), 'the deck is not linked');
     assert.ok(hrefs.includes('/sales-training/guide.pdf'), 'the PDF handout is not linked');
+
+    // The printed pack, as PDFs.
+    const pack = repContent.library.repPack.map((link) => link.href);
+    for (const doc of ['rep-handbook', 'field-card', 'brief', 'discovery-sheet']) {
+      assert.ok(
+        pack.includes(`/sales-training/docs/${doc}.pdf`),
+        `${doc}.pdf is not linked from the portal`
+      );
+    }
     for (const href of hrefs) {
       assert.ok(href.startsWith('/sales-training/'), `unexpected training href: ${href}`);
       // cleanUrls 308-redirects .html, so linking it costs a needless round trip.

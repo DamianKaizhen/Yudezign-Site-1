@@ -99,16 +99,49 @@ const training: ContentLink[] = [
     note: 'The full presentation. Arrow keys to move, and the embedded videos play here — they do not in the offline copy. Best on a laptop; it scales to fit whatever you open it on.',
   },
   {
-    label: 'Lesson guide — printable handout',
+    // One card, two formats. The web version is 68 KB against 8.8 MB and prints
+    // to the same 8.5x11 layout, so it is the default; the PDF is there for
+    // taking offline before the signal goes.
+    label: 'Lesson guide — the handout',
     href: '/sales-training/guide',
     kind: 'doc',
-    note: 'The same material as a 16-page handout, laid out for 8.5×11. Opens instantly and prints clean.',
+    note: 'The same material as a 16-page handout. Opens instantly and prints to 8.5×11 exactly as laid out.',
+    altHref: '/sales-training/guide.pdf',
+    altLabel: 'PDF, 8.8 MB — for offline',
+  },
+];
+
+/**
+ * The printed pack, as PDFs.
+ *
+ * These are what a rep carries on paper. Having them here means the current
+ * version is always one tap away, and a rep who left the field card in the
+ * truck is not stuck. All four were rebuilt against Answer Key v1.4.
+ */
+const repPack: ContentLink[] = [
+  {
+    label: 'Rep Handbook',
+    href: '/sales-training/docs/rep-handbook.pdf',
+    kind: 'doc',
+    note: 'The whole study pack bound into one document — the Answer Key, strategy, what to say, the SOP, KPIs and the show playbooks. 1 MB.',
   },
   {
-    label: 'Lesson guide (PDF)',
-    href: '/sales-training/guide.pdf',
+    label: 'Field Card',
+    href: '/sales-training/docs/field-card.pdf',
     kind: 'doc',
-    note: 'The handout as a PDF, if you want it on your phone before the wifi gets bad. 8.8 MB — download it on good signal.',
+    note: 'The laminated two-sider that lives in your pocket. Side 1 is the product, side 2 is what not to say plus the numbers. 158 KB — the one to keep on your phone.',
+  },
+  {
+    label: 'The Brief',
+    href: '/sales-training/docs/brief.pdf',
+    kind: 'doc',
+    note: 'The eight-page visual brief: the product, the lines, the pitch, objections and the pricing table. 5 MB.',
+  },
+  {
+    label: 'Discovery Sheet',
+    href: '/sales-training/docs/discovery-sheet.pdf',
+    kind: 'doc',
+    note: 'The intake pad — front is the quote-request packet, back is a quarter-inch grid for the layout sketch. A completed sheet IS the quote request. 149 KB, print it double-sided.',
   },
 ];
 
@@ -199,6 +232,7 @@ const siteLinks: ContentLink[] = [
 export const library: LibraryContent = {
   warning: videoWarning,
   training,
+  repPack,
   videos,
   documents,
   siteLinks,

@@ -62,12 +62,43 @@ const LinkCard = ({ link }: { link: ContentLink }) => {
     </>
   );
 
+  // A second format of the same document sits inside the card rather than
+  // getting its own — two cards for one handout just reads as a duplicate.
+  const alt = link.altHref ? (
+    <a
+      href={link.altHref}
+      onClick={(event) => event.stopPropagation()}
+      className="mt-3 inline-block text-body-sm font-medium text-primary hover:underline"
+    >
+      {link.altLabel ?? 'Alternate format'} →
+    </a>
+  ) : null;
+
   const shell =
     'block rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury';
 
   // Nothing to link to yet — render the card, but not as something clickable.
   if (link.pending) {
     return <div className={`${shell} opacity-90`}>{body}</div>;
+  }
+
+  // With a second format the card can't be one big anchor, or the inner link
+  // would be nested inside it.
+  if (alt) {
+    return (
+      <div className={shell}>
+        {isInternal ? (
+          <Link to={link.href} className="block hover:opacity-90">
+            {body}
+          </Link>
+        ) : (
+          <a href={link.href} target="_blank" rel="noopener noreferrer" className="block">
+            {body}
+          </a>
+        )}
+        {alt}
+      </div>
+    );
   }
 
   return isInternal ? (

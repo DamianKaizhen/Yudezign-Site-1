@@ -5,6 +5,7 @@ import LinkCard from '../../components/portal/LinkCard';
 
 const TABS = [
   { id: 'training', label: 'Product knowledge' },
+  { id: 'pack', label: 'Your printed pack' },
   { id: 'videos', label: 'Videos' },
   { id: 'documents', label: 'Documents' },
   { id: 'site', label: 'Our pages' },
@@ -41,6 +42,21 @@ const Library = () => {
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {rep.library.training.map((link) => (
+              <LinkCard key={link.href} link={link} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {tab === 'pack' && (
+        <div className="space-y-4">
+          <p className="rounded-xl bg-white p-4 text-body-sm leading-relaxed text-luxury-gray-700 shadow-luxury-sm">
+            Everything you carry on paper, as a PDF — so the current version is always one tap away,
+            and leaving the field card in the truck isn&rsquo;t a problem. All four were rebuilt
+            against {rep.version}.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {rep.library.repPack.map((link) => (
               <LinkCard key={link.href} link={link} />
             ))}
           </div>

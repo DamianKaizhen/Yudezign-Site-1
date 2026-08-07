@@ -20,7 +20,7 @@ import type { AnswerKeyEntry, AnswerKeySection, NeverSayEntry, PortalDoc } from 
  * `answer` strings are verbatim. Do not paraphrase them to fit a layout.
  */
 
-export const answerKeyVersion = 'Answer Key v1.3 · 2026-08-06';
+export const answerKeyVersion = 'Answer Key v1.4 · 2026-08-06';
 
 export const canonRule =
   'This is the only document that settles what you say to a customer. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
@@ -210,9 +210,10 @@ export const neverSay: NeverSayEntry[] = [
   },
   {
     id: 'ns-price-from-memory',
-    neverSay: 'A price from memory. Ever.',
-    sayInstead: 'You present the quote the quoting team returns, by its version number. See §6',
-    why: 'The easiest one to break',
+    neverSay: 'A price from memory — with one sanctioned exception',
+    sayInstead:
+      'The exception is the linear-foot ballpark: ranged, spoken, and said with the four conditions. Anything else is the quote team\'s versioned number, presented by its version.',
+    why: 'Amended at v1.4. It used to read "never, ever" — and a rule you know to be wrong is a rule you stop trusting. A job price still never comes from memory',
   },
 ];
 
@@ -697,6 +698,52 @@ export const answerKey: AnswerKeyEntry[] = [
     repNote: 'Flag it to the office the same day.',
   },
   {
+    id: 'ak-05-01b',
+    sectionId: 'money',
+    question: 'What does it cost, roughly?',
+    answer:
+      'Price it per linear foot and say the range, not a point number: "a kitchen like that runs somewhere around four to seven and a half thousand in cabinets, depending on finish. Let me measure and get you a real number."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06 (Answer Key v1.4)',
+    aliases: ['cost', 'how much', 'ballpark', 'roughly', 'price', 'per linear foot', 'lf'],
+    repNote:
+      'This is new at v1.4 and it is the one number you may say from memory. Measure the run, multiply, give the range — and say the four conditions every time.',
+    links: [{ label: 'The linear-foot table', href: '/sales/pitch?t=pricing', kind: 'portal' }],
+  },
+  {
+    id: 'ak-05-01c',
+    sectionId: 'money',
+    question: 'Is that the price?',
+    answer:
+      '"No — it\'s a ballpark so you know whether we\'re in the same conversation. Give me twenty minutes of measurements and you\'ll get a real number, itemised."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06',
+    aliases: ['is that the price', 'firm price', 'final price'],
+  },
+  {
+    id: 'ak-05-01d',
+    sectionId: 'money',
+    question: 'Can I write this on a quote?',
+    answer:
+      'No. Ballparks are spoken, in person. A number in writing is a quote, and quotes come from the quote team.',
+    status: 'ruled',
+    source: 'Follows from §6',
+    neverSayIds: ['ns-price-from-memory'],
+    aliases: ['in writing', 'email me a price', 'send me a number'],
+  },
+  {
+    id: 'ak-05-01e',
+    sectionId: 'money',
+    question: "What's the difference between semi-custom and custom?",
+    answer:
+      '"Depends on the door, the finish family and how much of it is made to your sizes — let me show you what each looks like."',
+    status: 'blocked',
+    source: 'The four lines and the semi/custom split have not been reconciled',
+    aliases: ['semi custom', 'semi-custom vs custom', 'what is custom'],
+    repNote:
+      'Do not map semi-custom or custom to a line name. That axis exists in the pricing table and nowhere else in the pack — nobody has said how it relates to Essential, Signature, Reserve and Atelier. Quote the ballpark by room, not by line.',
+  },
+  {
     id: 'ak-05-02',
     sectionId: 'money',
     question: 'Can I get trade pricing?',
@@ -759,10 +806,13 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'quoting',
     question: 'Can you ballpark it right now?',
     answer:
-      '"I can tell you the shape of it — a kitchen this size usually lands in a range. But I\'ll have a real number for you with the drawings, and that\'s the one you can build a budget on."',
+      'Measure the run, multiply, give the range: "Around twenty feet of cabinetry — so roughly $4,300 in semi-custom, closer to $7,500 if you go custom. Supply only, assembled, before delivery. Finish moves it."',
     status: 'ruled',
-    neverSayIds: ['ns-price-from-memory'],
-    aliases: ['ballpark', 'rough price', 'estimate', 'guess'],
+    source: 'Damian, 2026-08-06 (v1.4). This used to be a deflection',
+    aliases: ['ballpark', 'rough price', 'estimate', 'guess', 'linear foot'],
+    repNote:
+      'Rewritten at v1.4. You no longer deflect this — you have a number. Say the four conditions with it every time.',
+    links: [{ label: 'The linear-foot table', href: '/sales/pitch?t=pricing', kind: 'portal' }],
   },
   {
     id: 'ak-06-02',
