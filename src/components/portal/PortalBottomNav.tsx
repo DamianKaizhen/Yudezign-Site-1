@@ -25,8 +25,13 @@ interface PortalBottomNavProps {
  * More, listed in full rather than hidden behind another scroll.
  */
 
-/** The four that earn a permanent slot. The rest live under More. */
-const PRIMARY = ['/sales', '/sales/products', '/sales/answers'];
+/**
+ * The three that earn a permanent slot, alongside Search and More.
+ *
+ * Answers is deliberately not here: a rep looking for an answer types the
+ * question rather than hunting a tab, and search reaches it in one move.
+ */
+const PRIMARY = ['/sales', '/sales/library', '/sales/products'];
 
 const PortalBottomNav = ({ role, onSearch }: PortalBottomNavProps) => {
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -46,7 +51,10 @@ const PortalBottomNav = ({ role, onSearch }: PortalBottomNavProps) => {
         // pb keeps the bar clear of the iPhone home indicator.
         className="fixed inset-x-0 bottom-0 z-50 border-t border-luxury-gray-200 bg-white/95 backdrop-blur-sm pb-[env(safe-area-inset-bottom)] md:hidden print:hidden"
       >
-        <ul className="flex items-stretch">
+        {/* The selected tab is a filled box, not a tinted icon. A colour shift
+            on a 20px glyph is genuinely hard to read at arm's length in a
+            bright room, which is where this gets used. */}
+        <ul className="flex items-stretch gap-1 px-1 py-1.5">
           {primary.map((section) => {
             const Icon = section.icon;
             const active = isActive(section.to);
@@ -55,8 +63,10 @@ const PortalBottomNav = ({ role, onSearch }: PortalBottomNavProps) => {
                 <Link
                   to={section.to}
                   aria-current={active ? 'page' : undefined}
-                  className={`flex min-h-[56px] flex-col items-center justify-center gap-0.5 px-1 py-2 text-[11px] font-medium transition-colors ${
-                    active ? 'text-primary' : 'text-luxury-gray-500'
+                  className={`flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[11px] font-medium transition-colors ${
+                    active
+                      ? 'bg-primary text-white shadow-luxury-sm'
+                      : 'text-luxury-gray-500 active:bg-luxury-gray-50'
                   }`}
                 >
                   <Icon className="h-5 w-5" aria-hidden="true" />
@@ -71,10 +81,10 @@ const PortalBottomNav = ({ role, onSearch }: PortalBottomNavProps) => {
               type="button"
               onClick={onSearch}
               aria-label="Search the portal"
-              className="flex min-h-[56px] w-full flex-col items-center justify-center gap-0.5 px-1 py-2 text-[11px] font-medium text-luxury-gray-500"
+              className="flex min-h-[52px] w-full flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[11px] font-medium text-accent-dark transition-colors active:bg-accent/15"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white shadow-luxury">
-                <Search className="h-4 w-4" aria-hidden="true" />
+              <span className="flex h-5 w-5 items-center justify-center">
+                <Search className="h-5 w-5" aria-hidden="true" />
               </span>
               <span className="leading-none">Search</span>
             </button>
@@ -86,8 +96,10 @@ const PortalBottomNav = ({ role, onSearch }: PortalBottomNavProps) => {
               onClick={() => setSheetOpen(true)}
               aria-expanded={sheetOpen}
               aria-label="More sections"
-              className={`flex min-h-[56px] w-full flex-col items-center justify-center gap-0.5 px-1 py-2 text-[11px] font-medium transition-colors ${
-                moreIsActive ? 'text-primary' : 'text-luxury-gray-500'
+              className={`flex min-h-[52px] w-full flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[11px] font-medium transition-colors ${
+                moreIsActive
+                  ? 'bg-primary text-white shadow-luxury-sm'
+                  : 'text-luxury-gray-500 active:bg-luxury-gray-50'
               }`}
             >
               <Menu className="h-5 w-5" aria-hidden="true" />

@@ -5,6 +5,7 @@ import { SignJWT } from 'jose';
 
 import { buildPayload, repContent, CONTENT_VERSION } from '../../api/_content/index.ts';
 import { resolveLinkTarget } from '../../src/lib/portalLinks.ts';
+import { buildSearchIndex, searchPortal } from '../../src/lib/salesSearch.ts';
 import { MANAGER_CANARIES } from '../../api/_content/manager.ts';
 import {
   SALES_COOKIE,
@@ -323,6 +324,79 @@ describe('Answer Key v1.3 rulings', () => {
       // cleanUrls 308-redirects .html, so linking it costs a needless round trip.
       assert.ok(!href.endsWith('.html'), `${href} should drop the .html extension`);
     }
+  });
+});
+
+describe('search', () => {
+  const index = buildSearchIndex(repContent);
+  const top = (query: string, n = 5) =>
+    searchPortal(index, query, n).map((result) => result.title.toLowerCase());
+
+  it('reaches content that used to be unsearchable', () => {
+    // Each of these lives outside the collections the index originally walked,
+    // so every one of them returned nothing.
+    const probes: Array<[string, RegExp]> = [
+      ['gola', /gola/],
+      ['j-pull', /j-pull/],
+      ['closet made of', /closet/],
+      ['six way adjustable', /hinge|hardware/],
+      ['damage', /claim|damage|escalat/],
+      ['ballpark', /ballpark|price|cost|linear/],
+      ['walk-in closet', /closet/],
+      ['apartment owner', /apartment/],
+    ];
+
+    for (const [query, expected] of probes) {
+      const hits = top(query);
+      assert.ok(hits.length > 0, `"${query}" returned nothing`);
+      assert.ok(
+        hits.some((title) => expected.test(title)),
+        `"${query}" did not surface anything matching ${expected} — got: ${hits.join(' | ')}`
+      );
+    }
+  });
+
+  it('forgives a typo', () => {
+    for (const [typo, expected] of [
+      ['warrenty', /warranty/],
+      ['delivary', /deliver|delivery/],
+      ['dimensons', /base|wall|tall|bath|dimension/],
+    ] as Array<[string, RegExp]>) {
+      const hits = top(typo);
+      assert.ok(hits.length > 0, `"${typo}" returned nothing`);
+      assert.ok(
+        hits.some((title) => expected.test(title)),
+        `"${typo}" did not recover — got: ${hits.join(' | ')}`
+      );
+    }
+  });
+
+  it('ranks an exact match above a fuzzy one', () => {
+    // The ordering guarantee that makes typo tolerance safe: a correctly
+    // spelled query behaves exactly as it did before.
+    const results = searchPortal(index, 'deposit', 10);
+    assert.ok(results.length > 0);
+    assert.match(results[0].title.toLowerCase(), /deposit/);
+  });
+
+  it('narrows rather than widens on a second word', () => {
+    const one = searchPortal(index, 'closet', 50).length;
+    const two = searchPortal(index, 'closet plywood', 50).length;
+    assert.ok(two <= one, 'adding a word should not return more results');
+    assert.ok(two > 0, 'a reasonable two-word query should still find something');
+  });
+
+  it('puts blocked answers near the top when they are relevant', () => {
+    const results = searchPortal(index, 'warranty', 6);
+    assert.ok(
+      results.slice(0, 3).some((r) => r.status === 'blocked'),
+      'the blocked warranty deflection should rank in the top three'
+    );
+  });
+
+  it('ignores a query too short to mean anything', () => {
+    assert.deepEqual(searchPortal(index, 'a'), []);
+    assert.deepEqual(searchPortal(index, ' '), []);
   });
 });
 

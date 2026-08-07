@@ -397,6 +397,8 @@ export interface SearchDoc {
     | 'qualify'
     | 'product'
     | 'dimension'
+    | 'pricing'
+    | 'escalation'
     | 'sop'
     | 'kpi'
     | 'booth'

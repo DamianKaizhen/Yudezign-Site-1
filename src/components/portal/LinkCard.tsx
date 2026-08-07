@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { AlertTriangle, ExternalLink } from 'lucide-react';
 
 import type { ContentLink } from '../../types/salesPortal';
-import { resolveLinkTarget } from '../../lib/portalLinks';
+import { docViewerPath, resolveLinkTarget } from '../../lib/portalLinks';
+import { useStandalone } from '../../lib/hooks/useStandalone';
 
 const KIND_LABEL: Record<ContentLink['kind'], string> = {
   video: 'Video',
@@ -26,6 +27,7 @@ const LinkCard = ({ link }: { link: ContentLink }) => {
   // blanks the portal — see resolveLinkTarget.
   const target = resolveLinkTarget(link.href);
   const isRoute = target === 'route';
+  const standalone = useStandalone();
 
   const body = (
     <>
@@ -84,9 +86,19 @@ const LinkCard = ({ link }: { link: ContentLink }) => {
     );
   }
 
-  // A file or another origin: a real document request, in a new tab so the
-  // portal stays open behind it. Opening a PDF should not cost a rep their
-  // place in the portal.
+  // Installed as a web app there is no browser chrome to fall back on, so a
+  // same-origin document goes through the in-app viewer, which brings its own
+  // back and share.
+  if (standalone && target === 'asset') {
+    return (
+      <Link to={docViewerPath(link.href, link.label)} className={shell}>
+        {body}
+      </Link>
+    );
+  }
+
+  // In a browser, a new tab beats anything we could build — the native PDF
+  // viewer, back button and share menu all already work.
   return (
     <a href={link.href} target="_blank" rel="noopener noreferrer" className={shell}>
       {body}

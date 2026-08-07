@@ -105,8 +105,17 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
     docs.push({
       id: row.id,
       kind: 'dimension',
-      title: row.cabinet,
-      body: [`Depth ${row.depth}`, `Height ${row.height}`, `Widths ${row.widths}`, row.note]
+      title: `${row.cabinet} — standard dimensions`,
+      body: [
+        `Depth ${row.depth}`,
+        `Height ${row.height}`,
+        `Widths ${row.widths}`,
+        row.note,
+        // The rows are titled "Kitchen base", "Wall", "Tall" — none of which is
+        // the word a rep types. Without these, searching "dimensions" or "how
+        // deep is a base cabinet" found nothing.
+        'size sizes how deep how tall how wide measurement standard',
+      ]
         .filter(Boolean)
         .join(' · '),
       href: `/sales/products?t=dimensions#${row.id}`,
@@ -199,6 +208,186 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
     });
   }
 
+  // ── Everything the index used to miss ──────────────────────────────────
+  // A rep searching "gola", "$350 delivery", "what's a closet made of" or
+  // "who do I call about damage" found nothing, because those live outside the
+  // handful of collections indexed above. Search only earns its place as the
+  // primary way in if it reaches all of it.
+
+  for (const rate of rep.pricing.rates) {
+    docs.push({
+      id: rate.id,
+      kind: 'pricing',
+      title: `${rate.room} — ${rate.semiCustom} semi-custom, ${rate.custom} custom`,
+      body: [rate.note, 'ballpark price per linear foot cost how much'].filter(Boolean).join(' '),
+      href: '/sales/pitch?t=pricing',
+      kicker: 'PRICING',
+    });
+  }
+  for (const example of rep.pricing.examples) {
+    docs.push({
+      id: example.id,
+      kind: 'pricing',
+      title: `${example.job} — ${example.semiCustom} to ${example.custom}`,
+      body: `${example.lf} linear feet worked example ballpark`,
+      href: '/sales/pitch?t=pricing',
+      kicker: 'PRICING',
+    });
+  }
+  for (const condition of rep.pricing.conditions) {
+    docs.push({
+      id: condition.id,
+      kind: 'pricing',
+      title: condition.label,
+      body: `${condition.detail ?? ''} condition on every ballpark`,
+      href: '/sales/pitch?t=pricing',
+      kicker: 'PRICING',
+    });
+  }
+
+  for (const opening of rep.openings) {
+    docs.push({
+      id: opening.id,
+      kind: 'product',
+      title: opening.name,
+      body: [opening.what, opening.caution, 'opening handle door'].filter(Boolean).join(' '),
+      href: `/sales/products?t=openings#${opening.id}`,
+      kicker: 'OPENING',
+    });
+  }
+
+  docs.push({
+    id: 'closets-material',
+    kind: 'product',
+    title: 'What a closet is made of',
+    body: [
+      rep.closets.core,
+      rep.closets.sayThis,
+      rep.closets.plywoodOption,
+      rep.closets.neverSay,
+      rep.closets.overlay,
+      rep.closets.ladder.join(' '),
+    ].join(' '),
+    href: '/sales/products?t=lines',
+    kicker: 'CLOSETS',
+  });
+
+  docs.push({
+    id: 'hardware-summary',
+    kind: 'product',
+    title: 'Hinges, slides and hardware partners',
+    body: [
+      rep.hardware.hinges,
+      rep.hardware.slides,
+      rep.hardware.softClose,
+      rep.hardware.partners,
+      rep.hardware.noLadder,
+      rep.hardware.sixWay,
+      rep.hardware.sixWayNote,
+    ].join(' '),
+    href: '/sales/products?t=lines',
+    kicker: 'HARDWARE',
+  });
+
+  for (const row of rep.escalation) {
+    docs.push({
+      id: `esc-${row.situation.slice(0, 24)}`,
+      kind: 'escalation',
+      title: row.situation,
+      body: `${row.who} — ${row.howFast}. escalate who do I tell`,
+      href: '/sales/process?t=sop',
+      kicker: 'ESCALATE',
+    });
+  }
+
+  for (const row of rep.vocabulary) {
+    docs.push({
+      id: `vocab-${row.oldTerm.slice(0, 24)}`,
+      kind: 'note',
+      title: `${row.oldTerm} → ${row.sayNow}`,
+      body: 'old term what we say now vocabulary',
+      href: '/sales/process?t=sop',
+      kicker: 'VOCABULARY',
+    });
+  }
+
+  for (const buyer of rep.strategy.buyers) {
+    docs.push({
+      id: buyer.id,
+      kind: 'note',
+      title: `Selling to a ${buyer.buyer.toLowerCase()}`,
+      body: `${buyer.caresAbout} ${buyer.leadWith} Does not care about ${buyer.doesNotCareAbout}`,
+      href: `/sales/process?t=sell#${buyer.id}`,
+      kicker: 'BUYER',
+    });
+  }
+
+  for (const lane of rep.strategy.bulkLanes) {
+    docs.push({
+      id: lane.id,
+      kind: 'note',
+      title: `${lane.category} — ${lane.valuePerWin}`,
+      body: `${lane.why} bulk lane rank ${lane.rank}`,
+      href: `/sales/process?t=sell#${lane.id}`,
+      kicker: 'BULK LANE',
+    });
+  }
+
+  for (const item of [...rep.booth.packList, ...rep.booth.qualifying, ...rep.booth.dispositions]) {
+    docs.push({
+      id: item.id,
+      kind: 'booth',
+      title: item.label,
+      body: item.detail ?? '',
+      href: '/sales/booth?t=table',
+      kicker: 'BOOTH',
+    });
+  }
+
+  for (const slot of rep.booth.runOfShow) {
+    docs.push({
+      id: slot.id,
+      kind: 'booth',
+      title: `${slot.when} — ${slot.what}`,
+      body: (slot.detail ?? []).join(' '),
+      href: '/sales/booth?t=run',
+      kicker: 'RUN OF SHOW',
+    });
+  }
+
+  for (const item of rep.handOuts) {
+    docs.push({
+      id: `handout-${item.who.slice(0, 24)}`,
+      kind: 'booth',
+      title: `What to hand a ${item.who.toLowerCase()}`,
+      body: item.give,
+      href: '/sales/booth?t=table',
+      kicker: 'HAND OUT',
+    });
+  }
+
+  rep.quoteRules.forEach((rule, i) => {
+    docs.push({
+      id: `quote-rule-${i}`,
+      kind: 'sop',
+      title: `Quote rule ${i + 1}`,
+      body: rule,
+      href: '/sales/process?t=sop',
+      kicker: 'QUOTING',
+    });
+  });
+
+  for (const item of rep.alwaysSay) {
+    docs.push({
+      id: `always-${item.when.slice(0, 24)}`,
+      kind: 'pitch',
+      title: item.when,
+      body: `${item.say} ${item.why}`,
+      href: '/sales/pitch?t=pitch',
+      kicker: 'ALWAYS SAY',
+    });
+  }
+
   return docs;
 }
 
@@ -214,11 +403,73 @@ function tokenize(input: string): string[] {
 }
 
 /**
- * Rank by where the match landed. A title hit beats a body hit, and an exact
- * phrase in the title beats everything — "deposit" should surface the deposit
- * row above the four other places the word appears.
+ * Words a rep types that are not the words the documents use.
+ *
+ * Cheaper and more predictable than stemming, and it encodes the vocabulary gap
+ * this pack actually has — the Answer Key says "deflection" where a rep thinks
+ * "what do I say", and "ballpark" where they think "how much".
  */
-export function searchPortal(index: SearchDoc[], query: string, limit = 30): SearchResult[] {
+const SYNONYMS: Record<string, string[]> = {
+  price: ['pricing', 'cost', 'ballpark', 'quote', 'rate'],
+  cost: ['price', 'pricing', 'ballpark', 'rate'],
+  expensive: ['price', 'cost', 'objection'],
+  hinge: ['hinges', 'dtc', 'hardware'],
+  slide: ['slides', 'drawer', 'hardware'],
+  warranty: ['guarantee', 'blocked'],
+  deposit: ['terms', 'payment', 'blocked'],
+  lead: ['leadtime', 'turnaround', 'weeks'],
+  timeline: ['lead', 'turnaround', 'weeks'],
+  material: ['materials', 'plywood', 'particleboard', 'mdf'],
+  colour: ['color', 'finish', 'decor'],
+  color: ['colour', 'finish', 'decor'],
+  size: ['dimensions', 'sizes', 'depth', 'height', 'width'],
+  install: ['installation', 'installer', 'fitting'],
+  framed: ['face-frame', 'rta', 'stocked'],
+  closet: ['closets', 'wardrobe', 'dressing'],
+  delivery: ['deliver', 'shipping', 'freight'],
+};
+
+/** Bounded edit distance. Bails as soon as it exceeds what we would accept. */
+function withinEditDistance(a: string, b: string, max: number): boolean {
+  if (Math.abs(a.length - b.length) > max) return false;
+
+  let previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i += 1) {
+    const current = [i];
+    let best = i;
+    for (let j = 1; j <= b.length; j += 1) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      current[j] = Math.min(current[j - 1] + 1, previous[j] + 1, previous[j - 1] + cost);
+      best = Math.min(best, current[j]);
+    }
+    if (best > max) return false;
+    previous = current;
+  }
+  return previous[b.length] <= max;
+}
+
+/** How many typos to forgive. Short words get none — too many false hits. */
+function tolerance(token: string): number {
+  if (token.length <= 3) return 0;
+  if (token.length <= 6) return 1;
+  return 2;
+}
+
+function fuzzyHit(words: string[], token: string): boolean {
+  const max = tolerance(token);
+  if (max === 0) return false;
+  return words.some((word) => word.length > 2 && withinEditDistance(word, token, max));
+}
+
+/**
+ * Rank by where the match landed, then forgive typos.
+ *
+ * Exact matches always outrank fuzzy ones, so a correctly-spelled query behaves
+ * exactly as it did before — the tolerance only decides whether a near-miss
+ * appears at all, never whether it beats a real hit. That ordering matters here
+ * more than in most search: a rep is reading the top result out loud.
+ */
+export function searchPortal(index: SearchDoc[], query: string, limit = 40): SearchResult[] {
   const trimmed = query.trim().toLowerCase();
   if (trimmed.length < 2) return [];
 
@@ -230,24 +481,42 @@ export function searchPortal(index: SearchDoc[], query: string, limit = 30): Sea
   for (const doc of index) {
     const title = doc.title.toLowerCase();
     const body = doc.body.toLowerCase();
-    let score = 0;
+    const haystack = `${title} ${body}`;
+    // Fuzzy matching is scored against title and body separately. Pooling them
+    // meant a near-miss anywhere in a long body outranked a near-miss in the
+    // title — "delivary" surfaced the never-say list ahead of "What about
+    // delivery?", because that row merely mentions the word.
+    const titleWords = title.split(/[^a-z0-9]+/i).filter(Boolean);
+    const bodyWords = body.split(/[^a-z0-9]+/i).filter(Boolean);
 
-    if (title.includes(trimmed)) score += 100;
-    if (body.includes(trimmed)) score += 25;
+    let score = 0;
+    let matchedAll = true;
+
+    if (title.includes(trimmed)) score += 120;
+    else if (body.includes(trimmed)) score += 30;
 
     for (const token of tokens) {
-      if (title.startsWith(token)) score += 20;
-      else if (title.includes(token)) score += 12;
-      if (body.includes(token)) score += 4;
+      if (title.startsWith(token)) score += 24;
+      else if (title.includes(token)) score += 16;
+      else if (fuzzyHit(titleWords, token)) score += 14;
+      else if (body.includes(token)) score += 6;
+      else if ((SYNONYMS[token] ?? []).some((alt) => haystack.includes(alt))) score += 5;
+      else if (fuzzyHit(bodyWords, token)) score += 3;
+      else {
+        matchedAll = false;
+        break;
+      }
     }
 
-    // Require every token to appear somewhere, so a two-word query narrows
-    // rather than widens.
-    const matchesAll = tokens.every((token) => title.includes(token) || body.includes(token));
-    if (!matchesAll || score === 0) continue;
+    // Every token has to land somewhere, so a second word narrows rather than
+    // widens the result set.
+    if (!matchedAll || score === 0) continue;
 
-    // A BLOCKED answer is the one a rep most needs to get right.
-    if (doc.status === 'blocked') score += 8;
+    // A BLOCKED answer is the one a rep most needs to get right, and a
+    // never-say is the one that costs most to get wrong.
+    if (doc.status === 'blocked') score += 10;
+    if (doc.kind === 'never-say') score += 6;
+    if (doc.kind === 'answer') score += 4;
 
     results.push({ ...doc, score });
   }

@@ -34,8 +34,19 @@ export interface PortalSection {
   managerOnly?: boolean;
 }
 
+// Order matters twice over: it is the desktop pill row, and the first three
+// entries are what the mobile bottom bar promotes. Sources sits second and
+// Product third because reps reach for a document to send far more often than
+// they read a spec — and Answers moved off the bar because search reaches it
+// faster than a tab does.
 export const PORTAL_SECTIONS: PortalSection[] = [
-  { to: '/sales', label: 'Start here', icon: Home, blurb: 'The product in five minutes' },
+  { to: '/sales', label: 'Home', icon: Home, blurb: 'The product in five minutes' },
+  {
+    to: '/sales/library',
+    label: 'Sources',
+    icon: Library,
+    blurb: 'The deck, your printed pack, explainer videos and what is safe to send',
+  },
   {
     to: '/sales/products',
     label: 'Product',
@@ -47,12 +58,6 @@ export const PORTAL_SECTIONS: PortalSection[] = [
     label: 'Answers',
     icon: BookOpen,
     blurb: 'Every answer you give a customer, with where it came from',
-  },
-  {
-    to: '/sales/library',
-    label: 'Sources',
-    icon: Library,
-    blurb: 'Ten explainer videos, the shared folders, and our own pages',
   },
   { to: '/sales/booth', label: 'Booth', icon: ClipboardList, blurb: 'The show, and the 48 hours after it' },
   {

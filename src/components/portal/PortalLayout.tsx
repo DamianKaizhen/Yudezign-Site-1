@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { CloudOff, LogOut, Search } from 'lucide-react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, CloudOff, LogOut, Search } from 'lucide-react';
+
+import { useStandalone } from '../../lib/hooks/useStandalone';
 
 import type { PortalPayload, PortalRole } from '../../types/salesPortal';
 import { buildSearchIndex } from '../../lib/salesSearch';
@@ -44,6 +46,12 @@ const PortalLayout = ({
 }: PortalLayoutProps) => {
   const [searchOpen, setSearchOpen] = useState(false);
   const rep = payload.rep;
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const standalone = useStandalone();
+  // Only where there is something to go back to, and only where the platform
+  // has not already provided it.
+  const showBack = standalone && pathname !== '/sales';
 
   const index = useMemo(() => buildSearchIndex(rep), [rep]);
   const context: PortalContext = { rep, payload, role, index };
@@ -55,7 +63,21 @@ const PortalLayout = ({
 
       <header className="sticky top-0 z-50 shadow-luxury-sm print:hidden">
         <div className="bg-primary text-white">
-          <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
+          <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5">
+            {/* Installed as a web app there is no browser back button, so a rep
+                who has drilled into a sub-page has no way out but the bottom
+                bar. Give them the affordance they expect. */}
+            {showBack && (
+              <button
+                type="button"
+                onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/sales'))}
+                aria-label="Back"
+                className="-ml-2 flex h-10 w-10 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+              >
+                <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+              </button>
+            )}
+
             <Link to="/sales" className="flex items-baseline gap-2 text-lg font-semibold">
               <span>
                 YuDe<span className="text-accent">Zign</span>

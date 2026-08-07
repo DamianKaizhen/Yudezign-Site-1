@@ -41,3 +41,15 @@ export function resolveLinkTarget(href: string): LinkTarget {
 export function opensInNewTab(href: string): boolean {
   return resolveLinkTarget(href) !== 'route';
 }
+
+/**
+ * Where a same-origin document should actually be opened.
+ *
+ * In a browser, a new tab is better than anything we could build: the native
+ * PDF viewer, the back button and the share menu all already work. Installed as
+ * a web app none of those exist, so the document goes through the in-app viewer
+ * instead, which supplies them.
+ */
+export function docViewerPath(href: string, title: string): string {
+  return `/sales/doc?src=${encodeURIComponent(href)}&title=${encodeURIComponent(title)}`;
+}

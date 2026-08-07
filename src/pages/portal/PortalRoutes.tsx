@@ -10,6 +10,7 @@ import Product from './Product';
 import Process from './Process';
 import Library from './Library';
 import Manager from './Manager';
+import DocViewer from './DocViewer';
 
 /**
  * All /sales routes, in one lazily-loaded chunk.
@@ -35,6 +36,9 @@ const PortalRoutes = () => (
       <Route path="process" element={<Process />} />
       <Route path="library" element={<Library />} />
       <Route path="manager" element={<Manager />} />
+      {/* Full-screen document viewer. Inside the gate so it stays behind the
+          password, and inside the layout so Back has somewhere to return to. */}
+      <Route path="doc" element={<DocViewer />} />
       {/* Unknown /sales/* path: land on Start here rather than the 404 page. */}
       <Route path="*" element={<StartHere />} />
     </Route>
