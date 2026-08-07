@@ -26,6 +26,12 @@ export interface ContentLink {
   duration?: string;
   /** Renders a warning treatment. Used for the video that shows what we DON'T do. */
   caution?: string;
+  /**
+   * Not available yet. Renders as a non-clickable card with a "coming soon"
+   * badge — better than linking somewhere a rep cannot actually use, and better
+   * than omitting it, because they need to know it is on the way.
+   */
+  pending?: boolean;
 }
 
 export interface AnswerKeySection {

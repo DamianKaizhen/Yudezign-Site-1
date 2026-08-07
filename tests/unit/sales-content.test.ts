@@ -214,6 +214,23 @@ describe('Answer Key v1.3 rulings', () => {
     assert.ok(sixWay.expiresOn, 'a provisional ruling needs an expiry');
   });
 
+  it('sends reps to our own downloads page, not a Drive folder', () => {
+    // Damian's call: brochures live on yudezign.com so a rep can send a link
+    // rather than a Drive share, and the price list is not linked at all until
+    // it is in the portal.
+    const serialised = JSON.stringify(repContent);
+    assert.ok(
+      !/drive\.google\.com/i.test(serialised),
+      'a Google Drive link is back in the rep payload'
+    );
+    assert.ok(!/kortex/i.test(serialised), 'the Kortex link is back in the rep payload');
+
+    const brochures = repContent.library.documents.find((link) =>
+      link.label.startsWith('Brochures')
+    );
+    assert.equal(brochures?.href, '/downloads');
+  });
+
   it('hosts the deck and handout on the site', () => {
     const hrefs = repContent.library.training.map((link) => link.href);
     assert.ok(hrefs.includes('/sales-training/deck'), 'the deck is not linked');
@@ -252,6 +269,11 @@ describe('cross-references', () => {
     assert.ok(links.length > 0, 'expected some links');
 
     for (const link of links) {
+      // A pending item has nothing to point at yet, by design.
+      if (link.pending) {
+        assert.equal(link.href, '', `"${link.label}" is pending but carries an href`);
+        continue;
+      }
       if (link.href.startsWith('/')) continue;
       assert.ok(
         link.href.startsWith('https://'),

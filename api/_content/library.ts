@@ -127,15 +127,16 @@ const documents: ContentLink[] = [
   },
   {
     label: 'Brochures — safe to send to clients',
-    href: 'https://drive.google.com/drive/folders/1QscX2tn9ubGTPwpTHaDFCEAXzWwe68jz',
-    kind: 'drive',
-    note: 'Customer-facing. Pick the edition that matches the buyer — Builder, Contractor, Home or Commercial — rather than sending everything.',
+    href: '/downloads',
+    kind: 'site',
+    note: 'On our own site, so you can send the link rather than attaching files. Pick the edition that matches the buyer — Builder, Contractor, Home or Commercial — rather than sending everything.',
   },
   {
     label: 'Price lists + New Account Registration form',
-    href: 'https://drive.google.com/drive/folders/1GiEyUnIU02frjq6Tmpw973P_OQqGiRTO',
-    kind: 'drive',
-    note: 'All prices in this folder are contractor pricing. Share with trade accounts. Also holds the New Account Registration form — how a prospect becomes an account, so it is the one attachment worth sending early.',
+    href: '',
+    kind: 'doc',
+    pending: true,
+    note: 'Coming to this portal shortly. Until then, ask the office for the current contractor price list and the New Account Registration form — that form is how a prospect becomes an account, so it is the one attachment worth sending early.',
     caution:
       'Sharing a price list is not the same as quoting a job. A price list lets a contractor budget. A JOB gets a versioned quote from the quote team, off a Discovery Sheet. Never build a job price off the sheet yourself.',
   },
@@ -150,12 +151,6 @@ const documents: ContentLink[] = [
     href: 'https://apps.apple.com/us/app/installassistant/id6743378316',
     kind: 'app',
     note: 'Every panel carries a QR sticker; scanning it shows a 3D model of the whole cabinet and exactly where that piece goes. Install it on your own phone — it demos in fifteen seconds and answers "how hard is this to put together?" better than any sentence you could say.',
-  },
-  {
-    label: 'The product-study notes (Kortex)',
-    href: 'https://app.kortex.co/public/document/448a57f5-6e56-4d6a-9e13-d3ab8a196bd8',
-    kind: 'doc',
-    note: 'The original construction notes these study links expand. Same videos, plus the raw notes behind most of the Answer Key product rulings.',
   },
 ];
 
