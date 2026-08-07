@@ -125,6 +125,31 @@ describe('hardware facts', () => {
     assert.deepEqual(offenders, [], `Blum still appears in: ${offenders.join(', ')}`);
   });
 
+  it('states KV 8450FM as the slide on every line, with no per-line ladder', () => {
+    // Answer Key v1.1: the slides do not ladder either. The portal previously
+    // had DTC undermount / KV GS4270 / KV 8450FM across the four lines, which
+    // was the same error as Blum in a different column.
+    assert.match(repContent.hardware.slides, /8450FM/);
+    assert.match(repContent.hardware.slides, /every line/i);
+
+    for (const line of repContent.productLines) {
+      const serialised = JSON.stringify(line);
+      assert.ok(
+        !/GS4270|8450|undermount/i.test(serialised),
+        `product line "${line.name}" still carries per-line slide detail`
+      );
+    }
+  });
+
+  it('gives every line a finish collection and décor count summing to 142', () => {
+    for (const line of repContent.productLines) {
+      assert.ok(line.collections.trim().length > 0, `${line.name} has no collections`);
+      assert.ok(line.decors > 0, `${line.name} has no décor count`);
+    }
+    const total = repContent.productLines.reduce((sum, line) => sum + line.decors, 0);
+    assert.equal(total, 142, 'the four lines should account for all 142 décors');
+  });
+
   it('keeps blum searchable so a rep who remembers it finds the correction', () => {
     const hardwareAnswer = repContent.answerKey.find((entry) => entry.id === 'ak-03-02');
     assert.ok(hardwareAnswer, 'ak-03-02 is missing');
@@ -132,6 +157,70 @@ describe('hardware facts', () => {
       (hardwareAnswer.aliases ?? []).some((alias) => BLUM.test(alias)),
       'searching "blum" must surface the hardware correction'
     );
+  });
+});
+
+describe('Answer Key v1.3 rulings', () => {
+  it('is stamped at v1.3', () => {
+    assert.match(repContent.version, /v1\.3/);
+  });
+
+  it('says we manufacture frameless but sell a stocked framed line', () => {
+    // v1.2. The old flat "we build frameless only" walked away from customers
+    // we can actually serve.
+    const sells = repContent.answerKey.find((entry) => entry.id === 'ak-02-02b');
+    assert.ok(sells, 'the "do you sell framed" row is missing');
+    assert.match(sells.answer, /stocked RTA framed line/i);
+
+    const builds = repContent.answerKey.find((entry) => entry.id === 'ak-02-02');
+    assert.ok(builds, 'the "do you make framed" row is missing');
+    assert.match(builds.answer, /manufacture frameless only/i);
+
+    // Everything specific about the framed line is blocked — no stock sheet.
+    const specifics = repContent.answerKey.find((entry) => entry.id === 'ak-02-02d');
+    assert.equal(specifics?.status, 'blocked');
+  });
+
+  it('never claims a closet is plywood or "same materials as the kitchens"', () => {
+    // v1.3. That sentence was on the printed field card and implied a plywood
+    // closet carcass at no extra cost.
+    assert.match(repContent.closets.sayThis, /different board/i);
+
+    const neverSayIds = new Set(repContent.neverSay.map((row) => row.id));
+    assert.ok(neverSayIds.has('ns-closet-plywood'), 'the closet-plywood never-say is missing');
+
+    // The phrase may appear where it is being warned against — the never-say
+    // row and a provenance note. It must not appear in anything a rep says.
+    const retired = /same materials as the kitchens/i;
+    const spoken = [
+      ...repContent.answerKey.map((entry) => entry.answer),
+      ...repContent.objections.flatMap((objection) => objection.response),
+      ...repContent.pitches.flatMap((pitch) => pitch.script),
+      repContent.closets.core,
+      repContent.closets.sayThis,
+      repContent.closets.plywoodOption,
+    ];
+    for (const line of spoken) {
+      assert.ok(!retired.test(line), `retired closet claim is back in: "${line.slice(0, 60)}…"`);
+    }
+  });
+
+  it('carries the six-way hinge claim as provisional, not ruled', () => {
+    // It is PROVISIONAL because the part number's spec sheet is still missing,
+    // not because the claim is doubted.
+    const sixWay = repContent.answerKey.find((entry) => entry.id === 'ak-03-02c');
+    assert.ok(sixWay, 'the six-way adjustable row is missing');
+    assert.equal(sixWay.status, 'provisional');
+    assert.ok(sixWay.expiresOn, 'a provisional ruling needs an expiry');
+  });
+
+  it('hosts the deck and handout on the site', () => {
+    const hrefs = repContent.library.training.map((link) => link.href);
+    assert.ok(hrefs.includes('/sales-training/deck.html'), 'the deck is not linked');
+    assert.ok(hrefs.includes('/sales-training/guide.pdf'), 'the PDF handout is not linked');
+    for (const href of hrefs) {
+      assert.ok(href.startsWith('/sales-training/'), `unexpected training href: ${href}`);
+    }
   });
 });
 

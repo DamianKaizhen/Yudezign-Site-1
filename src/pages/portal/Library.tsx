@@ -4,6 +4,7 @@ import { useSubTab } from '../../lib/hooks/useSubTab';
 import LinkCard from '../../components/portal/LinkCard';
 
 const TABS = [
+  { id: 'training', label: 'Product knowledge' },
   { id: 'videos', label: 'Videos' },
   { id: 'documents', label: 'Documents' },
   { id: 'site', label: 'Our pages' },
@@ -18,7 +19,7 @@ const TABS = [
  */
 const Library = () => {
   const { rep } = usePortal();
-  const tab = useSubTab('videos');
+  const tab = useSubTab('training');
 
   return (
     <div className="space-y-5">
@@ -29,7 +30,22 @@ const Library = () => {
         </p>
       </header>
 
-      <SubTabs tabs={TABS} defaultTab="videos" />
+      <SubTabs tabs={TABS} defaultTab="training" />
+
+      {tab === 'training' && (
+        <div className="space-y-4">
+          <p className="rounded-xl bg-white p-4 text-body-sm leading-relaxed text-luxury-gray-700 shadow-luxury-sm">
+            The product-knowledge session, hosted here so the version you open is always the current
+            one. The deck&rsquo;s embedded videos play in this copy — they don&rsquo;t in the offline
+            one.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {rep.library.training.map((link) => (
+              <LinkCard key={link.href} link={link} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {tab === 'videos' && (
         <div className="space-y-4">

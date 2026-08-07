@@ -81,6 +81,35 @@ const videos: ContentLink[] = [
   },
 ];
 
+/**
+ * The product-knowledge session, hosted on the site.
+ *
+ * The deck is a 16:9 presentation with keyboard navigation and three embedded
+ * explainer videos — those only play over https, which is why the local copy on
+ * the K: drive shows the "no connection" fallback instead. The lesson guide is
+ * the 8.5×11 printable handout.
+ */
+const training: ContentLink[] = [
+  {
+    label: 'Product Knowledge — the deck',
+    href: '/sales-training/deck.html',
+    kind: 'doc',
+    note: 'The full presentation. Arrow keys to move, and the embedded videos play here — they do not in the offline copy. Best on a laptop; it scales to fit whatever you open it on.',
+  },
+  {
+    label: 'Lesson guide — printable handout',
+    href: '/sales-training/guide.html',
+    kind: 'doc',
+    note: 'The same material as a 16-page handout, laid out for 8.5×11. Opens instantly and prints clean.',
+  },
+  {
+    label: 'Lesson guide (PDF)',
+    href: '/sales-training/guide.pdf',
+    kind: 'doc',
+    note: 'The handout as a PDF, if you want it on your phone before the wifi gets bad. 8.8 MB — download it on good signal.',
+  },
+];
+
 const documents: ContentLink[] = [
   {
     label: 'Brochures — safe to send to clients',
@@ -152,4 +181,10 @@ const siteLinks: ContentLink[] = [
   { label: 'Contact', href: '/contact', kind: 'site' },
 ];
 
-export const library: LibraryContent = { warning: videoWarning, videos, documents, siteLinks };
+export const library: LibraryContent = {
+  warning: videoWarning,
+  training,
+  videos,
+  documents,
+  siteLinks,
+};

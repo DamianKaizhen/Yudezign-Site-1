@@ -89,7 +89,13 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
       id: line.id,
       kind: 'product',
       title: line.name,
-      body: [line.positioning, line.doors, line.slide, ...line.bestFor].join(' · '),
+      body: [
+        line.positioning,
+        line.whereItFits,
+        line.doors,
+        `${line.collections} · ${line.decors} décors`,
+        ...line.bestFor,
+      ].join(' · '),
       href: `/sales/products?t=lines#${line.id}`,
       kicker: 'LINE',
     });
@@ -155,6 +161,7 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
   // Sources are a primary reason to open this portal, so a search result lands
   // on the right sub-tab rather than the default one.
   const linkGroups = [
+    { tab: 'training', links: rep.library.training },
     { tab: 'videos', links: rep.library.videos },
     { tab: 'documents', links: rep.library.documents },
     { tab: 'site', links: rep.library.siteLinks },

@@ -23,9 +23,16 @@ import {
   qualifying,
 } from './talkTracks.js';
 import {
+  accessories,
+  accessoriesNote,
+  closetLines,
   dimensions,
+  framedLine,
+  hardwareFinishes,
   hardwareStatement,
+  openings,
   productLines,
+  sameBoxSentence,
   shakerDisclosure,
   weBuild,
   weDoNotBuild,
@@ -56,7 +63,7 @@ import { managerContent } from './manager.js';
  * Bump on every content change — clients revalidate against this and a stale
  * version would otherwise 304 and keep serving the old payload from cache.
  */
-export const CONTENT_VERSION = '2026-08-07.2';
+export const CONTENT_VERSION = '2026-08-07.3';
 
 export const repContent: RepContent = {
   version: answerKeyVersion,
@@ -81,7 +88,13 @@ export const repContent: RepContent = {
   objections,
   qualifying,
   productLines,
+  sameBoxSentence,
   hardware: hardwareStatement,
+  openings,
+  hardwareFinishes,
+  accessories,
+  accessoriesNote,
+  closets: closetLines,
   dimensions,
   strategy,
   quoteRules,
@@ -95,6 +108,7 @@ export const repContent: RepContent = {
     // First in the list on purpose — this is the one a rep meets in the field
     // without warning.
     websiteConflicts,
+    framedLine,
     strategy.whatWeAre,
     strategy.constraint,
     strategy.crossSell,

@@ -20,7 +20,7 @@ import type { AnswerKeyEntry, AnswerKeySection, NeverSayEntry, PortalDoc } from 
  * `answer` strings are verbatim. Do not paraphrase them to fit a layout.
  */
 
-export const answerKeyVersion = 'Answer Key v1.0 · 2026-08-05';
+export const answerKeyVersion = 'Answer Key v1.3 · 2026-08-06';
 
 export const canonRule =
   'This is the only document that settles what you say to a customer. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
@@ -203,6 +203,12 @@ export const neverSay: NeverSayEntry[] = [
     why: 'Separate brand',
   },
   {
+    id: 'ns-closet-plywood',
+    neverSay: 'That a closet box is plywood, or "same materials as the kitchens"',
+    sayInstead: '"Same plant, same standards, same hardware — different board."',
+    why: 'Closets are primarily particleboard-cored panel. The old sentence was on the printed field card and implied a plywood closet carcass at no extra cost — a customer who ordered on that has a legitimate complaint. Only say plywood if that specific job was specified that way',
+  },
+  {
     id: 'ns-price-from-memory',
     neverSay: 'A price from memory. Ever.',
     sayInstead: 'You present the quote the quoting team returns, by its version number. See §6',
@@ -227,12 +233,68 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'what-we-make',
     question: 'Do you make framed / face-frame cabinets?',
     answer:
-      '"No — we build frameless only." Then sell the reason: wider drawers, full-access interiors, one clean line wall to wall.',
+      '"We manufacture frameless only." Then sell the reason: wider drawers, full-access interiors, one clean line wall to wall.',
     status: 'ruled',
     source: 'Internal product-study notes: "We only manufacture Frameless Cabinets"',
-    aliases: ['face frame', 'framed', 'face-frame'],
+    aliases: ['face frame', 'framed', 'face-frame', 'make framed'],
     repNote:
-      'The expo banner says "frameless & framed". It is wrong. If a customer points at the banner and asks for face-frame, the answer is still no.',
+      'Careful — this is about what we BUILD. We do sell a stocked framed line. See the next row rather than stopping at no.',
+  },
+  {
+    id: 'ak-02-02b',
+    sectionId: 'what-we-make',
+    question: 'Do you sell framed cabinets?',
+    answer:
+      '"Yes — we carry a stocked RTA framed line. We don\'t build it, we stock it." Never lead with this.',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06 (Answer Key v1.2)',
+    aliases: ['sell framed', 'stock framed', 'rta', 'face frame available'],
+    repNote:
+      'Only three triggers justify raising it: they need cabinets now and cannot wait on a build, they specifically want a face-frame look, or the budget will not reach Essential. Outside those three, sell frameless.',
+    links: [{ label: 'The framed line in full', href: '/sales/products?t=framed', kind: 'portal' }],
+  },
+  {
+    id: 'ak-02-02c',
+    sectionId: 'what-we-make',
+    question: 'Who makes the framed cabinets, then?',
+    answer:
+      '"That\'s a stocked product we carry — our plant runs frameless, that\'s what we manufacture. I\'d rather you knew which is which."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06 — same disclosure discipline as the shaker rule',
+    aliases: ['who makes framed', 'do you make it', 'stocked'],
+    repNote: 'Volunteer this the moment framed comes up. Do not wait to be asked.',
+  },
+  {
+    id: 'ak-02-02d',
+    sectionId: 'what-we-make',
+    question: 'What styles / finishes / sizes are in the framed line?',
+    answer:
+      '"We stock a range — let me check what\'s actually on the floor for what you need and come back to you today."',
+    status: 'blocked',
+    source: 'No stock sheet or price list exists yet. Route to the office',
+    neverSayIds: ['ns-price-from-memory'],
+    aliases: ['framed styles', 'framed finishes', 'framed sizes', 'framed price'],
+    repNote: 'Never quote a style, finish, size or price for the framed line from memory.',
+  },
+  {
+    id: 'ak-02-02e',
+    sectionId: 'what-we-make',
+    question: 'Is the framed line assembled?',
+    answer:
+      '"Your choice — flat-pack or assembled. It\'s priced differently either way, so tell me which and I\'ll get you the right number."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06',
+    aliases: ['framed assembled', 'framed flat pack', 'rta assembled'],
+  },
+  {
+    id: 'ak-02-02f',
+    sectionId: 'what-we-make',
+    question: "Isn't buying stock the thing you said competitors do?",
+    answer:
+      '"Fair question. The difference is we\'re not only a reseller — we manufacture, and the framed line is there so you\'re not stuck when a build doesn\'t fit your timeline. Everything we make, we make here."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06',
+    aliases: ['reseller', 'hypocrite', 'you said competitors resell'],
   },
   {
     id: 'ak-02-03',
@@ -341,28 +403,54 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'the-lines',
     question: "What's the difference between the lines?",
     answer:
-      '"The box is identical across all four lines — same frameless ¾″ plywood carcass, same soft-close. What changes is the door surface, the hardware brand and the finish family. So you can move up or down without giving up the cabinet."',
+      '"Same box. Same motion. Different skin. The carcass is identical across all four lines — same frameless ¾″ plywood, same DTC soft-close hinge, same hundred-pound slide. What changes is the door surface and the finish family. So you can move up or down without giving up the cabinet."',
     status: 'ruled',
-    source: 'product-lines.json',
+    source: 'Rewritten at v1.1 around the fact that the hardware does not ladder',
     aliases: ['lines', 'essential', 'signature', 'reserve', 'atelier', 'difference', 'tiers'],
-    repNote: 'The single most useful sentence you own.',
+    repNote:
+      'The single most useful sentence you own. Note it no longer says "hardware brand" — that changes nothing between lines.',
+    links: [{ label: 'The four lines', href: '/sales/products?t=lines', kind: 'portal' }],
   },
   {
     id: 'ak-03-02',
     sectionId: 'the-lines',
     question: 'What hardware?',
     answer:
-      '"DTC soft-close hinges, standard on every line. Slides are full-extension, soft-close, hundred-pound ball-bearing — that\'s the part that changes as you move up the lines."',
+      '"DTC soft-close hinges and Knape & Vogt 8450FM slides — the same on every line." Our partners are Häfele, Würth, DTC and Knape & Vogt.',
     status: 'ruled',
-    source:
-      'Corrected 2026-08-07 by Damian. Supersedes the 2026 spec of record, which listed Blum on Signature, Reserve and Atelier',
+    source: 'Damian, 2026-08-06 (Answer Key v1.1). Supersedes the spec of record, which laddered the hardware',
     neverSayIds: ['ns-hardware-brand'],
     // "blum" stays in the aliases on purpose: a rep who half-remembers it from
     // the printed handbook must be able to search it and land on the correction.
-    aliases: ['hardware', 'hinges', 'blum', 'dtc', 'hafele', 'hettich', 'brand'],
+    aliases: ['hardware', 'hinges', 'slides', 'blum', 'dtc', 'hafele', 'hettich', 'brand', 'kv', '8450'],
     repNote:
-      'We do not use Blum. Hinges are DTC across all four lines, so there is no hardware upgrade to sell between them. Supply partners are Häfele, Würth and DTC. If a customer read Blum in an older brochure or you see it on a printed field card, that material is stale.',
+      'We do not use Blum, on any line. Both the hinge and the slide are identical across all four lines, so there is no hardware upgrade to sell. If you see Blum on a printed field card or in an older brochure, that material is stale.',
     links: [{ label: 'The four lines', href: '/sales/products?t=lines', kind: 'portal' }],
+  },
+  {
+    id: 'ak-03-02b',
+    sectionId: 'the-lines',
+    question: 'Do the better lines get better hardware?',
+    answer: '"No — and that\'s the point. Every line gets the same hinge and the same slide."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06',
+    neverSayIds: ['ns-hardware-brand'],
+    aliases: ['upgrade hardware', 'better hardware', 'ladder', 'upsell hardware'],
+    repNote:
+      'Do not offer a hardware upgrade; there is not one to sell. The old ladder implied Essential got worse hardware, which argued against the line that carries the volume work.',
+  },
+  {
+    id: 'ak-03-02c',
+    sectionId: 'the-lines',
+    question: 'Anything special about the hinge?',
+    answer:
+      '"It\'s six-way adjustable — height, depth and side-to-side, both leaves. Your installer can true a door up on the wall without pulling it off the box."',
+    status: 'provisional',
+    expiresOn: '2026-09-01',
+    source: "DTC's own product language; attach the frameless part number's spec sheet to confirm",
+    aliases: ['six way', '6-way', 'adjustable', 'hinge adjustment', 'installer'],
+    repNote:
+      'Say this to every builder and every contractor — it is the one spec they feel on site. Nobody buys a cabinet for its hinge, but a builder who has lost a Friday to doors that will not line up on an out-of-square wall buys the next job on it.',
   },
   {
     id: 'ak-03-03',
@@ -371,7 +459,43 @@ export const answerKey: AnswerKeyEntry[] = [
     answer: '"Full-extension, soft-close, hundred-pound ball-bearing."',
     status: 'ruled',
     source: 'KV 8450FM, the one documented rating',
-    aliases: ['slides', 'drawer slides', 'weight rating'],
+    aliases: ['slides', 'drawer slides', 'weight rating', '100 lb'],
+  },
+  {
+    id: 'ak-03-08',
+    sectionId: 'the-lines',
+    question: 'What is a closet made of?',
+    answer:
+      '"Most of the closet system is particleboard-cored panel — the same core as our door panels. Some components are MDF."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06 (Answer Key v1.3)',
+    neverSayIds: ['ns-closet-plywood'],
+    aliases: ['closet material', 'closet made of', 'particleboard', 'closet core'],
+    repNote: 'Say it plainly; it is normal for closet systems.',
+  },
+  {
+    id: 'ak-03-09',
+    sectionId: 'the-lines',
+    question: 'Can I have a plywood closet?',
+    answer:
+      '"Yes — we custom-laminate plywood for that. It costs more and it adds lead time, so let\'s price it both ways."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06',
+    neverSayIds: ['ns-closet-plywood'],
+    aliases: ['plywood closet', 'closet plywood', 'upgrade closet'],
+    repNote: 'Offer it as an option, never as the default.',
+  },
+  {
+    id: 'ak-03-10',
+    sectionId: 'the-lines',
+    question: 'Is the closet the same as your kitchens?',
+    answer: '"Same plant, same standards, same hardware — different board."',
+    status: 'ruled',
+    source: 'Damian, 2026-08-06. Retires "same materials as the kitchens"',
+    neverSayIds: ['ns-closet-plywood'],
+    aliases: ['closet same as kitchen', 'closet quality', 'cabinet grade'],
+    repNote:
+      'The kitchen box is ¾″ plywood and we sell hard on that. The closet system is not. The old sentence implied a plywood closet carcass at no extra cost — and it was on the printed field card.',
   },
   {
     id: 'ak-03-04',

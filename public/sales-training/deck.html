@@ -1,0 +1,1126 @@
+<meta charset="utf-8">
+<title>YuDeZign Product Knowledge - Training Deck</title>
+<!--
+  THE TRAINING DECK - 16:9, presented from Chrome. Open it and press F.
+
+    arrow keys / space / click   next
+    left arrow / backspace       back
+    F                            fullscreen
+    O                            overview (all slides)
+    G then a number              go to slide
+
+  WHY HTML AND NOT POWERPOINT. Two reasons, both practical: the YouTube explainers play inline
+  without downloading anything, and every link on the resources slide is live and clickable while
+  you present. It also prints to a 16:9 PDF via render.ps1 as a no-laptop backup.
+
+  OFFLINE. Assume the wifi dies - it is the most likely failure. Everything that MUST work is local:
+  the two shop-floor clips and every photo and swatch. The three YouTube slides degrade to a poster
+  frame plus a printed URL, never a blank rectangle. Test it: DevTools > Network > Offline.
+
+  VIDEO. media/ holds copies, not links. Absolute paths break the moment this folder is zipped or
+  moved to another laptop, and 77MB is the cheap side of that trade. Five clips are 9:16 vertical
+  (they were cut for Instagram) so they sit in a side column - never letterbox them across a 16:9
+  slide.
+
+  Facts come from ANSWER-KEY.md and product-lines.json. Diagrams dia-*.png are THIRD-PARTY, from
+  the product-study notes: internal training only, never in front of a customer.
+-->
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  :root{ --green:#01593F; --deep:#013C2A; --lite:#8fd0b6; --red:#8E1B12; --rule:#d5d5d5; --ink:#1c1c1c; }
+  html,body{ background:#111; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  .slide{
+    position:relative; width:13.333in; height:7.5in; overflow:hidden; background:#fff; color:var(--ink);
+    font-family:Arial,Helvetica,sans-serif; padding:.5in .7in .45in;
+    display:flex; flex-direction:column;
+  }
+  .slide + .slide{ page-break-before:always; }
+
+  /* ── screen: one slide at a time ───────────────────────────── */
+  @media screen{
+    body{ background:#111; display:flex; align-items:center; justify-content:center;
+      height:100vh; overflow:hidden; }
+    .slide{ display:none; box-shadow:0 10px 60px rgba(0,0,0,.6);
+      transform-origin:center center; }
+    .slide.on{ display:flex; }
+    body.ov{ display:block; overflow:auto; padding:26px; }
+    body.ov .slide{ display:flex !important; transform:scale(.29) !important; margin:-2.62in -4.62in;
+      cursor:pointer; border:2px solid #333; }
+    body.ov .hud{ display:none; }
+  }
+  .hud{ position:fixed; bottom:14px; right:18px; z-index:99; color:#888; font-size:12px;
+    font-family:Arial,sans-serif; letter-spacing:.05em; }
+  .hud b{ color:#ddd; }
+  @media print{ .hud{ display:none; } }
+
+  /* ── type ──────────────────────────────────────────────────── */
+  h1{ font-size:34pt; font-weight:800; line-height:1.06; margin-bottom:.14in; }
+  h1 em{ font-style:normal; color:var(--green); }
+  h2{ font-size:11pt; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--green); margin:0 0 .1in; }
+  h2.warn{ color:var(--red); }
+  p{ font-size:15pt; line-height:1.5; margin-bottom:.12in; }
+  .lede{ font-size:18pt; line-height:1.42; color:#333; margin-bottom:.18in; }
+  .sm{ font-size:11pt; color:#6a6a6a; line-height:1.44; }
+  b{ font-weight:800; }
+  .g{ color:var(--green); font-weight:800; }
+  .r{ color:var(--red); font-weight:800; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13pt; line-height:1.34; }
+  th{ text-align:left; background:var(--green); color:#fff; font-size:9.5pt; font-weight:800;
+    letter-spacing:.08em; text-transform:uppercase; padding:.07in .1in; }
+  td{ padding:.075in .1in; border-bottom:1px solid #ececec; vertical-align:top; }
+  tbody tr:last-child td{ border-bottom:1px solid var(--rule); }
+  table.plain th{ background:none; color:#7a7a7a; border-bottom:1px solid var(--rule); }
+
+  ul{ list-style:none; font-size:15pt; line-height:1.52; }
+  li{ padding-left:.24in; position:relative; margin-bottom:.07in; }
+  li::before{ content:"\203A"; position:absolute; left:0; color:var(--green); font-weight:800; }
+  ul.x li::before{ content:"\00D7"; color:var(--red); }
+
+  .cols{ display:flex; gap:.42in; flex:1; min-height:0; }
+  .cols > div{ flex:1 1 0; min-width:0; }
+
+  .say{ background:#f2f5f3; border-left:4px solid var(--green); padding:.15in .19in;
+    font-size:15pt; line-height:1.46; }
+  .say .lbl{ display:block; font-size:9pt; font-weight:800; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--green); margin-bottom:.05in; }
+  .callout{ border:2px solid var(--red); background:#fdf6f5; padding:.14in .17in;
+    font-size:12.5pt; line-height:1.44; }
+  .callout .lbl{ display:block; font-size:9pt; font-weight:800; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--red); margin-bottom:.05in; }
+
+  figure{ margin:0; }
+  figure img{ width:100%; display:block; border-radius:.05in; }
+  figcaption{ font-size:9.5pt; font-weight:700; color:#6a6a6a; margin-top:.06in; }
+
+  video{ width:100%; display:block; border-radius:.05in; background:#000; }
+  /* min-width:0 matters: without it a width:100% video inside a flex ROW refuses to shrink below
+     its intrinsic size and the second clip runs off the slide edge. */
+  .vport{ width:100%; height:100%; object-fit:cover; border-radius:.05in; background:#000; min-width:0; }
+  .vrow{ display:flex; gap:.2in; min-width:0; }
+  .vrow > video{ flex:1 1 0; min-width:0; }
+
+  /* ── running foot ──────────────────────────────────────────── */
+  .rf{ margin-top:auto; padding-top:.1in; border-top:1px solid var(--rule); flex:none;
+    display:flex; justify-content:space-between; font-size:9pt; color:#9a9a9a; }
+  .wm{ font-family:Georgia,serif; }
+  .wm span{ color:var(--green); }
+
+  /* ── dark section-break slides ─────────────────────────────── */
+  .dark{ background:var(--deep); color:#fff; }
+  .dark h1{ font-size:46pt; }
+  .dark h1 em{ color:var(--lite); }
+  .dark h2{ color:var(--lite); }
+  .dark p{ color:#d6e3dd; }
+  .dark .rf{ border-top-color:rgba(255,255,255,.2); color:#9fb8ad; }
+  .dark .wm span{ color:var(--lite); }
+  .dark .kicker{ font-size:11pt; font-weight:800; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--lite); margin-bottom:.2in; }
+  .bleed{ position:absolute; inset:0; z-index:0; }
+  .bleed img{ width:100%; height:100%; object-fit:cover; opacity:.30; filter:grayscale(.35); }
+  .dark > *:not(.bleed){ position:relative; z-index:1; }
+
+  /* ── youtube embed with an offline fallback underneath ─────── */
+  .tube{ position:relative; width:100%; padding-top:56.25%; background:#000; border-radius:.05in;
+    overflow:hidden; }
+  .tube iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; z-index:2; }
+  .tube .fb{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; text-align:center; color:#fff; background:#1a1a1a; padding:.3in; z-index:1; }
+  .tube .fb .t{ font-size:15pt; font-weight:800; margin-bottom:.1in; }
+  .tube .fb .u{ font-size:11pt; color:#8fd0b6; word-break:break-all; }
+  @media print{ .tube iframe{ display:none; } }
+
+  .lnk{ font-size:12.5pt; line-height:1.7; }
+  .lnk a{ color:var(--green); font-weight:700; text-decoration:none; }
+  .lnk .d{ color:#8a8a8a; }
+</style>
+
+<!-- ══════════════ 1 · TITLE ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-hero.jpg" alt=""></div>
+  <div class="wm" style="font-size:20pt">YUD<span>EZ</span>IGN</div>
+  <div style="margin:auto 0">
+    <div class="kicker">Sales onboarding &middot; Houston</div>
+    <h1>The <em>product</em>.</h1>
+    <p style="font-size:19pt;max-width:8.4in;margin-top:.16in">What we make, what it is made of, what goes
+    in it, and what it costs to get it to them.</p>
+  </div>
+  <div class="rf"><span>Answer Key v1.3 &middot; 2026-08-06</span><span>Press <b>F</b> for fullscreen &middot; arrows to advance &middot; <b>O</b> for the overview</span></div>
+</div>
+
+<!-- ══════════════ 2 · CONTENTS ══════════════ -->
+<div class="slide">
+  <h1>What is in here</h1>
+  <div class="cols">
+    <div>
+      <table>
+        <tr><th>Section</th><th style="width:34%">Covers</th></tr>
+        <tr><td>Frameless &mdash; and the framed we <b>sell</b></td><td class="sm">the box</td></tr>
+        <tr><td>Anatomy, boards, dimensions</td><td class="sm">the box</td></tr>
+        <tr><td>Doors, the shaker disclosure, overlay</td><td class="sm">the front</td></tr>
+        <tr><td>Openings &mdash; J-pull, gola, push</td><td class="sm">the front</td></tr>
+        <tr><td>The four lines</td><td class="sm">the range</td></tr>
+        <tr><td>Hardware &middot; accessories &middot; lighting</td><td class="sm">what goes in it</td></tr>
+        <tr><td>Finishes</td><td class="sm">the surface</td></tr>
+        <tr><td>Closets &middot; vanities &middot; commercial</td><td class="sm">other rooms</td></tr>
+        <tr><td><b>Prices you can actually say</b></td><td class="sm">money</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>The five you cannot get wrong</h2>
+      <ul>
+        <li>Explain <b>frameless</b> in two sentences, no diagram</li>
+        <li>We <b>build</b> frameless. We <b>stock and sell</b> framed</li>
+        <li>Volunteer the <b>shaker disclosure</b> unprompted</li>
+        <li><b>DTC and KV 8450FM on every line</b></li>
+        <li>Never invent a price</li>
+      </ul>
+      <div class="say" style="margin-top:.18in">
+        <span class="lbl">Not covered here</span>
+        Deposit, warranty and lead time. Those are BLOCKED or they live elsewhere. If it is a number a
+        customer could hold us to, it is not in this deck.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Product Knowledge</span></div>
+</div>
+
+<!-- ══════════════ 3 · SECTION: THE PLANT ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-4.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1>We are the <em>plant</em>,<br>not a dealer.</h1></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>1 of 6</span></div>
+</div>
+
+<!-- ══════════════ 4 · THE SHOP FLOOR (LOCAL VIDEO) ══════════════ -->
+<div class="slide">
+  <h1>This is the <em>whole</em> argument.</h1>
+  <div class="cols">
+    <div style="flex:1.25">
+      <p class="lede">Almost everyone you compete against is reselling somebody else&rsquo;s box &mdash;
+      imported, warehoused, marked up, and three weeks from a replacement door.</p>
+      <p>We own the machines and the software. The <b>plant is in Houston, 5802 Colfax St.</b> Stafford
+      is the <b>showroom</b> &mdash; that is where you take a customer. The plant is where it is built
+      and where they collect.</p>
+      <div class="say">
+        <span class="lbl">The offer that closes homeowners</span>
+        &ldquo;Come see the plant.&rdquo; No brochure competes with a customer standing on the shop
+        floor watching their own kitchen get edge-banded.
+      </div>
+      <p class="sm"><b>Never say</b> &ldquo;the cabinet plant in Stafford.&rdquo; A Houston builder will
+      catch it instantly.</p>
+    </div>
+    <div class="vrow">
+      <video class="vport" src="media/c01u05-shopfloor.mp4" muted loop playsinline controls preload="metadata"></video>
+      <video class="vport" src="media/c01u09-shopfloor2.mp4" muted loop playsinline controls preload="metadata"></video>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Plant: Houston &middot; Showroom: Stafford</span></div>
+</div>
+
+<!-- ══════════════ 5 · SECTION: CONSTRUCTION ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-5.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1>Core <em>construction</em>.</h1>
+  <p style="font-size:19pt">Frameless &middot; the box &middot; the three boards</p></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>2 of 6</span></div>
+</div>
+
+<!-- ══════════════ 6 · FRAMELESS ══════════════ -->
+<div class="slide">
+  <h1>No face frame. <em>That is the whole difference.</em></h1>
+  <div class="cols">
+    <div style="flex:1.05">
+      <figure><img src="assets/dia-framed-vs-frameless.png" alt="Face frame versus frameless" style="max-height:3.9in;object-fit:contain">
+      <figcaption>Face frame, left &middot; frameless, right</figcaption></figure>
+    </div>
+    <div>
+      <p>An American cabinet has a wooden frame screwed to the front, and the door hangs off that frame.
+      Ours does not. <b>The hinge mounts straight to the side panel.</b></p>
+      <p>That frame is an inch and a half of wood on each side, sitting <i>in front of the opening.</i>
+      Take it away and the opening is as wide as the box &mdash; about <b>fifteen per cent more usable
+      space</b>, and drawers that are genuinely full width.</p>
+      <div class="say">
+        <span class="lbl">Two sentences, no diagram</span>
+        &ldquo;Ours is European frameless &mdash; no wooden frame across the front, so the hinge goes
+        straight onto the side panel and the opening is the full width of the box. You get about fifteen
+        per cent more room, and the doors sit flush in one continuous line.&rdquo;
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Frameless only. Always</span></div>
+</div>
+
+<!-- ══════════════ 7 · WE BUILD / WE DON'T ══════════════ -->
+<div class="slide">
+  <h1>What we build. <em>And what we don&rsquo;t.</em></h1>
+  <div class="cols">
+    <div>
+      <h2>We build</h2>
+      <ul>
+        <li><b>Frameless only</b> &mdash; European full-access</li>
+        <li>Flat-panel (slab) and shaker doors</li>
+        <li>Kitchens, vanities including <b>ADA</b></li>
+        <li>Walk-in and reach-in closets</li>
+        <li>Mudrooms, credenzas, coffee bars</li>
+        <li>Laundry, offices, media walls</li>
+        <li>Multi-family and commercial casework</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="warn">We do not build</h2>
+      <ul class="x">
+        <li><b>Framed / face-frame</b> &mdash; <b class="g">we stock it, we don't build it</b></li>
+        <li>Raised-panel doors</li>
+        <li>Inset doors</li>
+        <li><b>Solid-wood shaker</b> &mdash; ours is machined MDF</li>
+        <li>Countertops</li>
+        <li>A single box taller than <b>96&Prime;</b></li>
+      </ul>
+      <div class="say" style="margin-top:.14in">
+        <span class="lbl">Build is not the same as sell</span>
+        The banner says <b>&ldquo;frameless &amp; framed&rdquo;</b> &mdash; and it is <b>right</b>. We
+        <b>manufacture</b> frameless. We also <b>stock an RTA framed line</b> we buy in and resell.
+        Ask for face-frame and the answer is <b>yes</b> &mdash; then you say whose it is.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Six things we do not make &mdash; know all six</span></div>
+</div>
+
+<!-- ══════════════ 8 · THE RTA FRAMED LINE ══════════════ -->
+<div class="slide">
+  <h1>We <em>build</em> frameless. We <em>stock</em> framed.</h1>
+  <div class="cols">
+    <div style="flex:1.2">
+      <table>
+        <tr><th style="width:30%"></th><th>Frameless</th><th>RTA framed</th></tr>
+        <tr><td><b>Where it comes from</b></td><td><b class="g">Our plant, Houston</b></td><td>Bought in, held in stock</td></tr>
+        <tr><td><b>Availability</b></td><td>Made to order</td><td><b>On the floor now</b></td></tr>
+        <tr><td><b>Assembly</b></td><td>Built by us</td><td><b>Flat-pack or assembled</b> &mdash; customer&rsquo;s choice, priced differently</td></tr>
+        <tr><td><b>The four lines</b></td><td>Essential &rarr; Atelier</td><td>Does not apply</td></tr>
+      </table>
+      <div class="callout" style="margin-top:.16in">
+        <span class="lbl">Never quote framed specifics from memory</span>
+        There is no stock sheet yet. Styles, finishes, sizes, price, what is actually on the floor
+        &mdash; all of it goes to the office. <i>&ldquo;Let me check what we have for that and come
+        back to you today.&rdquo;</i>
+      </div>
+    </div>
+    <div>
+      <h2>Only three reasons to raise it</h2>
+      <ul style="font-size:14pt">
+        <li>They need cabinets <b>now</b> and cannot wait on a build</li>
+        <li>They specifically want a <b>face-frame look</b></li>
+        <li>The budget <b>will not reach Essential</b></li>
+      </ul>
+      <p class="sm" style="margin-top:-.02in">Outside those three, sell frameless. Framed is never the
+      opening move &mdash; it is the answer to a problem the customer has already told you about.</p>
+      <div class="say" style="margin-top:.12in">
+        <span class="lbl">&ldquo;Isn&rsquo;t reselling what you said competitors do?&rdquo;</span>
+        &ldquo;Fair question. The difference is we&rsquo;re not <i>only</i> a reseller &mdash; we
+        manufacture, and the framed line is there so you&rsquo;re not stuck when a build doesn&rsquo;t
+        fit your timeline. <b>Everything we make, we make here.</b>&rdquo;
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Say whose it is, before they ask</span></div>
+</div>
+
+<!-- ══════════════ 9 · YOUTUBE: FRAMED VS FRAMELESS ══════════════ -->
+<div class="slide">
+  <h1>Watch: <em>framed, frameless &amp; inset</em></h1>
+  <div class="cols">
+    <div style="flex:1.5">
+      <div class="tube">
+        <div class="fb">
+          <div class="t">Cabinets: Framed, Frameless &amp; Inset &mdash; What&rsquo;s the Difference?</div>
+          <div class="u">https://youtu.be/F8x5c-6seYo</div>
+          <div style="font-size:10pt;color:#888;margin-top:.12in">No connection &mdash; open the link on your phone</div>
+        </div>
+        <iframe src="https://www.youtube-nocookie.com/embed/F8x5c-6seYo?rel=0"
+          title="Framed, Frameless and Inset" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </div>
+    <div>
+      <h2>Watch for</h2>
+      <ul style="font-size:13.5pt">
+        <li>The frame eating the opening &mdash; that is the fifteen per cent</li>
+        <li>Where the hinge lands on each type</li>
+        <li><b class="r">Inset</b> &mdash; we do not build it</li>
+      </ul>
+      <div class="callout" style="margin-top:.14in">
+        <span class="lbl">Third party</span>
+        Not our video and not our specs. It shows how cabinetry works, not how we work.
+        <b>If it contradicts the Answer Key, the Answer Key wins.</b>
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>https://youtu.be/F8x5c-6seYo</span></div>
+</div>
+
+<!-- ══════════════ 9 · ANATOMY ══════════════ -->
+<div class="slide">
+  <h1>Anatomy of the <em>box</em>.</h1>
+  <div class="cols">
+    <div style="flex:.85">
+      <figure><img src="assets/dia-anatomy.png" alt="Labelled frameless base cabinet" style="max-height:3.5in;object-fit:contain"></figure>
+    </div>
+    <div style="flex:1.35">
+      <table>
+        <tr><th style="width:32%">Part</th><th>The sentence you say</th></tr>
+        <tr><td><b>Sides, top, bottom, shelves</b></td><td><b>&frac34;&Prime; plywood.</b> Particleboard as a documented cost-down option</td></tr>
+        <tr><td><b>Backs &amp; drawer bottoms</b></td><td><b>&frac14;&Prime; plywood</b></td></tr>
+        <tr><td><b>Joinery</b></td><td><b>Cam-and-dowel, 3-in-1 connectors.</b> They pull every joint square and keep it square</td></tr>
+        <tr><td><b>Hanging</b></td><td><b>French cleat</b> &mdash; wall units land dead level</td></tr>
+        <tr><td><b>Edge banding</b></td><td><b>1 mm, colour-matched.</b> Seals the core, reads as one piece</td></tr>
+        <tr><td><b>Interior</b></td><td><b>UV-cured birch plywood</b> on every line</td></tr>
+      </table>
+      <p class="sm" style="margin-top:.12in"><b>Always &frac34; inch.</b> Never the metric &mdash; this is
+      the US market, and our own flyers get this wrong.</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Six answers. A customer asks for four in the first ten minutes</span></div>
+</div>
+
+<!-- ══════════════ 10 · THE THREE BOARDS + YOUTUBE ══════════════ -->
+<div class="slide">
+  <h1>Three boards. <em>Three jobs.</em></h1>
+  <div class="cols">
+    <div>
+      <table>
+        <tr><th style="width:32%">Board</th><th>Where it belongs</th></tr>
+        <tr><td><b>Plywood</b></td><td>The cabinet <b>box</b>. Strong, holds a screw, survives a wet sink base</td></tr>
+        <tr><td><b>Particleboard</b></td><td><b>Door cores</b> &mdash; or the whole box, if a customer needs cost out</td></tr>
+        <tr><td><b>MDF</b></td><td><b>Door cores</b>, especially shaker: machines cleanly, takes paint raw</td></tr>
+      </table>
+      <div class="say" style="margin-top:.16in">
+        <span class="lbl">When they say &ldquo;is it real wood?&rdquo;</span>
+        &ldquo;The box is three-quarter-inch plywood &mdash; that&rsquo;s real wood, and it&rsquo;s the
+        part that carries the load. The doors are engineered board, which is deliberate: it stays flat
+        in Houston humidity where solid wood moves.&rdquo;
+      </div>
+    </div>
+    <div>
+      <div class="tube">
+        <div class="fb">
+          <div class="t">Particle Board vs MDF vs Plywood</div>
+          <div class="u">https://youtu.be/xPyLWKz0Pas</div>
+          <div style="font-size:10pt;color:#888;margin-top:.12in">No connection &mdash; open the link on your phone</div>
+        </div>
+        <iframe src="https://www.youtube-nocookie.com/embed/xPyLWKz0Pas?rel=0"
+          title="Particle Board vs MDF vs Plywood" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+      <p class="sm" style="margin-top:.1in">Our three boards, in order. Watch how each one fails &mdash;
+      that is what tells you where it belongs.</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>https://youtu.be/xPyLWKz0Pas</span></div>
+</div>
+
+<!-- ══════════════ 11 · DIMENSIONS ══════════════ -->
+<div class="slide">
+  <h1>Learn this <em>table</em>.</h1>
+  <div class="cols">
+    <div style="flex:1.3">
+      <table>
+        <tr><th style="width:22%"></th><th style="width:14%">Depth</th><th style="width:26%">Height</th><th>Widths</th></tr>
+        <tr><td><b>Kitchen base</b></td><td>24&Prime;</td><td><b>34.5&Prime;</b> &rarr; 36&Prime; finished</td><td>3&Prime; increments, 9&Prime;&ndash;42&Prime;</td></tr>
+        <tr><td><b>Base &mdash; ADA</b></td><td>24&Prime;</td><td><b>32.5&Prime;</b> &rarr; 34&Prime; finished</td><td>same</td></tr>
+        <tr><td><b>Wall</b></td><td>13&Prime;</td><td>24 / 30 / <b>36</b> / 42&Prime;</td><td>12 / 15 / 18&Prime; single &middot; 24 / 30 / 36&Prime; double</td></tr>
+        <tr><td><b>Tall</b></td><td>24&Prime;</td><td>~96&Prime; max</td><td>15 / 18 / 21&Prime; &middot; 30 / 36&Prime; oven</td></tr>
+        <tr><td><b>Bath base</b></td><td><b>21&Prime;</b></td><td>34.5&Prime; or 32.5&Prime; ADA</td><td>3&Prime; increments</td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>The two that get missed</h2>
+      <p><b>Why 34.5&Prime;?</b> A 1&frac12;&Prime; countertop lands the finished height at 36&Prime;.
+      Say the finished number to a customer and the box number to a trade.</p>
+      <p><b>Bath base is 21&Prime;, not 24&Prime;.</b> This is the single most common dimension error.</p>
+      <div class="say">
+        <span class="lbl">Worth practising</span>
+        Lay out a 12-foot L-shaped kitchen using only stock sizes in 3&Prime; increments. Do it a few
+        times on paper and you stop needing the table &mdash; and a rep who can sketch one on a napkin
+        in front of a customer is worth three who go back to the office.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>3&Prime; increments &middot; 96&Prime; is the ceiling</span></div>
+</div>
+
+<!-- ══════════════ 12 · SECTION: THE FOUR LINES ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-8.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1>Same box.<br>Same motion.<br><em>Different skin.</em></h1></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>3 of 6</span></div>
+</div>
+
+<!-- ══════════════ 13 · THE LADDER ══════════════ -->
+<div class="slide">
+  <h1>The four lines</h1>
+  <p class="lede">The carcass <b>and the hardware</b> are identical across all four. Only the door
+  surface and the finish family move.</p>
+  <table>
+    <tr><th style="width:14%">Line</th><th style="width:26%">Where it fits</th><th style="width:25%">Doors</th><th>Finish collections</th></tr>
+    <tr><td><b>Essential</b><br><span class="sm">value</span></td><td>Rentals, spec homes, hardworking family spaces</td><td>Woodgrain &amp; solid TFL</td><td>Sommet, Karisma, Prelude, Prism <b>&middot; 62 d&eacute;cors</b></td></tr>
+    <tr><td><b>Signature</b><br><span class="sm">mid</span></td><td>Warm kitchens, dens, lived-in spaces</td><td>European TFL, deep textures</td><td>EGGER 26+, Prism <b>&middot; 33</b></td></tr>
+    <tr><td><b>Reserve</b><br><span class="sm">mid-high</span></td><td>Modern builds where the architecture speaks</td><td>Super-matte, soft-touch, high gloss</td><td>AGT Trend <b>&middot; 24</b></td></tr>
+    <tr><td><b>Atelier</b><br><span class="sm">high</span></td><td>Flagship kitchens, media walls, hospitality</td><td>Lacquered high gloss &amp; perfect matt</td><td>Lummia <b>&middot; 23</b></td></tr>
+  </table>
+  <div class="say" style="margin-top:.18in">
+    <span class="lbl">Say it like this</span>
+    &ldquo;Same box, same motion, different skin. A rental spec and a flagship kitchen close on the
+    identical hinge and the identical slide &mdash; what you&rsquo;re choosing is the door surface and
+    the finish family. So you can move up or down without giving up the cabinet.&rdquo;
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Four names, one sentence each</span></div>
+</div>
+
+<!-- ══════════════ 14 · THE HARDWARE DOESN'T LADDER ══════════════ -->
+<div class="slide">
+  <h1>The hardware does <em>not</em> ladder.</h1>
+  <div class="cols">
+    <div style="flex:1.2">
+      <table>
+        <tr><th style="width:22%"></th><th>Every single line</th></tr>
+        <tr><td><b>Hinges</b></td><td><b class="g">DTC soft-close</b> &mdash; <b>six-way adjustable</b></td></tr>
+        <tr><td><b>Slides</b></td><td><b class="g">Knape &amp; Vogt 8450FM</b> &mdash; full-extension, soft-close, <b>100 lb</b></td></tr>
+        <tr><td><b>Soft close</b></td><td><b>Standard</b> on every door and every drawer. Not an upgrade</td></tr>
+      </table>
+      <h2 style="margin-top:.22in">Six-way adjustable &mdash; say this to every builder</h2>
+      <p>Height, depth and side-to-side, at both leaves. An installer trues a door up <b>on the wall</b>
+      &mdash; no pulling it off the box, no shims, no second trip.</p>
+      <p>Nobody buys a cabinet for its hinge. But a builder who has lost a Friday to doors that will not
+      line up on an out-of-square wall <b>buys the next job on it.</b></p>
+    </div>
+    <div>
+      <div class="callout">
+        <span class="lbl">There is no upgrade to sell</span>
+        Do not offer &ldquo;better hardware&rdquo; on a higher line. <b>There isn&rsquo;t any.</b> A rep
+        who invents one is selling a product we do not make.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>DTC &middot; KV 8450FM &middot; all four lines</span></div>
+</div>
+
+<!-- ══════════════ 15 · SECTION: FINISHES & DOORS ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-2.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1>Finishes &amp;<br><em>door styles</em>.</h1></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>4 of 6</span></div>
+</div>
+
+<!-- ══════════════ 16 · DOOR STYLES ══════════════ -->
+<div class="slide">
+  <h1>Two of these three.</h1>
+  <figure style="margin-bottom:.16in"><img src="assets/dia-door-styles.png" alt="Raised panel, shaker, flat panel" style="max-height:2.5in;object-fit:contain"></figure>
+  <table>
+    <tr><th style="width:22%">Style</th><th style="width:12%">Ours?</th><th>What you say</th></tr>
+    <tr><td><b class="r">Raised panel</b></td><td><b class="r">No</b></td><td>&ldquo;That&rsquo;s a traditional American profile &mdash; not something we run.&rdquo;</td></tr>
+    <tr><td><b class="g">Shaker</b></td><td><b class="g">Yes</b></td><td>Machined MDF. <b>You volunteer this</b> &mdash; next slide</td></tr>
+    <tr><td><b class="g">Flat panel / slab</b></td><td><b class="g">Yes</b></td><td>The core of the range. Every line offers it</td></tr>
+  </table>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>No raised panel. No inset</span></div>
+</div>
+
+<!-- ══════════════ 17 · THE SHAKER DISCLOSURE ══════════════ -->
+<div class="slide">
+  <h1>The shaker <em>disclosure</em>.</h1>
+  <div class="cols">
+    <div style="flex:1.15">
+      <p class="lede">A traditional shaker door is <b>five pieces of solid wood</b> &mdash; two rails,
+      two stiles, and a panel that floats so it can move with the season.</p>
+      <p class="lede" style="margin-bottom:.1in">Ours is <b>one piece of MDF</b> with the profile
+      machined into it, finished in RTF.</p>
+      <div class="say">
+        <span class="lbl">Volunteer it, in this order</span>
+        &ldquo;Our shaker is machined MDF rather than five pieces of solid wood &mdash; and that&rsquo;s
+        on purpose. MDF doesn&rsquo;t move with humidity, so the door can&rsquo;t warp or split at a
+        joint the way a wood shaker will, and it takes paint better because there&rsquo;s no grain. In
+        Houston that matters more than it would somewhere dry.&rdquo;
+      </div>
+      <div class="callout" style="margin-top:.16in">
+        <span class="lbl">Never</span>
+        Never say or imply <b>solid wood</b> about a shaker door. Not &ldquo;solid feel,&rdquo; not
+        &ldquo;solid construction.&rdquo;
+      </div>
+    </div>
+    <div>
+      <div class="tube">
+        <div class="fb">
+          <div class="t">Build Shaker Cabinet Doors With a Table Saw</div>
+          <div class="u">https://youtu.be/OdImx4h0MWo</div>
+          <div style="font-size:10pt;color:#888;margin-top:.12in">No connection &mdash; open the link on your phone</div>
+        </div>
+        <iframe src="https://www.youtube-nocookie.com/embed/OdImx4h0MWo?rel=0"
+          title="Shaker doors on a table saw" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+      <div class="callout" style="margin-top:.14in">
+        <span class="lbl">This is what we do NOT do</span>
+        Five pieces, a floating panel, glue and clamps. Watch it so you can describe the difference in
+        your own words. <b>Same fact either way &mdash; the only variable is who says it first.</b>
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>https://youtu.be/OdImx4h0MWo</span></div>
+</div>
+
+<!-- ══════════════ 18 · OVERLAY ══════════════ -->
+<div class="slide">
+  <h1>Overlay &mdash; <em>the thing designers ask about</em>.</h1>
+  <div class="cols">
+    <div style="flex:1.05">
+      <figure><img src="assets/dia-overlays.png" alt="Inset, full overlay, partial overlay" style="max-height:3.7in;object-fit:contain"></figure>
+    </div>
+    <div>
+      <p>Overlay is how much of the box the door covers. It is set by the hinge and its base plate
+      &mdash; so a designer specifying an overlay is really specifying <b>hardware</b>.</p>
+      <table class="plain">
+        <tr><td style="width:34%"><b class="r">Inset</b></td><td>Door sits <i>inside</i> the opening. <b class="r">We don&rsquo;t make this</b></td></tr>
+        <tr><td><b class="g">Full overlay</b></td><td>Door covers the panel completely. <b>Kitchens &amp; vanities</b></td></tr>
+        <tr><td><b class="g">Half overlay</b></td><td>Two doors share one panel. <b>Closets.</b> The diagram says <i>partial</i> &mdash; same thing</td></tr>
+      </table>
+      <p style="margin-top:.14in"><b>Frameless plus full overlay</b> is what produces the wide openings
+      and the unbroken line across a run. Those are the two things to say when somebody asks why
+      frameless.</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Full on kitchens &middot; half on closets</span></div>
+</div>
+
+<!-- ══════════════ 19 · FINISHES ══════════════ -->
+<div class="slide">
+  <h1>Say <em>&ldquo;over thirty.&rdquo;</em> Know there are 142.</h1>
+  <div class="cols">
+    <div>
+      <h2>The five finish types</h2>
+      <table class="plain">
+        <tr><td style="width:30%"><b>Melamine</b></td><td><b>One</b> resin-soaked paper fused to the core</td></tr>
+        <tr><td><b>Laminate</b></td><td><b>Many</b> resin layers bonded to a substrate. Thicker, tougher</td></tr>
+        <tr><td><b>Acrylic</b></td><td>Glossy, near-mirror, UV stable</td></tr>
+        <tr><td><b>Paint</b></td><td>Fully custom colour, needs care</td></tr>
+        <tr><td><b>RTF</b></td><td>Vinyl film vacuum-pressed over MDF &mdash; our shaker</td></tr>
+      </table>
+      <p class="sm" style="margin-top:.1in">Melamine versus laminate is asked about most and got wrong
+      most. <b>One layer versus many.</b></p>
+    </div>
+    <div>
+      <h2>The eight themes</h2>
+      <table class="plain">
+        <tr><td style="width:44%"><b>TimberLight</b></td><td>Pale, whitewashed, greige woodgrains &middot; <b>37</b></td></tr>
+        <tr><td><b>TimberDark</b></td><td>Mid to near-black woodgrains &middot; <b>30</b></td></tr>
+        <tr><td><b>Stone</b></td><td>Greys, concretes, aluminium &middot; <b>22</b></td></tr>
+        <tr><td><b>Canvas</b></td><td>Whites, creams, off-whites &middot; <b>14</b></td></tr>
+        <tr><td><b>Terra</b></td><td>Beiges, clays, berries, metallics &middot; <b>13</b></td></tr>
+        <tr><td><b>Noir</b></td><td>Blacks and charcoals &middot; <b>12</b></td></tr>
+        <tr><td><b>Verde</b></td><td>Greens and sages &middot; <b>9</b></td></tr>
+        <tr><td><b>DeepWater</b></td><td>Blues &middot; <b>5</b></td></tr>
+      </table>
+      <p class="sm" style="margin-top:.1in">Ask which <b>theme</b> a customer is drawn to, then show
+      that theme inside their line. A far better question than &ldquo;what colour?&rdquo;</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>&ldquo;Over thirty&rdquo; is what you say. 142 is what exists</span></div>
+</div>
+
+<!-- ══════════════ 20 · SWATCH WALL ══════════════ -->
+<div class="slide">
+  <h1>Twelve of the <em>hundred and forty-two</em>.</h1>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:.18in;flex:1;align-content:start">
+    <div><img src="swatches/M2004.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Winter Fun</div><div class="sm">Essential &middot; TimberLight</div></div>
+    <div><img src="swatches/H3322.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Light Nat. Rovato Oak</div><div class="sm">Signature &middot; TimberLight</div></div>
+    <div><img src="swatches/L583.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">First Class</div><div class="sm">Essential &middot; TimberDark</div></div>
+    <div><img src="swatches/H1369.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Marone Casella Oak</div><div class="sm">Signature &middot; TimberDark</div></div>
+    <div><img src="swatches/L444.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Chocolate Pearwood</div><div class="sm">Essential &middot; TimberDark</div></div>
+    <div><img src="swatches/AF200.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Pewter Frost</div><div class="sm">Essential &middot; Noir</div></div>
+    <div><img src="swatches/AF232.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Natural Linen</div><div class="sm">Essential &middot; Verde</div></div>
+    <div><img src="swatches/3012.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Snow White</div><div class="sm">Reserve &middot; Canvas</div></div>
+    <div><img src="swatches/3015.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Macaron Green</div><div class="sm">Reserve &middot; Verde</div></div>
+    <div><img src="swatches/3002.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Dark Grey</div><div class="sm">Reserve &middot; Noir</div></div>
+    <div><img src="swatches/HG115.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Carte Blanche</div><div class="sm">Atelier &middot; Canvas</div></div>
+    <div><img src="swatches/HG203.jpg" style="width:100%;height:1.55in;object-fit:cover;border-radius:.05in;display:block"><div style="font-size:11pt;font-weight:800;margin-top:.05in">Black</div><div class="sm">Atelier &middot; Noir</div></div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>The full library is at yudezign.com/finishes</span></div>
+</div>
+
+<!-- ══════════════ 21 · FINISHES IN THE ROOM ══════════════ -->
+<div class="slide">
+  <h1>The same finish, <em>in a room</em>.</h1>
+  <div class="cols">
+    <div style="display:flex;flex-direction:column">
+      <video class="vport" src="media/c01u07-crystalslate.mp4" muted loop playsinline controls preload="metadata" style="flex:1"></video>
+      <div class="sm" style="margin-top:.06in"><b>High gloss</b> &middot; Crystal Slate</div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <video class="vport" src="media/c01u01-grandkitchen.mp4" muted loop playsinline controls preload="metadata" style="flex:1"></video>
+      <div class="sm" style="margin-top:.06in"><b>Woodgrain</b> &middot; Acacia Honey</div>
+    </div>
+    <div style="flex:1.5">
+      <h2>What a customer is actually choosing</h2>
+      <p>A swatch on a desk tells them almost nothing. <b>Gloss reflects the room; matte absorbs it.</b>
+      A dark gloss doubles the apparent size of a small kitchen and shows every fingerprint. A
+      soft-touch matte does the reverse.</p>
+      <div class="say">
+        <span class="lbl">Ask this before you show anything</span>
+        &ldquo;How much natural light does that room get?&rdquo;
+      </div>
+      <p class="sm">Both of these are our own delivered work. <b>Show ours, not stock.</b> If a photo is
+      not a job we built, it does not go in front of a customer.</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Gloss reflects. Matte absorbs</span></div>
+</div>
+
+<!-- ══════════════ ACCESSORIES ══════════════ -->
+<div class="slide">
+  <h1>Where the job <em>grows</em>.</h1>
+  <p class="lede">A customer who has chosen a finish has stopped deciding. A customer looking at a
+  spice pull-out has started again. Walk the accessory list <b>before</b> you talk about colour.</p>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.2in">
+    <div><img src="img/acc-pullout.jpg" style="width:100%;height:1.5in;object-fit:cover;border-radius:.05in;display:block"><div class="sm" style="font-weight:800;margin-top:.05in">Base pull-outs</div></div>
+    <div><img src="img/acc-lazysusan.jpg" style="width:100%;height:1.5in;object-fit:cover;border-radius:.05in;display:block"><div class="sm" style="font-weight:800;margin-top:.05in">Corner lazy-susan</div></div>
+    <div><img src="img/acc-spice.jpg" style="width:100%;height:1.5in;object-fit:cover;border-radius:.05in;display:block"><div class="sm" style="font-weight:800;margin-top:.05in">Spice rack</div></div>
+    <div><img src="img/acc-tray.jpg" style="width:100%;height:1.5in;object-fit:cover;border-radius:.05in;display:block"><div class="sm" style="font-weight:800;margin-top:.05in">Cutlery trays</div></div>
+    <div><img src="img/acc-wine.jpg" style="width:100%;height:1.5in;object-fit:cover;border-radius:.05in;display:block"><div class="sm" style="font-weight:800;margin-top:.05in">Wine storage</div></div>
+  </div>
+  <div class="cols" style="margin-top:.2in">
+    <div style="flex:1.3">
+      <h2>Closet &amp; dressing room</h2>
+      <p style="font-size:13.5pt">Trouser racks &middot; rotating shoe rack &middot; felt-lined jewellery
+      drawers &middot; wardrobe lift &middot; lidded trays &middot; watch winders &middot; hampers
+      &middot; valet rails &middot; pull-out mirrors. The premium set is the <b>Jusen &ldquo;Alice&rdquo;</b>
+      programme &mdash; Atelier and Dressing Room.</p>
+    </div>
+    <div>
+      <div class="say">
+        <span class="lbl">The question that opens an accessory sale</span>
+        &ldquo;What do you own that currently has nowhere to live?&rdquo; Then stop talking.
+      </div>
+    </div>
+    <div>
+      <div class="callout">
+        <span class="lbl">Pricing</span>
+        Quoted per item on the job. <b>Do not price them from memory</b> &mdash; put them on the
+        Discovery Sheet and let the quote come back right.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>The margin is in the organisers, not the box</span></div>
+</div>
+
+<!-- ══════════════ LIGHTING ══════════════ -->
+<div class="slide">
+  <h1>Light is what makes a <em>finish</em> look expensive.</h1>
+  <div class="cols">
+    <div style="flex:1.25">
+      <p class="lede">A soft-touch matte door in a dim room is a grey cupboard. The same door with a lit
+      underside is the reason somebody chose Reserve. <b>We sell it as part of the cabinetry.</b></p>
+      <table>
+        <tr><th style="width:30%">Where</th><th>What it is</th></tr>
+        <tr><td><b>Under-cabinet</b></td><td>Washing the counter and backsplash. Most common, most useful</td></tr>
+        <tr><td><b>Display units</b></td><td><b>Atelier: integrated, standard</b> &mdash; open shelving, glass fronts, media walls</td></tr>
+        <tr><td><b>Closet interiors</b></td><td><b>Dressing Room: integrated, standard</b></td></tr>
+        <tr><td><b>Vanity</b></td><td>Backlit mirrors, lit open towers</td></tr>
+        <tr><td><b>Toe kick &amp; interiors</b></td><td>On request across the range, priced per job</td></tr>
+      </table>
+      <div class="say" style="margin-top:.14in">
+        <span class="lbl">Ask this before you show a single finish</span>
+        &ldquo;How much natural light does that room get?&rdquo;
+      </div>
+    </div>
+    <div>
+      <figure><img src="assets/yz-4.jpg" alt="Lit uppers" style="height:1.72in;object-fit:cover">
+      <figcaption>Under-cabinet &middot; coffee bar</figcaption></figure>
+      <figure style="margin-top:.14in"><img src="assets/yz-8.jpg" alt="Backlit island" style="height:1.72in;object-fit:cover">
+      <figcaption>Lit glass uppers, backlit island</figcaption></figure>
+      <div class="say" style="margin-top:.14in">
+        <span class="lbl">Lighting has its own session</span>
+        Enough here to <b>raise it, place it and sell it</b>. Strip type, colour temperature, dimming,
+        drivers and pricing are covered in the <b>separate lighting tutorial</b>. Until then, put
+        specifics on the Discovery Sheet.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>We sell it with the cabinets &mdash; raise it before they ask</span></div>
+</div>
+
+<!-- ══════════════ PRICING ══════════════ -->
+<div class="slide">
+  <h1>The prices you <em>can</em> say.</h1>
+  <p class="lede">These four are settled and you can give them on the spot. Everything else comes back
+  as a quote &mdash; and that is a feature, not a stall.</p>
+  <div class="cols">
+    <div style="flex:1.35">
+      <table>
+        <tr><th style="width:26%">Service</th><th style="width:20%">Price</th><th>Say</th></tr>
+        <tr><td><b>Design &amp; measure</b></td><td><b class="g">$250</b><br><span class="sm">$100 if they measure</span></td><td>&ldquo;Covers me coming out plus two designs. <b>Credited back against your order.</b>&rdquo;</td></tr>
+        <tr><td><b>Assembly</b></td><td><b class="g">$30</b> base/wall<br><b class="g">$60</b> tall</td><td>&ldquo;Flat-packed ships tighter and costs less; assembled is faster on site.&rdquo;</td></tr>
+        <tr><td><b>Delivery</b></td><td><b class="g">$350</b> a trip</td><td>&ldquo;Inside Greater Houston. A kitchen, a couple of vanities and a small closet generally ride together.&rdquo;</td></tr>
+        <tr><td><b>Pickup</b></td><td><b class="g">Free</b></td><td>&ldquo;5802 Colfax Street, by appointment, bring your order number.&rdquo;</td></tr>
+      </table>
+      <h2 style="margin-top:.16in">Ballpark it &mdash; per linear foot</h2>
+      <table class="plain">
+        <tr><th style="width:30%"></th><th style="width:22%">Semi-custom</th><th style="width:20%">Custom</th><th>Worked</th></tr>
+        <tr><td><b>Kitchen &middot; garage</b></td><td><b class="g">$215</b>/LF</td><td><b class="g">$375</b>/LF</td><td class="sm">20&prime; &asymp; $4,300 / $7,500</td></tr>
+        <tr><td><b>Home office</b></td><td>$190/LF</td><td>$340/LF</td><td class="sm">&nbsp;</td></tr>
+        <tr><td><b>Closet</b></td><td>$165/LF</td><td>$315/LF</td><td class="sm">15&prime; &asymp; $2,475 / $4,725</td></tr>
+        <tr><td><b>Bathroom</b></td><td>$130/LF</td><td>$225/LF</td><td class="sm">5&prime; &asymp; $650 / $1,125</td></tr>
+      </table>
+      <p class="sm"><b>Measure the run, multiply, give the range.</b> Then say all four conditions:
+      supply only &middot; assembled &middot; delivery and install extra &middot; finish moves it.
+      <b>Spoken only &mdash; never write a ballpark down.</b></p>
+    </div>
+    <div>
+      <h2 class="warn">Never, from memory</h2>
+      <ul class="x" style="font-size:13pt">
+        <li>A <b>per-cabinet</b> price &mdash; ballpark by the <b>linear foot</b></li>
+        <li>A <b>deposit</b> percentage</li>
+        <li>A <b>warranty</b> length</li>
+        <li>A <b>trade tier</b> or discount</li>
+        <li>What <b>we pay</b> for sheet goods</li>
+        <li>A <b>framed</b> price</li>
+      </ul>
+      <div class="say" style="margin-top:.14in">
+        <span class="lbl">When they push</span>
+        &ldquo;Give me twenty minutes of measurements and you&rsquo;ll get a real number, itemised,
+        that I can stand behind.&rdquo;
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Design $250 / $100 &middot; assembly $30 / $60 &middot; delivery $350 &middot; pickup free</span></div>
+</div>
+
+<!-- ══════════════ 22 · SECTION: CLOSETS, VANITIES, COMMERCIAL ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-9.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1>Closets, vanities,<br><em>commercial</em>.</h1>
+  <p style="font-size:19pt">The rooms nobody asks us about</p></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>5 of 6</span></div>
+</div>
+
+<!-- ══════════════ 23 · CLOSETS ══════════════ -->
+<div class="slide">
+  <h1>Closets &mdash; the same ladder, <em>built differently</em>.</h1>
+  <div class="callout" style="margin-bottom:.14in">
+    <span class="lbl">Before you say &ldquo;same as the kitchens&rdquo;</span>
+    Same plant, same standards, same hardware &mdash; <b>different board.</b> Most of the closet system
+    is <b>particleboard-cored panel</b>, the same core as our door panels; <b>some components are
+    MDF</b>. Plywood is available as a <b>custom laminated lay-up</b> &mdash; it costs more and adds
+    lead time. <b>Never say a closet box is plywood</b> unless that job was specified that way.
+  </div>
+  <table>
+    <tr><th style="width:16%">Line</th><th style="width:24%">Finishes</th><th style="width:22%">Fronts</th><th>Accessories</th></tr>
+    <tr><td><b>Everyday</b><br><span class="sm">&ldquo;An organised start&rdquo;</span></td><td>White and grey TFL</td><td>Open adjustable system, flat-panel drawer fronts</td><td>A la carte basics: clothes bars, wire baskets, shoe racks</td></tr>
+    <tr><td><b>Wardrobe</b><br><span class="sm">&ldquo;A fitted home for everything you wear&rdquo;</span></td><td>Full 12-finish closet palette &mdash; 6 solid, 6 woodgrain</td><td>Flat panel or shaker doors</td><td>Bundles: trouser racks, jewellery drawer, hamper, valet rail</td></tr>
+    <tr><td><b>Dressing Room</b><br><span class="sm">&ldquo;The boutique, at home&rdquo;</span></td><td>Any finish from the cabinet library, incl. soft-touch matte and lacquer</td><td>Glass-front doors, boutique styling</td><td>Watch winders, pull-out mirror, rotating shoe rack, wardrobe lift, felt-lined drawers. LED standard</td></tr>
+  </table>
+  <div class="cols" style="margin-top:.2in">
+    <div>
+      <h2>Two things to remember</h2>
+      <p><b>Closets are half overlay</b> &mdash; two doors share one panel. That is the one construction
+      difference from a kitchen, and a designer will ask.</p>
+    </div>
+    <div>
+      <h2>&nbsp;</h2>
+      <p><b>The margin is in the organisers, not the box.</b> An empty carcass is a commodity. Walk them
+      through the accessory list <i>before</i> you talk finish &mdash; that is where the job grows.</p>
+    </div>
+    <div>
+      <div class="say">
+        <span class="lbl">The question that opens a closet sale</span>
+        &ldquo;What do you own that currently has nowhere to live?&rdquo;
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Particleboard core is standard &middot; plywood is a custom lay-up</span></div>
+</div>
+
+<!-- ══════════════ 24 · VANITIES & COMMERCIAL ══════════════ -->
+<div class="slide">
+  <h1>Vanities sell <em>themselves</em>. Ask for them.</h1>
+  <div class="cols">
+    <div>
+      <h2>Vanities inherit the lines</h2>
+      <p>Same finish library, same box, same hardware. Nothing separate to learn &mdash; and a kitchen
+      customer nearly always has a bathroom.</p>
+      <table class="plain">
+        <tr><td style="width:34%"><b>Depth</b></td><td><b>21&Prime;</b> &mdash; not 24&Prime;</td></tr>
+        <tr><td><b>Height</b></td><td>34.5&Prime; &middot; <b>32.5&Prime; ADA</b></td></tr>
+        <tr><td><b>Mount</b></td><td>Floor-standing or <b>floating</b></td></tr>
+      </table>
+      <p class="sm" style="margin-top:.1in">A kitchen customer almost always has a bathroom. Ask while
+      you are already standing in the house.</p>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <video class="vport" src="media/c01u02-oakvanity.mp4" muted loop playsinline controls preload="metadata" style="flex:1"></video>
+      <div class="sm" style="margin-top:.06in">Oak vanity &middot; our work</div>
+    </div>
+    <div>
+      <h2>Commercial &amp; multi-family</h2>
+      <p>Medical, hospitality, offices, apartment communities. Typical <b>$14K&ndash;$43K</b>;
+      multi-family runs far higher.</p>
+      <table class="plain">
+        <tr><td style="width:30%"><b>They buy</b></td><td>Compliance, phasing, drawings their trades can build from</td></tr>
+        <tr><td><b>ADA</b></td><td>We build it. <b>32.5&Prime;</b> box</td></tr>
+      </table>
+      <div class="say" style="margin-top:.12in">
+        <span class="lbl">For scale</span>
+        &ldquo;We quote multi-family packages up to fifty-plus units.&rdquo;
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>&ldquo;While I&rsquo;m measuring the kitchen &mdash; want me to take the bathrooms too?&rdquo;</span></div>
+</div>
+
+<!-- ══════════════ 25 · SECTION: EXTRAS ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-12.jpg" alt=""></div>
+  <div style="margin:auto 0"><h1><em>Openings</em> and the<br>things inside.</h1></div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>6 of 6</span></div>
+</div>
+
+<!-- ══════════════ 26 · OPENINGS ══════════════ -->
+<div class="slide">
+  <h1>Four ways a door <em>opens</em>.</h1>
+  <div class="cols">
+    <div style="flex:1.3">
+      <table>
+        <tr><th style="width:22%">Opening</th><th>What it is</th></tr>
+        <tr><td><b>Handles</b></td><td>Bar pulls, arch pulls, knobs &mdash; three hardware finishes</td></tr>
+        <tr><td><b>J-pull</b></td><td>A shaped lip on the edge of the <b>door itself</b>. Handleless look, no separate profile</td></tr>
+        <tr><td><b>Gola</b></td><td>A continuous channel profile set into the <b>carcass</b>. The door stays plain</td></tr>
+        <tr><td><b>Push-to-open</b></td><td>No handle, no channel. Press and it releases</td></tr>
+      </table>
+      <div class="callout" style="margin-top:.16in">
+        <span class="lbl">A designer will catch you on this one</span>
+        <b>J-pull is not gola.</b> Gola is a channel in the <i>box</i>; J-pull is a shape on the
+        <i>door</i>. They look alike in a photo and they are different products at different prices.
+        We have already mis-captioned one of our own project photos over exactly this.
+      </div>
+      <table class="plain" style="margin-top:.16in">
+        <tr><td style="width:30%"><b>Hardware finishes</b></td><td>Brushed nickel &middot; polished chrome &middot; matte black</td></tr>
+        <tr><td><b>Accessories</b></td><td>Pull-outs, lazy-susans, wire baskets, waste bins, cutlery trays, spice racks, wine storage</td></tr>
+      </table>
+    </div>
+    <div>
+      <figure><img src="assets/yz-12.jpg" alt="Floating mudroom with J-pull" style="height:3.05in;object-fit:cover">
+      <figcaption>Floating mudroom &middot; <b>J-pull</b>, soft-touch matte &mdash; <b class="r">not gola</b></figcaption></figure>
+      <p class="sm" style="margin-top:.14in"><b>Accessories are where a job grows.</b> A customer who has
+      chosen a finish has stopped deciding. A customer looking at a spice pull-out has started again.</p>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Gola = channel in the carcass. J-pull = shape on the door</span></div>
+</div>
+
+<!-- ══════════════ 27 · KNOWLEDGE CHECK ══════════════ -->
+<div class="slide">
+  <h1>Twelve questions. <em>Out loud.</em></h1>
+  <div class="cols">
+    <div>
+      <p style="font-size:13.5pt;line-height:1.62"><b class="g">1.</b> In one sentence, what is frameless?<br>
+      <b class="g">2.</b> What is the box made of? The back?<br>
+      <b class="g">3.</b> What holds the box square?<br>
+      <b class="g">4.</b> What does edge banding actually do?<br>
+      <b class="g">5.</b> Board thickness &mdash; what unit, and why?<br>
+      <b class="g">6.</b> What are the three boards, and where does each belong?</p>
+    </div>
+    <div>
+      <p style="font-size:13.5pt;line-height:1.62"><b class="g">7.</b> Which door styles do we not make?<br>
+      <b class="g">8.</b> What is our shaker made of &mdash; and when do you say so?<br>
+      <b class="g">9.</b> Full or half overlay: kitchens? closets?<br>
+      <b class="g">10.</b> Which line gets the better hinge?<br>
+      <b class="g">11.</b> How many finishes do you <i>say</i>?<br>
+      <b class="g">12.</b> Gola or J-pull &mdash; which is cut into the carcass?</p>
+    </div>
+    <div>
+      <div class="say">
+        <span class="lbl">The bar</span>
+        <b>Ten of twelve, out loud, without the card.</b> Then you are ready for the booth.
+      </div>
+      <div class="callout" style="margin-top:.18in">
+        <span class="lbl">Question 10 is a trap</span>
+        <b>None of them.</b> DTC hinges and KV 8450FM slides on all four lines. There is no hardware
+        upgrade to sell.
+      </div>
+    </div>
+  </div>
+  <div class="rf"><span class="wm">YUD<span>EZ</span>IGN</span><span>Answers live in Answer Key &sect;2&ndash;3</span></div>
+</div>
+
+<!-- ══════════════ 28 · RESOURCES ══════════════ -->
+<div class="slide">
+  <h1>Everything, <em>in one place</em>.</h1>
+  <div class="cols">
+    <div>
+      <h2>Our site</h2>
+      <div class="lnk">
+        <a href="https://www.yudezign.com/portfolio">yudezign.com/portfolio</a> <span class="d">&mdash; delivered work, by room</span><br>
+        <a href="https://www.yudezign.com/finishes">yudezign.com/finishes</a> <span class="d">&mdash; the public finish library</span><br>
+        <a href="https://www.yudezign.com/downloads">yudezign.com/downloads</a> <span class="d">&mdash; booklet, 4 guides, flyers, finishes catalog</span><br>
+        <a href="https://www.yudezign.com/kdlite">yudezign.com/kdlite</a> <span class="d">&mdash; free closet design tool</span><br>
+        <a href="https://apps.apple.com/us/app/installassistant/id6743378316">InstallAssistant</a> <span class="d">&mdash; free on iOS, demos in 15 seconds</span>
+      </div>
+      <div class="callout" style="margin-top:.16in">
+        <span class="lbl">Two site warnings</span>
+        The site publishes a lead time and a finish count that <b>differ from the Answer Key</b>. If a
+        customer reads one back to you, do not argue and do not confirm &mdash;
+        <i>&ldquo;let me confirm that and come back to you today.&rdquo;</i>
+      </div>
+    </div>
+    <div>
+      <h2>Explainers worth watching</h2>
+      <div class="lnk" style="font-size:11.5pt;line-height:1.62">
+        <a href="https://youtu.be/F8x5c-6seYo">Framed, Frameless &amp; Inset</a> <span class="d">&mdash; start here</span><br>
+        <a href="https://youtu.be/xPyLWKz0Pas">Particleboard vs MDF vs Plywood</a><br>
+        <a href="https://youtu.be/8nnCOPXEowg">Melamine vs Laminate</a> <span class="d">&mdash; asked most, wrong most</span><br>
+        <a href="https://youtu.be/1UV1B2E1MaQ">Acrylic vs Laminate</a><br>
+        <a href="https://youtu.be/nzD_TW3tC_Q">How Thermofoil (RTF) doors are made</a><br>
+        <a href="https://youtu.be/XCKaKX86gYE">Edge banding</a><br>
+        <a href="https://youtu.be/unyx9G_mqlw">Hinges part 1</a> &middot;
+        <a href="https://youtu.be/NdTHHGUww0A">part 2</a><br>
+        <a href="https://youtu.be/7jYdWrWUaIQ">Assembling frameless base cabinets</a><br>
+        <a href="https://youtu.be/OdImx4h0MWo">Shaker on a table saw</a> <span class="d">&mdash; <b class="r">what we do NOT do</b></span>
+      </div>
+      <p class="sm" style="margin-top:.12in">All third party. <b>If a video contradicts the Answer Key,
+      the Answer Key wins.</b></p>
+    </div>
+    <div>
+      <h2>Internal</h2>
+      <div class="lnk">
+        <a href="https://drive.google.com/drive/folders/1QscX2tn9ubGTPwpTHaDFCEAXzWwe68jz">Brochures</a> <span class="d">&mdash; safe to send a customer</span><br>
+        <a href="https://drive.google.com/drive/folders/1GiEyUnIU02frjq6Tmpw973P_OQqGiRTO">Price lists</a> <span class="d">&mdash; contractor pricing</span><br>
+        <a href="https://app.kortex.co/public/document/448a57f5-6e56-4d6a-9e13-d3ab8a196bd8">Product-study notes</a>
+      </div>
+      <div class="callout" style="margin-top:.16in">
+        <span class="lbl">The price-list rule</span>
+        Sharing a price list is not the same as quoting a job. <b>Never build a job price off the sheet
+        yourself.</b> A completed Discovery Sheet is the quote request.
+      </div>
+      <div class="say" style="margin-top:.16in">
+        <span class="lbl">You do not have to write any of this down</span>
+        <b>Every link here &mdash; plus the lesson guide and this deck &mdash; is going up on the
+        website.</b> The posted copy is the one that gets updated when a ruling changes.
+      </div>
+      <p class="sm" style="margin-top:.12in"><b>In your hands:</b> lesson guide &middot; the Brief
+      &middot; the field card &middot; Discovery Sheets. If they disagree with each other,
+      <b>the Answer Key wins.</b></p>
+    </div>
+  </div>
+  <div class="rf"><span>Answer Key v1.3 &middot; 2026-08-06</span><span>All links open in a browser &mdash; this deck is live, not a picture of a deck</span></div>
+</div>
+
+<!-- ══════════════ 29 · CLOSE ══════════════ -->
+<div class="slide dark">
+  <div class="bleed"><img src="assets/yz-hero.jpg" alt=""></div>
+  <div class="wm" style="font-size:20pt">YUD<span>EZ</span>IGN</div>
+  <div style="margin:auto 0">
+    <h1><em>Any questions?</em></h1>
+  </div>
+  <div class="rf"><span>Answer Key v1.3 &middot; 2026-08-06</span><span>Questions to the office. Numbers to the Answer Key</span></div>
+</div>
+
+<div class="hud"><b id="n">1</b> / <span id="t">29</span> &nbsp;&middot;&nbsp; ← → &nbsp;&middot;&nbsp; F fullscreen &nbsp;&middot;&nbsp; O overview</div>
+
+<script>
+/* Presenter shell. Deliberately dependency-free - a training room is the wrong place to discover
+   that a CDN is blocked. Also scales the fixed 13.333x7.5in slide to whatever the screen is. */
+(function () {
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var i = 0, ov = false;
+  var nEl = document.getElementById('n'), tEl = document.getElementById('t');
+  tEl.textContent = slides.length;
+
+  function fit() {
+    // 13.333in x 7.5in at 96dpi = 1280 x 720
+    var s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    slides.forEach(function (el) { if (!ov) el.style.transform = 'scale(' + s + ')'; });
+  }
+  function show(k) {
+    i = Math.max(0, Math.min(slides.length - 1, k));
+    slides.forEach(function (el, j) { el.classList.toggle('on', j === i); });
+    nEl.textContent = i + 1;
+    // pause any video that just left the screen, so audio never bleeds across slides
+    slides.forEach(function (el, j) {
+      if (j !== i) [].forEach.call(el.querySelectorAll('video'), function (v) { v.pause(); });
+    });
+    location.hash = i + 1;
+  }
+  function overview(on) {
+    ov = on;
+    document.body.classList.toggle('ov', on);
+    if (on) { slides.forEach(function (el) { el.style.transform = ''; }); }
+    else { fit(); show(i); }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    // never hijack typing in a form, and never fight the video scrubber
+    if (/INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ') { e.preventDefault(); ov ? overview(false) : show(i + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); show(i - 1); }
+    else if (k === 'Home') show(0);
+    else if (k === 'End') show(slides.length - 1);
+    else if (k === 'f' || k === 'F') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    }
+    else if (k === 'o' || k === 'O' || k === 'Escape') overview(!ov);
+  });
+
+  document.addEventListener('click', function (e) {
+    // clicking a link, a video or a YouTube frame must not advance the slide
+    if (e.target.closest('a, video, iframe, .tube')) return;
+    if (ov) { var s = e.target.closest('.slide'); if (s) { overview(false); show(slides.indexOf(s)); } return; }
+    show(i + 1);
+  });
+
+  window.addEventListener('resize', fit);
+  fit();
+  show(parseInt(location.hash.slice(1), 10) - 1 || 0);
+
+  /* ── the offline fallback, which has to actually work ──────────────────────────────────
+     Every .tube has a poster/URL panel UNDER the iframe. That is not enough on its own: a
+     YouTube iframe that fails to load still paints an opaque error page over the top, so the
+     fallback would sit invisible behind a white rectangle - worse than no fallback, because you
+     only find out in front of the room.
+
+     So: probe reachability and REMOVE the iframes if the network is gone. no-cors gives an opaque
+     response we cannot read, but resolve-vs-reject is all we need. 2.5s ceiling so a captive
+     portal (hotel/convention wifi that resolves DNS but eats requests) fails fast rather than
+     hanging the slide. */
+  function stripEmbeds(why) {
+    var n = 0;
+    [].forEach.call(document.querySelectorAll('.tube iframe'), function (f) { f.remove(); n++; });
+    if (n) console.info('[deck] removed ' + n + ' YouTube embed(s) - ' + why + '. Showing links instead.');
+  }
+  function probe() {
+    /* file:// is the one that bites. YouTube refuses to embed when the referrer is null and shows
+       "Error 153 - Video player configuration error" inside the frame. It is deterministic: if the
+       deck was double-clicked instead of served, the embeds CANNOT work, so strip them now rather
+       than let three slides show an error box. START-TRAINING.cmd serves over localhost, which is
+       what makes them play. */
+    if (location.protocol === 'file:') {
+      stripEmbeds('opened from file:// - YouTube blocks that. Run START-TRAINING.cmd to embed');
+      var b = document.createElement('div');
+      b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100;background:#8E1B12;' +
+        'color:#fff;font:700 12px Arial;padding:5px 12px;letter-spacing:.04em';
+      b.textContent = 'Opened as a file - YouTube slides show links instead of players. '
+        + 'Close this and run START-TRAINING.cmd to embed them.';
+      b.onclick = function () { b.remove(); };
+      document.body.appendChild(b);
+      return;
+    }
+    if (!navigator.onLine) { stripEmbeds('navigator reports offline'); return; }
+    var done = false;
+    var t = setTimeout(function () { if (!done) { done = true; stripEmbeds('probe timed out'); } }, 2500);
+    fetch('https://www.youtube-nocookie.com/favicon.ico', { mode: 'no-cors', cache: 'no-store' })
+      .then(function () { done = true; clearTimeout(t); })
+      .catch(function () { if (!done) { done = true; clearTimeout(t); stripEmbeds('probe failed'); } });
+  }
+  probe();
+  window.addEventListener('offline', function () { stripEmbeds('connection dropped mid-session'); });
+})();
+</script>

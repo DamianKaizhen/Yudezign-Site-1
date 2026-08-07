@@ -39,6 +39,15 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/sales-training/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

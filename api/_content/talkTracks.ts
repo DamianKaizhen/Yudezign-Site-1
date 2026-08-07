@@ -142,11 +142,15 @@ export const objections: Objection[] = [
     id: 'obj-06',
     objection: 'My designer specified face-frame.',
     response: [
-      "We build frameless only, so I won't pretend otherwise.",
-      "What's worth knowing is what frameless actually buys you — wider openings, more usable space in the same footprint, and one clean line across a run.",
-      "If she wants to see it, I'll bring samples.",
+      "We can do that — I'll be straight with you about how, though.",
+      'Our plant runs frameless, so the framed is a stocked line we carry rather than something we machine.',
+      "If the face-frame look is the requirement, that's the route. If what she actually wants is the traditional style, our shaker in frameless gets you there and it's our own build — wider openings, more usable space in the same footprint.",
+      'Worth putting both in front of her.',
     ],
-    answerKeyIds: ['ak-02-02'],
+    answerKeyIds: ['ak-02-02', 'ak-02-02b', 'ak-02-02c'],
+    neverSayIds: ['ns-price-from-memory'],
+    coaching:
+      'Rewritten at Answer Key v1.2. The old answer was a flat no, which walked away from a customer we can actually serve. Never quote a framed style, finish, size or price from memory — there is no stock sheet yet.',
   },
   {
     id: 'obj-07',

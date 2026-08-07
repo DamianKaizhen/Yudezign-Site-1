@@ -7,22 +7,47 @@ import { SubTabs } from '../../components/portal/PortalNav';
 import { useSubTab } from '../../lib/hooks/useSubTab';
 import ResponsiveTable, { type TableColumn } from '../../components/portal/ResponsiveTable';
 import AnswerCard from '../../components/portal/AnswerCard';
+import DocView from '../../components/portal/DocView';
 
 const TABS = [
   { id: 'lines', label: 'The four lines' },
   { id: 'construction', label: 'Construction' },
   { id: 'dimensions', label: 'Dimensions' },
+  { id: 'openings', label: 'Openings' },
+  { id: 'framed', label: 'Framed' },
   { id: 'build', label: "What we don't build" },
 ];
 
-// No Hinges column: they are DTC on every line, so a per-line column implied a
-// difference that does not exist. Stated once below the table instead.
+// No hardware columns. Answer Key v1.1 ruled that hinges AND slides are
+// identical across all four lines, so a per-line column implies a ladder that
+// does not exist — which is exactly the error that reached the spec of record,
+// the field card and the booklet. Hardware is stated once, below the table.
 const LINE_COLUMNS: TableColumn<ProductLine>[] = [
-  { key: 'name', header: 'Line', render: (row) => row.name, isRowTitle: true },
-  { key: 'positioning', header: 'Positioning', render: (row) => row.positioning },
+  {
+    key: 'name',
+    header: 'Line',
+    render: (row) => (
+      <>
+        {row.name}
+        <span className="block text-[11px] font-normal uppercase tracking-wide text-luxury-gray-400">
+          {row.tier}
+        </span>
+      </>
+    ),
+    isRowTitle: true,
+  },
+  { key: 'whereItFits', header: 'Where it fits', render: (row) => row.whereItFits },
   { key: 'doors', header: 'Doors', render: (row) => row.doors },
-  { key: 'slide', header: 'Slides', render: (row) => row.slide },
-  { key: 'bestFor', header: 'Best for', render: (row) => row.bestFor.join(' · ') },
+  {
+    key: 'collections',
+    header: 'Finish collections',
+    render: (row) => (
+      <>
+        {row.collections}
+        <span className="ml-1 font-semibold text-primary">· {row.decors} décors</span>
+      </>
+    ),
+  },
 ];
 
 const DIMENSION_COLUMNS: TableColumn<DimensionRow>[] = [
@@ -45,12 +70,26 @@ const Product = () => {
   const tab = useSubTab('lines');
 
   const constructionAnswers = useMemo(
-    () => rep.answerKey.filter((entry) => entry.sectionId === 'what-we-make'),
+    () =>
+      rep.answerKey.filter(
+        // The framed rows are §2 too, but they have their own tab.
+        (entry) => entry.sectionId === 'what-we-make' && !entry.id.startsWith('ak-02-02')
+      ),
     [rep.answerKey]
   );
   const lineAnswers = useMemo(
     () => rep.answerKey.filter((entry) => entry.sectionId === 'the-lines'),
     [rep.answerKey]
+  );
+  // The framed rows live in §2 but belong on their own tab — a rep looking for
+  // "do you do framed" should not have to read past the frameless answers.
+  const framedAnswers = useMemo(
+    () => rep.answerKey.filter((entry) => entry.id.startsWith('ak-02-02')),
+    [rep.answerKey]
+  );
+  const framedDoc = useMemo(
+    () => rep.notes.find((note) => note.id === 'framed-line'),
+    [rep.notes]
   );
   const neverSayById = useMemo(
     () => new Map(rep.neverSay.map((row) => [row.id, row])),
@@ -80,9 +119,7 @@ const Product = () => {
               The single most useful sentence you own
             </p>
             <p className="mt-2 text-body leading-relaxed text-luxury-gray-900">
-              &ldquo;The box is identical across all four lines — same frameless ¾″ plywood carcass,
-              same soft-close. What changes is the door surface, the hardware brand and the finish
-              family. So you can move up or down without giving up the cabinet.&rdquo;
+              {rep.sameBoxSentence}
             </p>
           </section>
 
@@ -94,41 +131,57 @@ const Product = () => {
           />
 
           <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
-            <h2 className="mb-3 text-body font-semibold text-luxury-gray-900">Hardware</h2>
+            <h2 className="mb-1 text-body font-semibold text-luxury-gray-900">
+              The hardware does not ladder
+            </h2>
+            <p className="mb-3 text-body-sm text-luxury-gray-600">
+              Same on every single line — this is the argument, not a hedge.
+            </p>
             <dl className="space-y-3">
-              <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
-                  Hinges
-                </dt>
-                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">{rep.hardware.hinges}</dd>
-              </div>
-              <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
-                  Slides
-                </dt>
-                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">{rep.hardware.slides}</dd>
-              </div>
-              <div>
-                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
-                  Supply partners
-                </dt>
-                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">
-                  {rep.hardware.partners}
-                </dd>
-              </div>
+              {[
+                { label: 'Hinges', value: rep.hardware.hinges },
+                { label: 'Slides', value: rep.hardware.slides },
+                { label: 'Soft close', value: rep.hardware.softClose },
+                { label: 'Supply partners', value: rep.hardware.partners },
+              ].map((row) => (
+                <div key={row.label}>
+                  <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                    {row.label}
+                  </dt>
+                  <dd className="mt-0.5 text-body-sm text-luxury-gray-800">{row.value}</dd>
+                </div>
+              ))}
             </dl>
-            <p className="mt-4 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
-              <strong>We do not use Blum.</strong> Older material — including the printed handbook
-              and field card — lists Blum on Signature, Reserve and Atelier. That is wrong. If a
-              customer quotes it back at you, the hinges are DTC.
+
+            <div className="mt-4 rounded-lg border-l-4 border-accent bg-accent/10 p-3">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-accent-dark">
+                Six-way adjustable — say this to every builder
+              </p>
+              <p className="mt-1 text-body-sm text-luxury-gray-900">{rep.hardware.sixWay}</p>
+              <p className="mt-2 text-body-sm text-luxury-gray-600">{rep.hardware.sixWayNote}</p>
+            </div>
+
+            <p className="mt-3 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+              <strong>There is no upgrade to sell.</strong> {rep.hardware.noLadder} We do not fit
+              Blum on any line — if you see it on a printed field card or an older brochure, that
+              material is stale.
             </p>
           </section>
 
           <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
             <h2 className="mb-2 text-body font-semibold text-luxury-gray-900">Closets</h2>
             <p className="text-body-sm text-luxury-gray-700">
-              Everyday → Wardrobe → Dressing Room. Same ladder logic. Cabinet-grade construction,
-              same materials as the kitchens. Half overlay, so two units can share a panel.
+              {rep.closets.ladder.join(' → ')}. Same ladder logic, built to cabinet standards in the
+              same plant. {rep.closets.overlay}
+            </p>
+            <p className="mt-3 rounded-lg border-l-4 border-primary bg-primary/5 p-3 text-body font-medium text-luxury-gray-900">
+              {rep.closets.sayThis}
+            </p>
+            <p className="mt-3 text-body-sm text-luxury-gray-700">{rep.closets.core}</p>
+            <p className="mt-2 text-body-sm text-luxury-gray-700">{rep.closets.plywoodOption}</p>
+            <p className="mt-3 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+              <strong>Never:</strong> {rep.closets.neverSay} The old line — &ldquo;same materials as
+              the kitchens&rdquo; — is retired, and it was on the printed field card.
             </p>
           </section>
 
@@ -142,6 +195,49 @@ const Product = () => {
               />
             ))}
           </section>
+        </div>
+      )}
+
+      {tab === 'openings' && (
+        <div className="space-y-4">
+          <p className="text-body-sm text-luxury-gray-600">
+            Four ways a door opens. {rep.hardwareFinishes}.
+          </p>
+          {rep.openings.map((opening) => (
+            <article
+              key={opening.id}
+              id={opening.id}
+              className="scroll-mt-32 rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm"
+            >
+              <h2 className="font-semibold text-luxury-gray-900">{opening.name}</h2>
+              <p className="mt-1 text-body-sm text-luxury-gray-700">{opening.what}</p>
+              {opening.caution && (
+                <p className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+                  <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                  <span>{opening.caution}</span>
+                </p>
+              )}
+            </article>
+          ))}
+
+          <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
+            <h2 className="mb-2 text-body font-semibold text-luxury-gray-900">Accessories</h2>
+            <p className="text-body-sm text-luxury-gray-700">{rep.accessories}</p>
+            <p className="mt-3 rounded-lg bg-luxury-beige p-3 text-body-sm text-luxury-gray-800">
+              {rep.accessoriesNote}
+            </p>
+          </section>
+        </div>
+      )}
+
+      {tab === 'framed' && (
+        <div className="space-y-4">
+          {framedDoc && (
+            <DocView doc={framedDoc} className="rounded-xl bg-white p-5 shadow-luxury-sm" />
+          )}
+          {framedAnswers.map((entry) => (
+            <AnswerCard key={entry.id} entry={entry} neverSay={resolveNeverSay(entry.neverSayIds)} />
+          ))}
         </div>
       )}
 

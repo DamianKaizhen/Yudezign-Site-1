@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CalendarClock, PlayCircle, ShieldAlert } from 'lucide-react';
+import { ArrowRight, BookOpenCheck, CalendarClock, PlayCircle, ShieldAlert } from 'lucide-react';
 
 import { usePortal } from '../../components/portal/portalContext';
 import { sectionsForRole } from '../../components/portal/sections';
@@ -32,6 +32,7 @@ const StartHere = () => {
 
   const sections = sectionsForRole(role).filter((s) => s.to !== '/sales');
   const startVideo = rep.library.videos[0];
+  const deck = rep.library.training[0];
 
   return (
     <div className="space-y-8">
@@ -120,6 +121,24 @@ const StartHere = () => {
             </p>
           </Link>
         </div>
+
+        {deck && (
+          <a
+            href={deck.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex items-start gap-3 rounded-xl border-l-4 border-primary bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury"
+          >
+            <BookOpenCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                Start with this
+              </p>
+              <p className="mt-0.5 font-semibold text-luxury-gray-900">{deck.label}</p>
+              <p className="mt-1 text-body-sm text-luxury-gray-600">{deck.note}</p>
+            </div>
+          </a>
+        )}
 
         {startVideo && (
           <a

@@ -102,19 +102,37 @@ export interface QualifyingQuestion {
   listenFor?: string[];
 }
 
+/**
+ * A product line.
+ *
+ * No `hinge` or `slide` field, deliberately. Answer Key v1.1 ruled that the
+ * hardware does not ladder — DTC hinges and KV 8450FM slides on all four lines
+ * — so per-line hardware columns invited exactly the mistake they were meant to
+ * prevent. See `hardwareStatement` in product.ts.
+ *
+ * What actually separates the lines is the door surface and the finish family.
+ */
 export interface ProductLine {
   id: string;
   name: string;
+  /** value | mid | mid-high | high */
+  tier: string;
   positioning: string;
+  whereItFits: string;
   doors: string;
-  slide: string;
+  /** Finish collections carried on this line. */
+  collections: string;
+  /** Décor count for those collections. The four sum to 142. */
+  decors: number;
   bestFor: string[];
 }
-/**
- * No `hinge` field, deliberately. Hinges are DTC on every line, so a per-line
- * column invited exactly the mistake it was meant to prevent — see
- * `hardwareStatement` in product.ts.
- */
+
+export interface OpeningStyle {
+  id: string;
+  name: string;
+  what: string;
+  caution?: string;
+}
 
 export interface DimensionRow {
   id: string;
@@ -217,6 +235,8 @@ export interface BoothContent {
 export interface LibraryContent {
   /** The canon rule about third-party videos. Lives here, not in the UI. */
   warning: string;
+  /** The product-knowledge deck and its printable handout. */
+  training: ContentLink[];
   videos: ContentLink[];
   documents: ContentLink[];
   siteLinks: ContentLink[];
@@ -281,8 +301,30 @@ export interface RepContent {
   objections: Objection[];
   qualifying: QualifyingQuestion[];
   productLines: ProductLine[];
-  /** Hinges/slides/partners, stated once because hinges do not vary by line. */
-  hardware: { hinges: string; slides: string; partners: string };
+  /** The sentence the whole range hangs on. */
+  sameBoxSentence: string;
+  /** Hardware, stated once because it genuinely does not vary between lines. */
+  hardware: {
+    hinges: string;
+    slides: string;
+    softClose: string;
+    partners: string;
+    noLadder: string;
+    sixWay: string;
+    sixWayNote: string;
+  };
+  openings: OpeningStyle[];
+  hardwareFinishes: string;
+  accessories: string;
+  accessoriesNote: string;
+  closets: {
+    ladder: string[];
+    sayThis: string;
+    core: string;
+    plywoodOption: string;
+    neverSay: string;
+    overlay: string;
+  };
   dimensions: DimensionRow[];
   strategy: StrategyContent;
   quoteRules: string[];
