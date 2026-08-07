@@ -28,10 +28,12 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# Block admin pages from all crawlers
+# Block admin and the private sales portal from all crawlers
 User-agent: *
 Disallow: /admin/
 Disallow: /admin/*
+Disallow: /sales
+Disallow: /sales/*
 
 # Sitemap location
 Sitemap: https://www.yudezign.com/sitemap.xml

@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Analytics } from '@vercel/analytics/react';
@@ -61,6 +62,11 @@ import BathroomVanityGuide from './pages/blog/posts/BathroomVanityGuide';
 import CabinetHardwareGuide from './pages/blog/posts/CabinetHardwareGuide';
 import ClosetDesignGuide from './pages/blog/posts/ClosetDesignGuide';
 
+// The sales rep portal is the one route that is code-split. Its content is
+// served per-role from /api/sales/content, and its UI has no business in the
+// bundle every public visitor downloads.
+const PortalRoutes = lazy(() => import('./pages/portal/PortalRoutes'));
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -71,6 +77,14 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// Shown while the portal chunk downloads. Matches the portal's own shell so it
+// doesn't flash the marketing palette.
+const PortalLoading = () => (
+  <div className="flex min-h-screen items-center justify-center bg-luxury-cream">
+    <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+  </div>
+);
 
 // Layout wrapper for public pages with navigation and footer
 const PublicLayout = ({ children }: { children: React.ReactNode }) => (
@@ -111,6 +125,18 @@ function App() {
           <Route path="/admin/team/:id" element={<TeamMemberForm />} />
           <Route path="/admin/settings" element={<SiteSettings />} />
           <Route path="/admin/sample-images" element={<SampleImages />} />
+
+          {/* Sales Rep Portal - No Navigation/Footer, own shell.
+              Lazily loaded so public visitors never download it, and nested
+              (inside PortalRoutes) so the shell survives tab changes. */}
+          <Route
+            path="/sales/*"
+            element={
+              <Suspense fallback={<PortalLoading />}>
+                <PortalRoutes />
+              </Suspense>
+            }
+          />
 
           {/* Public Routes - With Navigation/Footer */}
           <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />

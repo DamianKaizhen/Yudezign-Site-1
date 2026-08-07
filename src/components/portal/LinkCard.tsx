@@ -1,0 +1,74 @@
+import { Link } from 'react-router-dom';
+import { AlertTriangle, ExternalLink } from 'lucide-react';
+
+import type { ContentLink } from '../../types/salesPortal';
+
+const KIND_LABEL: Record<ContentLink['kind'], string> = {
+  video: 'Video',
+  doc: 'Document',
+  drive: 'Drive folder',
+  app: 'App',
+  site: 'On our site',
+  portal: 'In this portal',
+};
+
+/**
+ * A card for anything that points somewhere else — a training video, a Drive
+ * folder, an App Store listing, or a page on the public site.
+ *
+ * `caution` gets loud treatment. One of the ten training videos demonstrates
+ * rail-and-stile shaker, which is precisely what we do NOT build, and a rep who
+ * watches it without that flag learns the wrong thing confidently.
+ */
+const LinkCard = ({ link }: { link: ContentLink }) => {
+  const isInternal = link.href.startsWith('/');
+
+  const body = (
+    <>
+      <div className="mb-1 flex items-center gap-2">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-luxury-gray-400">
+          {KIND_LABEL[link.kind]}
+        </span>
+        {link.duration && (
+          <span className="text-[10px] text-luxury-gray-400">· {link.duration}</span>
+        )}
+      </div>
+
+      <p className="flex items-start gap-1.5 text-body-sm font-semibold leading-snug text-luxury-gray-900">
+        <span>{link.label}</span>
+        {!isInternal && (
+          <ExternalLink
+            className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-luxury-gray-400"
+            aria-hidden="true"
+          />
+        )}
+      </p>
+
+      {link.note && (
+        <p className="mt-2 text-body-sm leading-relaxed text-luxury-gray-600">{link.note}</p>
+      )}
+
+      {link.caution && (
+        <p className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+          <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+          <span>{link.caution}</span>
+        </p>
+      )}
+    </>
+  );
+
+  const shell =
+    'block rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury';
+
+  return isInternal ? (
+    <Link to={link.href} className={shell}>
+      {body}
+    </Link>
+  ) : (
+    <a href={link.href} target="_blank" rel="noopener noreferrer" className={shell}>
+      {body}
+    </a>
+  );
+};
+
+export default LinkCard;

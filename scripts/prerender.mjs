@@ -49,7 +49,9 @@ function routesFromSitemap() {
         })
         .filter((p) => typeof p === 'string')
         .map((p) => (p !== '/' && p.endsWith('/') ? p.slice(0, -1) : p))
-        .filter((p) => !p.startsWith('/admin'))
+        // Private routes are never prerendered. Neither appears in sitemap.xml
+        // today, so this is belt-and-braces against someone adding one.
+        .filter((p) => !p.startsWith('/admin') && !p.startsWith('/sales'))
     ),
   ];
 }

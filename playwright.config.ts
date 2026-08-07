@@ -60,11 +60,20 @@ export default defineConfig({
     },
   ],
 
-  // Run local dev server before starting tests
+  // Run local dev server before starting tests.
+  //
+  // `vercel dev`, not `npm run dev`. Plain Vite serves the SPA but not the
+  // functions under api/, so every request to /api/* falls through the
+  // vercel.json rewrite and returns index.html. That silently broke the admin
+  // suite too: tests/e2e/auth.setup.ts POSTs to /api/admin/auth and could never
+  // have got a token back under Vite alone.
+  //
+  // The Vercel CLI is not a dependency of this repo — npx will fetch it, which
+  // is why the timeout is generous.
   webServer: {
-    command: 'npm run dev',
+    command: 'npx vercel dev --listen 5173 --yes',
     url: 'http://localhost:5173',
     reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    timeout: 180 * 1000,
   },
 });

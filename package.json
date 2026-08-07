@@ -5,12 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "dev:api": "vercel dev --listen 5173",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/check-bundle-leak.mjs",
     "build:spa": "tsc -b && vite build",
     "prerender": "node scripts/prerender.mjs",
+    "type-check": "tsc -b",
+    "verify:bundle": "node scripts/check-bundle-leak.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "playwright test",
+    "test:unit": "esbuild tests/unit/*.test.ts --bundle --platform=node --format=esm --packages=external --outdir=node_modules/.tmp/tests --out-extension:.js=.mjs --log-level=warning && node --test node_modules/.tmp/tests/",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report playwright-report"

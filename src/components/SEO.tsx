@@ -11,6 +11,8 @@ interface SEOProps {
   ogImage?: string;
   type?: 'website' | 'article' | 'place' | 'service';
   structuredData?: object | object[] | null;
+  /** Keep this page out of search results. Used by the private sales portal. */
+  noindex?: boolean;
   // Article-specific props (for blog posts)
   article?: {
     publishedTime?: string;
@@ -32,6 +34,7 @@ const SEO = ({
   type = 'website',
   structuredData,
   article,
+  noindex = false,
 }: SEOProps) => {
   const siteTitle = title.includes('YuDezign') ? title : `${title} | YuDezign`;
   // Use ogImage if provided, otherwise fall back to image prop
@@ -99,7 +102,7 @@ const SEO = ({
     updateMetaTag('twitter:image', effectiveImage, true);
 
     // Additional SEO tags
-    updateMetaTag('robots', 'index, follow');
+    updateMetaTag('robots', noindex ? 'noindex, nofollow, noarchive' : 'index, follow');
     updateMetaTag('language', 'English');
     updateMetaTag('author', 'YuDezign');
 
@@ -139,7 +142,7 @@ const SEO = ({
       script.textContent = JSON.stringify(schemaContent);
       document.head.appendChild(script);
     }
-  }, [siteTitle, description, keywords, effectiveImage, url, canonical, type, structuredData, article]);
+  }, [siteTitle, description, keywords, effectiveImage, url, canonical, type, structuredData, article, noindex]);
 
   return null; // This component doesn't render anything
 };
