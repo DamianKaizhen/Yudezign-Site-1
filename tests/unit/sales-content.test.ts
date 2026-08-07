@@ -84,6 +84,57 @@ describe('answer key integrity', () => {
   });
 });
 
+describe('hardware facts', () => {
+  // Corrected 2026-08-07: we do not use Blum. It had been stated on three of
+  // the four lines, sourced from the 2026 spec of record, and it reached the
+  // printed handbook and field card before anyone caught it. This test is the
+  // guard against it coming back the next time someone syncs from that spec.
+  const BLUM = /\bblum\b/i;
+
+  it('names no hinge brand other than DTC in customer-facing copy', () => {
+    for (const line of repContent.productLines) {
+      const text = [line.positioning, line.doors, line.slide, ...line.bestFor].join(' ');
+      assert.ok(!BLUM.test(text), `product line "${line.name}" still mentions Blum`);
+    }
+
+    assert.ok(!BLUM.test(repContent.hardware.hinges), 'hardware.hinges mentions Blum');
+    assert.ok(!BLUM.test(repContent.hardware.slides), 'hardware.slides mentions Blum');
+    assert.ok(!BLUM.test(repContent.hardware.partners), 'hardware.partners still lists Blum');
+  });
+
+  it('states DTC as the hinge across every line', () => {
+    assert.match(repContent.hardware.hinges, /DTC/);
+    assert.match(repContent.hardware.hinges, /every line/i);
+  });
+
+  it('mentions Blum only where it is being warned against', () => {
+    // Two places may legitimately say it: the never-say row and the coaching
+    // note on the hardware answer. Anywhere else is a leak of the old claim.
+    const offenders: string[] = [];
+
+    for (const entry of repContent.answerKey) {
+      if (BLUM.test(entry.answer)) offenders.push(`${entry.id}.answer`);
+    }
+    for (const objection of repContent.objections) {
+      if (BLUM.test(objection.response.join(' '))) offenders.push(`${objection.id}.response`);
+    }
+    for (const pitch of repContent.pitches) {
+      if (BLUM.test(pitch.script.join(' '))) offenders.push(`${pitch.id}.script`);
+    }
+
+    assert.deepEqual(offenders, [], `Blum still appears in: ${offenders.join(', ')}`);
+  });
+
+  it('keeps blum searchable so a rep who remembers it finds the correction', () => {
+    const hardwareAnswer = repContent.answerKey.find((entry) => entry.id === 'ak-03-02');
+    assert.ok(hardwareAnswer, 'ak-03-02 is missing');
+    assert.ok(
+      (hardwareAnswer.aliases ?? []).some((alias) => BLUM.test(alias)),
+      'searching "blum" must surface the hardware correction'
+    );
+  });
+});
+
 describe('cross-references', () => {
   it('resolves every objection answerKeyIds and neverSayIds', () => {
     const answerIds = new Set(repContent.answerKey.map((entry) => entry.id));

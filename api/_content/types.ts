@@ -107,10 +107,14 @@ export interface ProductLine {
   name: string;
   positioning: string;
   doors: string;
-  hinge: string;
   slide: string;
   bestFor: string[];
 }
+/**
+ * No `hinge` field, deliberately. Hinges are DTC on every line, so a per-line
+ * column invited exactly the mistake it was meant to prevent — see
+ * `hardwareStatement` in product.ts.
+ */
 
 export interface DimensionRow {
   id: string;
@@ -277,6 +281,8 @@ export interface RepContent {
   objections: Objection[];
   qualifying: QualifyingQuestion[];
   productLines: ProductLine[];
+  /** Hinges/slides/partners, stated once because hinges do not vary by line. */
+  hardware: { hinges: string; slides: string; partners: string };
   dimensions: DimensionRow[];
   strategy: StrategyContent;
   quoteRules: string[];

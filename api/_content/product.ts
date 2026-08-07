@@ -15,7 +15,6 @@ export const productLines: ProductLine[] = [
     name: 'Essential',
     positioning: 'The widest palette, at the working price.',
     doors: 'Woodgrain & solid TFL',
-    hinge: 'DTC soft-close',
     slide: 'DTC soft-close undermount',
     bestFor: ['Rentals', 'Spec homes', 'Hardworking family spaces'],
   },
@@ -24,7 +23,6 @@ export const productLines: ProductLine[] = [
     name: 'Signature',
     positioning: 'European decors, in the balanced middle.',
     doors: 'European TFL, deep textures',
-    hinge: 'Blum',
     slide: 'KV GS4270 full-extension',
     bestFor: ['Warm kitchens', 'Dens'],
   },
@@ -33,7 +31,6 @@ export const productLines: ProductLine[] = [
     name: 'Reserve',
     positioning: 'Soft-touch surfaces, handleless lines.',
     doors: 'Super-matte, soft-touch, high gloss',
-    hinge: 'Blum',
     slide: 'KV 8450FM',
     bestFor: ['Modern builds'],
   },
@@ -42,11 +39,27 @@ export const productLines: ProductLine[] = [
     name: 'Atelier',
     positioning: 'Lacquered panels and statement builds.',
     doors: 'Lacquered high gloss & perfect matt',
-    hinge: 'Blum',
     slide: 'KV 8450FM',
     bestFor: ['Flagship kitchens', 'Hospitality'],
   },
 ];
+
+/**
+ * Hinges, stated once because they do not vary.
+ *
+ * CORRECTED 2026-08-07 by Damian: we do not use Blum. Hinges are DTC on every
+ * line. The 2026 spec of record listed Blum on Signature, Reserve and Atelier,
+ * and that made it into ANSWER-KEY.md §3, the bound Rep Handbook and the
+ * laminated field card — so a rep may well have read it. Naming Blum is now
+ * itself a never-say (ns-hardware-brand), which is the only way to unwind a
+ * number that has already been printed.
+ */
+export const hardwareStatement = {
+  hinges: 'DTC soft-close hinges, on every line. There is no hinge upgrade between lines.',
+  slides:
+    'Full-extension, soft-close, hundred-pound ball-bearing. The slide is the part that changes as you move up the lines.',
+  partners: 'Häfele, Würth and DTC.',
+};
 
 export const closetLines = {
   ladder: ['Everyday', 'Wardrobe', 'Dressing Room'],

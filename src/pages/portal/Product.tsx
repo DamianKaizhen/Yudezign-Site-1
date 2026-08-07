@@ -15,11 +15,12 @@ const TABS = [
   { id: 'build', label: "What we don't build" },
 ];
 
+// No Hinges column: they are DTC on every line, so a per-line column implied a
+// difference that does not exist. Stated once below the table instead.
 const LINE_COLUMNS: TableColumn<ProductLine>[] = [
   { key: 'name', header: 'Line', render: (row) => row.name, isRowTitle: true },
   { key: 'positioning', header: 'Positioning', render: (row) => row.positioning },
   { key: 'doors', header: 'Doors', render: (row) => row.doors },
-  { key: 'hinge', header: 'Hinges', render: (row) => row.hinge },
   { key: 'slide', header: 'Slides', render: (row) => row.slide },
   { key: 'bestFor', header: 'Best for', render: (row) => row.bestFor.join(' · ') },
 ];
@@ -91,6 +92,37 @@ const Product = () => {
             rowKey={(row) => row.id}
             caption="The four cabinet lines"
           />
+
+          <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
+            <h2 className="mb-3 text-body font-semibold text-luxury-gray-900">Hardware</h2>
+            <dl className="space-y-3">
+              <div>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                  Hinges
+                </dt>
+                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">{rep.hardware.hinges}</dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                  Slides
+                </dt>
+                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">{rep.hardware.slides}</dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                  Supply partners
+                </dt>
+                <dd className="mt-0.5 text-body-sm text-luxury-gray-800">
+                  {rep.hardware.partners}
+                </dd>
+              </div>
+            </dl>
+            <p className="mt-4 rounded-lg bg-red-50 p-3 text-body-sm text-red-900">
+              <strong>We do not use Blum.</strong> Older material — including the printed handbook
+              and field card — lists Blum on Signature, Reserve and Atelier. That is wrong. If a
+              customer quotes it back at you, the hinges are DTC.
+            </p>
+          </section>
 
           <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
             <h2 className="mb-2 text-body font-semibold text-luxury-gray-900">Closets</h2>

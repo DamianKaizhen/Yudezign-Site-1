@@ -165,9 +165,10 @@ export const neverSay: NeverSayEntry[] = [
   },
   {
     id: 'ns-hardware-brand',
-    neverSay: '"Hettich hardware as standard"',
-    sayInstead: "Name the line's actual hardware (§3)",
-    why: 'Contradicts the 2026 spec of record, which is DTC on Essential and Blum above it',
+    neverSay:
+      'Any hinge brand other than DTC — including "Hettich as standard" and "Blum on the upper lines"',
+    sayInstead: '"DTC soft-close hinges, on every line."',
+    why: 'Both have been printed in our own material and both are wrong. Corrected 2026-08-07: hinges are DTC across all four lines. If your handbook or field card says Blum, the card is stale',
   },
   {
     id: 'ns-solid-wood-shaker',
@@ -351,11 +352,16 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'the-lines',
     question: 'What hardware?',
     answer:
-      "Name the line's hinge and slide from the lines table. Our partners are Häfele, Würth, Blum and DTC.",
+      '"DTC soft-close hinges, standard on every line. Slides are full-extension, soft-close, hundred-pound ball-bearing — that\'s the part that changes as you move up the lines."',
     status: 'ruled',
-    source: 'product-lines.json',
+    source:
+      'Corrected 2026-08-07 by Damian. Supersedes the 2026 spec of record, which listed Blum on Signature, Reserve and Atelier',
     neverSayIds: ['ns-hardware-brand'],
-    aliases: ['hardware', 'hinges', 'blum', 'dtc', 'hafele'],
+    // "blum" stays in the aliases on purpose: a rep who half-remembers it from
+    // the printed handbook must be able to search it and land on the correction.
+    aliases: ['hardware', 'hinges', 'blum', 'dtc', 'hafele', 'hettich', 'brand'],
+    repNote:
+      'We do not use Blum. Hinges are DTC across all four lines, so there is no hardware upgrade to sell between them. Supply partners are Häfele, Würth and DTC. If a customer read Blum in an older brochure or you see it on a printed field card, that material is stale.',
     links: [{ label: 'The four lines', href: '/sales/products?t=lines', kind: 'portal' }],
   },
   {

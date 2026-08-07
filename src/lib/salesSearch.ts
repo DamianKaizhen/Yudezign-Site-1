@@ -89,7 +89,7 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
       id: line.id,
       kind: 'product',
       title: line.name,
-      body: [line.positioning, line.doors, line.hinge, line.slide, ...line.bestFor].join(' · '),
+      body: [line.positioning, line.doors, line.slide, ...line.bestFor].join(' · '),
       href: `/sales/products?t=lines#${line.id}`,
       kicker: 'LINE',
     });
