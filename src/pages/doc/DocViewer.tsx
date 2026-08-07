@@ -1,26 +1,33 @@
-import { useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, Check, Download, ExternalLink, Share2 } from 'lucide-react';
+import { ArrowLeft, Check, Loader2, Share2 } from 'lucide-react';
 
 import { isViewableDocument } from '../../lib/portalLinks';
+
+/** PDF.js is ~150 KB gzipped. Only fetched when the document is a PDF. */
+const PdfDocument = lazy(() => import('./PdfDocument'));
 
 /**
  * In-app document viewer.
  *
  * Exists because of what an installed web app takes away. manifest.json
  * declares `display: standalone`, so once the site is on a home screen there is
- * no browser chrome — opening a PDF left the reader stuck with no back button
- * to leave it and no share menu, which on a phone is also how you reach Print,
- * Save to Files and AirDrop.
+ * no browser chrome — no back button to leave a document with, and no share
+ * menu, which on a phone is also how you reach Print and Save to Files.
  *
- * Public rather than portal-only, because the same trap applies to the
- * brochures on /downloads.
+ * Public rather than portal-only, because the brochures on /downloads are the
+ * same one-way door.
  */
+
+const isPdf = (src: string) => /\.pdf($|[?#])/i.test(src);
 
 const DocViewer = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const [copied, setCopied] = useState(false);
+
+  const [share, setShare] = useState<'idle' | 'working' | 'copied'>('idle');
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   const src = params.get('src');
   const title = params.get('title') ?? 'Document';
@@ -34,23 +41,52 @@ const DocViewer = () => {
     else navigate(fallback);
   }, [navigate, fallback]);
 
-  const share = useCallback(async () => {
+  /**
+   * Share the FILE, not the URL.
+   *
+   * Sharing a url opens a sheet whose only real action is "open this link",
+   * and following it navigates the installed app away from itself into a
+   * chrome-less document — straight back into the dead end this screen exists
+   * to remove. Handing iOS the actual bytes gives the genuine sheet instead,
+   * the one with Print, Save to Files, Mail and AirDrop on it.
+   */
+  const onShare = useCallback(async () => {
     if (!src) return;
     const url = new URL(src, window.location.origin).toString();
+    const filename = decodeURIComponent(src.split('/').pop() || 'document.pdf');
+
+    setShare('working');
+    try {
+      const response = await fetch(src);
+      if (response.ok) {
+        const blob = await response.blob();
+        const file = new File([blob], filename, {
+          type: blob.type || 'application/pdf',
+        });
+        if (navigator.canShare?.({ files: [file] })) {
+          await navigator.share({ files: [file], title });
+          setShare('idle');
+          return;
+        }
+      }
+    } catch {
+      // Offline, or the share was dismissed. Fall through to the next option.
+    }
 
     try {
       if (navigator.share) {
-        // On iOS this is the same sheet as Safari's — which is where Print,
-        // Save to Files and AirDrop live.
         await navigator.share({ title, url });
+        setShare('idle');
         return;
       }
       await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setShare('copied');
+      setTimeout(() => setShare('idle'), 2000);
+      return;
     } catch {
-      // A cancelled share sheet rejects. Nothing to report.
+      // A dismissed share sheet rejects. Nothing to report.
     }
+    setShare('idle');
   }, [src, title]);
 
   if (!isViewableDocument(src)) {
@@ -59,7 +95,7 @@ const DocViewer = () => {
 
   return (
     <div className="fixed inset-0 z-[70] flex flex-col bg-luxury-gray-900">
-      <header className="flex items-center gap-1 bg-primary px-2 py-2 pt-[max(0.5rem,env(safe-area-inset-top))] text-white">
+      <header className="flex flex-shrink-0 items-center gap-1 bg-primary px-2 py-2 pt-[max(0.5rem,env(safe-area-inset-top))] text-white">
         <button
           type="button"
           onClick={goBack}
@@ -69,52 +105,75 @@ const DocViewer = () => {
           Back
         </button>
 
-        <p className="mx-1 flex-1 truncate text-center text-body-sm font-medium text-white/90">
-          {title}
-        </p>
+        <div className="mx-1 min-w-0 flex-1 text-center">
+          <p className="truncate text-body-sm font-medium text-white/90">{title}</p>
+          {totalPages > 0 && (
+            <p className="text-[11px] tabular-nums text-white/50">
+              Page {page} of {totalPages}
+            </p>
+          )}
+        </div>
 
         <button
           type="button"
-          onClick={share}
+          onClick={onShare}
+          disabled={share === 'working'}
           aria-label="Share, print or save"
-          className="flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
+          className="flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-white/10 disabled:opacity-60"
         >
-          {copied ? (
-            <Check className="h-5 w-5 text-accent" aria-hidden="true" />
-          ) : (
-            <Share2 className="h-5 w-5" aria-hidden="true" />
-          )}
+          {share === 'working' && <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />}
+          {share === 'copied' && <Check className="h-5 w-5 text-accent" aria-hidden="true" />}
+          {share === 'idle' && <Share2 className="h-5 w-5" aria-hidden="true" />}
         </button>
-
-        <a
-          href={src}
-          download
-          aria-label="Download"
-          className="flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
-        >
-          <Download className="h-5 w-5" aria-hidden="true" />
-        </a>
-
-        <a
-          href={src}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open in browser"
-          className="flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
-        >
-          <ExternalLink className="h-5 w-5" aria-hidden="true" />
-        </a>
       </header>
 
-      {/* An iframe renders PDFs through the platform viewer and HTML directly,
-          so one element covers both the handouts and the deck. */}
-      <iframe src={src} title={title} className="min-h-0 flex-1 border-0 bg-white" />
+      {isPdf(src) ? (
+        <Suspense
+          fallback={
+            <div className="flex flex-1 items-center justify-center">
+              <div className="h-10 w-10 animate-spin rounded-full border-4 border-white/20 border-t-white/70" />
+            </div>
+          }
+        >
+          <PdfDocument src={src} onPageChange={setPage} onTotalPages={setTotalPages} />
+        </Suspense>
+      ) : (
+        <HtmlDocument src={src} title={title} />
+      )}
 
-      <p className="bg-luxury-gray-900 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center text-[11px] text-white/50">
+      <p className="flex-shrink-0 bg-luxury-gray-900 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center text-[11px] text-white/50">
         Share opens your phone&rsquo;s sheet — that is where Print and Save to Files live.
       </p>
     </div>
   );
 };
+
+/**
+ * The training deck, which is a 16:9 HTML slide show.
+ *
+ * Its own scaler picks `min(width / 1280, height / 720)`, so handing it the
+ * full portrait frame makes it solve for the width and leave the slide as a
+ * squashed strip. Giving it a 16:9 box instead lets that scaler do the right
+ * thing. `min()` letterboxes in portrait and pillarboxes in landscape without
+ * needing to measure anything — the two clamps can't both bind at once.
+ */
+const HtmlDocument = ({ src, title }: { src: string; title: string }) => (
+  <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 overflow-hidden p-2">
+    <iframe
+      src={src}
+      title={title}
+      className="border-0 bg-white"
+      style={{
+        width: 'min(100%, calc((100vh - 8rem) * 16 / 9))',
+        aspectRatio: '16 / 9',
+      }}
+    />
+    {/* A 16:9 deck held upright on a phone is a 210px strip with a screen of
+        dead space under it. Correct, but hard to read — so say the useful bit. */}
+    <p className="text-body-sm text-white/40 portrait:block landscape:hidden md:hidden">
+      Turn your phone sideways for a full-screen view.
+    </p>
+  </div>
+);
 
 export default DocViewer;
