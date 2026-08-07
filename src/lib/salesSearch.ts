@@ -152,20 +152,24 @@ export function buildSearchIndex(rep: RepContent): SearchDoc[] {
     });
   }
 
-  const allLinks = [
-    ...rep.library.videos,
-    ...rep.library.documents,
-    ...rep.library.siteLinks,
+  // Sources are a primary reason to open this portal, so a search result lands
+  // on the right sub-tab rather than the default one.
+  const linkGroups = [
+    { tab: 'videos', links: rep.library.videos },
+    { tab: 'documents', links: rep.library.documents },
+    { tab: 'site', links: rep.library.siteLinks },
   ];
-  for (const link of allLinks) {
-    docs.push({
-      id: `link-${link.href}`,
-      kind: 'link',
-      title: link.label,
-      body: [link.note, link.caution].filter(Boolean).join(' '),
-      href: `/sales/library`,
-      kicker: link.kind.toUpperCase(),
-    });
+  for (const group of linkGroups) {
+    for (const link of group.links) {
+      docs.push({
+        id: `link-${link.href}`,
+        kind: 'link',
+        title: link.label,
+        body: [link.note, link.caution].filter(Boolean).join(' '),
+        href: `/sales/library?t=${group.tab}`,
+        kicker: link.kind.toUpperCase(),
+      });
+    }
   }
 
   for (const note of rep.notes) {

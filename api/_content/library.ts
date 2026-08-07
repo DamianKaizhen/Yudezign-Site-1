@@ -1,18 +1,21 @@
-import type { ContentLink, CurriculumModule, LibraryContent, PortalDoc } from './types.js';
+import type { ContentLink, LibraryContent } from './types.js';
 
 /**
- * Everything to watch, read and bookmark — from 10_ONBOARDING/STUDY-LINKS.md
- * and CURRICULUM.md.
+ * Sources — everything to watch, read and send, from 10_ONBOARDING/STUDY-LINKS.md.
  *
  * The videos are THIRD-PARTY explainers, chosen because they show a concept
  * clearly, not because they show how we work. Several demonstrate methods we
- * deliberately don't use, and where that is true it is flagged — the flag is the
- * most useful part, because knowing what we don't do is half of knowing what we
- * do. If a video contradicts the Answer Key, the Answer Key wins.
+ * deliberately don't use, and where that is true it is flagged — the flag is
+ * the most useful part, because knowing what we don't do is half of knowing
+ * what we do. If a video contradicts the Answer Key, the Answer Key wins.
+ *
+ * The training curriculum that used to live here was removed on 2026-08-07: it
+ * was pinned to the Aug 5-10 onboarding week and went stale immediately.
+ * Training is being handled outside this portal.
  */
 
-export const videoWarning =
-  'These are third-party explainers, chosen because they show a concept clearly — not because they show how we work. If a video contradicts the Answer Key, the Answer Key wins: it is traced to our own documents and these are traced to somebody\'s YouTube channel.';
+const videoWarning =
+  "These are third-party explainers, chosen because they show a concept clearly — not because they show how we work. Several demonstrate methods we deliberately don't use, and where that is true it is flagged. If a video contradicts the Answer Key, the Answer Key wins: it is traced to our own documents and these are traced to somebody's YouTube channel.";
 
 const videos: ContentLink[] = [
   {
@@ -94,16 +97,22 @@ const documents: ContentLink[] = [
       'Sharing a price list is not the same as quoting a job. A price list lets a contractor budget. A JOB gets a versioned quote from the quote team, off a Discovery Sheet. Never build a job price off the sheet yourself.',
   },
   {
+    label: 'Finishes catalog (PDF)',
+    href: '/YuDeZign_Finishes_Catalog.pdf',
+    kind: 'doc',
+    note: 'The full finish library, on our own site. "Over thirty" is the number you say out loud — the catalog is much deeper, and the answer to "do you have X?" is "let me check the library and come back to you."',
+  },
+  {
     label: 'InstallAssistant — our app, free on iOS',
     href: 'https://apps.apple.com/us/app/installassistant/id6743378316',
     kind: 'app',
-    note: 'Every panel carries a QR sticker; scanning it shows a 3D model of the whole cabinet and exactly where that piece goes. Install it on your own phone before the show — it demos in fifteen seconds and answers "how hard is this to put together?" better than any sentence you could say.',
+    note: 'Every panel carries a QR sticker; scanning it shows a 3D model of the whole cabinet and exactly where that piece goes. Install it on your own phone — it demos in fifteen seconds and answers "how hard is this to put together?" better than any sentence you could say.',
   },
   {
     label: 'The product-study notes (Kortex)',
     href: 'https://app.kortex.co/public/document/448a57f5-6e56-4d6a-9e13-d3ab8a196bd8',
     kind: 'doc',
-    note: 'The original notes the study links expand. Same videos, plus the raw construction notes.',
+    note: 'The original construction notes these study links expand. Same videos, plus the raw notes behind most of the Answer Key product rulings.',
   },
 ];
 
@@ -121,159 +130,26 @@ const siteLinks: ContentLink[] = [
     kind: 'site',
     note: 'The booklet editions and companion guides, on the public site.',
   },
-  { label: 'Portfolio', href: '/portfolio', kind: 'site', note: 'Delivered work. Only ever cite delivered work as a reference.' },
-  { label: 'Pricing', href: '/pricing', kind: 'site', note: 'What the website publishes. Check this against the Answer Key design fee.' },
-  { label: 'KD Lite closet program', href: '/kdlite', kind: 'site' },
-  { label: 'FAQ', href: '/faq', kind: 'site' },
+  {
+    label: 'Portfolio',
+    href: '/portfolio',
+    kind: 'site',
+    note: 'Delivered work. Only ever cite delivered work as a reference.',
+  },
+  {
+    label: 'KD Lite closet program',
+    href: '/kdlite',
+    kind: 'site',
+    note: 'The closet ladder — Everyday, Wardrobe, Dressing Room.',
+  },
+  {
+    label: 'Pricing',
+    href: '/pricing',
+    kind: 'site',
+    note: 'What the website publishes. Worth reading before a customer quotes it back at you — see the note in Process → Reference.',
+  },
+  { label: 'FAQ', href: '/faq', kind: 'site', note: 'What a customer reads before they call you.' },
   { label: 'Contact', href: '/contact', kind: 'site' },
 ];
 
-const curriculum: CurriculumModule[] = [
-  {
-    id: 'cur-day1',
-    week: 'Wed Aug 5 — Day 1',
-    title: 'The product',
-    objectives: [
-      'Frameless vs framed, and why we only build frameless',
-      'The box: ¾″ plywood, cam-and-dowel, French cleat, soft-close standard',
-      'Doors: flat panel and shaker, both MDF-cored',
-      'Sheet goods, finishes and edge banding',
-      'The standard dimensions — memorise them',
-    ],
-    assessment: 'Homework: sketch a 12-foot L-shaped kitchen in stock sizes, name every box.',
-    links: videos.slice(0, 5),
-  },
-  {
-    id: 'cur-day2',
-    week: 'Thu Aug 6 — Day 2',
-    title: 'The market and the message',
-    objectives: [
-      'Who we sell to, and the 70/20/10 target mix',
-      'The five bulk lanes, ranked',
-      'The 30-second pitch and its four variants',
-      'The never-say list',
-    ],
-    assessment: 'Homework: twenty never-say flashcards, plus your own 30-second pitch for two segments.',
-  },
-  {
-    id: 'cur-day3',
-    week: 'Fri Aug 7 — Day 3',
-    title: 'The journey and the machine',
-    objectives: [
-      'The nine stages and four handoffs',
-      'The Discovery Sheet as the quote-request packet',
-      'KPIs and how you are measured',
-    ],
-    assessment:
-      'Homework: pair up, fill a Discovery Sheet on each other, run two practice records to Quoted.',
-  },
-  {
-    id: 'cur-day4',
-    week: 'Sat Aug 8 — Day 4',
-    title: 'Certification',
-    objectives: [
-      '09:00 written exam — 40 questions, 1 hour, closed book',
-      '10:15 the 30-second pitch to camera, until clean twice in a row with no notes',
-      '11:30 eight objection roleplays',
-      '13:30 three live cold calls off the call list',
-      '15:00 Discovery Sheet under time pressure',
-      '16:00 debrief, grades, booth assignments',
-    ],
-    assessment:
-      'Booth Certification is binary, not on the curve: 100% on the never-say section, AND the 30-second pitch delivered clean, twice, from memory. Fail either and you do not work the booth unsupervised.',
-  },
-  {
-    id: 'cur-day5',
-    week: 'Sun–Mon Aug 9–10',
-    title: 'Booth build at NRG',
-    objectives: ['Build the booth', 'Lead-card drill — 40 seconds a card', 'Final rehearsal'],
-  },
-  {
-    id: 'cur-w3',
-    week: 'Week 3 — Aug 17–21',
-    title: 'Measure certification',
-    objectives: [
-      'Two supervised measures, then one solo checked against a supervised re-measure',
-      'Quote-request quality',
-      'CRM hygiene audit',
-    ],
-    assessment: 'Required before any solo measure appointment.',
-  },
-  {
-    id: 'cur-w4',
-    week: 'Week 4 — Aug 24–28',
-    title: 'Bulk work',
-    objectives: [
-      'Apartment value-add, build-to-rent, production single-family',
-      'Reading a unit mix',
-      'The $55K medical building as the worked example',
-    ],
-    assessment: 'Gate: present one real bulk opportunity.',
-  },
-  {
-    id: 'cur-w5',
-    week: 'Week 5 — September',
-    title: 'Closets and vanities as their own sale',
-    objectives: [
-      'Half overlay and why closets use it',
-      'The three closet lines',
-      'The margin is in the organisers, not the box',
-    ],
-    assessment: 'Gate: quote one closet end to end.',
-  },
-  {
-    id: 'cur-w6',
-    week: 'Week 6 — September',
-    title: 'Contracts, change orders, negotiation, terms',
-    objectives: ['Full certification'],
-    assessment: 'Quota goes live October 1.',
-  },
-];
-
-export const library: LibraryContent = { videos, documents, siteLinks, curriculum };
-
-export const readingOrder = [
-  { when: 'Wed night', read: 'The Answer Key — cover to cover. The one that matters most.' },
-  { when: 'Thu night', read: 'Sales Strategy + What To Say, then the Day 1 videos.' },
-  {
-    when: 'Fri night',
-    read: 'Sales SOP + KPIs & Goals + Booth Playbook, then the Builder and Contractor booklet editions.',
-  },
-  {
-    when: 'Reference, not reading',
-    read: 'The finishes catalog · the four line flyers · the closets flyer.',
-  },
-];
-
-export const notTeaching: PortalDoc = {
-  id: 'not-teaching',
-  title: "What we're not teaching you, and why",
-  sections: [
-    {
-      heading: 'Competitor battlecards',
-      paragraphs: [
-        'No competitive intelligence exists anywhere in the company. Inventing it is worse than having none, because a rep would repeat it.',
-        'Instead every rep asks "what do you like about working with them?" and writes the answer down. In six weeks that is the first honest competitor picture this company has had.',
-      ],
-    },
-    {
-      heading: 'A full customer FAQ',
-      paragraphs: [
-        'It gets written in week 3, from the real questions nobody could answer at NRG. That will be a better document than anything we could have guessed at in advance — which is why you write down every question you get stuck on.',
-      ],
-    },
-    {
-      heading: 'All the finishes',
-      paragraphs: [
-        'Learn four line names and one sentence each. The décor library is a lookup, and the answer to "do you have X?" is "let me check the library and come back to you" — which is correct, fast, and gives you a reason to call.',
-      ],
-      callout: '"Over thirty" is the number you say out loud. The full library is much deeper.',
-    },
-    {
-      heading: 'Measure certification',
-      paragraphs: [
-        'Deferred to week 3. There is no time to teach it properly in a compressed week, and a bad measure costs far more than a missed week.',
-      ],
-    },
-  ],
-};
+export const library: LibraryContent = { warning: videoWarning, videos, documents, siteLinks };

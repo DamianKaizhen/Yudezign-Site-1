@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
 import { AlertTriangle, Check, X } from 'lucide-react';
 
 import type { DimensionRow, ProductLine } from '../../types/salesPortal';
@@ -6,13 +6,13 @@ import { usePortal } from '../../components/portal/portalContext';
 import { SubTabs } from '../../components/portal/PortalNav';
 import { useSubTab } from '../../lib/hooks/useSubTab';
 import ResponsiveTable, { type TableColumn } from '../../components/portal/ResponsiveTable';
-import LinkCard from '../../components/portal/LinkCard';
+import AnswerCard from '../../components/portal/AnswerCard';
 
 const TABS = [
   { id: 'lines', label: 'The four lines' },
+  { id: 'construction', label: 'Construction' },
   { id: 'dimensions', label: 'Dimensions' },
-  { id: 'build', label: 'What we build' },
-  { id: 'site', label: 'On our site' },
+  { id: 'build', label: "What we don't build" },
 ];
 
 const LINE_COLUMNS: TableColumn<ProductLine>[] = [
@@ -32,16 +32,41 @@ const DIMENSION_COLUMNS: TableColumn<DimensionRow>[] = [
   { key: 'note', header: 'Note', render: (row) => row.note ?? '—' },
 ];
 
+/**
+ * The product-knowledge hub — the portal's primary purpose.
+ *
+ * The Construction tab surfaces the Answer Key's own §2 and §3 rows rather than
+ * restating them, so there is exactly one wording for every product fact and it
+ * carries its source. Editing them in one place changes them everywhere.
+ */
 const Product = () => {
   const { rep } = usePortal();
   const tab = useSubTab('lines');
+
+  const constructionAnswers = useMemo(
+    () => rep.answerKey.filter((entry) => entry.sectionId === 'what-we-make'),
+    [rep.answerKey]
+  );
+  const lineAnswers = useMemo(
+    () => rep.answerKey.filter((entry) => entry.sectionId === 'the-lines'),
+    [rep.answerKey]
+  );
+  const neverSayById = useMemo(
+    () => new Map(rep.neverSay.map((row) => [row.id, row])),
+    [rep.neverSay]
+  );
+
+  const resolveNeverSay = (ids?: string[]) =>
+    (ids ?? [])
+      .map((id) => neverSayById.get(id))
+      .filter((row): row is NonNullable<typeof row> => Boolean(row));
 
   return (
     <div className="space-y-5">
       <header>
         <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Product</h1>
         <p className="mt-2 text-body-sm text-luxury-gray-600">
-          What we make, what we don&rsquo;t, and the numbers you memorise.
+          What we make, how it is built, and the numbers you memorise.
         </p>
       </header>
 
@@ -74,6 +99,29 @@ const Product = () => {
               same materials as the kitchens. Half overlay, so two units can share a panel.
             </p>
           </section>
+
+          <section className="space-y-4">
+            <h2 className="text-h4 font-medium text-luxury-gray-900">Hardware and finishes</h2>
+            {lineAnswers.map((entry) => (
+              <AnswerCard
+                key={entry.id}
+                entry={entry}
+                neverSay={resolveNeverSay(entry.neverSayIds)}
+              />
+            ))}
+          </section>
+        </div>
+      )}
+
+      {tab === 'construction' && (
+        <div className="space-y-4">
+          <p className="text-body-sm text-luxury-gray-600">
+            How the box is made, in the exact words that are cleared to say. Each row carries the
+            document it came from.
+          </p>
+          {constructionAnswers.map((entry) => (
+            <AnswerCard key={entry.id} entry={entry} neverSay={resolveNeverSay(entry.neverSayIds)} />
+          ))}
         </div>
       )}
 
@@ -138,26 +186,6 @@ const Product = () => {
               still no.
             </p>
           </section>
-        </div>
-      )}
-
-      {tab === 'site' && (
-        <div className="space-y-4">
-          <p className="text-body-sm text-luxury-gray-600">
-            Pages on the public site you can send a customer to, or open in front of them.
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {rep.library.siteLinks.map((link) => (
-              <LinkCard key={link.href} link={link} />
-            ))}
-          </div>
-          <p className="rounded-xl bg-white p-4 text-body-sm text-luxury-gray-600 shadow-luxury-sm">
-            The finish library at{' '}
-            <Link to="/finishes" className="font-medium text-primary hover:underline">
-              /finishes
-            </Link>{' '}
-            is where the booth QR points.
-          </p>
         </div>
       )}
     </div>

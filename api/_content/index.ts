@@ -26,7 +26,7 @@ import { dimensions, productLines, shakerDisclosure, weBuild, weDoNotBuild } fro
 import { strategy } from './strategy.js';
 import { kpis, sop, vocabulary, discoverySheet } from './process.js';
 import { booth, handOutRule, handOuts } from './booth.js';
-import { library, notTeaching } from './library.js';
+import { library } from './library.js';
 import { managerContent } from './manager.js';
 
 /**
@@ -45,8 +45,11 @@ import { managerContent } from './manager.js';
  * and bump CONTENT_VERSION so cached clients re-fetch.
  */
 
-/** Bump on every content change — clients revalidate against this. */
-export const CONTENT_VERSION = '2026-08-06.1';
+/**
+ * Bump on every content change — clients revalidate against this and a stale
+ * version would otherwise 304 and keep serving the old payload from cache.
+ */
+export const CONTENT_VERSION = '2026-08-07.1';
 
 export const repContent: RepContent = {
   version: answerKeyVersion,
@@ -90,7 +93,6 @@ export const repContent: RepContent = {
     strategy.notDoing,
     discoverySheet,
     booth.roles,
-    notTeaching,
     {
       id: 'safety-rule',
       title: 'The rule that keeps you safe',

@@ -28,7 +28,15 @@ const Answers = () => {
   const { rep } = usePortal();
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState('');
-  const [status, setStatus] = useState<StatusFilter>('all');
+
+  // ?f= lets other screens deep-link a filtered view, e.g. "the 3 blocked
+  // answers" from Start here.
+  const filterParam = searchParams.get('f');
+  const initialStatus: StatusFilter =
+    filterParam === 'ruled' || filterParam === 'provisional' || filterParam === 'blocked'
+      ? filterParam
+      : 'all';
+  const [status, setStatus] = useState<StatusFilter>(initialStatus);
 
   // Only sections that actually carry answer rows get a pill.
   const sections = useMemo(
@@ -46,8 +54,10 @@ const Answers = () => {
     const trimmed = query.trim().toLowerCase();
 
     return rep.answerKey.filter((entry) => {
-      // A text query searches every section; without one we stay in the tab.
-      if (!trimmed && entry.sectionId !== activeSection) return false;
+      // A status filter searches every section too — "show me the blocked ones"
+      // is meaningless scoped to one tab.
+      const scopeToSection = !trimmed && status === 'all';
+      if (scopeToSection && entry.sectionId !== activeSection) return false;
       if (status !== 'all' && entry.status !== status) return false;
       if (!trimmed) return true;
 
@@ -103,7 +113,7 @@ const Answers = () => {
         ))}
       </div>
 
-      {!query.trim() && (
+      {!query.trim() && status === 'all' && (
         <div className="flex snap-x gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {sections.map((section) => (
             <button
@@ -127,11 +137,11 @@ const Answers = () => {
         </div>
       )}
 
-      {!query.trim() && currentSection?.blurb && (
+      {!query.trim() && status === 'all' && currentSection?.blurb && (
         <p className="text-body-sm text-luxury-gray-600">{currentSection.blurb}</p>
       )}
 
-      {query.trim() && (
+      {(query.trim() || status !== 'all') && (
         <p className="text-body-sm text-luxury-gray-500">
           {entries.length} {entries.length === 1 ? 'match' : 'matches'} across all sections
         </p>

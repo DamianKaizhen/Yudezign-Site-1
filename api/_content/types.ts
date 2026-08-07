@@ -173,15 +173,6 @@ export interface ChecklistItem {
   detail?: string;
 }
 
-export interface CurriculumModule {
-  id: string;
-  week: string;
-  title: string;
-  objectives: string[];
-  assessment?: string;
-  links?: ContentLink[];
-}
-
 /**
  * Escape hatch for genuinely narrative passages — strategy, "what we're not
  * teaching you and why". Plain paragraphs and bullets, no markdown: rendering
@@ -220,10 +211,11 @@ export interface BoothContent {
 }
 
 export interface LibraryContent {
+  /** The canon rule about third-party videos. Lives here, not in the UI. */
+  warning: string;
   videos: ContentLink[];
   documents: ContentLink[];
   siteLinks: ContentLink[];
-  curriculum: CurriculumModule[];
 }
 
 export interface BuyerProfile {

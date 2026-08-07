@@ -19,7 +19,6 @@ export type {
   BuyerProfile,
   ChecklistItem,
   ContentLink,
-  CurriculumModule,
   DimensionRow,
   FollowUpStep,
   KpiTarget,

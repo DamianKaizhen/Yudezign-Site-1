@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CalendarClock } from 'lucide-react';
+import { ArrowRight, CalendarClock, PlayCircle, ShieldAlert } from 'lucide-react';
 
 import { usePortal } from '../../components/portal/portalContext';
 import { sectionsForRole } from '../../components/portal/sections';
 import { isExpired } from '../../lib/salesStatus';
 
 /**
- * The cold open — what a rep sees first, and the answer to "where do I start?"
+ * The cold open.
  *
- * Three jobs, in order: point at the three things to read before talking to
- * anyone, show the state of the canon (how many answers are blocked, what
- * expires when), and get out of the way.
+ * Reframed on 2026-08-07: this leads with product knowledge and where the
+ * answers come from, because that is what the portal is for. The never-say
+ * list used to be the first thing on this page; it is still one tap away and
+ * still flagged, but it is no longer what a rep is greeted with.
  */
 const StartHere = () => {
   const { rep, role } = usePortal();
@@ -30,6 +31,7 @@ const StartHere = () => {
   const showIsUpcoming = daysToShow > 0 && daysToShow <= 21;
 
   const sections = sectionsForRole(role).filter((s) => s.to !== '/sales');
+  const startVideo = rep.library.videos[0];
 
   return (
     <div className="space-y-8">
@@ -38,7 +40,8 @@ const StartHere = () => {
           Start here
         </h1>
         <p className="mt-3 max-w-2xl text-body leading-relaxed text-luxury-gray-600">
-          {rep.canonRule}
+          We manufacture frameless cabinets and closets in our own Houston plant. Everything below is
+          traced to a source — if a number here disagrees with the Answer Key, the Answer Key wins.
         </p>
       </section>
 
@@ -64,64 +67,84 @@ const StartHere = () => {
       )}
 
       <section>
-        <h2 className="mb-3 text-h4 font-medium text-luxury-gray-900">
-          Read these three before you talk to anyone
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-3">
-          <ReadFirst
-            to="/sales/pitch?t=never-say"
-            n="1"
-            title="The never-say list"
-            blurb={`${rep.neverSay.length} phrases that create live commercial or legal exposure.`}
-          />
-          <ReadFirst
-            to="/sales/pitch?t=pitch"
-            n="2"
-            title="The thirty seconds"
-            blurb="The default pitch and its four segment variants. It always ends on a question."
-          />
-          <ReadFirst
-            to="/sales/answers"
-            n="3"
-            title="How a row is read"
-            blurb="Ruled, provisional, blocked — and what you do about each."
-          />
-        </div>
-      </section>
-
-      <section className="rounded-xl border-l-4 border-accent bg-white p-5 shadow-luxury-sm">
-        <p className="text-body-sm font-medium leading-relaxed text-luxury-gray-900">
-          {rep.safetyRule}
+        <h2 className="mb-1 text-h4 font-medium text-luxury-gray-900">Know these three</h2>
+        <p className="mb-3 text-body-sm text-luxury-gray-600">
+          The product facts that come up in almost every conversation.
         </p>
+        <div className="grid gap-3 sm:grid-cols-3">
+          <StartCard
+            to="/sales/products?t=lines"
+            n="1"
+            title="The four lines"
+            blurb="The box is identical across all four. Only the door, hardware and finish change."
+          />
+          <StartCard
+            to="/sales/products?t=dimensions"
+            n="2"
+            title="Standard dimensions"
+            blurb="Base, wall, tall, bath and ADA. Memorise these — they settle most layout questions on the spot."
+          />
+          <StartCard
+            to="/sales/products?t=build"
+            n="3"
+            title="What we build, and don't"
+            blurb="Frameless only, MDF shaker, nothing over 96″. Knowing the no's is half the job."
+          />
+        </div>
       </section>
 
       <section>
-        <h2 className="mb-3 text-h4 font-medium text-luxury-gray-900">The state of the answers</h2>
-        <div className="grid grid-cols-3 gap-3">
-          <Stat value={counts.ruled} label="Ruled" tone="text-primary" />
-          <Stat value={counts.provisional} label="Provisional" tone="text-accent-dark" />
-          <Stat value={counts.blocked} label="Blocked" tone="text-red-700" />
+        <h2 className="mb-1 text-h4 font-medium text-luxury-gray-900">Where the answers come from</h2>
+        <p className="mb-3 text-body-sm text-luxury-gray-600">
+          Nothing in this portal was invented. Every ruling carries its source.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Link
+            to="/sales/answers"
+            className="rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury"
+          >
+            <p className="font-semibold text-luxury-gray-900">The Answer Key</p>
+            <p className="mt-1 text-body-sm text-luxury-gray-600">
+              {rep.answerKey.length} customer questions, one sanctioned answer each. Search it rather
+              than browse it.
+            </p>
+          </Link>
+          <Link
+            to="/sales/library"
+            className="rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury"
+          >
+            <p className="font-semibold text-luxury-gray-900">Sources</p>
+            <p className="mt-1 text-body-sm text-luxury-gray-600">
+              {rep.library.videos.length} explainer videos, the brochure and price-list folders, and
+              our own public pages.
+            </p>
+          </Link>
         </div>
 
-        {counts.blocked > 0 && (
-          <p className="mt-3 text-body-sm text-luxury-gray-600">
-            <span className="font-semibold text-red-700">{counts.blocked} blocked answers</span> are
-            said word for word — deposit, warranty, and whose booth this is. Do not improvise them.
-          </p>
-        )}
-
-        {counts.expired > 0 && (
-          <p className="mt-2 rounded-lg bg-red-50 p-3 text-body-sm text-red-800">
-            {counts.expired} provisional{' '}
-            {counts.expired === 1 ? 'ruling has' : 'rulings have'} expired. Confirm with the office
-            before using {counts.expired === 1 ? 'it' : 'them'}.
-          </p>
+        {startVideo && (
+          <a
+            href={startVideo.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 flex items-start gap-3 rounded-xl border border-luxury-gray-100 bg-white p-4 shadow-luxury-sm transition-shadow hover:shadow-luxury"
+          >
+            <PlayCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" aria-hidden="true" />
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">
+                If you watch one thing
+              </p>
+              <p className="mt-0.5 font-semibold text-luxury-gray-900">{startVideo.label}</p>
+              <p className="mt-1 text-body-sm text-luxury-gray-600">
+                Ten minutes on frameless versus framed — the distinction the whole product rests on.
+              </p>
+            </div>
+          </a>
         )}
       </section>
 
       <section>
-        <h2 className="mb-3 text-h4 font-medium text-luxury-gray-900">Everything else</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <h2 className="mb-1 text-h4 font-medium text-luxury-gray-900">Everything else</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           {sections.map((section) => {
             const Icon = section.icon;
             return (
@@ -140,11 +163,68 @@ const StartHere = () => {
           })}
         </div>
       </section>
+
+      {/* Deliberately near the bottom and understated. It still has to be here —
+          improvising a warranty or a deposit is a live commercial exposure — but
+          it is not what this portal is for. */}
+      <section className="rounded-xl border border-luxury-gray-100 bg-white p-5 shadow-luxury-sm">
+        <div className="flex items-start gap-3">
+          <ShieldAlert
+            className="mt-0.5 h-5 w-5 flex-shrink-0 text-luxury-gray-400"
+            aria-hidden="true"
+          />
+          <div className="flex-1">
+            <h2 className="font-semibold text-luxury-gray-900">Before you quote anything</h2>
+            <p className="mt-1 text-body-sm leading-relaxed text-luxury-gray-600">
+              {counts.blocked} answers are legally or commercially blocked — deposit, warranty, and
+              whose booth this is. Those are said word for word. {rep.neverSay.length} more phrases
+              are worth knowing so you can avoid them.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Link
+                to="/sales/pitch?t=never-say"
+                className="rounded-lg bg-luxury-gray-900 px-3.5 py-1.5 text-body-sm font-medium text-white transition-colors hover:bg-primary"
+              >
+                What not to say
+              </Link>
+              <Link
+                to="/sales/answers?f=blocked"
+                className="rounded-lg bg-white px-3.5 py-1.5 text-body-sm font-medium text-luxury-gray-700 ring-1 ring-luxury-gray-200 transition-colors hover:text-primary"
+              >
+                The {counts.blocked} blocked answers
+              </Link>
+            </div>
+            <p className="mt-3 text-body-sm italic text-luxury-gray-500">{rep.safetyRule}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-wrap gap-3 text-body-sm text-luxury-gray-500">
+        <span>
+          <span className="font-semibold text-primary">{counts.ruled}</span> ruled
+        </span>
+        <span aria-hidden="true">·</span>
+        <span>
+          <span className="font-semibold text-accent-dark">{counts.provisional}</span> provisional
+        </span>
+        <span aria-hidden="true">·</span>
+        <span>
+          <span className="font-semibold text-red-700">{counts.blocked}</span> blocked
+        </span>
+        {counts.expired > 0 && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span className="font-semibold text-red-700">
+              {counts.expired} expired — confirm with the office
+            </span>
+          </>
+        )}
+      </section>
     </div>
   );
 };
 
-const ReadFirst = ({
+const StartCard = ({
   to,
   n,
   title,
@@ -163,13 +243,6 @@ const ReadFirst = ({
     <p className="mt-1 font-semibold text-luxury-gray-900">{title}</p>
     <p className="mt-1 text-body-sm text-luxury-gray-600">{blurb}</p>
   </Link>
-);
-
-const Stat = ({ value, label, tone }: { value: number; label: string; tone: string }) => (
-  <div className="rounded-xl border border-luxury-gray-100 bg-white p-4 text-center shadow-luxury-sm">
-    <p className={`text-h3 font-medium ${tone}`}>{value}</p>
-    <p className="text-[11px] uppercase tracking-wide text-luxury-gray-500">{label}</p>
-  </div>
 );
 
 export default StartHere;
