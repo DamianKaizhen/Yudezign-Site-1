@@ -20,6 +20,37 @@ const PortalLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [isOffline, setIsOffline] = useState(false);
+  const [isCheckingExisting, setIsCheckingExisting] = useState(true);
+
+  // An admin session opens the portal too, so someone arriving here already
+  // signed in at /admin should not be asked for a password they just typed.
+  useEffect(() => {
+    let cancelled = false;
+
+    const checkExisting = async () => {
+      try {
+        const response = await fetch('/api/sales/auth', {
+          method: 'GET',
+          credentials: 'include',
+          signal: AbortSignal.timeout(5000),
+        });
+        if (cancelled) return;
+        if (response.ok) {
+          navigate('/sales', { replace: true });
+          return;
+        }
+      } catch {
+        // Offline or unreachable — fall through and show the form, which has
+        // its own offline messaging.
+      }
+      if (!cancelled) setIsCheckingExisting(false);
+    };
+
+    void checkExisting();
+    return () => {
+      cancelled = true;
+    };
+  }, [navigate]);
 
   useEffect(() => {
     const update = () => setIsOffline(navigator.onLine === false);
@@ -66,6 +97,19 @@ const PortalLogin = () => {
       setIsLoading(false);
     }
   };
+
+  if (isCheckingExisting) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary via-primary-light to-accent px-4">
+        <SEO title="Sales Portal | YuDezign" description="Internal sales resources." noindex />
+        <motion.div
+          className="h-12 w-12 rounded-full border-4 border-white/40 border-t-white"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-primary via-primary-light to-accent px-4">
@@ -161,6 +205,13 @@ const PortalLogin = () => {
           <div className="mt-6 border-t border-luxury-gray-100 pt-6">
             <p className="text-center text-body-sm text-luxury-gray-500">
               For YuDeZign sales staff. Ask your manager for the current password.
+            </p>
+            <p className="mt-2 text-center text-body-sm text-luxury-gray-400">
+              Already signed in to the admin panel? You&rsquo;re already in — just go to{' '}
+              <a href="/sales" className="underline hover:text-primary">
+                /sales
+              </a>
+              .
             </p>
           </div>
         </div>

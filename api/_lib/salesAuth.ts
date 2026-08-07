@@ -1,7 +1,7 @@
 import type { VercelRequest } from '@vercel/node';
 import { SignJWT, jwtVerify } from 'jose';
 
-import { requireSecret, secretsMatch } from './secrets.js';
+import { MissingSecretError, requireSecret, secretsMatch } from './secrets.js';
 import type { PortalRole } from '../_content/types.js';
 
 /**
@@ -20,6 +20,9 @@ import type { PortalRole } from '../_content/types.js';
  */
 
 export const SALES_COOKIE = 'sales_token';
+
+/** The admin panel's cookie. Read-only here — the portal never mints one. */
+const ADMIN_COOKIE = 'admin_token';
 
 const ISSUER = 'yudezign';
 const AUDIENCE = 'yudezign-sales-portal';
@@ -46,10 +49,31 @@ export interface SalesSession {
   role: PortalRole;
   /** Epoch milliseconds. */
   expiresAt: number;
+  /** Which cookie authenticated this request. */
+  via: 'sales' | 'admin';
 }
 
+/**
+ * Signing key for sales sessions.
+ *
+ * Prefers a dedicated SALES_JWT_SECRET, falls back to the admin JWT_SECRET so
+ * the portal works without provisioning anything new. Note this reads
+ * process.env directly — it never uses the literal default that
+ * api/admin/auth.ts falls back to, so an unset environment throws here rather
+ * than signing with a key anyone reading the repo already knows.
+ */
 function secretKey(): Uint8Array {
-  return new TextEncoder().encode(requireSecret('SALES_JWT_SECRET'));
+  const secret = process.env.SALES_JWT_SECRET || process.env.JWT_SECRET;
+  if (!secret) {
+    console.error('salesAuth: neither SALES_JWT_SECRET nor JWT_SECRET is set');
+    throw new MissingSecretError('SALES_JWT_SECRET');
+  }
+  return new TextEncoder().encode(secret);
+}
+
+/** Signing key the admin panel uses, for accepting an existing admin session. */
+function adminSecretKey(): Uint8Array {
+  return new TextEncoder().encode(requireSecret('JWT_SECRET'));
 }
 
 /**
@@ -124,7 +148,20 @@ export async function signSalesToken(role: PortalRole): Promise<string> {
  * here.
  */
 export async function verifySalesRequest(request: VercelRequest): Promise<SalesSession | null> {
-  const token = request.cookies?.[SALES_COOKIE];
+  const salesSession = await verifySalesToken(request.cookies?.[SALES_COOKIE]);
+  if (salesSession) return salesSession;
+
+  // Fall back to an existing admin session, so signing in at /admin also opens
+  // /sales without a second password prompt.
+  //
+  // This only works in this direction. A sales token can never authenticate an
+  // admin request: it is signed for a different audience, and every admin
+  // endpoint verifies its own cookie. So an admin gains read access to the
+  // portal, and a rep gains nothing — which is the asymmetry we want.
+  return verifyAdminToken(request.cookies?.[ADMIN_COOKIE]);
+}
+
+async function verifySalesToken(token?: string): Promise<SalesSession | null> {
   if (!token) return null;
 
   try {
@@ -140,9 +177,37 @@ export async function verifySalesRequest(request: VercelRequest): Promise<SalesS
     return {
       role: payload.role,
       expiresAt: (payload.exp ?? 0) * 1000,
+      via: 'sales',
     };
   } catch {
     // Expired, tampered with, or signed by something else. All the same answer.
+    return null;
+  }
+}
+
+/**
+ * Accept a live admin session, mapped to the manager role.
+ *
+ * Manager rather than rep because whoever holds the admin password already
+ * controls the whole site — withholding the compensation document from them
+ * would be theatre, and they are in practice the sales manager.
+ *
+ * Admin tokens carry `{ authenticated: true }` with no issuer or audience, so
+ * this deliberately verifies them on their own terms rather than the portal's.
+ */
+async function verifyAdminToken(token?: string): Promise<SalesSession | null> {
+  if (!token) return null;
+
+  try {
+    const { payload } = await jwtVerify(token, adminSecretKey());
+    if (payload.authenticated !== true) return null;
+
+    return {
+      role: 'manager',
+      expiresAt: (payload.exp ?? 0) * 1000,
+      via: 'admin',
+    };
+  } catch {
     return null;
   }
 }
@@ -169,6 +234,22 @@ export function sessionCookie(token: string, role: PortalRole): string {
 
 export function clearedCookie(): string {
   return `${SALES_COOKIE}=; ${cookieFlags(0)}`;
+}
+
+/**
+ * Also clear the admin cookie on portal sign-out.
+ *
+ * Without this, an admin who signs out of the portal stays signed in: the
+ * gate would immediately re-accept their admin_token and bounce them back in,
+ * so "Sign out" would visibly do nothing. Signing out of both is the only
+ * version where the button means what it says.
+ *
+ * Path and SameSite must match how api/admin/auth.ts set the cookie, or the
+ * browser treats this as a different cookie and ignores it.
+ */
+export function clearedAdminCookie(): string {
+  const secure = process.env.VERCEL_ENV !== 'development' ? ' Secure;' : '';
+  return `${ADMIN_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=Strict;${secure}`;
 }
 
 export function expiresAtFor(role: PortalRole): number {

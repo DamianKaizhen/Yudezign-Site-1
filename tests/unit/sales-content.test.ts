@@ -7,6 +7,7 @@ import { buildPayload, repContent, CONTENT_VERSION } from '../../api/_content/in
 import { MANAGER_CANARIES } from '../../api/_content/manager.ts';
 import {
   SALES_COOKIE,
+  clearedAdminCookie,
   clearedCookie,
   roleForPassword,
   sessionCookie,
@@ -175,15 +176,29 @@ describe('session tokens', () => {
   const requestWith = (token?: string) =>
     ({ cookies: token ? { [SALES_COOKIE]: token } : {} }) as never;
 
+  const ADMIN_SECRET = 'test-only-admin-secret-not-used-anywhere-real';
+
   const withSecret = async (run: () => Promise<void>) => {
-    const previous = process.env.SALES_JWT_SECRET;
+    const previous = { sales: process.env.SALES_JWT_SECRET, admin: process.env.JWT_SECRET };
     process.env.SALES_JWT_SECRET = SECRET;
+    process.env.JWT_SECRET = ADMIN_SECRET;
     try {
       await run();
     } finally {
-      process.env.SALES_JWT_SECRET = previous;
+      process.env.SALES_JWT_SECRET = previous.sales;
+      process.env.JWT_SECRET = previous.admin;
     }
   };
+
+  /** Mimics the cookie api/admin/auth.ts issues. */
+  const adminToken = (secret: string, claims: Record<string, unknown> = {}) =>
+    new SignJWT({ authenticated: true, ...claims })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('24h')
+      .sign(new TextEncoder().encode(secret));
+
+  const requestWithAdmin = (token: string) => ({ cookies: { admin_token: token } }) as never;
 
   it('round-trips a rep token', async () => {
     await withSecret(async () => {
@@ -264,14 +279,90 @@ describe('session tokens', () => {
     });
   });
 
-  it('throws rather than falling back when the secret is unset', async () => {
-    const previous = process.env.SALES_JWT_SECRET;
+  it('falls back to JWT_SECRET when SALES_JWT_SECRET is unset', async () => {
+    const previous = { sales: process.env.SALES_JWT_SECRET, admin: process.env.JWT_SECRET };
     delete process.env.SALES_JWT_SECRET;
+    process.env.JWT_SECRET = ADMIN_SECRET;
+    try {
+      const session = await verifySalesRequest(requestWith(await signSalesToken('rep')));
+      assert.equal(session?.role, 'rep');
+    } finally {
+      process.env.SALES_JWT_SECRET = previous.sales;
+      process.env.JWT_SECRET = previous.admin;
+    }
+  });
+
+  it('throws when neither secret is set, rather than using a known default', async () => {
+    const previous = { sales: process.env.SALES_JWT_SECRET, admin: process.env.JWT_SECRET };
+    delete process.env.SALES_JWT_SECRET;
+    delete process.env.JWT_SECRET;
     try {
       await assert.rejects(() => signSalesToken('rep'));
     } finally {
-      process.env.SALES_JWT_SECRET = previous;
+      process.env.SALES_JWT_SECRET = previous.sales;
+      process.env.JWT_SECRET = previous.admin;
     }
+  });
+
+  it('accepts a live admin session, as manager', async () => {
+    // "Can it just use the same admin login?" — yes, in this direction only.
+    await withSecret(async () => {
+      const session = await verifySalesRequest(requestWithAdmin(await adminToken(ADMIN_SECRET)));
+
+      assert.equal(session?.role, 'manager');
+      assert.equal(session?.via, 'admin');
+    });
+  });
+
+  it('marks a portal login as coming from the portal', async () => {
+    await withSecret(async () => {
+      const session = await verifySalesRequest(requestWith(await signSalesToken('rep')));
+      assert.equal(session?.via, 'sales');
+    });
+  });
+
+  it('rejects an admin token signed with the wrong secret', async () => {
+    await withSecret(async () => {
+      const forged = await adminToken('not-the-admin-secret');
+      assert.equal(await verifySalesRequest(requestWithAdmin(forged)), null);
+    });
+  });
+
+  it('rejects an admin token that is not marked authenticated', async () => {
+    await withSecret(async () => {
+      const notAuthed = await new SignJWT({ authenticated: false })
+        .setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime('24h')
+        .sign(new TextEncoder().encode(ADMIN_SECRET));
+
+      assert.equal(await verifySalesRequest(requestWithAdmin(notAuthed)), null);
+    });
+  });
+
+  it('prefers a portal session over an admin one when both are present', async () => {
+    // A rep on a shared machine must not silently inherit manager access.
+    await withSecret(async () => {
+      const both = {
+        cookies: {
+          [SALES_COOKIE]: await signSalesToken('rep'),
+          admin_token: await adminToken(ADMIN_SECRET),
+        },
+      } as never;
+
+      const session = await verifySalesRequest(both);
+      assert.equal(session?.role, 'rep');
+      assert.equal(session?.via, 'sales');
+    });
+  });
+
+  it('clears the admin cookie on sign-out too', () => {
+    // Otherwise the gate re-accepts admin_token immediately and "Sign out"
+    // visibly does nothing.
+    const cleared = clearedAdminCookie();
+    assert.match(cleared, /^admin_token=;/);
+    assert.match(cleared, /Path=\//);
+    assert.match(cleared, /Max-Age=0/);
   });
 
   it('sets the cookie flags the portal depends on', async () => {

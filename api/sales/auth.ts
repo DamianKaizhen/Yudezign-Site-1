@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 import { MissingSecretError } from '../_lib/secrets.js';
 import {
+  clearedAdminCookie,
   clearedCookie,
   expiresAtFor,
   roleForPassword,
@@ -76,11 +77,14 @@ export default async function handler(request: VercelRequest, response: VercelRe
         authenticated: true,
         role: session.role,
         expiresAt: session.expiresAt,
+        via: session.via,
       });
     }
 
     if (request.method === 'DELETE') {
-      response.setHeader('Set-Cookie', clearedCookie());
+      // Both cookies — see clearedAdminCookie() for why an admin session has
+      // to go too, or signing out appears to do nothing.
+      response.setHeader('Set-Cookie', [clearedCookie(), clearedAdminCookie()]);
       return response.status(200).json({ authenticated: false });
     }
 
