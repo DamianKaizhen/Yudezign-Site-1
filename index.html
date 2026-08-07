@@ -13,8 +13,24 @@
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="6e7b1336-b74b-4da1-8ed5-ebd9e370ac67" type="text/javascript" async></script>
 
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/vite.svg" id="favicon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Icons. This previously pointed at /vite.svg — the default Vite logo —
+         and declared it as image/x-icon, and there was no apple-touch-icon at
+         all. iOS looks only at apple-touch-icon when you Add to Home Screen, so
+         without it you get a screenshot or a blank tile. -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" id="favicon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0f4c3a" />
+
+    <!-- Names the icon on the iOS home screen. Without it iOS uses <title>,
+         which is the full SEO title and gets truncated to nonsense. -->
+    <meta name="apple-mobile-web-app-title" content="YuDeZign" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <!-- SEO Meta Tags -->
     <title>YuDezign - Custom European Cabinets Houston | Frameless Kitchen & Closet Cabinets</title>
@@ -53,9 +69,6 @@
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.yudezign.com" />
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json" />
 
     <!-- Humans.txt -->
     <link type="text/plain" rel="author" href="/humans.txt" />
@@ -106,7 +119,7 @@
           "paymentAccepted": "Cash, Check, Credit Card",
           "openingHours": "Mo-Fr 09:00-17:00",
           "image": "https://www.yudezign.com/groupimage.png",
-          "logo": "https://www.yudezign.com/vite.svg",
+          "logo": "https://www.yudezign.com/icon-512.png",
           "sameAs": [
             "https://github.com/DamianKaizhen/Yukon"
           ]

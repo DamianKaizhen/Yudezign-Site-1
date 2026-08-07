@@ -67,6 +67,10 @@ import ClosetDesignGuide from './pages/blog/posts/ClosetDesignGuide';
 // bundle every public visitor downloads.
 const PortalRoutes = lazy(() => import('./pages/portal/PortalRoutes'));
 
+// The in-app document viewer. Only ever reached from a document link on a
+// phone with the site installed, so it has no place in the main bundle either.
+const DocViewer = lazy(() => import('./pages/doc/DocViewer'));
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -134,6 +138,20 @@ function App() {
             element={
               <Suspense fallback={<PortalLoading />}>
                 <PortalRoutes />
+              </Suspense>
+            }
+          />
+
+          {/* Full-screen document viewer - No Navigation/Footer.
+              Public, not under /sales: installed to a home screen there is no
+              browser chrome, so a PDF opened from /downloads is just as much a
+              one-way door as one opened from the portal. Everything it can
+              open is already publicly fetchable, so this adds no exposure. */}
+          <Route
+            path="/doc"
+            element={
+              <Suspense fallback={<PortalLoading />}>
+                <DocViewer />
               </Suspense>
             }
           />

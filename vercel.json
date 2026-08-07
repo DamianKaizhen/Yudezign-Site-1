@@ -7,6 +7,7 @@
     { "source": "/sales/:path*", "destination": "/" },
     { "source": "/admin", "destination": "/" },
     { "source": "/admin/:path*", "destination": "/" },
+    { "source": "/doc", "destination": "/" },
     {
       "source": "/(.*)",
       "destination": "/index.html"
@@ -42,6 +43,15 @@
     },
     {
       "source": "/sales-training/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/doc",
       "headers": [
         {
           "key": "X-Robots-Tag",

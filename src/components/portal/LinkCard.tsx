@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { AlertTriangle, ExternalLink } from 'lucide-react';
 
 import type { ContentLink } from '../../types/salesPortal';
-import { docViewerPath, resolveLinkTarget } from '../../lib/portalLinks';
-import { useStandalone } from '../../lib/hooks/useStandalone';
+import { resolveLinkTarget } from '../../lib/portalLinks';
+import DocLink from '../ui/DocLink';
 
 const KIND_LABEL: Record<ContentLink['kind'], string> = {
   video: 'Video',
@@ -27,7 +27,6 @@ const LinkCard = ({ link }: { link: ContentLink }) => {
   // blanks the portal — see resolveLinkTarget.
   const target = resolveLinkTarget(link.href);
   const isRoute = target === 'route';
-  const standalone = useStandalone();
 
   const body = (
     <>
@@ -86,19 +85,16 @@ const LinkCard = ({ link }: { link: ContentLink }) => {
     );
   }
 
-  // Installed as a web app there is no browser chrome to fall back on, so a
-  // same-origin document goes through the in-app viewer, which brings its own
-  // back and share.
-  if (standalone && target === 'asset') {
+  // A same-origin document: new tab in a browser, in-app viewer once installed.
+  if (target === 'asset') {
     return (
-      <Link to={docViewerPath(link.href, link.label)} className={shell}>
+      <DocLink href={link.href} title={link.label} className={shell}>
         {body}
-      </Link>
+      </DocLink>
     );
   }
 
-  // In a browser, a new tab beats anything we could build — the native PDF
-  // viewer, back button and share menu all already work.
+  // Another origin — YouTube, the App Store. Always a new tab.
   return (
     <a href={link.href} target="_blank" rel="noopener noreferrer" className={shell}>
       {body}

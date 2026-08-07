@@ -4,7 +4,8 @@ import { describe, it } from 'node:test';
 import { SignJWT } from 'jose';
 
 import { buildPayload, repContent, CONTENT_VERSION } from '../../api/_content/index.ts';
-import { resolveLinkTarget } from '../../src/lib/portalLinks.ts';
+import { isViewableDocument, resolveLinkTarget } from '../../src/lib/portalLinks.ts';
+import { resources } from '../../src/data/downloads.ts';
 import { buildSearchIndex, searchPortal } from '../../src/lib/salesSearch.ts';
 import { MANAGER_CANARIES } from '../../api/_content/manager.ts';
 import {
@@ -445,6 +446,50 @@ describe('link routing', () => {
       if (link.href.endsWith('.pdf')) {
         assert.equal(target, 'asset', `${link.href} would blank the portal`);
       }
+    }
+  });
+});
+
+describe('document viewer', () => {
+  // The viewer is what an installed web app falls back to when it opens a
+  // document, because standalone mode has no back button and no share menu.
+  // Anything it refuses is a dead end for the reader — the exact trap it exists
+  // to remove — so the allowlist has to actually cover our documents.
+  it('accepts every downloadable file the public site publishes', () => {
+    for (const resource of resources) {
+      assert.ok(
+        isViewableDocument(resource.file),
+        `${resource.file} would bounce back to /downloads instead of opening`
+      );
+    }
+  });
+
+  it('accepts the portal documents too', () => {
+    for (const href of [
+      '/sales-training/docs/rep-handbook.pdf',
+      '/sales-training/guide.pdf',
+      // cleanUrls strips ".html", so the deck has no extension to match on.
+      '/sales-training/deck',
+    ]) {
+      assert.ok(isViewableDocument(href), `${href} should open in the viewer`);
+    }
+  });
+
+  it('refuses anything that is not a same-origin document', () => {
+    for (const src of [
+      null,
+      '',
+      // Another origin — the whole point of the check.
+      'https://evil.example/phish.pdf',
+      // Protocol-relative is still another origin.
+      '//evil.example/phish.pdf',
+      // Framing an app route would render our own UI inside our chrome.
+      '/admin/login',
+      '/contact',
+      // API responses are never documents.
+      '/api/sales/content',
+    ]) {
+      assert.equal(isViewableDocument(src), false, `${src} must not be framed`);
     }
   });
 });

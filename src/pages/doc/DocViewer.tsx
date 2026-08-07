@@ -2,49 +2,37 @@ import { useCallback, useState } from 'react';
 import { useNavigate, useSearchParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Check, Download, ExternalLink, Share2 } from 'lucide-react';
 
+import { isViewableDocument } from '../../lib/portalLinks';
+
 /**
  * In-app document viewer.
  *
- * Exists because of what an installed web app takes away. With `display:
- * standalone` there is no browser chrome, so opening a PDF left a rep stuck:
- * no back button to leave it, and no share menu — which on a phone is also how
- * you reach Print, Save to Files and AirDrop.
+ * Exists because of what an installed web app takes away. manifest.json
+ * declares `display: standalone`, so once the site is on a home screen there is
+ * no browser chrome — opening a PDF left the reader stuck with no back button
+ * to leave it and no share menu, which on a phone is also how you reach Print,
+ * Save to Files and AirDrop.
  *
- * This puts those back. Back returns to where they were, Share hands off to the
- * OS sheet, and Open in browser is the escape hatch for anything the embedded
- * view renders badly.
+ * Public rather than portal-only, because the same trap applies to the
+ * brochures on /downloads.
  */
-
-/**
- * Only same-origin portal documents may be framed.
- *
- * `src` comes off the query string, so without this the viewer would happily
- * embed any URL handed to it — a phishing frame wearing our header.
- */
-const ALLOWED_PREFIXES = ['/sales-training/', '/downloads/'];
-
-function isAllowed(src: string | null): src is string {
-  if (!src) return false;
-  // Reject protocol-relative and absolute URLs outright.
-  if (!src.startsWith('/') || src.startsWith('//')) return false;
-  return ALLOWED_PREFIXES.some((prefix) => src.startsWith(prefix));
-}
 
 const DocViewer = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
-  const [shared, setShared] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const src = params.get('src');
   const title = params.get('title') ?? 'Document';
+  /** Where Back goes when there is no history to return to. */
+  const fallback = params.get('from') ?? '/downloads';
 
   const goBack = useCallback(() => {
-    // history.length is 1 when the viewer was opened directly — a shared link,
-    // or a cold start in the installed app. Going "back" then would leave the
-    // portal entirely, so fall back to Sources.
+    // history.length is 1 on a cold start — a shared link, or the first screen
+    // in the installed app. Going "back" then would leave the site entirely.
     if (window.history.length > 1) navigate(-1);
-    else navigate('/sales/library');
-  }, [navigate]);
+    else navigate(fallback);
+  }, [navigate, fallback]);
 
   const share = useCallback(async () => {
     if (!src) return;
@@ -58,15 +46,15 @@ const DocViewer = () => {
         return;
       }
       await navigator.clipboard.writeText(url);
-      setShared(true);
-      setTimeout(() => setShared(false), 2000);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
       // A cancelled share sheet rejects. Nothing to report.
     }
   }, [src, title]);
 
-  if (!isAllowed(src)) {
-    return <Navigate to="/sales/library" replace />;
+  if (!isViewableDocument(src)) {
+    return <Navigate to="/downloads" replace />;
   }
 
   return (
@@ -91,7 +79,7 @@ const DocViewer = () => {
           aria-label="Share, print or save"
           className="flex h-11 w-11 items-center justify-center rounded-lg transition-colors hover:bg-white/10"
         >
-          {shared ? (
+          {copied ? (
             <Check className="h-5 w-5 text-accent" aria-hidden="true" />
           ) : (
             <Share2 className="h-5 w-5" aria-hidden="true" />
@@ -120,11 +108,7 @@ const DocViewer = () => {
 
       {/* An iframe renders PDFs through the platform viewer and HTML directly,
           so one element covers both the handouts and the deck. */}
-      <iframe
-        src={src}
-        title={title}
-        className="min-h-0 flex-1 border-0 bg-white"
-      />
+      <iframe src={src} title={title} className="min-h-0 flex-1 border-0 bg-white" />
 
       <p className="bg-luxury-gray-900 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center text-[11px] text-white/50">
         Share opens your phone&rsquo;s sheet — that is where Print and Save to Files live.

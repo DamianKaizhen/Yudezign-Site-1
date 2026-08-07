@@ -49,7 +49,45 @@ export function opensInNewTab(href: string): boolean {
  * PDF viewer, the back button and the share menu all already work. Installed as
  * a web app none of those exist, so the document goes through the in-app viewer
  * instead, which supplies them.
+ *
+ * `/doc` is public rather than under `/sales`, because the brochures on
+ * /downloads are the same one-way door for anyone who installed the site.
+ *
+ * @param from Where Back returns to when the viewer was opened cold — a shared
+ *   link, or the first screen after launching the installed app — and there is
+ *   no history entry to go back to.
  */
-export function docViewerPath(href: string, title: string): string {
-  return `/sales/doc?src=${encodeURIComponent(href)}&title=${encodeURIComponent(title)}`;
+export function docViewerPath(href: string, title: string, from?: string): string {
+  const params = new URLSearchParams({ src: href, title });
+  if (from) params.set('from', from);
+  return `/doc?${params.toString()}`;
+}
+
+/**
+ * Whether the viewer may frame this path.
+ *
+ * `src` arrives from the query string, so without this the viewer would happily
+ * embed any URL handed to it — a phishing frame wearing our header.
+ *
+ * Two ways to qualify, because our documents don't all live in one place: the
+ * Finishes Catalog sits at the public root while everything else is under
+ * /downloads. Prefix alone would silently bounce it back to the list — the very
+ * dead end this viewer exists to remove.
+ */
+
+/** Static trees whose files may carry no extension, since `cleanUrls` in
+ *  vercel.json strips ".html". */
+const VIEWABLE_PREFIXES = ['/sales-training/', '/downloads/'];
+
+/** Anything else must look like a document, so app routes can't be framed. */
+const DOCUMENT_EXTENSION = /\.(pdf|html?)($|[?#])/i;
+
+export function isViewableDocument(src: string | null | undefined): src is string {
+  if (!src) return false;
+  // Reject protocol-relative and absolute URLs outright.
+  if (!src.startsWith('/') || src.startsWith('//')) return false;
+  // Never frame an API response.
+  if (src.startsWith('/api/')) return false;
+  if (VIEWABLE_PREFIXES.some((prefix) => src.startsWith(prefix))) return true;
+  return DOCUMENT_EXTENSION.test(src);
 }

@@ -37,6 +37,10 @@ Disallow: /sales/*
 Disallow: /sales-training
 Disallow: /sales-training/*
 
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
 # Sitemap location
 Sitemap: https://www.yudezign.com/sitemap.xml
 

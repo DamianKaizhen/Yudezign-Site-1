@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FileText, Download, Eye, ArrowRight, FileDown } from 'lucide-react';
 import SEO from '../../components/SEO';
+import DocLink from '../../components/ui/DocLink';
 import {
   resources,
   resourceCategories,
@@ -36,12 +37,11 @@ const ResourceCard = ({ r }: { r: ResourceFile }) => (
     transition={{ duration: 0.5 }}
     className="group flex flex-col overflow-hidden rounded-lg bg-white shadow-luxury"
   >
-    <a
+    <DocLink
       href={r.file}
-      target="_blank"
-      rel="noopener noreferrer"
+      title={r.title}
       className="relative block aspect-[4/5] overflow-hidden bg-luxury-beige"
-      aria-label={`View ${r.title} (opens PDF in a new tab)`}
+      aria-label={`View ${r.title}`}
     >
       <Cover r={r} className="transition-transform duration-500 group-hover:scale-105" />
       <div className="absolute inset-0 flex items-center justify-center bg-primary/0 opacity-0 transition-all duration-300 group-hover:bg-primary/40 group-hover:opacity-100">
@@ -50,7 +50,7 @@ const ResourceCard = ({ r }: { r: ResourceFile }) => (
           View PDF
         </span>
       </div>
-    </a>
+    </DocLink>
 
     <div className="flex flex-grow flex-col p-6">
       <span className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">
@@ -61,15 +61,14 @@ const ResourceCard = ({ r }: { r: ResourceFile }) => (
       <p className="mb-5 text-xs uppercase tracking-wide text-luxury-gray-500">{metaLine(r)}</p>
 
       <div className="mt-auto flex gap-3">
-        <a
+        <DocLink
           href={r.file}
-          target="_blank"
-          rel="noopener noreferrer"
+          title={r.title}
           className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-white transition-all duration-300 hover:bg-primary-dark"
         >
           <Eye className="h-4 w-4" aria-hidden="true" />
           View
-        </a>
+        </DocLink>
         <a
           href={r.file}
           download
@@ -143,15 +142,14 @@ const Downloads = () => {
                 transition={{ duration: 0.6 }}
                 className="grid grid-cols-1 overflow-hidden rounded-lg bg-white shadow-luxury md:grid-cols-2"
               >
-                <a
+                <DocLink
                   href={featured.file}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  title={featured.title}
                   className="group relative block aspect-[4/5] overflow-hidden bg-luxury-beige md:aspect-auto"
-                  aria-label={`View ${featured.title} (opens PDF in a new tab)`}
+                  aria-label={`View ${featured.title}`}
                 >
                   <Cover r={featured} className="transition-transform duration-500 group-hover:scale-105" />
-                </a>
+                </DocLink>
                 <div className="flex flex-col justify-center p-8 md:p-12">
                   <span className="mb-3 text-xs font-semibold uppercase tracking-wider text-accent">
                     Featured · Latest Brochure
@@ -164,15 +162,14 @@ const Downloads = () => {
                     {metaLine(featured)}
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <a
+                    <DocLink
                       href={featured.file}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      title={featured.title}
                       className="inline-flex items-center gap-3 rounded-xl bg-primary px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:bg-primary-dark hover:shadow-xl"
                     >
                       <Eye className="h-5 w-5" aria-hidden="true" />
                       View Online
-                    </a>
+                    </DocLink>
                     <a
                       href={featured.file}
                       download
