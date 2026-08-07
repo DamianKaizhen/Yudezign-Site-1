@@ -89,16 +89,18 @@ const videos: ContentLink[] = [
  * the K: drive shows the "no connection" fallback instead. The lesson guide is
  * the 8.5×11 printable handout.
  */
+// `cleanUrls: true` in vercel.json 308-redirects /foo.html to /foo, so these
+// link the extensionless form — otherwise every open costs a redirect.
 const training: ContentLink[] = [
   {
     label: 'Product Knowledge — the deck',
-    href: '/sales-training/deck.html',
+    href: '/sales-training/deck',
     kind: 'doc',
     note: 'The full presentation. Arrow keys to move, and the embedded videos play here — they do not in the offline copy. Best on a laptop; it scales to fit whatever you open it on.',
   },
   {
     label: 'Lesson guide — printable handout',
-    href: '/sales-training/guide.html',
+    href: '/sales-training/guide',
     kind: 'doc',
     note: 'The same material as a 16-page handout, laid out for 8.5×11. Opens instantly and prints clean.',
   },

@@ -216,10 +216,12 @@ describe('Answer Key v1.3 rulings', () => {
 
   it('hosts the deck and handout on the site', () => {
     const hrefs = repContent.library.training.map((link) => link.href);
-    assert.ok(hrefs.includes('/sales-training/deck.html'), 'the deck is not linked');
+    assert.ok(hrefs.includes('/sales-training/deck'), 'the deck is not linked');
     assert.ok(hrefs.includes('/sales-training/guide.pdf'), 'the PDF handout is not linked');
     for (const href of hrefs) {
       assert.ok(href.startsWith('/sales-training/'), `unexpected training href: ${href}`);
+      // cleanUrls 308-redirects .html, so linking it costs a needless round trip.
+      assert.ok(!href.endsWith('.html'), `${href} should drop the .html extension`);
     }
   });
 });
