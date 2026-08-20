@@ -13,7 +13,7 @@ export interface SiteSettings {
 
 export const siteSettings: SiteSettings = {
   logo: '/logo-wordmark.svg',
-  favicon: 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1762209245901-apple-touch-icon.png',
+  favicon: '/favicon.ico',
   companyName: 'YuDezign',
   socialLinks: {
     facebook: 'https://facebook.com',
