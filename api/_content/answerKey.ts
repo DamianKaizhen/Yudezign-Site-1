@@ -899,13 +899,12 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'who-we-are',
     question: 'Where are you?',
     answer:
-      'The plant is 5802 Colfax St, Houston — that\'s where cabinets are made and where customers collect. The showroom is 13230 Murphy Rd, Ste 600, Stafford — that\'s where you take a customer to see and touch.',
-    status: 'provisional',
-    expiresOn: '2026-09-01',
-    source: '2026 brochure',
+      'The plant is 5802 Colfax St, Houston — that\'s where cabinets are made and where customers collect. The showroom is 13366 Murphy Rd, Stafford — that\'s where you take a customer to see and touch.',
+    status: 'ruled',
+    source: 'Damian, 2026-08-20',
     aliases: ['address', 'where', 'location', 'showroom', 'plant', 'colfax', 'murphy'],
     repNote:
-      'Two places, do not mix them up. Other material says 13366 Murphy Road — use the brochure address until ruled.',
+      'Two places, do not mix them up. The 13230 / 13366 question is settled: it is 13366 Murphy Rd, with no suite number. Anything still showing 13230 or "Ste 600" is out of date.',
   },
   {
     id: 'ak-08-03',

@@ -174,7 +174,7 @@ const Privacy = () => {
                 <li><strong>Data Portability:</strong> Request your data in a structured, machine-readable format</li>
               </ul>
               <p className="text-body text-luxury-gray-600 leading-relaxed mt-4">
-                To exercise these rights, please contact us at <a href="mailto:damian.k@yudezign.com" className="text-primary hover:text-primary-light font-medium">damian.k@yudezign.com</a> or call <a href="tel:+12815688000" className="text-primary hover:text-primary-light font-medium">(281) 568-8000</a>.
+                To exercise these rights, please contact us at <a href="mailto:damian.k@yudezign.com" className="text-primary hover:text-primary-light font-medium">damian.k@yudezign.com</a> or call <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>.
               </p>
             </motion.div>
 
@@ -249,13 +249,13 @@ const Privacy = () => {
               </p>
               <div className="bg-luxury-cream rounded-lg p-6 border border-luxury-sand">
                 <p className="text-body text-luxury-gray-900 font-medium mb-2">YuDezign Custom Cabinets</p>
-                <p className="text-body text-luxury-gray-600">13230 Murphy Rd, Ste 600</p>
+                <p className="text-body text-luxury-gray-600">13366 Murphy Rd</p>
                 <p className="text-body text-luxury-gray-600">Stafford, TX 77477</p>
                 <p className="text-body text-luxury-gray-600 mt-3">
                   Email: <a href="mailto:damian.k@yudezign.com" className="text-primary hover:text-primary-light font-medium">damian.k@yudezign.com</a>
                 </p>
                 <p className="text-body text-luxury-gray-600">
-                  Phone: <a href="tel:+12815688000" className="text-primary hover:text-primary-light font-medium">(281) 568-8000</a>
+                  Phone: <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>
                 </p>
                 <p className="text-body text-luxury-gray-600 mt-3">
                   Business Hours: Monday-Friday, 9:00 AM - 5:30 PM

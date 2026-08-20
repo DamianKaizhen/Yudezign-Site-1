@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSiteSettings } from '../../contexts/SiteSettingsContext';
+import { LOGO_WORDMARK_LIGHT } from '../../data/brand';
 
 const Navigation = () => {
   const { settings } = useSiteSettings();
@@ -91,12 +92,20 @@ const Navigation = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          {/* shrink-0 and a right margin, because the wordmark is ~4.7:1 where
+              the old mark was square. Without shrink-0 flex compresses the
+              image itself — it measured 101px wide against a true 227px at
+              1024px — and without the margin it butts straight into "Home". */}
+          <Link to="/" className="flex shrink-0 items-center space-x-2 mr-6 lg:mr-10">
+            {/* The bar is a dark scrim over the hero photo until you scroll,
+                then flips to near-white — so the wordmark has to flip too, or
+                it disappears at one end or the other. This is the same rule the
+                text fallback just below already follows. */}
             {settings.logo ? (
               <img
-                src={settings.logo}
+                src={isScrolled ? settings.logo : LOGO_WORDMARK_LIGHT}
                 alt={settings.companyName}
-                className="h-10 md:h-12 w-auto"
+                className="h-7 shrink-0 md:h-8 lg:h-9 w-auto"
               />
             ) : (
               <div className="text-2xl md:text-3xl font-bold">

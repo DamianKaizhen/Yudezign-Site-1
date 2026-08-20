@@ -218,7 +218,7 @@ export const strategy: StrategyContent = {
     {
       id: 'src-showroom',
       source: 'The showroom',
-      whatsThere: '13230 Murphy Rd, opening August',
+      whatsThere: '13366 Murphy Rd, opening August',
       state: 'Walk-ins',
     },
   ],

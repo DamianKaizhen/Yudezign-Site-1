@@ -18,8 +18,8 @@ import { generateLocalBusinessSchema } from '../../lib/schema';
 const ShowroomPage: React.FC = () => {
   const businessInfo = {
     name: 'YuDezign Custom Cabinets',
-    address: '13230 Murphy Rd, Ste 600, Stafford, TX 77477',
-    phone: '(281) 568-8000',
+    address: '13366 Murphy Rd, Stafford, TX 77477',
+    phone: '(713) 502-0399',
     email: 'orders@yudezign.com',
     hours: {
       monday: '9:00 AM - 5:30 PM',
@@ -184,16 +184,19 @@ const ShowroomPage: React.FC = () => {
               <h2 className="text-3xl font-bold text-slate-900 mb-8">
                 Find Us
               </h2>
+              {/* Queried by address — the previous pb= embed hardcoded a
+                  placeholder place ID and coordinates, so it never resolved to
+                  the showroom. */}
               <div className="bg-slate-100 rounded-xl overflow-hidden shadow-lg h-[500px]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.8697832745777!2d-95.56934492349396!3d29.616758975219067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640e7a1b1b1b1b1%3A0x1234567890abcdef!2s13230%20Murphy%20Rd%20Ste%20600%2C%20Stafford%2C%20TX%2077477!5e0!3m2!1sen!2sus!4v1699123456789!5m2!1sen!2sus"
+                  src="https://www.google.com/maps?q=13366+Murphy+Rd,+Stafford,+TX+77477&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="YuDezign Location - 13230 Murphy Rd Ste 600, Stafford, TX 77477"
+                  title="YuDezign Location - 13366 Murphy Rd, Stafford, TX 77477"
                 />
               </div>
 

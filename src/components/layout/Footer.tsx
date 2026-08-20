@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 import { siteSettings } from '../../data/siteSettings';
+import { LOGO_WORDMARK_LIGHT } from '../../data/brand';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            {siteSettings.logo ? (
+            {/* Reversed variant: this footer is bg-primary, and the standard
+                wordmark's dark ink and green "EZ" both disappear against it. */}
+            {LOGO_WORDMARK_LIGHT ? (
               <img
-                src={siteSettings.logo}
+                src={LOGO_WORDMARK_LIGHT}
                 alt={siteSettings.companyName}
                 className="h-10 w-auto mb-4"
               />
@@ -155,15 +158,15 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                 <span className="text-neutral-200">
-                  13230 Murphy Rd, Ste 600<br />
+                  13366 Murphy Rd<br />
                   Stafford, TX 77477<br />
                   United States
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:+12815688000" className="text-neutral-200 hover:text-accent transition-colors">
-                  (281) 568-8000
+                <a href="tel:+17135020399" className="text-neutral-200 hover:text-accent transition-colors">
+                  (713) 502-0399
                 </a>
               </li>
               <li className="flex items-center space-x-3">

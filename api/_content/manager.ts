@@ -257,7 +257,7 @@ export const managerContent: ManagerContent = {
           heading: 'Company',
           bullets: [
             'Exhibitor identity — the show folder says "YUKON (Flooring & Glass) · displays by YuDeZign" while the banners lead with UFS. Reps need a one-sentence answer before the doors open.',
-            'Which address goes on rep-facing material — 13230 vs 13366 Murphy Rd, Stafford vs Houston.',
+            'RESOLVED 2026-08-20 — the showroom address is 13366 Murphy Rd, Stafford, no suite number. The website, brochures and the Answer Key now all say the same thing; 13230 and "Ste 600" are dead.',
             'Discount authority — currently none for 90 days. Confirm.',
           ],
         },

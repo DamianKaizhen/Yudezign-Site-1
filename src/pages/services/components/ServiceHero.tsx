@@ -45,11 +45,11 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
               <a
-                href="tel:2815688000"
+                href="tel:+17135020399"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
               >
                 <Phone className="mr-2 w-5 h-5" />
-                (281) 568-8000
+                (713) 502-0399
               </a>
               {service.portfolioCategory && (
                 <a

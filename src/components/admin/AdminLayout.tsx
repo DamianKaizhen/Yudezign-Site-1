@@ -15,6 +15,7 @@ import {
   Image,
 } from 'lucide-react';
 import { siteSettings } from '../../data/siteSettings';
+import { LOGO_WORDMARK_LIGHT } from '../../data/brand';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -103,9 +104,10 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             {/* Logo */}
             <div className="p-6 border-b border-white/10">
               <div className="flex items-center justify-between">
-                {siteSettings.logo ? (
+                {/* Reversed variant — this sidebar is bg-primary. */}
+                {LOGO_WORDMARK_LIGHT ? (
                   <img
-                    src={siteSettings.logo}
+                    src={LOGO_WORDMARK_LIGHT}
                     alt={siteSettings.companyName}
                     className="h-8 w-auto"
                   />

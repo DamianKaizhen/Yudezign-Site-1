@@ -689,10 +689,10 @@ const Home = () => {
                 </Link>
 
                 <a
-                  href="tel:+12815688000"
+                  href="tel:+17135020399"
                   className="inline-block px-12 py-4 border-2 border-primary text-primary text-body-lg font-medium rounded-md hover:bg-primary hover:text-white transition-all duration-300"
                 >
-                  (281) 568-8000
+                  (713) 502-0399
                 </a>
               </div>
 
@@ -709,7 +709,7 @@ const Home = () => {
       </section>
 
       {/* Sticky Mobile Click-to-Call Button */}
-      <StickyPhoneButton phoneNumber="(281) 568-8000" showAfterScroll={300} />
+      <StickyPhoneButton phoneNumber="(713) 502-0399" showAfterScroll={300} />
 
       {/* Project Details Modal */}
       <ProjectModal

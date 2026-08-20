@@ -8,7 +8,7 @@ interface StickyPhoneButtonProps {
 }
 
 export function StickyPhoneButton({
-  phoneNumber = '(281) 568-8000',
+  phoneNumber = '(713) 502-0399',
   showAfterScroll = 300
 }: StickyPhoneButtonProps) {
   const [isPastHero, setIsPastHero] = useState(false);

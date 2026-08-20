@@ -389,13 +389,13 @@ const TermsOfService = () => {
               </p>
               <div className="bg-luxury-cream rounded-lg p-6 border border-luxury-sand">
                 <p className="text-body text-luxury-gray-900 font-medium mb-2">YuDezign Custom Cabinets</p>
-                <p className="text-body text-luxury-gray-600">13230 Murphy Rd, Ste 600</p>
+                <p className="text-body text-luxury-gray-600">13366 Murphy Rd</p>
                 <p className="text-body text-luxury-gray-600">Stafford, TX 77477</p>
                 <p className="text-body text-luxury-gray-600 mt-3">
                   Email: <a href="mailto:orders@yudezign.com" className="text-primary hover:text-primary-light font-medium">orders@yudezign.com</a>
                 </p>
                 <p className="text-body text-luxury-gray-600">
-                  Phone: <a href="tel:+12815688000" className="text-primary hover:text-primary-light font-medium">(281) 568-8000</a>
+                  Phone: <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>
                 </p>
                 <p className="text-body text-luxury-gray-600 mt-3">
                   Business Hours: Monday-Friday, 9:00 AM - 5:30 PM

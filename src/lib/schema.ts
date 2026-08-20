@@ -83,7 +83,9 @@ export const generateArticleSchema = (params: {
     name: 'YuDezign',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.yudezign.com/logo.png'
+      // Was /logo.png, which has never existed in public/ — every article's
+      // publisher logo resolved to a 404.
+      url: 'https://www.yudezign.com/logo-wordmark.png'
     }
   },
   datePublished: params.publishedDate,

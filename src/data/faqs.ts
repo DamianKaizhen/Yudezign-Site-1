@@ -35,7 +35,7 @@ export const faqs: FAQ[] = [
   {
     id: 'do-you-have-showroom',
     question: 'Do you have a showroom I can visit?',
-    answer: 'Yes! Our showroom is located at 13230 Murphy Rd, Suite 600, Stafford, TX 77477. We have 20+ finish samples, full-size cabinet displays, and hardware options. Open Monday-Friday 8am-5pm. Call (281) 568-8000 to schedule an appointment.',
+    answer: 'Yes! Our showroom is located at 13366 Murphy Rd, Stafford, TX 77477. We have 20+ finish samples, full-size cabinet displays, and hardware options. Open Monday-Friday 8am-5pm. Call (713) 502-0399 to schedule an appointment.',
     category: 'general',
     order: 4
   },
@@ -224,7 +224,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-do-i-file-warranty-claim',
     question: 'How do I file a warranty claim?',
-    answer: 'Contact us at (281) 568-8000 or info@yudezign.com with photos of the issue and your original order number. We\'ll assess the claim (usually within 1 business day) and ship replacement parts if approved. Most claims are resolved within 1-2 weeks.',
+    answer: 'Contact us at (713) 502-0399 or info@yudezign.com with photos of the issue and your original order number. We\'ll assess the claim (usually within 1 business day) and ship replacement parts if approved. Most claims are resolved within 1-2 weeks.',
     category: 'warranty',
     order: 3
   },

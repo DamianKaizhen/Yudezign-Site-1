@@ -78,10 +78,10 @@ const FONT =
   "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
 const SITE = 'https://www.yudezign.com';
-const PHONE_DISPLAY = '(281) 568-8000';
-const PHONE_HREF = '+12815688000';
+const PHONE_DISPLAY = '(713) 502-0399';
+const PHONE_HREF = '+17135020399';
 const EMAIL_PUBLIC = 'orders@yudezign.com';
-const ADDRESS = '13230 Murphy Rd, Ste 600, Stafford, TX 77477';
+const ADDRESS = '13366 Murphy Rd, Stafford, TX 77477';
 const HOURS = 'Mon–Fri, 9:00 AM – 5:30 PM';
 
 const FROM_NAME = process.env.SMTP_FROM_NAME || 'YuDezign Website';

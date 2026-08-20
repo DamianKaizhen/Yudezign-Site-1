@@ -42,7 +42,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     console.warn(`contact-submit: rejected submission (${decision.reason})`);
     return res.status(403).json({
       success: false,
-      error: 'We could not verify your submission. Please reload the page and try again, or call us at (281) 568-8000.',
+      error: 'We could not verify your submission. Please reload the page and try again, or call us at (713) 502-0399.',
     });
   }
 
@@ -107,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!stored && !notified) {
     return res.status(500).json({
       success: false,
-      error: 'Unable to submit right now. Please call (281) 568-8000 or email orders@yudezign.com.',
+      error: 'Unable to submit right now. Please call (713) 502-0399 or email orders@yudezign.com.',
     });
   }
 

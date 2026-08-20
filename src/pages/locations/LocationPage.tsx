@@ -24,7 +24,7 @@ const LocationPage: React.FC = () => {
   const localBusinessSchema = generateLocalBusinessSchema({
     name: `YuDezign Custom Cabinets - ${location.name}`,
     address: `Serving ${location.name}, TX`,
-    phone: '(281) 568-8000',
+    phone: '(713) 502-0399',
     hours: 'Mo-Fr 09:00-18:00, Sa 10:00-16:00',
     priceRange: '$$$',
   });

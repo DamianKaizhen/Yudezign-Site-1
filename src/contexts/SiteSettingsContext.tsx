@@ -9,7 +9,9 @@ interface SiteSettingsContextType {
 }
 
 const defaultSettings: SiteSettings = {
-  logo: '',
+  // Not '' — an empty logo drops the header to the text fallback whenever the
+  // settings API is unreachable, which reads as the site being half-broken.
+  logo: '/logo-wordmark.svg',
   favicon: '/favicon.ico',
   companyName: 'YuDezign',
   socialLinks: {
