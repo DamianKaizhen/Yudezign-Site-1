@@ -448,5 +448,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-09-29T13:15:48.657Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1793009982067_htveilm',
+    name: 'Ricardo Wilson',
+    email: 'wilson.r@useadvancedbiz.com',
+    phone: '619-822-1960',
+    projectType: 'kitchen',
+    budget: 'under-5k',
+    timeline: 'asap',
+    message: 'Hi Team,\n\nI read about your custom European frameless cabinet business here on your site.\n\nI\'m Ricardo Wilson, a business broker in Houston. Our firm has been helping Houston owners sell what they built for decades.\n\nBuyers I work with are actively looking for privately owned Houston businesses, and I identified your cabinet manufacturing business as one I would like to learn more about.\n\nThis isn\'t a request to sell anything. Most owners just want to know their options quietly and early.\n\nIf it would be useful, I\'m happy to walk you through what\'s happening in your industry here in Greater Houston right now, which businesses buyers are after and where they\'ve gotten more careful on price. That\'s the kind of thing I work on every day, and it\'s usually a more useful conversation than anything I could put in an email.\n\nAnd if selling is nowhere near your mind right now, that\'s completely fine. Most owners I talk to are three or four years out, some longer. I\'m glad to be a resource in the meantime.\n\nOpen to a quick call?\n\nWarm regards,\nRicardo Wilson\nAdvanced Business Brokers',
+    submittedAt: '2026-10-26T10:19:41.879Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
