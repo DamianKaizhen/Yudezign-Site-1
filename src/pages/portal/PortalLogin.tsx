@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AlertCircle, Lock, WifiOff } from 'lucide-react';
+import { LOGO_WORDMARK_LIGHT } from '../../data/brand';
 
 import SEO from '../../components/SEO';
 
@@ -122,9 +123,12 @@ const PortalLogin = () => {
         className="w-full max-w-md"
       >
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-4xl font-bold text-white">
-            <span>YuDe</span>
-            <span className="text-accent">Zign</span>
+          <h1 className="mb-3">
+            <img
+              src={LOGO_WORDMARK_LIGHT}
+              alt="YuDeZign"
+              className="mx-auto h-9 w-auto md:h-10"
+            />
           </h1>
           <p className="text-lg text-white/80">Sales Portal</p>
         </div>
