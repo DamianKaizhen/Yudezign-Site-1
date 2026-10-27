@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, CloudOff, LogOut, Search } from 'lucide-react';
 
 import { useStandalone } from '../../lib/hooks/useStandalone';
+import { LOGO_WORDMARK_LIGHT } from '../../data/brand';
 
 import type { PortalPayload, PortalRole } from '../../types/salesPortal';
 import { buildSearchIndex } from '../../lib/salesSearch';
@@ -78,11 +79,17 @@ const PortalLayout = ({
               </button>
             )}
 
-            <Link to="/sales" className="flex items-baseline gap-2 text-lg font-semibold">
-              <span>
-                YuDe<span className="text-accent">Zign</span>
-              </span>
-              <span className="text-[11px] font-normal uppercase tracking-widest text-white/70">
+            {/* The bar is painted bg-primary, so this is the reversed wordmark
+                (white, accent "EZ") the footer uses; the standard mark's green
+                letters would vanish into the ground. Fixed asset from brand.ts,
+                not siteSettings.logo, for the reason documented there. */}
+            <Link to="/sales" className="flex items-center gap-2.5">
+              <img
+                src={LOGO_WORDMARK_LIGHT}
+                alt="YuDeZign"
+                className="h-5 w-auto shrink-0 md:h-6"
+              />
+              <span className="pt-0.5 text-[11px] font-normal uppercase tracking-widest text-white/70">
                 Sales
               </span>
             </Link>
