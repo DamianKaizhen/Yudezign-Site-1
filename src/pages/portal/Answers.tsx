@@ -76,7 +76,9 @@ const Answers = () => {
       <header>
         <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Answers</h1>
         <p className="mt-2 text-body-sm text-luxury-gray-600">
-          Every answer you give a customer. {rep.version}.
+          The Answer Key, searchable: every customer question with the approved answer, where it came
+          from, and its status. Ruled means say it; provisional means it has an expiry date; blocked
+          means you say the scripted deflection word for word. {rep.version}.
         </p>
       </header>
 
