@@ -58,7 +58,7 @@ const BUDGET_LABELS: Record<string, string> = {
 };
 
 const TIMELINE_LABELS: Record<string, string> = {
-  asap: 'ASAP (2-3 weeks)',
+  asap: 'ASAP (as little as two weeks)',
   '1-2months': '1-2 months',
   '3-6months': '3-6 months',
   planning: 'Just planning',

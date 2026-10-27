@@ -44,7 +44,7 @@ const ShowroomPage: React.FC = () => {
     <>
       <SEO
         title="Visit Our Houston Showroom | YuDezign Custom Cabinets"
-        description="Visit YuDezign's Houston showroom to see 50+ cabinet displays, touch materials, and meet with expert designers. Free consultation included with showroom visit."
+        description="Visit YuDezign's Houston showroom to see cabinet displays in all four Styles, touch materials, and meet with expert designers. Free consultation included with showroom visit."
         keywords={[
           'cabinet showroom Houston',
           'YuDezign showroom',
@@ -70,7 +70,7 @@ const ShowroomPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              See, touch, and compare 50+ cabinet displays. Meet with expert designers and bring your vision to life.
+              See, touch, and compare cabinet displays in all four Styles. Meet with expert designers and bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -241,12 +241,12 @@ const ShowroomPage: React.FC = () => {
               {
                 icon: Camera,
                 title: 'See & Touch Displays',
-                desc: 'Explore 50+ cabinet displays featuring different styles, finishes, materials, and hardware options.',
+                desc: 'Explore cabinet displays featuring the four Styles, finishes, materials, and hardware options.',
               },
               {
                 icon: Star,
                 title: 'Compare Quality',
-                desc: 'See the difference between stock, semi-custom, and fully custom construction side-by-side.',
+                desc: 'See the four Styles side by side: same box, same hardware, with the door surface and finish family changing between them.',
               },
               {
                 icon: Calendar,
@@ -284,12 +284,12 @@ const ShowroomPage: React.FC = () => {
               {
                 title: 'Kitchen Displays',
                 image: '/images/showroom/kitchen-displays.jpg',
-                desc: '15+ kitchen cabinet setups in various styles',
+                desc: 'Kitchen cabinet setups across the four Styles',
               },
               {
                 title: 'Material Samples',
                 image: '/images/showroom/door-samples.jpg',
-                desc: '100+ door styles and finish samples',
+                desc: 'Slab door samples in all twenty standard colors, plus the decor library',
               },
               {
                 title: 'Design Center',

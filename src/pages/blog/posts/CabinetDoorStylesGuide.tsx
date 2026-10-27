@@ -429,7 +429,7 @@ const CabinetDoorStylesGuide: React.FC = () => {
             </div>
 
             <p className="text-slate-700 leading-relaxed mb-8">
-              For customers wanting more decorative detail than flat panel but concerned about maintenance, we recommend our Shaker style—it provides visual interest without the complications of raised panel construction.
+              Our standard, and our recommendation, is the flat-panel slab door. A shaker in our made-to-measure line is machined from a single piece of MDF and finished in RTF: it is a custom door, it costs more than the slab, and we don't usually recommend it. If you want a classic five-piece shaker, our stocked framed line carries one at a stock price.
             </p>
 
             {/* Comparison Section */}

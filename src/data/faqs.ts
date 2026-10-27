@@ -14,14 +14,14 @@ export const faqs: FAQ[] = [
   {
     id: 'what-is-yudezign',
     question: 'What is YuDezign and what do you do?',
-    answer: 'YuDezign is a Houston-based manufacturer of custom European frameless cabinets. We specialize in kitchen cabinets, closets, bathroom vanities, and custom cabinetry with 2-3 week turnaround times. We\'re a supply-only company - we manufacture and deliver cabinets but customers arrange their own installation.',
+    answer: 'YuDezign has been building custom European frameless cabinets in Houston since 2007. We specialize in kitchen cabinets, closets, bathroom vanities, and custom cabinetry, delivered in as little as two weeks, depending on finish and scale. Install support comes with every order, and inside Greater Houston we can arrange our partner contractors and quote the install separately with the job.',
     category: 'general',
     order: 1
   },
   {
     id: 'what-is-supply-only',
     question: 'What does "supply-only" mean?',
-    answer: 'Supply-only means we manufacture and deliver the cabinets, but you arrange installation separately. This model saves you 30-40% compared to full-service cabinet companies. We can recommend trusted installers, or you can use your own contractor.',
+    answer: 'Supply-only pricing means the quote covers the cabinets themselves, delivered ready to install; installation, countertops and appliances are separate. Install support still comes with every order: every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. If you\'d like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Outside Greater Houston you use your own installer, with our install support.',
     category: 'general',
     order: 2
   },
@@ -44,7 +44,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-much-custom-cabinets-cost',
     question: 'How much do custom cabinets cost in Houston?',
-    answer: 'It depends what is included. Fully installed custom cabinetry in Houston typically runs $800-$1,800 per linear foot at market rates, but that figure covers installation labour, countertops and other trades. We are supply-only: we manufacture and deliver the cabinets ready to install, so our pricing is a fraction of that. A kitchen runs roughly $215-$375 per linear foot depending on finish, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets. Bathroom vanities start around $130 per linear foot. Installation, countertops, sink, appliances and backsplash are separate.',
+    answer: 'It depends what is included. Fully installed custom cabinetry in Houston typically runs $800-$1,800 per linear foot at market rates, but that figure covers installation labor, countertops and other trades. Our pricing is supply-only, the cabinets alone, delivered ready to install, so it is a fraction of that. A kitchen runs roughly $215-$375 per linear foot depending on finish, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets. Bathroom vanities start around $130 per linear foot. Installation, countertops, sink, appliances and backsplash are separate.',
     category: 'pricing',
     tags: ['cost', 'pricing', 'kitchen'],
     order: 1
@@ -52,14 +52,14 @@ export const faqs: FAQ[] = [
   {
     id: 'what-affects-pricing',
     question: 'What affects the final price of custom cabinets?',
-    answer: 'Price is determined by: (1) Materials used - melamine is most affordable, high-gloss acrylic is premium, (2) Production time - complexity and customization affect manufacturing time, (3) Features - soft-close hardware, pull-outs, custom inserts add cost, (4) Specialty cabinets - corner solutions and custom configurations cost more, (5) Drawer slides - full-extension soft-close slides step up as you move through the lines. Soft-close DTC hinges are standard on every line, never an upcharge. Linear footage is used for rough estimates only.',
+    answer: 'Price is determined by: (1) Materials used - melamine is most affordable, high-gloss acrylic is premium, (2) Production time - complexity and customization affect manufacturing time, (3) Features - soft-close hardware, pull-outs, custom inserts add cost, (4) Specialty cabinets - corner solutions and custom configurations cost more, (5) Style - the door surface and finish family change between our four Styles. Hardware never steps up: DTC soft-close hinges and the same slides come in every Style, never an upcharge. Linear footage is used for rough estimates only.',
     category: 'pricing',
     order: 2
   },
   {
     id: 'whats-included-in-price',
     question: 'What\'s included in your pricing?',
-    answer: 'Our prices include: cabinet boxes, doors, drawer fronts, soft-close hinges, undermount drawer slides, adjustable shelves, and delivery. NOT included: countertops, installation labor, sink/faucet, appliances, backsplash, flooring. We deliver cabinets ready for installation.',
+    answer: 'Our prices include: cabinet boxes, doors, drawer fronts, DTC soft-close hinges, drawer slides (a DTC concealed undermount slide on 21" and 24" deep boxes, a Knape & Vogt 8450FM full-extension, 100 lb side-mount slide on other depths), adjustable shelves, and install support with QR-tagged panels and the InstallAssistant app. NOT included: countertops, installation labor, sink/faucet, appliances, backsplash, flooring. Delivery is $350 a trip inside Greater Houston, or pick up at the plant at 5802 Colfax St, Houston. We deliver cabinets ready for installation.',
     category: 'pricing',
     order: 3
   },
@@ -73,7 +73,7 @@ export const faqs: FAQ[] = [
   {
     id: 'custom-vs-stock-price',
     question: 'How do your prices compare to big box stores?',
-    answer: 'Stock cabinets from Home Depot/Lowe\'s cost $150-$300/LF but are particle board, limited sizes (3-inch increments), and 8-12 week lead times. Our supply-only cabinets run about $215-$375/LF for a kitchen and give you 3/4" plywood construction, any size in 3-inch increments, 25+ finishes, and a much shorter lead time. Compare that to a design-build firm quoting $800-$1,800/LF fully installed - that price includes labour, countertops and trades. We manufacture and deliver; you or your contractor install.',
+    answer: 'Stock cabinets from Home Depot/Lowe\'s cost $150-$300/LF but are particle board, come in a handful of fixed sizes, and carry 8-12 week lead times. Our supply-only cabinets run about $215-$375/LF for a kitchen and give you 3/4" plywood construction, every width in 3-inch increments with custom heights and depths, twenty standard colors plus a deeper decor library, and delivery in as little as two weeks, depending on finish and scale. Compare that to a design-build firm quoting $800-$1,800/LF fully installed - that price includes labor, countertops and trades. Install support comes with every order, and inside Greater Houston we can arrange our partner contractors on a separate quote.',
     category: 'pricing',
     order: 5
   },
@@ -89,7 +89,7 @@ export const faqs: FAQ[] = [
   {
     id: 'do-you-install-cabinets',
     question: 'Do you install cabinets or just supply them?',
-    answer: 'We\'re a supply-only manufacturer - we deliver cabinets but don\'t install them. This keeps costs down. You can hire your own contractor or we can recommend experienced installers we\'ve worked with. Most customers save 30-40% vs full-service companies.',
+    answer: 'Both. Our pricing is for the cabinets, delivered ready to install, and install support comes with every order: every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. If you\'d like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Outside Greater Houston you use your own installer, with our install support.',
     category: 'installation',
     order: 1
   },
@@ -103,21 +103,21 @@ export const faqs: FAQ[] = [
   {
     id: 'can-i-install-myself',
     question: 'Can I install the cabinets myself?',
-    answer: 'While it\'s technically possible if you\'re experienced with cabinetry, we strongly recommend professional installation. Frameless cabinets require precise leveling and alignment for proper door operation and appearance. We don\'t provide installation guides, but we can recommend experienced installers who are familiar with our products and European frameless construction.',
+    answer: 'While it\'s technically possible if you\'re experienced with cabinetry, we strongly recommend professional installation. Frameless cabinets require precise leveling and alignment for proper door operation and appearance. Every panel is QR-tagged, and our free InstallAssistant app shows a 3D model of exactly where each piece goes, which helps an experienced DIYer. If you\'d rather have it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job.',
     category: 'installation',
     order: 3
   },
   {
     id: 'do-you-remove-old-cabinets',
     question: 'Do you remove old cabinets?',
-    answer: 'No, removal and disposal of old cabinets is not included. Your installer or contractor will typically handle removal as part of the installation. Expect to pay $500-$1,500 for removal depending on the size of your kitchen.',
+    answer: 'Removal and disposal of old cabinets is not included in the cabinet price. Your installer or contractor will typically handle removal as part of the installation; if we arrange our partner contractors for you, ask us to include it in the install quote. Expect to pay $500-$1,500 for removal depending on the size of your kitchen.',
     category: 'installation',
     order: 4
   },
   {
     id: 'installer-recommendations',
     question: 'Can you recommend installers?',
-    answer: 'Yes! We work with several experienced cabinet installers in Houston. We\'ll provide contact information for 2-3 installers who are familiar with our products. You\'ll hire and pay them directly.',
+    answer: 'Yes! Inside Greater Houston we arrange our partner contractors, who know our products and frameless construction, and quote the install separately with the job, so one call covers cabinets and install. Outside Greater Houston you use your own installer, and our install support comes with every order: QR-tagged panels and the free InstallAssistant app with a 3D model of where each piece goes.',
     category: 'installation',
     order: 5
   },
@@ -126,7 +126,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-materials-do-you-use',
     question: 'What materials do you use for cabinet construction?',
-    answer: 'Cabinet boxes: 3/4" plywood, particleboard, or moisture-resistant MDF (1/4" for back panels and drawer bottoms). We use frameless European construction with no face frame. Doors/drawer fronts: Melamine (TFL), high-pressure laminate (HPL), or high-gloss acrylic in 100+ colors and patterns. All doors include color-matched edge-banding to seal edges and create a uniform appearance. Standard board sizes are 4\'x8\' plywood sheets. All cabinets include soft-close DTC hinges and undermount drawer slides as standard. Shelves are 3/4" adjustable.',
+    answer: 'Cabinet boxes: 3/4" plywood with 1/4" plywood backs and drawer bottoms, cam-and-dowel joinery, wall cabinets hung on a French cleat. Particleboard is available if you want to take cost out. We use frameless European construction with no face frame. Doors/drawer fronts: 3/4" thick in melamine (TFL), high-pressure laminate (HPL), acrylic, paint or RTF, in twenty standard colors, five in each Style, and a deeper library of over 140 decors on request. All doors and panels get 1 mm color-matched edge banding that seals the core and creates a uniform appearance. Standard board sizes are 4\'x8\' sheets, so cabinets run up to 96" tall in one piece. Every cabinet includes DTC soft-close hinges; drawers ride a DTC concealed undermount slide on 21" and 24" deep boxes and a Knape & Vogt 8450FM full-extension, 100 lb side-mount slide on other depths. Shelves are 3/4" adjustable.',
     category: 'materials',
     order: 1
   },
@@ -141,7 +141,7 @@ export const faqs: FAQ[] = [
   {
     id: 'whats-most-durable',
     question: 'What\'s the most durable cabinet material?',
-    answer: 'For doors: High-pressure laminate (HPL) is the most durable - impact-resistant, scratch-resistant, and moisture-resistant. For boxes: 3/4" plywood is strongest. For Houston\'s humidity, moisture-resistant MDF cores are ideal for painted/laminated doors as they won\'t expand like solid wood.',
+    answer: 'For doors: High-pressure laminate (HPL) is the most durable - impact-resistant, scratch-resistant, and moisture-resistant. For boxes: 3/4" plywood is strongest. For Houston\'s humidity, engineered door cores sealed with color-matched edge banding stay dimensionally stable and won\'t expand like solid wood.',
     category: 'materials',
     order: 3
   },
@@ -155,7 +155,7 @@ export const faqs: FAQ[] = [
   {
     id: 'whats-best-for-humid-climate',
     question: 'What material is best for Houston\'s humid climate?',
-    answer: 'Engineered materials (MDF/plywood cores with laminate or acrylic) are best for Houston\'s 75-90% humidity. They\'re dimensionally stable and won\'t expand/contract with humidity like solid wood. Edge-banding is critical - it seals exposed core edges from moisture penetration and prevents warping. For sink bases and bathroom vanities, we use marine-grade plywood and seal all edges with waterproof edge-banding. This is why we don\'t use solid wood - it would expand, warp, and crack in Houston\'s climate. Our engineered materials maintain their shape and finish for decades.',
+    answer: 'Engineered materials (plywood boxes and engineered-core door panels with laminate or acrylic surfaces) are best for Houston\'s 75-90% humidity. They\'re dimensionally stable and won\'t expand/contract with humidity like solid wood. Edge-banding is critical - it seals exposed core edges from moisture penetration and prevents warping. Sink bases and bathroom vanities get the same 3/4" plywood boxes, with 1 mm color-matched edge banding sealing every exposed core edge. This is why we don\'t use solid wood - it would expand, warp, and crack in Houston\'s climate. Our engineered materials maintain their shape and finish for decades.',
     category: 'materials',
     tags: ['houston', 'climate'],
     order: 5
@@ -163,7 +163,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-many-colors-available',
     question: 'How many colors/finishes do you offer?',
-    answer: 'We offer 25+ standard finish colors including whites, grays, wood grains, and bold colors. Custom color matching is available for an additional fee. Popular Houston choices: crisp white, warm gray, natural oak, and matte black.',
+    answer: 'We offer twenty standard colors, five in each Style, spanning whites, grays, woodgrains and bold solids, and a deeper library of over 140 decors on request. Custom color matching is available for an additional fee. Popular Houston choices: crisp white, warm gray, natural oak, and matte black.',
     category: 'materials',
     order: 6
   },
@@ -172,7 +172,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-does-process-work',
     question: 'How does the design and ordering process work?',
-    answer: 'Step 1: Free consultation - visit showroom or in-home visit. Step 2: We measure and create a design with 3D renderings. Step 3: Receive detailed quote (3-5 days). Step 4: Approve design, pay 50% deposit. Step 5: We manufacture (2-3 weeks). Step 6: Delivery, you arrange installation. Step 7: Pay remaining 50%.',
+    answer: 'Step 1: Free consultation - visit showroom or in-home visit. Step 2: We measure and create a design with 3D renderings. Step 3: Receive detailed quote (3-5 days). Step 4: Approve design, pay 50% deposit. Step 5: We manufacture, in as little as two weeks depending on finish and scale. Step 6: Delivery ($350 a trip inside Greater Houston, or pick up at the plant) and install, by our partner contractors on a separate quote or your own installer with our install support. Step 7: Pay remaining 50%.',
     category: 'process',
     order: 1
   },
@@ -186,7 +186,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-long-does-it-take',
     question: 'How long from order to delivery?',
-    answer: 'Total timeline is 3-4 weeks. Design and quote: 3-5 days. Manufacturing: 2-3 weeks for standard residential kitchens using materials we have in stock. Special finishes or custom colors require vendor sourcing, which can add days to weeks depending on availability. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores. Local Houston manufacturing means no shipping delays.',
+    answer: 'Design and quote: 3-5 days. Manufacturing: in as little as two weeks, depending on finish and scale, for standard residential kitchens using materials we have in stock. Special finishes or custom colors require vendor sourcing, which can add time depending on availability. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores. Local Houston manufacturing means no shipping delays.',
     category: 'process',
     tags: ['turnaround', 'timeline'],
     order: 3
@@ -201,7 +201,7 @@ export const faqs: FAQ[] = [
   {
     id: 'do-you-work-with-contractors',
     question: 'Do you work with contractors and designers?',
-    answer: 'Yes! We work with contractors, designers, and architects regularly. We can coordinate directly with your design team and provide CAD files. Many Houston contractors prefer our supply-only model as it keeps project costs down for their clients.',
+    answer: 'Yes! We work with contractors, designers, and architects regularly. We can coordinate directly with your design team and provide CAD files. Many Houston contractors like our supply-only pricing, with QR-tagged panels and the InstallAssistant app making the install straightforward for their crews.',
     category: 'process',
     order: 5
   },
@@ -288,7 +288,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-is-rtf-finish',
     question: 'What is RTF (Rigid Thermofoil) and when is it used?',
-    answer: 'RTF (Rigid Thermofoil) is a vinyl film that\'s vacuum-pressed over MDF to create a seamless, moisture-resistant finish. It mimics the look of paint or wood grain without the maintenance issues. We use RTF exclusively for door and drawer fronts, particularly for Shaker-style profiles. It\'s durable, easy to clean, and performs well in Houston\'s humid climate.',
+    answer: 'RTF (Rigid Thermofoil) is a vinyl film that\'s vacuum-pressed over MDF to create a seamless, moisture-resistant finish. It mimics the look of paint or wood grain without the maintenance issues. We use RTF exclusively for door and drawer fronts, chiefly on the shaker we machine from a single piece of MDF as a custom door. It\'s durable, easy to clean, and performs well in Houston\'s humid climate.',
     category: 'materials',
     tags: ['finishes', 'RTF', 'materials'],
     order: 7
@@ -296,7 +296,7 @@ export const faqs: FAQ[] = [
   {
     id: 'why-mdf-for-shaker-doors',
     question: 'Why do you use MDF for Shaker doors instead of real wood?',
-    answer: 'We carve Shaker profiles from a single piece of MDF rather than using traditional multi-piece real wood construction. MDF doesn\'t expand or contract with humidity changes like real wood does - critical for Houston\'s climate. MDF allows us to create the Shaker profile without joints that could separate over time. While not "real wood," MDF with RTF or paint finish provides superior dimensional stability and durability.',
+    answer: 'We carve Shaker profiles from a single piece of MDF rather than using traditional multi-piece real wood construction. MDF doesn\'t expand or contract with humidity changes like real wood does - critical for Houston\'s climate. MDF allows us to create the Shaker profile without joints that could separate over time. While not "real wood," MDF with RTF or paint finish provides superior dimensional stability and durability. Note that a shaker is a custom door in our made-to-measure line: it costs more than our standard slab door and we don\'t usually recommend it. If you want a classic five-piece shaker, our stocked framed line carries one at a stock price.',
     category: 'materials',
     tags: ['MDF', 'Shaker doors', 'construction'],
     order: 8
@@ -304,7 +304,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-is-edge-banding',
     question: 'What is edge-banding and why is it important?',
-    answer: 'Edge-banding is a thin strip applied to the exposed edges of cabinet doors and panels. It serves two critical purposes: (1) Seals the exposed core from moisture, preventing water damage and warping - especially important in humid Houston, and (2) Matches the surface finish color for a uniform, professional appearance. All our doors and visible panels include color-matched edge-banding.',
+    answer: 'Edge-banding is a 1 mm strip applied to the exposed edges of cabinet doors and panels. It serves two critical purposes: (1) Seals the exposed core from moisture, preventing water damage and warping - especially important in humid Houston, and (2) Matches the surface finish color for a uniform, professional appearance. All our doors and visible panels include color-matched edge-banding.',
     category: 'technical',
     tags: ['edge-banding', 'construction', 'finishing'],
     order: 7
@@ -328,7 +328,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-soft-close-hardware',
     question: 'What hardware do you use for soft-close functionality?',
-    answer: 'All our cabinets include soft-close DTC hinges and undermount drawer slides as standard equipment - never an upcharge. Slides are full-extension, soft-close and rated to 100 lb ball-bearing. Soft-close prevents slamming, reduces wear and tear, and provides a premium feel. The undermount slides are hidden beneath the drawer for a cleaner appearance and full-extension access. Your written warranty comes with your agreement.',
+    answer: 'DTC soft-close hinges on every door. Drawers ride a DTC concealed undermount slide on 21" and 24" deep boxes (the kitchen and vanity bases) and a Knape & Vogt 8450FM full-extension, 100 lb side-mount slide on other depths. The same hardware in every Style, never an upcharge. Soft-close prevents slamming, reduces wear and tear, and provides a premium feel. The undermount slides are hidden beneath the drawer for a cleaner appearance and full-extension access. Your written warranty comes with your agreement.',
     category: 'technical',
     tags: ['hardware', 'soft-close', 'quality'],
     order: 10

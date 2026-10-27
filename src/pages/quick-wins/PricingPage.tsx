@@ -121,7 +121,7 @@ const PricingPage: React.FC = () => {
               </label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { value: 'semi-custom', label: 'Semi-Custom', desc: 'Our specialty • 2-4 weeks', recommended: true },
+                  { value: 'semi-custom', label: 'Semi-Custom', desc: 'Our specialty • from two weeks', recommended: true },
                   { value: 'custom', label: 'Fully Custom', desc: 'Ultimate flexibility' },
                 ].map((tier) => (
                   <button
@@ -185,17 +185,17 @@ const PricingPage: React.FC = () => {
               <div className="mt-4 pt-4 border-t border-slate-200 space-y-2">
                 <p className="text-xs text-slate-600 flex items-start">
                   <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                  Supply only &mdash; cabinets, assembled, delivered. Countertops, appliances, installation labour and delivery ($350 a trip inside Greater Houston) are separate.
+                  Supply only &mdash; cabinets, flat-pack or assembled ($30 per base or wall cabinet, $60 per tall). Countertops, appliances, installation labor and delivery ($350 a trip inside Greater Houston, or pick up at the plant) are separate.
                 </p>
-                {/* These rates start at our Essential line, with Signature in the
+                {/* These rates start at our Essential Style, with Signature in the
                     same band. Reserve and Atelier are made to measure too, but
-                    their surfaces and accessory programme run above this — so
+                    their door surfaces run above this — so
                     the calculator is a floor, not a range that contains
                     everything. Saying so here stops a customer anchoring on a
                     number a rep will then have to walk back. */}
                 <p className="text-xs text-slate-600 flex items-start">
                   <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                  A starting estimate, based on our Essential and Signature lines. Our Reserve and Atelier lines &mdash; soft-touch, handleless and lacquered finishes with the fuller accessory programme &mdash; run above these figures. Final pricing depends on finish, hardware and complexity, so book a free consultation for a real number.
+                  A starting estimate, based on our Essential and Signature Styles. Our Reserve and Atelier Styles &mdash; super-matte soft-touch and lacquered door surfaces &mdash; run above these figures. Same box and hardware in every Style; what changes is the door surface and the finish family. Final pricing depends on finish and complexity, so book a free consultation for a real number.
                 </p>
               </div>
             </div>
@@ -249,7 +249,7 @@ const PricingPage: React.FC = () => {
                   },
                   {
                     feature: 'Lead Time',
-                    semiCustom: '2-4 weeks - rapid local manufacturing',
+                    semiCustom: 'As little as two weeks, depending on finish and scale',
                     custom: 'Longer timeline for complex designs'
                   },
                   {
@@ -259,18 +259,18 @@ const PricingPage: React.FC = () => {
                   },
                   {
                     feature: 'Door Styles',
-                    semiCustom: '50+ curated styles',
+                    semiCustom: 'Slab doors standard • single-piece MDF shaker in RTF as a custom option',
                     custom: 'Unlimited • any design'
                   },
                   {
                     feature: 'Finish Options',
-                    semiCustom: 'Melamine, laminate, acrylic - 100+ colors',
+                    semiCustom: 'Melamine, laminate, acrylic • 20 standard colors, 140+ decors on request',
                     custom: 'Unlimited specialty finishes'
                   },
                   {
                     feature: 'Construction',
-                    semiCustom: 'Frameless European • plywood/particleboard/MDF',
-                    custom: 'Premium construction • dovetail'
+                    semiCustom: 'Frameless European • 3/4" plywood, cam-and-dowel; particleboard on request',
+                    custom: 'Varies by maker'
                   },
                   {
                     feature: 'Warranty',
@@ -327,7 +327,7 @@ const PricingPage: React.FC = () => {
                 {[
                   { title: 'Custom Laminates', desc: 'High-pressure laminates with glue-on application for durability and easy maintenance. Perfect for high-traffic commercial environments.' },
                   { title: 'Frameless Construction', desc: 'European-style frameless cabinets maximize interior space and create a modern, professional aesthetic.' },
-                  { title: 'Rapid Production', desc: '2-4 week turnaround helps keep commercial projects on schedule and minimizes business downtime.' },
+                  { title: 'Rapid Production', desc: 'Lead times of as little as two weeks, depending on finish and scale, help keep commercial projects on schedule and minimize business downtime.' },
                   { title: 'Bulk Pricing', desc: 'Competitive pricing for large commercial orders. Volume discounts available for multi-unit projects.' },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start">
@@ -406,7 +406,7 @@ const PricingPage: React.FC = () => {
               </div>
               <h3 className="font-semibold text-xl text-slate-900 mb-3">Production Time</h3>
               <p className="text-slate-600 mb-4">
-                2-3 weeks for standard residential projects using in-stock materials. Special finishes or custom colors may add additional time depending on vendor availability.
+                As little as two weeks for standard residential projects, depending on finish and scale. Decors from the deeper library may add time depending on vendor availability.
               </p>
               <p className="text-sm text-slate-500 font-semibold">
                 Much faster than 8-12 weeks for imported cabinets!
@@ -434,7 +434,7 @@ const PricingPage: React.FC = () => {
               </div>
               <h3 className="font-semibold text-xl text-slate-900 mb-3">Free Pickup Option</h3>
               <p className="text-slate-600 mb-4">
-                Pick up your cabinets at no charge from our factory at 5802 Colfax St, Houston, TX 77477.
+                Pick up your cabinets at no charge from our plant at 5802 Colfax St, Houston.
               </p>
               <p className="text-sm text-slate-500">
                 Save on delivery costs and inspect your cabinets in person before taking them home.
@@ -448,11 +448,11 @@ const PricingPage: React.FC = () => {
             <ul className="space-y-2 text-blue-800 text-sm">
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                <span><strong>Material availability:</strong> In-stock finishes ship in 2-3 weeks; special orders may take longer</span>
+                <span><strong>Material availability:</strong> Standard colors ship in as little as two weeks; decors from the deeper library may take longer</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
-                <span><strong>Custom colors:</strong> Color matching requires vendor sourcing, adding days to weeks</span>
+                <span><strong>Decors on request:</strong> Colors beyond the twenty standard ones are sourced from the vendor library, adding days to weeks</span>
               </li>
               <li className="flex items-start">
                 <CheckCircle className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
@@ -482,8 +482,8 @@ const PricingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: 'Free Design Consultation', desc: 'In-home or showroom meeting with expert designer • 3D renderings • unlimited revisions' },
-              { title: 'Premium Materials', desc: 'Plywood construction (not particleboard) • soft-close hinges and glides • quality hardware' },
-              { title: 'Professional Installation', desc: 'Expert installers employed by YuDezign • job site protection • debris removal' },
+              { title: 'Premium Materials', desc: '3/4" plywood boxes, particleboard on request • DTC soft-close hinges • DTC undermount and Knape & Vogt side-mount slides' },
+              { title: 'Install Support', desc: 'QR-tagged panels • free InstallAssistant app with a 3D model for your installer • partner contractors inside Greater Houston, quoted separately' },
               { title: 'Lifetime Warranty', desc: 'Lifetime structural warranty • 5-year finish warranty • local service and support' },
               { title: 'Project Management', desc: 'Dedicated project coordinator • timeline management • quality inspections' },
               { title: 'Customer Support', desc: 'Direct access to our team • responsive communication • satisfaction guarantee' },

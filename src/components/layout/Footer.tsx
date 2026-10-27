@@ -27,7 +27,7 @@ const Footer = () => {
               </div>
             )}
             <p className="text-neutral-200 mb-4">
-              Custom European frameless cabinets, crafted in Houston. Supply-only excellence with 2-3 week delivery.
+              Custom European frameless cabinets, crafted in Houston. Supply-only pricing, lead times from as little as two weeks.
             </p>
             <div className="flex space-x-4">
               {siteSettings.socialLinks.facebook && (

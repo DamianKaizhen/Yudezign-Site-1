@@ -222,8 +222,8 @@ const KDLite = () => {
               },
               {
                 step: '04',
-                title: 'Order & Install',
-                description: 'Place your order. We manufacture and deliver in 2-3 weeks.',
+                title: 'Order & Build',
+                description: 'Place your order. We build in as little as two weeks, depending on finish and scale, and deliver or hold for pickup.',
               },
             ].map((item, index) => (
               <motion.div

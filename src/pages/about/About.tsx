@@ -8,7 +8,7 @@ const About = () => {
     <>
       <SEO
         title="About Us - Houston Cabinet Craftsmen"
-        description="YuDezign is a Houston-based custom European frameless cabinet craftsman since 2019. We specialize in premium cabinetry with 3/4 plywood construction, 25+ finishes, and fast 2-3 week turnaround. Supply-only pricing for contractors and homeowners."
+        description="YuDezign has built custom European frameless cabinets in Houston since 2007. Premium cabinetry with 3/4 plywood construction, 20 standard colors, and lead times from as little as two weeks. Supply-only pricing for contractors and homeowners."
         keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
         url="https://www.yudezign.com/about"
         image="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80"
@@ -46,7 +46,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90"
           >
-            Houston's premier European frameless cabinet craftsmen since 2019
+            Houston's premier European frameless cabinet craftsmen since 2007
           </motion.p>
         </div>
       </section>
@@ -65,7 +65,7 @@ const About = () => {
               <h2 className="text-display-mobile md:text-h1 font-medium text-luxury-gray-900 mb-8">Our Story</h2>
               <div className="space-y-6 text-body-lg text-luxury-gray-600 leading-relaxed">
                 <p>
-                  Since 2019, YuDezign has been born from a simple observation: homeowners and contractors in Houston
+                  YuDezign was born in 2007 from a simple observation: homeowners and contractors in Houston
                   deserved better access to high-quality European cabinetry without the astronomical showroom markups.
                 </p>
                 <p>
@@ -74,7 +74,7 @@ const About = () => {
                   customers transform their spaces with premium cabinets at honest prices.
                 </p>
                 <p>
-                  Our commitment to 3/4" plywood construction, frameless European design, and rapid 2-4 week turnaround
+                  Our commitment to 3/4" plywood construction, frameless European design, and lead times of as little as two weeks
                   has made us the trusted choice for contractors, designers, and homeowners across the Greater Houston area.
                 </p>
                 <p>
@@ -108,9 +108,9 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {[
-              { number: '2019', label: 'Serving Houston' },
-              { number: '2-3', label: 'Week Turnaround' },
-              { number: '25+', label: 'Finish Options' },
+              { number: '2007', label: 'Serving Houston Since' },
+              { number: '2', label: 'Week Lead Time, From' },
+              { number: '20', label: 'Standard Colors' },
               { number: '3/4"', label: 'Plywood Quality' },
             ].map((stat, index) => (
               <motion.div
@@ -142,7 +142,7 @@ const About = () => {
             <div className="w-16 h-1 bg-primary mx-auto mb-8"></div>
             <h2 className="text-display-mobile md:text-display font-medium text-luxury-gray-900 mb-6">Our Process</h2>
             <p className="text-body-lg text-luxury-gray-600 max-w-2xl mx-auto leading-relaxed">
-              From your first inquiry to final installation, we've streamlined every step.
+              From your first inquiry to install support, we've streamlined every step.
             </p>
           </motion.div>
 
@@ -161,12 +161,12 @@ const About = () => {
               {
                 icon: Factory,
                 title: 'Crafting',
-                description: 'We craft your cabinets in our Houston facility using premium 3/4" plywood and European hardware.',
+                description: 'We craft your cabinets in our Houston facility using 3/4" plywood boxes and the same DTC and Knape & Vogt soft-close hardware in every Style.',
               },
               {
                 icon: Award,
-                title: 'Delivery',
-                description: 'Choose assembled or flat-pack delivery. Your installer (or ours) completes the transformation.',
+                title: 'Delivery & Install Support',
+                description: 'Choose assembled or flat-pack delivery. Every panel is QR-tagged, and our free InstallAssistant app shows your installer exactly where each piece goes. Inside Greater Houston we can arrange partner contractors, quoted separately.',
               },
             ].map((step, index) => (
               <motion.div
@@ -323,9 +323,9 @@ const About = () => {
                       <span className="text-white text-sm">✓</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Significant Cost Savings</h4>
+                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Priced Without Installation</h4>
                       <p className="text-body text-luxury-gray-600 leading-relaxed">
-                        By eliminating installation services and showroom overhead, we pass 30-50% savings directly to you.
+                        Our cabinets are priced without installation, so you pay for the cabinets, not a bundled crew. Installation is quoted separately through partner contractors inside Greater Houston.
                       </p>
                     </div>
                   </div>
@@ -337,7 +337,7 @@ const About = () => {
                     <div>
                       <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Work With Your Installer</h4>
                       <p className="text-body text-luxury-gray-600 leading-relaxed">
-                        Many customers prefer using their trusted contractor. We support that relationship.
+                        Many customers prefer their trusted contractor. Every panel is QR-tagged, and our free InstallAssistant app shows them a 3D model of exactly where each piece goes.
                       </p>
                     </div>
                   </div>
@@ -347,9 +347,9 @@ const About = () => {
                       <span className="text-white text-sm">✓</span>
                     </div>
                     <div>
-                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Installer Network Available</h4>
+                      <h4 className="font-medium text-h4 text-luxury-gray-900 mb-2">Partner Contractors in Greater Houston</h4>
                       <p className="text-body text-luxury-gray-600 leading-relaxed">
-                        Need an installer? We maintain relationships with experienced professionals throughout Houston.
+                        If you'd like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Outside Greater Houston you use your own installer, with our install support.
                       </p>
                     </div>
                   </div>

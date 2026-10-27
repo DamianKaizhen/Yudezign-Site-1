@@ -2,38 +2,31 @@ import type { FinishStyle } from '../types';
 
 export const finishStyles: FinishStyle[] = [
   {
-    id: 'touch-nature',
-    name: 'A Touch of Nature',
-    description: 'Natural wood-inspired finishes that bring warmth and organic beauty to your space',
+    id: 'essential',
+    name: 'Essential',
+    description: 'The widest palette, at the working price. Woodgrain and solid TFL doors for rentals, spec homes and hardworking family spaces.',
     visible: true,
     order: 1,
   },
   {
-    id: 'touch-nature-plus',
-    name: 'A Touch of Nature Plus',
-    description: 'Premium natural finishes with rich, sophisticated wood tones',
+    id: 'signature',
+    name: 'Signature',
+    description: 'European decors, in the balanced middle. Smooth matte solids and deep-texture woodgrains for warm kitchens and rooms meant to feel lived in.',
     visible: true,
     order: 2,
   },
   {
-    id: 'artisan-shine',
-    name: 'Artisan Shine',
-    description: 'High-gloss premium finishes that create a sleek, modern aesthetic',
+    id: 'reserve',
+    name: 'Reserve',
+    description: 'Soft-touch surfaces, handleless lines. Super-matte doors that resist fingerprints, for modern builds where the architecture speaks.',
     visible: true,
     order: 3,
   },
   {
-    id: 'artisan-matte',
-    name: 'Artisan Matte',
-    description: 'Elegant matte finishes with a refined, contemporary look',
+    id: 'atelier',
+    name: 'Atelier',
+    description: 'Lacquered panels and statement builds. High gloss and perfect matt for flagship kitchens, media walls and hospitality.',
     visible: true,
     order: 4,
-  },
-  {
-    id: 'limited-edition-finishes',
-    name: 'Limited Edition Finishes',
-    
-    visible: true,
-    order: 5,
   }
 ];

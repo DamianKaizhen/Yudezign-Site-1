@@ -59,7 +59,7 @@ const VISUALIZER_PROMPT = `ROLE: You are generating a photorealistic rendering f
 CRITICAL CONSTRAINTS - WHAT WE CANNOT DO (MUST AVOID):
 ═══════════════════════════════════════════════════════════════
 
-❌ NO solid hardwood doors (we use melamine/laminate surfaces only)
+❌ NO solid hardwood doors (our surfaces are melamine, laminate, acrylic, paint and RTF, never solid hardwood)
 ❌ NO face-frame cabinets (we ONLY make frameless/European style)
 ❌ NO Shaker style doors (no recessed panels, no rail-and-stile)
 ❌ NO raised panel doors
@@ -83,8 +83,8 @@ WHAT WE DO - MANDATORY DESIGN ELEMENTS:
 CONSTRUCTION:
 ✓ European frameless (32mm system) cabinet boxes
 ✓ Full-overlay slab doors with minimal 3mm gaps
-✓ Concealed soft-close hinges (Blum or equivalent)
-✓ Soft-close undermount drawer slides
+✓ DTC concealed soft-close hinges
+✓ DTC concealed soft-close undermount drawer slides
 ✓ Matching edge banding on all exposed edges
 ✓ Finished cabinet interiors (white or matching)
 ✓ Adjustable shelves with shelf pins
@@ -99,33 +99,43 @@ HANDLE OPTIONS (choose one):
 ✓ Bar pulls / handles (surface-mounted metal pulls)
 ✓ No handles (handleless - doors open by grabbing door edge, no special mechanism)
 
-Hardware finishes: Brushed nickel, matte black, brushed brass/gold, chrome
+Hardware finishes: Brushed nickel, polished chrome, matte black
 
 ═══════════════════════════════════════════════════════════════
 AVAILABLE FINISHES (USE ONLY THESE):
 ═══════════════════════════════════════════════════════════════
 
-WOOD-LOOK TEXTURES (Touch Nature / Touch Nature Plus):
+Four Styles. Same box, same hardware in every Style; what changes is the door surface and the finish family.
+
+ESSENTIAL STYLE (woodgrain and solid TFL):
 - Acacia Honey (warm honey wood grain)
 - First Class (rich brown wood grain)
 - Fashionista (contemporary grey wood grain)
 - Rock Solid (weathered grey oak look)
 - Lorenzo Oak (beige-grey oak)
-- Brown Warmia Walnut (dark walnut grain)
 - Vicenza Oak (natural light oak)
 - White Tossini Elm (whitewashed wood grain)
 
-HIGH GLOSS SOLID COLORS (Artisan Shine):
-- HG White (brilliant white, mirror-like)
-- HG Dark Grey (deep charcoal, reflective)
-- HG Gentle Grey (soft grey, glossy)
-- HG Luxe Black (pure black, high shine)
+SIGNATURE STYLE (European TFL):
+- Stone Green (smooth matte solid, muted green)
+- Misty Blue (smooth matte solid, soft grey-blue)
+- Soft Beige (smooth matte solid, warm beige)
+- Warmia Walnut (dark walnut grain)
+- Sand Casella Oak (sandy light oak grain)
 
-MATTE SOLID COLORS (Artisan Matte - Soft Touch):
-- Soft Touch White (crisp matte white)
-- Soft Touch Black (deep matte black)
-- Soft Touch Dark Grey (charcoal matte)
-- Soft Touch Pebble Grey (light warm grey matte)
+RESERVE STYLE (super-matte soft-touch solids):
+- White (crisp super-matte white)
+- Black (deep super-matte black)
+- Cream (warm super-matte off-white)
+- Stone Grey (mid warm grey, super-matte)
+- Relax Green (muted sage green, super-matte)
+
+ATELIER STYLE (lacquered):
+- Carte Blanche (brilliant white, high gloss, mirror-like)
+- Black (pure black, high gloss)
+- Vanilla Orchid (off-white, perfect matt)
+- Midnight Sun (black, perfect matt)
+- Steel Blue (deep blue, perfect matt)
 
 ═══════════════════════════════════════════════════════════════
 IMAGE GENERATION INSTRUCTIONS:
@@ -167,7 +177,7 @@ EXAMPLE PROMPT STRUCTURE:
 
 Primary Finish: [FINISH NAME] on [location - e.g., all cabinets / base cabinets / perimeter]
 Accent Finish: [FINISH NAME] on [location - e.g., island / uppers / feature wall] (if applicable)
-Handle Style: [Metal J-pull profile in matte black / Bar pulls in brushed brass / No handles]
+Handle Style: [Metal J-pull profile in matte black / Bar pulls in brushed nickel / No handles]
 Countertop suggestion: [Quartz color that complements the cabinet finish]
 
 Maintain the room's existing [flooring/windows/ceiling/appliances].

@@ -243,7 +243,7 @@ const ServicePage: React.FC = () => {
               Our Process
             </h2>
             <p className="text-lg text-slate-600">
-              From consultation to installation, we make it easy
+              From consultation to install support, we make it easy
             </p>
           </div>
 
@@ -264,13 +264,13 @@ const ServicePage: React.FC = () => {
               {
                 step: '3',
                 title: 'Manufacturing',
-                desc: 'Your cabinets are precision-built in 2-3 weeks (standard materials) with quality control. Special finishes may add additional time.',
+                desc: 'Your cabinets are precision-built in as little as two weeks, depending on finish and scale, with quality control at every step.',
                 icon: Award,
               },
               {
                 step: '4',
-                title: 'Installation',
-                desc: 'Professional installation with final walkthrough and satisfaction guarantee.',
+                title: 'Install Support',
+                desc: 'Every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. Inside Greater Houston we can arrange partner contractors, quoted separately.',
                 icon: CheckCircle,
               },
             ].map((step) => (
@@ -310,7 +310,7 @@ const ServicePage: React.FC = () => {
               </div>
               <h3 className="font-semibold text-xl text-slate-900 mb-3">Production Time</h3>
               <p className="text-slate-600 mb-4">
-                2-3 weeks for standard residential projects using in-stock materials. Special finishes or custom colors may add additional time.
+                As little as two weeks for standard residential projects, depending on finish and scale. Decors from the deeper library may add time.
               </p>
               <p className="text-sm text-slate-500">
                 Much faster than the 8-12 weeks typical for imported cabinets!
@@ -338,7 +338,7 @@ const ServicePage: React.FC = () => {
               </div>
               <h3 className="font-semibold text-xl text-slate-900 mb-3">Free Pickup</h3>
               <p className="text-slate-600 mb-4">
-                Pick up your cabinets at no charge from our factory at 5802 Colfax St, Houston, TX 77477.
+                Pick up your cabinets at no charge from our plant at 5802 Colfax St, Houston.
               </p>
               <p className="text-sm text-slate-500">
                 Save on delivery and inspect your cabinets before taking them home.
