@@ -16,6 +16,9 @@ const TABS = [
 
 const todayIso = () => new Date().toLocaleDateString('en-CA');
 
+/** True once the show's last day is behind us: the page becomes an archived playbook. */
+const isArchived = (endsOn: string, today: string) => today > endsOn;
+
 /**
  * Show mode.
  *
@@ -38,6 +41,16 @@ const Booth = () => {
           {booth.eventName} · {booth.venue} · {booth.startsOn} to {booth.endsOn}
         </p>
       </header>
+
+      {isArchived(booth.endsOn, today) && (
+        <section className="rounded-xl border border-luxury-gray-200 bg-luxury-gray-50 p-4 text-body-sm text-luxury-gray-700">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-luxury-gray-400">Archived</p>
+          <p className="mt-1">
+            This show has passed. The playbook is kept as written for the next one; dates, targets and the
+            run of show below are historical.
+          </p>
+        </section>
+      )}
 
       <section className="rounded-xl bg-primary p-5 text-white shadow-luxury">
         <p className="text-[11px] font-bold uppercase tracking-wider text-accent">The target</p>

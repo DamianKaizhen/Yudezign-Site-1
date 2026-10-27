@@ -112,7 +112,7 @@ export interface QualifyingQuestion {
  * A product line.
  *
  * No `hinge` or `slide` field, deliberately. Answer Key v1.1 ruled that the
- * hardware does not ladder — DTC hinges and KV 8450FM slides on all four lines
+ * hardware does not ladder — DTC hinges on all four Styles, the slide set by box depth
  * — so per-line hardware columns invited exactly the mistake they were meant to
  * prevent. See `hardwareStatement` in product.ts.
  *

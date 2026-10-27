@@ -20,7 +20,7 @@ import type { AnswerKeyEntry, AnswerKeySection, NeverSayEntry, PortalDoc } from 
  * `answer` strings are verbatim. Do not paraphrase them to fit a layout.
  */
 
-export const answerKeyVersion = 'Answer Key v1.4 · 2026-08-06';
+export const answerKeyVersion = 'Answer Key v1.5 · 2026-10-23';
 
 export const canonRule =
   'This is the only document that settles what you say to a customer. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
@@ -100,7 +100,7 @@ export const answerKeySections: AnswerKeySection[] = [
     title: 'What we make — and what we do not',
     blurb: 'Construction answers, plus the standard dimensions you memorise.',
   },
-  { id: 'the-lines', number: 3, title: 'The four lines', blurb: 'Essential, Signature, Reserve, Atelier — and the closet ladder.' },
+  { id: 'the-lines', number: 3, title: 'The four Styles', blurb: 'Essential, Signature, Reserve, Atelier — five standard colours each — and the closet ladder.' },
   { id: 'process', number: 4, title: 'Process and timing', blurb: 'Lead time, design fee, measuring, assembly, delivery, install.' },
   { id: 'money', number: 5, title: 'Money', blurb: 'Deposit, trade pricing, tiers, and what never leaves the building.' },
   { id: 'quoting', number: 6, title: 'Quoting', blurb: 'Your contract with the quote team. Four rules.' },
@@ -135,8 +135,8 @@ export const neverSay: NeverSayEntry[] = [
   {
     id: 'ns-we-install',
     neverSay: '"We install" / "installation included"',
-    sayInstead: '"Install support" · "job-site delivery with installation coordinated"',
-    why: 'Both contracts state we do not perform installation',
+    sayInstead: '"Install support" everywhere · "installation through our partner contractors, inside Greater Houston, on a separate detailed install quote"',
+    why: 'Both contracts state YuDeZign itself does not perform installation; partner contractors do, inside Greater Houston, on a quote (Damian, 2026-10-23)',
   },
   {
     id: 'ns-dealer-tier',
@@ -167,7 +167,7 @@ export const neverSay: NeverSayEntry[] = [
     id: 'ns-hardware-brand',
     neverSay:
       'Any hinge brand other than DTC — including "Hettich as standard" and "Blum on the upper lines"',
-    sayInstead: '"DTC soft-close hinges, on every line."',
+    sayInstead: '"DTC soft-close hinges, on every Style."',
     why: 'Both have been printed in our own material and both are wrong. Corrected 2026-08-07: hinges are DTC across all four lines. If your handbook or field card says Blum, the card is stale',
   },
   {
@@ -321,7 +321,7 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'what-we-make',
     question: 'Are your shaker doors real wood?',
     answer:
-      '"No — we machine ours out of a single piece of MDF. That\'s deliberate: MDF doesn\'t move with humidity, so the door won\'t warp or crack at the joints, and it takes paint better than wood does."',
+      '"No — we machine ours out of a single piece of MDF. That\'s deliberate: MDF doesn\'t move with humidity, so the door won\'t warp or crack at the joints, and it takes paint better than wood does." Then: "It\'s a custom door, it costs more than the slab, and honestly we don\'t recommend it. If shaker is the look you want, our stocked framed line gives you a standard five-piece shaker door on a ½″ plywood box at a stock price."',
     status: 'ruled',
     source: 'Study doc — "we need to be clear that we do not use real wood when we make shaker doors"',
     neverSayIds: ['ns-solid-wood-shaker'],
@@ -404,35 +404,35 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'the-lines',
     question: "What's the difference between the lines?",
     answer:
-      '"Same box. Same motion. Different skin. The carcass is identical across all four lines — same frameless ¾″ plywood, same DTC soft-close hinge, same hundred-pound slide. What changes is the door surface and the finish family. So you can move up or down without giving up the cabinet."',
+      '"Same box. Same motion. Different skin. The carcass is identical across all four Styles — same frameless ¾″ plywood, same DTC soft-close hinge, and the same slide for a given box depth. What changes is the door surface and the finish family. So you can move up or down without giving up the cabinet."',
     status: 'ruled',
     source: 'Rewritten at v1.1 around the fact that the hardware does not ladder',
     aliases: ['lines', 'essential', 'signature', 'reserve', 'atelier', 'difference', 'tiers'],
     repNote:
       'The single most useful sentence you own. Note it no longer says "hardware brand" — that changes nothing between lines.',
-    links: [{ label: 'The four lines', href: '/sales/products?t=lines', kind: 'portal' }],
+    links: [{ label: 'The four Styles', href: '/sales/products?t=lines', kind: 'portal' }],
   },
   {
     id: 'ak-03-02',
     sectionId: 'the-lines',
     question: 'What hardware?',
     answer:
-      '"DTC soft-close hinges and Knape & Vogt 8450FM slides — the same on every line." Our partners are Häfele, Würth, DTC and Knape & Vogt.',
+      '"DTC soft-close hinges on every door. Drawers ride a DTC concealed undermount slide on 21″ and 24″ deep boxes — the kitchen and vanity bases — and a Knape & Vogt 8450FM side-mount on other depths. The same on every Style." Our partners are Häfele, Würth, DTC and Knape & Vogt.',
     status: 'ruled',
-    source: 'Damian, 2026-08-06 (Answer Key v1.1). Supersedes the spec of record, which laddered the hardware',
+    source: 'Damian, 2026-10-23 (Answer Key v1.5): slides set by box depth. 2026-08-06 (v1.1): no hardware ladder',
     neverSayIds: ['ns-hardware-brand'],
     // "blum" stays in the aliases on purpose: a rep who half-remembers it from
     // the printed handbook must be able to search it and land on the correction.
     aliases: ['hardware', 'hinges', 'slides', 'blum', 'dtc', 'hafele', 'hettich', 'brand', 'kv', '8450'],
     repNote:
-      'We do not use Blum, on any line. Both the hinge and the slide are identical across all four lines, so there is no hardware upgrade to sell. If you see Blum on a printed field card or in an older brochure, that material is stale.',
-    links: [{ label: 'The four lines', href: '/sales/products?t=lines', kind: 'portal' }],
+      'We do not use Blum, on any Style. The hinge is identical across all four Styles and the slide is set by box depth, never by Style, so there is no hardware upgrade to sell. If you see Blum on a printed field card or in an older brochure, that material is stale.',
+    links: [{ label: 'The four Styles', href: '/sales/products?t=lines', kind: 'portal' }],
   },
   {
     id: 'ak-03-02b',
     sectionId: 'the-lines',
     question: 'Do the better lines get better hardware?',
-    answer: '"No — and that\'s the point. Every line gets the same hinge and the same slide."',
+    answer: '"No — and that\'s the point. Every Style gets the same hinge, and the same slide for a given box depth."',
     status: 'ruled',
     source: 'Damian, 2026-08-06',
     neverSayIds: ['ns-hardware-brand'],
@@ -457,9 +457,9 @@ export const answerKey: AnswerKeyEntry[] = [
     id: 'ak-03-03',
     sectionId: 'the-lines',
     question: 'How good are the slides?',
-    answer: '"Full-extension, soft-close, hundred-pound ball-bearing."',
+    answer: '"Soft-close on every drawer. On the 21″ and 24″ boxes the undermount is concealed under the drawer; the KV on other depths is full-extension, hundred-pound ball-bearing." Never "made in USA" about the KV.',
     status: 'ruled',
-    source: 'KV 8450FM, the one documented rating',
+    source: 'KV 8450FM is the one documented rating; the DTC undermount rating is to be added from its spec sheet',
     aliases: ['slides', 'drawer slides', 'weight rating', '100 lb'],
   },
   {
@@ -503,9 +503,9 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'the-lines',
     question: 'How many finishes?',
     answer:
-      '"Over thirty." If they want a specific colour: "our library is much deeper than the brochure — tell me what you\'re matching and I\'ll check it."',
+      '"Twenty standard colours — five in each Style — and a much deeper library if you\'re matching something." If they want a specific colour: "tell me what you\'re matching and I\'ll check it."',
     status: 'ruled',
-    source: '"30+" is the approved public number',
+    source: 'Damian, 2026-10-23 (Answer Key v1.5): the standard palette, five colours per Style. "Over thirty" is retired',
     aliases: ['finishes', 'colours', 'colors', 'how many'],
     links: [
       { label: 'The public finish library', href: '/finishes', kind: 'site', note: 'Where the booth QR points' },
@@ -639,9 +639,9 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'process',
     question: 'Do you install?',
     answer:
-      '"We provide install support, not installation. Every panel is QR-tagged — your installer scans it with InstallAssistant, our free app, and it shows a 3D model of exactly where that piece goes. And we coordinate delivery around their schedule."',
+      '"Every panel is QR-tagged — your installer scans it with InstallAssistant, our free app, and it shows a 3D model of exactly where that piece goes. If you want it installed, we arrange our partner contractors inside Greater Houston and quote that separately — ask me for a detailed install quote with the job."',
     status: 'ruled',
-    source: 'Both contracts: "YUDEZIGN does not manage or perform installation services."',
+    source: 'Damian, 2026-10-23 (Answer Key v1.5). Both contracts: YuDeZign itself performs no installation; partner contractors do, inside Greater Houston, on a separate detailed quote',
     neverSayIds: ['ns-we-install'],
     aliases: ['install', 'installation', 'installer', 'fitting'],
     links: [
@@ -658,9 +658,9 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'process',
     question: 'But can you get it installed?',
     answer:
-      '"Sometimes we can arrange it in the Greater Houston area — I\'d have to check current capacity and price it separately. What I won\'t do is promise it and then hand you off."',
+      '"Yes — inside Greater Houston, through our partner contractors. I\'ll request a detailed install quote with the job. Outside Greater Houston it\'s your own installer, with our install support."',
     status: 'ruled',
-    source: 'Study doc — capacity-dependent, explicitly may stop',
+    source: 'Damian, 2026-10-23: partner contractors, Greater Houston only, always a separate detailed quote',
     neverSayIds: ['ns-we-install'],
     aliases: ['arrange install', 'recommend installer'],
   },
@@ -961,7 +961,7 @@ export const answerKey: AnswerKeyEntry[] = [
     sectionId: 'arguments',
     question: 'Against a big box',
     answer:
-      '"That\'s a boxed-in showroom set. We\'re made to measure — custom widths, custom modifications, over thirty finishes. Same conversation, different answer."',
+      '"That\'s a boxed-in showroom set. We\'re made to measure — custom widths, custom modifications, twenty standard colours and a deeper library. Same conversation, different answer."',
     status: 'ruled',
     source: 'Copy already approved and in print',
     aliases: ['big box', 'home depot', 'lowes', 'ikea', 'competitor'],

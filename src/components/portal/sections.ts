@@ -1,7 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 import {
   BookOpen,
-  ClipboardList,
   Compass,
   Home,
   Library,
@@ -25,6 +24,10 @@ import type { PortalRole } from '../../types/salesPortal';
  *
  * Renamed from "Say this" on 2026-08-07: an imperative reads as instruction to
  * an experienced rep. These are approved language they can pick up, not orders.
+ *
+ * The Booth tab was archived on 2026-10-27 (Damian): the Houston Builders Expo
+ * of Aug 11-12 2026 has passed. The page still exists at /sales/booth and is
+ * linked from Sources as an archived playbook for the next show.
  */
 export interface PortalSection {
   to: string;
@@ -51,7 +54,7 @@ export const PORTAL_SECTIONS: PortalSection[] = [
     to: '/sales/products',
     label: 'Product',
     icon: Package,
-    blurb: "The four lines, construction, dimensions, what we don't build",
+    blurb: "The four Styles, construction, dimensions, what we don't build",
   },
   {
     to: '/sales/answers',
@@ -59,7 +62,6 @@ export const PORTAL_SECTIONS: PortalSection[] = [
     icon: BookOpen,
     blurb: 'Every answer you give a customer, with where it came from',
   },
-  { to: '/sales/booth', label: 'Booth', icon: ClipboardList, blurb: 'The show, and the 48 hours after it' },
   {
     to: '/sales/pitch',
     label: 'Talk tracks',

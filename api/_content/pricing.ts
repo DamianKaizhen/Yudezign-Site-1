@@ -66,7 +66,7 @@ export const pricing: PricingContent = {
       id: 'cond-delivery',
       label: 'Delivery and installation are extra',
       detail:
-        'Delivery $350 a trip. We provide install support, not installation — price that separately',
+        'Delivery $350 a trip. Installation through partner contractors inside Greater Houston — always a separate detailed install quote',
     },
     {
       id: 'cond-finish',

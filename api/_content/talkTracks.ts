@@ -25,7 +25,7 @@ export const pitches: Pitch[] = [
     timing: 'About 25 seconds',
     script: [
       "We're YuDeZign — we manufacture frameless cabinets and closets right here in Houston, in our own plant.",
-      'Three-quarter-inch plywood, soft-close standard, over thirty finishes.',
+      'Three-quarter-inch plywood, soft-close standard, twenty standard colours.',
       "Because we're the actual factory, there's no importer and no distributor between you and the shop that builds your cabinets — and we can price a whole community, not just one kitchen.",
     ],
     endsOn: 'What are you working on?',
@@ -57,7 +57,7 @@ export const pitches: Pitch[] = [
     label: 'Homeowner',
     audience: 'homeowner',
     script: [
-      'We build frameless cabinetry and closets in our own Houston shop — over thirty finishes, made to your exact measurements, and you see a photo-real 3D rendering before anything gets cut.',
+      'We build frameless cabinetry and closets in our own Houston shop — twenty standard colours and a deeper library, made to your exact measurements, and you see a photo-real 3D rendering before anything gets cut.',
       "It's not a boxed-in showroom set; it's built for your room.",
     ],
     endsOn: 'Which room are you thinking about?',
@@ -156,9 +156,9 @@ export const objections: Objection[] = [
     id: 'obj-07',
     objection: 'Can you install?',
     response: [
-      'We provide install support rather than installation — every panel is QR-tagged, and your installer scans it to see a 3D model of exactly where that piece goes.',
-      'We coordinate delivery around their schedule.',
-      "Sometimes we can arrange installation inside Greater Houston; I'd have to check capacity and price it separately, and I won't promise it and then hand you off.",
+      'Every panel is QR-tagged, and your installer scans it to see a 3D model of exactly where that piece goes.',
+      "If you want it installed, we arrange our partner contractors inside Greater Houston and quote that separately — I'll request a detailed install quote with the job.",
+      "Outside Greater Houston it's your own installer, with our install support.",
     ],
     answerKeyIds: ['ak-04-10', 'ak-04-11'],
     neverSayIds: ['ns-we-install'],

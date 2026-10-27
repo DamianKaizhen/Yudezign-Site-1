@@ -70,7 +70,7 @@ export const productLines: ProductLine[] = [
  * the hardware is identical rather than laddered.
  */
 export const sameBoxSentence =
-  '"Same box. Same motion. Different skin. The carcass is identical across all four lines — same frameless ¾″ plywood, same DTC soft-close hinge, same hundred-pound slide. What changes is the door surface and the finish family. So you can move up or down without giving up the cabinet."';
+  '"Same box. Same motion. Different skin. The carcass is identical across all four Styles — same frameless ¾″ plywood, same DTC soft-close hinge, and the same slide for a given box depth. What changes is the door surface and the finish family. So you can move up or down without giving up the cabinet."';
 
 /**
  * Hardware, stated once because it genuinely does not vary.
@@ -80,13 +80,13 @@ export const sameBoxSentence =
  * the brief, the field card and the booklet before it was caught.
  */
 export const hardwareStatement = {
-  hinges: 'DTC soft-close hinges, on every line. There is no hinge upgrade between lines.',
+  hinges: 'DTC soft-close hinges, on every Style. There is no hinge upgrade between Styles.',
   slides:
-    'Knape & Vogt 8450FM — full-extension, soft-close, 100 lb. The same slide on every line, not just the upper ones.',
+    'Set by box depth, never by Style: a DTC concealed undermount on 21″ and 24″ deep boxes (the kitchen and vanity bases); the Knape & Vogt 8450FM side-mount — full-extension, soft-close, 100 lb — on other depths. Ruled 2026-10-23.',
   softClose: 'Standard on every door and every drawer. Not an upgrade.',
   partners: 'Häfele, Würth, DTC and Knape & Vogt.',
   noLadder:
-    'There is no hardware upgrade to sell. Do not offer "better hardware" on a higher line — a rep who invents one is selling a product we do not make.',
+    'There is no hardware upgrade to sell. Do not offer "better hardware" on a higher Style — a rep who invents one is selling a product we do not make.',
   /** PROVISIONAL — DTC's own product language, pending the part number's spec sheet. */
   sixWay:
     '"It\'s six-way adjustable — height, depth and side-to-side, both leaves. Your installer can true a door up on the wall without pulling it off the box."',
@@ -225,8 +225,8 @@ export const closetLines = {
  */
 export const shakerDisclosure = {
   heading: 'Volunteer this. Do not wait to be asked.',
-  say: '"Our shaker is machined MDF rather than five pieces of solid wood — and that\'s on purpose. MDF doesn\'t move with humidity, so the door can\'t warp or split at a joint the way a wood shaker will, and it takes paint better because there\'s no grain. In Houston that matters more than it would somewhere dry."',
-  why: 'A traditional shaker door is five pieces of solid wood — two rails, two stiles, and a panel that floats so it can move with the season. Ours is one piece of MDF with the profile machined into it, finished in RTF.',
+  say: '"Our shaker is machined MDF rather than five pieces of solid wood — and that\'s on purpose. MDF doesn\'t move with humidity, so the door can\'t warp or split at a joint the way a wood shaker will, and it takes paint better because there\'s no grain. In Houston that matters more than it would somewhere dry. It\'s a custom door, it costs more than the slab, and honestly we don\'t recommend it. If shaker is the look you want, the stocked framed line gives you a standard five-piece shaker door on a half-inch plywood box at a stock price."',
+  why: 'A traditional shaker door is five pieces of solid wood — two rails, two stiles, and a panel that floats so it can move with the season. Ours is one piece of MDF with the profile machined into it, finished in RTF. It is a custom door: it costs more than the slab and YuDeZign does not recommend it; shaker buyers usually belong on the stocked framed line (ruled 2026-10-23).',
   never:
     'Never say or imply solid wood about a shaker door. Not "solid feel," not "solid construction."',
 };

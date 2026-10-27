@@ -157,7 +157,7 @@ export const strategy: StrategyContent = {
       id: 'buyer-designer',
       buyer: 'Designer',
       caresAbout: 'That it looks right, and that you make her look good to her client',
-      leadWith: '"Over thirty finishes, made to measure, and lifelike 3D your client can sign off on."',
+      leadWith: '"Twenty standard colours, a deeper library, made to measure, and lifelike 3D your client can sign off on."',
       doesNotCareAbout: 'Freight logistics',
     },
     {
