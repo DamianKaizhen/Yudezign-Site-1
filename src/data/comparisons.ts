@@ -91,7 +91,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'Which is better for Houston\'s humidity?',
-        answer: 'Both perform equally well with proper materials. The key is using plywood construction (not particleboard) and quality finishes regardless of frame style.',
+        answer: 'Both perform equally well with proper materials. The key is sealed engineered cores, color-matched edge banding and quality finishes regardless of frame style.',
       },
     ],
     relatedComparisons: ['custom-vs-semi-custom-cabinets'],
@@ -131,7 +131,7 @@ export const comparisons: Record<string, ComparisonData> = {
       {
         feature: 'Lead Time',
         option1: 'Longer timeline for complex designs',
-        option2: '2-4 weeks - rapid local manufacturing',
+        option2: 'As little as two weeks, depending on finish and scale - built locally in Houston',
       },
       {
         feature: 'Size Options',
@@ -141,17 +141,17 @@ export const comparisons: Record<string, ComparisonData> = {
       {
         feature: 'Door Styles',
         option1: 'Unlimited • any design',
-        option2: '50+ curated styles',
+        option2: 'Slab standard; shaker as a custom MDF door',
       },
       {
         feature: 'Finish Options',
         option1: 'Unlimited custom finishes',
-        option2: 'Melamine, laminate, acrylic - extensive colors',
+        option2: '20 standard colors in four Styles, deeper library on request',
       },
       {
         feature: 'Construction',
         option1: 'Premium plywood • dovetail',
-        option2: 'Plywood core • doweled/dado',
+        option2: '3/4" plywood, cam-and-dowel',
       },
       {
         feature: 'Warranty',
@@ -167,7 +167,7 @@ export const comparisons: Record<string, ComparisonData> = {
     detailedSections: [
       {
         heading: 'What is Semi-Custom?',
-        content: 'Semi-custom cabinets are precision-manufactured frameless European-style cabinets with professional-grade plywood or particleboard construction. YuDezign specializes in rapid semi-custom production, offering 50+ door styles, extensive finish options, and cabinets sized in 3-inch increments. With a 2-4 week turnaround and pricing at $130-300 per linear foot, our semi-custom line delivers exceptional value for both residential and commercial projects.',
+        content: 'Semi-custom cabinets are precision-manufactured frameless European-style cabinets with professional-grade plywood or particleboard construction. YuDezign specializes in rapid semi-custom production, offering slab doors as standard (shaker as a custom MDF door), twenty standard colors across four Styles with a deeper decor library on request, and cabinets sized in 3-inch increments. Built in as little as two weeks, depending on finish and scale, and priced at $130-300 per linear foot, our semi-custom range delivers exceptional value for both residential and commercial projects.',
       },
       {
         heading: 'What is Fully Custom?',
@@ -179,11 +179,11 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'Timeline Differences',
-        content: 'YuDezign\'s semi-custom cabinets are manufactured and ready in just 2-4 weeks, enabling both residential and commercial clients to complete projects quickly. Fully custom requires longer timelines for handcrafted elements and complex designs. For Houston homeowners and commercial contractors, faster turnaround means less disruption, quicker project completion, and faster ROI for investments.',
+        content: 'YuDezign\'s semi-custom cabinets are manufactured and ready in as little as two weeks, depending on finish and scale, enabling both residential and commercial clients to complete projects quickly. Fully custom requires longer timelines for handcrafted elements and complex designs. For Houston homeowners and commercial contractors, faster turnaround means less disruption, quicker project completion, and faster ROI for investments.',
       },
       {
         heading: 'Design Flexibility Comparison',
-        content: 'YuDezign\'s semi-custom cabinets offer extensive flexibility: cabinet sizes in 3" increments, 50+ door styles, frameless European construction with plywood, particleboard, or MDF cores, melamine/laminate/acrylic finishes in 100+ colors, premium soft-close hardware, and specialized features (pull-outs, organizers, wine racks). Perfect for residential kitchens, bathrooms, and commercial installations. Fully custom adds unlimited sizing precision (to 1/16"), curved or carved door profiles, unique specialty finishes, hand-crafted details, and historically accurate reproductions for unique architectural projects.',
+        content: 'YuDezign\'s semi-custom cabinets offer extensive flexibility: cabinet sizes in 3" increments, slab doors as standard with shaker available as a custom MDF door, frameless European construction on 3/4" plywood boxes (particleboard if you want to take cost out), melamine, laminate, acrylic, paint and RTF surfaces in twenty standard colors with a deeper library of over 140 decors on request, DTC soft-close hardware in every Style, and specialized features (pull-outs, organizers, wine racks). Perfect for residential kitchens, bathrooms, and commercial installations. Fully custom adds unlimited sizing precision (to 1/16"), curved or carved door profiles, unique specialty finishes, hand-crafted details, and historically accurate reproductions for unique architectural projects.',
       },
       {
         heading: 'When to Choose Custom',
@@ -191,7 +191,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'When Semi-Custom is Perfect',
-        content: 'YuDezign\'s semi-custom cabinets are ideal if you: want professional-grade frameless construction at competitive pricing ($130-300/LF), need rapid completion (2-4 weeks), value precision manufacturing and quality control, appreciate extensive design options (50+ door styles), want strong warranties (lifetime structural, 5-year finish), or are working on residential or commercial projects with standard space requirements. This describes most Houston kitchen renovations, bathroom vanities, commercial fit-outs, and office installations.',
+        content: 'YuDezign\'s semi-custom cabinets are ideal if you: want professional-grade frameless construction at competitive pricing ($130-300/LF), need rapid completion (as little as two weeks), value precision manufacturing and quality control, appreciate real design range (four Styles, twenty standard colors and a deeper decor library), want strong warranties (lifetime structural, 5-year finish), or are working on residential or commercial projects with standard space requirements. This describes most Houston kitchen renovations, bathroom vanities, commercial fit-outs, and office installations.',
       },
     ],
     faqSection: [
@@ -205,11 +205,11 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'How much can I customize semi-custom?',
-        answer: 'Extensively. With YuDezign\'s semi-custom line, you choose from 50+ door styles, melamine/laminate/acrylic finishes in 100+ colors, frameless European construction, premium soft-close hardware, and specialized accessories. You can modify cabinet sizes in 3" increments and add custom features like wine racks, pull-out organizers, and appliance garages. Perfect for both residential and commercial applications.',
+        answer: 'Extensively. With YuDezign\'s semi-custom line, you choose from four Styles, Essential, Signature, Reserve and Atelier, with twenty standard colors and a deeper library of over 140 decors on request, slab doors as standard (shaker as a custom MDF door), frameless European construction, DTC soft-close hardware in every Style, and specialized accessories. You can modify cabinet sizes in 3" increments and add custom features like wine racks, pull-out organizers, and appliance garages. Perfect for both residential and commercial applications.',
       },
       {
         question: 'Will semi-custom look "cookie cutter"?',
-        answer: 'Not at all. With 50+ door styles and 100+ finish options, plus sizing flexibility, your semi-custom kitchen will be unique to your home. Most people cannot distinguish semi-custom from fully custom in finished installations.',
+        answer: 'Not at all. With four Styles, twenty standard colors and a deeper library of over 140 decors, plus sizing flexibility, your semi-custom kitchen will be unique to your home. Most people cannot distinguish semi-custom from fully custom in finished installations.',
       },
     ],
     relatedComparisons: ['frameless-vs-framed-cabinets', 'yudezign-vs-big-box-stores'],
@@ -260,9 +260,9 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         feature: 'Color Options',
-        option1: '20-30 standard colors',
-        option2: '50+ colors and patterns including woodgrain',
-        option3: '40+ solid colors in brilliant high-gloss',
+        option1: 'Solids and woodgrain decors; the basis of our Essential and Signature palettes',
+        option2: 'Wide range of patterns including woodgrain, available from our decor library',
+        option3: 'Solid colors in brilliant high-gloss; gloss options sit in our Reserve and Atelier palettes',
       },
       {
         feature: 'Humidity Performance',
@@ -330,7 +330,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'Can these materials look like wood?',
-        answer: 'Laminate offers realistic woodgrain patterns that closely mimic real wood. Melamine has limited woodgrain options. Acrylic is solid colors only - no woodgrain available.',
+        answer: 'Laminate offers realistic woodgrain patterns that closely mimic real wood. Melamine (TFL) also comes in woodgrain decors; our Essential and Signature Styles are built on them. Acrylic is solid colors only - no woodgrain available.',
       },
       {
         question: 'Which is easiest to maintain?',
@@ -497,12 +497,12 @@ export const comparisons: Record<string, ComparisonData> = {
     comparisonTable: [
       {
         feature: 'Cabinet Quality',
-        option1: 'Premium plywood construction, 3/4" thick, dovetail drawers',
+        option1: '3/4" plywood boxes, cam-and-dowel joinery, DTC soft-close hardware',
         option2: 'Varies - often particleboard core, thinner materials',
       },
       {
         feature: 'Customization',
-        option1: 'Fully custom sizes, 50+ door styles, any modification possible',
+        option1: 'Made-to-measure sizes, four Styles, twenty standard colors and a deeper decor library',
         option2: 'Limited standard sizes, fewer design options',
       },
       {
@@ -517,12 +517,12 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         feature: 'Installation',
-        option1: 'Professional installers employed by YuDezign',
+        option1: 'Install support on every order: QR-tagged panels, the InstallAssistant 3D app, partner contractors inside Greater Houston on a separate quote',
         option2: 'Third-party contractors - inconsistent quality',
       },
       {
         feature: 'Lead Time',
-        option1: '6-8 weeks - manufactured to your specs',
+        option1: 'As little as two weeks, depending on finish and scale - built in Houston to your specs',
         option2: '2-6 weeks - stock or quick-ship options',
       },
       {
@@ -539,11 +539,11 @@ export const comparisons: Record<string, ComparisonData> = {
     detailedSections: [
       {
         heading: 'Construction Quality Differences',
-        content: 'YuDezign uses premium-grade plywood for all cabinet boxes (3/4" thick), solid wood face frames, and dovetail drawer construction with full-extension soft-close glides. Big-box cabinets often use particleboard cores with thin wood veneer, stapled construction, and basic drawer glides. This difference significantly impacts longevity - YuDezign cabinets last 30-50 years while budget big-box options may need replacement in 10-15 years, especially in Houston\'s humidity.',
+        content: 'YuDezign builds every cabinet box from 3/4" plywood with 1/4" plywood backs, cam-and-dowel joinery and frameless European construction, with DTC soft-close hinges and full-extension slides in every Style. Big-box cabinets often use particleboard cores with thin wood veneer, stapled construction, and basic drawer glides. This difference significantly impacts longevity - YuDezign cabinets last 30-50 years while budget big-box options may need replacement in 10-15 years, especially in Houston\'s humidity.',
       },
       {
         heading: 'True Customization vs Limited Options',
-        content: 'YuDezign manufactures cabinets to your exact specifications: any size (not just 3" increments), custom heights for taller ceilings common in Houston homes, specialized storage for your needs, and accommodations for unique architectural features. Big-box stores offer "semi-custom" lines but with limited flexibility - you choose from preset sizes and configurations. For Houston\'s diverse home styles (from historic Heights bungalows to modern Tanglewood estates), true customization matters.',
+        content: 'YuDezign manufactures cabinets to your specifications: every width in 3" increments from 9" to 42" with fillers for the rest, custom heights up to 96" in one piece for the taller ceilings common in Houston homes, specialized storage for your needs, and accommodations for unique architectural features. Big-box stores offer "semi-custom" lines but with limited flexibility - you choose from preset sizes and configurations. For Houston\'s diverse home styles (from historic Heights bungalows to modern Tanglewood estates), true customization matters.',
       },
       {
         heading: 'Design Process & Expertise',
@@ -551,11 +551,11 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         heading: 'Installation Quality & Accountability',
-        content: 'YuDezign employs professional installers who work exclusively with their cabinets and are accountable to the company. Big-box stores contract with third-party installers - quality varies widely and issues create finger-pointing between store and contractor. When problems arise, YuDezign resolves them directly. With big-box stores, you navigate corporate bureaucracy while your kitchen sits unfinished.',
+        content: 'Install support comes with every YuDezign order: every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. If you\'d like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Big-box stores contract with third-party installers - quality varies widely and issues create finger-pointing between store and contractor. When problems arise, YuDezign resolves them directly. With big-box stores, you navigate corporate bureaucracy while your kitchen sits unfinished.',
       },
       {
         heading: 'Real Cost Comparison',
-        content: 'A typical Houston kitchen (15-20 linear feet) costs $9,000-18,000 with YuDezign including design, quality cabinets, and professional installation. Big-box stores quote $6,000-12,000 but often exclude: delivery fees, installation add-ons, modifications for actual home conditions, and upgraded hardware. Final big-box costs often reach $8,000-14,000 with lower quality and less customization. The price gap is smaller than it appears.',
+        content: 'A typical Houston kitchen (15-20 linear feet) costs $9,000-18,000 with YuDezign for design, quality cabinets and the partner-contractor install quoted with the job. Big-box stores quote $6,000-12,000 but often exclude: delivery fees, installation add-ons, modifications for actual home conditions, and upgraded hardware. Final big-box costs often reach $8,000-14,000 with lower quality and less customization. The price gap is smaller than it appears.',
       },
       {
         heading: 'Houston-Specific Advantages',
@@ -573,7 +573,7 @@ export const comparisons: Record<string, ComparisonData> = {
     faqSection: [
       {
         question: 'Is YuDezign really worth the extra cost?',
-        answer: 'Yes, for most homeowners. The quality difference (plywood vs particleboard, dovetail vs stapled), true customization, professional installation, and local accountability deliver better long-term value. YuDezign cabinets last 30-50 years while budget options may need replacement in 10-15 years.',
+        answer: 'Yes, for most homeowners. The quality difference (3/4" plywood boxes with cam-and-dowel joinery vs stapled particleboard), made-to-measure sizing, install support with partner contractors, and local accountability deliver better long-term value. YuDezign cabinets last 30-50 years while budget options may need replacement in 10-15 years.',
       },
       {
         question: 'Can I save money by buying cabinets at big-box and hiring my own installer?',
@@ -585,7 +585,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'How much more does YuDezign cost compared to Home Depot or Lowe\'s?',
-        answer: 'For comparable quality, YuDezign is often within 10-20% of big-box premium lines. When you factor in free professional design, superior installation, and local support, the value proposition often favors YuDezign.',
+        answer: 'For comparable quality, YuDezign is often within 10-20% of big-box premium lines. When you factor in free professional design, install support with partner contractors, and local support, the value proposition often favors YuDezign.',
       },
     ],
     relatedComparisons: ['custom-vs-semi-custom-cabinets'],

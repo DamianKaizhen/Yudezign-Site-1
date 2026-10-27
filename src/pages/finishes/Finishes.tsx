@@ -25,8 +25,8 @@ const Finishes = () => {
   return (
     <>
       <SEO
-        title="Finishes & Materials - 25+ Premium Cabinet Finishes"
-        description="Browse our collection of 25+ premium cabinet finishes and materials. European-quality woods, laminates, and specialty finishes for custom frameless cabinets. Matte, gloss, and textured options available in Houston."
+        title="Finishes & Materials - 20 Standard Colors in Four Styles"
+        description="Twenty standard cabinet colors, five in each Style: Essential, Signature, Reserve and Atelier. Woodgrain and solid TFL, European decors, super-matte soft-touch and lacquered high gloss, with a deeper decor library on request. Custom frameless cabinets built in Houston."
         keywords="cabinet finishes, wood finishes, laminate cabinets, cabinet colors, european finishes, matte cabinets, gloss cabinets, luxury cabinet finishes"
         url="https://www.yudezign.com/finishes"
       />
@@ -54,7 +54,7 @@ const Finishes = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90 max-w-2xl mx-auto"
           >
-            Choose from 25+ premium finishes. All cabinets built with 3/4" plywood for lasting quality.
+            Twenty standard colors, five in each Style, and a deeper decor library on request. Same 3/4" plywood box and the same soft-close hardware in every Style; what changes is the door surface.
           </motion.p>
         </div>
       </section>
@@ -74,7 +74,7 @@ const Finishes = () => {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              All Finishes
+              All Styles
             </motion.button>
 
             {/* Dynamic style filter buttons */}
@@ -178,11 +178,12 @@ const Finishes = () => {
               <Palette className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-h2 font-medium text-luxury-gray-900 mb-4">
-              Looking for More Colors?
+              Matching a Color We Have Not Shown?
             </h2>
             <p className="text-body-lg text-luxury-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-              The finishes above are just a selection. Browse our complete finishes
-              catalog for the full range of colors and materials we offer.
+              The twenty colors above are the standard palette. Behind them sits a library of over 140 decors
+              in melamine, laminate, acrylic, paint and RTF, and we can source outside it if you are matching
+              something specific. Browse the full catalog, then send us what you are matching.
             </p>
             <a
               href="/YuDeZign_Finishes_Catalog.pdf"
@@ -191,7 +192,7 @@ const Finishes = () => {
               className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <FileText className="w-5 h-5" />
-              See More Colors We Offer
+              Browse the Full Decor Library
               <ArrowRight className="w-5 h-5" />
             </a>
             <p className="text-sm text-luxury-gray-500 mt-4">
@@ -325,7 +326,7 @@ const Finishes = () => {
             >
               <h3 className="text-h4 font-medium mb-4 text-luxury-gray-900">Soft-Close Mechanisms</h3>
               <p className="text-body text-luxury-gray-600 leading-relaxed">
-                All cabinets include premium soft-close hinges and drawer slides for quiet, smooth operation.
+                DTC soft-close hinges on every door. Drawers ride a DTC concealed undermount slide on 21" and 24" deep boxes and a Knape & Vogt 8450FM full-extension side-mount on other depths. The same hardware in every Style.
               </p>
             </motion.div>
 

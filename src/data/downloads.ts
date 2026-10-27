@@ -65,7 +65,7 @@ export const resources: ResourceFile[] = [
     id: 'line-guide-2026',
     title: 'Product Lines — The 2026 Line Guide',
     description:
-      'Four cabinet lines and three closet systems, side by side: door surfaces, palettes, openings, interiors and what each line is for. Every line is built on the same frameless plywood box with the same soft-close hardware — the guide shows exactly what changes as you move up.',
+      'Four cabinet Styles (Essential, Signature, Reserve and Atelier) and three closet systems (Everyday, Wardrobe and Dressing Room), side by side: door surfaces, palettes, openings, interiors and what each Style is for. Same box, same hardware in every Style; what changes is the door surface and the finish family, and the guide shows exactly what changes as you move up.',
     category: 'brochure',
     file: '/downloads/YuDeZign_LineGuide_2026.pdf',
     cover: '/downloads/covers/line-guide-2026.jpg',
@@ -159,13 +159,13 @@ export const resources: ResourceFile[] = [
     updated: '2026',
   },
 
-  // Per-line handouts, one page each. These pair with the Line Guide above —
-  // hand over the single line a customer has settled on rather than all four.
+  // Per-Style handouts, one page each. These pair with the Line Guide above —
+  // hand over the single Style a customer has settled on rather than all four.
   {
     id: 'flyer-line-essential',
     title: 'Essential Line',
     description:
-      'The widest palette at the working price: 62 woodgrain and solid TFL decors, standard pulls and knobs, UV-cured birch plywood interiors. Built for rentals, spec homes and hardworking family spaces.',
+      'The Essential Style: the widest palette at the working price, with 62 woodgrain and solid TFL decors in the library, standard pulls and knobs, and UV-cured birch plywood interiors. Built for rentals, spec homes and hardworking family spaces.',
     category: 'flyer',
     file: '/downloads/Flyer_Essential.pdf',
     cover: '/downloads/covers/flyer-essential.jpg',
@@ -177,7 +177,7 @@ export const resources: ResourceFile[] = [
     id: 'flyer-line-signature',
     title: 'Signature Line',
     description:
-      'European decors in the balanced middle: 33 solids and deep registered woodgrains, a full handle program or push-to-open, and the standard interior fittings program. For warm kitchens and rooms meant to feel lived in.',
+      'The Signature Style: European TFL decors in the balanced middle, with 33 smooth matte solids and deep-texture woodgrains in the library, a full handle program or push-to-open, and the standard interior fittings program. For warm kitchens and rooms meant to feel lived in.',
     category: 'flyer',
     file: '/downloads/Flyer_Signature.pdf',
     cover: '/downloads/covers/flyer-signature.jpg',
@@ -189,7 +189,7 @@ export const resources: ResourceFile[] = [
     id: 'flyer-line-reserve',
     title: 'Reserve Line',
     description:
-      'Soft-touch and super-matte surfaces that resist fingerprints, plus a mirror-gloss set, drawn open by an integrated gola channel instead of a handle. 24 decors for modern builds where the architecture speaks.',
+      'The Reserve Style: super-matte soft-touch surfaces that resist fingerprints, plus a mirror-gloss set, drawn open by an integrated gola channel instead of a handle. 24 decors for modern builds where the architecture speaks.',
     category: 'flyer',
     file: '/downloads/Flyer_Reserve.pdf',
     cover: '/downloads/covers/flyer-reserve.jpg',
@@ -201,7 +201,7 @@ export const resources: ResourceFile[] = [
     id: 'flyer-line-atelier',
     title: 'Atelier Line',
     description:
-      'Lacquered panels in high gloss and perfect matt, gold or champagne gola as standard, integrated lighting and custom laminate lay-ups. 23 decors for flagship kitchens, media walls and hospitality.',
+      'The Atelier Style: lacquered panels in high gloss and perfect matt, gold or champagne gola as standard, integrated lighting and custom laminate lay-ups. 23 decors for flagship kitchens, media walls and hospitality.',
     category: 'flyer',
     file: '/downloads/Flyer_Atelier.pdf',
     cover: '/downloads/covers/flyer-atelier.jpg',

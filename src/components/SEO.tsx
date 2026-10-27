@@ -25,7 +25,7 @@ interface SEOProps {
 
 const SEO = ({
   title = 'YuDezign - Custom European Frameless Cabinets | Houston',
-  description = 'Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4" plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing.',
+  description = 'Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4" plywood construction, 20 standard colors, lead times from as little as two weeks. Supply-only pricing.',
   keywords = 'european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets',
   image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
   ogImage,

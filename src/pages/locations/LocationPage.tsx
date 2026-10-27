@@ -93,7 +93,7 @@ const LocationPage: React.FC = () => {
               {
                 icon: Clock,
                 title: 'Fast Service',
-                desc: `Quick response times for ${location.name} area. Most projects completed in 2-4 weeks.`,
+                desc: `Quick response times for the ${location.name} area. Cabinets ready in as little as two weeks, depending on finish and scale.`,
               },
               {
                 icon: Star,
@@ -132,7 +132,7 @@ const LocationPage: React.FC = () => {
             {[
               {
                 title: 'Kitchen Cabinets',
-                desc: `Custom and semi-custom kitchen cabinets designed for ${location.name} homes. Modern, traditional, and transitional styles.`,
+                desc: `Made-to-measure frameless kitchen cabinets for ${location.name} homes, in four Styles: Essential, Signature, Reserve and Atelier.`,
                 link: '/services/kitchen-cabinets',
               },
               {

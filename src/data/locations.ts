@@ -15,7 +15,7 @@ export const locations: LocationData[] = [
     name: 'Houston',
     metaTitle: 'Custom Cabinets Houston TX | European Frameless | YuDezign',
     metaDescription:
-      'Looking for custom cabinet makers in Houston? YuDezign crafts premium European frameless cabinets locally. Kitchen cabinets, closets, vanities with 2-3 week turnaround. Serving Memorial, Heights, Montrose, Galleria. Free design consultation.',
+      'Looking for custom cabinet makers in Houston? YuDezign crafts premium European frameless cabinets locally. Kitchen cabinets, closets, vanities in as little as two weeks. Serving Memorial, Heights, Montrose, Galleria. Free design consultation.',
     keywords: [
       'custom cabinets houston',
       'frameless cabinets houston',
@@ -43,13 +43,13 @@ export const locations: LocationData[] = [
     keyPoints: [
       'Houston humidity expertise - engineered cores prevent wood expansion',
       'Space maximization for urban living - 10-15% more storage with frameless design',
-      'Fast turnaround - 2-3 weeks vs 8-12 weeks for imported cabinets',
+      'Fast turnaround - as little as two weeks vs 8-12 weeks for imported cabinets',
       'Local manufacturing - no shipping delays, personalized service'
     ],
     localAngle:
       'Houston cabinets built for 90% humidity. Moisture-resistant engineered cores prevent warping and cracking that solid wood experiences in our climate.',
     climateConsiderations:
-      'Houston averages 75-90% humidity year-round. Our cabinet boxes use dimensionally stable MDF/plywood cores that won\'t expand with humidity changes, unlike solid wood which can swell enough to cause doors to rub.',
+      'Houston averages 75-90% humidity year-round. Our 3/4" plywood boxes and engineered-core door panels, sealed with color-matched edge banding, stay dimensionally stable and won\'t expand with humidity changes, unlike solid wood which can swell enough to cause doors to rub.',
     projects: [], // Will be populated with actual project IDs
     mapImageUrl: '/images/maps/houston-map.png',
     googleMapsUrl: 'https://goo.gl/maps/YuDezignHouston',
@@ -62,7 +62,7 @@ export const locations: LocationData[] = [
     name: 'Katy',
     metaTitle: 'Custom Cabinets Katy TX | Frameless Kitchen Cabinets | YuDezign',
     metaDescription:
-      'Custom cabinet makers near Katy TX. European frameless kitchen cabinets, oversized islands, closets for large family homes. Serving Cinco Ranch, Grand Lakes, Cross Creek Ranch. Local manufacturing, 2-3 week delivery. Free quote.',
+      'Custom cabinet makers near Katy TX. European frameless kitchen cabinets, oversized islands, closets for large family homes. Serving Cinco Ranch, Grand Lakes, Cross Creek Ranch. Local manufacturing, delivery in as little as two weeks. Free quote.',
     keywords: [
       'custom cabinets katy tx',
       'frameless cabinets katy',
@@ -86,7 +86,7 @@ export const locations: LocationData[] = [
       'Oversized islands (10ft+) perfect for large family homes',
       'Durable laminate and acrylic finishes for active families',
       'Hidden pantries and mudroom storage - trending in new builds',
-      'Quick installation - perfect for new construction timelines'
+      'Install support and partner installers for new-construction timelines'
     ],
     localAngle:
       'Katy\'s master-planned communities demand quality cabinetry for resale value. Our custom solutions perfectly fit the large, open-concept spaces typical in Katy homes.',
@@ -102,7 +102,7 @@ export const locations: LocationData[] = [
     name: 'Sugar Land',
     metaTitle: 'Custom Cabinets Sugar Land TX | Luxury Frameless | YuDezign',
     metaDescription:
-      'Luxury custom cabinets in Sugar Land TX. European frameless design, high-end finishes, modern transitional style. Serving Telfair, Sweetwater, Riverstone, Commonwealth. Local cabinet makers with 2-3 week turnaround. Schedule free consultation.',
+      'Luxury custom cabinets in Sugar Land TX. European frameless design, high-end finishes, modern transitional style. Serving Telfair, Sweetwater, Riverstone, Commonwealth. Local cabinet makers, as little as two weeks. Schedule free consultation.',
     keywords: [
       'custom cabinets sugar land',
       'sugar land cabinet makers',
@@ -125,7 +125,7 @@ export const locations: LocationData[] = [
       'Resale value focus - Sugar Land is a top Houston suburb for home values',
       'Modern transitional style dominance - sleek yet timeless designs',
       'Smart home integration - tech-ready cabinet solutions',
-      'Premium finishes - high-gloss acrylic and natural wood veneers'
+      'Premium finishes - high-gloss acrylic and deep-texture woodgrain decors'
     ],
     localAngle:
       'Sugar Land homeowners invest in quality. Our European frameless cabinets deliver the modern luxury aesthetic that defines this affluent market.',
@@ -141,7 +141,7 @@ export const locations: LocationData[] = [
     name: 'The Woodlands',
     metaTitle: 'Custom Cabinets The Woodlands TX | Luxury European | YuDezign',
     metaDescription:
-      'Luxury custom cabinets in The Woodlands TX. European frameless design, nature-inspired finishes, premium craftsmanship. Serving Carlton Woods, Sterling Ridge, Creekside Park. Local cabinet makers, 2-3 week turnaround. Free design consultation.',
+      'Luxury custom cabinets in The Woodlands TX. European frameless design, nature-inspired finishes, premium craftsmanship. Serving Carlton Woods, Sterling Ridge, Creekside Park. Local cabinet makers, as little as two weeks. Free design consultation.',
     keywords: [
       'custom cabinets the woodlands',
       'the woodlands cabinet makers',
@@ -180,7 +180,7 @@ export const locations: LocationData[] = [
     name: 'Pearland',
     metaTitle: 'Custom Cabinets Pearland TX | Affordable Quality | YuDezign',
     metaDescription:
-      'Quality custom cabinets in Pearland TX. Budget-conscious options without compromising quality. Serving Shadow Creek Ranch, Silverlake. Fast 2-3 week turnaround.',
+      'Quality custom cabinets in Pearland TX. Budget-conscious options without compromising quality. Serving Shadow Creek Ranch, Silverlake. As little as two weeks.',
     keywords: [
       'custom cabinets pearland',
       'pearland cabinet makers',
@@ -238,7 +238,7 @@ export const locations: LocationData[] = [
     housingStyle:
       'Explosive growth area with modern farmhouse style and large lots with oversized kitchens',
     keyPoints: [
-      'Modern farmhouse aesthetic - shaker doors, neutral tones',
+      'Modern farmhouse aesthetic - slab doors, warm neutral decors',
       'Oversized kitchens on large lots require extensive cabinetry',
       'Outdoor kitchen integration - weather-resistant options',
       'Family-focused storage solutions - deep pantries, mudrooms'
@@ -277,7 +277,7 @@ export const locations: LocationData[] = [
       'Luxury renovation market - older homes with high budgets for modern updates',
     keyPoints: [
       'High-end finishes - premium acrylic/laminate, integrated LED lighting',
-      'Traditional + modern fusion - inset cabinetry meets sleek hardware',
+      'Traditional + modern fusion - clean slab fronts with classic pulls',
       'Architect collaboration experience for custom estate projects',
       'Premium features - soft-close, full-extension drawers, custom inserts'
     ],
@@ -314,8 +314,8 @@ export const locations: LocationData[] = [
     keyPoints: [
       'Bespoke design consultations - every detail customized',
       'Architect collaboration - we work with Houston\'s top design firms',
-      'Premium materials showcase - exotic woods, hand-applied finishes',
-      'Inset cabinetry for traditional luxury aesthetic'
+      'Premium materials showcase - Atelier lacquered panels in high gloss and perfect matt',
+      'Clean slab fronts with classic pulls for a traditional luxury aesthetic'
     ],
     localAngle:
       'River Oaks represents Houston\'s pinnacle of luxury living. Our bespoke cabinetry meets the exacting standards of this prestigious neighborhood.',

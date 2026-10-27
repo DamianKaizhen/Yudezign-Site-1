@@ -266,7 +266,7 @@ const Contact = () => {
     <>
       <SEO
         title="Contact Us - Get Free Cabinet Quote"
-        description="Get in touch with YuDezign for custom European frameless cabinets in Houston. Free quotes, fast 2-3 week turnaround, supply-only pricing. Call (713) 502-0399 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
+        description="Get in touch with YuDezign for custom European frameless cabinets in Houston. Free quotes, lead times from as little as two weeks, supply-only pricing. Call (713) 502-0399 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
         keywords="contact cabinet maker, houston cabinet quote, custom cabinet pricing, european cabinet supplier, frameless cabinet quote, houston cabinetry"
         url="https://www.yudezign.com/contact"
       />
@@ -431,7 +431,7 @@ const Contact = () => {
                     className="w-full px-4 py-3 border border-luxury-gray-200 rounded-md bg-luxury-cream focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   >
                     <option value="">Select a timeline</option>
-                    <option value="asap">ASAP (2-3 weeks)</option>
+                    <option value="asap">ASAP (as little as two weeks)</option>
                     <option value="1-2months">1-2 months</option>
                     <option value="3-6months">3-6 months</option>
                     <option value="planning">Just planning</option>
@@ -743,11 +743,11 @@ const Contact = () => {
               },
               {
                 question: 'Do you offer installation services?',
-                answer: 'We are a supply-only manufacturer, but we can connect you with experienced installers in the Houston area.',
+                answer: 'Install support comes with every order: every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. If you would like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Outside Greater Houston you use your own installer, with our install support.',
               },
               {
                 question: 'What is your turnaround time?',
-                answer: 'Most projects are completed in 2-3 weeks from order confirmation. This is for an average Kitchen + 1-2 Bathroom Vanities. Larger Projects or those with Custom Finishes may take longer.',
+                answer: 'Cabinets are ready in as little as two weeks from order confirmation, depending on finish and scale. That covers an average kitchen plus one or two bathroom vanities. Larger projects or decors from the deeper library may take longer.',
               },
               {
                 question: 'Do you ship outside of Houston?',

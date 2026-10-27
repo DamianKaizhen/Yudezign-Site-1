@@ -98,7 +98,7 @@ const Home = () => {
     <>
       <SEO
         title="Custom European Frameless Cabinets | Houston"
-        description="Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4 plywood construction, 25+ finishes, 2-3 week turnaround. Supply-only pricing."
+        description="Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4 plywood construction, 20 standard colors, lead times from as little as two weeks. Supply-only pricing."
         keywords="european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets"
         url="https://www.yudezign.com"
       />
@@ -272,7 +272,7 @@ const Home = () => {
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              Serving Houston Since 2019
+              Serving Houston Since 2007
             </span>
             <span className="hidden md:inline text-white/40">•</span>
             <span className="flex items-center gap-2">
@@ -286,7 +286,7 @@ const Home = () => {
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              2-3 Week Lead Time
+              Lead Times From Two Weeks
             </span>
           </motion.div>
 
@@ -379,7 +379,7 @@ const Home = () => {
       <section className="py-20 px-4 bg-luxury-white -mt-16 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 2-3 Week Delivery */}
+            {/* Lead time */}
             <InView variant="fadeUp" className="h-full">
               <motion.div
                 className="h-full flex flex-col bg-white rounded-lg p-8 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 border border-luxury-sand text-center group"
@@ -390,9 +390,9 @@ const Home = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">2-3 Week Delivery</h3>
+                <h3 className="text-h3 font-medium text-luxury-gray-900 mb-3">As Little as Two Weeks</h3>
                 <p className="text-body text-luxury-gray-600 leading-relaxed">
-                  Lightning-fast turnaround compared to the industry standard of 8-12 weeks. Your project completed when you need it.
+                  Cabinets ready in as little as two weeks, depending on finish and scale, against the 8-12 weeks typical of imported cabinets. Your project ready when you need it.
                 </p>
               </motion.div>
             </InView>
@@ -450,8 +450,8 @@ const Home = () => {
             <div className="mt-8">
               <div className="w-16 h-1 bg-primary mx-auto mb-6"></div>
               <p className="text-body-lg text-luxury-gray-600 leading-relaxed">
-                Every cabinet is built to your exact specifications using premium 3/4" plywood, never particle board.
-                Delivered in 2-3 weeks, not months.
+                Every cabinet is built to your exact specifications with 3/4" plywood as standard.
+                Ready in as little as two weeks, depending on finish and scale, not months.
               </p>
             </div>
           </InView>
@@ -593,8 +593,8 @@ const Home = () => {
             <InView variant="fadeUp" delay={0}>
               <SpecCard
                 icon={<Clock className="w-full h-full" strokeWidth={1.5} />}
-                title="2-3 Weeks"
-                description="Fast local crafting, no overseas delays"
+                title="From 2 Weeks"
+                description="Lead time, with fast local crafting and no overseas delays"
               />
             </InView>
 
@@ -609,8 +609,8 @@ const Home = () => {
             <InView variant="fadeUp" delay={0.2}>
               <SpecCard
                 icon={<Package className="w-full h-full" strokeWidth={1.5} />}
-                title="25+ Finishes"
-                description="Melamine, laminate, acrylic, wood grain"
+                title="20 Standard Colors"
+                description="Melamine, laminate, acrylic, wood grain, plus a deeper decor library on request"
               />
             </InView>
 

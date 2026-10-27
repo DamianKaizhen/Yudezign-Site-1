@@ -108,7 +108,7 @@ export const projects: Project[] = [
     ],
     thumbnail: '/portfolio/1762374234481-9c35aa5f7a853db9f55481db77099e9.jpg',
     location: 'College Station',
-    finish: 'Touch of Nature',
+    finish: 'Acacia Honey woodgrain TFL (Essential Style)',
     cabinetStyle: 'Frameless European',
     features: ['Wood Grain Finish', 'Soft Close Hinges', 'Custom Made'],
     turnaroundTime: '4 weeks',

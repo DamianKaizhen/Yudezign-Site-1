@@ -15,7 +15,7 @@ export const services: ServiceData[] = [
     name: 'Kitchen Cabinets',
     metaTitle: 'Custom Kitchen Cabinets Houston | European Frameless | YuDezign',
     metaDescription:
-      'Custom kitchen cabinets in Houston. European frameless design, 10-15% more storage. 2-3 week turnaround. Plywood construction, 25+ finishes. Supply-only pricing.',
+      'Custom kitchen cabinets in Houston. European frameless design, 10-15% more storage. As little as two weeks. 3/4" plywood construction, 20 standard colors, deeper decor library on request. Supply-only pricing.',
     keywords: [
       'custom kitchen cabinets houston',
       'european kitchen cabinets',
@@ -29,9 +29,9 @@ export const services: ServiceData[] = [
     icon: 'ChefHat',
     portfolioCategory: 'kitchens',
     overview:
-      'Kitchen and casework cabinetry in 50+ finishes — engineered from 3/4" plywood, finished your way, and delivered from our Houston shop in as little as two weeks. Frameless European construction gives you 10-15% more storage than traditional framed cabinets.',
+      'Kitchen and casework cabinetry in twenty standard colors, five in each Style, with a deeper library of over 140 decors on request. Engineered from 3/4" plywood, finished your way, and delivered from our Houston shop in as little as two weeks, depending on finish and scale. Frameless European construction gives you 10-15% more storage than traditional framed cabinets.',
     longDescription:
-      'Modern kitchens have evolved beyond the traditional "work triangle" to organized work zones. Our custom kitchen cabinets are designed to perfectly engineer prep zones, cooking zones, cleanup zones, and consumable storage - something impossible with stock cabinets limited to 3-inch increments.',
+      'Modern kitchens have evolved beyond the traditional "work triangle" to organized work zones. Our custom kitchen cabinets are designed to perfectly engineer prep zones, cooking zones, cleanup zones, and consumable storage - something stock cabinets in a handful of fixed sizes can\'t do.',
     designOptions: [
       {
         title: 'Modern Minimalist',
@@ -39,13 +39,13 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=90'
       },
       {
-        title: 'Traditional Elegance',
-        description: 'Raised panel doors, classic hardware, warm wood tones',
+        title: 'Classic Lines',
+        description: 'Slab doors in warm woodgrain decors, classic pulls',
         image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&q=90'
       },
       {
         title: 'Transitional Style',
-        description: 'Shaker doors, mix of modern and classic elements, versatile',
+        description: 'Matte solids paired with woodgrain accents, a mix of modern and classic; shaker available as a custom MDF door',
         image: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=90'
       },
       {
@@ -57,12 +57,12 @@ export const services: ServiceData[] = [
     materials: [
       {
         name: '3/4" Plywood Construction',
-        description: 'Cabinet boxes built with 3/4" plywood (1/4" for back panels). Frameless European construction with no face frame for maximum storage. Standard 4\'x8\' sheets allow cabinets up to 96" tall.',
+        description: 'Cabinet boxes built with 3/4" plywood (1/4" plywood backs and drawer bottoms), cam-and-dowel joinery, wall cabinets hung on a French cleat. Frameless European construction with no face frame for maximum storage. Standard 4\'x8\' sheets allow cabinets up to 96" tall in one piece. Particleboard is available if you want to take cost out.',
         priceRange: 'Premium'
       },
       {
-        name: 'Moisture-Resistant MDF Cores',
-        description: 'Door cores use moisture-resistant MDF, perfect for Houston\'s 75-90% humidity. Can be carved for Shaker profiles. All edges sealed with color-matched edge-banding to prevent moisture penetration.',
+        name: 'Engineered Door Cores',
+        description: 'Door and drawer fronts are 3/4" thick on engineered cores that stay dimensionally stable in Houston\'s 75-90% humidity. A shaker is machined from a single piece of MDF as a custom door. All edges sealed with 1 mm color-matched edge-banding to prevent moisture penetration.',
         priceRange: 'Standard'
       },
       {
@@ -82,7 +82,7 @@ export const services: ServiceData[] = [
       },
       {
         name: 'RTF (Rigid Thermofoil)',
-        description: 'Vinyl film vacuum-pressed over MDF for seamless, moisture-resistant finish. Perfect for Shaker doors. Won\'t chip or peel like paint. Performs excellently in Houston\'s humid climate.',
+        description: 'Vinyl film vacuum-pressed over MDF for seamless, moisture-resistant finish. Used on our shaker, a custom door machined from a single piece of MDF. Won\'t chip or peel like paint. Performs excellently in Houston\'s humid climate.',
         priceRange: 'Standard'
       }
     ],
@@ -98,8 +98,8 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=90'
       },
       {
-        name: 'Wood Veneer',
-        description: 'Natural wood beauty with engineered stability. Warm, timeless aesthetic.',
+        name: 'Woodgrain Decors',
+        description: 'Deep-texture woodgrain TFL decors with engineered stability. Warm, timeless aesthetic.',
         image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=90'
       }
     ],
@@ -112,27 +112,27 @@ export const services: ServiceData[] = [
       {
         icon: 'Droplets',
         title: 'Houston Climate Ready',
-        description: 'Engineered cores resist humidity-induced expansion. Marine-grade plywood for sink bases.'
+        description: 'Engineered cores, color-matched edge banding and 3/4" plywood boxes stay dimensionally stable in Houston humidity, sink bases included.'
       },
       {
         icon: 'Zap',
         title: 'Soft-Close Hardware',
-        description: 'DTC soft-close hinges as standard on every line. Full overlay hinges for kitchens, half overlay on closets. Undermount drawer slides hidden beneath the drawer for a cleaner appearance and full-extension access, rated to 100 lb.'
+        description: 'DTC soft-close hinges on every door. Drawers ride a DTC concealed undermount slide on 21" and 24" deep boxes (the kitchen and vanity bases) and a Knape & Vogt 8450FM full-extension, 100 lb side-mount slide on other depths. The same hardware in every Style. Full overlay on kitchens and vanities, half overlay on closets.'
       },
       {
         icon: 'Palette',
-        title: '100+ Finish Options',
-        description: 'Melamine, laminate, and acrylic finishes. From high-gloss white to wood-grain patterns. Custom color matching available.'
+        title: '20 Standard Colors',
+        description: 'Twenty standard colors, five in each Style, and a deeper library of over 140 decors on request. Melamine (TFL), laminate, acrylic, paint and RTF, from high-gloss white to deep-texture woodgrains. Custom color matching available.'
       },
       {
         icon: 'Settings',
         title: 'Full Customization',
-        description: 'Any size, any configuration. Corner solutions, blind corner optimizers, pull-out organizers.'
+        description: 'Made to measure in 3" increments from 9" to 42" wide, up to 96" tall in one piece, any configuration. Corner solutions, blind corner optimizers, pull-out organizers.'
       },
       {
         icon: 'Clock',
-        title: '2-3 Week Turnaround',
-        description: 'Local Houston manufacturing means fast delivery for standard materials. Special finishes may add time. Much faster than 8-12 week waits for imports. Delivery $350/trip or free pickup at 5802 Colfax St.'
+        title: 'As Little as Two Weeks',
+        description: 'Local Houston manufacturing means delivery in as little as two weeks, depending on finish and scale. Much faster than 8-12 week waits for imports. Delivery $350 a trip inside Greater Houston, or pick up at the plant at 5802 Colfax St.'
       }
     ],
     process: [
@@ -152,12 +152,12 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Once approved, we manufacture your cabinets locally in Houston. You\'ll receive progress updates.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
         title: 'Delivery & Support',
-        description: 'We deliver your cabinets ready for installation. Supply-only model - you arrange installation or we can recommend trusted contractors.',
+        description: 'We deliver your cabinets ready for installation, every panel QR-tagged, with our free InstallAssistant app showing your installer a 3D model of exactly where each piece goes. Inside Greater Houston we can arrange our partner contractors, quoted separately with the job.',
         duration: '1 day'
       }
     ],
@@ -167,16 +167,17 @@ export const services: ServiceData[] = [
     // inside the $215-$375/LF the pricing calculator quotes for a kitchen.
     //
     // Hardware claims corrected at the same time: we do not use Blum or
-    // Hettich. Hinges are DTC on every tier — the slide is what steps up.
+    // Hettich. Hardware never steps up: DTC hinges in every tier, DTC
+    // undermount slides on 21" and 24" boxes, KV 8450FM on other depths.
     pricingGuide: [
       {
         level: 'Essential',
         range: '$215-$260/linear ft',
         features: [
-          'Melamine (TFL) doors and boxes',
-          'DTC soft-close hinges and undermount slides',
+          'Melamine (TFL) doors on plywood or particleboard boxes',
+          'DTC soft-close hinges; DTC undermount slides on 21" and 24" boxes, KV 8450FM on other depths',
           'Basic drawer organizers',
-          'Limited color selection',
+          'Five standard colors plus the Essential decor library',
           'Great for garages, laundry rooms, rentals'
         ]
       },
@@ -185,9 +186,9 @@ export const services: ServiceData[] = [
         range: '$260-$320/linear ft',
         features: [
           'HPL or matte acrylic doors',
-          'DTC soft-close hinges, full-extension KV slides',
+          'DTC soft-close hinges; DTC undermount slides on 21" and 24" boxes, KV 8450FM on other depths',
           'Custom drawer inserts',
-          '25+ colors available',
+          '20 standard colors plus the decor library',
           'Most popular choice for kitchens',
           'Excellent durability and style'
         ],
@@ -195,13 +196,13 @@ export const services: ServiceData[] = [
       },
       {
         level: 'Luxury',
-        // Open-ended on purpose. Ruled 2026-08-07: the Atelier line's surfaces
+        // Open-ended on purpose. Ruled 2026-08-07: the Atelier Style's surfaces
         // and accessory programme run above the calculator's top rate, so a
         // closed range here would understate it.
         range: 'From $375/linear ft',
         features: [
-          'High-gloss acrylic or textured finishes',
-          'DTC soft-close hinges, KV 8450FM full-extension slides',
+          'Lacquered high-gloss or perfect-matt panels, super-matte soft-touch surfaces',
+          'DTC soft-close hinges; DTC undermount slides on 21" and 24" boxes, KV 8450FM on other depths',
           'Full custom accessories',
           'Integrated LED lighting',
           'Premium finishes with advanced surfaces',
@@ -216,33 +217,33 @@ export const services: ServiceData[] = [
       },
       {
         question: 'How much do custom kitchen cabinets cost in Houston?',
-        answer: 'It depends what is included. Fully installed custom cabinetry in Houston runs $800-$1,800 per linear foot at market rates, but that covers installation labour, countertops and other trades. We are supply-only: a kitchen runs roughly $215-$375 per linear foot, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets, delivered ready to install. That includes soft-close hardware, plywood construction and custom sizing. Stock cabinets from big box stores run $150-$300/LF but lack the customization and construction quality.'
+        answer: 'It depends what is included. Fully installed custom cabinetry in Houston runs $800-$1,800 per linear foot at market rates, but that covers installation labor, countertops and other trades. Our pricing is supply-only, the cabinets alone: a kitchen runs roughly $215-$375 per linear foot, which puts a typical 10x12 kitchen (20 linear feet) at about $4,300-$7,500 in cabinets, delivered ready to install. That includes soft-close hardware, plywood construction and custom sizing. Stock cabinets from big box stores run $150-$300/LF but lack the customization and construction quality.'
       },
       {
         question: 'Why are engineered cores better for Houston\'s climate?',
-        answer: 'Houston averages 75-90% humidity year-round. Solid wood expands and contracts with humidity changes - a 5-piece door can swell enough to rub against adjacent doors. Our engineered MDF/plywood cores are dimensionally stable and won\'t warp, crack, or expand like solid wood.'
+        answer: 'Houston averages 75-90% humidity year-round. Solid wood expands and contracts with humidity changes - a 5-piece door can swell enough to rub against adjacent doors. Our engineered door cores and plywood boxes are dimensionally stable and won\'t warp, crack, or expand like solid wood.'
       },
       {
         question: 'Do you install the cabinets or just supply them?',
-        answer: 'We\'re a supply-only manufacturer, which keeps costs down. We deliver cabinets ready for installation. Most customers hire their own contractor or we can recommend trusted installers we\'ve worked with. This model saves you 30-40% vs full-service cabinet companies.'
+        answer: 'Both. Our pricing is for the cabinets, delivered ready to install, and install support comes with every order: every panel is QR-tagged, and our free InstallAssistant app shows your installer a 3D model of exactly where each piece goes. If you\'d like it installed, we arrange our partner contractors inside Greater Houston and quote that separately with the job. Outside Greater Houston you use your own installer, with our install support.'
       },
       {
         question: 'How long does the process take?',
-        answer: 'From consultation to delivery: 3-5 weeks total. Design and quote takes 3-5 days, manufacturing takes 2-4 weeks. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores.'
+        answer: 'Design and quote takes 3-5 days, then manufacturing in as little as two weeks, depending on finish and scale. This is much faster than the 8-12 weeks typical for imported cabinets or semi-custom from big box stores.'
       }
     ],
     relatedProjects: [],
     relatedServices: ['closet-systems', 'bathroom-vanities', 'home-office-cabinets'],
     specifications: [
-      { label: 'Box Construction', value: '3/4" Plywood or Moisture-Resistant MDF' },
-      { label: 'Door Thickness', value: '3/4" (19mm)' },
+      { label: 'Box Construction', value: '3/4" Plywood (particleboard on request)' },
+      { label: 'Door Thickness', value: '3/4"' },
       { label: 'Hinge Type', value: 'DTC soft-close, 110° opening' },
-      { label: 'Drawer Slides', value: 'Undermount soft-close, full-extension' },
+      { label: 'Drawer Slides', value: 'DTC undermount on 21" and 24" boxes; KV 8450FM full-extension on other depths' },
       { label: 'Shelf Thickness', value: '3/4" adjustable shelves' },
       { label: 'Warranty', value: 'Lifetime structural, 5-year finish' }
     ],
     houstonAngle:
-      'Houston\'s 90% humidity demands moisture-resistant construction. We use engineered cores that won\'t expand or warp, plus marine-grade plywood for all sink bases and dishwasher cabinets.'
+      'Houston\'s 90% humidity demands moisture-resistant construction. Engineered cores, 1 mm color-matched edge banding and 3/4" plywood boxes stay dimensionally stable, sink bases and dishwasher cabinets included.'
   },
 
   {
@@ -250,7 +251,7 @@ export const services: ServiceData[] = [
     name: 'Closet Systems',
     metaTitle: 'Custom Closet Systems Houston | Walk-In Closets | YuDezign',
     metaDescription:
-      'Custom closet systems in Houston. Walk-in closets, reach-in organizers, wardrobe solutions. European frameless design. 2-3 week turnaround.',
+      'Custom closet systems in Houston. Everyday, Wardrobe and Dressing Room systems for walk-ins and reach-ins. European frameless design. As little as two weeks.',
     keywords: [
       'custom closet systems houston',
       'walk-in closet cabinets',
@@ -261,7 +262,7 @@ export const services: ServiceData[] = [
     icon: 'ShoppingBag',
     portfolioCategory: 'closets',
     overview:
-      'From a tidy reach-in to a walk-in dressing room, YuDeZign closets are built from the same cabinet-grade materials as our kitchens — fitted with purpose-built organizers designed around the way you live.',
+      'From a tidy reach-in to a walk-in dressing room, YuDeZign closets come in three systems, Everyday, Wardrobe and Dressing Room, built on the same particleboard-cored panel as our door fronts and fitted with purpose-built organizers designed around the way you live.',
     video: '/portfolio/videos/closet-collage.mp4',
     videoPoster: '/portfolio/closet-collage-poster.jpg',
     organizers: [
@@ -290,7 +291,7 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=90'
       }
     ],
-    materials: ['Melamine (TFL) - Budget-friendly and durable', 'High-Pressure Laminate', 'Acrylic Finishes', 'Wood Veneer Accents'],
+    materials: ['Particleboard-cored panel (the same core as our door panels), some components MDF', 'Plywood available as a custom lay-up at extra cost and lead time', 'Melamine (TFL), HPL or acrylic surfaces', 'Palette: White, Grey Linen, Black, Sweet Maple, Silk Road Walnut, with a 12-finish list on request'],
     features: [
       {
         icon: 'Shirt',
@@ -330,12 +331,12 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Precision-cut components with pre-drilled adjustable shelf holes.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
         title: 'Installation Ready',
-        description: 'Delivered with all necessary mounting hardware. We recommend professional installers for best results.',
+        description: 'Delivered with all mounting hardware, every panel QR-tagged for the free InstallAssistant app. Inside Greater Houston we can arrange our partner contractors on a separate quote.',
         duration: '1 day'
       }
     ],
@@ -391,7 +392,7 @@ export const services: ServiceData[] = [
     icon: 'Bath',
     portfolioCategory: 'vanities',
     overview:
-      'Custom vanities engineered for Houston\'s humidity — from compact powder rooms to double-sink primary baths, each built from moisture-resistant plywood, sized to your plumbing, and finished in any of our 50-plus colours with soft-close doors and drawers standard.',
+      'Custom vanities engineered for Houston\'s humidity: from compact powder rooms to double-sink primary baths, 21" deep and 34.5" tall (32.5" for ADA), floating or floor-standing, each built on 3/4" plywood boxes with color-matched edge banding, sized to your plumbing, and finished in twenty standard colors or any of our deeper decor library, with soft-close doors and drawers standard.',
     designOptions: [
       {
         title: 'Floating Vanity',
@@ -399,8 +400,8 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=90'
       },
       {
-        title: 'Furniture-Style Vanity',
-        description: 'Traditional look with legs, decorative feet, classic appeal',
+        title: 'Floor-Standing Vanity',
+        description: 'Floor-standing on a finished toe kick, furniture presence, classic appeal',
         image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=90'
       },
       {
@@ -410,16 +411,16 @@ export const services: ServiceData[] = [
       }
     ],
     materials: [
-      'Marine-Grade Plywood',
-      'Moisture-Resistant MDF',
-      'Sealed Interiors',
-      'Water-Resistant Finishes'
+      '3/4" Plywood Boxes',
+      '1 mm Color-Matched Edge Banding',
+      'Sealed Edges',
+      'Water-Resistant Surfaces'
     ],
     features: [
       {
         icon: 'Droplet',
-        title: 'Marine-Grade Construction',
-        description: 'All boxes use marine-grade plywood or MR-MDF. Sealed interiors prevent moisture damage.'
+        title: 'Plywood Construction',
+        description: 'The same 3/4" plywood boxes as our kitchens, with 1 mm color-matched edge banding sealing every exposed edge against moisture.'
       },
       {
         icon: 'Wrench',
@@ -453,13 +454,13 @@ export const services: ServiceData[] = [
       {
         step: 3,
         title: 'Manufacturing',
-        description: 'Built with marine-grade materials and sealed for moisture resistance.',
-        duration: '2 weeks'
+        description: 'Built on 3/4" plywood boxes with color-matched edge banding sealing the core.',
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
         title: 'Installation Ready',
-        description: 'Delivered with mounting hardware and plumbing access panels.',
+        description: 'Delivered with mounting hardware and plumbing access panels, every panel QR-tagged for the InstallAssistant app. Partner contractors available inside Greater Houston on a separate quote.',
         duration: '1 day'
       }
     ],
@@ -478,13 +479,13 @@ export const services: ServiceData[] = [
       {
         level: 'Custom Size/Luxury',
         range: '$5,000-$10,000+',
-        features: ['Any width', 'Furniture-style details', 'Premium hardware', 'Matching medicine cabinets']
+        features: ['Any width', 'Floating or floor-standing', 'Brushed nickel, polished chrome or matte black pulls', 'Matching medicine cabinets']
       }
     ],
     faqs: [
       {
         question: 'What makes bathroom cabinets different from kitchen cabinets?',
-        answer: 'Bathroom cabinets need moisture resistance. We use marine-grade plywood, seal all edges, and use water-resistant finishes. All boxes are sealed inside to prevent moisture absorption from humidity and splashing.'
+        answer: 'Bathroom cabinets need moisture resistance. Our vanities use the same 3/4" plywood boxes and finish library as our kitchens, with 1 mm color-matched edge banding sealing every exposed core edge and water-resistant surfaces. Bases are 21" deep, 34.5" tall or 32.5" for ADA, floating or floor-standing.'
       },
       {
         question: 'Can you match my existing bathroom cabinets?',
@@ -494,7 +495,7 @@ export const services: ServiceData[] = [
     relatedProjects: [],
     relatedServices: ['kitchen-cabinets', 'laundry-room-cabinets'],
     houstonAngle:
-      'Houston bathrooms need marine-grade construction. High humidity plus shower steam demands moisture-resistant materials and sealed construction.'
+      'Houston bathrooms need sealed construction. High humidity plus shower steam is why we build vanities on 3/4" plywood boxes with every edge sealed by color-matched edge banding.'
   },
 
   {
@@ -531,7 +532,7 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=90'
       }
     ],
-    materials: ['Durable Melamine or HPL', 'Wood Veneer for Executive Look', 'Acrylic for Modern Offices'],
+    materials: ['Durable Melamine or HPL', 'Woodgrain Decors for an Executive Look', 'Acrylic for Modern Offices'],
     features: [
       {
         icon: 'MonitorSpeaker',
@@ -571,7 +572,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Built-in desk, cabinets, and shelving fabricated as one integrated system.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
@@ -688,12 +689,12 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Heavy-duty construction with wall-mounting systems.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
         title: 'Delivery',
-        description: 'Delivered with all mounting hardware. Professional installation recommended for proper wall mounting and safety.',
+        description: 'Delivered with all mounting hardware, every panel QR-tagged for the InstallAssistant app. Professional installation recommended for proper wall mounting and safety; inside Greater Houston we can arrange our partner contractors on a separate quote.',
         duration: '1 day'
       }
     ],
@@ -765,7 +766,7 @@ export const services: ServiceData[] = [
         image: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=800&q=90'
       }
     ],
-    materials: ['Acrylic for Modern Look', 'Laminate for Budget-Friendly', 'Wood Veneer for Warmth'],
+    materials: ['Acrylic for Modern Look', 'Laminate for Budget-Friendly', 'Woodgrain Decors for Warmth'],
     features: [
       {
         icon: 'Cable',
@@ -805,7 +806,7 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Cabinets with integrated wire management and ventilation.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
@@ -922,12 +923,12 @@ export const services: ServiceData[] = [
         step: 3,
         title: 'Manufacturing',
         description: 'Moisture-resistant materials, custom sizing around machines.',
-        duration: '2-4 weeks'
+        duration: 'As little as two weeks'
       },
       {
         step: 4,
         title: 'Installation Ready',
-        description: 'Delivered with mounting hardware. Professional installation recommended for proper setup.',
+        description: 'Delivered with mounting hardware, every panel QR-tagged for the InstallAssistant app. Professional installation recommended; inside Greater Houston we can arrange our partner contractors on a separate quote.',
         duration: '1 day'
       }
     ],
