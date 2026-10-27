@@ -93,6 +93,20 @@ const videos: ContentLink[] = [
 // link the extensionless form — otherwise every open costs a redirect.
 const training: ContentLink[] = [
   {
+    label: 'Training video — the made-to-measure line',
+    href: '/sales-training/media/training-made-to-measure-line.mp4',
+    kind: 'video',
+    duration: '12 min',
+    note: 'Narrated and chaptered: the box, hardware, dimensions, doors and openings, the four Styles and the standard palette, closets and vanities, the process. Plays in the browser. Carries a preliminary stamp until Damian signs off the open facts; the Answer Key still wins on any difference.',
+  },
+  {
+    label: 'Training video — the stocked framed line',
+    href: '/sales-training/media/training-stocked-framed-line.mp4',
+    kind: 'video',
+    duration: '12 min',
+    note: 'The RTA framed line we stock and resell: the three collections, construction, reading a YDS code, sizes, options, ordering and how to sell it. Plays in the browser. Preliminary stamp until sign-off.',
+  },
+  {
     label: 'Product Knowledge — the deck',
     href: '/sales-training/deck',
     kind: 'doc',
@@ -104,7 +118,7 @@ const training: ContentLink[] = [
     label: 'Lesson guide (PDF)',
     href: '/sales-training/guide.pdf',
     kind: 'doc',
-    note: 'The same material as a 16-page handout, laid out for 8.5×11. Prints clean and travels — worth downloading before the wifi gets bad. 8.8 MB.',
+    note: 'The same material as a 16-page handout, laid out for 8.5×11. Prints clean and travels — worth downloading before the wifi gets bad. Rebuilt against Answer Key v1.5.',
   },
 ];
 
@@ -113,7 +127,7 @@ const training: ContentLink[] = [
  *
  * These are what a rep carries on paper. Having them here means the current
  * version is always one tap away, and a rep who left the field card in the
- * truck is not stuck. All four were rebuilt against Answer Key v1.4.
+ * truck is not stuck. All four were rebuilt against Answer Key v1.5 (2026-10-27).
  */
 const repPack: ContentLink[] = [
   {
@@ -174,7 +188,7 @@ const documents: ContentLink[] = [
     label: 'Finishes catalog (PDF)',
     href: '/YuDeZign_Finishes_Catalog.pdf',
     kind: 'doc',
-    note: 'The full finish library, on our own site. "Over thirty" is the number you say out loud — the catalog is much deeper, and the answer to "do you have X?" is "let me check the library and come back to you."',
+    note: 'The full finish library, on our own site. "Twenty standard colours, five in each Style" is what you say out loud — the catalog is much deeper, and the answer to "do you have X?" is "let me check the library and come back to you."',
   },
   {
     label: 'InstallAssistant — our app, free on iOS',
@@ -186,6 +200,12 @@ const documents: ContentLink[] = [
 
 /** Deep links into the public site — the pages a rep sends a customer to. */
 const siteLinks: ContentLink[] = [
+  {
+    label: 'Booth playbook — Houston Builders Expo 2026 (archived)',
+    href: '/sales/booth',
+    kind: 'portal',
+    note: 'The show of Aug 11–12 2026 has passed. Kept as the template for the next one: run of show, at the table, the 48 hours after, nurture.',
+  },
   {
     label: 'Finish library',
     href: '/finishes',

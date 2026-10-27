@@ -139,7 +139,7 @@ export const sop: SopStage[] = [
     steps: [
       'The client gets a link to InstallAssistant, our free iOS app. Every panel carries a QR sticker the app reads to show a 3D model of where that piece goes.',
       'Send the App Store link, or tell them to search the store for InstallAssistant. Any install-app URL you find in an archived SOP is out of date — do not pass it on.',
-      'We provide install support. We do not install. "Installation coordinated" is the ceiling of what you promise.',
+      'Install support comes with every job. Installation itself goes through our partner contractors, inside Greater Houston only, on a separate detailed install quote requested with the job (Damian, 2026-10-23). Never promise installation as part of the job.',
       'Damage or shortage is noted on the packing slip at delivery. Anything found later goes to orders@yudezign.com the same day.',
     ],
   },

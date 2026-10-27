@@ -64,7 +64,7 @@ import { managerContent } from './manager.js';
  * Bump on every content change — clients revalidate against this and a stale
  * version would otherwise 304 and keep serving the old payload from cache.
  */
-export const CONTENT_VERSION = '2026-08-20.1';
+export const CONTENT_VERSION = '2026-10-27.1';
 
 export const repContent: RepContent = {
   version: answerKeyVersion,
