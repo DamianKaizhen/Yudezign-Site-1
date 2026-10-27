@@ -185,7 +185,7 @@ const PricingPage: React.FC = () => {
               <div className="mt-4 pt-4 border-t border-slate-200 space-y-2">
                 <p className="text-xs text-slate-600 flex items-start">
                   <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                  Supply only &mdash; cabinets, flat-pack or assembled ($30 per base or wall cabinet, $60 per tall). Countertops, appliances, installation labor and delivery ($350 a trip inside Greater Houston, or pick up at the plant) are separate.
+                  Supply only &mdash; cabinets, flat-pack or assembled, your choice. Countertops, appliances, installation labor and delivery ($350 a trip inside Greater Houston, or pick up at the plant) are separate.
                 </p>
                 {/* These rates start at our Essential Style, with Signature in the
                     same band. Reserve and Atelier are made to measure too, but
