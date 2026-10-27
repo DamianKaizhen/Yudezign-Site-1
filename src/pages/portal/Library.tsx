@@ -4,7 +4,7 @@ import { useSubTab } from '../../lib/hooks/useSubTab';
 import LinkCard from '../../components/portal/LinkCard';
 
 const TABS = [
-  { id: 'training', label: 'Product knowledge' },
+  { id: 'training', label: 'Training' },
   { id: 'pack', label: 'Your printed pack' },
   { id: 'videos', label: 'Videos' },
   { id: 'documents', label: 'Documents' },
@@ -25,9 +25,10 @@ const Library = () => {
   return (
     <div className="space-y-5">
       <header>
-        <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Sources</h1>
+        <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Library</h1>
         <p className="mt-2 text-body-sm text-luxury-gray-600">
-          Where the product knowledge comes from, and what is safe to send a customer.
+          The training videos and the deck, your printed pack as PDFs, third-party explainer videos,
+          and the documents that are safe to send a customer.
         </p>
       </header>
 
@@ -36,9 +37,9 @@ const Library = () => {
       {tab === 'training' && (
         <div className="space-y-4">
           <p className="rounded-xl bg-white p-4 text-body-sm leading-relaxed text-luxury-gray-700 shadow-luxury-sm">
-            The product-knowledge session, hosted here so the version you open is always the current
-            one. The deck&rsquo;s embedded videos play in this copy — they don&rsquo;t in the offline
-            one.
+            Start with the two training videos: one for the made-to-measure line, one for the stocked
+            framed line. The deck and the lesson guide go deeper, hosted here so the version you open
+            is always the current one.
           </p>
           <div className="grid gap-3 sm:grid-cols-2">
             {rep.library.training.map((link) => (

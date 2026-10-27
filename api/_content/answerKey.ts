@@ -23,7 +23,7 @@ import type { AnswerKeyEntry, AnswerKeySection, NeverSayEntry, PortalDoc } from 
 export const answerKeyVersion = 'Answer Key v1.5 · 2026-10-23';
 
 export const canonRule =
-  'This is the only document that settles what you say to a customer. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
+  'The Answer Key is the one document that settles what we say to a customer: a question, the approved answer, where it came from, and whether it is ruled, provisional or blocked. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
 
 export const safetyRule =
   'You are never penalised for saying "let me confirm that and come back to you today." You are penalised for guessing. A number you invent to sound confident is the one that ends up in a contract dispute.';

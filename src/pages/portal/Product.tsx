@@ -10,7 +10,7 @@ import AnswerCard from '../../components/portal/AnswerCard';
 import DocView from '../../components/portal/DocView';
 
 const TABS = [
-  { id: 'lines', label: 'The four lines' },
+  { id: 'lines', label: 'The four Styles' },
   { id: 'construction', label: 'Construction' },
   { id: 'dimensions', label: 'Dimensions' },
   { id: 'openings', label: 'Openings' },
@@ -106,7 +106,8 @@ const Product = () => {
       <header>
         <h1 className="text-display-mobile font-medium text-luxury-gray-900 md:text-h1">Product</h1>
         <p className="mt-2 text-body-sm text-luxury-gray-600">
-          What we make, how it is built, and the numbers you memorise.
+          Two programs: frameless cabinetry made to measure in four Styles, and a stocked framed line we
+          resell. How it is built, and the numbers you memorise.
         </p>
       </header>
 
@@ -127,7 +128,7 @@ const Product = () => {
             columns={LINE_COLUMNS}
             rows={rep.productLines}
             rowKey={(row) => row.id}
-            caption="The four cabinet lines"
+            caption="The four cabinet Styles"
           />
 
           <section className="rounded-xl bg-white p-5 shadow-luxury-sm">
