@@ -8,31 +8,39 @@ import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 import SEO from '../../components/SEO';
 
+// Hero photos are YuDeZign projects served from /public/portfolio, the same files the
+// portfolio cards use. The hero is a 5:1 band on desktop, so heroPosition (CSS
+// object-position) is tuned per photo to land the band on the cabinetry.
 const categoryInfo = {
   kitchens: {
     title: 'Kitchen Cabinets',
     description: 'Transform your kitchen with our custom European frameless cabinets. From modern minimalist to classic elegance, we create functional and beautiful kitchen solutions.',
-    heroImage: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1600',
+    heroImage: '/portfolio/weatheredbark-kitchen-1.jpg',
+    heroPosition: '50% 50%',
   },
   closets: {
     title: 'Custom Closets',
     description: 'Maximize your storage with our expertly designed closet systems. Design your perfect closet with our free Closet Program and enjoy organized living.',
-    heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600',
+    heroImage: '/portfolio/closet-cream-walkin-wide.jpg',
+    heroPosition: '50% 68%',
   },
   vanities: {
     title: 'Bathroom Vanities',
     description: 'Elevate your bathroom with custom vanities that combine style and functionality. European craftsmanship meets practical design.',
-    heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600',
+    heroImage: '/portfolio/vanity-oak-tour.jpg',
+    heroPosition: '50% 62%',
   },
   custom: {
     title: 'Custom Projects',
     description: 'From home offices to entertainment centers, we create custom cabinetry solutions for any space in your home.',
-    heroImage: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=1600',
+    heroImage: '/portfolio/1762211335381-IMG_9153.jpg',
+    heroPosition: '50% 50%',
   },
   commercial: {
     title: 'Commercial Projects',
     description: 'Professional-grade cabinetry solutions for offices, restaurants, retail stores, and medical facilities. Durable, compliant, and designed for high-traffic environments.',
-    heroImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600',
+    heroImage: '/portfolio/office-kitchenette-2.jpg',
+    heroPosition: '50% 45%',
   },
 };
 
@@ -69,7 +77,7 @@ const CategoryPage = () => {
         description={info.description}
         keywords={`${category} cabinets, custom ${category}, houston ${category}, european ${category}, luxury ${category}`}
         url={`https://www.yudezign.com/portfolio/${category}`}
-        image={info.heroImage}
+        image={`https://www.yudezign.com${info.heroImage}`}
       />
       <div className="min-h-screen pt-24">
       {/* Hero Section */}
@@ -79,6 +87,9 @@ const CategoryPage = () => {
             src={info.heroImage}
             alt={info.title}
             className="w-full h-full object-cover"
+            style={{ objectPosition: info.heroPosition }}
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
