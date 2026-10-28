@@ -461,5 +461,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-10-26T10:19:41.879Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1793208259668_lbn1o4x',
+    name: 'Chuck Ofoma',
+    email: 'cofoma@zarocconsulting.com',
+    phone: '3463283150',
+    projectType: 'closet',
+    timeline: 'asap',
+    message: '',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1793208258962-inbound154054573921450817.jpg'],
+    submittedAt: '2026-10-28T17:24:19.491Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
