@@ -241,7 +241,7 @@ const Footer = () => {
                 type="email"
                 placeholder="Enter your email"
                 aria-label="Email address for newsletter"
-                className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-neutral-400 focus:outline-none focus:border-accent"
+                className="flex-1 min-w-0 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-neutral-400 focus:outline-none focus:border-accent"
               />
               <button type="submit" aria-label="Subscribe to newsletter" className="btn-secondary whitespace-nowrap">
                 Subscribe
