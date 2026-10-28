@@ -105,7 +105,12 @@ const Home = () => {
       <div className="min-h-screen bg-luxury-cream">
 
       {/* HERO - Full viewport with cursor reveal effect */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-0">
+      {/* Vertical padding is symmetric on purpose: on a tall window the content
+          still centres on the viewport, but on a short one the section grows
+          downward instead of pushing the trust line under the fixed header
+          (~96px). The bottom pad also keeps the buttons clear of the value
+          cards below, which rise 64px into this section. */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-28 md:py-32">
         {/* Base kitchen video montage — looping, muted background */}
         <div className="absolute inset-0">
           <video
@@ -260,8 +265,10 @@ const Home = () => {
         </motion.div>
 
         {/* Hero content */}
-        <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto">
-          {/* Trust Bar */}
+        <div className="relative z-10 text-center text-white px-4 max-w-7xl mx-auto">
+          {/* Trust Bar. The bullets only appear from lg: between 768px and
+              ~900px the third item wraps to its own line and the second
+              bullet was left dangling at the end of the first. */}
           <motion.div
             className="mb-6 md:mb-8 text-sm md:text-base font-medium text-white/90 flex flex-wrap items-center justify-center gap-3 md:gap-8"
             initial={{ opacity: 0, y: -10 }}
@@ -274,14 +281,14 @@ const Home = () => {
               </svg>
               Serving Houston Since 2007
             </span>
-            <span className="hidden md:inline text-white/40">•</span>
+            <span className="hidden lg:inline text-white/40">•</span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               Frameless Cabinets
             </span>
-            <span className="hidden md:inline text-white/40">•</span>
+            <span className="hidden lg:inline text-white/40">•</span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -299,8 +306,20 @@ const Home = () => {
               ease: [0.22, 1, 0.36, 1]
             }}
           >
+            {/* Fluid size rather than breakpoints. "Precision Crafted in
+                Houston" measures ~12.7em in Inter Light, so each phrase stays
+                on one line as long as the font is under (container / 12.7):
+                7.2vw does that up to the 5.75rem cap, which leaves ~6% of
+                slack inside the 1248px container for a fallback font. The
+                tracking is the hero token's; the arbitrary size dropped it,
+                and without it the phrase is 1275px at 96px and wraps. Under
+                ~500px the 2.25rem min kicks in and each phrase wraps once:
+                at 36px "Custom Frameless" and "Precision Crafted" both fit a
+                360px phone, where the old 44px needed three lines per phrase.
+                text-balance splits the halves evenly instead of leaving one
+                word on its own. */}
             <motion.h1
-              className="text-[2.75rem] sm:text-[3.5rem] md:text-hero mb-6 font-light leading-tight"
+              className="text-balance text-[clamp(2.25rem,7.2vw,5.75rem)] tracking-[-0.02em] mb-6 font-light leading-[1.1]"
             >
               Custom Frameless Cabinets
               <br />
