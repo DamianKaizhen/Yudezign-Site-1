@@ -314,7 +314,7 @@ export const locations: LocationData[] = [
     keyPoints: [
       'Bespoke design consultations - every detail customized',
       'Architect collaboration - we work with Houston\'s top design firms',
-      'Premium materials showcase - Atelier lacquered panels in high gloss and perfect matt',
+      'Premium materials showcase - Atelier panels in high-gloss acrylic, perfect matt and feature oak',
       'Clean slab fronts with classic pulls for a traditional luxury aesthetic'
     ],
     localAngle:

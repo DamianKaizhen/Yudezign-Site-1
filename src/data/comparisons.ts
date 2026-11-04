@@ -260,9 +260,9 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         feature: 'Color Options',
-        option1: 'Solids and woodgrain decors; the basis of our Essential and Signature palettes',
+        option1: 'Smooth matte solids (our Essential palette) and woodgrain decors (our Signature palette)',
         option2: 'Wide range of patterns including woodgrain, available from our decor library',
-        option3: 'Solid colors in brilliant high-gloss; gloss options sit in our Reserve and Atelier palettes',
+        option3: 'Solid colors in brilliant high-gloss; gloss sits in our Atelier palette',
       },
       {
         feature: 'Humidity Performance',
@@ -330,7 +330,7 @@ export const comparisons: Record<string, ComparisonData> = {
       },
       {
         question: 'Can these materials look like wood?',
-        answer: 'Laminate offers realistic woodgrain patterns that closely mimic real wood. Melamine (TFL) also comes in woodgrain decors; our Essential and Signature Styles are built on them. Acrylic is solid colors only - no woodgrain available.',
+        answer: 'Laminate offers realistic woodgrain patterns that closely mimic real wood. Melamine (TFL) also comes in woodgrain decors; our Signature Style is built on them. Acrylic is solid colors only - no woodgrain available.',
       },
       {
         question: 'Which is easiest to maintain?',

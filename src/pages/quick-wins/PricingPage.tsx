@@ -195,7 +195,7 @@ const PricingPage: React.FC = () => {
                     number a rep will then have to walk back. */}
                 <p className="text-xs text-slate-600 flex items-start">
                   <Info className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" />
-                  A starting estimate, based on our Essential and Signature Styles. Our Reserve and Atelier Styles &mdash; super-matte soft-touch and lacquered door surfaces &mdash; run above these figures. Same box and hardware in every Style; what changes is the door surface and the finish family. Final pricing depends on finish and complexity, so book a free consultation for a real number.
+                  A starting estimate, based on our Essential and Signature Styles. Our Reserve and Atelier Styles &mdash; super-matte soft-touch, high-gloss and perfect-matt door surfaces &mdash; run above these figures. Same box and hardware in every Style; what changes is the door surface and the finish family. Final pricing depends on finish and complexity, so book a free consultation for a real number.
                 </p>
               </div>
             </div>

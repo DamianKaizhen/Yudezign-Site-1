@@ -20,7 +20,7 @@ import type { AnswerKeyEntry, AnswerKeySection, NeverSayEntry, PortalDoc } from 
  * `answer` strings are verbatim. Do not paraphrase them to fit a layout.
  */
 
-export const answerKeyVersion = 'Answer Key v1.5 · 2026-10-23';
+export const answerKeyVersion = 'Answer Key v1.6 · 2026-11-04';
 
 export const canonRule =
   'The Answer Key is the one document that settles what we say to a customer: a question, the approved answer, where it came from, and whether it is ruled, provisional or blocked. If a number appears anywhere else in your pack — the field card, the SOP, the booth playbook — it came from here.';
@@ -505,7 +505,9 @@ export const answerKey: AnswerKeyEntry[] = [
     answer:
       '"Twenty standard colours — five in each Style — and a much deeper library if you\'re matching something." If they want a specific colour: "tell me what you\'re matching and I\'ll check it."',
     status: 'ruled',
-    source: 'Damian, 2026-10-23 (Answer Key v1.5): the standard palette, five colours per Style. "Over thirty" is retired',
+    source: 'Damian, 2026-11-04 (Answer Key v1.6): the standard palette regrouped by door surface, five colours per Style; supersedes the 2026-10-23 palette. "Over thirty" is retired',
+    repNote:
+      'Essential is the smooth-matte set (White, Cashmere Grey, Stone Green, Misty Blue, Black). Signature is the woodgrains and textures. Reserve is AGT soft-touch only. Atelier is high gloss (acrylic, never "lacquered"), perfect matt, Supramat and the feature oak. Nine colours left the standard palette on 2026-11-04 (Arauco W100/BLK100, Egger U220/H1388, AGT 730, Lummia HG115/HG203/PM765/PM778): treat them like any library colour.',
     aliases: ['finishes', 'colours', 'colors', 'how many'],
     links: [
       { label: 'The public finish library', href: '/finishes', kind: 'site', note: 'Where the booth QR points' },
