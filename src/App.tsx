@@ -71,6 +71,10 @@ const PortalRoutes = lazy(() => import('./pages/portal/PortalRoutes'));
 // phone with the site installed, so it has no place in the main bundle either.
 const DocViewer = lazy(() => import('./pages/doc/DocViewer'));
 
+// The stocked RTA catalogue carries 640 cabinets with a price per finish, so it
+// loads as its own chunk rather than riding in the bundle every visitor gets.
+const RtaCatalog = lazy(() => import('./pages/rta/RtaCatalog'));
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -86,6 +90,15 @@ const queryClient = new QueryClient({
 // doesn't flash the marketing palette.
 const PortalLoading = () => (
   <div className="flex min-h-screen items-center justify-center bg-luxury-cream">
+    <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+  </div>
+);
+
+// Shown while a code-split public page downloads. The data attribute tells
+// scripts/prerender.mjs the real page has not rendered yet, so the static
+// snapshot waits for the content instead of capturing the spinner.
+const PageLoading = () => (
+  <div data-prerender-pending="" className="flex min-h-[60vh] items-center justify-center bg-luxury-cream">
     <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
   </div>
 );
@@ -161,6 +174,16 @@ function App() {
           <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
           <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
           <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
+          <Route
+            path="/rta-cabinets"
+            element={
+              <PublicLayout>
+                <Suspense fallback={<PageLoading />}>
+                  <RtaCatalog />
+                </Suspense>
+              </PublicLayout>
+            }
+          />
           <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />

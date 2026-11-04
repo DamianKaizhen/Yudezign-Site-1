@@ -37,6 +37,7 @@ const NAV_LINKS: NavLink[] = [
           { name: 'Bathroom Vanities', path: '/services/bathroom-vanities' },
           { name: 'Home Office', path: '/services/home-office-cabinets' },
           { name: 'Garage Cabinets', path: '/services/garage-cabinets' },
+          { name: 'Stocked RTA Cabinets', path: '/rta-cabinets' },
         ],
       },
     ],

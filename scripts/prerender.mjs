@@ -70,11 +70,14 @@ async function renderRoute(browser, base, route) {
     });
 
     await page.goto(`${base}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    // Wait until React has rendered real content into #root.
+    // Wait until React has rendered real content into #root. A code-split page
+    // marks its Suspense fallback with data-prerender-pending; the navigation and
+    // footer alone would otherwise satisfy the text check before the chunk lands.
     await page.waitForFunction(
       () => {
         const el = document.getElementById('root');
-        return !!el && el.children.length > 0 && (el.innerText || '').trim().length > 40;
+        if (!el || el.children.length === 0 || (el.innerText || '').trim().length <= 40) return false;
+        return !document.querySelector('[data-prerender-pending]');
       },
       { timeout: 15000 }
     );

@@ -164,6 +164,21 @@ const Finishes = () => {
         </div>
       </section>
 
+      {/* Stocked RTA line cross-link: its finishes are a separate list */}
+      <section className="px-4 pb-4 bg-luxury-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-luxury-beige rounded-lg px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-body text-luxury-gray-700">
+              Looking for stocked, ready-to-assemble cabinets? Our framed RTA line has its own finishes, stock sizes and prices.
+            </p>
+            <Link to="/rta-cabinets" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+              See the RTA catalogue
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Full Color Catalog CTA */}
       <section className="py-20 px-4 bg-luxury-white border-t border-luxury-sand">
         <div className="max-w-4xl mx-auto">

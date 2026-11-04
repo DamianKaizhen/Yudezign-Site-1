@@ -58,15 +58,23 @@
   <!-- Finishes Page -->
   <url>
     <loc>https://www.yudezign.com/finishes</loc>
-    <lastmod>2025-12-24</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Stocked RTA cabinet catalogue -->
+  <url>
+    <loc>https://www.yudezign.com/rta-cabinets</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Brochures & Downloads Page -->
   <url>
     <loc>https://www.yudezign.com/downloads</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
