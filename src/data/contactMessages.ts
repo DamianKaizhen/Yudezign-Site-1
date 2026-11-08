@@ -474,5 +474,17 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-10-28T17:24:19.491Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1794108017680_xo9z0gd',
+    name: 'Jessie Cotter',
+    email: 'info@citydatabids.com',
+    phone: '806-893-6755',
+    projectType: 'kitchen',
+    timeline: 'planning',
+    message: 'Hi, I\'m Jessie, I built City Data Bids, and Yudezign Custom Cabinetry offers versatile custom cabinetry from its US-based manufacturing site with advanced equipment, and a cabinet built by robots and humans together is the dream team. On November 4, a homeowner on Echo Ridge in Sugar Land 77478 pulled permit BLDR-2026-01209 to add a room onto the back of their home, and that new room is going to need your kind of help. I\'ll send tomorrow\'s list for your ZIPs free, no card required, and if it wins you a job, keep it for $99/month. Reply to info@citydatabids.com or check out citydatabids.com.',
+    submittedAt: '2026-11-08T03:20:17.495Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
