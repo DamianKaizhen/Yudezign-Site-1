@@ -499,5 +499,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-11-12T04:52:17.748Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1794460413567_g6gx2s0',
+    name: 'Kwann Boyd ',
+    email: 'ktboyd1971@gmail.com',
+    phone: '7135391631',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Looking for EUROPEAN FRAMELESS CABINETS ',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1794460411847-IMG_4811.jpeg', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1794460412363-IMG_4812.jpeg', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1794460412809-IMG_4810.jpeg', 'https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1794460413133-IMG_4809.jpeg'],
+    submittedAt: '2026-11-12T05:13:33.368Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
