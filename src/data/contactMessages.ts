@@ -486,5 +486,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-11-08T03:20:17.495Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1794459137909_ja7jsb7',
+    name: 'Kwann Boyd ',
+    email: 'ktboyd1971@gmail.com',
+    phone: '7135391631',
+    projectType: 'kitchen',
+    budget: '5k-10k',
+    timeline: '1-2months',
+    message: 'Looking for a quote on EUROPEAN FRAMELESS CABINETS FOR A NEW CONSTRUCTION ',
+    submittedAt: '2026-11-12T04:52:17.748Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
