@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -70,3 +70,80 @@
     -webkit-backdrop-filter: blur(10px);
   }
 }
+
+/* ------------------------------------------------------------------
+   Gallery theme. Pages wrapped in GalleryLayout keep their markup; this
+   re-colours the utilities they use so they match the 3D gallery home:
+   near-black surfaces, cream text, gold accents, serif headings.
+   ------------------------------------------------------------------ */
+.theme-gallery {
+  --g-ink: #0b0a09; --g-raise: #15120f; --g-card: rgba(244, 239, 231, 0.045); --g-line: rgba(244, 239, 231, 0.14);
+  --g-cream: #f4efe7; --g-muted: rgba(244, 239, 231, 0.68); --g-gold: #d4a574;
+  background: var(--g-ink); color: var(--g-cream);
+}
+.theme-gallery h1, .theme-gallery h2, .theme-gallery h3 { font-family: "Cormorant Garamond", "Times New Roman", serif; font-weight: 400; letter-spacing: -0.005em; }
+.theme-gallery h1 { font-weight: 300; }
+
+/* header and footer */
+.gallery-bar { background: rgba(11, 10, 9, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--g-line); }
+.gallery-links { scrollbar-width: none; }
+.gallery-links::-webkit-scrollbar { display: none; }
+.gallery-links a { white-space: nowrap; font-size: 14px; letter-spacing: 0.02em; color: var(--g-muted); transition: color 0.2s; }
+.gallery-links a:hover, .gallery-links a[aria-current="page"] { color: var(--g-gold); }
+.gallery-cta { padding: 10px 18px; border-radius: 2px; background: var(--g-gold); color: #1c140b; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+.gallery-cta:hover { background: #e2b98c; }
+.gallery-foot { border-top: 1px solid var(--g-line); background: var(--g-ink); color: var(--g-muted); font-size: 14px; line-height: 1.8; }
+.gallery-foot a:hover { color: var(--g-gold); }
+@media (max-width: 640px) { .gallery-cta { display: none; } }
+
+/* surfaces */
+.theme-gallery .bg-white, .theme-gallery .bg-luxury-white, .theme-gallery .bg-luxury-cream, .theme-gallery .bg-neutral-50 { background-color: var(--g-ink); }
+.theme-gallery .bg-slate-50, .theme-gallery .bg-luxury-beige, .theme-gallery .bg-slate-100, .theme-gallery .bg-gray-50, .theme-gallery .bg-gray-100 { background-color: var(--g-raise); }
+.theme-gallery .rounded-lg.bg-white, .theme-gallery .rounded-xl.bg-white, .theme-gallery .rounded-2xl.bg-white, .theme-gallery .shadow-md.bg-white,
+.theme-gallery .shadow-lg.bg-white, .theme-gallery .shadow-luxury.bg-white, .theme-gallery .shadow-luxury-lg.bg-white, .theme-gallery .border.bg-white { background-color: var(--g-card); }
+.theme-gallery .hover\:bg-slate-50:hover, .theme-gallery .hover\:bg-luxury-gray-50:hover { background-color: rgba(244, 239, 231, 0.07); }
+.theme-gallery [class*="from-slate-50"], .theme-gallery [class*="from-luxury-"] { background-image: linear-gradient(to bottom, var(--g-raise), var(--g-ink)); }
+.theme-gallery [class*="from-primary"], .theme-gallery [class*="from-slate-900"] { background-image: linear-gradient(135deg, #12352b 0%, #0d1f1a 55%, var(--g-ink) 100%); }
+.theme-gallery [class*="from-accent-light"], .theme-gallery [class*="from-green-50"] { background-image: linear-gradient(135deg, rgba(212, 165, 116, 0.16), rgba(212, 165, 116, 0.04)); }
+
+/* text */
+.theme-gallery .text-slate-900, .theme-gallery .text-luxury-gray-900, .theme-gallery .text-neutral-900, .theme-gallery .text-gray-900,
+.theme-gallery .text-luxury-gray-800, .theme-gallery .text-slate-800 { color: var(--g-cream); }
+.theme-gallery .text-slate-700, .theme-gallery .text-slate-600, .theme-gallery .text-slate-500, .theme-gallery .text-luxury-gray-700, .theme-gallery .text-luxury-gray-600,
+.theme-gallery .text-luxury-gray-500, .theme-gallery .text-neutral-600, .theme-gallery .text-neutral-700, .theme-gallery .text-gray-600, .theme-gallery .text-gray-700 { color: var(--g-muted); }
+.theme-gallery .text-luxury-gray-400, .theme-gallery .text-slate-400 { color: rgba(244, 239, 231, 0.5); }
+.theme-gallery .text-primary, .theme-gallery .text-primary-dark, .theme-gallery .text-primary-light, .theme-gallery .hover\:text-primary:hover,
+.theme-gallery .hover\:text-primary-dark:hover, .theme-gallery .group:hover .group-hover\:text-primary { color: var(--g-gold); }
+
+/* lines */
+.theme-gallery .border-slate-200, .theme-gallery .border-slate-300, .theme-gallery .border-slate-400, .theme-gallery .border-luxury-sand, .theme-gallery .border-gray-100,
+.theme-gallery .border-luxury-gray-100, .theme-gallery .border-gray-200 { border-color: var(--g-line); }
+.theme-gallery .divide-slate-200 > :not([hidden]) ~ :not([hidden]) { border-color: var(--g-line); }
+.theme-gallery .border-primary, .theme-gallery .hover\:border-primary:hover { border-color: var(--g-gold); }
+
+/* buttons and badges */
+.theme-gallery .bg-primary, .theme-gallery .bg-primary-light { background-color: #14513f; }
+.theme-gallery .hover\:bg-primary-dark:hover, .theme-gallery .bg-primary-dark { background-color: #0f4c3a; }
+.theme-gallery .bg-primary\/10 { background-color: rgba(212, 165, 116, 0.12); }
+.theme-gallery .bg-accent { background-color: var(--g-gold); color: #1c140b; }
+.theme-gallery .bg-accent .text-primary, .theme-gallery .bg-accent.text-primary { color: #1c140b; }
+/* the pale-gold note boxes and pills become tinted glass, so their text stays readable */
+.theme-gallery .bg-accent-light, .theme-gallery .hover\:bg-accent-light:hover { background-color: rgba(212, 165, 116, 0.14); }
+.theme-gallery [class*="bg-luxury-beige/"], .theme-gallery [class*="bg-white/9"], .theme-gallery [class*="bg-luxury-cream/"] { background-color: rgba(17, 15, 13, 0.92); }
+.theme-gallery .bg-white.text-primary { background-color: var(--g-cream); color: #0f4c3a; }
+
+/* call-outs: green, red, blue, yellow notes become tinted glass */
+.theme-gallery .bg-green-50 { background-color: rgba(74, 163, 120, 0.12); }
+.theme-gallery .text-green-900, .theme-gallery .text-green-800, .theme-gallery .text-green-700 { color: #a9dcc0; }
+.theme-gallery .text-green-600 { color: #7cc9a2; }
+.theme-gallery .bg-red-50 { background-color: rgba(214, 96, 80, 0.12); }
+.theme-gallery .text-red-900, .theme-gallery .text-red-800, .theme-gallery .text-red-700 { color: #f0b3a6; }
+.theme-gallery .text-red-600, .theme-gallery .text-red-500 { color: #ec8f7d; }
+.theme-gallery .bg-blue-50 { background-color: rgba(96, 148, 214, 0.12); }
+.theme-gallery .text-blue-900, .theme-gallery .text-blue-800 { color: #b4cff0; }
+.theme-gallery .bg-yellow-50 { background-color: rgba(212, 165, 116, 0.13); }
+.theme-gallery .text-yellow-900, .theme-gallery .text-yellow-800, .theme-gallery .text-yellow-700, .theme-gallery .text-yellow-600 { color: #ecd0ac; }
+
+/* forms */
+.theme-gallery input, .theme-gallery select, .theme-gallery textarea { background-color: rgba(244, 239, 231, 0.05); color: var(--g-cream); border-color: var(--g-line); }
+.theme-gallery select option { color: #1a1a1a; }

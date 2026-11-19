@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SiteSettingsProvider } from './contexts/SiteSettingsContext';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
+import GalleryLayout from './components/layout/GalleryLayout';
 import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
 import GalleryHome from './pages/GalleryHome';
@@ -177,7 +178,7 @@ function App() {
           <Route path="/classic" element={<PublicLayout><Home /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
           <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
-          <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
+          <Route path="/finishes" element={<GalleryLayout><Finishes /></GalleryLayout>} />
           <Route
             path="/rta-cabinets"
             element={
@@ -192,7 +193,7 @@ function App() {
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
           <Route path="/visualizer" element={<PublicLayout><Visualizer /></PublicLayout>} />
-          <Route path="/downloads" element={<PublicLayout><Downloads /></PublicLayout>} />
+          <Route path="/downloads" element={<GalleryLayout><Downloads /></GalleryLayout>} />
           <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
           <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
 
@@ -209,23 +210,23 @@ function App() {
           <Route path="/services/:slug" element={<PublicLayout><ServicePage /></PublicLayout>} />
 
           {/* Blog Pages */}
-          <Route path="/blog" element={<PublicLayout><BlogIndex /></PublicLayout>} />
-          <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<PublicLayout><CostGuide2025 /></PublicLayout>} />
-          <Route path="/blog/frameless-vs-framed-cabinets" element={<PublicLayout><FramelessVsFramed /></PublicLayout>} />
-          <Route path="/blog/kitchen-trends-2025" element={<PublicLayout><KitchenTrends2025 /></PublicLayout>} />
-          <Route path="/blog/houston-humidity-cabinets" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
-          <Route path="/blog/how-to-measure-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
-          <Route path="/blog/european-vs-american-cabinets" element={<PublicLayout><EuropeanVsAmerican /></PublicLayout>} />
-          <Route path="/blog/cabinet-materials-plywood-particleboard-mdf" element={<PublicLayout><CabinetMaterialsGuide /></PublicLayout>} />
-          <Route path="/blog/flat-panel-vs-shaker-cabinet-doors" element={<PublicLayout><CabinetDoorStylesGuide /></PublicLayout>} />
-          <Route path="/blog/cabinet-finishes-explained-melamine-laminate-acrylic" element={<PublicLayout><CabinetFinishesGuide /></PublicLayout>} />
-          <Route path="/blog/bathroom-vanity-guide-houston" element={<PublicLayout><BathroomVanityGuide /></PublicLayout>} />
-          <Route path="/blog/cabinet-hardware-guide" element={<PublicLayout><CabinetHardwareGuide /></PublicLayout>} />
-          <Route path="/blog/custom-closet-design-guide-houston" element={<PublicLayout><ClosetDesignGuide /></PublicLayout>} />
-          <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
+          <Route path="/blog" element={<GalleryLayout><BlogIndex /></GalleryLayout>} />
+          <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<GalleryLayout><CostGuide2025 /></GalleryLayout>} />
+          <Route path="/blog/frameless-vs-framed-cabinets" element={<GalleryLayout><FramelessVsFramed /></GalleryLayout>} />
+          <Route path="/blog/kitchen-trends-2025" element={<GalleryLayout><KitchenTrends2025 /></GalleryLayout>} />
+          <Route path="/blog/houston-humidity-cabinets" element={<GalleryLayout><HoustonHumidity /></GalleryLayout>} />
+          <Route path="/blog/how-to-measure-cabinets" element={<GalleryLayout><MeasuringGuide /></GalleryLayout>} />
+          <Route path="/blog/european-vs-american-cabinets" element={<GalleryLayout><EuropeanVsAmerican /></GalleryLayout>} />
+          <Route path="/blog/cabinet-materials-plywood-particleboard-mdf" element={<GalleryLayout><CabinetMaterialsGuide /></GalleryLayout>} />
+          <Route path="/blog/flat-panel-vs-shaker-cabinet-doors" element={<GalleryLayout><CabinetDoorStylesGuide /></GalleryLayout>} />
+          <Route path="/blog/cabinet-finishes-explained-melamine-laminate-acrylic" element={<GalleryLayout><CabinetFinishesGuide /></GalleryLayout>} />
+          <Route path="/blog/bathroom-vanity-guide-houston" element={<GalleryLayout><BathroomVanityGuide /></GalleryLayout>} />
+          <Route path="/blog/cabinet-hardware-guide" element={<GalleryLayout><CabinetHardwareGuide /></GalleryLayout>} />
+          <Route path="/blog/custom-closet-design-guide-houston" element={<GalleryLayout><ClosetDesignGuide /></GalleryLayout>} />
+          <Route path="/blog/:slug" element={<GalleryLayout><BlogPost /></GalleryLayout>} />
 
           {/* FAQ */}
-          <Route path="/faq" element={<PublicLayout><FAQPage /></PublicLayout>} />
+          <Route path="/faq" element={<GalleryLayout><FAQPage /></GalleryLayout>} />
 
           {/* Comparison Pages */}
           <Route path="/vs/:slug" element={<PublicLayout><ComparisonPage /></PublicLayout>} />

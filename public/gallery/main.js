@@ -650,7 +650,7 @@ const RESOURCES = [
 const PANELS = {
   contact: (ptype) => contactForm(ptype),
   // the site's existing pages, grouped as in its Resources menu
-  resources: () => `<p class="eyebrow">Resources</p><h2>Guides and tools</h2>${RESOURCES.map(([head, links]) => `<section class="res"><h3>${head}</h3>${links.map(([t, href]) => `<a href="${href}">${t}</a>`).join('')}</section>`).join('')}
+  resources: () => `<p class="eyebrow">Resources</p><h2>Guides and tools</h2>${RESOURCES.map(([head, links]) => `<section class="res"><h3>${head}</h3>${links.map(([t, href]) => (head === 'Areas Served' ? `<span data-soon>${t}</span>` : `<a href="${href}">${t}</a>`)).join('')}</section>`).join('')}
     <p class="foot-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/sales/login">Sales Portal</a><a href="/admin/login">Admin</a></p>`,
   menu: () => `<h2>Menu</h2><div class="menu-list">${['services', 'portfolio', 'finishes', 'resources', 'about', 'contact'].map((p) => `<button type="button" data-panel="${p}">${p === 'contact' ? 'Start Your Project' : cap(p)}</button>`).join('')}</div>`,
   services: () => `<p class="eyebrow">Services</p><h2>What we build</h2><ul class="svc">${site.services.map(([n, t, href]) => `<li><h3>${href ? `<a href="${href}">${esc(n)}</a>` : esc(n)}</h3><p>${esc(t)}</p></li>`).join('')}</ul><a class="btn gold" href="/contact" data-panel="contact">Start Your Project</a>`,
