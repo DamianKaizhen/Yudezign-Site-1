@@ -36,7 +36,7 @@ const GalleryHome = () => (
         </nav>
       </div>
       <iframe
-        src={`/gallery/index.html${TURNSTILE_SITE_KEY ? `?tsk=${encodeURIComponent(TURNSTILE_SITE_KEY)}` : ''}`}
+        src={`/gallery${TURNSTILE_SITE_KEY ? `?tsk=${encodeURIComponent(TURNSTILE_SITE_KEY)}` : ''}`}
         title="YuDeZign 3D gallery"
         className="h-full w-full border-0"
         allow="autoplay; fullscreen"

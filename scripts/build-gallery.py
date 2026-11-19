@@ -73,8 +73,8 @@ html = html.replace('<a class="brand" href="#"', '<a class="brand" href="/"')
 html = html.replace('href="#"', 'href="/contact"')
 # the page runs in a frame on the home route: links open in the main window, and only the home page is indexed
 html = html.replace("<title>YuDeZign Gallery (3D mockup)</title>",
-                    '<title>YuDeZign Gallery</title>\n  <meta name="robots" content="noindex">\n  <base target="_top">')
-if "<base target" not in html or re.search(r'href="#"', html):
+                    '<title>YuDeZign Gallery</title>\n  <meta name="robots" content="noindex">\n  <base href="/gallery/" target="_top">')
+if "<base href" not in html or re.search(r'href="#"', html):
     raise SystemExit("index.html changed, link rewrite failed")
 open(os.path.join(DST, "index.html"), "w", encoding="utf-8", newline="\n").write(html)
 
