@@ -107,35 +107,33 @@ AVAILABLE FINISHES (USE ONLY THESE):
 
 Four Styles. Same box, same hardware in every Style; what changes is the door surface and the finish family.
 
-ESSENTIAL STYLE (woodgrain and solid TFL):
-- Acacia Honey (warm honey wood grain)
-- First Class (rich brown wood grain)
-- Fashionista (contemporary grey wood grain)
-- Rock Solid (weathered grey oak look)
-- Lorenzo Oak (beige-grey oak)
-- Vicenza Oak (natural light oak)
-- White Tossini Elm (whitewashed wood grain)
-
-SIGNATURE STYLE (European TFL):
+ESSENTIAL STYLE (smooth-matte solid TFL):
+- White (clean smooth-matte white)
+- Cashmere Grey (smooth-matte warm off-white)
 - Stone Green (smooth matte solid, muted green)
 - Misty Blue (smooth matte solid, soft grey-blue)
-- Soft Beige (smooth matte solid, warm beige)
+- Black (smooth-matte black)
+
+SIGNATURE STYLE (woodgrain and textured TFL):
 - Warmia Walnut (dark walnut grain)
-- Sand Casella Oak (sandy light oak grain)
+- Acacia Honey (warm honey wood grain)
+- Rock Solid (weathered grey concrete look)
+- First Class (rich brown wood grain)
+- Vicenza Oak (natural light oak)
 
 RESERVE STYLE (super-matte soft-touch solids):
+- Stone Grey (mid warm grey, super-matte)
 - White (crisp super-matte white)
 - Black (deep super-matte black)
-- Cream (warm super-matte off-white)
-- Stone Grey (mid warm grey, super-matte)
 - Relax Green (muted sage green, super-matte)
+- Pebble Grey (light cool grey, super-matte)
 
-ATELIER STYLE (lacquered):
-- Carte Blanche (brilliant white, high gloss, mirror-like)
-- Black (pure black, high gloss)
+ATELIER STYLE (high gloss, perfect matt and feature oak):
+- Gloss Black (pure black, high gloss, mirror-like)
+- Light Natural Casella Oak (pale natural oak, deep texture)
+- Breeze Beige (light warm beige, super-matte)
 - Vanilla Orchid (off-white, perfect matt)
-- Midnight Sun (black, perfect matt)
-- Steel Blue (deep blue, perfect matt)
+- Bright White (brilliant white, high gloss, mirror-like)
 
 ═══════════════════════════════════════════════════════════════
 IMAGE GENERATION INSTRUCTIONS:

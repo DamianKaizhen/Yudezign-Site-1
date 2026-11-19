@@ -6,8 +6,10 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SiteSettingsProvider } from './contexts/SiteSettingsContext';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
+import GalleryLayout from './components/layout/GalleryLayout';
 import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
+import GalleryHome from './pages/GalleryHome';
 import Portfolio from './pages/portfolio/Portfolio';
 import CategoryPage from './pages/portfolio/CategoryPage';
 import Finishes from './pages/finishes/Finishes';
@@ -71,6 +73,10 @@ const PortalRoutes = lazy(() => import('./pages/portal/PortalRoutes'));
 // phone with the site installed, so it has no place in the main bundle either.
 const DocViewer = lazy(() => import('./pages/doc/DocViewer'));
 
+// The stocked RTA catalogue carries 640 cabinets with a price per finish, so it
+// loads as its own chunk rather than riding in the bundle every visitor gets.
+const RtaCatalog = lazy(() => import('./pages/rta/RtaCatalog'));
+
 // Create a client for TanStack Query
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -86,6 +92,15 @@ const queryClient = new QueryClient({
 // doesn't flash the marketing palette.
 const PortalLoading = () => (
   <div className="flex min-h-screen items-center justify-center bg-luxury-cream">
+    <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+  </div>
+);
+
+// Shown while a code-split public page downloads. The data attribute tells
+// scripts/prerender.mjs the real page has not rendered yet, so the static
+// snapshot waits for the content instead of capturing the spinner.
+const PageLoading = () => (
+  <div data-prerender-pending="" className="flex min-h-[60vh] items-center justify-center bg-luxury-cream">
     <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
   </div>
 );
@@ -157,15 +172,28 @@ function App() {
           />
 
           {/* Public Routes - With Navigation/Footer */}
-          <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
+          {/* Home is the 3D gallery, full screen with its own header. The
+              previous home page stays reachable at /classic. */}
+          <Route path="/" element={<GalleryHome />} />
+          <Route path="/classic" element={<PublicLayout><Home /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
           <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
-          <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
+          <Route path="/finishes" element={<GalleryLayout><Finishes /></GalleryLayout>} />
+          <Route
+            path="/rta-cabinets"
+            element={
+              <PublicLayout>
+                <Suspense fallback={<PageLoading />}>
+                  <RtaCatalog />
+                </Suspense>
+              </PublicLayout>
+            }
+          />
           <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
           <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
           <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
           <Route path="/visualizer" element={<PublicLayout><Visualizer /></PublicLayout>} />
-          <Route path="/downloads" element={<PublicLayout><Downloads /></PublicLayout>} />
+          <Route path="/downloads" element={<GalleryLayout><Downloads /></GalleryLayout>} />
           <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
           <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
 
@@ -182,23 +210,23 @@ function App() {
           <Route path="/services/:slug" element={<PublicLayout><ServicePage /></PublicLayout>} />
 
           {/* Blog Pages */}
-          <Route path="/blog" element={<PublicLayout><BlogIndex /></PublicLayout>} />
-          <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<PublicLayout><CostGuide2025 /></PublicLayout>} />
-          <Route path="/blog/frameless-vs-framed-cabinets" element={<PublicLayout><FramelessVsFramed /></PublicLayout>} />
-          <Route path="/blog/kitchen-trends-2025" element={<PublicLayout><KitchenTrends2025 /></PublicLayout>} />
-          <Route path="/blog/houston-humidity-cabinets" element={<PublicLayout><HoustonHumidity /></PublicLayout>} />
-          <Route path="/blog/how-to-measure-cabinets" element={<PublicLayout><MeasuringGuide /></PublicLayout>} />
-          <Route path="/blog/european-vs-american-cabinets" element={<PublicLayout><EuropeanVsAmerican /></PublicLayout>} />
-          <Route path="/blog/cabinet-materials-plywood-particleboard-mdf" element={<PublicLayout><CabinetMaterialsGuide /></PublicLayout>} />
-          <Route path="/blog/flat-panel-vs-shaker-cabinet-doors" element={<PublicLayout><CabinetDoorStylesGuide /></PublicLayout>} />
-          <Route path="/blog/cabinet-finishes-explained-melamine-laminate-acrylic" element={<PublicLayout><CabinetFinishesGuide /></PublicLayout>} />
-          <Route path="/blog/bathroom-vanity-guide-houston" element={<PublicLayout><BathroomVanityGuide /></PublicLayout>} />
-          <Route path="/blog/cabinet-hardware-guide" element={<PublicLayout><CabinetHardwareGuide /></PublicLayout>} />
-          <Route path="/blog/custom-closet-design-guide-houston" element={<PublicLayout><ClosetDesignGuide /></PublicLayout>} />
-          <Route path="/blog/:slug" element={<PublicLayout><BlogPost /></PublicLayout>} />
+          <Route path="/blog" element={<GalleryLayout><BlogIndex /></GalleryLayout>} />
+          <Route path="/blog/custom-cabinet-cost-guide-houston-2025" element={<GalleryLayout><CostGuide2025 /></GalleryLayout>} />
+          <Route path="/blog/frameless-vs-framed-cabinets" element={<GalleryLayout><FramelessVsFramed /></GalleryLayout>} />
+          <Route path="/blog/kitchen-trends-2025" element={<GalleryLayout><KitchenTrends2025 /></GalleryLayout>} />
+          <Route path="/blog/houston-humidity-cabinets" element={<GalleryLayout><HoustonHumidity /></GalleryLayout>} />
+          <Route path="/blog/how-to-measure-cabinets" element={<GalleryLayout><MeasuringGuide /></GalleryLayout>} />
+          <Route path="/blog/european-vs-american-cabinets" element={<GalleryLayout><EuropeanVsAmerican /></GalleryLayout>} />
+          <Route path="/blog/cabinet-materials-plywood-particleboard-mdf" element={<GalleryLayout><CabinetMaterialsGuide /></GalleryLayout>} />
+          <Route path="/blog/flat-panel-vs-shaker-cabinet-doors" element={<GalleryLayout><CabinetDoorStylesGuide /></GalleryLayout>} />
+          <Route path="/blog/cabinet-finishes-explained-melamine-laminate-acrylic" element={<GalleryLayout><CabinetFinishesGuide /></GalleryLayout>} />
+          <Route path="/blog/bathroom-vanity-guide-houston" element={<GalleryLayout><BathroomVanityGuide /></GalleryLayout>} />
+          <Route path="/blog/cabinet-hardware-guide" element={<GalleryLayout><CabinetHardwareGuide /></GalleryLayout>} />
+          <Route path="/blog/custom-closet-design-guide-houston" element={<GalleryLayout><ClosetDesignGuide /></GalleryLayout>} />
+          <Route path="/blog/:slug" element={<GalleryLayout><BlogPost /></GalleryLayout>} />
 
           {/* FAQ */}
-          <Route path="/faq" element={<PublicLayout><FAQPage /></PublicLayout>} />
+          <Route path="/faq" element={<GalleryLayout><FAQPage /></GalleryLayout>} />
 
           {/* Comparison Pages */}
           <Route path="/vs/:slug" element={<PublicLayout><ComparisonPage /></PublicLayout>} />

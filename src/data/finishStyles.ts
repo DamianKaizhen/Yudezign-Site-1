@@ -4,14 +4,14 @@ export const finishStyles: FinishStyle[] = [
   {
     id: 'essential',
     name: 'Essential',
-    description: 'The widest palette, at the working price. Woodgrain and solid TFL doors for rentals, spec homes and hardworking family spaces.',
+    description: 'Smooth matte solids, at the working price. Egger smooth-matte TFL doors for rentals, spec homes and hardworking family spaces.',
     visible: true,
     order: 1,
   },
   {
     id: 'signature',
     name: 'Signature',
-    description: 'European decors, in the balanced middle. Smooth matte solids and deep-texture woodgrains for warm kitchens and rooms meant to feel lived in.',
+    description: 'Woodgrains and textures, in the balanced middle. Deep-texture woodgrain and textured TFL for warm kitchens and rooms meant to feel lived in.',
     visible: true,
     order: 2,
   },
@@ -25,7 +25,7 @@ export const finishStyles: FinishStyle[] = [
   {
     id: 'atelier',
     name: 'Atelier',
-    description: 'Lacquered panels and statement builds. High gloss and perfect matt for flagship kitchens, media walls and hospitality.',
+    description: 'Gloss, perfect matt and feature oak for statement builds. High-gloss acrylic, perfect matt, Supramat and feature oak for flagship kitchens, media walls and hospitality.',
     visible: true,
     order: 4,
   }

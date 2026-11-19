@@ -97,6 +97,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/rta-cabinets" className="text-neutral-200 hover:text-accent transition-colors">
+                  Stocked RTA Cabinets
+                </Link>
+              </li>
+              <li>
                 <Link to="/downloads" className="text-neutral-200 hover:text-accent transition-colors">
                   Brochures & Downloads
                 </Link>

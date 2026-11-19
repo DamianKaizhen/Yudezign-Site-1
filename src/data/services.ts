@@ -201,7 +201,7 @@ export const services: ServiceData[] = [
         // closed range here would understate it.
         range: 'From $375/linear ft',
         features: [
-          'Lacquered high-gloss or perfect-matt panels, super-matte soft-touch surfaces',
+          'High-gloss acrylic, perfect-matt and feature-oak panels, super-matte soft-touch surfaces',
           'DTC soft-close hinges; DTC undermount slides on 21" and 24" boxes, KV 8450FM on other depths',
           'Full custom accessories',
           'Integrated LED lighting',

@@ -2,7 +2,12 @@ import type { DimensionRow, OpeningStyle, PortalDoc, ProductLine } from './types
 
 /**
  * Product facts — transcribed from ANSWER-KEY.md §2 and §3, v1.3 · 2026-08-06,
- * and the 60_TRAINING deck.
+ * and the 60_TRAINING deck. Style positioning, door surfaces and collections
+ * follow the 2026-11-04 regrouping (Answer Key v1.6 §3 / §13): Essential is the
+ * smooth-matte solid set, Signature the woodgrains and textures, Reserve
+ * soft-touch only, Atelier gloss / perfect matt / Supramat / feature oak. The
+ * décor counts below still describe the 142-decor library file, which has not
+ * been regrouped yet.
  *
  * Three corrections landed between v1.0 and v1.3 and all three reversed
  * something the pack had previously stated confidently:
@@ -23,10 +28,10 @@ export const productLines: ProductLine[] = [
     id: 'essential',
     name: 'Essential',
     tier: 'value',
-    positioning: 'The widest palette, at the working price.',
+    positioning: 'Smooth matte solids, at the working price.',
     whereItFits: 'Rentals, spec homes, hardworking family spaces',
-    doors: 'Woodgrain & solid TFL',
-    collections: 'Sommet, Karisma, Prelude, Prism',
+    doors: 'Smooth-matte solid TFL (Egger)',
+    collections: 'Egger Eurodekor smooth matte',
     decors: 62,
     bestFor: ['Rentals', 'Spec homes', 'Multi-family', 'Hardworking family spaces'],
   },
@@ -34,10 +39,10 @@ export const productLines: ProductLine[] = [
     id: 'signature',
     name: 'Signature',
     tier: 'mid',
-    positioning: 'European decors, in the balanced middle.',
+    positioning: 'Woodgrains and textures, in the balanced middle.',
     whereItFits: 'Warm kitchens, dens, lived-in spaces',
-    doors: 'European TFL, deep textures',
-    collections: 'EGGER 26+, Prism',
+    doors: 'Woodgrain & textured TFL',
+    collections: 'Egger Eurodekor woodgrain, Tafisa Karisma',
     decors: 33,
     bestFor: ['Warm kitchens', 'Dens'],
   },
@@ -47,8 +52,8 @@ export const productLines: ProductLine[] = [
     tier: 'mid-high',
     positioning: 'Soft-touch surfaces, handleless lines.',
     whereItFits: 'Modern builds where the architecture speaks',
-    doors: 'Super-matte, soft-touch, high gloss',
-    collections: 'AGT Trend',
+    doors: 'Super-matte soft-touch',
+    collections: 'AGT Soft Touch',
     decors: 24,
     bestFor: ['Modern builds'],
   },
@@ -56,10 +61,10 @@ export const productLines: ProductLine[] = [
     id: 'atelier',
     name: 'Atelier',
     tier: 'high',
-    positioning: 'Lacquered panels and statement builds.',
+    positioning: 'Gloss, perfect matt and feature oak for statement builds.',
     whereItFits: 'Flagship kitchens, media walls, hospitality',
-    doors: 'Lacquered high gloss & perfect matt',
-    collections: 'Lummia',
+    doors: 'High gloss (acrylic), perfect matt, Supramat & feature oak',
+    collections: 'AGT High Gloss & Supramat, Tafisa Lummia, Egger Feelwood',
     decors: 23,
     bestFor: ['Flagship kitchens', 'Media walls', 'Hospitality'],
   },

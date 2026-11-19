@@ -26,7 +26,7 @@ const Finishes = () => {
     <>
       <SEO
         title="Finishes & Materials - 20 Standard Colors in Four Styles"
-        description="Twenty standard cabinet colors, five in each Style: Essential, Signature, Reserve and Atelier. Woodgrain and solid TFL, European decors, super-matte soft-touch and lacquered high gloss, with a deeper decor library on request. Custom frameless cabinets built in Houston."
+        description="Twenty standard cabinet colors, five in each Style: Essential, Signature, Reserve and Atelier. Smooth matte solids, woodgrains and textures, super-matte soft-touch, high gloss and perfect matt, with a deeper decor library on request. Custom frameless cabinets built in Houston."
         keywords="cabinet finishes, wood finishes, laminate cabinets, cabinet colors, european finishes, matte cabinets, gloss cabinets, luxury cabinet finishes"
         url="https://www.yudezign.com/finishes"
       />
@@ -54,7 +54,7 @@ const Finishes = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90 max-w-2xl mx-auto"
           >
-            Twenty standard colors, five in each Style, and a deeper decor library on request. Same 3/4" plywood box and the same soft-close hardware in every Style; what changes is the door surface.
+            Twenty standard colors, five in each Style, and a deeper decor library on request. Same 3/4" plywood box and the same soft-close hardware in every Style; what changes is the door surface: smooth matte, woodgrain, soft-touch or gloss.
           </motion.p>
         </div>
       </section>
@@ -161,6 +161,21 @@ const Finishes = () => {
               </div>
             )}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Stocked RTA line cross-link: its finishes are a separate list */}
+      <section className="px-4 pb-4 bg-luxury-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-luxury-beige rounded-lg px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-body text-luxury-gray-700">
+              Looking for stocked, ready-to-assemble cabinets? Our framed RTA line has its own finishes, stock sizes and prices.
+            </p>
+            <Link to="/rta-cabinets" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+              See the RTA catalogue
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
