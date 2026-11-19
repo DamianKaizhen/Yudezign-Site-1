@@ -31,3 +31,10 @@ test-results
 test-results.json
 tests/.auth
 test-output.log
+
+# 3D gallery mockup: local media copies (the site serves the originals from public/)
+mockups/gallery-3d/assets/video/
+mockups/gallery-3d/assets/photos/
+mockups/gallery-3d/assets/portfolio/
+mockups/gallery-3d/assets/swatches/
+mockups/gallery-3d/assets/site.json

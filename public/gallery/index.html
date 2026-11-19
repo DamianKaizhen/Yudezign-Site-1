@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0a09">
+  <title>YuDeZign Gallery</title>
+  <meta name="robots" content="noindex">
+  <base target="_top">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- One real section per stop: this is what scrolls, and what a crawler or screen reader gets. -->
+  <main id="stops"></main>
+
+  <header class="bar">
+    <a class="brand" href="/" aria-label="YuDeZign home"><img src="assets/logo-wordmark-light.svg" alt="YuDeZign"></a>
+    <nav class="links" aria-label="Main">
+      <button type="button" data-panel="services">Services</button><button type="button" data-panel="portfolio">Portfolio</button><button type="button" data-panel="finishes">Finishes</button><button type="button" data-panel="resources">Resources</button><button type="button" data-panel="about">About</button>
+    </nav>
+    <button class="menu-btn" type="button" data-panel="menu">Menu</button>
+    <a class="btn gold small" href="/contact" data-panel="contact">Start Your Project</a>
+  </header>
+
+  <nav class="rail" id="rail" aria-label="Gallery rooms"></nav>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+  <section class="hero" id="hero">
+    <p class="trust">Serving Houston since 2007 <b>·</b> Frameless cabinets <b>·</b> Lead times from two weeks</p>
+    <h1>Custom frameless cabinets,<br><em>precision crafted in Houston</em></h1>
+    <div class="cta-row">
+      <a class="btn gold" href="/contact" data-panel="contact">Start Your Project</a>
+      <button class="btn ghost" id="enterBtn" type="button">Walk the gallery</button>
+    </div>
+  </section>
+
+  <aside class="card" id="card" aria-live="polite">
+    <p class="eyebrow" id="cEyebrow"></p>
+    <h2 id="cTitle"></h2>
+    <p class="body" id="cText"></p>
+    <p class="meta" id="cMeta"></p>
+    <div class="chips" id="cChips"></div>
+    <div class="actions" id="cActions"></div>
+  </aside>
+
+  <section class="finale" id="finale">
+    <p class="eyebrow">Begin</p>
+    <h2>Let&rsquo;s build yours.</h2>
+    <p>Tell us about the room. We design it, price it and build it here in Houston.</p>
+    <div class="cta-row">
+      <a class="btn gold" href="/contact" data-panel="contact">Request a Quote</a>
+      <a class="btn ghost" href="tel:+17135020399">(713) 502-0399</a>
+    </div>
+  </section>
+
+  <div class="lights" id="lights">
+    <button type="button" id="lightsBtn" aria-label="Lighting controls">Lighting</button>
+    <div class="sliders">
+      <label>Brightness <output id="lightB">100%</output><input id="dim" type="range" min="15" max="150" value="100"></label>
+      <label>Warmth <output id="lightK">3400 K</output><input id="warmth" type="range" min="2700" max="6000" step="50" value="3400"></label>
+    </div>
+  </div>
+
+  <div class="panel-wrap" id="panel" hidden>
+    <div class="shade" id="panelShade"></div>
+    <aside class="panel" role="dialog" aria-modal="true">
+      <button class="x" type="button" id="panelClose" aria-label="Close">&times;</button>
+      <div class="panel-body" id="panelBody"></div>
+    </aside>
+  </div>
+
+  <div class="hint" id="hint"><span></span>Scroll to walk</div>
+
+  <div class="drawing" id="drawing" hidden>
+    <button class="x" type="button" data-close aria-label="Close">&times;</button>
+    <div class="tabs"><button type="button" data-tab="drawing" class="on">Line drawing</button><button type="button" data-tab="render">Studio render</button></div>
+    <img id="drawingImg" alt="">
+  </div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="x" type="button" data-close aria-label="Close">&times;</button>
+    <figure><div id="lbMedia"></div><figcaption id="lbCaption"></figcaption></figure>
+  </div>
+
+  <div class="loader" id="loader">
+    <img src="assets/logo-wordmark-light.svg" alt="YuDeZign">
+    <div class="track"><i id="loadBar"></i></div>
+    <p id="loadText">Opening the gallery</p>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

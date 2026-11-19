@@ -8,6 +8,7 @@ import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
+import GalleryHome from './pages/GalleryHome';
 import Portfolio from './pages/portfolio/Portfolio';
 import CategoryPage from './pages/portfolio/CategoryPage';
 import Finishes from './pages/finishes/Finishes';
@@ -170,7 +171,10 @@ function App() {
           />
 
           {/* Public Routes - With Navigation/Footer */}
-          <Route path="/" element={<PublicLayout><Home /></PublicLayout>} />
+          {/* Home is the 3D gallery, full screen with its own header. The
+              previous home page stays reachable at /classic. */}
+          <Route path="/" element={<GalleryHome />} />
+          <Route path="/classic" element={<PublicLayout><Home /></PublicLayout>} />
           <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
           <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
           <Route path="/finishes" element={<PublicLayout><Finishes /></PublicLayout>} />
