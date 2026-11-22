@@ -512,5 +512,17 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-11-12T05:13:33.368Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1795391609301_apias7d',
+    name: 'Christy Burke',
+    email: 'burke.christyg@gmail.com',
+    phone: '6613453035',
+    projectType: 'kitchen',
+    timeline: 'asap',
+    message: 'Whole house.  New build',
+    submittedAt: '2026-11-22T23:53:29.116Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
