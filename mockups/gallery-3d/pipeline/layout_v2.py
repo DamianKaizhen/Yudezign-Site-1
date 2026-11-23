@@ -38,9 +38,14 @@ EXHIBITS = [
          title="Master Bath", eyebrow="Showroom display",
          text="A corner double vanity with vessel sinks, framed mirrors and open shelving.",
          meta="Vanities  ·  Yukon Flooring Showroom, Stafford"),
+    # hall=False: built for its service page only (a whole walk-in room does not stand against the hall wall)
+    dict(sku="master-closet", hall=False, glb="master-closet/master-closet.glb", rot=0, W=4.77, D=5.51, H=4.31, xc=-40.0,
+         title="Walk-in Master Closet"),
 ]
 pieces = []
 for e in EXHIBITS:
+    if not e.get("hall", True):
+        continue
     pieces.append(dict(sku=e["sku"], name=e["title"], x=round((e["xc"] - e["W"] / 2) * 1000), y=round((BACK - e["D"]) * 1000),
                        W=round(e["W"] * 1000), D=round(e["D"] * 1000), H=round(e["H"] * 1000)))
 
@@ -80,7 +85,7 @@ SCREENS = {"coffee-bar": ("closet-collage", "Closet collection", 16 / 9), "showr
            "master-bath": ("vanity-oak-tour", "Oak Vanity", 16 / 9), "executive-office": ("clinic-cabinets", "Medical Clinic Office", 544 / 720)}
 wings = []
 for e in EXHIBITS:
-    if e["sku"] not in SCREENS:
+    if e["sku"] not in SCREENS or not e.get("hall", True):
         continue
     vid, vtitle, aspect = SCREENS[e["sku"]]
     for src, dst in ((os.path.join(PUB, "videos", vid + ".mp4"), os.path.join(ASSETS, "video", vid + ".mp4")),

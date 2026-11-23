@@ -20,7 +20,7 @@ renderer.toneMapping = THREE.NeutralToneMapping;
 const scene = new THREE.Scene();
 const INK = new THREE.Color(0x0b0a09);
 scene.background = INK;
-scene.fog = new THREE.Fog(INK, 9, 22);
+scene.fog = new THREE.Fog(INK, 12, 30);
 scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
 const camera = new THREE.PerspectiveCamera(34, 1, 0.05, 60);
 
@@ -78,11 +78,14 @@ const WARM = new THREE.Vector3(1.0, 0.78, 0.55), COOL = new THREE.Vector3(0.82, 
 const kelvinTint = (k) => new THREE.Vector3().lerpVectors(WARM, COOL, clamp((k - 2700) / 3300, 0, 1));
 const ledMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false });
 const ledLights = [];
+const roomLamps = [];
 function applyLights() {
   const level = $('roomDim').value / 100, t = kelvinTint(+$('roomWarm').value).divide(kelvinTint(3400));
   hemi.intensity = 0.75 * level;
-  key.intensity = 2.1 * level;
-  fill.intensity = 0.7 * level;
+  const inside = roomLamps.length ? 0.45 : 1;          // inside a room the lamp does most of the work
+  key.intensity = 2.1 * level * inside;
+  fill.intensity = 0.7 * level * inside;
+  roomLamps.forEach((l) => { l.intensity = l.userData.room * level; l.color.copy(key.color); });
   scene.environmentIntensity = 0.3 * level;
   hemi.color.setRGB(1.0 * t.x, 0.95 * t.y, 0.88 * t.z);
   key.color.setRGB(1.0 * t.x, 0.93 * t.y, 0.84 * t.z);
@@ -160,18 +163,53 @@ async function load() {
   const wall = new THREE.Mesh(new THREE.PlaneGeometry(30, 8), new THREE.MeshStandardMaterial({ color: 0x2a2520, roughness: 0.95 }));
   wall.position.set(0, 4, -size.z / 2 - 0.012);
   scene.add(floor, wall);
+  const room = params.has('room');          // a whole room: walls all round, and you stand inside it
+  if (room) {
+    for (const sx of [-1, 1]) {
+      const side = new THREE.Mesh(new THREE.PlaneGeometry(size.z + 0.03, 8), wall.material);
+      side.position.set(sx * (size.x / 2 + 0.012), 4, 0);
+      side.rotation.y = -sx * Math.PI / 2;
+      scene.add(side);
+    }
+    const front = new THREE.Mesh(new THREE.PlaneGeometry(30, 8), wall.material);
+    front.position.set(0, 4, size.z / 2 + 0.012);
+    front.rotation.y = Math.PI;
+    const lid = new THREE.Mesh(new THREE.PlaneGeometry(size.x + 0.1, size.z + 0.1), new THREE.MeshStandardMaterial({ color: 0x3a342d, roughness: 1 }));
+    lid.position.set(0, size.y + 0.05, 0);
+    lid.rotation.x = Math.PI / 2;
+    const lamp = new THREE.PointLight(0xfff0dc, 0, 0, 1.6);
+    lamp.position.set(0, Math.min(size.y - 0.4, 3.2), 0);
+    lamp.userData.room = 3.5;
+    scene.add(front, lid, lamp);
+    roomLamps.push(lamp);
+    scene.fog = null;
+  }
   root.position.set(-mid.x, -box.min.y, -mid.z);
 
   const r = Math.hypot(size.x, size.y) / 2;
   const dist = r / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * (canvas.clientWidth < canvas.clientHeight ? 1.2 : 0.8) + size.z / 2;
-  controls.target.set(0, size.y * 0.46, 0);
-  camera.position.set(dist * 0.36, size.y * 0.6, dist * 0.93);
-  controls.minDistance = dist * 0.35;
-  controls.maxDistance = dist * 1.35;
-  controls.minAzimuthAngle = -1.2;          // the front and the sides, never the back
-  controls.maxAzimuthAngle = 1.2;
-  controls.minPolarAngle = 0.5;
-  controls.maxPolarAngle = Math.PI / 2 - 0.03;
+  if (room) {
+    // Stand just inside the front of the room at eye height. A tiny orbit radius turns "orbit" into "look around".
+    camera.fov = canvas.clientWidth < canvas.clientHeight ? 78 : 62;
+    camera.updateProjectionMatrix();
+    const eye = new THREE.Vector3(0, 1.6, size.z / 2 - 0.75);
+    controls.target.copy(eye).add(new THREE.Vector3(0, -0.004, -0.05));
+    camera.position.copy(eye);
+    controls.enableZoom = false;
+    controls.rotateSpeed = -0.35;
+    controls.minPolarAngle = 1.0;
+    controls.maxPolarAngle = 2.0;
+    $('hint').textContent = 'Drag to look around · select a door or drawer to open it';
+  } else {
+    controls.target.set(0, size.y * 0.46, 0);
+    camera.position.set(dist * 0.36, size.y * 0.6, dist * 0.93);
+    controls.minDistance = dist * 0.35;
+    controls.maxDistance = dist * 1.35;
+    controls.minAzimuthAngle = -1.2;          // the front and the sides, never the back
+    controls.maxAzimuthAngle = 1.2;
+    controls.minPolarAngle = 0.5;
+    controls.maxPolarAngle = Math.PI / 2 - 0.03;
+  }
   controls.update();
   key.position.set(-size.x * 0.6 - 1.5, size.y + 2.2, dist * 0.8);
   key.target.position.set(0, size.y * 0.4, 0);

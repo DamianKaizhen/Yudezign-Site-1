@@ -52,8 +52,11 @@ GarageCabinetv2, Coffee Bar Area), the mudroom under `HoustonShow2026/BoothPlanV
 
 ## Still to do
 
-- **Two closets.** No sold closet has a 3D scene file. Rebuild the Yukon showroom closet (`00 REVISED/New Closet`, PDF only)
-  and one sold client closet in Yukon with the design lab, then add them here and to the Closet Systems page.
+- **Closets.** The sold walk-in master closet is in (`master-closet`, exported from the scene submitted to the factory, in the
+  job's `Master Closet/To Submit` folder). It is a whole room, so it is built with `hall=False` in `layout_v2.py`: it gets a
+  model for the Closet Systems page (`exhibit.html?sku=master-closet&room`, viewed from inside) and does not stand in the hall.
+  Still to do: the Yukon showroom closet (`00 REVISED/New Closet`, PDF only, needs rebuilding in Yukon with the design lab),
+  and deciding whether a closet stands in the hall.
 - **Props** (bowls, towels, books, garments and so on): not started.
 - **Stocked RTA page:** photos and finishes only for now; a 3D RTA kitchen is undecided.
 - The entertainment-centre service has no exhibit.

@@ -254,6 +254,13 @@ export const services: ServiceData[] = [
 
   {
     slug: 'closet-systems',
+    exhibit: {
+      sku: 'master-closet',
+      room: true,
+      title: 'Walk-in Master Closet',
+      text:
+        'A walk-in master closet with cabinets and open shelving on three walls, drawer banks, upper storage up to a tall ceiling and a centre island, built for a Houston-area client.',
+    },
     name: 'Closet Systems',
     metaTitle: 'Custom Closet Systems Houston | Walk-In Closets | YuDezign',
     metaDescription:
