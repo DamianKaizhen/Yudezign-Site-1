@@ -72,7 +72,7 @@ const ServicePage: React.FC = () => {
                 </h2>
                 <p className="text-lg text-slate-600 mb-6">{service.exhibit.text}</p>
                 <ul className="space-y-2 text-slate-600 list-disc pl-5">
-                  <li>Drag to turn the design.</li>
+                  <li>{service.exhibit.room ? 'Drag to look around the room.' : 'Drag to turn the design.'}</li>
                   <li>Select any door or drawer to open it.</li>
                   <li>Use Lighting to dim the room and change its colour temperature.</li>
                 </ul>
@@ -83,7 +83,7 @@ const ServicePage: React.FC = () => {
               <div className="lg:col-span-3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 bg-black">
                   <iframe
-                    src={`/gallery/exhibit.html?sku=${service.exhibit.sku}`}
+                    src={`/gallery/exhibit.html?sku=${service.exhibit.sku}${service.exhibit.room ? '&room' : ''}`}
                     title={`3D model: ${service.exhibit.title}`}
                     loading="lazy"
                     allow="fullscreen"
