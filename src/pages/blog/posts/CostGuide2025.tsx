@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
 import Breadcrumb from '../../../components/ui/Breadcrumb';
-import { generateArticleSchema } from '../../../lib/schema';
+import { generateBlogArticleSchema } from '../../../lib/schema';
 import { Calculator, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
 
 const CostGuide2025: React.FC = () => {
@@ -19,13 +19,14 @@ const CostGuide2025: React.FC = () => {
     wordCount: 2500
   };
 
-  const structuredData = generateArticleSchema(articleData);
+  // BreadcrumbList comes from the <Breadcrumb> component below.
+  const structuredData = generateBlogArticleSchema('custom-cabinet-cost-guide-houston-2025');
 
   return (
     <>
       <SEO
         title="Custom Cabinet Cost Guide for Houston 2025 | YuDezign Pricing"
-        description="Complete 2025 pricing guide for custom cabinets in Houston. Learn about costs, factors affecting prices, and how to budget for your kitchen remodel. Free estimates available."
+        description="Complete 2025 custom cabinet pricing guide for Houston: what drives costs and how to budget for your kitchen remodel. Free estimates available."
         keywords={[
           'custom cabinet cost houston',
           'kitchen cabinet prices 2025',

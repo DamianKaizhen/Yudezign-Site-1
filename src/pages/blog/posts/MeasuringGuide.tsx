@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { CheckCircle, AlertCircle, ArrowRight, ClipboardList, Camera } from 'lucide-react';
 
 const MeasuringGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="How to Measure for Custom Cabinets: Complete Step-by-Step Guide"
-        description="Professional guide to measuring your kitchen for custom cabinets. Learn the exact process, tools needed, common mistakes to avoid, and how to create accurate measurements for your cabinet quote."
+        title="How to Measure for Custom Cabinets: Step-by-Step | YuDezign"
+        description="How to measure for custom cabinets: sketch a floor plan, measure walls at cabinet height, record to 1/16&quot; and photograph each wall. Tools and mistakes to avoid."
         keywords={[
           'how to measure for cabinets',
           'kitchen cabinet measurements',
@@ -16,8 +17,9 @@ const MeasuringGuide: React.FC = () => {
           'cabinet measuring guide',
           'kitchen remodel measurements'
         ]}
-        canonical="https://www.yudezign.com/blog/measuring-for-custom-cabinets-guide"
+        canonical="https://www.yudezign.com/blog/how-to-measure-cabinets"
         ogType="article"
+        structuredData={generateBlogPostSchemas('how-to-measure-cabinets')}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,6 +63,20 @@ const MeasuringGuide: React.FC = () => {
             the professional measurement process.
           </p>
 
+          {/* Quick Answer Box */}
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+            <div className="flex items-start gap-3">
+              <ClipboardList className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                <p className="text-slate-700 mb-0">
+                  Sketch a floor plan, then measure each wall corner to corner at cabinet height (<strong>36" for base cabinets, 54" for uppers</strong>) and again at floor, mid-height and ceiling level. Use running measurements instead of adding segments, record to <strong>1/16"</strong>, and photograph every wall. These are preliminary measurements; a professional field measurement is done before fabrication.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
           {/* Important Notice Box */}
           <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
@@ -78,7 +94,7 @@ const MeasuringGuide: React.FC = () => {
           </div>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
-            Tools You'll Need
+            What Tools Do You Need?
           </h2>
 
           <div className="not-prose my-8">

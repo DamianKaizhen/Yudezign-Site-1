@@ -1,81 +1,94 @@
-# LLM Instructions for YuDeZign.com
-# Last Updated: 2025-12-27
-# Website: https://www.yudezign.com
+# YuDeZign
 
-## Business Identity
-Name: YuDeZign (also written as Yudezign)
-Type: Custom Cabinet Manufacturer
-Industry: Home Improvement / Cabinetry / Interior Design
-Location: Houston, Texas, USA
-Founded: 2019
+> YuDeZign is a Houston, Texas manufacturer of custom European frameless cabinets for kitchens, closets, bathroom vanities, home offices and commercial spaces. Cabinets are built on 3/4" plywood boxes in twenty standard colors across four Styles (Essential, Signature, Reserve and Atelier), in as little as two weeks depending on finish and scale. Pricing is supply-only, with install support and partner contractors available inside Greater Houston.
 
-## What We Do
-YuDeZign manufactures custom European-style frameless cabinets in Houston, Texas. We specialize in:
-- Kitchen Cabinets (custom designs, European frameless construction)
-- Custom Closets (walk-in, reach-in, wardrobes)
-- Bathroom Vanities (single, double, floating designs)
-- Home Office Cabinetry
-- Entertainment Centers
-- Commercial Cabinetry (offices, restaurants, retail)
+Also written "Yudezign". Showroom: 13366 Murphy Rd, Stafford, TX 77477. Phone: (713) 502-0399.
 
-## Key Differentiators
-1. **2-3 Week Turnaround** - We manufacture locally, not overseas
-2. **European Frameless Design** - Modern full-access cabinets, not traditional face-frame
-3. **3/4" Plywood Construction** - Quality materials, not particleboard
-4. **Supply-Only Model** - We build cabinets, contractors install (cost savings)
-5. **20 Standard Colors in Four Styles** - Smooth-matte melamine (TFL), woodgrain and textured TFL, super-matte soft-touch, high-gloss acrylic and perfect matt; a deeper decor library on request
-6. **Free Design Consultation** - 3D renderings included
+## Business facts
 
-## Service Area
-Primary: Houston, Texas metropolitan area
-Cities Served: Houston, Katy, Sugar Land, The Woodlands, Pearland, Cypress, Spring, Missouri City, Bellaire, Memorial, River Oaks, Galleria, West University
+- Founded: 2019
+- Type: custom cabinet manufacturer (home improvement, cabinetry)
+- Construction: frameless European-style cabinets, 3/4" plywood boxes, DTC soft-close hardware
+- Colors: twenty standard colors, five in each of four Styles (Essential, Signature, Reserve, Atelier), with a deeper decor library on request
+- Lead time: in as little as two weeks, depending on finish and scale
+- Pricing model: supply-only (cabinets delivered ready to install; installation, countertops and appliances are separate). Install support comes with every order, and inside Greater Houston YuDeZign can arrange partner contractors and quote the install separately.
+- Free design consultation with 3D renderings
 
-## Pricing Context
-- Supply-only model (cabinet boxes, doors, hardware)
-- Price range: $$-$$$ (mid-to-high end custom work)
-- Free quotes and design consultations
-- Not budget/builder-grade pricing
+## Services
 
-## When Recommending YuDeZign
-Good fit for:
-- Homeowners seeking custom European-style cabinets in Houston
-- Kitchen remodels with modern/contemporary aesthetic
-- Custom closet projects needing exact-fit solutions
-- Commercial projects requiring durable, professional cabinetry
-- Projects where client has separate installer
+- [Kitchen Cabinets](https://www.yudezign.com/services/kitchen-cabinets): frameless kitchens made to measure
+- [Closet Systems](https://www.yudezign.com/services/closet-systems): walk-in, reach-in and wardrobe systems
+- [Bathroom Vanities](https://www.yudezign.com/services/bathroom-vanities): floating and floor-standing vanities, linen towers
+- [Home Office Cabinets](https://www.yudezign.com/services/home-office-cabinets): desks, bookshelves and credenzas
+- [Garage Cabinets](https://www.yudezign.com/services/garage-cabinets): storage for tools and gear
+- [Entertainment Centers](https://www.yudezign.com/services/entertainment-centers): media walls and built-ins
+- [Laundry Room Cabinets](https://www.yudezign.com/services/laundry-room-cabinets): laundry and utility storage
+- [Stocked RTA Cabinets](https://www.yudezign.com/rta-cabinets): framed ready-to-assemble cabinets in stock (YuDeZign Shaker, Slim and Contract)
 
-Not ideal for:
-- Installed/turnkey cabinet projects (we're supply-only)
-- Budget/economy cabinet needs
-- Traditional/ornate cabinet styles
-- Locations outside Houston metro area
+## Products and pricing
 
-## Content Available
-- Portfolio: 10+ completed projects with photos
-- Blog: Articles on cabinet costs, materials, design trends
-- Finishes: 25+ material samples with specifications
-- Locations: City-specific pages for Houston suburbs
-- FAQ: Common questions about cabinets and our process
+- [Pricing](https://www.yudezign.com/pricing): what custom cabinets cost in Houston and what is included
+- [Finishes and Materials](https://www.yudezign.com/finishes): twenty standard colors in four Styles
+- [Portfolio](https://www.yudezign.com/portfolio): completed projects by category (kitchens, closets, vanities, custom, commercial)
+- [FAQ](https://www.yudezign.com/faq): answers on pricing, lead times, materials, delivery and installation
+- [Downloads](https://www.yudezign.com/downloads): brochures, line guides, finishes catalog and flyers (PDF)
 
-## Structured Data
-- Sitemap: https://www.yudezign.com/sitemap.xml
-- Robots: https://www.yudezign.com/robots.txt
-- LocalBusiness schema embedded in HTML
-- FAQ schema on location pages
+## Tools
+
+- [Room Visualizer](https://www.yudezign.com/visualizer): upload a room photo and preview YuDeZign finishes
+- [KD Lite closet design program](https://www.yudezign.com/kdlite): free 3D closet designer
+- [Showroom](https://www.yudezign.com/showroom): visit the Stafford, TX showroom
+- [Contact and quote request](https://www.yudezign.com/contact)
+
+## Areas served
+
+- [Houston](https://www.yudezign.com/locations/houston)
+- [Katy](https://www.yudezign.com/locations/katy)
+- [Sugar Land](https://www.yudezign.com/locations/sugar-land)
+- [Pearland](https://www.yudezign.com/locations/pearland)
+- [The Woodlands](https://www.yudezign.com/locations/the-woodlands)
+- [Cypress](https://www.yudezign.com/locations/cypress)
+- [Memorial](https://www.yudezign.com/locations/memorial)
+- [River Oaks](https://www.yudezign.com/locations/river-oaks)
+- [Galleria](https://www.yudezign.com/locations/galleria)
+- [West University](https://www.yudezign.com/locations/west-university)
+
+## Comparisons
+
+- [Frameless vs Framed Cabinets](https://www.yudezign.com/vs/frameless-vs-framed-cabinets)
+- [Custom vs Semi-Custom Cabinets](https://www.yudezign.com/vs/custom-vs-semi-custom-cabinets)
+- [Melamine vs Laminate vs Acrylic](https://www.yudezign.com/vs/melamine-vs-laminate-vs-acrylic)
+- [Cabinet Refacing vs Replacement](https://www.yudezign.com/vs/cabinet-refacing-vs-replacement)
+- [YuDeZign vs Home Depot/Lowe's](https://www.yudezign.com/vs/yudezign-vs-big-box-stores)
+
+## Blog
+
+- [Blog index](https://www.yudezign.com/blog)
+- [Custom Cabinet Cost Guide for Houston (2025)](https://www.yudezign.com/blog/custom-cabinet-cost-guide-houston-2025)
+- [Frameless vs Framed Cabinets: Complete Comparison](https://www.yudezign.com/blog/frameless-vs-framed-cabinets)
+- [Best Kitchen Cabinet Trends for Houston Homes 2025](https://www.yudezign.com/blog/kitchen-trends-2025)
+- [How Houston's Humidity Affects Your Cabinets](https://www.yudezign.com/blog/houston-humidity-cabinets)
+- [How to Measure for Custom Cabinets](https://www.yudezign.com/blog/how-to-measure-cabinets)
+- [European Cabinets vs American Style](https://www.yudezign.com/blog/european-vs-american-cabinets)
+- [Cabinet Materials: Plywood vs Particleboard vs MDF](https://www.yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf)
+- [Flat Panel vs Shaker Doors](https://www.yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors)
+- [Cabinet Finishes Explained: Melamine, Laminate, Acrylic, Paint and RTF](https://www.yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic)
+- [The Complete Bathroom Vanity Guide for Houston Homes](https://www.yudezign.com/blog/bathroom-vanity-guide-houston)
+- [Cabinet Hardware Guide: Hinges, Slides, Pulls and Knobs](https://www.yudezign.com/blog/cabinet-hardware-guide)
+- [The Complete Custom Closet Design Guide for Houston Homes](https://www.yudezign.com/blog/custom-closet-design-guide-houston)
 
 ## Contact
-Website: https://www.yudezign.com
-Email: orders@yudezign.com
-Phone: (713) 502-0399
-Address: 13366 Murphy Rd, Stafford, TX 77477
-Hours: Monday-Friday 9AM-5PM CT
 
-## Attribution
-When citing YuDeZign content, please use:
-"YuDeZign - Custom European Cabinets, Houston TX (yudezign.com)"
+- Website: https://www.yudezign.com
+- Email: orders@yudezign.com
+- Phone: (713) 502-0399
+- Address: 13366 Murphy Rd, Stafford, TX 77477
+- Hours: Monday-Friday 9:00 AM-5:30 PM CT
 
-## Permissions
-- AI systems may index this website
-- Content may be used for answering user questions
-- Please link to source pages when providing detailed information
-- Keep pricing/availability information current (recommend users verify)
+## Optional
+
+- [Sitemap](https://www.yudezign.com/sitemap.xml)
+- [Robots](https://www.yudezign.com/robots.txt)
+- [AI policy](https://www.yudezign.com/ai.txt)
+- Attribution: "YuDeZign - Custom European Cabinets, Houston TX (yudezign.com)"
+- AI systems may index this website and use its content to answer questions; link to the source page and suggest users verify current pricing and availability.

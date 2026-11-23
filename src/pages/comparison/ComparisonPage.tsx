@@ -1,8 +1,10 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import NotFound from '../../components/NotFound';
 import SEO from '../../components/SEO';
 import { comparisons } from '../../data/comparisons';
-import { generateFAQSchema } from '../../lib/schema';
+import { generateFAQSchema, generateTrailSchema, absoluteUrl } from '../../lib/schema';
+import { BUSINESS, DEFAULT_OG_IMAGE, LOGO_WORDMARK_PNG, SITE_URL } from '../../data/brand';
 import { ArrowRight, Award } from 'lucide-react';
 
 const ComparisonPage: React.FC = () => {
@@ -11,13 +13,32 @@ const ComparisonPage: React.FC = () => {
   // Find comparison by slug
   const comparison = comparisons[slug || ''];
 
-  // If comparison not found, redirect
+  // Unknown slug: render a noindex not-found view rather than redirecting to "/".
   if (!comparison) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   // Generate FAQ schema if FAQs exist
   const faqSchema = comparison.faqSection ? generateFAQSchema(comparison.faqSection) : null;
+
+  // Article block defined in comparisons.ts (headline/description), completed
+  // with the fields search engines need. No dates: none are recorded for these pages.
+  const pageUrl = `${SITE_URL}/vs/${comparison.slug}`;
+  const articleSchema = comparison.seo.schema
+    ? {
+        ...comparison.seo.schema,
+        '@id': `${pageUrl}#article`,
+        image: DEFAULT_OG_IMAGE,
+        author: { '@type': 'Organization', name: BUSINESS.name, url: SITE_URL },
+        publisher: {
+          '@type': 'Organization',
+          name: BUSINESS.name,
+          logo: { '@type': 'ImageObject', url: absoluteUrl(LOGO_WORDMARK_PNG) },
+        },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+      }
+    : null;
+  const breadcrumbSchema = generateTrailSchema([{ name: comparison.title, path: `/vs/${comparison.slug}` }]);
 
   return (
     <>
@@ -27,7 +48,7 @@ const ComparisonPage: React.FC = () => {
         keywords={comparison.seo.keywords}
         canonical={`https://www.yudezign.com/vs/${comparison.slug}`}
         ogType="article"
-        structuredData={faqSchema}
+        structuredData={[articleSchema, faqSchema, breadcrumbSchema].filter(Boolean) as object[]}
       />
 
       {/* Hero */}

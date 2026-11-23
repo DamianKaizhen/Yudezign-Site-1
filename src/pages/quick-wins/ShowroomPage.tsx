@@ -34,7 +34,7 @@ const ShowroomPage: React.FC = () => {
 
   const localBusinessSchema = generateLocalBusinessSchema({
     name: businessInfo.name,
-    address: businessInfo.address,
+    url: 'https://www.yudezign.com/showroom',
     phone: businessInfo.phone,
     hours: 'Mo-Fr 09:00-17:30',
     priceRange: '$$$',
@@ -44,7 +44,7 @@ const ShowroomPage: React.FC = () => {
     <>
       <SEO
         title="Visit Our Houston Showroom | YuDezign Custom Cabinets"
-        description="Visit YuDezign's Houston showroom to see cabinet displays in all four Styles, touch materials, and meet with expert designers. Free consultation included with showroom visit."
+        description="Visit the YuDezign Houston showroom to see cabinet displays in all four Styles, touch materials and meet expert designers. Free consultation with your visit."
         keywords={[
           'cabinet showroom Houston',
           'YuDezign showroom',

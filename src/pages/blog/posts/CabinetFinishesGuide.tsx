@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, Shield, Droplets, Sun } from 'lucide-react';
 
 const CabinetFinishesGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="Cabinet Finishes Explained: Melamine, Laminate, Acrylic, Paint & RTF | YuDezign"
-        description="Complete guide to cabinet finishes. Compare melamine, laminate, acrylic, paint, and RTF for durability, cost, maintenance, and performance in Houston's humid climate."
+        title="Cabinet Finishes: Melamine, Laminate, Acrylic & RTF | YuDezign"
+        description="Laminate is the best all-around cabinet finish and melamine the budget pick. Compare melamine, laminate, acrylic, paint and RTF for Houston's humid climate."
         keywords={[
           'cabinet finishes',
           'melamine cabinets',
@@ -20,6 +21,7 @@ const CabinetFinishesGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/cabinet-finishes-explained-melamine-laminate-acrylic"
         ogType="article"
+        structuredData={generateBlogPostSchemas('cabinet-finishes-explained-melamine-laminate-acrylic')}
       />
 
       <article className="min-h-screen bg-white">
@@ -79,6 +81,20 @@ const CabinetFinishesGuide: React.FC = () => {
             <p className="text-slate-700 leading-relaxed mb-8">
               In this comprehensive guide, we'll explore the five primary finish types available for modern cabinets: melamine, laminate, acrylic, paint, and RTF (Rigid Thermofoil). You'll learn how each finish is manufactured, understand their performance characteristics, and discover which finish best suits your design vision, lifestyle, and budget.
             </p>
+
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    <strong>HPL laminate</strong> is the best all-around finish for kitchens, rated excellent for both durability and moisture. <strong>Melamine</strong> is the budget choice for closets and garages, <strong>acrylic</strong> gives a high-gloss modern look at a premium price, and <strong>RTF</strong> suits Shaker doors and bathrooms. <strong>Paint</strong> allows exact color matching but is rated only fair for Houston's climate.
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Melamine Section */}
             <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Melamine (TFL): The Budget-Friendly Workhorse</h2>

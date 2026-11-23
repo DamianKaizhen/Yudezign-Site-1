@@ -47,6 +47,8 @@ const FinishSwatch = ({ finish, isSelected, onClick, enableLightbox = false }: F
               <img
                 src={finish.images[0]}
                 alt={finish.name}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
               {/* Zoom indicator when lightbox is enabled */}

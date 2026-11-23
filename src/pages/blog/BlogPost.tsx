@@ -1,8 +1,9 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import NotFound from '../../components/NotFound';
 import SEO from '../../components/SEO';
 import { blogPosts, getRelatedBlogPosts } from '../../data/blogPosts';
-import { generateArticleSchema } from '../../lib/schema';
+import { generateBlogPostSchemas } from '../../lib/schema';
 import { Calendar, Clock, User, Tag, ArrowRight, Share2 } from 'lucide-react';
 
 const BlogPost: React.FC = () => {
@@ -11,22 +12,16 @@ const BlogPost: React.FC = () => {
   // Find blog post by slug
   const post = blogPosts.find(p => p.slug === slug);
 
-  // If post not found, redirect
+  // Unknown slug: render a noindex not-found view rather than redirecting.
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <NotFound />;
   }
 
   // Get related posts
   const relatedPosts = getRelatedBlogPosts(post.slug, 3);
 
-  // Generate structured data
-  const articleSchema = generateArticleSchema({
-    title: post.title,
-    description: post.excerpt,
-    author: post.author.name,
-    publishedDate: post.publishedDate,
-    imageUrl: post.featuredImage?.url || '',
-  });
+  // Article + BreadcrumbList
+  const structuredData = generateBlogPostSchemas(post.slug);
 
   return (
     <>
@@ -36,8 +31,8 @@ const BlogPost: React.FC = () => {
         keywords={post.seo.keywords}
         canonical={`https://www.yudezign.com/blog/${post.slug}`}
         ogType="article"
-        ogImage={post.seo.ogImage}
-        structuredData={articleSchema}
+        ogImage={post.featuredImage?.url}
+        structuredData={structuredData}
       />
 
       {/* Article Header */}

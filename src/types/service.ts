@@ -20,6 +20,8 @@ export interface ServiceData {
   videoPoster?: string;
   /** Purpose-built organizer components, rendered as a grid. */
   organizers?: { name: string; description: string }[];
+  /** A real design shown as a 3D model on the page: `sku` names its model in public/gallery/assets/models. */
+  exhibit?: { sku: string; title: string; text: string };
   /** Hardware finish options offered for this service. */
   hardwareOptions?: string[];
   [key: string]: any; // Allow additional properties for flexibility

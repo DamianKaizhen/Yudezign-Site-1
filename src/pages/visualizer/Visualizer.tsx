@@ -355,8 +355,8 @@ const Visualizer = () => {
   return (
     <>
       <SEO
-        title="Free Room Visualizer - See Your Cabinets Before You Buy"
-        description="Upload a photo of your room and see how YuDezign's premium cabinet finishes will look in your space. Free AI-powered visualization tool for kitchens, closets, and bathrooms."
+        title="Free Room Visualizer - See Cabinets Before You Buy"
+        description="Upload a photo of your room and see how YuDezign's cabinet finishes will look in your space. Free AI-powered visualizer for kitchens, closets and bathrooms."
         keywords="cabinet visualizer, room design tool, kitchen visualization, cabinet preview, free design tool, houston cabinets, AI room design"
         url="https://www.yudezign.com/visualizer"
       />

@@ -3,10 +3,10 @@ import type { ComparisonData } from '../types';
 export const comparisons: Record<string, ComparisonData> = {
   'frameless-vs-framed-cabinets': {
     slug: 'frameless-vs-framed-cabinets',
-    title: 'Frameless vs Framed Cabinets: Complete Comparison Guide',
-    description: 'Comprehensive comparison of frameless (European) and framed (American) cabinet construction styles. Learn the differences, pros, cons, and which is right for your Houston home.',
+    title: 'Frameless vs Framed Cabinets: Which Is Better?',
+    description: 'Frameless cabinets suit modern designs, smaller kitchens and level walls; framed cabinets suit traditional styles and older homes with settling issues. Frameless gives up to 10% more usable space and runs $30-50 more per linear foot.',
     metaDescription: 'Frameless vs framed cabinets comparison. Expert guide covering construction, storage, durability, cost, and best use cases for Houston homes.',
-    intro: 'Choosing between frameless and framed cabinets is one of the most important decisions in your kitchen or bathroom remodel. This fundamental construction difference affects everything from aesthetics to storage capacity to long-term durability.',
+    intro: 'The difference is the face frame. Frameless doors attach directly to the box, so a standard 36" cabinet gains approximately 3" of opening width, while framed cabinets add a 1.5" face frame that hides minor wall irregularities. For a typical Houston kitchen of 15-20 linear feet, the price difference is approximately $600-1,000.',
     winner: null, // No clear winner - depends on preference
     comparisonTable: [
       {
@@ -117,10 +117,10 @@ export const comparisons: Record<string, ComparisonData> = {
 
   'custom-vs-semi-custom-cabinets': {
     slug: 'custom-vs-semi-custom-cabinets',
-    title: 'Custom vs Semi-Custom Cabinets: Which Should You Choose?',
-    description: 'Compare custom and semi-custom cabinets for your Houston home. Learn the differences in pricing, lead times, customization options, and when each option makes sense.',
+    title: 'Custom vs Semi-Custom Cabinets: Which to Choose?',
+    description: 'Semi-custom suits most Houston kitchens, vanities and commercial fit-outs: $130-300 per linear foot, built in as little as two weeks, depending on finish and scale. Fully custom ($250-500+) suits unique designs, non-standard sizes and period details.',
     metaDescription: 'Custom vs semi-custom cabinets comparison. Expert guide to pricing, timeline, customization, and which option is best for your Houston kitchen or bathroom.',
-    intro: 'The choice between custom and semi-custom cabinets significantly impacts your project timeline, budget, and design flexibility. Understanding these differences helps you make the right decision for your Houston remodel.',
+    intro: 'For a typical Houston kitchen of 15-20 linear feet, YuDezign\'s semi-custom cabinets cost $2,600-$6,000 for materials, while fully custom runs $5,000-$10,000+. Semi-custom comes in 3-inch size increments, four Styles and twenty standard colors; fully custom adds sizing to 1/16" and unlimited finishes.',
     winner: 'semi-custom',
     comparisonTable: [
       {
@@ -234,10 +234,10 @@ export const comparisons: Record<string, ComparisonData> = {
 
   'melamine-vs-laminate-vs-acrylic': {
     slug: 'melamine-vs-laminate-vs-acrylic',
-    title: 'Melamine vs Laminate vs Acrylic Cabinets: Material Comparison',
-    description: 'Compare melamine, laminate, and acrylic cabinet materials. Learn about durability, appearance, maintenance, cost, and which performs best in Houston\'s climate.',
+    title: 'Melamine vs Laminate vs Acrylic Cabinets Compared',
+    description: 'Acrylic is our recommendation for durability, humidity performance and a seamless high-gloss finish ($180-280 per linear foot). Melamine is the most economical ($80-120); laminate sits in the middle ($100-150) with a wide range of patterns.',
     metaDescription: 'Melamine vs laminate vs acrylic cabinets comparison. Expert guide to modern cabinet materials including durability, cost, and Houston climate performance.',
-    intro: 'Modern engineered cabinet materials offer sleek aesthetics and practical durability at various price points. Understanding the differences between melamine, laminate, and acrylic helps you choose the right material for your Houston home.',
+    intro: 'Acrylic rates excellent for durability and humidity, with seamless wrapped edges. Laminate rates very good, with better edge sealing than melamine, and melamine rates good with sealed edges and suits budget-driven jobs such as closet systems, garage cabinets and contemporary kitchens.',
     winner: 'acrylic',
     comparisonTable: [
       {
@@ -364,10 +364,10 @@ export const comparisons: Record<string, ComparisonData> = {
 
   'cabinet-refacing-vs-replacement': {
     slug: 'cabinet-refacing-vs-replacement',
-    title: 'Cabinet Refacing vs Replacement: Which is Right for You?',
-    description: 'Compare cabinet refacing and full replacement options. Learn about costs, timelines, results, and when each option makes sense for your Houston kitchen.',
+    title: 'Cabinet Refacing vs Replacement: Which Is Better?',
+    description: 'Refacing suits kitchens with a layout that works and solid cabinet boxes: $4,000-9,000 and 3-5 days. Replacement suits layout changes or damaged boxes: $10,000-25,000+ and 6-10 weeks.',
     metaDescription: 'Cabinet refacing vs replacement comparison. Expert guide to costs, timeline, durability, and which option is best for Houston kitchen renovations.',
-    intro: 'Updating your kitchen cabinets doesn\'t always require full replacement. Cabinet refacing can transform your kitchen appearance at 40-60% the cost of new cabinets, but it\'s not always the right choice. Understanding the differences helps you make an informed decision.',
+    intro: 'For a typical Houston kitchen of 15-20 linear feet, refacing saves $6,000-16,000 (40-60% savings) but keeps the same layout and existing boxes, which must be solid wood or plywood rather than particleboard. Replacement allows a complete redesign with brand new interiors.',
     winner: null, // Depends on situation
     comparisonTable: [
       {
@@ -490,9 +490,9 @@ export const comparisons: Record<string, ComparisonData> = {
   'yudezign-vs-big-box-stores': {
     slug: 'yudezign-vs-big-box-stores',
     title: 'YuDezign vs Home Depot/Lowe\'s: Custom Cabinets Comparison',
-    description: 'Compare YuDezign custom cabinets to big-box store options. Learn about quality, pricing, customization, installation, and why Houston homeowners choose YuDezign.',
+    description: 'YuDezign suits buyers who want made-to-measure cabinets on 3/4" plywood boxes, a lifetime structural and 5-year finish warranty, and lead times as little as two weeks. Big-box stores suit a lower upfront price ($100-200 vs $150-300 per linear foot).',
     metaDescription: 'YuDezign vs Home Depot/Lowe\'s cabinet comparison. Expert analysis of quality, pricing, customization, and service for Houston homeowners.',
-    intro: 'Big-box stores offer convenience and competitive pricing, but custom cabinet specialists like YuDezign deliver advantages that make a significant difference in your kitchen\'s quality, longevity, and satisfaction. Understanding these differences helps Houston homeowners make informed decisions.',
+    intro: 'A typical Houston kitchen of 15-20 linear feet costs $9,000-18,000 with YuDezign, including design and the partner-contractor install quoted with the job. Big-box stores quote $6,000-12,000 but often reach $8,000-14,000 once delivery, installation add-ons and modifications are added.',
     winner: 'yudezign',
     comparisonTable: [
       {

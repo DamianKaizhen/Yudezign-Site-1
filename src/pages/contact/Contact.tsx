@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2 } from 'lucide-react';
 import SEO from '../../components/SEO';
+import { generateWebPageSchema } from '../../lib/schema';
 
 // Cloudflare Turnstile (invisible CAPTCHA). The widget only loads when a site
 // key is configured, so the form still works before keys are set.
@@ -266,9 +267,15 @@ const Contact = () => {
     <>
       <SEO
         title="Contact Us - Get Free Cabinet Quote"
-        description="Get in touch with YuDezign for custom European frameless cabinets in Houston. Free quotes, lead times from as little as two weeks, supply-only pricing. Call (713) 502-0399 or email orders@yudezign.com for kitchen cabinets, closets, and vanities."
+        description="Get a free quote on custom European frameless cabinets in Houston: as little as two weeks, supply-only. Call (713) 502-0399 or email orders@yudezign.com."
         keywords="contact cabinet maker, houston cabinet quote, custom cabinet pricing, european cabinet supplier, frameless cabinet quote, houston cabinetry"
         url="https://www.yudezign.com/contact"
+        structuredData={generateWebPageSchema({
+          type: 'ContactPage',
+          name: 'Contact YuDezign - Get a Free Cabinet Quote',
+          description: 'Contact YuDezign for custom European frameless cabinets in Houston. Free quotes and design consultations.',
+          path: '/contact',
+        })}
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}

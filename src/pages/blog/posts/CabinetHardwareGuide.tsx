@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, Zap, Ruler, Sparkles, Shield } from 'lucide-react';
 
 const CabinetHardwareGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="Cabinet Hardware Guide: Hinges, Slides, Pulls & Knobs | YuDezign Houston"
-        description="Complete cabinet hardware guide. How to choose soft-close hinges, drawer slides, handles, knobs, and pulls. Blum vs Hettich, finishes, sizing, and Houston-ready durability."
+        title="Cabinet Hardware Guide: Hinges, Slides, Pulls & Knobs | YuDezign"
+        description="Undermount soft-close slides and concealed hinges matter most. How to choose cabinet hinges, slides, pulls and knobs that last in Houston's humidity."
         keywords={[
           'cabinet hardware guide',
           'soft-close hinges',
@@ -19,6 +20,7 @@ const CabinetHardwareGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/cabinet-hardware-guide"
         ogType="article"
+        structuredData={generateBlogPostSchemas('cabinet-hardware-guide')}
       />
 
       <article className="min-h-screen bg-white">
@@ -78,6 +80,20 @@ const CabinetHardwareGuide: React.FC = () => {
             <p className="text-slate-700 leading-relaxed mb-8">
               We'll cover how to choose each, why the brand of your mechanism matters more than any other single spec, how to size and place pulls so they look intentional, and which finishes stay looking good in Houston's humidity.
             </p>
+
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    Choose the mechanism first: <strong>undermount soft-close slides and adjustable concealed hinges</strong> matter more than any decorative choice. Scale pulls to roughly one-third of the drawer width, and pick <strong>brushed nickel or matte black</strong>, which hide fingerprints and humidity best.
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Functional hardware */}
             <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Part 1: Functional Hardware (The Parts That Move)</h2>
@@ -314,7 +330,7 @@ const CabinetHardwareGuide: React.FC = () => {
             </div>
 
             {/* Coordinate */}
-            <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Coordinating Hardware with Your Whole Kitchen</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">How Do You Coordinate Hardware with Your Whole Kitchen?</h2>
 
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">

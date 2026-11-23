@@ -441,5 +441,25 @@ export const projects: Project[] = [
     features: ['Waterfall Stone Island', 'LED-Lit Glass Uppers', 'Integrated Panel Refrigerator', 'Built-In Microwave Drawer', 'Soft Close Hinges'],
     turnaroundTime: '6 weeks',
     description: 'A full custom kitchen wrapped in weathered-bark woodgrain — rustic texture, clean flat-panel lines. The centerpiece is a dramatic gold-and-black veined stone island with waterfall edges and a warm LED glow washing down the base, holding an integrated sink, matte black faucet and a built-in microwave drawer. Glass-front display uppers with interior LED lighting float above a full-height stone backsplash and lit shelf niche, while a wall of tall cabinets conceals a panel-front refrigerator behind long matte black pulls. A professional gas range completes the working wall.',
+  },
+  {
+    id: 'proj_1790692800000_sokitchen1',
+    title: 'Smoked Oak Kitchen',
+    category: 'kitchens',
+    images: [
+      '/portfolio/smokedoak-kitchen-1.jpg'
+    ],
+    thumbnail: '/portfolio/smokedoak-kitchen-1.jpg',
+    videos: [
+      '/portfolio/videos/smokedoak-kitchen-tour.mp4',
+      '/portfolio/videos/smokedoak-kitchen-vertical.mp4',
+      '/portfolio/videos/smokedoak-kitchen-install.mp4'
+    ],
+    location: 'Houston',
+    finish: 'Smoked Oak Woodgrain',
+    cabinetStyle: 'Frameless European',
+    features: ['Floor-to-Ceiling Uppers', 'Matte Black Bar Pulls', 'Integrated Vent Hood Niche', 'Deep Drawer Bank', 'White Quartz Countertops', 'Soft Close Hinges'],
+    turnaroundTime: '4 weeks',
+    description: 'An L-shaped kitchen in a smoked-oak woodgrain that reads warm grey in daylight and brown under the cans. Flat-panel frameless fronts run in two stacked tiers all the way to the ceiling, so the storage goes up rather than out, with a recessed niche framed into the run for the vent hood and a matching bank of tall cabinets turning the corner. Below, white quartz counters wrap the L over a deep drawer bank and full-height door cabinets. Long matte black bar pulls are the only hardware on the wall, and the whole run is shown here fresh off install — counters set, before backsplash and appliances.',
   }
 ];

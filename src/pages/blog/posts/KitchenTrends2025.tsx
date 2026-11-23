@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { TrendingUp, Palette, Lightbulb, CheckCircle, ArrowRight, Sparkles, Leaf } from 'lucide-react';
 
 const KitchenTrends2025: React.FC = () => {
@@ -8,7 +9,7 @@ const KitchenTrends2025: React.FC = () => {
     <>
       <SEO
         title="Best Kitchen Cabinet Trends for Houston Homes 2025 | YuDezign"
-        description="Discover the top kitchen cabinet trends for 2025 in Houston. From two-tone designs to sustainable materials, expert insights on colors, finishes, and styles that increase home value."
+        description="Top 2025 kitchen cabinet trends for Houston homes: two-tone cabinets, warm natural woods, statement islands, sustainable materials and smart storage."
         keywords={[
           'kitchen cabinet trends 2025',
           'houston kitchen design',
@@ -18,6 +19,7 @@ const KitchenTrends2025: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/kitchen-trends-2025"
         ogType="article"
+        structuredData={generateBlogPostSchemas('kitchen-trends-2025')}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -644,7 +646,7 @@ const KitchenTrends2025: React.FC = () => {
           </div>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
-            Trends to Avoid in 2025
+            Which Trends Should You Avoid in 2025?
           </h2>
 
           <p>

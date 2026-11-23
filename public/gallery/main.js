@@ -148,53 +148,40 @@ function tuneMaterial(m) {
   else if (/Door face|Drawer face|Side Panel|Top Panel|Shelf Panel|Floor Panel|Back Panel|BoardEdge|Plinth|CushionBoard/.test(n)) m.roughness = 0.5;
   else if (/pige/.test(n)) m.roughness = 0.6;
 }
-// Doors and drawers arrive as separate parts with where they sit; each gets a hinge or a slide.
-const movMeta = Object.fromEntries((await (await fetch('assets/movables.json')).json()).map((m) => [m.name, m]));
+// Doors and drawers arrive as their own parts. Each carries the design's own hinge line or pull direction (the pipeline
+// reads them from the Yukon file), so a door swings where it is hinged and a drawer slides the way it is built.
+const exhibitData = await (await fetch('assets/movables.json')).json();
+const movMeta = Object.fromEntries(exhibitData.movables.map((m) => [m.name, m]));
 const movables = [];                 // { sku, mesh, kind, t, want, apply }
 function rigMovable(mesh, m) {
-  const lo = B(m.lo[0], m.lo[1], m.lo[2]), hi = B(m.hi[0], m.hi[1], m.hi[2]);
-  const min = lo.clone().min(hi), max = lo.clone().max(hi);
-  const out = new THREE.Vector3();                                   // which way the front faces
-  if (m.axis === 0) out.set(m.out, 0, 0); else out.set(0, 0, -m.out);
+  const axis = B(m.axis[0], m.axis[1], m.axis[2]).normalize();
   const rec = { sku: m.sku, mesh, kind: m.kind, t: 0, want: 0 };
   if (m.kind === 'drawer') {
-    rec.apply = (t) => mesh.position.copy(out).multiplyScalar(0.36 * t);
+    const home = mesh.position.clone(), travel = Math.min(m.max, 0.5) * 0.8;
+    rec.apply = (t) => mesh.position.copy(home).addScaledVector(axis, travel * t);
   } else {
-    const wide = m.axis === 0 ? max.z - min.z : max.x - min.x, tall = max.y - min.y;
     const pivot = new THREE.Group();
-    let axis, swing;
-    if (wide > tall * 1.35) {                                         // a flap: hinged along the top
-      pivot.position.set((min.x + max.x) / 2, max.y, (min.z + max.z) / 2);
-      axis = m.axis === 0 ? new THREE.Vector3(0, 0, 1) : new THREE.Vector3(1, 0, 0);
-      const r = new THREE.Vector3(0, -tall, 0);
-      swing = Math.sign(new THREE.Vector3().crossVectors(axis, r).dot(out)) * THREE.MathUtils.degToRad(80);
-    } else {
-      const along = m.axis === 0 ? 'z' : 'x';
-      const mid = (min[along] + max[along]) / 2;
-      const ref = m.handle ? B(m.handle[0], m.handle[1], m.handle[2])[along] : 2 * mid - B(m.item[0], m.item[1], m.item[2])[along];
-      const hingeAtMin = ref >= mid;                                  // hinge on the side away from the handle
-      pivot.position.set((min.x + max.x) / 2, min.y, (min.z + max.z) / 2);
-      pivot.position[along] = hingeAtMin ? min[along] : max[along];
-      axis = new THREE.Vector3(0, 1, 0);
-      const r = new THREE.Vector3(); r[along] = hingeAtMin ? wide : -wide;
-      swing = Math.sign(new THREE.Vector3().crossVectors(axis, r).dot(out)) * THREE.MathUtils.degToRad(100);
-    }
+    pivot.position.copy(B(m.pivot[0], m.pivot[1], m.pivot[2]));
     mesh.parent.add(pivot);
-    mesh.position.copy(pivot.position).negate();
-    pivot.add(mesh);
+    pivot.updateMatrixWorld(true);
+    pivot.attach(mesh);
+    const swing = THREE.MathUtils.degToRad(Math.min(m.max, m.kind === 'flap' ? 80 : 95));     // a right-handed turn opens it
     rec.apply = (t) => pivot.quaternion.setFromAxisAngle(axis, swing * t);
   }
   mesh.userData = { type: 'movable', rec };
   movables.push(rec);
   pickables.push(mesh);
 }
+if (params.has('dbg')) window.__movables = movables;
 function setExhibitOpen(sku, open) {
   movables.filter((r) => r.sku === sku).forEach((r, i) => setTimeout(() => { r.want = open ? 1 : 0; }, i * 35));
 }
 const exhibitOpen = {};
+let refreshCard = () => {};          // set once the cards exist: a model that lands late adds its "open" button
 const GLOW = { led: [1.0, 0.72, 0.42, 3.2], diffuser: [1.0, 0.78, 0.52, 1.7], orb: [1.0, 0.75, 0.45, 2.2] };
-gltfLoader.load('assets/models/pieces.glb', (g) => {
-  const swapped = new Map();
+const swapped = new Map();
+// One model per exhibit, so the hall fills in piece by piece and a service page can load just its own.
+for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb`, (g) => {
   const rig = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -217,6 +204,8 @@ gltfLoader.load('assets/models/pieces.glb', (g) => {
   scene.add(g.scene);
   g.scene.updateMatrixWorld(true);
   rig.forEach(([o, mm]) => rigMovable(o, mm));
+  if (params.has('open')) movables.forEach((r) => { r.want = 1; });          // ?open: everything open, for checking
+  refreshCard();
 });
 
 // One spot per exhibit, as in the Blender scene (watts there are watts / 4pi here).
@@ -440,9 +429,10 @@ zones.forEach(([id, name]) => {
 });
 $('enterBtn').onclick = () => goTo(1);
 
-const PTYPE = { 'showroom-kitchen': 'kitchen', 'island-kitchen': 'kitchen', 'master-bath': 'vanity', mudroom: 'laundry-mudroom',
+const PTYPE = { 'showroom-kitchen': 'kitchen', 'garage-cabinet': 'garage', 'master-bath': 'vanity', mudroom: 'laundry-mudroom',
   'coffee-bar': 'bar-pantry', 'reception-desk': 'office', 'executive-office': 'office' };
 let active = -1;
+refreshCard = () => { if (active >= 0 && stops[active].kind === 'piece') showStop(active); };
 function showStop(i) {
   active = i;
   const s = stops[i];
@@ -542,6 +532,48 @@ dim.addEventListener('input', applyLighting);
 warmth.addEventListener('input', applyLighting);
 $('lightsBtn').onclick = () => $('lights').classList.toggle('open');
 if (params.get('light')) { const [b, k] = params.get('light').split(','); dim.value = b; warmth.value = k; applyLighting(); $('lights').classList.add('open'); }
+
+// ---------------------------------------------------------------- cabinet lights
+// A strip under each wall cabinet. The designs do not draw their lighting, so the pipeline places these. Each strip
+// glows; the few nearest the camera also cast light, so the count of live lights stays fixed.
+const ledMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false });
+const leds = exhibitData.leds.map((d) => {
+  const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]);
+  const strip = new THREE.Mesh(new THREE.BoxGeometry(a.distanceTo(b), 0.005, 0.014), ledMat);
+  strip.position.copy(a).add(b).multiplyScalar(0.5);
+  strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
+  scene.add(strip);
+  return { mid: strip.position, len: a.distanceTo(b) };
+});
+const ledLights = Array.from({ length: Math.min(lite ? 2 : 4, leds.length) }, () => {
+  const p = new THREE.PointLight(0xffffff, 0, 1.7, 2);
+  scene.add(p);
+  return p;
+});
+let ledLevel = 1;
+function aimLeds(cam) {
+  if (!ledLights.length) return;
+  const near = leds.map((l) => ({ l, d: l.mid.distanceToSquared(cam) })).sort((x, y) => x.d - y.d);
+  ledLights.forEach((p, i) => {
+    const { l } = near[i];
+    p.position.set(l.mid.x, l.mid.y - 0.05, l.mid.z);
+    p.intensity = ledLevel * 0.55 * l.len;
+  });
+}
+const ledOn = $('ledOn'), ledDim = $('ledDim'), ledWarm = $('ledWarm');
+function applyLeds() {
+  const t = kelvinTint(+ledWarm.value);
+  ledLevel = ledOn.checked ? ledDim.value / 100 : 0;
+  const k = ledLevel > 0 ? 0.6 + 1.5 * ledLevel : 0.07;          // off: the strip is still there, just dark
+  ledMat.color.setRGB(t.x * k, t.y * k, t.z * k);
+  ledLights.forEach((p) => p.color.setRGB(t.x, t.y, t.z));
+  $('ledK').textContent = `${Math.round(ledWarm.value / 50) * 50} K`;
+  $('ledB').textContent = ledOn.checked ? `${ledDim.value}%` : 'Off';
+}
+[ledOn, ledDim, ledWarm].forEach((el) => el.addEventListener('input', applyLeds));
+applyLeds();
+if (params.get('led')) { const [on, b, k] = params.get('led').split(','); ledOn.checked = on !== '0'; if (b) ledDim.value = b; if (k) ledWarm.value = k; applyLeds(); }
+$('ledRows').hidden = !leds.length;
 
 // ---------------------------------------------------------------- site panels (Services, Portfolio, Finishes, About)
 const site = await (await fetch('assets/site.json')).json();
@@ -645,12 +677,12 @@ function initContactForm() {
 const RESOURCES = [
   ['Learn', [['Finishes &amp; Materials', '/finishes'], ['Blog', '/blog'], ['FAQ', '/faq'], ['Brochures &amp; Downloads', '/downloads']]],
   ['Plan', [['Pricing Guide', '/pricing'], ['Room Visualizer', '/visualizer'], ['KD Lite Design Tool', '/kdlite'], ['Showroom', '/showroom'], ['Stocked RTA Cabinets', '/rta-cabinets']]],
-  ['Areas Served', [['Houston', '/locations/houston'], ['Katy', '/locations/katy'], ['Sugar Land', '/locations/sugar-land'], ['The Woodlands', '/locations/the-woodlands'], ['Memorial', '/locations/memorial']]],
+  ['Areas Served', [['Houston', '/locations/houston'], ['Katy', '/locations/katy'], ['Sugar Land', '/locations/sugar-land'], ['The Woodlands', '/locations/the-woodlands'], ['Memorial', '/locations/memorial'], ['Pearland', '/locations/pearland'], ['Cypress', '/locations/cypress'], ['River Oaks', '/locations/river-oaks'], ['Galleria', '/locations/galleria'], ['West University', '/locations/west-university']]],
 ];
 const PANELS = {
   contact: (ptype) => contactForm(ptype),
   // the site's existing pages, grouped as in its Resources menu
-  resources: () => `<p class="eyebrow">Resources</p><h2>Guides and tools</h2>${RESOURCES.map(([head, links]) => `<section class="res"><h3>${head}</h3>${links.map(([t, href]) => (head === 'Areas Served' ? `<span data-soon>${t}</span>` : `<a href="${href}">${t}</a>`)).join('')}</section>`).join('')}
+  resources: () => `<p class="eyebrow">Resources</p><h2>Guides and tools</h2>${RESOURCES.map(([head, links]) => `<section class="res"><h3>${head}</h3>${links.map(([t, href]) => `<a href="${href}">${t}</a>`).join('')}</section>`).join('')}
     <p class="foot-links"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/sales/login">Sales Portal</a><a href="/admin/login">Admin</a></p>`,
   menu: () => `<h2>Menu</h2><div class="menu-list">${['services', 'portfolio', 'finishes', 'resources', 'about', 'contact'].map((p) => `<button type="button" data-panel="${p}">${p === 'contact' ? 'Start Your Project' : cap(p)}</button>`).join('')}</div>`,
   services: () => `<p class="eyebrow">Services</p><h2>What we build</h2><ul class="svc">${site.services.map(([n, t, href]) => `<li><h3>${href ? `<a href="${href}">${esc(n)}</a>` : esc(n)}</h3><p>${esc(t)}</p></li>`).join('')}</ul><a class="btn gold" href="/contact" data-panel="contact">Start Your Project</a>`,
@@ -684,7 +716,6 @@ document.addEventListener('click', (e) => {
 $('panelClose').onclick = closePanel;
 $('panelShade').onclick = closePanel;
 if (params.get('panel')) openPanel(params.get('panel'));
-if (params.has('open')) manager.onLoad = ((f) => () => { f(); movables.forEach((r) => { r.want = 1; }); })(manager.onLoad);
 
 // ---------------------------------------------------------------- picking
 const ray = new THREE.Raycaster();
@@ -736,6 +767,7 @@ function tick() {
     r.apply(r.t * r.t * (3 - 2 * r.t));
   }
   aimSpots(camera.position.x);
+  aimLeds(camera.position);
   updateWingScreens(camera.position.x);
 
   const near = Math.round(pos);

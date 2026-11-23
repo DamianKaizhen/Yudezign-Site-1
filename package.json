@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "dev:api": "vercel dev --listen 5173",
-    "build": "node scripts/gallery-data.mjs && tsc -b && vite build && node scripts/prerender.mjs && node scripts/check-bundle-leak.mjs",
+    "build": "node scripts/gallery-data.mjs && node scripts/generate-sitemap.mjs && tsc -b && vite build && node scripts/prerender.mjs && node scripts/check-bundle-leak.mjs",
     "build:spa": "node scripts/gallery-data.mjs && tsc -b && vite build",
     "prerender": "node scripts/prerender.mjs",
     "gallery:data": "node scripts/gallery-data.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
     "type-check": "tsc -b",
     "verify:bundle": "node scripts/check-bundle-leak.mjs",
     "lint": "eslint .",

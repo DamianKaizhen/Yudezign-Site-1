@@ -267,7 +267,7 @@ const WarrantyPage: React.FC = () => {
                 step: '1',
                 title: 'Contact Us',
                 desc: 'Call or email our service team with details about the issue. Include photos if possible.',
-                action: 'Phone: (713) 502-0399 or Email: service@yudezign.com',
+                action: 'Phone: (713) 502-0399 or Email: orders@yudezign.com',
               },
               {
                 step: '2',
@@ -370,7 +370,7 @@ const WarrantyPage: React.FC = () => {
             {[
               { title: 'Local Accountability', desc: 'We\'re a Houston company serving Houston families. You can visit our showroom, call our local number, and get fast service - not corporate runaround.' },
               { title: 'No Fine Print Traps', desc: 'Our warranty is straightforward and easy to understand. We don\'t hide behind technicalities or create barriers to legitimate claims.' },
-              { title: 'Proven Track Record', desc: '15+ years in business with thousands of satisfied Houston homeowners. Our warranty has been tested and proven.' },
+              { title: 'Proven Track Record', desc: 'In business since 2019, serving Houston homeowners. Our warranty has been tested and proven.' },
               { title: 'Quality First', desc: 'We can offer lifetime structural warranty because we use premium materials and expert craftsmanship. Our warranty reflects our confidence.' },
             ].map((reason, idx) => (
               <div key={idx} className="flex items-start bg-slate-50 rounded-lg p-5 border border-slate-200">

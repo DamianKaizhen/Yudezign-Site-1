@@ -2,16 +2,30 @@ import { motion } from 'framer-motion';
 import { Award, Users, Factory, TrendingUp, Mail, Phone } from 'lucide-react';
 import { teamMembers } from '../../data/team';
 import SEO from '../../components/SEO';
+import { generateOrganizationSchema, generateWebPageSchema } from '../../lib/schema';
+
+const ABOUT_DESCRIPTION =
+  'YuDezign has built custom European frameless cabinets in Houston since 2019. Premium cabinetry with 3/4 plywood construction, 20 standard colors, and lead times from as little as two weeks. Supply-only pricing for contractors and homeowners.';
 
 const About = () => {
+  const structuredData = [
+    generateWebPageSchema({
+      type: 'AboutPage',
+      name: 'About YuDezign - Houston Cabinet Craftsmen',
+      description: ABOUT_DESCRIPTION,
+      path: '/about',
+    }),
+    generateOrganizationSchema(ABOUT_DESCRIPTION),
+  ];
+
   return (
     <>
       <SEO
         title="About Us - Houston Cabinet Craftsmen"
-        description="YuDezign has built custom European frameless cabinets in Houston since 2007. Premium cabinetry with 3/4 plywood construction, 20 standard colors, and lead times from as little as two weeks. Supply-only pricing for contractors and homeowners."
+        description="YuDezign has built custom European frameless cabinets in Houston since 2019: 3/4 plywood, 20 standard colors, as little as two weeks. Supply-only pricing."
         keywords="cabinet craftsmen houston, european cabinets, frameless cabinets, custom cabinetry, plywood cabinets, houston woodworking, luxury cabinets"
         url="https://www.yudezign.com/about"
-        image="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&q=80"
+        structuredData={structuredData}
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green overlay */}
@@ -46,7 +60,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-body-lg md:text-h4 font-light text-white/90"
           >
-            Houston's premier European frameless cabinet craftsmen since 2007
+            Houston's premier European frameless cabinet craftsmen since 2019
           </motion.p>
         </div>
       </section>
@@ -65,7 +79,7 @@ const About = () => {
               <h2 className="text-display-mobile md:text-h1 font-medium text-luxury-gray-900 mb-8">Our Story</h2>
               <div className="space-y-6 text-body-lg text-luxury-gray-600 leading-relaxed">
                 <p>
-                  YuDezign was born in 2007 from a simple observation: homeowners and contractors in Houston
+                  YuDezign was born in 2019 from a simple observation: homeowners and contractors in Houston
                   deserved better access to high-quality European cabinetry without the astronomical showroom markups.
                 </p>
                 <p>
@@ -108,7 +122,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {[
-              { number: '2007', label: 'Serving Houston Since' },
+              { number: '2019', label: 'Serving Houston Since' },
               { number: '2', label: 'Week Lead Time, From' },
               { number: '20', label: 'Standard Colors' },
               { number: '3/4"', label: 'Plywood Quality' },

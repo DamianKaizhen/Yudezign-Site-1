@@ -213,6 +213,8 @@ const FinishDropdown = ({ value, onChange, error, maxSelections = 2 }: FinishDro
                                 <img
                                   src={finish.images[0]}
                                   alt={finish.name}
+                                  loading="lazy"
+                                  decoding="async"
                                   className={`w-14 h-14 rounded-lg object-cover border-2 transition-all
                                     ${isSelected ? 'border-primary shadow-lg' : 'border-gray-200 group-hover:border-gray-300'}
                                   `}

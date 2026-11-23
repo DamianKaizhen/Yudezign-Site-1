@@ -100,7 +100,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
 
               <div className="mt-8 pt-6 border-t border-white/20 text-center">
                 <p className="text-white/80 text-sm">
-                  Houston-based workshop • Local expertise since 2009
+                  Houston-based workshop • Local expertise since 2019
                 </p>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, Shirt, Ruler, Lightbulb, Wind } from 'lucide-react';
 
 const ClosetDesignGuide: React.FC = () => {
@@ -8,7 +9,7 @@ const ClosetDesignGuide: React.FC = () => {
     <>
       <SEO
         title="Custom Closet Design Guide for Houston Homes | YuDezign"
-        description="Plan the perfect custom closet in Houston. Walk-in vs reach-in layouts, hanging zones, storage math, mold-resistant design, and cost ranges from reach-ins to luxury master suites."
+        description="Custom closet design in Houston: walk-in vs reach-in layouts, hanging zones, and costs from $800-$1,500 reach-ins to $8,000-$20,000+ master suites."
         keywords={[
           'custom closet design',
           'walk-in closet houston',
@@ -19,6 +20,7 @@ const ClosetDesignGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/custom-closet-design-guide-houston"
         ogType="article"
+        structuredData={generateBlogPostSchemas('custom-closet-design-guide-houston')}
       />
 
       <article className="min-h-screen bg-white">
@@ -78,6 +80,20 @@ const ClosetDesignGuide: React.FC = () => {
             <p className="text-slate-700 leading-relaxed mb-8">
               At YuDezign we build closets from the same cabinet-grade materials as our kitchens, then fit them with purpose-built organizers designed around how you actually live. Here's how to plan yours.
             </p>
+
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <Ruler className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    Design the closet from your wardrobe, not the room: stack <strong>double-hang zones (~84" total, two 42" rods)</strong> and leave at least 24" of clear floor between facing runs in a walk-in (36" with an island). In Houston, a reach-in runs <strong>$800-$1,500</strong>, a walk-in <strong>$3,000-$8,000</strong> and a luxury master suite <strong>$8,000-$20,000+</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Start with inventory */}
             <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Start With Your Wardrobe, Not the Room</h2>

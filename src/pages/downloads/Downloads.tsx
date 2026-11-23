@@ -21,6 +21,7 @@ const Cover = ({ r, className = '' }: { r: ResourceFile; className?: string }) =
       src={r.cover}
       alt={`${r.title} cover`}
       loading="lazy"
+      decoding="async"
       className={`w-full h-full object-cover ${className}`}
     />
   ) : (
@@ -96,7 +97,7 @@ const Downloads = () => {
     <>
       <SEO
         title="Brochures & Downloads - Catalogs, Flyers & Spec Sheets"
-        description="Download YuDeZign brochures, catalogs, and spec sheets. View our 2026 Collection booklet and full finishes catalog for European frameless kitchen cabinets, closets, and vanities built in Houston."
+        description="Download YuDeZign brochures, catalogs and spec sheets, including the 2026 Collection booklet and finishes catalog for frameless cabinets built in Houston."
         keywords="yudezign brochure, cabinet catalog, finishes catalog, cabinet spec sheet, download brochure, custom cabinets houston brochure"
         url="https://www.yudezign.com/downloads"
       />

@@ -12,10 +12,16 @@ import type { ServiceData } from '../types';
 export const services: ServiceData[] = [
   {
     slug: 'kitchen-cabinets',
+    exhibit: {
+      sku: 'showroom-kitchen',
+      title: 'Showroom Kitchen',
+      text:
+        'A handleless kitchen with glass-front uppers, a custom hood, a tall pantry bank and a waterfall island. It is on display at the Yukon Flooring Showroom in Stafford.',
+    },
     name: 'Kitchen Cabinets',
     metaTitle: 'Custom Kitchen Cabinets Houston | European Frameless | YuDezign',
     metaDescription:
-      'Custom kitchen cabinets in Houston. European frameless design, 10-15% more storage. As little as two weeks. 3/4" plywood construction, 20 standard colors, deeper decor library on request. Supply-only pricing.',
+      'Custom kitchen cabinets in Houston: European frameless design with 10-15% more storage, 3/4" plywood, 20 standard colors, in as little as two weeks. Supply-only pricing.',
     keywords: [
       'custom kitchen cabinets houston',
       'european kitchen cabinets',
@@ -376,8 +382,14 @@ export const services: ServiceData[] = [
 
   {
     slug: 'bathroom-vanities',
+    exhibit: {
+      sku: 'master-bath',
+      title: 'Master Bath Vanity',
+      text:
+        'A corner double vanity with vessel sinks, framed mirrors and open shelving. It is on display at the Yukon Flooring Showroom in Stafford.',
+    },
     name: 'Bathroom Vanities',
-    metaTitle: 'Custom Bathroom Vanities Houston | Double Vanity Cabinets | YuDezign',
+    metaTitle: 'Custom Bathroom Vanities Houston | Double Vanities | YuDezign',
     metaDescription:
       'Custom bathroom vanities in Houston. Moisture-resistant construction, custom sizes. Single and double vanities. European frameless quality.',
     keywords: [
@@ -500,6 +512,12 @@ export const services: ServiceData[] = [
 
   {
     slug: 'home-office-cabinets',
+    exhibit: {
+      sku: 'executive-office',
+      title: 'Executive Office',
+      text:
+        'An L-shaped executive desk with a credenza, floating shelves and a slat back panel, built for a commercial client in Houston.',
+    },
     name: 'Home Office Cabinets',
     metaTitle: 'Custom Home Office Cabinets Houston | Built-In Desks | YuDezign',
     metaDescription:
@@ -617,6 +635,12 @@ export const services: ServiceData[] = [
 
   {
     slug: 'garage-cabinets',
+    exhibit: {
+      sku: 'garage-cabinet',
+      title: 'Garage Cabinets',
+      text:
+        'Tall storage cabinets, lift-up upper doors, a slat wall and a workbench with a drawer bank. It is on display at the Yukon Flooring Showroom in Stafford.',
+    },
     name: 'Garage Cabinets',
     metaTitle: 'Garage Storage Cabinets Houston | Organization Systems | YuDezign',
     metaDescription:
@@ -735,7 +759,7 @@ export const services: ServiceData[] = [
   {
     slug: 'entertainment-centers',
     name: 'Entertainment Centers',
-    metaTitle: 'Custom Entertainment Centers Houston | Media Wall Cabinets | YuDezign',
+    metaTitle: 'Custom Entertainment Centers Houston | Media Walls | YuDezign',
     metaDescription:
       'Custom entertainment centers Houston. Media walls, TV cabinets, AV equipment storage. Cable management, floating designs. Modern European style.',
     keywords: [
@@ -851,6 +875,12 @@ export const services: ServiceData[] = [
 
   {
     slug: 'laundry-room-cabinets',
+    exhibit: {
+      sku: 'mudroom',
+      title: 'Mudroom',
+      text:
+        'A bench over open cubbies with a panelled back, an open shelf and a row of upper cabinets, in blue and oak.',
+    },
     name: 'Laundry Room Cabinets',
     metaTitle: 'Laundry Room Cabinets Houston | Utility Storage | YuDezign',
     metaDescription:

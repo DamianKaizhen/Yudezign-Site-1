@@ -25,8 +25,8 @@ const Finishes = () => {
   return (
     <>
       <SEO
-        title="Finishes & Materials - 20 Standard Colors in Four Styles"
-        description="Twenty standard cabinet colors, five in each Style: Essential, Signature, Reserve and Atelier. Smooth matte solids, woodgrains and textures, super-matte soft-touch, high gloss and perfect matt, with a deeper decor library on request. Custom frameless cabinets built in Houston."
+        title="Cabinet Finishes: 20 Standard Colors in Four Styles"
+        description="Twenty standard cabinet colors, five in each of four Styles: Essential, Signature, Reserve and Atelier, plus a deeper decor library on request. Houston-built."
         keywords="cabinet finishes, wood finishes, laminate cabinets, cabinet colors, european finishes, matte cabinets, gloss cabinets, luxury cabinet finishes"
         url="https://www.yudezign.com/finishes"
       />

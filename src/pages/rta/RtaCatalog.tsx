@@ -96,8 +96,8 @@ const RtaCatalog = () => {
   return (
     <>
       <SEO
-        title="Stocked RTA Cabinets in Houston: YuDeZign Shaker, Slim and Contract"
-        description="Ready-to-assemble framed cabinets in stock in Houston. Three collections, nineteen finishes, every stock size with our retail price, flat-pack or assembled. Alongside the frameless cabinetry we build to order."
+        title="Stocked RTA Cabinets Houston: Shaker, Slim, Contract"
+        description="Ready-to-assemble framed cabinets in stock in Houston: three collections, nineteen finishes, every stock size with retail price, flat-pack or assembled."
         keywords="RTA cabinets Houston, ready to assemble cabinets, stock cabinets Houston, shaker cabinets Houston, framed cabinets, flat pack cabinets, assembled cabinets, cabinet prices Houston"
         url="https://www.yudezign.com/rta-cabinets"
       />
@@ -239,10 +239,10 @@ const RtaCatalog = () => {
                       className="w-full text-left"
                     >
                       <div className="h-32 bg-luxury-gray-50 rounded-md flex items-center justify-center overflow-hidden">
-                        <img src={f.door} alt={`${f.name} door`} loading="lazy" className="max-h-full max-w-full object-contain" />
+                        <img src={f.door} alt={`${f.name} door`} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                       </div>
                       <div className="h-10 mt-2 bg-luxury-gray-50 rounded-md flex items-center justify-center overflow-hidden">
-                        <img src={f.drawer} alt={`${f.name} drawer front`} loading="lazy" className="max-h-full max-w-full object-contain" />
+                        <img src={f.drawer} alt={`${f.name} drawer front`} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
                       </div>
                       <p className="mt-2 text-xs font-semibold text-luxury-gray-900 leading-tight">{f.name}</p>
                     </button>
@@ -366,7 +366,7 @@ const RtaCatalog = () => {
                                     className="block w-16 h-16 bg-white rounded border border-luxury-gray-100 hover:border-primary overflow-hidden"
                                     aria-label={`Enlarge drawing for ${c.code}`}
                                   >
-                                    <img src={c.drawing} alt="" loading="lazy" className="w-full h-full object-contain" />
+                                    <img src={c.drawing} alt={`Line drawing of ${c.code}: ${c.desc}`} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                                   </button>
                                 ) : (
                                   <span className="block w-16 h-16 rounded border border-dashed border-luxury-gray-200 text-[10px] text-luxury-gray-400 flex items-center justify-center text-center leading-tight">
@@ -414,7 +414,7 @@ const RtaCatalog = () => {
                                 className="shrink-0 w-20 h-20 bg-white rounded border border-luxury-gray-100 overflow-hidden"
                                 aria-label={`Enlarge drawing for ${c.code}`}
                               >
-                                <img src={c.drawing} alt="" loading="lazy" className="w-full h-full object-contain" />
+                                <img src={c.drawing} alt={`Line drawing of ${c.code}: ${c.desc}`} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                               </button>
                             ) : (
                               <span className="shrink-0 w-20 h-20 rounded border border-dashed border-luxury-gray-200 text-[10px] text-luxury-gray-400 flex items-center justify-center text-center">

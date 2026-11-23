@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { Droplet, AlertTriangle, Shield, CheckCircle, XCircle, ArrowRight, ThermometerSun } from 'lucide-react';
 
 const HoustonHumidity: React.FC = () => {
   return (
     <>
       <SEO
-        title="How Houston's Humidity Affects Your Cabinets | Expert Guide 2025"
-        description="Learn how Houston's 75-90% humidity impacts kitchen cabinets. Expert guidance on moisture-resistant materials, proper sealing, and preventing warping, swelling, and damage."
+        title="How Houston's Humidity Affects Your Cabinets | YuDezign"
+        description="Houston's 75-90% humidity warps wood and swells particleboard. Learn which materials, sealing and finishes keep kitchen cabinets lasting 20+ years."
         keywords={[
           'houston humidity cabinets',
           'moisture resistant cabinets houston',
@@ -18,6 +19,7 @@ const HoustonHumidity: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/houston-humidity-cabinets"
         ogType="article"
+        structuredData={generateBlogPostSchemas('houston-humidity-cabinets')}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,6 +63,20 @@ const HoustonHumidity: React.FC = () => {
             you need to know.
           </p>
 
+          {/* Quick Answer Box */}
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+            <div className="flex items-start gap-3">
+              <Droplet className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                <p className="text-slate-700 mb-0">
+                  Houston cabinets can last <strong>20+ years</strong> when the boxes are 3/4" cabinet-grade plywood, every edge is sealed with edge-banding, and the door surfaces are acrylic or thermofoil. Avoid <strong>standard particleboard</strong>, which swells up to 25% in thickness at unsealed edges and cutouts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
           {/* Quick Facts Box */}
           <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
             <div className="flex items-start gap-3">
@@ -79,7 +95,7 @@ const HoustonHumidity: React.FC = () => {
           </div>
 
           <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">
-            How Humidity Damages Kitchen Cabinets
+            How Does Humidity Damage Kitchen Cabinets?
           </h2>
 
           <p>
