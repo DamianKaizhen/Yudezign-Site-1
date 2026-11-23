@@ -3,8 +3,10 @@
 The source of the site's home page gallery. Run python scripts/build-gallery.py to publish it to public/gallery.
 node scripts/gallery-data.mjs (part of npm run build) fills its Portfolio and Finishes panels from src/data.
 
-- index.html, style.css, main.js: the viewer (three.js, loaded from a CDN).
-- assets/models, assets/bake, assets/photos-sm, assets/gallery.json: models, baked lighting, wall textures, layout.
+- index.html, style.css, main.js: the hall viewer (three.js, loaded from a CDN). exhibit.html, exhibit.js: one exhibit
+  on its own.
+- assets/models, assets/bake, assets/photos-sm, assets/gallery.json, assets/movables.json: one model per exhibit, baked
+  lighting, wall textures, layout, and the doors, drawers and light strips.
 - pipeline/: the Blender 5.3 scripts that place the exported Yukon designs in the hall, bake the lighting and
   export the models. They read design exports from a local work folder and are kept here for reference.
 
@@ -12,13 +14,47 @@ Rules: only real designs we have sold or built are shown, and no customer or str
 The folders assets/video, assets/photos, assets/portfolio, assets/swatches and assets/site.json are local only and
 ignored by git; the published gallery uses the copies under public/.
 
-## To do
+## How the exhibits are built
 
-Pages still to be brought into the gallery style (GalleryLayout plus the `.theme-gallery` rules in src/index.css):
+1. Export each design from its Yukon `.mrs` file with the `yudezign-mrs-format` skill:
+   `python mrs_export.py <scene.mrs> <sold>/<folder> --formats glb --room all --movables --leds --max-texture 1024`.
+   `--movables` keeps every real door, lift-up flap and drawer as its own part and writes `<name>.movables.json` with the
+   design's own hinge line or pull direction and its limit (90 degrees, 450 or 500 mm). Filler panels, exposed end panels
+   and false fronts stay fixed. `--leds` places a light strip under each wall cabinet that has a hinged door. The designs
+   do not draw their lighting, so the strips are placed, not read from the file.
+2. `python pipeline/layout_v2.py` writes `pipeline/layout.json` and `assets/gallery.json` (exhibit order, stops, wings).
+3. `blender -b -P pipeline/build_gallery2.py -- <sold> <out>` places the exhibits, bakes the hall, and writes one model per
+   exhibit (`models/<sku>.glb`) plus `movables.json` (doors, drawers and light strips in hall coordinates). About two
+   minutes with a GPU. Then `python pipeline/post_bake.py <out>/bake <out>/bake_post`.
+4. Copy `models`, the post-processed `bake` and `movables.json` into `assets/`, then run `python scripts/build-gallery.py`.
 
-- Plan section: Pricing Guide, Room Visualizer, KD Lite Design Tool, Showroom, Stocked RTA Cabinets.
-- Areas Served: Houston, Katy, Sugar Land, The Woodlands, Memorial. Their links in the gallery's Resources panel are
-  switched off until the pages are restyled (see `data-soon` in main.js).
-- Also not yet restyled: Portfolio, About, Contact, Services, the comparison pages, Privacy and Terms.
+Source scenes (2026-11-23): showroom designs under `Yukon Flooring Showroom/00 REVISED/` (Kichen 1v5, MasterBathv2,
+GarageCabinetv2, Coffee Bar Area), the mudroom under `HoustonShow2026/BoothPlanV3/Mudroom`, and the two client designs in
+`C:\yudezign-mrs-lab` (tg-office, tg-reception).
 
-Done: Finishes, Blog (index and posts), FAQ, Downloads.
+## The two viewers
+
+- `index.html` + `main.js`: the hall. It loads one model per exhibit. Select a door or drawer to open it, or use "Open doors
+  and drawers" on the exhibit's card. The Lighting panel dims the hall and sets its warmth, and switches, dims and sets the
+  colour (2700 K to 6000 K) of the cabinet lights.
+- `exhibit.html` + `exhibit.js`: one exhibit on its own, for a service page (`/gallery/exhibit.html?sku=<sku>`). Drag to
+  turn it, open doors and drawers, and set the room and cabinet lighting. Nothing is baked there, so every control applies.
+  A service shows its exhibit when it has an `exhibit` entry in `src/data/services.ts`.
+- Check links: `?stop=<n>` jumps to a stop, `?open` opens everything, `?led=<on>,<level>,<kelvin>` sets the cabinet lights.
+
+## Done 2026-11-23
+
+- Doors, flaps and drawers open on all seven exhibits (92 moving parts). Cabinet lights on the kitchen and the coffee bar.
+- The island kitchen is out; the showroom garage cabinet is in.
+- Service pages for kitchens, vanities, home office, garage and laundry / mudroom show their exhibit in 3D.
+- Every public page uses the gallery style (`GalleryLayout`), with the full menu and footer. Only `/classic` keeps the old one.
+- The Areas Served links in the Resources panel are on.
+
+## Still to do
+
+- **Two closets.** No sold closet has a 3D scene file. Rebuild the Yukon showroom closet (`00 REVISED/New Closet`, PDF only)
+  and one sold client closet in Yukon with the design lab, then add them here and to the Closet Systems page.
+- **Props** (bowls, towels, books, garments and so on): not started.
+- **Stocked RTA page:** photos and finishes only for now; a 3D RTA kitchen is undecided.
+- The entertainment-centre service has no exhibit.
+- Still to verify on the live site: a real quote submission, and the phone experience.

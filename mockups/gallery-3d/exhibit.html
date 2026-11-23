@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0a09">
+  <title>YuDeZign 3D exhibit</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #0b0a09; --cream: #f4efe7; --muted: rgba(244, 239, 231, 0.66); --line: rgba(244, 239, 231, 0.16); --gold: #d4a574; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; background: var(--ink); color: var(--cream); font: 13px/1.4 Inter, system-ui, -apple-system, sans-serif; overflow: hidden; }
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+    canvas.over { cursor: pointer; }
+    .bar { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px; pointer-events: none; }
+    .bar > * { pointer-events: auto; }
+    button { font: inherit; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--cream); padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px; background: rgba(14, 12, 11, .66); backdrop-filter: blur(14px); cursor: pointer; }
+    button:hover, button:focus-visible { border-color: var(--gold); outline: none; }
+    button[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
+    .lights { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .sliders { display: none; width: min(240px, calc(100vw - 24px)); padding: 14px 16px; background: rgba(14, 12, 11, .8); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 3px; }
+    .lights.open .sliders { display: block; }
+    label { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    label + label, #ledRows { margin-top: 12px; }
+    #ledRows { padding-top: 12px; border-top: 1px solid var(--line); }
+    output { float: right; color: var(--cream); letter-spacing: .04em; }
+    input[type="range"] { display: block; width: 100%; margin-top: 7px; accent-color: var(--gold); }
+    label.check { color: var(--cream); cursor: pointer; }
+    label.check input { margin: 0 8px 0 0; vertical-align: -2px; accent-color: var(--gold); }
+    .hint { position: fixed; top: 12px; left: 12px; right: 12px; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); pointer-events: none; transition: opacity .6s; }
+    .hint.off { opacity: 0; }
+    .load { position: fixed; inset: 0; display: grid; place-items: center; background: var(--ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); transition: opacity .5s; }
+    .load.off { opacity: 0; pointer-events: none; }
+    @media (prefers-reduced-motion: reduce) { .hint, .load { transition: none; } }
+  </style>
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <canvas id="scene" role="img" aria-label="3D model of a YuDeZign design. Drag to turn it; select a door or drawer to open it."></canvas>
+  <p class="hint" id="hint">Drag to turn · select a door or drawer to open it</p>
+  <div class="bar">
+    <button type="button" id="openAll" aria-pressed="false" hidden>Open doors and drawers</button>
+    <div class="lights" id="lights">
+      <div class="sliders" id="sliders">
+        <label>Room light <output id="roomB">100%</output><input id="roomDim" type="range" min="15" max="160" value="100" aria-label="Room light level"></label>
+        <label>Room warmth <output id="roomK">3400 K</output><input id="roomWarm" type="range" min="2700" max="6000" step="50" value="3400" aria-label="Room light colour temperature"></label>
+        <div id="ledRows" hidden>
+          <label class="check"><input id="ledOn" type="checkbox" checked> Cabinet lights <output id="ledB">100%</output></label>
+          <label>Cabinet light level<input id="ledDim" type="range" min="10" max="150" value="100" aria-label="Cabinet light level"></label>
+          <label>Cabinet light colour <output id="ledK">3000 K</output><input id="ledWarm" type="range" min="2700" max="6000" step="50" value="3000" aria-label="Cabinet light colour temperature"></label>
+        </div>
+      </div>
+      <button type="button" id="lightsBtn" aria-expanded="false" aria-controls="sliders">Lighting</button>
+    </div>
+  </div>
+  <div class="load" id="load">Loading the model</div>
+  <script type="module" src="exhibit.js"></script>
+</body>
+</html>

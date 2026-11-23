@@ -284,13 +284,13 @@
    "H": 2790
   },
   {
-   "sku": "island-kitchen",
-   "name": "L-Shaped Kitchen with Island",
-   "x": 25890,
-   "y": 4590,
-   "W": 4220,
-   "D": 3310,
-   "H": 2360
+   "sku": "garage-cabinet",
+   "name": "Garage Cabinets",
+   "x": 26410,
+   "y": 7180,
+   "W": 3180,
+   "D": 720,
+   "H": 2790
   },
   {
    "sku": "master-bath",
@@ -523,25 +523,25 @@
    "text": "Finished YuDeZign projects. Select a frame to see it full size."
   },
   {
-   "id": "island-kitchen",
+   "id": "garage-cabinet",
    "zone": "vanities",
    "kind": "piece",
-   "sku": "island-kitchen",
+   "sku": "garage-cabinet",
    "pos": [
     25.6,
-    2.7,
+    3.98,
     1.6
    ],
    "target": [
     28.0,
-    6.25,
+    7.54,
     1.0
    ],
    "lens": 22,
-   "eyebrow": "Client project, residential",
-   "title": "L-Shaped Kitchen with Island",
-   "text": "A frameless L-shaped kitchen with a wall of uppers, a tall fridge surround and an island backed by a half wall.",
-   "meta": "Kitchen and island  \u00b7  Houston area"
+   "eyebrow": "Showroom display",
+   "title": "Garage Cabinets",
+   "text": "A wall of garage storage with tall cabinets, lift-up upper doors, a slat wall and a workbench with a drawer bank.",
+   "meta": "Garage storage  \u00b7  Yukon Flooring Showroom, Stafford"
   },
   {
    "id": "wall-custom",
@@ -752,14 +752,6 @@
    "poster": "assets/video/vanity-oak-tour-poster.jpg",
    "videoTitle": "Oak Vanity",
    "aspect": 1.7778
-  },
-  {
-   "name": "wing_4",
-   "x": 30.41,
-   "y0": 5.45,
-   "side": 1,
-   "title": "L-Shaped Kitchen with Island",
-   "video": null
   }
  ]
 }

@@ -279,7 +279,7 @@ const Home = () => {
               <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              Serving Houston Since 2007
+              Serving Houston Since 2019
             </span>
             <span className="hidden lg:inline text-white/40">•</span>
             <span className="flex items-center gap-2">
@@ -560,6 +560,8 @@ const Home = () => {
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-12 h-12 rounded-full object-cover"
                         />
                       ) : (
@@ -583,6 +585,8 @@ const Home = () => {
                         <img
                           src={testimonial.projectImage}
                           alt="Project"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-48 object-cover rounded-b-xl"
                         />
                       </div>
@@ -659,6 +663,8 @@ const Home = () => {
           <img
             src="/portfolio/1772673222886-IMG_1875.jpg"
             alt="Custom European frameless kitchen crafted by YuDezign in Houston"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/50 to-accent/30"></div>

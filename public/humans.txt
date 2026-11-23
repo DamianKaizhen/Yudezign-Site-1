@@ -1,10 +1,10 @@
 /* TEAM */
 Designer & Developer: Yudezign Team
-Contact: damian.k@yudezign.com
-Location: Houston, Texas, USA
+Contact: orders@yudezign.com
+Location: 13366 Murphy Rd, Stafford, TX 77477, USA (Houston metro)
 
 /* SITE */
-Last update: 2024/12/23
+Last update: 2026/11/23
 Standards: HTML5, CSS3, JavaScript ES6+
 Components: React, TypeScript, TailwindCSS
 Software: Vite, React Router, Framer Motion

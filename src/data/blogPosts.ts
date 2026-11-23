@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 12,
     seo: {
-      metaDescription: '2025 custom cabinet cost guide for Houston homeowners. Average prices, cost factors, and budget tips for kitchen, bathroom, closet, and home office cabinetry.',
+      metaDescription: 'Complete 2025 custom cabinet pricing guide for Houston: what drives costs and how to budget for your kitchen remodel. Free estimates available.',
       keywords: [
         'custom cabinet cost Houston',
         'kitchen cabinet prices Houston',
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 10,
     seo: {
-      metaDescription: 'Frameless vs framed cabinets explained. Expert comparison of European and American cabinet styles including construction, storage, cost, and best use cases.',
+      metaDescription: 'Frameless cabinets offer 10-15% more storage and a modern look; framed cabinets suit traditional styles. Compare construction, cost and use in Houston homes.',
       keywords: [
         'frameless vs framed cabinets',
         'European cabinets',
@@ -87,7 +87,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 8,
     seo: {
-      metaDescription: '2025 kitchen cabinet trends for Houston homes. Explore trending colors, styles, materials, and features from two-tone designs to smart storage solutions.',
+      metaDescription: 'Top 2025 kitchen cabinet trends for Houston homes: two-tone cabinets, warm natural woods, statement islands, sustainable materials and smart storage.',
       keywords: [
         'kitchen cabinet trends 2025',
         'Houston kitchen trends',
@@ -120,7 +120,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 9,
     seo: {
-      metaDescription: 'How Houston humidity affects kitchen cabinets. Learn about moisture-resistant materials, finishes, and construction methods that prevent warping and damage.',
+      metaDescription: 'Houston\'s 75-90% humidity warps wood and swells particleboard. Learn which materials, sealing and finishes keep kitchen cabinets lasting 20+ years.',
       keywords: [
         'Houston humidity cabinets',
         'moisture resistant cabinets',
@@ -153,7 +153,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 11,
     seo: {
-      metaDescription: 'Step-by-step guide to measuring for custom cabinets. Learn professional measurement techniques for kitchens, bathrooms, and closets to ensure perfect fit.',
+      metaDescription: 'How to measure for custom cabinets: sketch a floor plan, measure walls at cabinet height, record to 1/16" and photograph each wall. Tools and mistakes to avoid.',
       keywords: [
         'how to measure for cabinets',
         'cabinet measurement guide',
@@ -186,7 +186,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 10,
     seo: {
-      metaDescription: 'European vs American cabinet styles explained. Understand construction differences, design aesthetics, and which cabinet style fits your home best.',
+      metaDescription: 'European (frameless) cabinets suit modern kitchens needing maximum storage; American (face-frame) suit traditional styling. Compare construction and price.',
       keywords: [
         'European vs American cabinets',
         'cabinet styles comparison',
@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 11,
     seo: {
-      metaDescription: 'Expert guide to cabinet finishes. Compare melamine, HPL laminate, acrylic, paint, and RTF for durability, cost, maintenance, and Houston climate performance.',
+      metaDescription: 'Laminate is the best all-around cabinet finish and melamine the budget pick. Compare melamine, laminate, acrylic, paint and RTF for Houston\'s humid climate.',
       keywords: [
         'cabinet finishes',
         'melamine cabinets',
@@ -356,7 +356,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 11,
     seo: {
-      metaDescription: 'Complete cabinet hardware guide. How to choose soft-close hinges, drawer slides, handles, knobs, and pulls. Blum vs Hettich, finishes, sizing, and Houston-ready durability.',
+      metaDescription: 'Undermount soft-close slides and concealed hinges matter most. How to choose cabinet hinges, slides, pulls and knobs that last in Houston\'s humidity.',
       keywords: [
         'cabinet hardware guide',
         'soft-close hinges',
@@ -390,7 +390,7 @@ export const blogPosts: BlogPost[] = [
     },
     readTime: 11,
     seo: {
-      metaDescription: 'Plan the perfect custom closet in Houston. Walk-in vs reach-in layouts, hanging zones, storage math, mold-resistant design, and cost ranges from reach-ins to luxury master suites.',
+      metaDescription: 'Custom closet design in Houston: walk-in vs reach-in layouts, hanging zones, and costs from $800-$1,500 reach-ins to $8,000-$20,000+ master suites.',
       keywords: [
         'custom closet design',
         'walk-in closet houston',

@@ -15,7 +15,7 @@ export const locations: LocationData[] = [
     name: 'Houston',
     metaTitle: 'Custom Cabinets Houston TX | European Frameless | YuDezign',
     metaDescription:
-      'Looking for custom cabinet makers in Houston? YuDezign crafts premium European frameless cabinets locally. Kitchen cabinets, closets, vanities in as little as two weeks. Serving Memorial, Heights, Montrose, Galleria. Free design consultation.',
+      'Custom cabinet makers in Houston: European frameless kitchens, closets and vanities in as little as two weeks. Serving Memorial, Heights, Montrose, Galleria.',
     keywords: [
       'custom cabinets houston',
       'frameless cabinets houston',
@@ -62,7 +62,7 @@ export const locations: LocationData[] = [
     name: 'Katy',
     metaTitle: 'Custom Cabinets Katy TX | Frameless Kitchen Cabinets | YuDezign',
     metaDescription:
-      'Custom cabinet makers near Katy TX. European frameless kitchen cabinets, oversized islands, closets for large family homes. Serving Cinco Ranch, Grand Lakes, Cross Creek Ranch. Local manufacturing, delivery in as little as two weeks. Free quote.',
+      'Custom frameless kitchen cabinets in Katy TX, with oversized islands and closets. Serving Cinco Ranch, Grand Lakes, Cross Creek Ranch. As little as two weeks.',
     keywords: [
       'custom cabinets katy tx',
       'frameless cabinets katy',
@@ -102,7 +102,7 @@ export const locations: LocationData[] = [
     name: 'Sugar Land',
     metaTitle: 'Custom Cabinets Sugar Land TX | Luxury Frameless | YuDezign',
     metaDescription:
-      'Luxury custom cabinets in Sugar Land TX. European frameless design, high-end finishes, modern transitional style. Serving Telfair, Sweetwater, Riverstone, Commonwealth. Local cabinet makers, as little as two weeks. Schedule free consultation.',
+      'Luxury custom cabinets in Sugar Land TX: European frameless design. Serving Telfair, Sweetwater, Riverstone, Commonwealth. As little as two weeks.',
     keywords: [
       'custom cabinets sugar land',
       'sugar land cabinet makers',
@@ -141,7 +141,7 @@ export const locations: LocationData[] = [
     name: 'The Woodlands',
     metaTitle: 'Custom Cabinets The Woodlands TX | Luxury European | YuDezign',
     metaDescription:
-      'Luxury custom cabinets in The Woodlands TX. European frameless design, nature-inspired finishes, premium craftsmanship. Serving Carlton Woods, Sterling Ridge, Creekside Park. Local cabinet makers, as little as two weeks. Free design consultation.',
+      'Luxury European frameless cabinets in The Woodlands TX. Serving Carlton Woods, Sterling Ridge, Creekside Park. As little as two weeks.',
     keywords: [
       'custom cabinets the woodlands',
       'the woodlands cabinet makers',
@@ -331,7 +331,7 @@ export const locations: LocationData[] = [
     name: 'Galleria',
     metaTitle: 'Custom Cabinets Galleria Houston | Urban Luxury | YuDezign',
     metaDescription:
-      'Urban luxury cabinets in Galleria Houston. High-rise condos, space optimization, contemporary European. Serving Uptown, Post Oak. Frameless design for maximum storage.',
+      'Urban luxury cabinets in Galleria Houston: European frameless design for high-rise condos, with maximum storage. Serving Uptown and Post Oak.',
     keywords: [
       'custom cabinets galleria houston',
       'uptown cabinets houston',
@@ -368,7 +368,7 @@ export const locations: LocationData[] = [
     name: 'West University',
     metaTitle: 'Custom Cabinets West University | Family-Focused | YuDezign',
     metaDescription:
-      'Quality custom cabinets in West University Houston. Family-oriented professionals, timeless design for resale. Walk-to-school neighborhoods value quality craftsmanship.',
+      'Quality custom cabinets in West University, Houston, with timeless design for resale. Walk-to-school neighborhoods value quality craftsmanship.',
     keywords: [
       'custom cabinets west university',
       'west u cabinets',

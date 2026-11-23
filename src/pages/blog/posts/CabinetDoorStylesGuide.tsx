@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 
 const CabinetDoorStylesGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="Flat Panel vs Shaker Cabinet Doors: Complete Style Guide | YuDezign"
+        title="Flat Panel vs Shaker Cabinet Doors: Style Guide | YuDezign"
         description="Compare flat panel (slab) and Shaker cabinet door styles. Learn about construction methods, finishes, maintenance, and which style works best for your Houston home."
         keywords={[
           'flat panel cabinets',
@@ -19,6 +20,7 @@ const CabinetDoorStylesGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/flat-panel-vs-shaker-cabinet-doors"
         ogType="article"
+        structuredData={generateBlogPostSchemas('flat-panel-vs-shaker-cabinet-doors')}
       />
 
       <article className="min-h-screen bg-white">
@@ -78,6 +80,20 @@ const CabinetDoorStylesGuide: React.FC = () => {
             <p className="text-slate-700 leading-relaxed mb-8">
               In this comprehensive guide, we'll explore the two most popular door styles: flat panel (slab) and Shaker. You'll learn how each is constructed, what finishes work best, and which style suits your design vision and lifestyle—especially important for Houston's humid climate.
             </p>
+
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    <strong>Flat panel (slab) doors</strong> suit modern, minimalist spaces: a single smooth piece in melamine, laminate or acrylic, with the easiest maintenance and a lower cost. <strong>Shaker doors</strong> suit traditional, transitional and farmhouse styles: a carved profile in MDF with RTF or paint finishes, at a moderate cost. Both perform excellently in Houston when built from engineered materials with sealed edges.
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Flat Panel Section */}
             <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Flat Panel (Slab) Doors: Modern Simplicity</h2>

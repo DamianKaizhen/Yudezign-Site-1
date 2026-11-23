@@ -36,7 +36,7 @@
   <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
 
   <section class="hero" id="hero">
-    <p class="trust">Serving Houston since 2007 <b>·</b> Frameless cabinets <b>·</b> Lead times from two weeks</p>
+    <p class="trust">Serving Houston since 2019 <b>·</b> Frameless cabinets <b>·</b> Lead times from two weeks</p>
     <h1>Custom frameless cabinets,<br><em>precision crafted in Houston</em></h1>
     <div class="cta-row">
       <a class="btn gold" href="#" data-panel="contact">Start Your Project</a>
@@ -68,6 +68,11 @@
     <div class="sliders">
       <label>Brightness <output id="lightB">100%</output><input id="dim" type="range" min="15" max="150" value="100"></label>
       <label>Warmth <output id="lightK">3400 K</output><input id="warmth" type="range" min="2700" max="6000" step="50" value="3400"></label>
+      <div id="ledRows" hidden>
+        <label class="check"><input id="ledOn" type="checkbox" checked> Cabinet lights <output id="ledB">100%</output></label>
+        <label>Cabinet light level<input id="ledDim" type="range" min="10" max="150" value="100" aria-label="Cabinet light level"></label>
+        <label>Cabinet light colour <output id="ledK">3000 K</output><input id="ledWarm" type="range" min="2700" max="6000" step="50" value="3000"></label>
+      </div>
     </div>
   </div>
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
 const CabinetMaterialsGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="Cabinet Materials Guide: Plywood vs Particleboard vs MDF | YuDezign"
+        title="Cabinet Materials: Plywood vs Particleboard vs MDF | YuDezign"
         description="Expert guide to cabinet materials. Compare plywood, particleboard, and MDF for strength, moisture resistance, cost, and best applications in Houston's humid climate."
         keywords={[
           'cabinet materials',
@@ -19,6 +20,7 @@ const CabinetMaterialsGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/cabinet-materials-plywood-particleboard-mdf"
         ogType="article"
+        structuredData={generateBlogPostSchemas('cabinet-materials-plywood-particleboard-mdf')}
       />
 
       <article className="min-h-screen bg-white">
@@ -79,8 +81,22 @@ const CabinetMaterialsGuide: React.FC = () => {
               In this comprehensive guide, we'll break down the three primary engineered materials used in modern cabinet construction: plywood, particleboard, and MDF (Medium Density Fiberboard). You'll learn the strengths and weaknesses of each, understand which applications they're best suited for, and discover why engineered materials outperform solid wood in Houston's environment.
             </p>
 
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    Use <strong>plywood</strong> for cabinet boxes, sink bases and heavy-duty applications, <strong>particleboard</strong> for flat doors on a budget with melamine or laminate, and <strong>MDF</strong> for Shaker profiles and painted finishes. All three are engineered materials that outperform solid wood in Houston's 75-90% humidity, provided every exposed edge is sealed with edge-banding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
             {/* Why Material Choice Matters */}
-            <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Why Material Choice Matters in Houston</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Why Does Material Choice Matter in Houston?</h2>
 
             <p className="text-slate-700 leading-relaxed mb-6">
               Houston's climate presents unique challenges for cabinetry. With humidity levels ranging from 75-90% year-round, traditional solid wood expands and contracts dramatically, leading to:

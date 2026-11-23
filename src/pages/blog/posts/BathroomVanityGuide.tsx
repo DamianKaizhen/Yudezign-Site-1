@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { ArrowLeft, CheckCircle, XCircle, Droplets, Ruler, Package, Wrench } from 'lucide-react';
 
 const BathroomVanityGuide: React.FC = () => {
   return (
     <>
       <SEO
-        title="Bathroom Vanity Guide: Sizes, Materials & Styles for Houston | YuDezign"
+        title="Bathroom Vanity Guide for Houston: Sizes & Materials | YuDezign"
         description="Complete bathroom vanity buying guide for Houston homes. Standard sizes, single vs double vanities, floating designs, moisture-resistant materials, and cost ranges."
         keywords={[
           'bathroom vanity guide',
@@ -19,6 +20,7 @@ const BathroomVanityGuide: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/bathroom-vanity-guide-houston"
         ogType="article"
+        structuredData={generateBlogPostSchemas('bathroom-vanity-guide-houston')}
       />
 
       <article className="min-h-screen bg-white">
@@ -78,6 +80,20 @@ const BathroomVanityGuide: React.FC = () => {
             <p className="text-slate-700 leading-relaxed mb-8">
               This guide walks you through everything you need to plan a custom vanity: standard sizing, single vs. double configurations, floating vs. furniture styles, the materials that survive Houston bathrooms, and realistic cost ranges. By the end, you'll know exactly what to specify for your space.
             </p>
+
+            {/* Quick Answer Box */}
+            <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+              <div className="flex items-start gap-3">
+                <Droplets className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                  <p className="text-slate-700 mb-0">
+                    Choose a <strong>single vanity (24"-48", $1,200-$2,500)</strong> when you have under 60" of wall and a <strong>double vanity (60"-72", $2,500-$5,000)</strong> when you have 60" or more; custom and luxury designs run $5,000-$10,000+. Standard depth is 21" and standard height is 36", with at least 30" of clear floor in front. In Houston's 75-90% humidity, construction matters as much as looks.
+                  </p>
+                </div>
+              </div>
+            </div>
+
 
             {/* Sizing Section */}
             <h2 className="text-3xl font-bold text-slate-900 mt-12 mb-6">Vanity Sizes: Getting the Dimensions Right</h2>

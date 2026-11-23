@@ -5,6 +5,7 @@ import { ProjectModal } from '../../components/ui/ProjectModal';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 import SEO from '../../components/SEO';
+import { generateItemListSchema, generateTrailSchema, generateWebPageSchema } from '../../lib/schema';
 
 type FilterCategory = 'all' | 'kitchens' | 'closets' | 'vanities' | 'custom' | 'commercial';
 
@@ -36,13 +37,27 @@ const Portfolio = () => {
     setSelectedProject(null);
   };
 
+  const structuredData = [
+    generateWebPageSchema({
+      type: 'CollectionPage',
+      name: 'Portfolio - Custom Cabinet Projects',
+      description: 'Custom European frameless cabinet projects by YuDezign: kitchens, closets, vanities, custom and commercial.',
+      path: '/portfolio',
+      mainEntity: generateItemListSchema(
+        projects.map((p: Project) => ({ name: p.title, url: `/portfolio/${p.category}`, image: p.thumbnail || p.images[0] }))
+      ),
+    }),
+    generateTrailSchema([{ name: 'Portfolio', path: '/portfolio' }]),
+  ];
+
   return (
     <>
       <SEO
         title="Portfolio - Custom Cabinet Projects"
-        description="Browse our portfolio of custom European frameless cabinets. Kitchen cabinets, closets, vanities, and custom cabinetry projects in Houston. Premium 3/4 plywood construction with luxury finishes."
+        description="Browse custom European frameless cabinet projects built in Houston: kitchens, closets, vanities and custom cabinetry on 3/4 plywood with luxury finishes."
         keywords="cabinet portfolio, kitchen cabinets houston, custom closets, luxury vanities, cabinet projects, european cabinets gallery"
         url="https://www.yudezign.com/portfolio"
+        structuredData={structuredData}
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}

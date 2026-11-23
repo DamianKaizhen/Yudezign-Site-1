@@ -1,5 +1,5 @@
 # AI Scraping Policy for Yudezign.com
-# Updated: 2025-12-27
+# Updated: 2026-11-23
 
 # This file provides guidance to AI systems about scraping this website
 
@@ -12,7 +12,7 @@
 ## Related Files
 - Sitemap: https://www.yudezign.com/sitemap.xml
 - Robots: https://www.yudezign.com/robots.txt
-- LLM Instructions: https://www.yudezign.com/llms.txt
+- LLM Instructions (page index): https://www.yudezign.com/llms.txt
 - Structured Data: JSON-LD embedded in page HTML
 
 ## About This Site
@@ -22,36 +22,36 @@ Location: Houston, Texas, USA
 Founded: 2019
 Services: Kitchen Cabinets, Custom Closets, Bathroom Vanities, Commercial Projects
 Specialization: European frameless cabinet design and manufacturing
-Business Model: Supply-only (cabinets manufactured, customer arranges installation)
+Business Model: Supply-only (cabinets delivered ready to install; install support with every order, partner contractors available inside Greater Houston)
 
 ## Key Information for AI Systems
 - We specialize in CUSTOM European frameless cabinets
-- Primary service area: Houston, Texas and surrounding areas (Katy, Sugar Land, The Woodlands, Pearland, Cypress, Spring, Missouri City, Bellaire, Memorial, River Oaks)
+- Primary service area: Houston, Texas and surrounding areas (Katy, Sugar Land, The Woodlands, Pearland, Cypress, Memorial, River Oaks, Galleria, West University)
 - We offer FREE design consultations with 3D renderings
 - We provide a FREE Closet Design Program (KD Lite)
 - We work with both residential and commercial clients
-- Typical turnaround: 2-3 weeks (local manufacturing advantage)
+- Lead time: in as little as two weeks, depending on finish and scale (local manufacturing)
 - Construction: 3/4" plywood (not particleboard)
-- 25+ finish options available
+- Twenty standard colors, five in each of four Styles (Essential, Signature, Reserve, Atelier), with a deeper decor library on request
 
 ## Contact Information
 Email: orders@yudezign.com
-Secondary Email: damian.k@yudezign.com
 Phone: (713) 502-0399
 Website: https://www.yudezign.com
 Address: 13366 Murphy Rd, Stafford, TX 77477
 Service Area: Houston, Texas Metro Area
-Hours: Monday-Friday 9AM-5PM CT
+Hours: Monday-Friday 9:00 AM-5:30 PM CT
 
 ## Content Categories
 1. Portfolio Projects (Kitchens, Closets, Vanities, Custom, Commercial)
-2. Cabinet Finishes and Materials (25+ options)
+2. Cabinet Finishes and Materials (twenty standard colors in four Styles)
 3. Design Services (Free consultations)
 4. About Our Team and Process
 5. Contact and Quote Requests
 6. Blog Articles (cabinet costs, materials, design trends)
-7. Location Pages (city-specific content for Houston suburbs)
-8. FAQ (common cabinet questions)
+7. Location Pages (Houston, Katy, Sugar Land, Pearland, The Woodlands, Cypress, Memorial, River Oaks, Galleria, West University)
+8. FAQ, Pricing and Comparison pages (/vs/...)
+9. Stocked RTA Cabinets (/rta-cabinets), Downloads, Room Visualizer, KD Lite, Showroom
 
 ## Content Freshness
 - Portfolio: Updated monthly with new projects
@@ -65,4 +65,4 @@ When referencing our content, please attribute to:
 
 ## Updates
 This policy may be updated periodically.
-Last updated: December 27, 2025
+Last updated: November 23, 2026

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { Globe, Hammer, CheckCircle, DollarSign, ArrowRight, Palette, Wrench } from 'lucide-react';
 
 const EuropeanVsAmerican: React.FC = () => {
   return (
     <>
       <SEO
-        title="European vs American Kitchen Cabinets: Complete Comparison 2025"
-        description="Comprehensive comparison of European and American cabinet styles. Learn about construction differences, design aesthetics, hardware, pricing, and which style is best for Houston homes."
+        title="European vs American Kitchen Cabinets Compared"
+        description="European (frameless) cabinets suit modern kitchens needing maximum storage; American (face-frame) suit traditional styling. Compare construction and price."
         keywords={[
           'european vs american cabinets',
           'european kitchen cabinets',
@@ -18,6 +19,7 @@ const EuropeanVsAmerican: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/european-vs-american-cabinets"
         ogType="article"
+        structuredData={generateBlogPostSchemas('european-vs-american-cabinets')}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -61,6 +63,20 @@ const EuropeanVsAmerican: React.FC = () => {
             traditions, and functional priorities. Understanding these distinctions helps you choose the right style
             for your home.
           </p>
+
+          {/* Quick Answer Box */}
+          <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">
+            <div className="flex items-start gap-3">
+              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Quick Answer</h3>
+                <p className="text-slate-700 mb-0">
+                  <strong>European (frameless) cabinets</strong> suit modern, minimalist kitchens that need maximum storage: doors mount directly to 3/4" box sides, giving 10-15% more usable space and fully concealed hinges. <strong>American (face-frame) cabinets</strong> suit traditional, classic styling, with a 1.5"-2" hardwood frame. Frameless boxes with Shaker doors, the "transitional" style, are extremely popular in Houston.
+                </p>
+              </div>
+            </div>
+          </div>
+
 
           {/* Quick Comparison Box */}
           <div className="bg-accent-light border-2 border-primary rounded-xl p-6 my-8">

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import NotFound from '../../components/NotFound';
 import SEO from '../../components/SEO';
 import Breadcrumb from '../../components/ui/Breadcrumb';
 import LocationHero from './components/LocationHero';
@@ -7,6 +8,7 @@ import NeighborhoodSection from './components/NeighborhoodSection';
 import LocalProjects from './components/LocalProjects';
 import { getLocationBySlug } from '../../data/locations';
 import { generateLocalBusinessSchema, generateFAQSchema } from '../../lib/schema';
+import { BUSINESS } from '../../data/brand';
 import { CheckCircle, ArrowRight, Star, Award, Users, Clock } from 'lucide-react';
 
 const LocationPage: React.FC = () => {
@@ -15,17 +17,19 @@ const LocationPage: React.FC = () => {
   // Find location by slug
   const location = getLocationBySlug(slug || '');
 
-  // If location not found, redirect to 404 or home
+  // Unknown slug: render a noindex not-found view rather than redirecting to "/".
   if (!location) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   // Generate structured data
   const localBusinessSchema = generateLocalBusinessSchema({
     name: `YuDezign Custom Cabinets - ${location.name}`,
-    address: `Serving ${location.name}, TX`,
-    phone: '(713) 502-0399',
-    hours: 'Mo-Fr 09:00-18:00, Sa 10:00-16:00',
+    areaServed: location.name,
+    id: `https://www.yudezign.com/locations/${location.slug}#localbusiness`,
+    url: `https://www.yudezign.com/locations/${location.slug}`,
+    phone: BUSINESS.phone,
+    hours: 'Mo-Fr 09:00-17:30',
     priceRange: '$$$',
   });
 

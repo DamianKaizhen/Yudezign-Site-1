@@ -72,7 +72,7 @@ const PricingPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-xl text-white/90 mb-8">
-              Transparent pricing for homes and businesses. Calculate your project cost instantly and schedule a free design consultation.
+              Semi-custom cabinets run $130-215 per linear foot and fully custom $225-375, supply only, with lead times as little as two weeks, depending on finish and scale. Delivery is $350 per trip within Greater Houston; installation, countertops and appliances are separate.
             </p>
           </div>
         </div>
@@ -84,7 +84,7 @@ const PricingPage: React.FC = () => {
           <div className="text-center mb-12">
             <Calculator className="w-12 h-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Instant Cost Calculator
+              How much will my cabinets cost?
             </h2>
             <p className="text-lg text-slate-600">
               Get a ballpark estimate in seconds. Actual pricing determined during free consultation.
@@ -219,7 +219,7 @@ const PricingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Semi-Custom vs Fully Custom Cabinets
+              Semi-custom or fully custom: which fits?
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               YuDezign specializes in frameless European-style cabinets. Compare our two tiers to choose the right fit for your project.

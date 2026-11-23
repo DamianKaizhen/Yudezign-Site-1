@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import NotFound from '../../components/NotFound';
 import SEO from '../../components/SEO';
 import ServiceHero from './components/ServiceHero';
 import { getServiceBySlug } from '../../data/services';
-import { generateServiceSchema, generateFAQSchema } from '../../lib/schema';
+import { generateServiceSchema, generateFAQSchema, generateTrailSchema } from '../../lib/schema';
 import {
   CheckCircle,
   ArrowRight,
@@ -26,9 +27,9 @@ const ServicePage: React.FC = () => {
   // Find service by slug
   const service = getServiceBySlug(slug || '');
 
-  // If service not found, redirect
+  // Unknown slug: render a noindex not-found view rather than redirecting to "/".
   if (!service) {
-    return <Navigate to="/" replace />;
+    return <NotFound />;
   }
 
   // Generate structured data
@@ -41,6 +42,7 @@ const ServicePage: React.FC = () => {
   });
 
   const faqSchema = service.faqs ? generateFAQSchema(service.faqs) : null;
+  const breadcrumbSchema = generateTrailSchema([{ name: service.name, path: `/services/${service.slug}` }]);
 
   return (
     <>
@@ -50,11 +52,49 @@ const ServicePage: React.FC = () => {
         keywords={service.keywords}
         canonical={`https://www.yudezign.com/services/${service.slug}`}
         ogType="service"
-        structuredData={[serviceSchema, faqSchema].filter(Boolean)}
+        structuredData={[serviceSchema, faqSchema, breadcrumbSchema].filter(Boolean) as object[]}
       />
 
       {/* Hero */}
       <ServiceHero service={service} />
+
+      {/* The design as a 3D model: turn it, open it, light it */}
+      {service.exhibit && (
+        <section className="py-16 bg-white" aria-labelledby="exhibit-heading">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-5 gap-10 items-center">
+              <div className="lg:col-span-2">
+                <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+                  Explore it in 3D
+                </p>
+                <h2 id="exhibit-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                  {service.exhibit.title}
+                </h2>
+                <p className="text-lg text-slate-600 mb-6">{service.exhibit.text}</p>
+                <ul className="space-y-2 text-slate-600 list-disc pl-5">
+                  <li>Drag to turn the design.</li>
+                  <li>Select any door or drawer to open it.</li>
+                  <li>Use Lighting to dim the room and change its colour temperature.</li>
+                </ul>
+                <p className="mt-6 text-sm text-slate-500">
+                  The model comes from the same design file we build from.
+                </p>
+              </div>
+              <div className="lg:col-span-3">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 bg-black">
+                  <iframe
+                    src={`/gallery/exhibit.html?sku=${service.exhibit.sku}`}
+                    title={`3D model: ${service.exhibit.title}`}
+                    loading="lazy"
+                    allow="fullscreen"
+                    className="w-full h-full border-0"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Marketing Video */}
       {service.video && (

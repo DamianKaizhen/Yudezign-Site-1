@@ -61,10 +61,10 @@ const data = {
   ],
   about: {
     story: [
-      'YuDeZign has built custom European frameless cabinets in Houston since 2007. We started from a simple observation: homeowners and contractors here deserved good European cabinetry without showroom markups.',
+      'YuDeZign has built custom European frameless cabinets in Houston since 2019. We started from a simple observation: homeowners and contractors here deserved good European cabinetry without showroom markups.',
       'We build locally on a supply-only model, with 3/4" plywood construction as standard and lead times from as little as two weeks.',
     ],
-    stats: [['2007', 'Serving Houston since'], ['2 wk', 'Lead time, from'], [String(finishes.length), 'Standard colors'], ['3/4"', 'Plywood, standard']],
+    stats: [['2019', 'Serving Houston since'], ['2 wk', 'Lead time, from'], [String(finishes.length), 'Standard colors'], ['3/4"', 'Plywood, standard']],
     contact: { address: '13366 Murphy Rd, Stafford, TX 77477', phone: '(713) 502-0399', email: 'orders@yudezign.com', hours: 'Mon-Fri, 9:00 AM - 5:30 PM' },
   },
 };

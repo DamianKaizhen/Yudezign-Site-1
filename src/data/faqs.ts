@@ -14,7 +14,7 @@ export const faqs: FAQ[] = [
   {
     id: 'what-is-yudezign',
     question: 'What is YuDezign and what do you do?',
-    answer: 'YuDezign has been building custom European frameless cabinets in Houston since 2007. We specialize in kitchen cabinets, closets, bathroom vanities, and custom cabinetry, delivered in as little as two weeks, depending on finish and scale. Install support comes with every order, and inside Greater Houston we can arrange our partner contractors and quote the install separately with the job.',
+    answer: 'YuDezign has been building custom European frameless cabinets in Houston since 2019. We specialize in kitchen cabinets, closets, bathroom vanities, and custom cabinetry, delivered in as little as two weeks, depending on finish and scale. Install support comes with every order, and inside Greater Houston we can arrange our partner contractors and quote the install separately with the job.',
     category: 'general',
     order: 1
   },
@@ -35,7 +35,7 @@ export const faqs: FAQ[] = [
   {
     id: 'do-you-have-showroom',
     question: 'Do you have a showroom I can visit?',
-    answer: 'Yes! Our showroom is located at 13366 Murphy Rd, Stafford, TX 77477. We have 20+ finish samples, full-size cabinet displays, and hardware options. Open Monday-Friday 8am-5pm. Call (713) 502-0399 to schedule an appointment.',
+    answer: 'Yes! Our showroom is located at 13366 Murphy Rd, Stafford, TX 77477. We have 20+ finish samples, full-size cabinet displays, and hardware options. Open Monday-Friday 9:00 AM-5:30 PM. Call (713) 502-0399 to schedule an appointment.',
     category: 'general',
     order: 4
   },
@@ -224,7 +224,7 @@ export const faqs: FAQ[] = [
   {
     id: 'how-do-i-file-warranty-claim',
     question: 'How do I file a warranty claim?',
-    answer: 'Contact us at (713) 502-0399 or info@yudezign.com with photos of the issue and your original order number. We\'ll assess the claim (usually within 1 business day) and ship replacement parts if approved. Most claims are resolved within 1-2 weeks.',
+    answer: 'Contact us at (713) 502-0399 or orders@yudezign.com with photos of the issue and your original order number. We\'ll assess the claim (usually within 1 business day) and ship replacement parts if approved. Most claims are resolved within 1-2 weeks.',
     category: 'warranty',
     order: 3
   },

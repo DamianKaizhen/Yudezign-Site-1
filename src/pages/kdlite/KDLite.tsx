@@ -40,7 +40,7 @@ const KDLite = () => {
     <>
       <SEO
         title="Free Closet Design Program - 3D Closet Designer"
-        description="Design your custom closet for free with our KD-Lite Closet Program. 3D visualization, instant pricing, and direct factory ordering. No CAD experience required. Create your perfect closet system in Houston with drag-and-drop tools."
+        description="Design your custom closet in Houston for free with KD-Lite: 3D visualization, instant pricing and direct factory ordering. No CAD experience required."
         keywords="closet design software, free closet designer, 3D closet tool, custom closet planner, closet configurator, online closet design, closet quote calculator"
         url="https://www.yudezign.com/kdlite"
       />

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { DEFAULT_OG_IMAGE, SITE_URL } from '../data/brand';
 
 interface SEOProps {
   title?: string;
@@ -27,18 +28,27 @@ const SEO = ({
   title = 'YuDezign - Custom European Frameless Cabinets | Houston',
   description = 'Premium custom European frameless cabinets manufactured in Houston. Kitchen cabinets, closets, vanities & custom cabinetry. 3/4" plywood construction, 20 standard colors, lead times from as little as two weeks. Supply-only pricing.',
   keywords = 'european cabinets, frameless cabinets, custom cabinets houston, kitchen cabinets, closet cabinets, vanities, cabinet supply, houston cabinetry, plywood cabinets, luxury cabinets',
-  image = 'https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=1200&q=90',
+  image = DEFAULT_OG_IMAGE,
   ogImage,
-  url = 'https://www.yudezign.com',
+  url,
   canonical,
+  ogType,
   type = 'website',
   structuredData,
   article,
   noindex = false,
 }: SEOProps) => {
-  const siteTitle = title.includes('YuDezign') ? title : `${title} | YuDezign`;
-  // Use ogImage if provided, otherwise fall back to image prop
-  const effectiveImage = ogImage || image;
+  const siteTitle = /yudezign/i.test(title) ? title : `${title} | YuDezign`;
+  // Use ogImage if provided, otherwise fall back to image prop. Social crawlers
+  // need an absolute URL, so a site-relative path is resolved against the origin.
+  const rawImage = ogImage || image;
+  const effectiveImage = rawImage.startsWith('/') ? `${SITE_URL}${rawImage}` : rawImage;
+  // Honour ogType (pages pass it) over type. Only values Open Graph knows are
+  // emitted; 'place' and 'service' are not valid og:type values.
+  const requestedType = ogType || type;
+  const effectiveType = ['website', 'article', 'profile', 'product', 'book'].includes(requestedType)
+    ? requestedType
+    : 'website';
 
   useEffect(() => {
     // Update document title
@@ -63,9 +73,14 @@ const SEO = ({
     updateMetaTag('description', description);
     updateMetaTag('keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
 
+    // A page that supplies neither url nor canonical canonicalises to its own
+    // path (never the home page). Query string and hash are dropped.
+    const path = window.location.pathname.replace(/\/+$/, '');
+    const resolvedUrl = canonical || url || `${SITE_URL}${path}`;
+
     // Open Graph / Facebook
-    updateMetaTag('og:type', type, true);
-    updateMetaTag('og:url', url, true);
+    updateMetaTag('og:type', effectiveType, true);
+    updateMetaTag('og:url', resolvedUrl, true);
     updateMetaTag('og:title', siteTitle, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', effectiveImage, true);
@@ -73,7 +88,7 @@ const SEO = ({
     updateMetaTag('og:locale', 'en_US', true);
 
     // Article-specific Open Graph tags (for blog posts)
-    if (type === 'article' && article) {
+    if (effectiveType === 'article' && article) {
       if (article.publishedTime) {
         updateMetaTag('article:published_time', article.publishedTime, true);
       }
@@ -96,7 +111,7 @@ const SEO = ({
 
     // Twitter
     updateMetaTag('twitter:card', 'summary_large_image', true);
-    updateMetaTag('twitter:url', url, true);
+    updateMetaTag('twitter:url', resolvedUrl, true);
     updateMetaTag('twitter:title', siteTitle, true);
     updateMetaTag('twitter:description', description, true);
     updateMetaTag('twitter:image', effectiveImage, true);
@@ -106,11 +121,11 @@ const SEO = ({
     updateMetaTag('language', 'English');
     updateMetaTag('author', 'YuDezign');
 
-    // Geo tags for local Houston business
+    // Geo tags for local Houston business. geo.position / ICBM were downtown
+    // Houston, not the showroom address, so they are omitted until the real
+    // coordinates are supplied.
     updateMetaTag('geo.region', 'US-TX');
     updateMetaTag('geo.placename', 'Houston');
-    updateMetaTag('geo.position', '29.7604;-95.3698');
-    updateMetaTag('ICBM', '29.7604, -95.3698');
 
     // Canonical link — prefer the explicit canonical prop, fall back to url.
     let canonicalEl = document.querySelector('link[rel="canonical"]');
@@ -119,30 +134,35 @@ const SEO = ({
       canonicalEl.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalEl);
     }
-    canonicalEl.setAttribute('href', canonical || url);
+    canonicalEl.setAttribute('href', resolvedUrl);
 
-    // Structured Data (JSON-LD)
-    if (structuredData) {
-      // Remove existing page-specific schema
-      const existingSchema = document.getElementById('page-schema');
-      if (existingSchema) {
-        existingSchema.remove();
-      }
+    // Structured Data (JSON-LD). Always drop the previous page's block first so a
+    // page that supplies none does not inherit a stale one.
+    document.getElementById('page-schema')?.remove();
 
-      // Create new schema script
+    const blocks = (Array.isArray(structuredData) ? structuredData : [structuredData]).filter(
+      (b): b is object => !!b && typeof b === 'object'
+    );
+    if (blocks.length > 0) {
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.id = 'page-schema';
 
-      // Handle both single schema and array of schemas
-      const schemaContent = Array.isArray(structuredData)
-        ? { '@context': 'https://schema.org', '@graph': structuredData }
-        : structuredData;
+      // Several blocks go into one @graph; the shared @context moves to the top.
+      const stripContext = (b: object) => {
+        const { ['@context']: _ctx, ...rest } = b as Record<string, unknown>;
+        void _ctx;
+        return rest;
+      };
+      const schemaContent =
+        blocks.length === 1 && !Array.isArray(structuredData)
+          ? blocks[0]
+          : { '@context': 'https://schema.org', '@graph': blocks.map(stripContext) };
 
       script.textContent = JSON.stringify(schemaContent);
       document.head.appendChild(script);
     }
-  }, [siteTitle, description, keywords, effectiveImage, url, canonical, type, structuredData, article, noindex]);
+  }, [siteTitle, description, keywords, effectiveImage, url, canonical, effectiveType, structuredData, article, noindex]);
 
   return null; // This component doesn't render anything
 };

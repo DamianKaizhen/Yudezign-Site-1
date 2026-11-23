@@ -114,11 +114,31 @@ def counter_top(meshes, spec, root, sku):
 
 
 # ---------------------------------------------------------------- exhibits
+# The exporter (mrs_export.py --movables --leds) keeps each real door and drawer as its own node, mv_NNN, and lists its
+# hinge axis or pull direction beside the model in <name>.movables.json. They stay separate objects here.
 groups = {}
+MOVABLES, LEDS, mov_objs = [], [], []
+
+
+def g2b(v):
+    """glTF (y up) -> Blender (z up)."""
+    return Vector((v[0], -v[2], v[1]))
+
+
 for e in LAYOUT["exhibits"]:
     before = set(bpy.data.objects)
     bpy.ops.import_scene.gltf(filepath=os.path.join(SOLD, e["glb"]))
     new = [o for o in bpy.data.objects if o not in before]
+    side = json.load(open(os.path.join(SOLD, e["glb"][:-4] + ".movables.json"), encoding="utf-8"))
+    mvmeta = {m["name"]: m for m in side["movables"]}
+    mine = []
+    for o in new:
+        base = o.name.split(".")[0]
+        if o.type == "MESH" and base in mvmeta:
+            mine.append((o, mvmeta[base]))
+            o.name = "mv_%s_%s" % (e["sku"], base[3:])
+    if len(mine) != len(mvmeta):
+        raise SystemExit("%s: %d of %d doors and drawers found after import" % (e["sku"], len(mine), len(mvmeta)))
     ROOM = ("01()", "lvkouban", "noname_", "2012-6-")          # walls, floor, ceiling, ceiling light of the source room
     drop = tuple(e.get("drop", []))
     for o in [o for o in new if o.type == "MESH" and (o.name.startswith(ROOM) or o.name in drop)]:
@@ -161,7 +181,17 @@ for e in LAYOUT["exhibits"]:
     hi = Vector([max(p[i] for p in pts) for i in range(3)])
     root.location = (e["xc"] - (lo.x + hi.x) / 2, BACK - hi.y, -lo.z)
     bpy.context.view_layer.update()
-    groups[e["sku"]] = meshes
+    movs = [o for o, _ in mine]
+    groups[e["sku"]] = [o for o in meshes if o not in movs]
+    Mw = root.matrix_world.copy()
+    R3 = Mw.to_3x3()
+    for o, m in mine:
+        mov_objs.append(o)
+        MOVABLES.append(dict(name=o.name, sku=e["sku"], kind=m["kind"], pivot=[round(c, 4) for c in Mw @ g2b(m["pivot"])],
+                             axis=[round(c, 5) for c in (R3 @ g2b(m["axis"])).normalized()], max=m["max"]))
+    for d in side["leds"]:
+        LEDS.append(dict(sku=e["sku"], a=[round(c, 4) for c in Mw @ g2b(d["a"])], b=[round(c, 4) for c in Mw @ g2b(d["b"])],
+                         out=[round(c, 3) for c in (R3 @ g2b(d["out"])).normalized()]))
     log("placed", e["sku"], "size", [round(v, 2) for v in (hi - lo)])
 
 # ---------------------------------------------------------------- hall shell
@@ -328,148 +358,17 @@ for ob, img in shells:
     log("baked", ob.name, img.size[:])
 bpy.data.objects.remove(glow, do_unlink=True)
 
-# ---------------------------------------------------------------- doors and drawers become their own objects
-import bmesh as _bm
-
-
-def _cls(name):
-    if name.startswith("Door face"):
-        return "door"
-    if name.startswith("Drawer face"):
-        return "drawer"
-    if name.startswith("Drawerbody"):
-        return "body"
-    if "jinshu" in name or "jinse" in name:
-        return "metal"
-    return "other"
-
-
-MOVABLES, mov_objs = [], []
-
-
-def split_movables(sku, obs):
-    for o in list(obs):
-        me = o.data
-        names = [m.name if m else "" for m in me.materials]
-        if not any(_cls(n) in ("door", "drawer") for n in names):
-            continue
-        mw = o.matrix_world.copy()
-        bm = _bm.new()
-        bm.from_mesh(me)
-        bm.faces.index_update()
-        uvl = bm.loops.layers.uv.active
-        seen, islands = set(), []
-        for f in bm.faces:
-            if f.index in seen:
-                continue
-            seen.add(f.index)
-            stack, isl = [f], []
-            while stack:
-                a = stack.pop()
-                isl.append(a)
-                for e in a.edges:
-                    for h in e.link_faces:
-                        if h.index not in seen:
-                            seen.add(h.index)
-                            stack.append(h)
-            islands.append(isl)
-        allp = [mw @ v.co for v in bm.verts]
-        item_c = Vector([(min(q[i] for q in allp) + max(q[i] for q in allp)) / 2 for i in range(3)])
-        info = []
-        for isl in islands:
-            area = {}
-            for f in isl:
-                c = _cls(names[f.material_index] if f.material_index < len(names) else "")
-                area[c] = area.get(c, 0) + f.calc_area()
-            pts = [mw @ v.co for f in isl for v in f.verts]
-            lo = Vector([min(q[i] for q in pts) for i in range(3)])
-            hi = Vector([max(q[i] for q in pts) for i in range(3)])
-            top = max(area, key=area.get)
-            info.append(dict(faces=isl, kind=top if area[top] > 0.5 * sum(area.values()) else "other", lo=lo, hi=hi, c=(lo + hi) / 2))
-        ilo = Vector([min(q[i] for q in allp) for i in range(3)])
-        ihi = Vector([max(q[i] for q in allp) for i in range(3)])
-        movs = []
-        for d in info:
-            if d["kind"] not in ("door", "drawer"):
-                continue
-            sx, sy, sz = d["hi"].x - d["lo"].x, d["hi"].y - d["lo"].y, d["hi"].z - d["lo"].z
-            thin, wide = min(sx, sy), max(sx, sy)
-            ax = 0 if sx < sy else 1
-            # a real front: a thin slab of door size, on a cabinet (not a lone panel or a slat), and at its face
-            if thin > 0.05 or wide < 0.2 or wide > 1.25 or sz < (0.25 if d["kind"] == "door" else 0.09) or sz > 2.45:
-                continue
-            if ihi[ax] - ilo[ax] < 0.2:
-                continue
-            if min(abs(d["c"][ax] - ilo[ax]), abs(d["c"][ax] - ihi[ax])) > 0.06:
-                continue
-            movs.append(d)
-        for d in movs:
-            d["extra"], d["handle"] = [], None
-            d["axis"] = 0 if (d["hi"].x - d["lo"].x) < (d["hi"].y - d["lo"].y) else 1
-        if not movs:
-            bm.free()
-            continue
-
-        def inside(d, c, pad):
-            ax = d["axis"]
-            oth = 1 - ax
-            return (d["lo"][oth] - pad <= c[oth] <= d["hi"][oth] + pad and d["lo"].z - pad <= c.z <= d["hi"].z + pad)
-        for d in info:
-            if d["kind"] == "metal" and max(d["hi"] - d["lo"]) < 0.5:
-                near = [m_ for m_ in movs if inside(m_, d["c"], 0.03) and abs(d["c"][m_["axis"]] - m_["c"][m_["axis"]]) < 0.12]
-                if near:
-                    t = min(near, key=lambda m_: (m_["c"] - d["c"]).length)
-                    t["extra"].append(d)
-                    t["handle"] = d["c"]
-            elif d["kind"] == "body":
-                near = [m_ for m_ in movs if m_["kind"] == "drawer" and inside(m_, d["c"], 0.02) and abs(d["c"][m_["axis"]] - m_["c"][m_["axis"]]) < 0.7]
-                if near:
-                    min(near, key=lambda m_: (m_["c"] - d["c"]).length)["extra"].append(d)
-        kill = []
-        for d in movs:
-            faces = list(d["faces"]) + [f for x in d["extra"] for f in x["faces"]]
-            nb = _bm.new()
-            nuv = nb.loops.layers.uv.new("UVMap")
-            for f in faces:
-                nf = nb.faces.new([nb.verts.new(mw @ v.co) for v in f.verts])
-                nf.material_index = f.material_index
-                nf.smooth = f.smooth
-                if uvl:
-                    for l0, l1 in zip(f.loops, nf.loops):
-                        l1[nuv].uv = l0[uvl].uv
-            nme = bpy.data.meshes.new("mv")
-            nb.to_mesh(nme)
-            nb.free()
-            for m in me.materials:
-                nme.materials.append(m)
-            name = "mv_%s_%d" % (sku, len(MOVABLES))
-            ob = bpy.data.objects.new(name, nme)
-            COL.objects.link(ob)
-            mov_objs.append(ob)
-            ax = d["axis"]
-            out = 1 if d["c"][ax] >= item_c[ax] else -1
-            MOVABLES.append(dict(name=name, sku=sku, kind=d["kind"], lo=[round(v, 4) for v in d["lo"]], hi=[round(v, 4) for v in d["hi"]],
-                                 axis=ax, out=out, handle=[round(v, 4) for v in d["handle"]] if d["handle"] is not None else None,
-                                 item=[round(v, 4) for v in item_c]))
-            kill += faces
-        _bm.ops.delete(bm, geom=list(set(kill)), context="FACES")
-        bm.to_mesh(me)
-        bm.free()
-
-
+# ---------------------------------------------------------------- doors, drawers and light strips
 bpy.context.view_layer.update()
-if os.environ.get("DOORS"):          # opening doors and drawers: parked, detection is not reliable yet
-    for sku_, obs_ in groups.items():
-        split_movables(sku_, obs_)
-json.dump(MOVABLES, open(os.path.join(OUT, "movables.json"), "w"), indent=0)
-log("movables", len(MOVABLES), {k: sum(1 for m in MOVABLES if m["kind"] == k) for k in ("door", "drawer")})
+json.dump({"movables": MOVABLES, "leds": LEDS}, open(os.path.join(OUT, "movables.json"), "w"), indent=0)
+log("movables", len(MOVABLES), {k: sum(1 for m in MOVABLES if m["kind"] == k) for k in ("door", "flap", "drawer")}, "leds", len(LEDS))
 log("movables by exhibit", {s_: sum(1 for m in MOVABLES if m["sku"] == s_) for s_ in groups})
 
 # ---------------------------------------------------------------- slim the models down
 # appliances, sinks, taps, stools and plants arrive far denser than a web page needs
 dg = bpy.context.evaluated_depsgraph_get()
 before_t = after_t = 0
-for obs in groups.values():
+for obs in list(groups.values()) + [mov_objs]:
     for o in obs:
         t = sum(len(pl.vertices) - 2 for pl in o.data.polygons)
         before_t += t
@@ -538,8 +437,8 @@ log("materials", len(mat_first), "kept,", len(remap), "merged; images", len(img_
 
 # ---------------------------------------------------------------- export
 bpy.context.view_layer.update()
-world_m = {o.name: o.matrix_world.copy() for o in allm}
-for o in allm:
+world_m = {o.name: o.matrix_world.copy() for o in allm + mov_objs}
+for o in allm + mov_objs:
     o.parent = None
     o.matrix_world = world_m[o.name]
 joined = []
@@ -556,14 +455,14 @@ for g, obs in groups.items():
     joined.append(act)
 
 
-def export(path, obs):
+def export(path, obs, draco=False):
     bpy.ops.object.select_all(action="DESELECT")
     for o in obs:
         o.select_set(True)
     bpy.context.view_layer.objects.active = obs[0]
     kw = dict(filepath=path, export_format="GLB", use_selection=True, export_yup=True, export_apply=False,
               export_cameras=False, export_lights=False, export_image_format="JPEG", export_jpeg_quality=82,
-              export_draco_mesh_compression_enable=path.endswith("pieces.glb") and not os.environ.get("NODRACO"), export_draco_mesh_compression_level=6,
+              export_draco_mesh_compression_enable=draco and not os.environ.get("NODRACO"), export_draco_mesh_compression_level=6,
               export_draco_position_quantization=14, export_draco_normal_quantization=10, export_draco_texcoord_quantization=24)
     try:
         bpy.ops.export_scene.gltf(**kw)
@@ -575,6 +474,8 @@ def export(path, obs):
     log("exported", os.path.basename(path), round(os.path.getsize(path) / 1e6, 1), "MB")
 
 
-export(os.path.join(OUT, "models", "pieces.glb"), joined + mov_objs)
+for sku_, act in zip(groups, joined):          # one model per exhibit: the hall loads them in turn, a service page only its own
+    export(os.path.join(OUT, "models", sku_ + ".glb"),
+           [act] + [o for o in mov_objs if o.name.startswith("mv_%s_" % sku_)], draco=True)
 export(os.path.join(OUT, "models", "shell.glb"), [ob for ob, _ in shells if ob.name != "shell_floor"])
 log("done")

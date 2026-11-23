@@ -174,7 +174,7 @@ const Privacy = () => {
                 <li><strong>Data Portability:</strong> Request your data in a structured, machine-readable format</li>
               </ul>
               <p className="text-body text-luxury-gray-600 leading-relaxed mt-4">
-                To exercise these rights, please contact us at <a href="mailto:damian.k@yudezign.com" className="text-primary hover:text-primary-light font-medium">damian.k@yudezign.com</a> or call <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>.
+                To exercise these rights, please contact us at <a href="mailto:orders@yudezign.com" className="text-primary hover:text-primary-light font-medium">orders@yudezign.com</a> or call <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>.
               </p>
             </motion.div>
 
@@ -252,7 +252,7 @@ const Privacy = () => {
                 <p className="text-body text-luxury-gray-600">13366 Murphy Rd</p>
                 <p className="text-body text-luxury-gray-600">Stafford, TX 77477</p>
                 <p className="text-body text-luxury-gray-600 mt-3">
-                  Email: <a href="mailto:damian.k@yudezign.com" className="text-primary hover:text-primary-light font-medium">damian.k@yudezign.com</a>
+                  Email: <a href="mailto:orders@yudezign.com" className="text-primary hover:text-primary-light font-medium">orders@yudezign.com</a>
                 </p>
                 <p className="text-body text-luxury-gray-600">
                   Phone: <a href="tel:+17135020399" className="text-primary hover:text-primary-light font-medium">(713) 502-0399</a>

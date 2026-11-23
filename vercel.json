@@ -2,6 +2,13 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ':(exclude)src/data/contactMessages.ts' ':(exclude)src/data/visualizerSubmissions.ts'",
+  "redirects": [
+    { "source": "/locations/spring", "destination": "/locations/houston", "statusCode": 301 },
+    { "source": "/locations/richmond", "destination": "/locations/houston", "statusCode": 301 },
+    { "source": "/locations/missouri-city", "destination": "/locations/houston", "statusCode": 301 },
+    { "source": "/locations/friendswood", "destination": "/locations/houston", "statusCode": 301 },
+    { "source": "/vs/plywood-vs-mdf-cabinets", "destination": "/blog/cabinet-materials-plywood-particleboard-mdf", "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/sales", "destination": "/" },
     { "source": "/sales/:path*", "destination": "/" },
@@ -16,11 +23,67 @@
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/gallery/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/gallery/assets/site.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/portfolio/(.*)\\.(jpg|jpeg|png|webp|avif|gif|svg|mp4)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/swatches/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
       "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/admin",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/admin/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     },

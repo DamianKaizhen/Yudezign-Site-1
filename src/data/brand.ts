@@ -26,3 +26,27 @@ export const LOGO_WORDMARK_LIGHT = '/logo-wordmark-light.svg';
 
 /** Raster copy, for structured data and social cards that reject SVG. */
 export const LOGO_WORDMARK_PNG = '/logo-wordmark.png';
+
+/** Canonical origin of the public site. */
+export const SITE_URL = 'https://www.yudezign.com';
+
+/** Default social-share / Open Graph image: an existing project photo in public/portfolio (1280x720). */
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/portfolio/kitchen-grand-tour-poster.jpg`;
+
+/**
+ * Business facts shared by structured data and the SEO component.
+ * Deliberately NOT included: founding year, public email and opening hours.
+ * Those are disputed across the site and wait on an owner ruling.
+ */
+export const BUSINESS = {
+  name: 'YuDezign',
+  phone: '(713) 502-0399',
+  phoneE164: '+17135020399',
+  address: {
+    streetAddress: '13366 Murphy Rd',
+    addressLocality: 'Stafford',
+    addressRegion: 'TX',
+    postalCode: '77477',
+    addressCountry: 'US',
+  },
+} as const;

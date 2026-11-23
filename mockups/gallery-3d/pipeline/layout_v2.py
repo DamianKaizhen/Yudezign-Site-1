@@ -30,11 +30,10 @@ EXHIBITS = [
          title="Executive Office", eyebrow="Client project, commercial",
          text="An L-shaped executive desk with a credenza, floating shelves and a slat back panel.",
          meta="Desk, credenza and shelving  \u00b7  Houston"),
-    dict(sku="island-kitchen", glb="pendernales/P1b-pendernales-kitchen-uvbirch.glb", rot=0, W=4.22, D=3.31, H=2.36, xc=28.0,
-         boxes=[dict(lo=[1.80, 0.77, 0.0], hi=[3.44, 0.87, 0.95])],     # half wall behind the island (model coordinates)
-         title="L-Shaped Kitchen with Island", eyebrow="Client project, residential",
-         text="A frameless L-shaped kitchen with a wall of uppers, a tall fridge surround and an island backed by a half wall.",
-         meta="Kitchen and island  \u00b7  Houston area"),
+    dict(sku="garage-cabinet", glb="garage-cabinet/GarageCabinetv2.glb", rot=0, W=3.18, D=0.72, H=2.79, xc=28.0,
+         title="Garage Cabinets", eyebrow="Showroom display",
+         text="A wall of garage storage with tall cabinets, lift-up upper doors, a slat wall and a workbench with a drawer bank.",
+         meta="Garage storage  \u00b7  Yukon Flooring Showroom, Stafford"),
     dict(sku="master-bath", side=1, glb="master-bath/MasterBathv2.glb", rot=0, W=2.82, D=2.75, H=2.52, xc=21.5,
          title="Master Bath", eyebrow="Showroom display",
          text="A corner double vanity with vessel sinks, framed mirrors and open shelving.",
@@ -60,7 +59,7 @@ def exhibit(sku):
 
 
 for step in ("reception-desk", "wall-kitchens", "executive-office", "wall-closets", "showroom-kitchen", "master-bath",
-             "wall-vanities", "island-kitchen", "wall-custom", "coffee-bar", "wall-commercial", "mudroom"):
+             "wall-vanities", "garage-cabinet", "wall-custom", "coffee-bar", "wall-commercial", "mudroom"):
     if step in old and step.startswith("wall-"):
         stops.append(old[step])
     else:
@@ -91,9 +90,6 @@ for e in EXHIBITS:
     wings.append(dict(name="wing_%d" % len(wings), x=round(e["xc"] - e["W"] / 2 - 0.3, 2), y0=round(BACK - e["D"] - 0.4, 2),
                       title=e["title"], video="assets/video/%s.mp4" % vid, poster="assets/video/%s-poster.jpg" % vid,
                       videoTitle=vtitle, aspect=round(aspect, 4)))
-ik = next(e for e in EXHIBITS if e["sku"] == "island-kitchen")          # side wall behind the fridge end
-wings.append(dict(name="wing_%d" % len(wings), x=round(ik["xc"] + ik["W"] / 2 + 0.3, 2), y0=round(BACK - 2.45, 2), side=1,
-                  title=ik["title"], video=None))
 base["wings"] = wings
 json.dump(base, open(os.path.join(HERE, "layout.json"), "w", encoding="utf-8"), indent=1)
 public = {k: v for k, v in base.items() if k != "exhibits"}          # source file names stay out of the web copy

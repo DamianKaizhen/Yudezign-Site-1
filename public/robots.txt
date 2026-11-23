@@ -1,48 +1,176 @@
-# Yudezign.com Robots.txt
-# Updated: 2024-12-23
+# Yudezign.com robots.txt
+# Updated: 2026-11-23
+#
+# A named User-agent group does NOT inherit from the * group, so the private-path
+# rules are repeated in every group below. Keep them identical.
 
-# Allow all AI crawlers and search engines
+# All crawlers
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
 
-# Specific rules for AI crawlers
-# OpenAI GPTBot
+# OpenAI training crawler
 User-agent: GPTBot
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
 
-# Google Bard/Gemini
+# OpenAI search
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# ChatGPT browsing on a user's behalf
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# Google Gemini training control
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
 
-# Anthropic Claude
+# Anthropic crawler
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# Anthropic (legacy token)
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# Anthropic (legacy token)
 User-agent: Claude-Web
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# Perplexity search index
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
+
+# Perplexity browsing on a user's behalf
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
 
 # Common Crawl (used by many AI models)
 User-agent: CCBot
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /sales
+Disallow: /sales/
+Disallow: /sales-training
+Disallow: /sales-training/
+Disallow: /api/
+# /doc is a viewer wrapper around documents that are indexable on their own.
+# Crawling it would only produce duplicates of /downloads/*.pdf.
+Disallow: /doc
 
-# Bing AI
+# Bing
 User-agent: Bingbot
 Allow: /
-
-# Block admin, the private sales portal, and internal training material
-User-agent: *
+Disallow: /admin
 Disallow: /admin/
-Disallow: /admin/*
 Disallow: /sales
-Disallow: /sales/*
+Disallow: /sales/
 Disallow: /sales-training
-Disallow: /sales-training/*
-
+Disallow: /sales-training/
+Disallow: /api/
 # /doc is a viewer wrapper around documents that are indexable on their own.
 # Crawling it would only produce duplicates of /downloads/*.pdf.
 Disallow: /doc
 
 # Sitemap location
 Sitemap: https://www.yudezign.com/sitemap.xml
-
-# Crawl-delay for considerate crawling (optional)
-# Crawl-delay: 1

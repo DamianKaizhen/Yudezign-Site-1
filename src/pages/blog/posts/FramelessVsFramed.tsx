@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../../../components/SEO';
+import { generateBlogPostSchemas } from '../../../lib/schema';
 import { Layout, Maximize2, CheckCircle, XCircle, ArrowRight, Package, TrendingUp } from 'lucide-react';
 
 const FramelessVsFramed: React.FC = () => {
   return (
     <>
       <SEO
-        title="Frameless vs Framed Cabinets: Complete Comparison Guide 2025"
-        description="Detailed comparison of frameless (European) and framed (American) cabinets. Learn about construction, storage efficiency, cost differences, and which style is best for Houston homes."
+        title="Frameless vs Framed Cabinets: Complete Guide | YuDezign"
+        description="Frameless cabinets offer 10-15% more storage and a modern look; framed cabinets suit traditional styles. Compare construction, cost and use in Houston homes."
         keywords={[
           'frameless vs framed cabinets',
           'european style cabinets',
@@ -18,6 +19,7 @@ const FramelessVsFramed: React.FC = () => {
         ]}
         canonical="https://www.yudezign.com/blog/frameless-vs-framed-cabinets"
         ogType="article"
+        structuredData={generateBlogPostSchemas('frameless-vs-framed-cabinets')}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

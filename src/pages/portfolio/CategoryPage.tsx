@@ -7,6 +7,8 @@ import { ProjectModal } from '../../components/ui/ProjectModal';
 import { projects } from '../../data/projects';
 import type { Project } from '../../types';
 import SEO from '../../components/SEO';
+import NotFound from '../../components/NotFound';
+import { generateItemListSchema, generateTrailSchema, generateWebPageSchema } from '../../lib/schema';
 
 // Hero photos are YuDeZign projects served from /public/portfolio, the same files the
 // portfolio cards use. The hero is a 5:1 band on desktop, so heroPosition (CSS
@@ -38,7 +40,7 @@ const categoryInfo = {
   },
   commercial: {
     title: 'Commercial Projects',
-    description: 'Professional-grade cabinetry solutions for offices, restaurants, retail stores, and medical facilities. Durable, compliant, and designed for high-traffic environments.',
+    description: 'Commercial cabinetry from a Houston manufacturer for offices, restaurants, retail stores and medical facilities. Durable, compliant, built for high-traffic use.',
     heroImage: '/portfolio/office-kitchenette-2.jpg',
     heroPosition: '50% 45%',
   },
@@ -60,15 +62,25 @@ const CategoryPage = () => {
   const categoryProjects = projects.filter((project) => project.category === category);
 
   if (!info) {
-    return (
-      <div className="min-h-screen pt-24 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Category Not Found</h1>
-          <p className="text-neutral-600">The category you're looking for doesn't exist.</p>
-        </div>
-      </div>
-    );
+    return <NotFound />;
   }
+
+  const categoryPath = `/portfolio/${category}`;
+  const structuredData = [
+    generateWebPageSchema({
+      type: 'CollectionPage',
+      name: `${info.title} - Custom European Cabinets`,
+      description: info.description,
+      path: categoryPath,
+      mainEntity: generateItemListSchema(
+        categoryProjects.map((p) => ({ name: p.title, url: categoryPath, image: p.thumbnail || p.images[0] }))
+      ),
+    }),
+    generateTrailSchema([
+      { name: 'Portfolio', path: '/portfolio' },
+      { name: info.title, path: categoryPath },
+    ]),
+  ];
 
   return (
     <>
@@ -78,6 +90,7 @@ const CategoryPage = () => {
         keywords={`${category} cabinets, custom ${category}, houston ${category}, european ${category}, luxury ${category}`}
         url={`https://www.yudezign.com/portfolio/${category}`}
         image={`https://www.yudezign.com${info.heroImage}`}
+        structuredData={structuredData}
       />
       <div className="min-h-screen pt-24">
       {/* Hero Section */}

@@ -78,6 +78,15 @@ if "<base href" not in html or re.search(r'href="#"', html):
     raise SystemExit("index.html changed, link rewrite failed")
 open(os.path.join(DST, "index.html"), "w", encoding="utf-8", newline="\n").write(html)
 
+# the single-exhibit viewer the service pages frame: /gallery/exhibit.html?sku=<exhibit>
+html = open(os.path.join(SRC, "exhibit.html"), encoding="utf-8").read()
+mark = '<meta name="robots" content="noindex">'
+if mark not in html:
+    raise SystemExit("exhibit.html changed, cannot place its base address")
+html = html.replace(mark, mark + '\n  <base href="/gallery/" target="_top">')
+open(os.path.join(DST, "exhibit.html"), "w", encoding="utf-8", newline="\n").write(html)
+shutil.copy(os.path.join(SRC, "exhibit.js"), DST)
+
 import subprocess
 subprocess.run(["node", os.path.join(ROOT, "scripts", "gallery-data.mjs")], check=True)
 

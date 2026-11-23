@@ -7,6 +7,7 @@ import { SiteSettingsProvider } from './contexts/SiteSettingsContext';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import GalleryLayout from './components/layout/GalleryLayout';
+import NotFound from './components/NotFound';
 import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home';
 import GalleryHome from './pages/GalleryHome';
@@ -176,38 +177,38 @@ function App() {
               previous home page stays reachable at /classic. */}
           <Route path="/" element={<GalleryHome />} />
           <Route path="/classic" element={<PublicLayout><Home /></PublicLayout>} />
-          <Route path="/portfolio" element={<PublicLayout><Portfolio /></PublicLayout>} />
-          <Route path="/portfolio/:category" element={<PublicLayout><CategoryPage /></PublicLayout>} />
+          <Route path="/portfolio" element={<GalleryLayout><Portfolio /></GalleryLayout>} />
+          <Route path="/portfolio/:category" element={<GalleryLayout><CategoryPage /></GalleryLayout>} />
           <Route path="/finishes" element={<GalleryLayout><Finishes /></GalleryLayout>} />
           <Route
             path="/rta-cabinets"
             element={
-              <PublicLayout>
+              <GalleryLayout>
                 <Suspense fallback={<PageLoading />}>
                   <RtaCatalog />
                 </Suspense>
-              </PublicLayout>
+              </GalleryLayout>
             }
           />
-          <Route path="/kdlite" element={<PublicLayout><KDLite /></PublicLayout>} />
-          <Route path="/about" element={<PublicLayout><About /></PublicLayout>} />
-          <Route path="/contact" element={<PublicLayout><Contact /></PublicLayout>} />
-          <Route path="/visualizer" element={<PublicLayout><Visualizer /></PublicLayout>} />
+          <Route path="/kdlite" element={<GalleryLayout><KDLite /></GalleryLayout>} />
+          <Route path="/about" element={<GalleryLayout><About /></GalleryLayout>} />
+          <Route path="/contact" element={<GalleryLayout><Contact /></GalleryLayout>} />
+          <Route path="/visualizer" element={<GalleryLayout><Visualizer /></GalleryLayout>} />
           <Route path="/downloads" element={<GalleryLayout><Downloads /></GalleryLayout>} />
-          <Route path="/privacy" element={<PublicLayout><Privacy /></PublicLayout>} />
-          <Route path="/terms" element={<PublicLayout><TermsOfService /></PublicLayout>} />
+          <Route path="/privacy" element={<GalleryLayout><Privacy /></GalleryLayout>} />
+          <Route path="/terms" element={<GalleryLayout><TermsOfService /></GalleryLayout>} />
 
           {/* Quick Win Pages */}
-          <Route path="/pricing" element={<PublicLayout><PricingPage /></PublicLayout>} />
-          <Route path="/showroom" element={<PublicLayout><ShowroomPage /></PublicLayout>} />
-          {/* <Route path="/warranty" element={<PublicLayout><WarrantyPage /></PublicLayout>} /> */}
+          <Route path="/pricing" element={<GalleryLayout><PricingPage /></GalleryLayout>} />
+          <Route path="/showroom" element={<GalleryLayout><ShowroomPage /></GalleryLayout>} />
+          {/* <Route path="/warranty" element={<GalleryLayout><WarrantyPage /></GalleryLayout>} /> */}
           {/* REMOVED - Warranty page temporarily disabled */}
 
           {/* Location Pages */}
-          <Route path="/locations/:slug" element={<PublicLayout><LocationPage /></PublicLayout>} />
+          <Route path="/locations/:slug" element={<GalleryLayout><LocationPage /></GalleryLayout>} />
 
           {/* Service Pages */}
-          <Route path="/services/:slug" element={<PublicLayout><ServicePage /></PublicLayout>} />
+          <Route path="/services/:slug" element={<GalleryLayout><ServicePage /></GalleryLayout>} />
 
           {/* Blog Pages */}
           <Route path="/blog" element={<GalleryLayout><BlogIndex /></GalleryLayout>} />
@@ -229,7 +230,10 @@ function App() {
           <Route path="/faq" element={<GalleryLayout><FAQPage /></GalleryLayout>} />
 
           {/* Comparison Pages */}
-          <Route path="/vs/:slug" element={<PublicLayout><ComparisonPage /></PublicLayout>} />
+          <Route path="/vs/:slug" element={<GalleryLayout><ComparisonPage /></GalleryLayout>} />
+
+          {/* Anything else: a real not-found page (noindex), not the home page */}
+          <Route path="*" element={<GalleryLayout><NotFound /></GalleryLayout>} />
         </Routes>
         </Router>
         {/* Vercel Analytics - Track page views and user interactions */}
