@@ -1425,6 +1425,262 @@
 "max": 90.0
 },
 {
+"name": "mv_showroom-closet_000",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+12.6085,
+7.39,
+2.1495
+],
+"axis": [
+0.0,
+0.0,
+1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_001",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+11.8485,
+7.39,
+2.7285
+],
+"axis": [
+0.0,
+0.0,
+-1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_002",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+13.3705,
+7.39,
+2.1495
+],
+"axis": [
+0.0,
+0.0,
+1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_003",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+12.6105,
+7.39,
+2.7285
+],
+"axis": [
+0.0,
+0.0,
+-1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_004",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+14.0754,
+7.39,
+2.1495
+],
+"axis": [
+0.0,
+0.0,
+1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_005",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+13.3725,
+7.39,
+2.7285
+],
+"axis": [
+0.0,
+0.0,
+-1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_006",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+6.4151,
+0.737
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_007",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+6.4151,
+0.5267
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_008",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+6.4151,
+0.3163
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_009",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+6.4151,
+0.1143
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_010",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+5.7103,
+0.737
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_011",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+5.7103,
+0.5267
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_012",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+5.7103,
+0.3163
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_013",
+"sku": "showroom-closet",
+"kind": "drawer",
+"pivot": [
+11.6336,
+5.7103,
+0.1143
+],
+"axis": [
+1.0,
+0.0,
+0.0
+],
+"max": 0.4501
+},
+{
+"name": "mv_showroom-closet_014",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+11.6336,
+6.4151,
+2.1284
+],
+"axis": [
+0.0,
+0.0,
+-1.0
+],
+"max": 90.0
+},
+{
+"name": "mv_showroom-closet_015",
+"sku": "showroom-closet",
+"kind": "door",
+"pivot": [
+11.6336,
+7.0989,
+0.9081
+],
+"axis": [
+0.0,
+0.0,
+1.0
+],
+"max": 90.0
+},
+{
 "name": "mv_master-closet_000",
 "sku": "master-closet",
 "kind": "drawer",

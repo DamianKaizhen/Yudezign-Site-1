@@ -38,6 +38,10 @@ EXHIBITS = [
          title="Master Bath", eyebrow="Showroom display",
          text="A corner double vanity with vessel sinks, framed mirrors and open shelving.",
          meta="Vanities  ·  Yukon Flooring Showroom, Stafford"),
+    dict(sku="showroom-closet", side=0.5, glb="showroom-closet/showroom-closet.glb", rot=0, W=2.96, D=2.67, H=2.75, xc=12.6,
+         title="Showroom Closet", eyebrow="Showroom display",
+         text="An L-shaped walk-in in white: drawer banks, hanging bays with pull-out baskets, rounded corner shelves and a row of top cabinets.",
+         meta="Walk-in closet  ·  Yukon Flooring Showroom, Stafford"),
     # hall=False: built for its service page only (a whole walk-in room does not stand against the hall wall)
     dict(sku="master-closet", hall=False, glb="master-closet/master-closet.glb", rot=0, W=4.77, D=5.51, H=4.31, xc=-40.0,
          title="Walk-in Master Closet"),
@@ -63,7 +67,7 @@ def exhibit(sku):
                       eyebrow=e["eyebrow"], title=e["title"], text=e["text"], meta=e["meta"]))
 
 
-for step in ("reception-desk", "wall-kitchens", "executive-office", "wall-closets", "showroom-kitchen", "master-bath",
+for step in ("reception-desk", "wall-kitchens", "executive-office", "wall-closets", "showroom-closet", "showroom-kitchen", "master-bath",
              "wall-vanities", "garage-cabinet", "wall-custom", "coffee-bar", "wall-commercial", "mudroom"):
     if step in old and step.startswith("wall-"):
         stops.append(old[step])
