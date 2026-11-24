@@ -1,14 +1,15 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Info, Package, Search, Tag, Truck, Wrench, ZoomIn } from 'lucide-react';
+import { ArrowRight, Check, Clock, FileText, Package, Search, Tag, Wrench, ZoomIn } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { ImageLightbox } from '../../components/ui/ImageLightbox';
 import { rtaCatalog } from '../../data/rtaCatalog';
 import type { RtaCabinet, RtaLine } from '../../types/rta';
 
 // The stocked, framed, ready-to-assemble line. We build frameless; we stock framed. This page
-// is the catalogue for the stocked line only: its own finishes, stock sizes and retail prices.
+// is the catalogue for the stocked line only: its own finishes and stock sizes. Quotes are by request,
+// so nothing of that kind appears here.
 // Data: src/data/rtaCatalog.ts, generated from the RTA website package (see scripts/import-rta-catalog.py).
 
 type LineId = RtaLine['id'];
@@ -17,8 +18,6 @@ interface Lightbox {
   images: string[];
   title: string;
 }
-
-const money = (n: number) => `$${n.toLocaleString('en-US')}`;
 
 const inches = (v: number | null) => (v === null ? '' : `${v}"`);
 
@@ -36,7 +35,6 @@ const RtaCatalog = () => {
   const [section, setSection] = useState<string>('all');
   const [category, setCategory] = useState<string>('all');
   const [query, setQuery] = useState('');
-  const [showAssembled, setShowAssembled] = useState(true);
   const [lightbox, setLightbox] = useState<Lightbox | null>(null);
 
   const line = rtaCatalog.lines.find((l) => l.id === lineId) ?? rtaCatalog.lines[0];
@@ -82,23 +80,15 @@ const RtaCatalog = () => {
     [categories, visible]
   );
 
-  const priceCell = (c: RtaCabinet) => {
-    const p = c.prices[finishIndex];
-    return p === null || p === undefined ? null : p;
-  };
-
-  const assembledCell = (c: RtaCabinet) => {
-    const p = priceCell(c);
-    if (p === null || !c.canAssemble) return null;
-    return p + c.assembly;
-  };
+  // Whether a cabinet is offered in the finish currently selected above.
+  const offered = (c: RtaCabinet) => c.finishes.includes(finishIndex);
 
   return (
     <>
       <SEO
         title="Stocked RTA Cabinets Houston: Shaker, Slim, Contract"
-        description="Ready-to-assemble framed cabinets in stock in Houston: three collections, nineteen finishes, every stock size with retail price, flat-pack or assembled."
-        keywords="RTA cabinets Houston, ready to assemble cabinets, stock cabinets Houston, shaker cabinets Houston, framed cabinets, flat pack cabinets, assembled cabinets, cabinet prices Houston"
+        description="Ready-to-assemble framed cabinets in stock in Houston: three collections, nineteen finishes and every stock size, flat-pack or assembled. Send us your list for a written quote."
+        keywords="RTA cabinets Houston, ready to assemble cabinets, stock cabinets Houston, shaker cabinets Houston, framed cabinets, flat pack cabinets, assembled cabinets, request a cabinet quote Houston"
         url="https://www.yudezign.com/rta-cabinets"
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
@@ -134,8 +124,23 @@ const RtaCatalog = () => {
               className="text-body-lg md:text-h4 font-light text-white/90 max-w-2xl mx-auto"
             >
               Alongside the frameless cabinetry we build to order, we stock a framed, ready-to-assemble line in three
-              collections. Fixed stock sizes, flat-pack or assembled, with our retail price in every finish below.
+              collections. Fixed stock sizes, flat-pack or assembled. Browse the collections, finishes and item codes below, then
+              request a quote.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-8"
+            >
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-3 bg-accent text-luxury-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Request a quote
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
@@ -157,7 +162,7 @@ const RtaCatalog = () => {
                 {
                   icon: Tag,
                   title: 'The budget is tight',
-                  text: 'Our lowest price point, below our made-to-measure Essential Style.',
+                  text: 'Our most economical option. Send us your list and we quote it in writing.',
                 },
               ].map(({ icon: Icon, title, text }) => (
                 <div key={title} className="bg-luxury-cream rounded-lg p-8 shadow-luxury">
@@ -219,7 +224,7 @@ const RtaCatalog = () => {
             <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">
               <h3 className="text-h4 font-medium text-luxury-gray-900">Finishes</h3>
               <p className="text-body-sm text-luxury-gray-500">
-                Pick a finish to see its prices. Showing prices in <strong className="text-luxury-gray-800">{finish.name}</strong>.
+                Pick a finish to see which cabinets are offered in it. Showing <strong className="text-luxury-gray-800">{finish.name}</strong>.
               </p>
             </div>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-11 gap-3">
@@ -283,7 +288,7 @@ const RtaCatalog = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
               <label className="block">
                 <span className="text-label text-luxury-gray-500">Category</span>
                 <select
@@ -312,19 +317,10 @@ const RtaCatalog = () => {
                   />
                 </span>
               </label>
-              <label className="flex items-end gap-3 pb-2.5 md:justify-end">
-                <input
-                  type="checkbox"
-                  checked={showAssembled}
-                  onChange={(e) => setShowAssembled(e.target.checked)}
-                  className="h-4 w-4 rounded border-luxury-gray-300 text-primary focus:ring-primary"
-                />
-                <span className="text-body-sm text-luxury-gray-700">Show the assembled price</span>
-              </label>
             </div>
 
             <p className="text-body-sm text-luxury-gray-500 mb-4">
-              {visible.length} of {line.cabinets.length} cabinets · prices in {finish.name}, flat-pack, before tax and delivery
+              {visible.length} of {line.cabinets.length} cabinets · availability shown for {finish.name}
             </p>
 
             {groups.length === 0 ? (
@@ -348,14 +344,13 @@ const RtaCatalog = () => {
                           <th className="px-3 py-3 text-left font-medium">Item code</th>
                           <th className="px-3 py-3 text-left font-medium">Description</th>
                           <th className="px-3 py-3 text-left font-medium whitespace-nowrap">W × H × D</th>
-                          <th className="px-3 py-3 text-right font-medium whitespace-nowrap">Flat-pack</th>
-                          {showAssembled && <th className="px-5 py-3 text-right font-medium">Assembled</th>}
+                          <th className="px-3 py-3 text-right font-medium whitespace-nowrap">In {finish.name}</th>
+                          <th className="px-5 py-3 text-right font-medium whitespace-nowrap">Shipped</th>
                         </tr>
                       </thead>
                       <tbody>
                         {g.cabinets.map((c) => {
-                          const p = priceCell(c);
-                          const a = assembledCell(c);
+                          const inFinish = offered(c);
                           return (
                             <tr key={c.code} className="border-b border-luxury-gray-50 last:border-0 hover:bg-luxury-cream/60">
                               <td className="px-5 py-2">
@@ -386,14 +381,19 @@ const RtaCatalog = () => {
                                 ) : null}
                               </td>
                               <td className="px-3 py-2 text-luxury-gray-700 whitespace-nowrap">{sizeOf(c)}</td>
-                              <td className="px-3 py-2 text-right font-semibold text-luxury-gray-900 whitespace-nowrap">
-                                {p === null ? <span className="font-normal text-luxury-gray-400">Not in this finish</span> : money(p)}
+                              <td className="px-3 py-2 text-right whitespace-nowrap">
+                                {inFinish ? (
+                                  <span className="inline-flex items-center gap-1 text-primary font-medium">
+                                    <Check className="w-4 h-4" aria-hidden="true" />
+                                    Offered
+                                  </span>
+                                ) : (
+                                  <span className="text-luxury-gray-400">Not in this finish</span>
+                                )}
                               </td>
-                              {showAssembled && (
-                                <td className="px-5 py-2 text-right text-luxury-gray-700 whitespace-nowrap">
-                                  {p === null ? '' : a === null ? <span className="text-luxury-gray-400">Flat-pack only</span> : money(a)}
-                                </td>
-                              )}
+                              <td className="px-5 py-2 text-right text-luxury-gray-700 whitespace-nowrap">
+                                {c.canAssemble ? 'Flat-pack or assembled' : 'Flat-pack only'}
+                              </td>
                             </tr>
                           );
                         })}
@@ -403,8 +403,7 @@ const RtaCatalog = () => {
                     {/* Cards on phones */}
                     <ul className="md:hidden divide-y divide-luxury-gray-50">
                       {g.cabinets.map((c) => {
-                        const p = priceCell(c);
-                        const a = assembledCell(c);
+                        const inFinish = offered(c);
                         return (
                           <li key={c.code} className="p-4 flex gap-4">
                             {c.drawing ? (
@@ -425,21 +424,10 @@ const RtaCatalog = () => {
                               <p className="font-semibold text-luxury-gray-900">{c.code}</p>
                               <p className="text-body-sm text-luxury-gray-700">{c.desc}</p>
                               <p className="text-xs text-luxury-gray-500 mt-1">{sizeOf(c)}</p>
-                              <p className="mt-2 text-body-sm">
-                                {p === null ? (
-                                  <span className="text-luxury-gray-400">Not in this finish</span>
-                                ) : (
-                                  <>
-                                    <span className="font-semibold text-luxury-gray-900">{money(p)}</span>
-                                    <span className="text-luxury-gray-500"> flat-pack</span>
-                                    {showAssembled && (
-                                      <span className="text-luxury-gray-500">
-                                        {' · '}
-                                        {a === null ? 'flat-pack only' : `${money(a)} assembled`}
-                                      </span>
-                                    )}
-                                  </>
-                                )}
+                              <p className="mt-2 text-body-sm text-luxury-gray-500">
+                                {inFinish ? `Offered in ${finish.name}` : <span className="text-luxury-gray-400">Not in this finish</span>}
+                                {' · '}
+                                {c.canAssemble ? 'flat-pack or assembled' : 'flat-pack only'}
                               </p>
                             </div>
                           </li>
@@ -453,49 +441,9 @@ const RtaCatalog = () => {
           </div>
         </section>
 
-        {/* About the prices + how to order */}
+        {/* How to order + request a quote */}
         <section className="py-20 px-4 bg-luxury-beige">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg p-10 shadow-luxury">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
-                  <Info className="w-6 h-6 text-white" strokeWidth={1.5} />
-                </div>
-                <h2 className="text-h3 font-medium text-luxury-gray-900">About these prices</h2>
-              </div>
-              <ul className="space-y-4 text-body text-luxury-gray-600 leading-relaxed">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-1 font-bold">•</span>
-                  <span>
-                    Every price is our retail price for the flat-pack cabinet, before sales tax ({rtaCatalog.salesTaxPct}%), delivery and
-                    other fees.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-1 font-bold">•</span>
-                  <span>
-                    The assembled price adds our assembly charge per cabinet. Where it says flat-pack only, that cabinet cannot ship
-                    assembled.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Truck className="w-5 h-5 text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
-                  <span>Delivery in Greater Houston is {money(rtaCatalog.deliveryGreaterHouston)} per trip.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Wrench className="w-5 h-5 text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
-                  <span>Stock sizes only. Small gaps in a run are closed with fillers; several sizes share one drawing.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary mt-1 font-bold">•</span>
-                  <span>
-                    Prices follow our price list of {rtaCatalog.priceListVersion} and can change; the written quote you receive is the
-                    price that counts.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
             <div className="bg-white rounded-lg p-10 shadow-luxury">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
@@ -504,19 +452,41 @@ const RtaCatalog = () => {
                 <h2 className="text-h3 font-medium text-luxury-gray-900">How to order</h2>
               </div>
               <ol className="space-y-4 text-body text-luxury-gray-600 leading-relaxed list-decimal list-inside">
-                <li>Pick the collection and the finish, and check the sample door at the showroom.</li>
-                <li>List the item codes you need, with flat-pack or assembled against each one.</li>
-                <li>Send us the list. We confirm stock, price it and tell you when it can ship or be collected.</li>
+                <li>Choose your collection and finish, and check the sample door at the showroom.</li>
+                <li>List the cabinets you need by item code and size, with flat-pack or assembled against each one.</li>
+                <li>Send us the list. We confirm stock and send you a written quote.</li>
               </ol>
               <p className="mt-5 text-body-sm text-luxury-gray-500">
                 Reading a code: W = wall cabinet, B = base, SB = sink base, 3DB = three-drawer base, U = utility or pantry,
                 V = vanity, GD = glass door, ADA = 32½" high. The numbers are the width, then height and depth in inches.
               </p>
+            </div>
+
+            <div className="bg-white rounded-lg p-10 shadow-luxury">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-white" strokeWidth={1.5} />
+                </div>
+                <h2 className="text-h3 font-medium text-luxury-gray-900">Request a quote</h2>
+              </div>
+              <ul className="space-y-4 text-body text-luxury-gray-600 leading-relaxed">
+                <li className="flex items-start gap-3">
+                  <Wrench className="w-5 h-5 text-primary mt-0.5 shrink-0" strokeWidth={1.5} />
+                  <span>Stock sizes only. Small gaps in a run are closed with fillers; several sizes share one drawing.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-primary mt-1 font-bold">•</span>
+                  <span>
+                    In your message, tell us the collection, the finish and your item codes. Everything else is on the written
+                    quote we send back.
+                  </span>
+                </li>
+              </ul>
               <Link
                 to="/contact"
                 className="mt-8 inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                Send us your list
+                Request a quote
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

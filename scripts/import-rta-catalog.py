@@ -3,7 +3,7 @@
 
 Source of record: the `website-package` folder of the RTA Cabinet Pricing project on the K: drive
 (workbook YuDeZign_RTA_Website_Catalog.xlsx plus finishes/ and cabinets/ images). Rebuild that
-package first when prices change:
+package first when the catalogue changes:
 
     python "K:\\08 Subsidiaries\\0Claude Code Projects\\RTA Cabinet Pricing\\tools\\build_website_package.py"
 
@@ -13,7 +13,12 @@ WSL UNC path):
     python -I scripts/import-rta-catalog.py "K:/08 Subsidiaries/0Claude Code Projects/RTA Cabinet Pricing/website-package" .
 
 Rules baked in here, from the website brief of 2026-11-04:
-  * only YuDeZign's own YDS- item codes and retail prices are published; the script refuses to run
+  * NO PRICES ARE PUBLISHED (owner ruling, 2026-11-24): the public page asks visitors to request a
+    quote. The workbook's price columns, assembly add-on, sales-tax rate, delivery charge and
+    price-list version are read for validation only and never written to the site data. The
+    generated file carries, per cabinet, only which finishes it is offered in (indexes into the
+    collection's finish list) and whether it can ship assembled;
+  * only YuDeZign's own YDS- item codes are published; the script refuses to run
     if a vendor name, cost or list-price column shows up in the workbook;
   * the RTA finishes are a separate list from the made-to-measure palette;
   * images are copied into the repo (public/rta/), never linked to the K: drive.
@@ -90,14 +95,10 @@ def main(package: str, repo: str) -> None:
     wb = load_workbook(wb_path, read_only=True, data_only=True)
 
     readme = [r[0] for r in wb["README"].iter_rows(values_only=True) if r and r[0]]
-    m = re.search(r"Built (\d{4}-\d{2}-\d{2}) from price list version (\d{4}-\d{2}-\d{2})", " ".join(readme))
+    m = re.search(r"Built (\d{4}-\d{2}-\d{2})", " ".join(readme))
     if not m:
-        raise SystemExit("README sheet does not carry the build / price-list dates")
-    built, price_list = m.group(1), m.group(2)
-    tax = re.search(r"Sales tax \(([\d.]+)%\)", " ".join(readme))
-    delivery = re.search(r"Delivery in Greater Houston is \$(\d+)", " ".join(readme))
-    if not (tax and delivery):
-        raise SystemExit("README sheet does not carry the tax rate / delivery charge")
+        raise SystemExit("README sheet does not carry the build date")
+    built = m.group(1)
 
     finishes_by_style: dict[str, list[dict]] = {}
     for row in list(wb["Finishes"].iter_rows(values_only=True))[1:]:
@@ -154,10 +155,8 @@ def main(package: str, repo: str) -> None:
             drawing = r[col["Drawing file"]]
             if drawing:
                 copy_asset(drawing)
-            prices = []
-            for i, _ in price_cols:
-                v = r[i]
-                prices.append(round(float(v)) if isinstance(v, (int, float)) else None)
+            # Prices are read only to learn which finishes the cabinet is offered in; they are not kept.
+            offered = [fi for fi, (i, _) in enumerate(price_cols) if isinstance(r[i], (int, float))]
             cabinets.append({
                 "code": code,
                 "desc": desc,
@@ -166,11 +165,10 @@ def main(package: str, repo: str) -> None:
                 "w": r[col["W (in)"]], "h": r[col["H (in)"]], "d": r[col["D (in)"]],
                 "doors": r[col["Doors"]], "drawers": r[col["Drawers"]],
                 "canAssemble": r[col["Can ship assembled"]] == "Yes",
-                "assembly": round(float(r[col["Assembly add-on ($)"]] or 0)),
-                "prices": prices,
+                "finishes": offered,
                 "drawing": ("/rta/" + drawing.replace("\\", "/")) if drawing else None,
             })
-            total_variations += sum(1 for p in prices if p is not None)
+            total_variations += len(offered)
         total_cabinets += len(cabinets)
         for f in finishes:
             for rel in f.pop("_src"):
@@ -187,25 +185,22 @@ def main(package: str, repo: str) -> None:
 
     catalog = {
         "builtFrom": f"YuDeZign_RTA_Website_Catalog.xlsx built {built}",
-        "priceListVersion": price_list,
         "generated": date.today().isoformat(),
-        "salesTaxPct": float(tax.group(1)),
-        "deliveryGreaterHouston": int(delivery.group(1)),
         "lines": lines_out,
     }
     body = json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
     ts = (
         "// GENERATED FILE - do not edit by hand.\n"
         "// Source: RTA Cabinet Pricing/website-package on the K: drive, via scripts/import-rta-catalog.py.\n"
-        f"// {catalog['builtFrom']}; price list version {price_list}; generated {catalog['generated']}.\n"
-        "// Prices are YuDeZign retail, before sales tax, delivery and other fees. Item codes are YuDeZign's own.\n"
+        f"// {catalog['builtFrom']}; generated {catalog['generated']}.\n"
+        "// Quotes are by request only; this file carries no money figures. Item codes are YuDeZign's own.\n"
         "import type { RtaCatalog } from '../types/rta';\n\n"
         f"export const rtaCatalog: RtaCatalog = {body};\n"
     )
     out = os.path.join(repo, "src", "data", "rtaCatalog.ts")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write(ts)
-    print(f"wrote {out}: {len(ts)/1024:.0f} KB, {total_cabinets} cabinets, {total_variations} priced variations, "
+    print(f"wrote {out}: {len(ts)/1024:.0f} KB, {total_cabinets} cabinets, {total_variations} finish offerings, "
           f"{len(copied)} images copied to public/rta/")
 
 
