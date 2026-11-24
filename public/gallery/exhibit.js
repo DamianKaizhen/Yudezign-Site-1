@@ -106,6 +106,62 @@ $('lightsBtn').onclick = () => {
   $('lightsBtn').setAttribute('aria-expanded', String(open));
 };
 
+// ---------------------------------------------------------------- finish: the fronts in any standard colour
+// The pipeline keeps door and drawer fronts as their own materials ("Door face ...", "Drawer face ..."), so a swatch
+// can replace their picture without touching the carcass, worktops or hardware.
+const faceMats = [];                      // { m, map, color }
+const texLoader = new THREE.TextureLoader();
+const swatchTex = {};
+function setFinish(f) {
+  for (const x of faceMats) {
+    if (!f) { x.m.map = x.map; x.m.color.copy(x.color); }
+    else {
+      const t = swatchTex[f.image] || (swatchTex[f.image] = texLoader.load(f.image, redraw));
+      t.colorSpace = THREE.SRGBColorSpace;
+      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      t.flipY = false;
+      x.m.map = t;
+      x.m.color.setScalar(1);
+    }
+    x.m.needsUpdate = true;
+  }
+  $('finishNow').textContent = f ? `Finish: ${f.name}` : 'Finish: as built';
+  document.querySelectorAll('#swatches button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!f && b.dataset.finish === f.name)));
+  $('asBuilt').setAttribute('aria-pressed', String(!f));
+  redraw();
+}
+async function finishPanel() {
+  if (!faceMats.length) return;
+  let site;
+  try { site = await (await fetch('assets/site.json')).json(); } catch { return; }
+  const styles = site.styles || [], rows = $('swatchRows');
+  const groups = styles.length ? styles.map((s) => [s.name || s.id, site.finishes.filter((f) => f.style === (s.id || s.slug || s.name))]) : [['Standard colours', site.finishes]];
+  const left = site.finishes.filter((f) => !groups.some(([, list]) => list.includes(f)));
+  if (left.length) groups.push(['More', left]);
+  for (const [name, list] of groups) {
+    if (!list.length) continue;
+    const h = document.createElement('h3'); h.textContent = name;
+    const row = document.createElement('div'); row.className = 'row';
+    for (const f of list.sort((a, b) => (a.order || 0) - (b.order || 0))) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.title = f.name; b.dataset.finish = f.name;
+      b.setAttribute('aria-label', f.name); b.setAttribute('aria-pressed', 'false');
+      b.style.backgroundColor = f.color; b.style.backgroundImage = `url("${f.image}")`;
+      b.onclick = () => setFinish(f);
+      row.appendChild(b);
+    }
+    rows.append(h, row);
+  }
+  $('asBuilt').onclick = () => setFinish(null);
+  $('finishBtn').onclick = () => {
+    const open = $('finish').classList.toggle('open');
+    $('finishBtn').setAttribute('aria-expanded', String(open));
+  };
+  $('finish').hidden = false;
+  const want = params.get('finish');
+  if (want) { const f = site.finishes.find((x) => x.name.toLowerCase() === want.toLowerCase()); if (f) setFinish(f); }
+}
+
 // ---------------------------------------------------------------- the model
 function resize() {
   const w = canvas.clientWidth, h = canvas.clientHeight;
@@ -134,6 +190,7 @@ async function load() {
       tuned.add(m);
       if (m.map) m.map.anisotropy = aniso;
       tuneMaterial(m);
+      if (/^(Door face|Drawer face)/.test(m.name)) faceMats.push({ m, map: m.map, color: m.color.clone() });
     }
   });
   root.add(g.scene);
@@ -216,6 +273,13 @@ async function load() {
   fill.position.set(size.x * 0.6 + 2, size.y * 0.8, dist * 0.6);
   fill.target.position.set(0, size.y * 0.4, 0);
   if (params.has('open')) movables.forEach((m) => { m.want = 1; });
+  if (params.get('view')) {          // ?view=<turn>,<tilt>,<distance x>: a fixed view, for checking
+    const [az, pol, k] = params.get('view').split(',').map(Number);
+    const d = camera.position.distanceTo(controls.target) * (k || 1);
+    camera.position.copy(controls.target).add(new THREE.Vector3().setFromSphericalCoords(d, pol || 1.2, az || 0));
+    controls.update();
+  }
+  finishPanel();
   if (params.get('led')) { const [on, b, k] = params.get('led').split(','); $('ledOn').checked = on !== '0'; if (b) $('ledDim').value = b; if (k) $('ledWarm').value = k; }
   applyLights();
   $('load').classList.add('off');

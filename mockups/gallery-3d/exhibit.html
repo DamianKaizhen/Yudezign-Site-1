@@ -30,6 +30,18 @@
     input[type="range"] { display: block; width: 100%; margin-top: 7px; accent-color: var(--gold); }
     label.check { color: var(--cream); cursor: pointer; }
     label.check input { margin: 0 8px 0 0; vertical-align: -2px; accent-color: var(--gold); }
+    .finish { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .swatches { display: none; width: min(292px, calc(100vw - 24px)); padding: 14px 16px; background: rgba(14, 12, 11, .8); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 3px; }
+    .finish.open .swatches { display: block; }
+    .swatches h3 { margin: 12px 0 6px; font: inherit; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .swatches h3:first-of-type { margin-top: 10px; }
+    .swatches .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .swatches .row button { aspect-ratio: 1; padding: 0; border-radius: 2px; background-size: cover; background-position: center; backdrop-filter: none; }
+    .swatches .row button[aria-pressed="true"] { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .swatches .asbuilt { width: 100%; text-align: center; }
+    .swatches .now { margin: 0; font-size: 12px; color: var(--cream); }
+    .swatches .note { margin: 10px 0 0; font-size: 11px; color: var(--muted); letter-spacing: 0; text-transform: none; }
+    .left { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
     .hint { position: fixed; top: 12px; left: 12px; right: 12px; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); pointer-events: none; transition: opacity .6s; }
     .hint.off { opacity: 0; }
     .load { position: fixed; inset: 0; display: grid; place-items: center; background: var(--ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); transition: opacity .5s; }
@@ -47,7 +59,18 @@
   <canvas id="scene" role="img" aria-label="3D model of a YuDeZign design. Drag to turn it; select a door or drawer to open it."></canvas>
   <p class="hint" id="hint">Drag to turn · select a door or drawer to open it</p>
   <div class="bar">
-    <button type="button" id="openAll" aria-pressed="false" hidden>Open doors and drawers</button>
+    <div class="left">
+      <button type="button" id="openAll" aria-pressed="false" hidden>Open doors and drawers</button>
+      <div class="finish" id="finish" hidden>
+        <div class="swatches" id="swatches">
+          <p class="now" id="finishNow">Finish: as built</p>
+          <div id="swatchRows"></div>
+          <button type="button" class="asbuilt" id="asBuilt" aria-pressed="true" style="margin-top:12px">As built</button>
+          <p class="note">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
+        </div>
+        <button type="button" id="finishBtn" aria-expanded="false" aria-controls="swatches">Change finish</button>
+      </div>
+    </div>
     <div class="lights" id="lights">
       <div class="sliders" id="sliders">
         <label>Room light <output id="roomB">100%</output><input id="roomDim" type="range" min="15" max="160" value="100" aria-label="Room light level"></label>

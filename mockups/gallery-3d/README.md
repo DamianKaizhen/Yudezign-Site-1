@@ -22,6 +22,10 @@ ignored by git; the published gallery uses the copies under public/.
    design's own hinge line or pull direction and its limit (90 degrees, 450 or 500 mm). Filler panels, exposed end panels
    and false fronts stay fixed. `--leds` places a light strip under each wall cabinet that has a hinged door. The designs
    do not draw their lighting, so the strips are placed, not read from the file.
+   The exporter also treats a front as ONE door when the design builds it from several pieces: overlay panels move with
+   the door or drawer they cover (the showroom pantry), and a framed glass door stored as two stiles gets its rails and
+   glass (the master bath, the walk-in closet). The showroom kitchen needs `--keep-pictures 4772CFDC_10625,wa4925_calcutta`
+   so its glazed uppers and marble splashback are not treated as a board finish.
 2. `python pipeline/layout_v2.py` writes `pipeline/layout.json` and `assets/gallery.json` (exhibit order, stops, wings).
 3. `blender -b -P pipeline/build_gallery2.py -- <sold> <out>` places the exhibits, bakes the hall, and writes one model per
    exhibit (`models/<sku>.glb`) plus `movables.json` (doors, drawers and light strips in hall coordinates). About two
@@ -40,7 +44,10 @@ GarageCabinetv2, Coffee Bar Area), the mudroom under `HoustonShow2026/BoothPlanV
 - `exhibit.html` + `exhibit.js`: one exhibit on its own, for a service page (`/gallery/exhibit.html?sku=<sku>`). Drag to
   turn it, open doors and drawers, and set the room and cabinet lighting. Nothing is baked there, so every control applies.
   A service shows its exhibit when it has an `exhibit` entry in `src/data/services.ts`.
-- Check links: `?stop=<n>` jumps to a stop, `?open` opens everything, `?led=<on>,<level>,<kelvin>` sets the cabinet lights.
+- **Change finish** (exhibit viewer): shows the door and drawer fronts in any of the 20 standard colours, using the site's
+  own swatch images (`site.json`). It recolours materials named "Door face ..." / "Drawer face ..." only; the pipeline
+  keeps those apart from the carcass, and fronts named "Glass front" / "Fixed front" are left alone. Not in the hall yet.
+- Check links: `?finish=<name>` and `?view=<turn>,<tilt>,<distance>` in the exhibit viewer; `?stop=<n>` jumps to a stop, `?open` opens everything, `?led=<on>,<level>,<kelvin>` sets the cabinet lights.
 
 ## Done 2026-11-23
 
