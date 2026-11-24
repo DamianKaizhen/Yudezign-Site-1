@@ -42,10 +42,14 @@
     .asbuilt { flex: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: none; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
     .asbuilt:hover { border-color: var(--gold); }
     .asbuilt[aria-pressed="true"] { visibility: hidden; }
-    .zones { display: flex; margin-top: 12px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
-    .zones[hidden] { display: none; }
-    .zones button { flex: 1; padding: 7px 4px; border: 0; background: none; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-    .zones button[aria-pressed="true"] { background: var(--gold); color: #14110e; font-weight: 600; }
+    .zhead { margin: 14px 0 6px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .zones { display: flex; flex-wrap: wrap; gap: 8px 6px; }
+    .zones[hidden], .zhead[hidden] { display: none; }
+    .zones button { flex: none; width: 40px; padding: 0; border: 0; background: none; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .zones i { display: block; width: 34px; height: 34px; margin: 0 auto 4px; border: 1px solid var(--line); border-radius: 8px; background-size: cover; background-position: center; }
+    .zones i.all { background: conic-gradient(#f4efe7 0 25%, #4d5d5a 0 50%, #7a5236 0 75%, #111 0); }
+    .zones button[aria-pressed="true"] { color: var(--cream); }
+    .zones button[aria-pressed="true"] i { outline: 2px solid var(--gold); outline-offset: 2px; }
     .grp h3 { margin: 14px 0 6px; font: inherit; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
     .grp .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
     .grp .row button { aspect-ratio: 1; padding: 0; border: 1px solid var(--line); border-radius: 50%; background-size: cover; background-position: center; transition: transform .15s; }
@@ -106,7 +110,8 @@
         <p class="now" id="finishNow">As built</p>
         <button type="button" class="asbuilt" id="asBuilt" aria-pressed="true">Reset</button>
       </div>
-      <div class="zones" id="zones" role="group" aria-label="Which fronts to colour" hidden></div>
+      <p class="zhead" id="zonesHead" hidden>Part to colour</p>
+      <div class="zones" id="zones" role="group" aria-label="Which part to colour" hidden></div>
       <div id="swatchRows"></div>
       <p class="note" id="finishNote">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
     </div>
