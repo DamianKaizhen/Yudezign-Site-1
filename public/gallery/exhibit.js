@@ -152,27 +152,46 @@ if (document.fullscreenEnabled) {
 // ---------------------------------------------------------------- finish: the fronts in any standard colour
 // The pipeline keeps door and drawer fronts as their own materials ("Door face ...", "Drawer face ..."), so a swatch
 // can replace their picture without touching the carcass, worktops or hardware.
-const faceMats = [];                      // { m, map, color }
+const faceMats = [];                      // { m, map, color, zone }: one per front material and zone
 const texLoader = new THREE.TextureLoader();
 const swatchTex = {};
-function setFinish(f) {
-  for (const x of faceMats) {
-    if (!f) { x.m.map = x.map; x.m.color.copy(x.color); }
-    else {
-      const t = swatchTex[f.image] || (swatchTex[f.image] = texLoader.load(f.image, redraw));
-      t.colorSpace = THREE.SRGBColorSpace;
-      t.wrapS = t.wrapT = THREE.RepeatWrapping;
-      t.flipY = false;
-      x.m.map = t;
-      x.m.color.setScalar(1);
-    }
-    x.m.needsUpdate = true;
+// Two tones: the fronts split into the upper cabinets (those that start above worktop height) and everything below.
+// A swatch goes to both, or to the zone picked in the panel.
+const ZONES = [['all', 'All fronts'], ['upper', 'Upper'], ['lower', 'Lower']];
+const chosen = { upper: null, lower: null };
+let zone = 'all';
+function paint(x, f) {
+  if (!f) { x.m.map = x.map; x.m.color.copy(x.color); }
+  else {
+    const t = swatchTex[f.image] || (swatchTex[f.image] = texLoader.load(f.image, redraw));
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.flipY = false;
+    x.m.map = t;
+    x.m.color.setScalar(1);
   }
-  $('finishNow').textContent = f ? f.name : 'As built';
-  if (f && f.group) { const s = document.createElement('small'); s.textContent = f.group; $('finishNow').prepend(s); }
-  document.querySelectorAll('#swatchRows button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!f && b.dataset.finish === f.name)));
-  $('asBuilt').setAttribute('aria-pressed', String(!f));
+  x.m.needsUpdate = true;
+}
+function showFinish() {
+  const { upper, lower } = chosen, now = $('finishNow'), name = (f) => (f ? f.name : 'As built');
+  now.textContent = '';
+  if (upper === lower) {
+    if (upper && upper.group) { const s = document.createElement('small'); s.textContent = upper.group; now.append(s); }
+    now.append(name(upper));
+  } else {
+    const s = document.createElement('small'); s.textContent = 'Two-tone';
+    now.append(s, `${name(upper)} over ${name(lower)}`);
+  }
+  const on = zone === 'all' ? (upper === lower ? upper : undefined) : chosen[zone];
+  document.querySelectorAll('#swatchRows button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!on && b.finish === on)));
+  document.querySelectorAll('#zones button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.zone === zone)));
+  $('asBuilt').setAttribute('aria-pressed', String(!upper && !lower));
   redraw();
+}
+function setFinish(f, z = zone) {
+  for (const k of ['upper', 'lower']) if (z === 'all' || z === k) chosen[k] = f;
+  for (const x of faceMats) paint(x, chosen[x.zone]);
+  showFinish();
 }
 async function finishPanel() {
   if (!faceMats.length) return;
@@ -190,7 +209,7 @@ async function finishPanel() {
     for (const f of list.sort((a, b) => (a.order || 0) - (b.order || 0))) {
       const b = document.createElement('button');
       f.group = name;
-      b.type = 'button'; b.title = f.name; b.dataset.finish = f.name;
+      b.type = 'button'; b.title = f.name; b.dataset.finish = f.name; b.finish = f;
       b.setAttribute('aria-label', f.name); b.setAttribute('aria-pressed', 'false');
       b.style.backgroundColor = f.color; b.style.backgroundImage = `url("${f.image}")`;
       b.onclick = () => setFinish(f);
@@ -199,10 +218,22 @@ async function finishPanel() {
     grp.append(h, row);
     rows.append(grp);
   }
-  $('asBuilt').onclick = () => setFinish(null);
+  if (['upper', 'lower'].every((k) => faceMats.some((x) => x.zone === k))) {          // two tones need both zones
+    for (const [id, label] of ZONES) {
+      const b = document.createElement('button');
+      b.type = 'button'; b.dataset.zone = id; b.textContent = label; b.setAttribute('aria-pressed', String(id === zone));
+      b.onclick = () => { zone = id; showFinish(); };
+      $('zones').append(b);
+    }
+    $('zones').hidden = false;
+    $('finishNote').textContent = 'Door and drawer fronts only. For two tones, pick Upper or Lower, then a colour. Screen colours are a guide: ask us for a sample.';
+  }
+  $('asBuilt').onclick = () => setFinish(null, 'all');
   $('finishBtn').hidden = false;
-  const want = params.get('finish');
-  if (want) { const f = site.finishes.find((x) => x.name.toLowerCase() === want.toLowerCase()); if (f) setFinish(f); }
+  const find = (n) => n && site.finishes.find((x) => x.name.toLowerCase() === n.toLowerCase());
+  const want = find(params.get('finish')), up = find(params.get('upper'));          // ?finish= and ?upper=: for checking
+  if (want) setFinish(want, 'all');
+  if (up) setFinish(up, 'upper');
 }
 
 // ---------------------------------------------------------------- the model
@@ -247,7 +278,7 @@ async function load() {
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
   const g = await loader.loadAsync(`assets/models/${sku}.glb?v=9a90a6deb8`);
-  const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [];
+  const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
     const mm = meta[o.name] || meta[o.parent?.name];
@@ -259,12 +290,42 @@ async function load() {
       tuned.add(m);
       if (m.map) m.map.anisotropy = aniso;
       tuneMaterial(m);
-      if (/^(Door face|Drawer face)/.test(m.name)) faceMats.push({ m, map: m.map, color: m.color.clone() });
     }
+    if (/^(Door face|Drawer face)/.test(m.name)) fronts.push(o);
   });
   root.add(g.scene);
   root.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(g.scene), size = box.getSize(new THREE.Vector3()), mid = box.getCenter(new THREE.Vector3());
+  // Two-tone zones. A front that starts above worktop height is an upper; each zone gets its own copy of the material.
+  // Fixed fronts arrive merged into one mesh, so a mesh that spans both zones is divided board by board.
+  const zoned = new Map(), UPPER = 1.1;
+  const zoneMat = (m, z) => {
+    const k = m.uuid + z;
+    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z }); faceMats.push(zoned.get(k)); }
+    return zoned.get(k).m;
+  };
+  for (const o of fronts) {
+    const bb = new THREE.Box3().setFromObject(o), g = o.geometry, pos = g.attributes.position, idx = g.index;
+    const whole = bb.min.y - box.min.y > UPPER ? 'upper' : 'lower';
+    if (whole === 'upper' || bb.max.y - box.min.y < UPPER + 0.2 || !idx || pos.count <= 24) { o.material = zoneMat(o.material, whole); continue; }
+    const par = new Int32Array(pos.count), seen = new Map(), low = new Float32Array(pos.count).fill(Infinity), v = new THREE.Vector3();
+    const find = (i) => { while (par[i] !== i) { par[i] = par[par[i]]; i = par[i]; } return i; };
+    for (let i = 0; i < pos.count; i++) {          // corners that touch belong to one board
+      v.fromBufferAttribute(pos, i);
+      const k = `${Math.round(v.x * 500)},${Math.round(v.y * 500)},${Math.round(v.z * 500)}`;
+      par[i] = seen.has(k) ? seen.get(k) : (seen.set(k, i), i);
+    }
+    for (let t = 0; t < idx.count; t += 3) { const a = find(idx.getX(t)); par[find(idx.getX(t + 1))] = a; par[find(idx.getX(t + 2))] = a; }
+    for (let i = 0; i < pos.count; i++) { const r = find(i); low[r] = Math.min(low[r], v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld).y); }
+    const tris = [[], []];
+    for (let t = 0; t < idx.count; t += 3) tris[low[find(idx.getX(t))] - box.min.y > UPPER ? 1 : 0].push(idx.getX(t), idx.getX(t + 1), idx.getX(t + 2));
+    if (!tris[1].length) { o.material = zoneMat(o.material, 'lower'); continue; }
+    g.setIndex(tris[0].concat(tris[1]));
+    g.clearGroups();
+    g.addGroup(0, tris[0].length, 0);
+    g.addGroup(tris[0].length, tris[1].length, 1);
+    o.material = [zoneMat(o.material, 'lower'), zoneMat(o.material, 'upper')];
+  }
   rig.forEach(([o, mm]) => rigMovable(o, mm));
   for (const d of data.leds.filter((l) => l.sku === sku)) {          // a strip under each wall cabinet, each with its own light
     const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]), len = a.distanceTo(b);

@@ -86,6 +86,14 @@ for a, b in (
     if a not in js:
         raise SystemExit("main.js changed, cannot find: " + a)
     js = js.replace(a, b)
+# "Customize this design" links: every exhibit the hall sends to a service page must be the one that page shows
+_svc = open(os.path.join(ROOT, "src", "data", "services.ts"), encoding="utf-8").read()
+_shown = {sku: slug for slug, sku in re.findall(r"slug: '([^']+)',\s*exhibit: \{\s*sku: '([^']+)'", _svc)}
+_page = re.search(r"const PAGE = \{(.*?)\};", js, re.S)
+_linked = dict(re.findall(r"'?([\w-]+)'?: '([^']+)'", _page.group(1))) if _page else {}
+_hall = {e.get("sku") for e in json.load(open(os.path.join(SRC, "assets", "gallery.json"), encoding="utf-8"))["stops"]}
+if _linked != {k: v for k, v in _shown.items() if k in _hall}:
+    raise SystemExit("main.js PAGE %r does not match the service pages %r" % (_linked, _shown))
 open(os.path.join(DST, "main.js"), "w", encoding="utf-8", newline="\n").write(stamped(js, 6))
 
 html = open(os.path.join(SRC, "index.html"), encoding="utf-8").read()

@@ -47,6 +47,8 @@ GarageCabinetv2, Coffee Bar Area), the mudroom under `HoustonShow2026/BoothPlanV
 - **Change finish** (exhibit viewer): shows the door and drawer fronts in any of the 20 standard colours, using the site's
   own swatch images (`site.json`). It recolours materials named "Door face ..." / "Drawer face ..." only; the pipeline
   keeps those apart from the carcass, and fronts named "Glass front" / "Fixed front" are left alone. Not in the hall yet.
+- **Two tones** (exhibit viewer): the fronts are split into Upper (a front that starts more than 1.1 m above the floor) and Lower; the Finish panel's All fronts / Upper / Lower switch says where the next swatch goes. Fixed fronts come merged into one mesh, so `exhibit.js` divides a spanning mesh board by board. The switch is hidden when a design has no upper fronts (the vanity). Check link: `?upper=<name>`.
+- **Customize this design** (hall): a card link to the service page that shows the same exhibit (`PAGE` in `main.js`; `scripts/build-gallery.py` fails if it disagrees with `src/data/services.ts`). The page scrolls to `#exhibit-3d` and opens the viewer's Finish panel.
 - Check links: `?finish=<name>` and `?view=<turn>,<tilt>,<distance>` in the exhibit viewer; `?stop=<n>` jumps to a stop, `?open` opens everything, `?led=<on>,<level>,<kelvin>` sets the cabinet lights.
 
 ## Done 2026-11-23
