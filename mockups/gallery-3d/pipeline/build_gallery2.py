@@ -197,7 +197,68 @@ def blade(name, at, height, width, lean, yaw, mat, curl=0.0, n=7, thick=0.004):
     return add_mesh(name, vs, fs, mat, smooth=True)
 
 
+PROP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "props")
+PROP_MODELS = {}          # asset -> (template object, size)
+# kind -> (asset, height it stands in the hall, most triangles it may keep)
+PROP_KINDS = {"snake": ("potted_plant_01", 1.35, 9000), "bush": ("potted_plant_02", 0.5, 6000), "plant": ("potted_plant_04", 0.24, 2500),
+              "vase": ("ceramic_vase_02", 0.3, 1200), "tallvase": ("ceramic_vase_01", 0.42, 1200), "basket": ("wicker_basket_02", 0.5, 3000)}
+
+
+def prop_model(aid, max_tris):
+    """A model from pipeline/props as one slim object, kept out of the bake and the export; copies of it are placed."""
+    if aid in PROP_MODELS:
+        return PROP_MODELS[aid]
+    before = set(bpy.data.objects)
+    bpy.ops.import_scene.gltf(filepath=os.path.join(PROP_DIR, aid, aid + ".gltf"))
+    obs = [o for o in bpy.data.objects if o not in before and o.type == "MESH" and o.name in bpy.context.view_layer.objects]
+    bpy.ops.object.select_all(action="DESELECT")
+    for o in obs:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = obs[0]
+    bpy.ops.object.parent_clear(type="CLEAR_KEEP_TRANSFORM")
+    if len(obs) > 1:
+        bpy.ops.object.join()
+    ob = bpy.context.view_layer.objects.active
+    bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
+    for o in [o for o in bpy.data.objects if o not in before and o is not ob]:
+        bpy.data.objects.remove(o, do_unlink=True)
+    t = sum(len(pl.vertices) - 2 for pl in ob.data.polygons)
+    if t > max_tris:
+        md = ob.modifiers.new("dec", "DECIMATE")
+        md.ratio = max_tris / t
+        new_me = bpy.data.meshes.new_from_object(ob.evaluated_get(bpy.context.evaluated_depsgraph_get()))
+        ob.modifiers.remove(md)
+        ob.data = new_me
+    for k, sl in enumerate(ob.material_slots):
+        sl.material.name = "prop %s %d" % (aid, k)
+        for n in sl.material.node_tree.nodes:
+            if n.type == "TEX_IMAGE" and n.image and max(n.image.size) > 512:
+                n.image.scale(512, 512)
+    pts = [Vector(c) for c in ob.bound_box]
+    lo = Vector([min(p[i] for p in pts) for i in range(3)]); hi = Vector([max(p[i] for p in pts) for i in range(3)])
+    for v in ob.data.vertices:          # stand it on the origin
+        v.co -= Vector(((lo.x + hi.x) / 2, (lo.y + hi.y) / 2, lo.z))
+    ob.name = "prop template " + aid
+    ob.hide_render = True
+    ob.location = (0, -50, -50)
+    log("prop model", aid, t, "->", sum(len(pl.vertices) - 2 for pl in ob.data.polygons), "tris, size", [round(v, 2) for v in (hi - lo)])
+    PROP_MODELS[aid] = (ob, hi - lo)
+    return PROP_MODELS[aid]
+
+
 def make_prop(kind, at, rng, yaw=0.0, scale=1.0):
+    if kind in PROP_KINDS and os.path.isdir(os.path.join(PROP_DIR, PROP_KINDS[kind][0])):
+        aid, height, tris = PROP_KINDS[kind]
+        tpl, size = prop_model(aid, tris)
+        ob = tpl.copy(); ob.data = tpl.data.copy()
+        ob.name = "prop " + kind
+        ob.hide_render = False
+        k = height * scale / size.z
+        ob.scale = (k, k, k)
+        ob.rotation_euler[2] = yaw if yaw else rng.uniform(0, 2 * math.pi)
+        ob.location = at
+        COL.objects.link(ob)
+        return [ob]
     k = scale
     leaf = [flat_mat("prop leaf %d" % i, c, 0.55) for i, c in enumerate(((52, 84, 58), (66, 102, 64), (40, 68, 50)))]
     obs = []
@@ -250,6 +311,26 @@ def site_extras(e, meshes, lo, hi):
                            flat_mat("halfwall", (150, 140, 128), 0.85)))
         log("half wall", e["sku"], "x", round(x0, 2), "y", round(l2.y, 2), "to", round(BACK, 2))
     rng = random.Random(e["sku"])
+    for sw in e.get("swaps", []):          # a stand-in box in the design (found by its picture's name) gives way to a real model
+        def pictures(o):
+            return {n.image.name for sl in o.material_slots if sl.material and sl.material.node_tree for n in sl.material.node_tree.nodes if n.type == "TEX_IMAGE" and n.image}
+        old = [o for o in meshes if any(sw["picture"] in nm for nm in pictures(o))]
+        if not old:
+            log("SWAP SKIPPED", e["sku"], sw["picture"], "not found")
+            continue
+        sp = [o.matrix_world @ Vector(c) for o in old for c in o.bound_box]
+        a = Vector([min(p[i] for p in sp) for i in range(3)]); b = Vector([max(p[i] for p in sp) for i in range(3)])
+        tpl, size = prop_model(*[PROP_KINDS[sw["kind"]][i] for i in (0, 2)])
+        ob = tpl.copy(); ob.data = tpl.data.copy()
+        ob.name = "prop " + sw["kind"]; ob.hide_render = False
+        ob.scale = ((b.x - a.x) * 0.94 / size.x, (b.y - a.y) * 0.94 / size.y, (b.z - a.z) / size.z)
+        ob.location = ((a.x + b.x) / 2, (a.y + b.y) / 2, a.z)
+        COL.objects.link(ob)
+        for o in old:
+            meshes.remove(o)
+            bpy.data.objects.remove(o, do_unlink=True)
+        made.append(ob)
+        log("swap", e["sku"], sw["picture"], "->", sw["kind"], len(old), "pieces, size", [round(v, 2) for v in (b - a)])
     for pr in e.get("props", []):          # rel: across the footprint (0..1 = left..right, front..back); drop: stand on what is there
         x = lo.x + pr["rel"][0] * (hi.x - lo.x); y = lo.y + pr["rel"][1] * (hi.y - lo.y); z = 0.0
         if pr.get("drop"):
@@ -334,7 +415,8 @@ for e in LAYOUT["exhibits"]:
     root.location = (e["xc"] - (lo.x + hi.x) / 2, BACK - hi.y, -lo.z)
     bpy.context.view_layer.update()
     movs = [o for o, _ in mine]
-    groups[e["sku"]] = [o for o in meshes if o not in movs] + site_extras(e, meshes, lo, hi)
+    extras = site_extras(e, meshes, lo, hi)
+    groups[e["sku"]] = [o for o in meshes if o not in movs] + extras
     Mw = root.matrix_world.copy()
     R3 = Mw.to_3x3()
     for o, m in mine:
@@ -524,7 +606,7 @@ for obs in list(groups.values()) + [mov_objs]:
     for o in obs:
         t = sum(len(pl.vertices) - 2 for pl in o.data.polygons)
         before_t += t
-        if t > 3000:
+        if t > 3000 and not o.name.startswith("prop "):
             md = o.modifiers.new("dec", "DECIMATE")
             md.ratio = max(0.18, min(0.6, 2500 / t))
             dg = bpy.context.evaluated_depsgraph_get()
