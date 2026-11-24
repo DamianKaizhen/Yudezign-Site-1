@@ -43,6 +43,10 @@
     .asbuilt { flex: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: none; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
     .asbuilt:hover { border-color: var(--gold); }
     .asbuilt[aria-pressed="true"] { visibility: hidden; }
+    .zones { display: flex; margin-top: 12px; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+    .zones[hidden] { display: none; }
+    .zones button { flex: 1; padding: 7px 4px; border: 0; background: none; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .zones button[aria-pressed="true"] { background: var(--gold); color: #14110e; font-weight: 600; }
     .grp h3 { margin: 14px 0 6px; font: inherit; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
     .grp .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
     .grp .row button { aspect-ratio: 1; padding: 0; border: 1px solid var(--line); border-radius: 50%; background-size: cover; background-position: center; transition: transform .15s; }
@@ -103,8 +107,9 @@
         <p class="now" id="finishNow">As built</p>
         <button type="button" class="asbuilt" id="asBuilt" aria-pressed="true">Reset</button>
       </div>
+      <div class="zones" id="zones" role="group" aria-label="Which fronts to colour" hidden></div>
       <div id="swatchRows"></div>
-      <p class="note">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
+      <p class="note" id="finishNote">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
     </div>
   </aside>
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import NotFound from '../../components/NotFound';
 import SEO from '../../components/SEO';
 import ServiceHero from './components/ServiceHero';
@@ -23,6 +23,15 @@ import {
 
 const ServicePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { hash } = useLocation();
+  const exhibitRef = useRef<HTMLElement>(null);
+  // Arriving from the 3D gallery's "Customize this design" link: go to the model and open its finish panel.
+  const [customize, setCustomize] = useState(false);
+  useEffect(() => {
+    if (hash !== '#exhibit-3d') return;
+    setCustomize(true);
+    exhibitRef.current?.scrollIntoView({ block: 'start' });
+  }, [hash, slug]);
 
   // Find service by slug
   const service = getServiceBySlug(slug || '');
@@ -60,7 +69,7 @@ const ServicePage: React.FC = () => {
 
       {/* The design as a 3D model: turn it, open it, light it */}
       {service.exhibit && (
-        <section className="py-16 bg-white" aria-labelledby="exhibit-heading">
+        <section id="exhibit-3d" ref={exhibitRef} className="py-16 bg-white scroll-mt-20" aria-labelledby="exhibit-heading">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 items-end mb-8">
               <div>
@@ -86,7 +95,7 @@ const ServicePage: React.FC = () => {
             {/* The viewer gets the full width: the model needs the room, and its panels dock beside it */}
             <div className="h-[72vh] min-h-[460px] max-h-[720px] rounded-2xl overflow-hidden border border-slate-200 bg-black">
               <iframe
-                src={`/gallery/exhibit.html?sku=${service.exhibit.sku}${service.exhibit.room ? '&room' : ''}`}
+                src={`/gallery/exhibit.html?sku=${service.exhibit.sku}${service.exhibit.room ? '&room' : ''}${customize ? '&panel=finish' : ''}`}
                 title={`3D model: ${service.exhibit.title}`}
                 loading="lazy"
                 allow="fullscreen"

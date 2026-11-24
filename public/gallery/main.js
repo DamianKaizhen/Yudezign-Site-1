@@ -431,6 +431,10 @@ $('enterBtn').onclick = () => goTo(1);
 
 const PTYPE = { 'showroom-kitchen': 'kitchen', 'garage-cabinet': 'garage', 'showroom-closet': 'closet', 'master-bath': 'vanity', mudroom: 'laundry-mudroom',
   'coffee-bar': 'bar-pantry', 'reception-desk': 'office', 'executive-office': 'office' };
+// The exhibits a service page also shows in its own viewer, where the finish can be changed (scripts/build-gallery.py
+// checks this list against src/data/services.ts).
+const PAGE = { 'showroom-kitchen': 'kitchen-cabinets', 'master-bath': 'bathroom-vanities', 'executive-office': 'home-office-cabinets',
+  'garage-cabinet': 'garage-cabinets', mudroom: 'laundry-room-cabinets' };
 let active = -1;
 refreshCard = () => { if (active >= 0 && stops[active].kind === 'piece') showStop(active); };
 function showStop(i) {
@@ -461,6 +465,7 @@ function showStop(i) {
     actions.innerHTML = '<a href="/portfolio">See all projects</a>';
   } else if (s.kind === 'piece') {
     actions.innerHTML = `<a href="/contact" data-panel="contact" data-ptype="${PTYPE[s.sku] || ''}">Start a project like this</a>`;
+    if (PAGE[s.sku]) actions.insertAdjacentHTML('beforeend', `<a href="/services/${PAGE[s.sku]}#exhibit-3d">Customize this design</a>`);
     if (movables.some((r) => r.sku === s.sku)) {
       const ob = document.createElement('button');
       ob.type = 'button'; ob.className = 'quiet';
