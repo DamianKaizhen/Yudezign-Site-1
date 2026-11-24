@@ -11,6 +11,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { Reflector } from 'three/addons/objects/Reflector.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -540,7 +541,8 @@ if (params.get('light')) { const [b, k] = params.get('light').split(','); dim.va
 
 // ---------------------------------------------------------------- cabinet lights
 // A strip under each wall cabinet. The designs do not draw their lighting, so the pipeline places these. Each strip
-// glows; the few nearest the camera also cast light, so the count of live lights stays fixed.
+// glows; the few nearest the camera also cast light (an area light as long as the strip, so the worktop and the wall
+// under it are lit along the run), so the count of live lights stays fixed.
 const ledMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false });
 const leds = exhibitData.leds.map((d) => {
   const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]);
@@ -548,10 +550,11 @@ const leds = exhibitData.leds.map((d) => {
   strip.position.copy(a).add(b).multiplyScalar(0.5);
   strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
   scene.add(strip);
-  return { mid: strip.position, len: a.distanceTo(b) };
+  return { mid: strip.position, len: a.distanceTo(b), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
 });
+if (leds.length) RectAreaLightUniformsLib.init();
 const ledLights = Array.from({ length: Math.min(lite ? 2 : 4, leds.length) }, () => {
-  const p = new THREE.PointLight(0xffffff, 0, 1.7, 2);
+  const p = new THREE.RectAreaLight(0xffffff, 0, 1, 0.03);
   scene.add(p);
   return p;
 });
@@ -561,15 +564,17 @@ function aimLeds(cam) {
   const near = leds.map((l) => ({ l, d: l.mid.distanceToSquared(cam) })).sort((x, y) => x.d - y.d);
   ledLights.forEach((p, i) => {
     const { l } = near[i];
-    p.position.set(l.mid.x, l.mid.y - 0.05, l.mid.z);
-    p.intensity = ledLevel * 0.55 * l.len;
+    p.position.set(l.mid.x, l.mid.y - 0.008, l.mid.z);
+    p.quaternion.copy(l.down);
+    p.width = l.len;
+    p.intensity = ledLevel * 50;
   });
 }
 const ledOn = $('ledOn'), ledDim = $('ledDim'), ledWarm = $('ledWarm');
 function applyLeds() {
   const t = kelvinTint(+ledWarm.value);
   ledLevel = ledOn.checked ? ledDim.value / 100 : 0;
-  const k = ledLevel > 0 ? 0.6 + 1.5 * ledLevel : 0.07;          // off: the strip is still there, just dark
+  const k = ledLevel > 0 ? 1.2 + 3 * ledLevel : 0.07;          // off: the strip is still there, just dark
   ledMat.color.setRGB(t.x * k, t.y * k, t.z * k);
   ledLights.forEach((p) => p.color.setRGB(t.x, t.y, t.z));
   $('ledK').textContent = `${Math.round(ledWarm.value / 50) * 50} K`;

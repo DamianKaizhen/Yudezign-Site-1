@@ -169,7 +169,7 @@ const Finishes = () => {
         <div className="max-w-7xl mx-auto">
           <div className="bg-luxury-beige rounded-lg px-6 py-5 flex flex-wrap items-center justify-between gap-4">
             <p className="text-body text-luxury-gray-700">
-              Looking for stocked, ready-to-assemble cabinets? Our framed RTA line has its own finishes, stock sizes and prices.
+              Looking for stocked, ready-to-assemble cabinets? Our framed RTA line has its own finishes and stock sizes. Request a quote and we price your list.
             </p>
             <Link to="/rta-cabinets" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
               See the RTA catalogue

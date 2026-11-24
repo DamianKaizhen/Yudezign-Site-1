@@ -11,10 +11,11 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { Reflector } from 'three/addons/objects/Reflector.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
-const data = await (await fetch('assets/gallery.json?v=d95b5123c3')).json();
+const data = await (await fetch('assets/gallery.json?v=4731b3a7f0')).json();
 const { hall, stops, sections, pieces, zones, videoWall } = data;
 
 // Blender is Z-up, three.js is Y-up.
@@ -61,13 +62,13 @@ function tex(url, flipY = true) {
 const BAKE_GAIN = 2;
 const bakeMats = [];
 const bakedMaterial = (name, flipY) => {
-  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=d95b5123c3`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
+  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=4731b3a7f0`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
   bakeMats.push(m);
   return m;
 };
 
 // ---------------------------------------------------------------- hall shell
-gltfLoader.load('assets/models/shell.glb?v=d95b5123c3', (g) => {
+gltfLoader.load('assets/models/shell.glb?v=4731b3a7f0', (g) => {
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
     // the ceiling is near-black; a flat colour is cleaner than a compressed bake
@@ -123,7 +124,7 @@ if (lite) {
       }`,
   };
   floor = new Reflector(floorGeo, { clipBias: 0.002, textureWidth: 768, textureHeight: 768, shader });
-  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=d95b5123c3', true);
+  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=4731b3a7f0', true);
   const mirror = floor.onBeforeRender;
   let flip = 0;
   floor.onBeforeRender = function (...a) { if ((flip ^= 1)) mirror.apply(this, a); };
@@ -150,7 +151,7 @@ function tuneMaterial(m) {
 }
 // Doors and drawers arrive as their own parts. Each carries the design's own hinge line or pull direction (the pipeline
 // reads them from the Yukon file), so a door swings where it is hinged and a drawer slides the way it is built.
-const exhibitData = await (await fetch('assets/movables.json?v=d95b5123c3')).json();
+const exhibitData = await (await fetch('assets/movables.json?v=4731b3a7f0')).json();
 const movMeta = Object.fromEntries(exhibitData.movables.map((m) => [m.name, m]));
 const movables = [];                 // { sku, mesh, kind, t, want, apply }
 function rigMovable(mesh, m) {
@@ -181,7 +182,7 @@ let refreshCard = () => {};          // set once the cards exist: a model that l
 const GLOW = { led: [1.0, 0.72, 0.42, 3.2], diffuser: [1.0, 0.78, 0.52, 1.7], orb: [1.0, 0.75, 0.45, 2.2] };
 const swapped = new Map();
 // One model per exhibit, so the hall fills in piece by piece and a service page can load just its own.
-for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=d95b5123c3`, (g) => {
+for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=4731b3a7f0`, (g) => {
   const rig = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -540,7 +541,8 @@ if (params.get('light')) { const [b, k] = params.get('light').split(','); dim.va
 
 // ---------------------------------------------------------------- cabinet lights
 // A strip under each wall cabinet. The designs do not draw their lighting, so the pipeline places these. Each strip
-// glows; the few nearest the camera also cast light, so the count of live lights stays fixed.
+// glows; the few nearest the camera also cast light (an area light as long as the strip, so the worktop and the wall
+// under it are lit along the run), so the count of live lights stays fixed.
 const ledMat = new THREE.MeshBasicMaterial({ color: 0xffffff, fog: false });
 const leds = exhibitData.leds.map((d) => {
   const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]);
@@ -548,10 +550,11 @@ const leds = exhibitData.leds.map((d) => {
   strip.position.copy(a).add(b).multiplyScalar(0.5);
   strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
   scene.add(strip);
-  return { mid: strip.position, len: a.distanceTo(b) };
+  return { mid: strip.position, len: a.distanceTo(b), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
 });
+if (leds.length) RectAreaLightUniformsLib.init();
 const ledLights = Array.from({ length: Math.min(lite ? 2 : 4, leds.length) }, () => {
-  const p = new THREE.PointLight(0xffffff, 0, 1.7, 2);
+  const p = new THREE.RectAreaLight(0xffffff, 0, 1, 0.03);
   scene.add(p);
   return p;
 });
@@ -561,15 +564,17 @@ function aimLeds(cam) {
   const near = leds.map((l) => ({ l, d: l.mid.distanceToSquared(cam) })).sort((x, y) => x.d - y.d);
   ledLights.forEach((p, i) => {
     const { l } = near[i];
-    p.position.set(l.mid.x, l.mid.y - 0.05, l.mid.z);
-    p.intensity = ledLevel * 0.55 * l.len;
+    p.position.set(l.mid.x, l.mid.y - 0.008, l.mid.z);
+    p.quaternion.copy(l.down);
+    p.width = l.len;
+    p.intensity = ledLevel * 50;
   });
 }
 const ledOn = $('ledOn'), ledDim = $('ledDim'), ledWarm = $('ledWarm');
 function applyLeds() {
   const t = kelvinTint(+ledWarm.value);
   ledLevel = ledOn.checked ? ledDim.value / 100 : 0;
-  const k = ledLevel > 0 ? 0.6 + 1.5 * ledLevel : 0.07;          // off: the strip is still there, just dark
+  const k = ledLevel > 0 ? 1.2 + 3 * ledLevel : 0.07;          // off: the strip is still there, just dark
   ledMat.color.setRGB(t.x * k, t.y * k, t.z * k);
   ledLights.forEach((p) => p.color.setRGB(t.x, t.y, t.z));
   $('ledK').textContent = `${Math.round(ledWarm.value / 50) * 50} K`;
@@ -581,7 +586,7 @@ if (params.get('led')) { const [on, b, k] = params.get('led').split(','); ledOn.
 $('ledRows').hidden = !leds.length;
 
 // ---------------------------------------------------------------- site panels (Services, Portfolio, Finishes, About)
-const site = await (await fetch('assets/site.json?v=d95b5123c3')).json();
+const site = await (await fetch('assets/site.json?v=4731b3a7f0')).json();
 const panel = $('panel'), panelBody = $('panelBody');
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const cap = (s) => s[0].toUpperCase() + s.slice(1);

@@ -74,7 +74,7 @@ const PortalRoutes = lazy(() => import('./pages/portal/PortalRoutes'));
 // phone with the site installed, so it has no place in the main bundle either.
 const DocViewer = lazy(() => import('./pages/doc/DocViewer'));
 
-// The stocked RTA catalogue carries 640 cabinets with a price per finish, so it
+// The stocked RTA catalogue carries 640 cabinets with per-finish photos and drawings, so it
 // loads as its own chunk rather than riding in the bundle every visitor gets.
 const RtaCatalog = lazy(() => import('./pages/rta/RtaCatalog'));
 

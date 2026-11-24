@@ -26,12 +26,10 @@ export interface RtaCabinet {
   d: number | null;
   doors: number | null;
   drawers: number | null;
-  /** Whether the cabinet can ship assembled; null assembled price where it cannot. */
+  /** Whether the cabinet can ship assembled (otherwise flat-pack only). */
   canAssemble: boolean;
-  /** Assembly add-on in dollars, applied per cabinet when shipped assembled. */
-  assembly: number;
-  /** Retail RTA price per finish, aligned to RtaLine.finishes; null = not offered in that finish. */
-  prices: (number | null)[];
+  /** Indexes into RtaLine.finishes of the finishes this cabinet is offered in. */
+  finishes: number[];
   /** Line drawing under /public, or null where the package has none. */
   drawing: string | null;
 }
@@ -52,13 +50,7 @@ export interface RtaLine {
 export interface RtaCatalog {
   /** Workbook the data was generated from. */
   builtFrom: string;
-  /** Price list version the workbook was built from. */
-  priceListVersion: string;
   /** Date the site data was generated. */
   generated: string;
-  /** Sales tax percentage added at checkout. */
-  salesTaxPct: number;
-  /** Delivery charge per trip in Greater Houston, in dollars. */
-  deliveryGreaterHouston: number;
   lines: RtaLine[];
 }

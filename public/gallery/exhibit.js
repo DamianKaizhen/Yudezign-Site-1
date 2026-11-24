@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
@@ -93,7 +94,7 @@ function applyLights() {
   $('roomB').textContent = `${Math.round(level * 100)}%`;
   $('roomK').textContent = `${Math.round($('roomWarm').value / 50) * 50} K`;
   const on = $('ledOn').checked, led = on ? $('ledDim').value / 100 : 0, lt = kelvinTint(+$('ledWarm').value);
-  const k = led > 0 ? 0.6 + 1.5 * led : 0.07;          // off: the strip is still there, just dark
+  const k = led > 0 ? 1.2 + 3 * led : 0.07;          // off: the strip is still there, just dark
   ledMat.color.setRGB(lt.x * k, lt.y * k, lt.z * k);
   ledLights.forEach((p) => { p.color.setRGB(lt.x, lt.y, lt.z); p.intensity = led * p.userData.base; });
   $('ledB').textContent = on ? `${$('ledDim').value}%` : 'Off';
@@ -160,10 +161,10 @@ const swatchTex = {};
 // Wood acoustic slat panels are a stocked product with their own four finishes: they never take a board colour.
 // A slat part is either a flat board carrying a picture of the slats ('band') or modelled slats with a wood picture.
 const SLAT_FINISHES = [
-  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=d95b5123c3', wood: 'assets/slat/dgm53-wood.jpg?v=d95b5123c3' },
-  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=d95b5123c3', wood: 'assets/slat/dgm109-wood.jpg?v=d95b5123c3' },
-  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=d95b5123c3', wood: 'assets/slat/dgm197-wood.jpg?v=d95b5123c3' },
-  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=d95b5123c3', wood: 'assets/slat/dgm717-wood.jpg?v=d95b5123c3' },
+  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=4731b3a7f0', wood: 'assets/slat/dgm53-wood.jpg?v=4731b3a7f0' },
+  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=4731b3a7f0', wood: 'assets/slat/dgm109-wood.jpg?v=4731b3a7f0' },
+  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=4731b3a7f0', wood: 'assets/slat/dgm197-wood.jpg?v=4731b3a7f0' },
+  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=4731b3a7f0', wood: 'assets/slat/dgm717-wood.jpg?v=4731b3a7f0' },
 ];
 const slatKind = (map) => (/^sw_dgm/i.test(map?.name || '') ? 'band' : sku === 'executive-office' && /naturalhamiltonoak/i.test(map?.name || '') ? 'wood' : null);
 let parts = [], sel = -1, flash = null;          // sel: -1 = every part
@@ -232,7 +233,7 @@ function thumb(x) {          // the as-built board as a chip picture
 async function finishPanel() {
   if (!faceMats.length) return;
   let site;
-  try { site = await (await fetch('assets/site.json?v=d95b5123c3')).json(); } catch { return; }
+  try { site = await (await fetch('assets/site.json?v=4731b3a7f0')).json(); } catch { return; }
   const styles = site.styles || [], rows = $('swatchRows');
   const groups = styles.length ? styles.map((s) => [s.name || s.id, site.finishes.filter((f) => f.style === (s.id || s.slug || s.name))]) : [['Standard colours', site.finishes]];
   const left = site.finishes.filter((f) => !groups.some(([, list]) => list.includes(f)));
@@ -321,13 +322,47 @@ function resize() {
 }
 addEventListener('resize', resize);
 
+// Where a strip belongs when the design's data has none: under each run of upper doors that has open space below it
+// (a worktop, a bench, a hanging bay). Used to prepare the data; see README "Cabinet lights".
+function findStrips(model, fronts, box) {
+  const ray = new THREE.Raycaster(), doors = [], out = [];
+  const hit = (o, d, far) => { ray.set(o, d); ray.far = far; return ray.intersectObject(model, true)[0]; };
+  for (const o of fronts) {
+    const b = new THREE.Box3().setFromObject(o), s = b.getSize(new THREE.Vector3());
+    const y = b.min.y - box.min.y;
+    if (y < UPPER || y > 2.3 || s.y < 0.25) continue;
+    const n = s.x < s.z ? 'x' : 'z', r = n === 'x' ? 'z' : 'x';
+    if (s[n] > 0.06 || s[r] < 0.2) continue;
+    doors.push({ n, r, plane: (b.min[n] + b.max[n]) / 2, y: b.min.y, lo: b.min[r], hi: b.max[r] });
+  }
+  doors.sort((p, q) => p.lo - q.lo);
+  const runs = [];
+  for (const d of doors) {
+    const run = runs.find((u) => u.n === d.n && Math.abs(u.plane - d.plane) < 0.04 && Math.abs(u.y - d.y) < 0.03 && d.lo - u.hi < 0.1);
+    if (run) run.hi = Math.max(run.hi, d.hi); else runs.push({ ...d });
+  }
+  for (const u of runs) {
+    const at = (depth, y, along = (u.lo + u.hi) / 2) => { const v = new THREE.Vector3(); v[u.n] = u.plane + depth; v[u.r] = along; v.y = y; return v; };
+    const dir = (sgn) => { const v = new THREE.Vector3(); v[u.n] = sgn; return v; };
+    // the cabinet is on the side where a back panel is close behind the door
+    const back = [1, -1].map((sgn) => hit(at(sgn * 0.03, u.y + 0.2), dir(sgn), 0.75)?.distance ?? Infinity);
+    if (Math.min(...back) === Infinity) continue;
+    const sgn = back[0] < back[1] ? 1 : -1, depth = Math.min(...back) + 0.03;
+    if (depth < 0.2) continue;
+    const y = u.y - 0.012, set = sgn * depth * 0.45;
+    if (hit(at(set, y - 0.02), new THREE.Vector3(0, -1, 0), 0.3)) continue;          // something right under it: this is inside a tall unit
+    if (u.hi - u.lo < 0.3) continue;
+    out.push([at(set, y, u.lo + 0.03), at(set, y, u.hi - 0.03)]);
+  }
+  return out;
+}
 const UPPER = 1.1;          // a front that starts higher than this above the floor is an upper
 async function load() {
-  const data = await (await fetch('assets/movables.json?v=d95b5123c3')).json();
+  const data = await (await fetch('assets/movables.json?v=4731b3a7f0')).json();
   const meta = Object.fromEntries(data.movables.filter((m) => m.sku === sku).map((m) => [m.name, m]));
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
-  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=d95b5123c3`);
+  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=4731b3a7f0`);
   const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -383,21 +418,33 @@ async function load() {
     o.material = [zoneMat(o.material, 'lower', tris[0].length / 1.5, ...span[0]), zoneMat(o.material, 'upper', tris[1].length / 1.5, ...span[1])];
   }
   rig.forEach(([o, mm]) => rigMovable(o, mm));
-  for (const d of data.leds.filter((l) => l.sku === sku)) {          // a strip under each wall cabinet, each with its own light
-    const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]), len = a.distanceTo(b);
-    const strip = new THREE.Mesh(new THREE.BoxGeometry(len, 0.005, 0.014), ledMat);
-    strip.position.copy(a).add(b).multiplyScalar(0.5);
+  // A strip under each wall cabinet. Each is an area light as long as the strip, so the worktop and the wall under it
+  // are lit along the whole run and a polished top mirrors the line of light.
+  const strips = data.leds.filter((l) => l.sku === sku).map((d) => [B(d.a[0], d.a[1], d.a[2]), B(d.b[0], d.b[1], d.b[2])]);
+  if (params.has('findleds')) { strips.length = 0; strips.push(...findStrips(g.scene, fronts, box)); }          // ?findleds: print where strips belong (README)
+  if (strips.length) RectAreaLightUniformsLib.init();
+  strips.sort((p, q) => q[0].distanceTo(q[1]) - p[0].distanceTo(p[1]));
+  strips.forEach(([a, b], i) => {
+    const len = a.distanceTo(b), mid = a.clone().add(b).multiplyScalar(0.5);
+    const strip = new THREE.Mesh(new THREE.BoxGeometry(len, 0.006, 0.016), ledMat);
+    strip.position.copy(mid);
     strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
     root.add(strip);
-    if (ledLights.length < (coarse ? 3 : 6)) {
-      const p = new THREE.PointLight(0xffffff, 0, 1.7, 2);
-      p.position.copy(strip.position).y -= 0.05;
-      p.userData.base = 0.55 * len;
-      root.add(p);
-      ledLights.push(p);
-    }
-  }
-  $('ledRows').hidden = !data.leds.some((l) => l.sku === sku);
+    if (i >= (coarse ? 4 : 10)) return;          // the longest runs cast the light
+    const lamp = new THREE.RectAreaLight(0xffffff, 0, len, 0.03);
+    lamp.position.copy(mid).y -= 0.008;
+    lamp.quaternion.copy(strip.quaternion).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2));          // facing down
+    lamp.userData.base = 26;
+    root.add(lamp);
+    ledLights.push(lamp);
+    const wash = new THREE.PointLight(0xffffff, 0, 1.1, 1.6);          // the soft spill onto the wall behind and the fronts beside
+    wash.position.copy(mid).y -= 0.12;
+    wash.userData.base = 0.5 * Math.min(len, 1.2);
+    root.add(wash);
+    ledLights.push(wash);
+  });
+  if (params.has('findleds')) console.log('LEDS ' + JSON.stringify(strips.map(([a, b]) => ({ sku, a: [a.x, -a.z, a.y].map((v) => +v.toFixed(4)), b: [b.x, -b.z, b.y].map((v) => +v.toFixed(4)), out: [0, 0, 0] }))));
+  $('ledRows').hidden = !strips.length;
   $('openAll').hidden = !movables.length;
 
   // A floor and a back wall, so the piece stands in a room and its unfinished back is never on show.
