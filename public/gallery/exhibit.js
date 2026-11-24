@@ -177,7 +177,7 @@ function setFinish(f) {
 async function finishPanel() {
   if (!faceMats.length) return;
   let site;
-  try { site = await (await fetch('assets/site.json?v=bbffbebc35')).json(); } catch { return; }
+  try { site = await (await fetch('assets/site.json?v=9a90a6deb8')).json(); } catch { return; }
   const styles = site.styles || [], rows = $('swatchRows');
   const groups = styles.length ? styles.map((s) => [s.name || s.id, site.finishes.filter((f) => f.style === (s.id || s.slug || s.name))]) : [['Standard colours', site.finishes]];
   const left = site.finishes.filter((f) => !groups.some(([, list]) => list.includes(f)));
@@ -242,11 +242,11 @@ function resize() {
 addEventListener('resize', resize);
 
 async function load() {
-  const data = await (await fetch('assets/movables.json?v=bbffbebc35')).json();
+  const data = await (await fetch('assets/movables.json?v=9a90a6deb8')).json();
   const meta = Object.fromEntries(data.movables.filter((m) => m.sku === sku).map((m) => [m.name, m]));
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
-  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=bbffbebc35`);
+  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=9a90a6deb8`);
   const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;

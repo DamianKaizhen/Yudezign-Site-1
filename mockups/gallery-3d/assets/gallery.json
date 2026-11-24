@@ -300,6 +300,15 @@
    "W": 2820,
    "D": 2750,
    "H": 2520
+  },
+  {
+   "sku": "showroom-closet",
+   "name": "Showroom Closet",
+   "x": 11120,
+   "y": 5230,
+   "W": 2960,
+   "D": 2670,
+   "H": 2750
   }
  ],
  "stops": [
@@ -451,6 +460,27 @@
    "text": "Finished YuDeZign projects. Select a frame to see it full size."
   },
   {
+   "id": "showroom-closet",
+   "zone": "closets",
+   "kind": "piece",
+   "sku": "showroom-closet",
+   "pos": [
+    13.8,
+    2.7,
+    1.6
+   ],
+   "target": [
+    12.6,
+    6.57,
+    1.0
+   ],
+   "lens": 22,
+   "eyebrow": "Showroom display",
+   "title": "Showroom Closet",
+   "text": "An L-shaped walk-in in white: drawer banks, hanging bays with pull-out baskets, rounded corner shelves and a row of top cabinets.",
+   "meta": "Walk-in closet  \u00b7  Yukon Flooring Showroom, Stafford"
+  },
+  {
    "id": "showroom-kitchen",
    "zone": "vanities",
    "kind": "piece",
@@ -540,7 +570,7 @@
    "lens": 22,
    "eyebrow": "Showroom display",
    "title": "Garage Cabinets",
-   "text": "A wall of garage storage with tall cabinets, lift-up upper doors and a drawer bank under a worktop.",
+   "text": "A wall of garage storage with tall cabinets, lift-up upper doors, a slat wall and a workbench with a drawer bank.",
    "meta": "Garage storage  \u00b7  Yukon Flooring Showroom, Stafford"
   },
   {

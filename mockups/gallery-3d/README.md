@@ -59,6 +59,10 @@ GarageCabinetv2, Coffee Bar Area), the mudroom under `HoustonShow2026/BoothPlanV
 
 ## Still to do
 
+- **Showroom closet.** In the hall as `showroom-closet` (2026-11-24). The showroom closet exists only as a KD Lite drawing, so
+  it was rebuilt as a Yukon scene in the design lab (`C:/yudezign-mrs-lab/showroom-closet`, its README lists what is a
+  stand-in). The hall uses the `--hall` build (SC1h: the L without the dresser, which would stand with its back to
+  visitors); SC1 is the whole room.
 - **Closets.** The sold walk-in master closet is in (`master-closet`, exported from the scene submitted to the factory, in the
   job's `Master Closet/To Submit` folder). It is a whole room, so it is built with `hall=False` in `layout_v2.py`: it gets a
   model for the Closet Systems page (`exhibit.html?sku=master-closet&room`, viewed from inside) and does not stand in the hall.

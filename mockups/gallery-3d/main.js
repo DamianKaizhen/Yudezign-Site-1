@@ -429,7 +429,7 @@ zones.forEach(([id, name]) => {
 });
 $('enterBtn').onclick = () => goTo(1);
 
-const PTYPE = { 'showroom-kitchen': 'kitchen', 'garage-cabinet': 'garage', 'master-bath': 'vanity', mudroom: 'laundry-mudroom',
+const PTYPE = { 'showroom-kitchen': 'kitchen', 'garage-cabinet': 'garage', 'showroom-closet': 'closet', 'master-bath': 'vanity', mudroom: 'laundry-mudroom',
   'coffee-bar': 'bar-pantry', 'reception-desk': 'office', 'executive-office': 'office' };
 let active = -1;
 refreshCard = () => { if (active >= 0 && stops[active].kind === 'piece') showStop(active); };
