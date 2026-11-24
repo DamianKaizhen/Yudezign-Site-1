@@ -157,14 +157,25 @@ const texLoader = new THREE.TextureLoader();
 const swatchTex = {};
 // A design is made of parts: each board finish it was built in (body, fronts, a slat wall, a desktop...), divided into
 // upper and lower where that finish is used on both. A swatch goes to every part, or to the one picked in the panel.
+// Wood acoustic slat panels are a stocked product with their own four finishes: they never take a board colour.
+// A slat part is either a flat board carrying a picture of the slats ('band') or modelled slats with a wood picture.
+const SLAT_FINISHES = [
+  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg', wood: 'assets/slat/dgm53-wood.jpg' },
+  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg', wood: 'assets/slat/dgm109-wood.jpg' },
+  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg', wood: 'assets/slat/dgm197-wood.jpg' },
+  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg', wood: 'assets/slat/dgm717-wood.jpg' },
+];
+const slatKind = (map) => (/^sw_dgm/i.test(map?.name || '') ? 'band' : sku === 'executive-office' && /naturalhamiltonoak/i.test(map?.name || '') ? 'wood' : null);
 let parts = [], sel = -1, flash = null;          // sel: -1 = every part
 function paint(x, f) {
   if (!f) { x.m.map = x.map; x.m.color.copy(x.color); }
   else {
-    const t = swatchTex[f.image] || (swatchTex[f.image] = texLoader.load(f.image, redraw));
+    const src = x.slat ? f[x.slat] : f.image;
+    const t = swatchTex[src] || (swatchTex[src] = texLoader.load(src, redraw));
     t.colorSpace = THREE.SRGBColorSpace;
     t.wrapS = t.wrapT = THREE.RepeatWrapping;
     t.flipY = false;
+    if (x.map) { t.repeat.copy(x.map.repeat); t.offset.copy(x.map.offset); t.rotation = x.map.rotation; }
     x.m.map = t;
     x.m.color.setScalar(1);
   }
@@ -172,23 +183,26 @@ function paint(x, f) {
   x.m.needsUpdate = true;
 }
 function showFinish() {
-  const now = $('finishNow'), used = [...new Set(parts.map((x) => x.finish))], one = used.length === 1 ? used[0] : undefined;
+  const now = $('finishNow'), used = [...new Set(parts.filter((x) => !x.slat || x.finish).map((x) => x.finish))], one = used.length === 1 ? used[0] : undefined;
   now.textContent = '';
   const s = document.createElement('small');
   if (one !== undefined) { s.textContent = one ? one.group || '' : ''; now.append(s, one ? one.name : 'As built'); }
   else { s.textContent = `${used.length} tones`; now.append(s, used.map((f) => (f ? f.name : 'As built')).join(' · ')); }
   const on = sel < 0 ? one : parts[sel].finish;
-  document.querySelectorAll('#swatchRows button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!on && b.finish === on)));
+  document.querySelectorAll('#swatchRows button[data-finish], #slatRows button').forEach((b) => b.setAttribute('aria-pressed', String(!!on && b.finish === on)));
   document.querySelectorAll('#zones button').forEach((b, i) => {
     b.setAttribute('aria-pressed', String(i - 1 === sel));
     const x = parts[i - 1];
-    if (x) { const i2 = b.firstChild; i2.style.backgroundImage = x.finish ? `url("${x.finish.image}")` : x.thumb; i2.style.backgroundColor = x.finish ? x.finish.color : ''; }
+    if (x) { const i2 = b.firstChild; i2.style.backgroundImage = x.finish ? `url("${x.finish.image || x.finish.wood}")` : x.thumb; i2.style.backgroundColor = x.finish ? x.finish.color : ''; }
   });
+  const slat = sel >= 0 && !!parts[sel].slat;          // an acoustic panel offers only its own finishes
+  $('swatchRows').hidden = slat; $('slatRows').hidden = !slat;
   $('asBuilt').setAttribute('aria-pressed', String(faceMats.every((x) => !x.finish)));
   redraw();
 }
 function setFinish(f, i = sel) {
-  for (const x of i < 0 ? faceMats : [parts[i]]) paint(x, f);
+  // a colour for every part leaves the acoustic panels alone; "Reset" (no colour) puts them back as well
+  for (const x of i < 0 ? faceMats.filter((y) => !f || !y.slat) : [parts[i]]) if (!f || !x.slat === !f.band) paint(x, f);
   showFinish();
 }
 // The part a chip stands for lights up for a moment, so it is clear what the next colour will change.
@@ -241,9 +255,16 @@ async function finishPanel() {
     rows.append(grp);
   }
   // The parts worth a chip of their own: the larger ones, biggest first. Small trims only follow "All".
-  parts = faceMats.filter((x) => x.verts > 24).sort((a, b) => b.verts - a.verts).slice(0, 6);
+  parts = faceMats.filter((x) => x.slat || x.verts > 24).sort((a, b) => (a.slat ? 1 : 0) - (b.slat ? 1 : 0) || b.verts - a.verts).slice(0, 7);          // the acoustic panels last
+  for (const f of SLAT_FINISHES) {
+    const b = document.createElement('button');
+    b.type = 'button'; b.title = f.name; b.finish = f; b.setAttribute('aria-label', f.name); b.setAttribute('aria-pressed', 'false');
+    b.style.backgroundColor = f.color; b.style.backgroundImage = `url("${f.wood}")`;
+    b.onclick = () => setFinish(f);
+    $('slatRow').append(b);
+  }
   if (parts.length > 1) {
-    const where = (x) => (x.lo > UPPER ? 'Upper' : x.hi < UPPER + 0.2 ? 'Lower' : 'Full');
+    const where = (x) => (x.slat ? 'Slats' : x.lo > UPPER ? 'Upper' : x.hi < UPPER + 0.2 ? 'Lower' : 'Full');
     [null, ...parts].forEach((x, i) => {
       const b = document.createElement('button'), dot = document.createElement('i'), cap = document.createElement('span');
       b.type = 'button'; b.setAttribute('aria-pressed', String(i - 1 === sel));
@@ -261,7 +282,7 @@ async function finishPanel() {
   const find = (n) => n && site.finishes.find((x) => x.name.toLowerCase() === n.toLowerCase());
   const want = find(params.get('finish'));          // ?finish=<name> and ?part=<n>:<name> (repeatable): for checking
   if (want) setFinish(want, -1);
-  for (const q of params.getAll('part')) { const [n, name] = q.split(':'), f = find(name); if (f && parts[n - 1]) setFinish(f, n - 1); }
+  for (const q of params.getAll('part')) { const [n, name] = q.split(':'), f = parts[n - 1]?.slat ? SLAT_FINISHES.find((x) => x.name.toLowerCase() === name.toLowerCase()) : find(name); if (f && parts[n - 1]) setFinish(f, n - 1); }
 }
 
 // ---------------------------------------------------------------- the model
@@ -330,7 +351,7 @@ async function load() {
   const zoned = new Map();
   const zoneMat = (m, z, verts, lo, hi) => {
     const k = m.uuid + z;
-    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z, verts: 0, lo: Infinity, hi: -Infinity, finish: null }); faceMats.push(zoned.get(k)); }
+    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z, slat: slatKind(c.map), verts: 0, lo: Infinity, hi: -Infinity, finish: null }); faceMats.push(zoned.get(k)); }
     const x = zoned.get(k);
     x.verts += verts; x.lo = Math.min(x.lo, lo); x.hi = Math.max(x.hi, hi);
     return x.m;
