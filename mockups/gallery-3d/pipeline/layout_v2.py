@@ -85,7 +85,22 @@ EXTRAS = {
                            props=[dict(kind="vase", rel=(0.30, 0.07), drop=True), dict(kind="books", rel=(0.07, 0.45), drop=True, yaw=1.57),
                                   dict(kind="snake", rel=(-0.2, 0.86))]),
     "executive-office": dict(props=[dict(kind="plant", rel=(0.5, 0.25), drop=True), dict(kind="books", rel=(0.35, 0.3), drop=True)]),
-    "showroom-closet": dict(props=[dict(kind="snake", rel=(1.11, 0.3))], swaps=[dict(picture="sc_hamper", kind="basket")]),
+    # the floor plant stands beside the right flank, against the wall; the shelves are dressed (m = metres from the left front corner)
+    "showroom-closet": dict(swaps=[dict(picture="sc_hamper", kind="basket")], props=[
+        dict(kind="snake", rel=(1.142, 0.842)),
+        dict(kind="tallvase", m=(0.94, 2.40), drop=True, **{"from": 1.2}), dict(kind="frame", m=(1.24, 2.44), drop=True, yaw=-1.38, **{"from": 1.2}),
+        dict(kind="hat", m=(1.76, 2.38), drop=True, yaw=0.3, **{"from": 1.2}),
+        # clothes: pairs of shirts on the rods (rod at y 2.394 from the front, 2.07 m up; the hook's top at 2.10), not too many
+        dict(kind="shirts_blush", m=(2.10, 2.394), z=1.30, yaw=1.5708),
+        dict(kind="shirts", m=(2.41, 2.394), z=1.30, yaw=1.5708), dict(kind="shirts_blue", m=(2.605, 2.394), z=1.30, yaw=1.5708),
+        dict(kind="shirts_dark", m=(2.80, 2.394), z=1.30, yaw=1.5708),
+        dict(kind="shoes", m=(2.44, 2.36), drop=True, yaw=0.0, **{"from": 0.8}), dict(kind="shoes_tan", m=(2.76, 2.36), drop=True, yaw=0.0, **{"from": 0.8}),
+        dict(kind="basket", m=(2.44, 2.38), drop=True, yaw=0.0, scale=0.5, **{"from": 0.5}), dict(kind="basket", m=(2.76, 2.38), drop=True, yaw=0.0, scale=0.5, **{"from": 0.5}),
+        dict(kind="plant", m=(0.36, 2.28), drop=True, scale=1.1, **{"from": 1.2}), dict(kind="whitevase", m=(0.36, 2.28), drop=True, **{"from": 1.6}),
+        dict(kind="shoes_flat", m=(0.26, 0.236), drop=True, yaw=1.5708, **{"from": 1.1}),
+        dict(kind="basket", m=(0.28, 0.236), drop=True, yaw=1.5708, scale=0.5, **{"from": 1.5}),
+        dict(kind="handbag", m=(0.29, 0.82), drop=True, yaw=1.75, **{"from": 1.5}),
+        dict(kind="basket", m=(0.28, 0.816), drop=True, yaw=1.5708, scale=0.5, **{"from": 1.9})]),
     "showroom-kitchen": dict(props=[dict(kind="bush", rel=(0.6, 0.22), drop=True, scale=0.8)]),
     "master-bath": dict(props=[dict(kind="plant", rel=(0.6, 0.85), drop=True)]),
     "garage-cabinet": dict(props=[dict(kind="snake", rel=(1.12, -0.2))]),

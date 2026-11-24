@@ -201,7 +201,13 @@ PROP_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "props")
 PROP_MODELS = {}          # asset -> (template object, size)
 # kind -> (asset, height it stands in the hall, most triangles it may keep)
 PROP_KINDS = {"snake": ("potted_plant_01", 1.35, 9000), "bush": ("potted_plant_02", 0.5, 6000), "plant": ("potted_plant_04", 0.24, 2500),
-              "vase": ("ceramic_vase_02", 0.3, 1200), "tallvase": ("ceramic_vase_01", 0.42, 1200), "basket": ("wicker_basket_02", 0.5, 3000)}
+              "vase": ("ceramic_vase_02", 0.3, 1200), "tallvase": ("ceramic_vase_01", 0.42, 1200), "basket": ("wicker_basket_02", 0.5, 3000),
+              "whitevase": ("ceramic_vase_04", 0.34, 1200),
+              "frame": ("standing_picture_frame_02", 0.27, 3000), "blackframe": ("standing_picture_frame_01", 0.25, 3000),          # a frame's picture faces +x
+              # made by prep_wardrobe.py, already slim and in metres; shirts hang across y (turn them to hang on a rod along x), shoes point their toes to -y
+              "shirts": ("shirts_light", 0.80, 9000), "shirts_blue": ("shirts_blue", 0.80, 9000), "shirts_dark": ("shirts_dark", 0.80, 9000),
+              "shirts_blush": ("shirts_blush", 0.80, 9000), "shoes": ("shoes_black", 0.108, 9000), "shoes_tan": ("shoes_tan", 0.119, 9000),
+              "shoes_flat": ("shoes_flat", 0.082, 9000), "handbag": ("handbag_black", 0.30, 9000), "hat": ("hat_straw", 0.125, 9000)}
 
 
 def prop_model(aid, max_tris):
@@ -209,7 +215,8 @@ def prop_model(aid, max_tris):
     if aid in PROP_MODELS:
         return PROP_MODELS[aid]
     before = set(bpy.data.objects)
-    bpy.ops.import_scene.gltf(filepath=os.path.join(PROP_DIR, aid, aid + ".gltf"))
+    f = os.path.join(PROP_DIR, aid, aid + ".gltf")
+    bpy.ops.import_scene.gltf(filepath=f if os.path.exists(f) else f[:-4] + "glb")
     obs = [o for o in bpy.data.objects if o not in before and o.type == "MESH" and o.name in bpy.context.view_layer.objects]
     bpy.ops.object.select_all(action="DESELECT")
     for o in obs:
@@ -222,6 +229,12 @@ def prop_model(aid, max_tris):
     bpy.ops.object.transform_apply(location=True, rotation=True, scale=True)
     for o in [o for o in bpy.data.objects if o not in before and o is not ob]:
         bpy.data.objects.remove(o, do_unlink=True)
+    glass = [i for i, sl in enumerate(ob.material_slots) if sl.material and sl.material.name.endswith("_glass")]
+    if glass:          # a picture frame's glass pane would hide its picture on the web
+        import bmesh
+        bm = bmesh.new(); bm.from_mesh(ob.data)
+        bmesh.ops.delete(bm, geom=[f for f in bm.faces if f.material_index in glass], context="FACES")
+        bm.to_mesh(ob.data); bm.free()
     t = sum(len(pl.vertices) - 2 for pl in ob.data.polygons)
     if t > max_tris:
         md = ob.modifiers.new("dec", "DECIMATE")
@@ -246,7 +259,7 @@ def prop_model(aid, max_tris):
     return PROP_MODELS[aid]
 
 
-def make_prop(kind, at, rng, yaw=0.0, scale=1.0):
+def make_prop(kind, at, rng, yaw=None, scale=1.0):
     if kind in PROP_KINDS and os.path.isdir(os.path.join(PROP_DIR, PROP_KINDS[kind][0])):
         aid, height, tris = PROP_KINDS[kind]
         tpl, size = prop_model(aid, tris)
@@ -255,7 +268,8 @@ def make_prop(kind, at, rng, yaw=0.0, scale=1.0):
         ob.hide_render = False
         k = height * scale / size.z
         ob.scale = (k, k, k)
-        ob.rotation_euler[2] = yaw if yaw else rng.uniform(0, 2 * math.pi)
+        ob.rotation_mode = "XYZ"          # the importer leaves models in quaternion mode, where a yaw is ignored
+        ob.rotation_euler[2] = yaw if yaw is not None else rng.uniform(0, 2 * math.pi)
         ob.location = at
         COL.objects.link(ob)
         return [ob]
@@ -286,7 +300,7 @@ def make_prop(kind, at, rng, yaw=0.0, scale=1.0):
         z = at[2]
         for i, (w, d, t, c) in enumerate(((0.26, 0.19, 0.035, (58, 70, 66)), (0.24, 0.17, 0.028, (196, 178, 150)), (0.21, 0.15, 0.03, (120, 76, 52)))):
             obs.append(box_ob("prop book", (at[0] - w * k / 2, at[1] - d * k / 2, z), (at[0] + w * k / 2, at[1] + d * k / 2, z + t * k),
-                              flat_mat("prop book %d" % i, c, 0.75), yaw + rng.uniform(-0.25, 0.25)))
+                              flat_mat("prop book %d" % i, c, 0.75), (yaw or 0.0) + rng.uniform(-0.25, 0.25)))
             z += t * k
     elif kind == "bowl":          # a shallow bowl
         obs.append(lathe("prop bowl", at, [(0.06 * k, 0), (0.13 * k, 0.045 * k), (0.16 * k, 0.085 * k), (0.15 * k, 0.085 * k), (0.12 * k, 0.05 * k), (0.05 * k, 0.012 * k)],
@@ -331,8 +345,11 @@ def site_extras(e, meshes, lo, hi):
             bpy.data.objects.remove(o, do_unlink=True)
         made.append(ob)
         log("swap", e["sku"], sw["picture"], "->", sw["kind"], len(old), "pieces, size", [round(v, 2) for v in (b - a)])
-    for pr in e.get("props", []):          # rel: across the footprint (0..1 = left..right, front..back); drop: stand on what is there
-        x = lo.x + pr["rel"][0] * (hi.x - lo.x); y = lo.y + pr["rel"][1] * (hi.y - lo.y); z = 0.0
+    for pr in e.get("props", []):          # rel: across the footprint (0..1 = left..right, front..back); m: metres from its left front corner; drop: stand on what is there
+        if "m" in pr:
+            x = lo.x + pr["m"][0]; y = lo.y + pr["m"][1]; z = pr.get("z", 0.0)          # z: its foot, for something that hangs
+        else:
+            x = lo.x + pr["rel"][0] * (hi.x - lo.x); y = lo.y + pr["rel"][1] * (hi.y - lo.y); z = 0.0
         if pr.get("drop"):
             bpy.context.view_layer.update()
             ok, loc, nrm, _i, _o, _m = scene.ray_cast(bpy.context.evaluated_depsgraph_get(), Vector((x, y, pr.get("from", 1.35))), Vector((0, 0, -1)))
@@ -340,7 +357,7 @@ def site_extras(e, meshes, lo, hi):
                 log("PROP SKIPPED", e["sku"], pr["kind"], "nothing level under", round(x, 2), round(y, 2), "hit", ok, round(loc.z, 2) if ok else None)
                 continue
             z = loc.z
-        obs = make_prop(pr["kind"], (x, y, z), rng, pr.get("yaw", 0.0), pr.get("scale", 1.0))
+        obs = make_prop(pr["kind"], (x, y, z), rng, pr.get("yaw"), pr.get("scale", 1.0))
         made += obs
         log("prop", e["sku"], pr["kind"], "at", round(x, 2), round(y, 2), round(z, 2))
     return made

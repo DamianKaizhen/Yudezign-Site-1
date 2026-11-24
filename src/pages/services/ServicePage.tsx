@@ -104,7 +104,11 @@ const ServicePage: React.FC = () => {
               />
             </div>
             <p className="mt-4 text-sm text-slate-500">
-              The model comes from the same design file we build from.
+              The model comes from the same design file we build from.{' '}
+              <a href="/gallery/credits.txt" target="_blank" rel="noopener" className="underline">
+                Decor model credits
+              </a>
+              .
             </p>
           </div>
         </section>
