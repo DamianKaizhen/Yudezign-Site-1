@@ -54,6 +54,26 @@ for name in ("gallery.json", "movables.json"):      # site.json comes from scrip
     data = json.load(open(os.path.join(SRC, "assets", name), encoding="utf-8"))
     json.dump(rewrite(data), open(os.path.join(DST, "assets", name), "w", encoding="utf-8"), separators=(",", ":"))
 
+# Models, baked lighting and data keep their file names but are cached by browsers for a day (vercel.json). A model and
+# the hinge data it goes with must arrive as a pair - an old model with new hinge data swings the wrong pieces - so
+# every such address carries a stamp of the published assets, and a rebuild that changes any of them changes them all.
+import hashlib
+_h = hashlib.sha1()
+for _d, _ds, _fs in os.walk(os.path.join(DST, "assets")):
+    _ds.sort()
+    for _f in sorted(_fs):
+        _h.update(_f.encode())
+        _h.update(open(os.path.join(_d, _f), "rb").read())
+STAMP = _h.hexdigest()[:10]
+
+
+def stamped(js, least):
+    js, n = re.subn(r"(assets/[^'`\"]*?\.(?:glb|json|jpg))(['`])", r"\1?v=%s\2" % STAMP, js)
+    if n < least:
+        raise SystemExit("asset addresses changed: stamped %d, expected at least %d" % (n, least))
+    return js
+
+
 js = open(os.path.join(SRC, "main.js"), encoding="utf-8").read()
 for a, b in (
     ("tex(f.src.replace('/photos/', '/photos-sm/'))", "tex('assets/photos-sm/' + f.src.split('/').pop())"),
@@ -66,7 +86,7 @@ for a, b in (
     if a not in js:
         raise SystemExit("main.js changed, cannot find: " + a)
     js = js.replace(a, b)
-open(os.path.join(DST, "main.js"), "w", encoding="utf-8", newline="\n").write(js)
+open(os.path.join(DST, "main.js"), "w", encoding="utf-8", newline="\n").write(stamped(js, 6))
 
 html = open(os.path.join(SRC, "index.html"), encoding="utf-8").read()
 html = html.replace('<a class="brand" href="#"', '<a class="brand" href="/"')
@@ -85,7 +105,8 @@ if mark not in html:
     raise SystemExit("exhibit.html changed, cannot place its base address")
 html = html.replace(mark, mark + '\n  <base href="/gallery/" target="_top">')
 open(os.path.join(DST, "exhibit.html"), "w", encoding="utf-8", newline="\n").write(html)
-shutil.copy(os.path.join(SRC, "exhibit.js"), DST)
+js = open(os.path.join(SRC, "exhibit.js"), encoding="utf-8").read()
+open(os.path.join(DST, "exhibit.js"), "w", encoding="utf-8", newline="\n").write(stamped(js, 3))
 
 import subprocess
 subprocess.run(["node", os.path.join(ROOT, "scripts", "gallery-data.mjs")], check=True)
