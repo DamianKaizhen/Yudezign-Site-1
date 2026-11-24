@@ -101,10 +101,53 @@ function applyLights() {
   redraw();
 }
 ['roomDim', 'roomWarm', 'ledOn', 'ledDim', 'ledWarm'].forEach((id) => $(id).addEventListener('input', applyLights));
-$('lightsBtn').onclick = () => {
-  const open = $('lights').classList.toggle('open');
-  $('lightsBtn').setAttribute('aria-expanded', String(open));
-};
+
+// ---------------------------------------------------------------- panels: one at a time, and the model moves over
+// A panel sits down the right side (above the toolbar on a phone). The camera's view is shifted by half the panel's
+// size, so the model stays centred in the part of the frame that is still free.
+const narrow = matchMedia('(max-width: 600px)');
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const off = { x: 0, y: 0, tx: 0, ty: 0 };
+let panel = null;
+function frame() {
+  const el = panel && $(`${panel}Panel`);
+  off.tx = off.ty = 0;
+  if (el) {
+    const b = el.getBoundingClientRect();
+    if (narrow.matches) off.ty = (canvas.clientHeight - b.top) / 2;
+    else off.tx = (canvas.clientWidth - b.left) / 2;
+  }
+  redraw();
+}
+function applyOffset() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (!off.x && !off.y) camera.clearViewOffset();
+  else camera.setViewOffset(w, h, off.x, off.y, w, h);
+}
+function showPanel(id) {
+  panel = panel === id ? null : id;
+  for (const p of ['finish', 'lights']) {
+    $(`${p}Panel`).hidden = panel !== p;
+    $(`${p}Btn`).setAttribute('aria-expanded', String(panel === p));
+  }
+  document.body.classList.toggle('paneled', !!panel);
+  if (panel) $('hint').classList.add('off');
+  frame();
+}
+$('lightsBtn').onclick = () => showPanel('lights');
+$('finishBtn').onclick = () => showPanel('finish');
+document.querySelectorAll('[data-close]').forEach((b) => { b.onclick = () => showPanel(panel); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && panel) showPanel(panel); });
+if (document.fullscreenEnabled) {
+  $('full').hidden = false;
+  $('full').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}));
+  document.addEventListener('fullscreenchange', () => {
+    const on = !!document.fullscreenElement;
+    $('full').setAttribute('aria-pressed', String(on));
+    $('full').title = on ? 'Leave full screen' : 'Full screen';
+    $('full').setAttribute('aria-label', $('full').title);
+  });
+}
 
 // ---------------------------------------------------------------- finish: the fronts in any standard colour
 // The pipeline keeps door and drawer fronts as their own materials ("Door face ...", "Drawer face ..."), so a swatch
@@ -125,8 +168,9 @@ function setFinish(f) {
     }
     x.m.needsUpdate = true;
   }
-  $('finishNow').textContent = f ? `Finish: ${f.name}` : 'Finish: as built';
-  document.querySelectorAll('#swatches button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!f && b.dataset.finish === f.name)));
+  $('finishNow').textContent = f ? f.name : 'As built';
+  if (f && f.group) { const s = document.createElement('small'); s.textContent = f.group; $('finishNow').prepend(s); }
+  document.querySelectorAll('#swatchRows button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!f && b.dataset.finish === f.name)));
   $('asBuilt').setAttribute('aria-pressed', String(!f));
   redraw();
 }
@@ -140,34 +184,59 @@ async function finishPanel() {
   if (left.length) groups.push(['More', left]);
   for (const [name, list] of groups) {
     if (!list.length) continue;
+    const grp = document.createElement('div'); grp.className = 'grp';
     const h = document.createElement('h3'); h.textContent = name;
     const row = document.createElement('div'); row.className = 'row';
     for (const f of list.sort((a, b) => (a.order || 0) - (b.order || 0))) {
       const b = document.createElement('button');
+      f.group = name;
       b.type = 'button'; b.title = f.name; b.dataset.finish = f.name;
       b.setAttribute('aria-label', f.name); b.setAttribute('aria-pressed', 'false');
       b.style.backgroundColor = f.color; b.style.backgroundImage = `url("${f.image}")`;
       b.onclick = () => setFinish(f);
       row.appendChild(b);
     }
-    rows.append(h, row);
+    grp.append(h, row);
+    rows.append(grp);
   }
   $('asBuilt').onclick = () => setFinish(null);
-  $('finishBtn').onclick = () => {
-    const open = $('finish').classList.toggle('open');
-    $('finishBtn').setAttribute('aria-expanded', String(open));
-  };
-  $('finish').hidden = false;
+  $('finishBtn').hidden = false;
   const want = params.get('finish');
   if (want) { const f = site.finishes.find((x) => x.name.toLowerCase() === want.toLowerCase()); if (f) setFinish(f); }
 }
 
 // ---------------------------------------------------------------- the model
+let fit = null;          // { size, dist, home }: how the model was framed, so a resize or "reset view" can frame it again
+// The distance at which the whole piece fits the frame, whatever its shape: the tighter of the height and the width.
+function fitDistance(size) {
+  const tv = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)), th = tv * (canvas.clientWidth / canvas.clientHeight);
+  const halfW = (size.x * 0.93 + size.z * 0.36) / 2, halfH = size.y * 0.56;          // seen from the opening angle
+  return Math.max(halfH / tv, halfW / th) * 1.1 + size.z / 2;
+}
+function homeView() {
+  if (!fit) return;
+  if (fit.room) { camera.position.copy(fit.home); controls.update(); return; }
+  camera.position.set(fit.dist * 0.36, fit.size.y * 0.6, fit.dist * 0.93);
+  controls.update();
+}
+$('resetView').onclick = () => { homeView(); redraw(); };
 function resize() {
   const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (!w || !h) return;
   renderer.setSize(w, h, false);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
+  if (fit && !fit.room) {          // keep the piece the same size in the frame when the frame changes shape
+    const d = fitDistance(fit.size), v = camera.position.clone().sub(controls.target).multiplyScalar(d / fit.dist);
+    controls.minDistance = d * 0.35;
+    controls.maxDistance = d * 1.35;
+    camera.position.copy(controls.target).add(v);
+    fit.dist = d;
+    controls.update();
+  }
+  frame();
+  off.x = off.tx; off.y = off.ty;
+  applyOffset();
   redraw();
 }
 addEventListener('resize', resize);
@@ -243,8 +312,8 @@ async function load() {
   }
   root.position.set(-mid.x, -box.min.y, -mid.z);
 
-  const r = Math.hypot(size.x, size.y) / 2;
-  const dist = r / Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * (canvas.clientWidth < canvas.clientHeight ? 1.2 : 0.8) + size.z / 2;
+  const dist = fitDistance(size);
+  fit = { size, dist, room };
   if (room) {
     // Stand just inside the front of the room at eye height. A tiny orbit radius turns "orbit" into "look around".
     camera.fov = canvas.clientWidth < canvas.clientHeight ? 78 : 62;
@@ -252,11 +321,13 @@ async function load() {
     const eye = new THREE.Vector3(0, 1.6, size.z / 2 - 0.75);
     controls.target.copy(eye).add(new THREE.Vector3(0, -0.004, -0.05));
     camera.position.copy(eye);
+    fit.home = eye.clone();
     controls.enableZoom = false;
     controls.rotateSpeed = -0.35;
     controls.minPolarAngle = 1.0;
     controls.maxPolarAngle = 2.0;
     $('hint').textContent = 'Drag to look around · select a door or drawer to open it';
+    $('resetView').hidden = true;
   } else {
     controls.target.set(0, size.y * 0.46, 0);
     camera.position.set(dist * 0.36, size.y * 0.6, dist * 0.93);
@@ -279,7 +350,7 @@ async function load() {
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSphericalCoords(d, pol || 1.2, az || 0));
     controls.update();
   }
-  finishPanel();
+  finishPanel().then(() => { if (/^(finish|lights)$/.test(params.get('panel') || '')) showPanel(params.get('panel')); });          // ?panel=: for checking
   if (params.get('led')) { const [on, b, k] = params.get('led').split(','); $('ledOn').checked = on !== '0'; if (b) $('ledDim').value = b; if (k) $('ledWarm').value = k; }
   applyLights();
   $('load').classList.add('off');
@@ -289,7 +360,8 @@ async function load() {
 const setAll = (open) => {
   movables.forEach((m, i) => setTimeout(() => { m.want = open ? 1 : 0; redraw(); }, i * 35));
   $('openAll').setAttribute('aria-pressed', String(open));
-  $('openAll').textContent = open ? 'Close doors and drawers' : 'Open doors and drawers';
+  $('openAll').textContent = open ? 'Close all' : 'Open all';
+  $('openAll').title = open ? 'Close every door and drawer' : 'Open every door and drawer';
 };
 $('openAll').onclick = () => setAll($('openAll').getAttribute('aria-pressed') !== 'true');
 const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
@@ -318,6 +390,14 @@ function tick() {
     if (m.t === m.want) continue;
     m.t += Math.sign(m.want - m.t) * Math.min(Math.abs(m.want - m.t), dt * 1.6);
     m.apply(m.t * m.t * (3 - 2 * m.t));
+    dirty = true;
+  }
+  if (off.x !== off.tx || off.y !== off.ty) {          // slide the view over as a panel opens or closes
+    const k = still ? 1 : Math.min(1, dt * 9);
+    off.x += (off.tx - off.x) * k; off.y += (off.ty - off.y) * k;
+    if (Math.abs(off.tx - off.x) < 0.5) off.x = off.tx;
+    if (Math.abs(off.ty - off.y) < 0.5) off.y = off.ty;
+    applyOffset();
     dirty = true;
   }
   controls.update();
