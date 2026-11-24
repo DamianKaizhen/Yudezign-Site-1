@@ -83,20 +83,20 @@ for s in stops:
 EXTRAS = {
     "reception-desk": dict(halfwalls=[dict(side=1, height=1.12)],
                            props=[dict(kind="vase", rel=(0.30, 0.07), drop=True), dict(kind="books", rel=(0.07, 0.45), drop=True, yaw=1.57),
-                                  dict(kind="snake", rel=(-0.16, 0.9))]),
+                                  dict(kind="snake", rel=(-0.2, 0.86))]),
     "executive-office": dict(props=[dict(kind="plant", rel=(0.5, 0.25), drop=True), dict(kind="books", rel=(0.35, 0.3), drop=True)]),
-    "showroom-closet": dict(props=[dict(kind="snake", rel=(1.09, 0.25), scale=0.9)]),
-    "showroom-kitchen": dict(props=[dict(kind="bowl", rel=(0.6, 0.22), drop=True)]),
+    "showroom-closet": dict(props=[dict(kind="snake", rel=(1.11, 0.3))], swaps=[dict(picture="sc_hamper", kind="basket")]),
+    "showroom-kitchen": dict(props=[dict(kind="bush", rel=(0.6, 0.22), drop=True, scale=0.8)]),
     "master-bath": dict(props=[dict(kind="plant", rel=(0.6, 0.85), drop=True)]),
-    "garage-cabinet": dict(props=[dict(kind="snake", rel=(1.1, -0.2))]),
-    "mudroom": dict(props=[dict(kind="snake", rel=(1.25, 0.2), scale=0.85)]),
+    "garage-cabinet": dict(props=[dict(kind="snake", rel=(1.12, -0.2))]),
+    "mudroom": dict(props=[dict(kind="snake", rel=(1.28, 0.2), scale=0.9)]),
 }
 for e in EXHIBITS:
     e.update(EXTRAS.get(e["sku"], {}))
 base["pieces"] = pieces
 base["stops"] = stops
 base["exhibits"] = [dict(sku=e["sku"], glb=e["glb"], rot=e["rot"], xc=e["xc"], title=e["title"], drop=e.get("drop", []), top=e.get("top"),
-                         boxes=e.get("boxes", []), halfwalls=e.get("halfwalls", []), props=e.get("props", [])) for e in EXHIBITS]
+                         boxes=e.get("boxes", []), halfwalls=e.get("halfwalls", []), props=e.get("props", []), swaps=e.get("swaps", [])) for e in EXHIBITS]
 base["spot"] = dict(energy=900, angle=72)
 # partition walls on the approach side of the deep exhibits, each with a screen showing built work
 PUB = os.path.join(REPO, "public", "portfolio")
