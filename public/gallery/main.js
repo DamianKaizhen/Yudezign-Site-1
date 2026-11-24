@@ -14,7 +14,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
-const data = await (await fetch('assets/gallery.json?v=9a90a6deb8')).json();
+const data = await (await fetch('assets/gallery.json?v=d95b5123c3')).json();
 const { hall, stops, sections, pieces, zones, videoWall } = data;
 
 // Blender is Z-up, three.js is Y-up.
@@ -61,13 +61,13 @@ function tex(url, flipY = true) {
 const BAKE_GAIN = 2;
 const bakeMats = [];
 const bakedMaterial = (name, flipY) => {
-  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=9a90a6deb8`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
+  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=d95b5123c3`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
   bakeMats.push(m);
   return m;
 };
 
 // ---------------------------------------------------------------- hall shell
-gltfLoader.load('assets/models/shell.glb?v=9a90a6deb8', (g) => {
+gltfLoader.load('assets/models/shell.glb?v=d95b5123c3', (g) => {
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
     // the ceiling is near-black; a flat colour is cleaner than a compressed bake
@@ -123,7 +123,7 @@ if (lite) {
       }`,
   };
   floor = new Reflector(floorGeo, { clipBias: 0.002, textureWidth: 768, textureHeight: 768, shader });
-  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=9a90a6deb8', true);
+  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=d95b5123c3', true);
   const mirror = floor.onBeforeRender;
   let flip = 0;
   floor.onBeforeRender = function (...a) { if ((flip ^= 1)) mirror.apply(this, a); };
@@ -150,7 +150,7 @@ function tuneMaterial(m) {
 }
 // Doors and drawers arrive as their own parts. Each carries the design's own hinge line or pull direction (the pipeline
 // reads them from the Yukon file), so a door swings where it is hinged and a drawer slides the way it is built.
-const exhibitData = await (await fetch('assets/movables.json?v=9a90a6deb8')).json();
+const exhibitData = await (await fetch('assets/movables.json?v=d95b5123c3')).json();
 const movMeta = Object.fromEntries(exhibitData.movables.map((m) => [m.name, m]));
 const movables = [];                 // { sku, mesh, kind, t, want, apply }
 function rigMovable(mesh, m) {
@@ -181,7 +181,7 @@ let refreshCard = () => {};          // set once the cards exist: a model that l
 const GLOW = { led: [1.0, 0.72, 0.42, 3.2], diffuser: [1.0, 0.78, 0.52, 1.7], orb: [1.0, 0.75, 0.45, 2.2] };
 const swapped = new Map();
 // One model per exhibit, so the hall fills in piece by piece and a service page can load just its own.
-for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=9a90a6deb8`, (g) => {
+for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=d95b5123c3`, (g) => {
   const rig = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -581,7 +581,7 @@ if (params.get('led')) { const [on, b, k] = params.get('led').split(','); ledOn.
 $('ledRows').hidden = !leds.length;
 
 // ---------------------------------------------------------------- site panels (Services, Portfolio, Finishes, About)
-const site = await (await fetch('assets/site.json?v=9a90a6deb8')).json();
+const site = await (await fetch('assets/site.json?v=d95b5123c3')).json();
 const panel = $('panel'), panelBody = $('panelBody');
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const cap = (s) => s[0].toUpperCase() + s.slice(1);

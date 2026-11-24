@@ -82,6 +82,7 @@
       .panel { top: auto; left: 8px; right: 8px; bottom: 60px; width: auto; max-height: calc(100% - 120px); }
       .panel header { padding: 4px 4px 4px 14px; }
       .panel .body { padding: 10px 14px 12px; }
+      #slatRows[hidden], #swatchRows[hidden] { display: none; }
       #swatchRows { display: flex; gap: 16px; margin: 0 -14px; padding: 0 14px 4px; overflow-x: auto; scrollbar-width: none; }
       #swatchRows::-webkit-scrollbar { display: none; }
       .grp { flex: none; }
@@ -114,6 +115,7 @@
       <p class="zhead" id="zonesHead" hidden>Part to colour</p>
       <div class="zones" id="zones" role="group" aria-label="Which part to colour" hidden></div>
       <div id="swatchRows"></div>
+      <div id="slatRows" hidden><div class="grp"><h3>Acoustic panel finishes</h3><div class="row" id="slatRow"></div></div><p class="note">Wood acoustic slat panels come in these four finishes only.</p></div>
       <p class="note" id="finishNote">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
     </div>
   </aside>

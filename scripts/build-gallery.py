@@ -46,7 +46,7 @@ def rewrite(o):
 
 shutil.rmtree(DST, ignore_errors=True)
 os.makedirs(os.path.join(DST, "assets"))
-for sub in ("bake", "models", "photos-sm"):
+for sub in ("bake", "models", "photos-sm", "slat"):
     shutil.copytree(os.path.join(SRC, "assets", sub), os.path.join(DST, "assets", sub))
 shutil.copy(os.path.join(SRC, "assets", "logo-wordmark-light.svg"), os.path.join(DST, "assets"))
 shutil.copy(os.path.join(SRC, "style.css"), DST)
