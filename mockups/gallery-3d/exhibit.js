@@ -194,7 +194,7 @@ function showFinish() {
   document.querySelectorAll('#zones button').forEach((b, i) => {
     b.setAttribute('aria-pressed', String(i - 1 === sel));
     const x = parts[i - 1];
-    if (x) { const i2 = b.firstChild; i2.style.backgroundImage = x.finish ? `url("${x.finish.image || x.finish.wood}")` : x.thumb; i2.style.backgroundColor = x.finish ? x.finish.color : ''; }
+    if (x) { const i2 = b.firstChild; i2.style.backgroundImage = x.finish ? `url("${x.finish.image || x.finish.wood}")` : x.thumb; i2.style.backgroundColor = x.finish ? x.finish.color : x.tone || ''; }
   });
   const slat = sel >= 0 && !!parts[sel].slat;          // an acoustic panel offers only its own finishes
   $('swatchRows').hidden = slat; $('slatRows').hidden = !slat;
@@ -203,14 +203,14 @@ function showFinish() {
 }
 function setFinish(f, i = sel) {
   // a colour for every part leaves the acoustic panels alone; "Reset" (no colour) puts them back as well
-  for (const x of i < 0 ? faceMats.filter((y) => !f || !y.slat) : [parts[i]]) if (!f || !x.slat === !f.band) paint(x, f);
+  for (const x of i < 0 ? faceMats.filter((y) => !f || !y.slat) : parts[i].items) if (!f || !x.slat === !f.band) paint(x, f);
   showFinish();
 }
 // The part a chip stands for lights up for a moment, so it is clear what the next colour will change.
 function choose(i) {
   sel = i;
   if (flash) flash.on.forEach((x) => x.m.emissive.setScalar(0));
-  flash = { on: i < 0 ? [] : [parts[i]], t: 0 };
+  flash = { on: i < 0 ? [] : parts[i].items, t: 0 };
   showFinish();
 }
 function tickFlash(dt) {
@@ -256,7 +256,15 @@ async function finishPanel() {
     rows.append(grp);
   }
   // The parts worth a chip of their own: the larger ones, biggest first. Small trims only follow "All".
-  parts = faceMats.filter((x) => x.slat || x.verts > 24).sort((a, b) => (a.slat ? 1 : 0) - (b.slat ? 1 : 0) || b.verts - a.verts).slice(0, 7);          // the acoustic panels last
+  // A part is every material of one as-built finish in one zone: a toe kick or end panel goes with the fronts it matches.
+  const byFinish = new Map();
+  for (const x of faceMats) {
+    if (!byFinish.has(x.key)) byFinish.set(x.key, { items: [], verts: 0, lo: Infinity, hi: -Infinity, slat: x.slat, map: x.map, get finish() { return this.items[0].finish; } });
+    const p = byFinish.get(x.key);
+    p.items.push(x); p.verts += x.verts; p.lo = Math.min(p.lo, x.lo); p.hi = Math.max(p.hi, x.hi);
+  }
+  const all = [...byFinish.values()];
+  parts = all.filter((x) => x.slat || x.verts > 24).sort((a, b) => (a.slat ? 1 : 0) - (b.slat ? 1 : 0) || b.verts - a.verts).slice(0, 7);          // the acoustic panels last
   for (const f of SLAT_FINISHES) {
     const b = document.createElement('button');
     b.type = 'button'; b.title = f.name; b.finish = f; b.setAttribute('aria-label', f.name); b.setAttribute('aria-pressed', 'false');
@@ -265,11 +273,11 @@ async function finishPanel() {
     $('slatRow').append(b);
   }
   if (parts.length > 1) {
-    const where = (x) => (x.slat ? 'Slats' : x.lo > UPPER ? 'Upper' : x.hi < UPPER + 0.2 ? 'Lower' : 'Full');
+    const where = (x) => (x.slat ? 'Slats' : x.lo > UPPER ? 'Upper' : x.hi < 0.2 ? 'Toe kick' : x.hi < UPPER + 0.2 ? 'Lower' : 'Full');
     [null, ...parts].forEach((x, i) => {
       const b = document.createElement('button'), dot = document.createElement('i'), cap = document.createElement('span');
       b.type = 'button'; b.setAttribute('aria-pressed', String(i - 1 === sel));
-      if (x) { x.thumb = thumb(x); dot.style.backgroundImage = x.thumb; cap.textContent = where(x); b.setAttribute('aria-label', `Part ${i}: ${where(x).toLowerCase()}`); }
+      if (x) { x.thumb = thumb(x); x.tone = '#' + x.items[0].color.getHexString(); dot.style.backgroundImage = x.thumb; dot.style.backgroundColor = x.tone; cap.textContent = where(x); b.setAttribute('aria-label', `Part ${i}: ${where(x).toLowerCase()}`); }
       else { dot.className = 'all'; cap.textContent = 'All'; b.setAttribute('aria-label', 'Every part'); }
       b.append(dot, cap);
       b.onclick = () => choose(i - 1);
@@ -277,7 +285,7 @@ async function finishPanel() {
     });
     $('zonesHead').hidden = $('zones').hidden = false;
     $('finishNote').textContent = 'Board finishes only. Pick a part to give it its own colour. Screen colours are a guide: ask us for a sample.';
-  } else parts = faceMats.slice();
+  } else parts = all;
   $('asBuilt').onclick = () => setFinish(null, -1);
   $('finishBtn').hidden = false;
   const find = (n) => n && site.finishes.find((x) => x.name.toLowerCase() === n.toLowerCase());
@@ -363,7 +371,7 @@ async function load() {
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
   const g = await loader.loadAsync(`assets/models/${sku}.glb`);
-  const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [];
+  const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [], inner = [], backs = [], mirrors = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
     const mm = meta[o.name] || meta[o.parent?.name];
@@ -376,7 +384,16 @@ async function load() {
       if (m.map) m.map.anisotropy = aniso;
       tuneMaterial(m);
     }
-    if (/^(Door face|Drawer face)/.test(m.name) && !/chrome|hamper|slatwall/i.test(m.map?.name || '')) fronts.push(o);
+    // What takes a finish: the fronts, and every other board that shows one (toe kicks, end and top panels, open
+    // shelving, fillers, edges). The pipeline merges boards by picture, so such a material carries the name of the first
+    // board that had it. The birch cabinet interiors and the stand-ins (rods, hamper, slat wall) stay as built.
+    const pic = m.map?.name || '';
+    if (!/chrome|hamper|slatwall/i.test(pic) && (/^(Door face|Drawer face)/.test(m.name)
+      || (m.map && /^(BoardEdgeMat|Plinth|Top Panel|Side Panel|Back Panel|Shelf Panel|Floor Panel|CushionBoard|Ceiling Filler|01\(\))/.test(m.name) && !/uv_birch|texture_03|msa/i.test(pic))
+      )) fronts.push(o);
+    else if (m.map && /uv_birch|texture_03/i.test(pic)) inner.push(o);
+    else if (!m.map && /^Back Panel/.test(m.name)) backs.push(o);          // plain back panels: an open tower's back, but also the board behind a mirror
+    else if (/^(01 - Default|8d6e78b8)/.test(m.name)) mirrors.push(o);
   });
   root.add(g.scene);
   root.updateMatrixWorld(true);
@@ -386,7 +403,7 @@ async function load() {
   const zoned = new Map();
   const zoneMat = (m, z, verts, lo, hi) => {
     const k = m.uuid + z;
-    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z, slat: slatKind(c.map), verts: 0, lo: Infinity, hi: -Infinity, finish: null }); faceMats.push(zoned.get(k)); }
+    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z, key: (c.map?.name || m.uuid) + '|' + z, slat: slatKind(c.map), verts: 0, lo: Infinity, hi: -Infinity, finish: null }); faceMats.push(zoned.get(k)); }
     const x = zoned.get(k);
     x.verts += verts; x.lo = Math.min(x.lo, lo); x.hi = Math.max(x.hi, hi);
     return x.m;
@@ -416,6 +433,70 @@ async function load() {
     g.addGroup(0, tris[0].length, 0);
     g.addGroup(tris[0].length, tris[1].length, 1);
     o.material = [zoneMat(o.material, 'lower', tris[0].length / 1.5, ...span[0]), zoneMat(o.material, 'upper', tris[1].length / 1.5, ...span[1])];
+  }
+  // A cabinet box with no end panel over it shows its own side at the end of a run (the garage's right flank). Those
+  // outer faces, flat on the design's left or right extreme, take a finish too; the rest of the box stays as built.
+  for (const o of inner) {
+    const g = o.geometry, pos = g.attributes.position, idx = g.index;
+    if (!idx || Array.isArray(o.material)) continue;
+    const v = new THREE.Vector3(), xs = new Float32Array(pos.count), ys = new Float32Array(pos.count);
+    for (let i = 0; i < pos.count; i++) { v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld); xs[i] = v.x; ys[i] = v.y - box.min.y; }
+    const tris = [[], []];
+    let lo = Infinity, hi = -Infinity;
+    for (let t = 0; t < idx.count; t += 3) {
+      const a = idx.getX(t), b = idx.getX(t + 1), c = idx.getX(t + 2);
+      const out = [box.min.x, box.max.x].some((e) => Math.abs(xs[a] - e) < 0.004 && Math.abs(xs[b] - e) < 0.004 && Math.abs(xs[c] - e) < 0.004);
+      tris[out ? 1 : 0].push(a, b, c);
+      if (out) { lo = Math.min(lo, ys[a], ys[b], ys[c]); hi = Math.max(hi, ys[a], ys[b], ys[c]); }
+    }
+    if (!tris[1].length) continue;
+    g.setIndex(tris[0].concat(tris[1]));
+    g.clearGroups();
+    g.addGroup(0, tris[0].length, 0);
+    g.addGroup(tris[0].length, tris[1].length, 1);
+    o.material = [o.material, zoneMat(o.material, 'side', tris[1].length / 1.5, lo, hi)];
+  }
+  // A plain back panel that shows (the back of the bath's open tower) takes a finish; the board of a mirror does not.
+  // Both come in one mesh, so it is taken apart board by board and the boards inside a mirror's outline are left.
+  const pieces = (o) => {          // the separate boards of a mesh: [{ tris, box }]
+    const pos = o.geometry.attributes.position, idx = o.geometry.index, par = new Int32Array(pos.count), seen = new Map(), v = new THREE.Vector3(), out = new Map();
+    const find = (i) => { while (par[i] !== i) { par[i] = par[par[i]]; i = par[i]; } return i; };
+    for (let i = 0; i < pos.count; i++) {
+      v.fromBufferAttribute(pos, i);
+      const k = `${Math.round(v.x * 500)},${Math.round(v.y * 500)},${Math.round(v.z * 500)}`;
+      par[i] = seen.has(k) ? seen.get(k) : (seen.set(k, i), i);
+    }
+    for (let t = 0; t < idx.count; t += 3) { const a = find(idx.getX(t)); par[find(idx.getX(t + 1))] = a; par[find(idx.getX(t + 2))] = a; }
+    for (let t = 0; t < idx.count; t += 3) {
+      const r = find(idx.getX(t));
+      if (!out.has(r)) out.set(r, { tris: [], box: new THREE.Box3() });
+      const p = out.get(r);
+      for (let j = 0; j < 3; j++) { p.tris.push(idx.getX(t + j)); p.box.expandByPoint(v.fromBufferAttribute(pos, idx.getX(t + j)).applyMatrix4(o.matrixWorld)); }
+    }
+    return [...out.values()];
+  };
+  const glassy = [];          // one outline per mirror: its frame and glass pieces, joined where they touch
+  for (const o of mirrors) if (o.geometry.index) for (const p of pieces(o)) glassy.push(p.box.expandByScalar(0.03));
+  for (let again = true; again;) {
+    again = false;
+    for (let i = 0; i < glassy.length && !again; i++) for (let j = i + 1; j < glassy.length; j++) if (glassy[i].intersectsBox(glassy[j])) { glassy[i].union(glassy[j]); glassy.splice(j, 1); again = true; break; }
+  }
+  for (const o of backs) {
+    if (!o.geometry.index || Array.isArray(o.material)) continue;
+    const keep = [], shown = [], c = new THREE.Vector3();
+    let lo = Infinity, hi = -Infinity;
+    for (const p of pieces(o)) {
+      p.box.getCenter(c);
+      if (glassy.some((b) => b.containsPoint(c))) keep.push(...p.tris);
+      else { shown.push(...p.tris); lo = Math.min(lo, p.box.min.y - box.min.y); hi = Math.max(hi, p.box.max.y - box.min.y); }
+    }
+    if (!shown.length) continue;
+    const g = o.geometry;
+    g.setIndex(keep.concat(shown));
+    g.clearGroups();
+    g.addGroup(0, keep.length, 0);
+    g.addGroup(keep.length, shown.length, 1);
+    o.material = [o.material, zoneMat(o.material, lo > UPPER ? 'upper' : 'lower', shown.length / 1.5, lo, hi)];
   }
   rig.forEach(([o, mm]) => rigMovable(o, mm));
   // A strip under each wall cabinet. Each is an area light as long as the strip, so the worktop and the wall under it
