@@ -78,10 +78,25 @@ for s in stops:
     if s["zone"] is None:
         s["zone"] = min(base["sections"], key=lambda sec: abs(sec["xc"] - s["pos"][0]))["id"]
 
+# Site-built extras: half walls that hide an exposed flank, and props. rel is across the design's footprint
+# (0..1 = left..right, front..back; outside 0..1 = beside it); drop=True stands the prop on whatever is under it.
+EXTRAS = {
+    "reception-desk": dict(halfwalls=[dict(side=1, height=1.12)],
+                           props=[dict(kind="vase", rel=(0.30, 0.07), drop=True), dict(kind="books", rel=(0.07, 0.45), drop=True, yaw=1.57),
+                                  dict(kind="snake", rel=(-0.16, 0.9))]),
+    "executive-office": dict(props=[dict(kind="plant", rel=(0.5, 0.25), drop=True), dict(kind="books", rel=(0.35, 0.3), drop=True)]),
+    "showroom-closet": dict(props=[dict(kind="snake", rel=(1.09, 0.25), scale=0.9)]),
+    "showroom-kitchen": dict(props=[dict(kind="bowl", rel=(0.6, 0.22), drop=True)]),
+    "master-bath": dict(props=[dict(kind="plant", rel=(0.6, 0.85), drop=True)]),
+    "garage-cabinet": dict(props=[dict(kind="snake", rel=(1.1, -0.2))]),
+    "mudroom": dict(props=[dict(kind="snake", rel=(1.25, 0.2), scale=0.85)]),
+}
+for e in EXHIBITS:
+    e.update(EXTRAS.get(e["sku"], {}))
 base["pieces"] = pieces
 base["stops"] = stops
 base["exhibits"] = [dict(sku=e["sku"], glb=e["glb"], rot=e["rot"], xc=e["xc"], title=e["title"], drop=e.get("drop", []), top=e.get("top"),
-                         boxes=e.get("boxes", [])) for e in EXHIBITS]
+                         boxes=e.get("boxes", []), halfwalls=e.get("halfwalls", []), props=e.get("props", [])) for e in EXHIBITS]
 base["spot"] = dict(energy=900, angle=72)
 # partition walls on the approach side of the deep exhibits, each with a screen showing built work
 PUB = os.path.join(REPO, "public", "portfolio")

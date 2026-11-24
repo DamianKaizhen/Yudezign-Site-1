@@ -113,6 +113,158 @@ def counter_top(meshes, spec, root, sku):
     return ob
 
 
+# ---------------------------------------------------------------- site-built extras: half walls and props
+# Made here, in the hall's coordinates, and joined into their exhibit's model. Props are simple shapes on purpose.
+import random
+import bmesh
+
+
+def flat_mat(name, rgb, rough=0.6, metal=0.0):
+    mt = bpy.data.materials.get(name)
+    if mt:
+        return mt
+    mt = bpy.data.materials.new(name)
+    if not mt.node_tree:
+        mt.use_nodes = True
+    bs = mt.node_tree.nodes["Principled BSDF"]
+    bs.inputs["Base Color"].default_value = (*srgb(rgb), 1)
+    bs.inputs["Roughness"].default_value = rough
+    bs.inputs["Metallic"].default_value = metal
+    return mt
+
+
+def add_mesh(name, verts, faces, mat, smooth=False):
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(verts, [], faces)
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    bm.to_mesh(me); bm.free()
+    me.uv_layers.new(name="UVMap")
+    if smooth:
+        for pl in me.polygons:
+            pl.use_smooth = True
+    ob = bpy.data.objects.new(name, me)
+    ob.data.materials.append(mat)
+    COL.objects.link(ob)
+    return ob
+
+
+def box_ob(name, lo, hi, mat, yaw=0.0):
+    cx, cy = (lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2
+    c, s_ = math.cos(yaw), math.sin(yaw)
+    vs = []
+    for x in (lo[0], hi[0]):
+        for y in (lo[1], hi[1]):
+            for z in (lo[2], hi[2]):
+                dx, dy = x - cx, y - cy
+                vs.append((cx + dx * c - dy * s_, cy + dx * s_ + dy * c, z))
+    return add_mesh(name, vs, [(0, 1, 3, 2), (4, 6, 7, 5), (0, 4, 5, 1), (2, 3, 7, 6), (0, 2, 6, 4), (1, 5, 7, 3)], mat)
+
+
+def lathe(name, at, profile, mat, seg=20):
+    """A turned shape: profile is (radius, height) pairs from the foot up; closed at both ends."""
+    vs, fs = [], []
+    for r, z in profile:
+        for k in range(seg):
+            a = 2 * math.pi * k / seg
+            vs.append((at[0] + r * math.cos(a), at[1] + r * math.sin(a), at[2] + z))
+    for i in range(len(profile) - 1):
+        for k in range(seg):
+            a, b = i * seg + k, i * seg + (k + 1) % seg
+            fs.append((a, b, b + seg, a + seg))
+    fs.append(tuple(range(seg)))
+    fs.append(tuple((len(profile) - 1) * seg + k for k in range(seg)))
+    return add_mesh(name, vs, fs, mat, smooth=True)
+
+
+def blade(name, at, height, width, lean, yaw, mat, curl=0.0, n=7, thick=0.004):
+    """A leaf or stem: a tapering strip that leans out and curls, with a little thickness so both sides show."""
+    out = Vector((math.cos(yaw), math.sin(yaw), 0)); side = Vector((-math.sin(yaw), math.cos(yaw), 0))
+    vs, fs = [], []
+    for i in range(n + 1):
+        t = i / n
+        ang = lean + curl * t * t
+        c = Vector(at) + out * (height * (math.sin(lean) * t + (math.cos(lean) - math.cos(ang)) * t * 0.6)) + Vector((0, 0, height * t * math.cos(ang * 0.6)))
+        w = width * (0.55 + 0.9 * t) * (1 - t) ** 0.5 if i < n else width * 0.03
+        nrm = (out * math.cos(ang) - Vector((0, 0, math.sin(ang)))).normalized()
+        for sx, sn in ((-1, -1), (1, -1), (1, 1), (-1, 1)):
+            vs.append(tuple(c + side * (sx * w / 2) + nrm * (sn * thick / 2)))
+    for i in range(n):
+        a = i * 4
+        for k in range(4):
+            fs.append((a + k, a + (k + 1) % 4, a + 4 + (k + 1) % 4, a + 4 + k))
+    fs.append((0, 1, 2, 3)); fs.append((n * 4, n * 4 + 1, n * 4 + 2, n * 4 + 3))
+    return add_mesh(name, vs, fs, mat, smooth=True)
+
+
+def make_prop(kind, at, rng, yaw=0.0, scale=1.0):
+    k = scale
+    leaf = [flat_mat("prop leaf %d" % i, c, 0.55) for i, c in enumerate(((52, 84, 58), (66, 102, 64), (40, 68, 50)))]
+    obs = []
+    if kind in ("snake", "plant"):          # a floor planter with tall upright leaves / a small pot of the same
+        tall = kind == "snake"
+        r, h = (0.17 * k, 0.40 * k) if tall else (0.055 * k, 0.085 * k)
+        pot = flat_mat("prop pot dark" if tall else "prop pot clay", (38, 36, 34) if tall else (196, 176, 150), 0.7)
+        obs.append(lathe("prop pot", at, [(r * 0.78, 0), (r, h), (r * 0.9, h), (r * 0.9, h * 0.94)], pot))
+        obs.append(lathe("prop soil", (at[0], at[1], at[2] + h * 0.93), [(r * 0.9, 0), (r * 0.9, 0.004)], flat_mat("prop soil", (46, 36, 28), 0.95), seg=14))
+        for i in range(15 if tall else 10):
+            a = rng.uniform(0, 2 * math.pi); d = rng.uniform(0, r * 0.55)
+            base = (at[0] + d * math.cos(a), at[1] + d * math.sin(a), at[2] + h * 0.93)
+            hh = rng.uniform(0.55, 1.0) * (0.95 * k if tall else 0.2 * k)
+            obs.append(blade("prop leaf", base, hh, (0.075 * k if tall else 0.022 * k) * rng.uniform(0.8, 1.15),
+                             rng.uniform(0.04, 0.22) if tall else rng.uniform(0.25, 0.7), a + rng.uniform(-0.5, 0.5), leaf[i % 3],
+                             curl=rng.uniform(0.0, 0.25) if tall else rng.uniform(0.3, 0.9)))
+    elif kind == "vase":          # a ceramic vase with a few dry stems
+        obs.append(lathe("prop vase", at, [(0.045 * k, 0), (0.085 * k, 0.07 * k), (0.095 * k, 0.15 * k), (0.06 * k, 0.26 * k), (0.035 * k, 0.31 * k), (0.042 * k, 0.33 * k)],
+                         flat_mat("prop ceramic", (224, 214, 198), 0.35)))
+        stem = flat_mat("prop stem", (176, 148, 108), 0.8)
+        for i in range(7):
+            a = rng.uniform(0, 2 * math.pi)
+            obs.append(blade("prop stem", (at[0], at[1], at[2] + 0.30 * k), rng.uniform(0.32, 0.5) * k, 0.012 * k, rng.uniform(0.05, 0.3), a, stem, curl=rng.uniform(0.1, 0.5), thick=0.006))
+    elif kind == "books":          # three books in a stack
+        z = at[2]
+        for i, (w, d, t, c) in enumerate(((0.26, 0.19, 0.035, (58, 70, 66)), (0.24, 0.17, 0.028, (196, 178, 150)), (0.21, 0.15, 0.03, (120, 76, 52)))):
+            obs.append(box_ob("prop book", (at[0] - w * k / 2, at[1] - d * k / 2, z), (at[0] + w * k / 2, at[1] + d * k / 2, z + t * k),
+                              flat_mat("prop book %d" % i, c, 0.75), yaw + rng.uniform(-0.25, 0.25)))
+            z += t * k
+    elif kind == "bowl":          # a shallow bowl
+        obs.append(lathe("prop bowl", at, [(0.06 * k, 0), (0.13 * k, 0.045 * k), (0.16 * k, 0.085 * k), (0.15 * k, 0.085 * k), (0.12 * k, 0.05 * k), (0.05 * k, 0.012 * k)],
+                         flat_mat("prop bowl", (60, 52, 44), 0.4)))
+    else:
+        raise SystemExit("unknown prop " + kind)
+    return obs
+
+
+def site_extras(e, meshes, lo, hi):
+    """Half walls beside a design's exposed flank, and props, placed from the design's own footprint."""
+    made = []
+    ap = [o.matrix_world @ Vector(c) for o in meshes for c in o.bound_box]          # the design as placed in the hall
+    lo = Vector([min(p[i] for p in ap) for i in range(3)]); hi = Vector([max(p[i] for p in ap) for i in range(3)])
+    low = [o for o in meshes if max((o.matrix_world @ Vector(c)).z for c in o.bound_box) < 1.3] or meshes
+    lp = [o.matrix_world @ Vector(c) for o in low for c in o.bound_box]
+    l2 = Vector([min(p[i] for p in lp) for i in range(3)]); h2 = Vector([max(p[i] for p in lp) for i in range(3)])
+    for hw in e.get("halfwalls", []):          # side: 1 = the far (+x) flank, -1 = the approach flank
+        th = hw.get("thick", 0.1)
+        x0 = h2.x + 0.006 if hw["side"] > 0 else l2.x - 0.006 - th
+        made.append(box_ob("%s half wall" % e["sku"], (x0, l2.y - hw.get("front", 0.0), 0), (x0 + th, BACK if hw.get("to_back", True) else h2.y, hw.get("height", 1.12)),
+                           flat_mat("halfwall", (150, 140, 128), 0.85)))
+        log("half wall", e["sku"], "x", round(x0, 2), "y", round(l2.y, 2), "to", round(BACK, 2))
+    rng = random.Random(e["sku"])
+    for pr in e.get("props", []):          # rel: across the footprint (0..1 = left..right, front..back); drop: stand on what is there
+        x = lo.x + pr["rel"][0] * (hi.x - lo.x); y = lo.y + pr["rel"][1] * (hi.y - lo.y); z = 0.0
+        if pr.get("drop"):
+            bpy.context.view_layer.update()
+            ok, loc, nrm, _i, _o, _m = scene.ray_cast(bpy.context.evaluated_depsgraph_get(), Vector((x, y, pr.get("from", 1.35))), Vector((0, 0, -1)))
+            if not ok or loc.z < 0.3 or nrm.z < 0.9:
+                log("PROP SKIPPED", e["sku"], pr["kind"], "nothing level under", round(x, 2), round(y, 2), "hit", ok, round(loc.z, 2) if ok else None)
+                continue
+            z = loc.z
+        obs = make_prop(pr["kind"], (x, y, z), rng, pr.get("yaw", 0.0), pr.get("scale", 1.0))
+        made += obs
+        log("prop", e["sku"], pr["kind"], "at", round(x, 2), round(y, 2), round(z, 2))
+    return made
+
+
 # ---------------------------------------------------------------- exhibits
 # The exporter (mrs_export.py --movables --leds) keeps each real door and drawer as its own node, mv_NNN, and lists its
 # hinge axis or pull direction beside the model in <name>.movables.json. They stay separate objects here.
@@ -182,7 +334,7 @@ for e in LAYOUT["exhibits"]:
     root.location = (e["xc"] - (lo.x + hi.x) / 2, BACK - hi.y, -lo.z)
     bpy.context.view_layer.update()
     movs = [o for o, _ in mine]
-    groups[e["sku"]] = [o for o in meshes if o not in movs]
+    groups[e["sku"]] = [o for o in meshes if o not in movs] + site_extras(e, meshes, lo, hi)
     Mw = root.matrix_world.copy()
     R3 = Mw.to_3x3()
     for o, m in mine:
