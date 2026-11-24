@@ -70,7 +70,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .finale { position: fixed; z-index: 10; left: 0; right: 0; bottom: clamp(40px, 8vh, 96px); padding: 0 var(--pad); text-align: center; transition: opacity .6s, transform .6s; }
 .finale h2 { margin: 0 0 12px; font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1; }
-.finale p:not(.eyebrow) { margin: 0 auto 26px; max-width: 30em; color: var(--muted); font-size: 16px; line-height: 1.6; }
+.finale p.credits { margin: 22px auto 0; font-size: 11px; letter-spacing: .04em; }
+.finale p.credits a { color: var(--muted); opacity: .7; }
+.finale p:not(.eyebrow):not(.credits) { margin: 0 auto 26px; max-width: 30em; color: var(--muted); font-size: 16px; line-height: 1.6; }
 
 /* room rail */
 .rail { position: fixed; z-index: 15; right: var(--pad); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }

@@ -50,6 +50,7 @@ for sub in ("bake", "models", "photos-sm", "slat"):
     shutil.copytree(os.path.join(SRC, "assets", sub), os.path.join(DST, "assets", sub))
 shutil.copy(os.path.join(SRC, "assets", "logo-wordmark-light.svg"), os.path.join(DST, "assets"))
 shutil.copy(os.path.join(SRC, "style.css"), DST)
+shutil.copy(os.path.join(SRC, "credits.txt"), DST)          # the CC BY decor models must be credited in public
 for name in ("gallery.json", "movables.json"):      # site.json comes from scripts/gallery-data.mjs
     data = json.load(open(os.path.join(SRC, "assets", name), encoding="utf-8"))
     json.dump(rewrite(data), open(os.path.join(DST, "assets", name), "w", encoding="utf-8"), separators=(",", ":"))

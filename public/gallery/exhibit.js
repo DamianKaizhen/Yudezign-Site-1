@@ -161,10 +161,10 @@ const swatchTex = {};
 // Wood acoustic slat panels are a stocked product with their own four finishes: they never take a board colour.
 // A slat part is either a flat board carrying a picture of the slats ('band') or modelled slats with a wood picture.
 const SLAT_FINISHES = [
-  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=8211ca91c3', wood: 'assets/slat/dgm53-wood.jpg?v=8211ca91c3' },
-  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=8211ca91c3', wood: 'assets/slat/dgm109-wood.jpg?v=8211ca91c3' },
-  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=8211ca91c3', wood: 'assets/slat/dgm197-wood.jpg?v=8211ca91c3' },
-  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=8211ca91c3', wood: 'assets/slat/dgm717-wood.jpg?v=8211ca91c3' },
+  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm53-wood.jpg?v=eb85f62fb0' },
+  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm109-wood.jpg?v=eb85f62fb0' },
+  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm197-wood.jpg?v=eb85f62fb0' },
+  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm717-wood.jpg?v=eb85f62fb0' },
 ];
 const slatKind = (map) => (/^sw_dgm/i.test(map?.name || '') ? 'band' : sku === 'executive-office' && /naturalhamiltonoak/i.test(map?.name || '') ? 'wood' : null);
 let parts = [], sel = -1, flash = null;          // sel: -1 = every part
@@ -233,7 +233,7 @@ function thumb(x) {          // the as-built board as a chip picture
 async function finishPanel() {
   if (!faceMats.length) return;
   let site;
-  try { site = await (await fetch('assets/site.json?v=8211ca91c3')).json(); } catch { return; }
+  try { site = await (await fetch('assets/site.json?v=eb85f62fb0')).json(); } catch { return; }
   const styles = site.styles || [], rows = $('swatchRows');
   const groups = styles.length ? styles.map((s) => [s.name || s.id, site.finishes.filter((f) => f.style === (s.id || s.slug || s.name))]) : [['Standard colours', site.finishes]];
   const left = site.finishes.filter((f) => !groups.some(([, list]) => list.includes(f)));
@@ -358,11 +358,11 @@ function findStrips(model, fronts, box) {
 }
 const UPPER = 1.1;          // a front that starts higher than this above the floor is an upper
 async function load() {
-  const data = await (await fetch('assets/movables.json?v=8211ca91c3')).json();
+  const data = await (await fetch('assets/movables.json?v=eb85f62fb0')).json();
   const meta = Object.fromEntries(data.movables.filter((m) => m.sku === sku).map((m) => [m.name, m]));
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
-  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=8211ca91c3`);
+  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=eb85f62fb0`);
   const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;

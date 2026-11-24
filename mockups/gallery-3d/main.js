@@ -435,7 +435,7 @@ const PTYPE = { 'showroom-kitchen': 'kitchen', 'garage-cabinet': 'garage', 'show
 // The exhibits a service page also shows in its own viewer, where the finish can be changed (scripts/build-gallery.py
 // checks this list against src/data/services.ts).
 const PAGE = { 'showroom-kitchen': 'kitchen-cabinets', 'master-bath': 'bathroom-vanities', 'executive-office': 'home-office-cabinets',
-  'garage-cabinet': 'garage-cabinets', mudroom: 'laundry-room-cabinets' };
+  'garage-cabinet': 'garage-cabinets', mudroom: 'laundry-room-cabinets', 'showroom-closet': 'closet-systems' };
 let active = -1;
 refreshCard = () => { if (active >= 0 && stops[active].kind === 'piece') showStop(active); };
 function showStop(i) {
