@@ -15,7 +15,7 @@ import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUnifo
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(location.search);
-const data = await (await fetch('assets/gallery.json?v=eb85f62fb0')).json();
+const data = await (await fetch('assets/gallery.json?v=251417ffaa')).json();
 const { hall, stops, sections, pieces, zones, videoWall } = data;
 
 // Blender is Z-up, three.js is Y-up.
@@ -62,13 +62,13 @@ function tex(url, flipY = true) {
 const BAKE_GAIN = 2;
 const bakeMats = [];
 const bakedMaterial = (name, flipY) => {
-  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=eb85f62fb0`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
+  const m = new THREE.MeshBasicMaterial({ map: tex(`assets/bake/${name}.jpg?v=251417ffaa`, flipY), color: new THREE.Color().setRGB(BAKE_GAIN, BAKE_GAIN, BAKE_GAIN) });
   bakeMats.push(m);
   return m;
 };
 
 // ---------------------------------------------------------------- hall shell
-gltfLoader.load('assets/models/shell.glb?v=eb85f62fb0', (g) => {
+gltfLoader.load('assets/models/shell.glb?v=251417ffaa', (g) => {
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
     // the ceiling is near-black; a flat colour is cleaner than a compressed bake
@@ -124,7 +124,7 @@ if (lite) {
       }`,
   };
   floor = new Reflector(floorGeo, { clipBias: 0.002, textureWidth: 768, textureHeight: 768, shader });
-  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=eb85f62fb0', true);
+  floor.material.uniforms.tBake.value = tex('assets/bake/shell_floor.jpg?v=251417ffaa', true);
   const mirror = floor.onBeforeRender;
   let flip = 0;
   floor.onBeforeRender = function (...a) { if ((flip ^= 1)) mirror.apply(this, a); };
@@ -151,7 +151,7 @@ function tuneMaterial(m) {
 }
 // Doors and drawers arrive as their own parts. Each carries the design's own hinge line or pull direction (the pipeline
 // reads them from the Yukon file), so a door swings where it is hinged and a drawer slides the way it is built.
-const exhibitData = await (await fetch('assets/movables.json?v=eb85f62fb0')).json();
+const exhibitData = await (await fetch('assets/movables.json?v=251417ffaa')).json();
 const movMeta = Object.fromEntries(exhibitData.movables.map((m) => [m.name, m]));
 const movables = [];                 // { sku, mesh, kind, t, want, apply }
 function rigMovable(mesh, m) {
@@ -182,7 +182,7 @@ let refreshCard = () => {};          // set once the cards exist: a model that l
 const GLOW = { led: [1.0, 0.72, 0.42, 3.2], diffuser: [1.0, 0.78, 0.52, 1.7], orb: [1.0, 0.75, 0.45, 2.2] };
 const swapped = new Map();
 // One model per exhibit, so the hall fills in piece by piece and a service page can load just its own.
-for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=eb85f62fb0`, (g) => {
+for (const piece of pieces) gltfLoader.load(`assets/models/${piece.sku}.glb?v=251417ffaa`, (g) => {
   const rig = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -548,9 +548,11 @@ const leds = exhibitData.leds.map((d) => {
   const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]);
   const strip = new THREE.Mesh(new THREE.BoxGeometry(a.distanceTo(b), 0.005, 0.014), ledMat);
   strip.position.copy(a).add(b).multiplyScalar(0.5);
-  strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
+  const dir = b.clone().sub(a).normalize(), out = d.out && d.out.some(Boolean) ? B(d.out[0], d.out[1], d.out[2]).normalize() : null;          // out: the way an upright's strip faces
+  if (out) strip.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(dir, out.clone().negate(), new THREE.Vector3().crossVectors(dir, out.clone().negate())));
+  else strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), dir);
   scene.add(strip);
-  return { mid: strip.position, len: a.distanceTo(b), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
+  return { mid: strip.position, len: a.distanceTo(b), face: out || new THREE.Vector3(0, -1, 0), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
 });
 if (leds.length) RectAreaLightUniformsLib.init();
 const ledLights = Array.from({ length: Math.min(lite ? 2 : 4, leds.length) }, () => {
@@ -564,7 +566,7 @@ function aimLeds(cam) {
   const near = leds.map((l) => ({ l, d: l.mid.distanceToSquared(cam) })).sort((x, y) => x.d - y.d);
   ledLights.forEach((p, i) => {
     const { l } = near[i];
-    p.position.set(l.mid.x, l.mid.y - 0.008, l.mid.z);
+    p.position.copy(l.mid).addScaledVector(l.face, 0.008);
     p.quaternion.copy(l.down);
     p.width = l.len;
     p.intensity = ledLevel * 50;
@@ -586,7 +588,7 @@ if (params.get('led')) { const [on, b, k] = params.get('led').split(','); ledOn.
 $('ledRows').hidden = !leds.length;
 
 // ---------------------------------------------------------------- site panels (Services, Portfolio, Finishes, About)
-const site = await (await fetch('assets/site.json?v=eb85f62fb0')).json();
+const site = await (await fetch('assets/site.json?v=251417ffaa')).json();
 const panel = $('panel'), panelBody = $('panelBody');
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const cap = (s) => s[0].toUpperCase() + s.slice(1);

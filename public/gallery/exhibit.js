@@ -161,10 +161,10 @@ const swatchTex = {};
 // Wood acoustic slat panels are a stocked product with their own four finishes: they never take a board colour.
 // A slat part is either a flat board carrying a picture of the slats ('band') or modelled slats with a wood picture.
 const SLAT_FINISHES = [
-  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm53-wood.jpg?v=eb85f62fb0' },
-  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm109-wood.jpg?v=eb85f62fb0' },
-  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm197-wood.jpg?v=eb85f62fb0' },
-  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=eb85f62fb0', wood: 'assets/slat/dgm717-wood.jpg?v=eb85f62fb0' },
+  { name: 'Royal Walnut', group: 'Acoustic panel', color: '#4c3a31', band: 'assets/slat/dgm53-band.jpg?v=251417ffaa', wood: 'assets/slat/dgm53-wood.jpg?v=251417ffaa' },
+  { name: 'Walnut', group: 'Acoustic panel', color: '#76583e', band: 'assets/slat/dgm109-band.jpg?v=251417ffaa', wood: 'assets/slat/dgm109-wood.jpg?v=251417ffaa' },
+  { name: 'Oak', group: 'Acoustic panel', color: '#a28c6d', band: 'assets/slat/dgm197-band.jpg?v=251417ffaa', wood: 'assets/slat/dgm197-wood.jpg?v=251417ffaa' },
+  { name: 'White Oak', group: 'Acoustic panel', color: '#ada494', band: 'assets/slat/dgm717-band.jpg?v=251417ffaa', wood: 'assets/slat/dgm717-wood.jpg?v=251417ffaa' },
 ];
 const slatKind = (map) => (/^sw_dgm/i.test(map?.name || '') ? 'band' : sku === 'executive-office' && /naturalhamiltonoak/i.test(map?.name || '') ? 'wood' : null);
 let parts = [], sel = -1, flash = null;          // sel: -1 = every part
@@ -233,7 +233,7 @@ function thumb(x) {          // the as-built board as a chip picture
 async function finishPanel() {
   if (!faceMats.length) return;
   let site;
-  try { site = await (await fetch('assets/site.json?v=eb85f62fb0')).json(); } catch { return; }
+  try { site = await (await fetch('assets/site.json?v=251417ffaa')).json(); } catch { return; }
   const styles = site.styles || [], rows = $('swatchRows');
   const groups = styles.length ? styles.map((s) => [s.name || s.id, site.finishes.filter((f) => f.style === (s.id || s.slug || s.name))]) : [['Standard colours', site.finishes]];
   const left = site.finishes.filter((f) => !groups.some(([, list]) => list.includes(f)));
@@ -366,11 +366,11 @@ function findStrips(model, fronts, box) {
 }
 const UPPER = 1.1;          // a front that starts higher than this above the floor is an upper
 async function load() {
-  const data = await (await fetch('assets/movables.json?v=eb85f62fb0')).json();
+  const data = await (await fetch('assets/movables.json?v=251417ffaa')).json();
   const meta = Object.fromEntries(data.movables.filter((m) => m.sku === sku).map((m) => [m.name, m]));
   const loader = new GLTFLoader();
   loader.setDRACOLoader(new DRACOLoader().setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/'));
-  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=eb85f62fb0`);
+  const g = await loader.loadAsync(`assets/models/${sku}.glb?v=251417ffaa`);
   const aniso = renderer.capabilities.getMaxAnisotropy(), tuned = new Set(), rig = [], fronts = [], inner = [], backs = [], mirrors = [];
   g.scene.traverse((o) => {
     if (!o.isMesh) return;
@@ -501,25 +501,29 @@ async function load() {
   rig.forEach(([o, mm]) => rigMovable(o, mm));
   // A strip under each wall cabinet. Each is an area light as long as the strip, so the worktop and the wall under it
   // are lit along the whole run and a polished top mirrors the line of light.
-  const strips = data.leds.filter((l) => l.sku === sku).map((d) => [B(d.a[0], d.a[1], d.a[2]), B(d.b[0], d.b[1], d.b[2])]);
+  const strips = data.leds.filter((l) => l.sku === sku).map((d) => [B(d.a[0], d.a[1], d.a[2]), B(d.b[0], d.b[1], d.b[2]), d.out && d.out.some(Boolean) ? B(d.out[0], d.out[1], d.out[2]).normalize() : null]);
   if (params.has('findleds')) { strips.length = 0; strips.push(...findStrips(g.scene, fronts, box)); }          // ?findleds: print where strips belong (README)
   if (strips.length) RectAreaLightUniformsLib.init();
   strips.sort((p, q) => q[0].distanceTo(q[1]) - p[0].distanceTo(p[1]));
-  strips.forEach(([a, b], i) => {
-    const len = a.distanceTo(b), mid = a.clone().add(b).multiplyScalar(0.5);
+  strips.forEach(([a, b, out], i) => {
+    const len = a.distanceTo(b), mid = a.clone().add(b).multiplyScalar(0.5), dir = b.clone().sub(a).normalize();
     const strip = new THREE.Mesh(new THREE.BoxGeometry(len, 0.006, 0.016), ledMat);
     strip.position.copy(mid);
-    strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
+    // a strip shines down unless it says which way it faces (`out`: an upright's strip faces into its bay)
+    if (out) strip.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(dir, out.clone().negate(), new THREE.Vector3().crossVectors(dir, out.clone().negate())));
+    else strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), dir);
     root.add(strip);
     if (i >= (coarse ? 4 : 10)) return;          // the longest runs cast the light
     const lamp = new THREE.RectAreaLight(0xffffff, 0, len, 0.03);
-    lamp.position.copy(mid).y -= 0.008;
-    lamp.quaternion.copy(strip.quaternion).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2));          // facing down
-    lamp.userData.base = 26;
+    const face = out || new THREE.Vector3(0, -1, 0);
+    lamp.position.copy(mid).addScaledVector(face, 0.008);
+    lamp.quaternion.copy(strip.quaternion).multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2));          // facing down, or out
+    lamp.userData.base = out ? 14 : 26;
     root.add(lamp);
     ledLights.push(lamp);
+    if (i >= 5) return;
     const wash = new THREE.PointLight(0xffffff, 0, 1.1, 1.6);          // the soft spill onto the wall behind and the fronts beside
-    wash.position.copy(mid).y -= 0.12;
+    wash.position.copy(mid).addScaledVector(face, 0.12);
     wash.userData.base = 0.5 * Math.min(len, 1.2);
     root.add(wash);
     ledLights.push(wash);
