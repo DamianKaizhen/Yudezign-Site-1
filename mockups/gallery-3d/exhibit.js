@@ -152,14 +152,12 @@ if (document.fullscreenEnabled) {
 // ---------------------------------------------------------------- finish: the fronts in any standard colour
 // The pipeline keeps door and drawer fronts as their own materials ("Door face ...", "Drawer face ..."), so a swatch
 // can replace their picture without touching the carcass, worktops or hardware.
-const faceMats = [];                      // { m, map, color, zone }: one per front material and zone
+const faceMats = [];                      // the parts: { m, map, color, zone, verts, lo, hi } - one per as-built material and zone
 const texLoader = new THREE.TextureLoader();
 const swatchTex = {};
-// Two tones: the fronts split into the upper cabinets (those that start above worktop height) and everything below.
-// A swatch goes to both, or to the zone picked in the panel.
-const ZONES = [['all', 'All fronts'], ['upper', 'Upper'], ['lower', 'Lower']];
-const chosen = { upper: null, lower: null };
-let zone = 'all';
+// A design is made of parts: each board finish it was built in (body, fronts, a slat wall, a desktop...), divided into
+// upper and lower where that finish is used on both. A swatch goes to every part, or to the one picked in the panel.
+let parts = [], sel = -1, flash = null;          // sel: -1 = every part
 function paint(x, f) {
   if (!f) { x.m.map = x.map; x.m.color.copy(x.color); }
   else {
@@ -170,28 +168,52 @@ function paint(x, f) {
     x.m.map = t;
     x.m.color.setScalar(1);
   }
+  x.finish = f || null;
   x.m.needsUpdate = true;
 }
 function showFinish() {
-  const { upper, lower } = chosen, now = $('finishNow'), name = (f) => (f ? f.name : 'As built');
+  const now = $('finishNow'), used = [...new Set(parts.map((x) => x.finish))], one = used.length === 1 ? used[0] : undefined;
   now.textContent = '';
-  if (upper === lower) {
-    if (upper && upper.group) { const s = document.createElement('small'); s.textContent = upper.group; now.append(s); }
-    now.append(name(upper));
-  } else {
-    const s = document.createElement('small'); s.textContent = 'Two-tone';
-    now.append(s, `${name(upper)} over ${name(lower)}`);
-  }
-  const on = zone === 'all' ? (upper === lower ? upper : undefined) : chosen[zone];
+  const s = document.createElement('small');
+  if (one !== undefined) { s.textContent = one ? one.group || '' : ''; now.append(s, one ? one.name : 'As built'); }
+  else { s.textContent = `${used.length} tones`; now.append(s, used.map((f) => (f ? f.name : 'As built')).join(' · ')); }
+  const on = sel < 0 ? one : parts[sel].finish;
   document.querySelectorAll('#swatchRows button[data-finish]').forEach((b) => b.setAttribute('aria-pressed', String(!!on && b.finish === on)));
-  document.querySelectorAll('#zones button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.zone === zone)));
-  $('asBuilt').setAttribute('aria-pressed', String(!upper && !lower));
+  document.querySelectorAll('#zones button').forEach((b, i) => {
+    b.setAttribute('aria-pressed', String(i - 1 === sel));
+    const x = parts[i - 1];
+    if (x) { const i2 = b.firstChild; i2.style.backgroundImage = x.finish ? `url("${x.finish.image}")` : x.thumb; i2.style.backgroundColor = x.finish ? x.finish.color : ''; }
+  });
+  $('asBuilt').setAttribute('aria-pressed', String(faceMats.every((x) => !x.finish)));
   redraw();
 }
-function setFinish(f, z = zone) {
-  for (const k of ['upper', 'lower']) if (z === 'all' || z === k) chosen[k] = f;
-  for (const x of faceMats) paint(x, chosen[x.zone]);
+function setFinish(f, i = sel) {
+  for (const x of i < 0 ? faceMats : [parts[i]]) paint(x, f);
   showFinish();
+}
+// The part a chip stands for lights up for a moment, so it is clear what the next colour will change.
+function choose(i) {
+  sel = i;
+  if (flash) flash.on.forEach((x) => x.m.emissive.setScalar(0));
+  flash = { on: i < 0 ? [] : [parts[i]], t: 0 };
+  showFinish();
+}
+function tickFlash(dt) {
+  if (!flash) return false;
+  flash.t += dt;
+  const k = flash.t >= 0.9 ? 0 : 0.5 * Math.sin((flash.t / 0.9) * Math.PI);
+  flash.on.forEach((x) => x.m.emissive.setRGB(0.83 * k, 0.65 * k, 0.45 * k));
+  if (flash.t >= 0.9) flash = null;
+  return true;
+}
+function thumb(x) {          // the as-built board as a chip picture
+  const img = x.map && x.map.image;
+  if (!img) return '';
+  try {
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    c.getContext('2d').drawImage(img, 0, 0, 64, 64);
+    return `url("${c.toDataURL('image/jpeg', 0.8)}")`;
+  } catch { return ''; }
 }
 async function finishPanel() {
   if (!faceMats.length) return;
@@ -218,22 +240,28 @@ async function finishPanel() {
     grp.append(h, row);
     rows.append(grp);
   }
-  if (['upper', 'lower'].every((k) => faceMats.some((x) => x.zone === k))) {          // two tones need both zones
-    for (const [id, label] of ZONES) {
-      const b = document.createElement('button');
-      b.type = 'button'; b.dataset.zone = id; b.textContent = label; b.setAttribute('aria-pressed', String(id === zone));
-      b.onclick = () => { zone = id; showFinish(); };
+  // The parts worth a chip of their own: the larger ones, biggest first. Small trims only follow "All".
+  parts = faceMats.filter((x) => x.verts > 24).sort((a, b) => b.verts - a.verts).slice(0, 6);
+  if (parts.length > 1) {
+    const where = (x) => (x.lo > UPPER ? 'Upper' : x.hi < UPPER + 0.2 ? 'Lower' : 'Full');
+    [null, ...parts].forEach((x, i) => {
+      const b = document.createElement('button'), dot = document.createElement('i'), cap = document.createElement('span');
+      b.type = 'button'; b.setAttribute('aria-pressed', String(i - 1 === sel));
+      if (x) { x.thumb = thumb(x); dot.style.backgroundImage = x.thumb; cap.textContent = where(x); b.setAttribute('aria-label', `Part ${i}: ${where(x).toLowerCase()}`); }
+      else { dot.className = 'all'; cap.textContent = 'All'; b.setAttribute('aria-label', 'Every part'); }
+      b.append(dot, cap);
+      b.onclick = () => choose(i - 1);
       $('zones').append(b);
-    }
-    $('zones').hidden = false;
-    $('finishNote').textContent = 'Door and drawer fronts only. For two tones, pick Upper or Lower, then a colour. Screen colours are a guide: ask us for a sample.';
-  }
-  $('asBuilt').onclick = () => setFinish(null, 'all');
+    });
+    $('zonesHead').hidden = $('zones').hidden = false;
+    $('finishNote').textContent = 'Board finishes only. Pick a part to give it its own colour. Screen colours are a guide: ask us for a sample.';
+  } else parts = faceMats.slice();
+  $('asBuilt').onclick = () => setFinish(null, -1);
   $('finishBtn').hidden = false;
   const find = (n) => n && site.finishes.find((x) => x.name.toLowerCase() === n.toLowerCase());
-  const want = find(params.get('finish')), up = find(params.get('upper'));          // ?finish= and ?upper=: for checking
-  if (want) setFinish(want, 'all');
-  if (up) setFinish(up, 'upper');
+  const want = find(params.get('finish'));          // ?finish=<name> and ?part=<n>:<name> (repeatable): for checking
+  if (want) setFinish(want, -1);
+  for (const q of params.getAll('part')) { const [n, name] = q.split(':'), f = find(name); if (f && parts[n - 1]) setFinish(f, n - 1); }
 }
 
 // ---------------------------------------------------------------- the model
@@ -272,6 +300,7 @@ function resize() {
 }
 addEventListener('resize', resize);
 
+const UPPER = 1.1;          // a front that starts higher than this above the floor is an upper
 async function load() {
   const data = await (await fetch('assets/movables.json')).json();
   const meta = Object.fromEntries(data.movables.filter((m) => m.sku === sku).map((m) => [m.name, m]));
@@ -291,23 +320,25 @@ async function load() {
       if (m.map) m.map.anisotropy = aniso;
       tuneMaterial(m);
     }
-    if (/^(Door face|Drawer face)/.test(m.name)) fronts.push(o);
+    if (/^(Door face|Drawer face)/.test(m.name) && !/chrome|hamper|slatwall/i.test(m.map?.name || '')) fronts.push(o);
   });
   root.add(g.scene);
   root.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(g.scene), size = box.getSize(new THREE.Vector3()), mid = box.getCenter(new THREE.Vector3());
   // Two-tone zones. A front that starts above worktop height is an upper; each zone gets its own copy of the material.
   // Fixed fronts arrive merged into one mesh, so a mesh that spans both zones is divided board by board.
-  const zoned = new Map(), UPPER = 1.1;
-  const zoneMat = (m, z) => {
+  const zoned = new Map();
+  const zoneMat = (m, z, verts, lo, hi) => {
     const k = m.uuid + z;
-    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z }); faceMats.push(zoned.get(k)); }
-    return zoned.get(k).m;
+    if (!zoned.has(k)) { const c = m.clone(); zoned.set(k, { m: c, map: c.map, color: c.color.clone(), zone: z, verts: 0, lo: Infinity, hi: -Infinity, finish: null }); faceMats.push(zoned.get(k)); }
+    const x = zoned.get(k);
+    x.verts += verts; x.lo = Math.min(x.lo, lo); x.hi = Math.max(x.hi, hi);
+    return x.m;
   };
   for (const o of fronts) {
     const bb = new THREE.Box3().setFromObject(o), g = o.geometry, pos = g.attributes.position, idx = g.index;
-    const whole = bb.min.y - box.min.y > UPPER ? 'upper' : 'lower';
-    if (whole === 'upper' || bb.max.y - box.min.y < UPPER + 0.2 || !idx || pos.count <= 24) { o.material = zoneMat(o.material, whole); continue; }
+    const whole = bb.min.y - box.min.y > UPPER ? 'upper' : 'lower', y0 = bb.min.y - box.min.y, y1 = bb.max.y - box.min.y;
+    if (whole === 'upper' || bb.max.y - box.min.y < UPPER + 0.2 || !idx || pos.count <= 24) { o.material = zoneMat(o.material, whole, pos.count, y0, y1); continue; }
     const par = new Int32Array(pos.count), seen = new Map(), low = new Float32Array(pos.count).fill(Infinity), v = new THREE.Vector3();
     const find = (i) => { while (par[i] !== i) { par[i] = par[par[i]]; i = par[i]; } return i; };
     for (let i = 0; i < pos.count; i++) {          // corners that touch belong to one board
@@ -317,14 +348,18 @@ async function load() {
     }
     for (let t = 0; t < idx.count; t += 3) { const a = find(idx.getX(t)); par[find(idx.getX(t + 1))] = a; par[find(idx.getX(t + 2))] = a; }
     for (let i = 0; i < pos.count; i++) { const r = find(i); low[r] = Math.min(low[r], v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld).y); }
-    const tris = [[], []];
-    for (let t = 0; t < idx.count; t += 3) tris[low[find(idx.getX(t))] - box.min.y > UPPER ? 1 : 0].push(idx.getX(t), idx.getX(t + 1), idx.getX(t + 2));
-    if (!tris[1].length) { o.material = zoneMat(o.material, 'lower'); continue; }
+    const tris = [[], []], span = [[Infinity, -Infinity], [Infinity, -Infinity]];
+    for (let t = 0; t < idx.count; t += 3) {
+      const z = low[find(idx.getX(t))] - box.min.y > UPPER ? 1 : 0;
+      tris[z].push(idx.getX(t), idx.getX(t + 1), idx.getX(t + 2));
+      for (let j = 0; j < 3; j++) { const y = v.fromBufferAttribute(pos, idx.getX(t + j)).applyMatrix4(o.matrixWorld).y - box.min.y; span[z][0] = Math.min(span[z][0], y); span[z][1] = Math.max(span[z][1], y); }
+    }
+    if (!tris[1].length) { o.material = zoneMat(o.material, 'lower', pos.count, y0, y1); continue; }
     g.setIndex(tris[0].concat(tris[1]));
     g.clearGroups();
     g.addGroup(0, tris[0].length, 0);
     g.addGroup(tris[0].length, tris[1].length, 1);
-    o.material = [zoneMat(o.material, 'lower'), zoneMat(o.material, 'upper')];
+    o.material = [zoneMat(o.material, 'lower', tris[0].length / 1.5, ...span[0]), zoneMat(o.material, 'upper', tris[1].length / 1.5, ...span[1])];
   }
   rig.forEach(([o, mm]) => rigMovable(o, mm));
   for (const d of data.leds.filter((l) => l.sku === sku)) {          // a strip under each wall cabinet, each with its own light
@@ -447,6 +482,7 @@ if (!coarse) canvas.addEventListener('pointermove', (e) => { if (!e.buttons) can
 const clock = new THREE.Clock();
 function tick() {
   const dt = Math.min(clock.getDelta(), 0.1);
+  if (tickFlash(dt)) dirty = true;
   for (const m of movables) {
     if (m.t === m.want) continue;
     m.t += Math.sign(m.want - m.t) * Math.min(Math.abs(m.want - m.t), dt * 1.6);
