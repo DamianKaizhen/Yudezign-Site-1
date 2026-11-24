@@ -395,6 +395,8 @@ def klass(name):
         return "mirror"
     if name.startswith("Worktop"):
         return "Worktop"
+    if name.startswith(("Door face", "Drawer face")):          # fronts stay apart from the carcass: viewers recolour them
+        return "face"
     return "board"
 
 

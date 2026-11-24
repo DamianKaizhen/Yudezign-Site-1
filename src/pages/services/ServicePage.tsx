@@ -74,6 +74,7 @@ const ServicePage: React.FC = () => {
                 <ul className="space-y-2 text-slate-600 list-disc pl-5">
                   <li>{service.exhibit.room ? 'Drag to look around the room.' : 'Drag to turn the design.'}</li>
                   <li>Select any door or drawer to open it.</li>
+                  <li>Use Change finish to see the door and drawer fronts in any of our 20 standard colours.</li>
                   <li>Use Lighting to dim the room and change its colour temperature.</li>
                 </ul>
                 <p className="mt-6 text-sm text-slate-500">

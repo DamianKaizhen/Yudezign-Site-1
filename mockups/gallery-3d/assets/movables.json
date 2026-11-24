@@ -213,22 +213,6 @@
 "sku": "coffee-bar",
 "kind": "door",
 "pivot": [
-34.6023,
-7.2187,
-0.8713
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_coffee-bar_009",
-"sku": "coffee-bar",
-"kind": "door",
-"pivot": [
 34.5823,
 6.9169,
 0.8713
@@ -1334,7 +1318,7 @@
 "kind": "door",
 "pivot": [
 20.4004,
-5.4484,
+5.1832,
 2.3227
 ],
 "axis": [
@@ -1350,38 +1334,6 @@
 "kind": "door",
 "pivot": [
 20.4004,
-5.1832,
-2.3227
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-bath_010",
-"sku": "master-bath",
-"kind": "door",
-"pivot": [
-20.4004,
-5.5276,
-0.8017
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-bath_011",
-"sku": "master-bath",
-"kind": "door",
-"pivot": [
-20.4004,
 5.7818,
 0.8017
 ],
@@ -1393,7 +1345,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-bath_012",
+"name": "mv_master-bath_010",
 "sku": "master-bath",
 "kind": "drawer",
 "pivot": [
@@ -1409,7 +1361,7 @@
 "max": 0.4501
 },
 {
-"name": "mv_master-bath_013",
+"name": "mv_master-bath_011",
 "sku": "master-bath",
 "kind": "drawer",
 "pivot": [
@@ -1425,7 +1377,7 @@
 "max": 0.4501
 },
 {
-"name": "mv_master-bath_014",
+"name": "mv_master-bath_012",
 "sku": "master-bath",
 "kind": "drawer",
 "pivot": [
@@ -1441,7 +1393,7 @@
 "max": 0.4501
 },
 {
-"name": "mv_master-bath_015",
+"name": "mv_master-bath_013",
 "sku": "master-bath",
 "kind": "door",
 "pivot": [
@@ -1457,7 +1409,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-bath_016",
+"name": "mv_master-bath_014",
 "sku": "master-bath",
 "kind": "door",
 "pivot": [
@@ -2085,7 +2037,7 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--41.3542,
+-39.3277,
 7.5518,
 3.1984
 ],
@@ -2101,14 +2053,14 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--41.0309,
+-40.5564,
 7.5518,
-3.1984
+2.1336
 ],
 "axis": [
 0.0,
 0.0,
--1.0
+1.0
 ],
 "max": 90.0
 },
@@ -2117,14 +2069,14 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--41.3549,
+-39.7601,
 7.5518,
-2.2052
+2.1336
 ],
 "axis": [
 0.0,
 0.0,
--1.0
+1.0
 ],
 "max": 90.0
 },
@@ -2133,7 +2085,7 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--41.3549,
+-40.5542,
 7.5518,
 3.1984
 ],
@@ -2149,7 +2101,7 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--40.9418,
+-39.7542,
 7.5518,
 3.1984
 ],
@@ -2165,582 +2117,6 @@
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
--40.9418,
-7.5518,
-2.2052
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_044",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.1392,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_045",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.1392,
-7.5518,
-2.2052
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_046",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5523,
-7.5518,
-2.2052
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_047",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5523,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_048",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.3277,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_049",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.3277,
-7.5518,
-2.2052
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_050",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7408,
-7.5518,
-2.2052
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_051",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7408,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_052",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--41.3549,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_053",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.9418,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_054",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5523,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_055",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.1392,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_056",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7408,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_057",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.3277,
-7.5518,
-2.1289
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_058",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--41.3549,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_059",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.9418,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_060",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5523,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_061",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.1392,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_062",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7408,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_063",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.3277,
-7.5518,
-1.1811
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_064",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--41.3549,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_065",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.9418,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_066",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5523,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_067",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.1392,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_068",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7408,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_069",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.3277,
-7.5518,
-0.1802
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_070",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5564,
-7.5518,
-2.1336
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_071",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.8867,
-7.5518,
-2.1336
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_072",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.0781,
-7.5518,
-2.1336
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_073",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7601,
-7.5518,
-2.1336
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_074",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.5542,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_075",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.2373,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_076",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.7542,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_077",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.4367,
-7.5518,
-3.1984
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_078",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.28,
-7.5518,
-2.1336
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_079",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
 -38.9553,
 7.5518,
 2.1336
@@ -2753,7 +2129,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_080",
+"name": "mv_master-closet_044",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2769,23 +2145,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_081",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--41.0309,
-7.5518,
-2.1316
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_082",
+"name": "mv_master-closet_045",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2801,39 +2161,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_083",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.8867,
-7.5518,
-0.1113
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_084",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.0781,
-7.5518,
-0.1113
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_085",
+"name": "mv_master-closet_046",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2849,7 +2177,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_086",
+"name": "mv_master-closet_047",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2865,23 +2193,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_087",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--40.2373,
-7.5518,
-2.1316
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_088",
+"name": "mv_master-closet_048",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2897,39 +2209,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_089",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.4367,
-7.5518,
-2.1316
-],
-"axis": [
-0.0,
-0.0,
--1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_090",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--39.28,
-7.5518,
-0.1113
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_091",
+"name": "mv_master-closet_049",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2945,7 +2225,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_092",
+"name": "mv_master-closet_050",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -2961,39 +2241,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_093",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--38.2572,
-3.0546,
-2.375
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_094",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--38.2572,
-3.0546,
-3.3013
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_095",
+"name": "mv_master-closet_051",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -3009,7 +2257,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_096",
+"name": "mv_master-closet_052",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -3025,23 +2273,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_097",
-"sku": "master-closet",
-"kind": "door",
-"pivot": [
--41.8527,
-3.0346,
-2.376
-],
-"axis": [
-0.0,
-0.0,
-1.0
-],
-"max": 90.0
-},
-{
-"name": "mv_master-closet_098",
+"name": "mv_master-closet_053",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
@@ -3057,7 +2289,7 @@
 "max": 90.0
 },
 {
-"name": "mv_master-closet_099",
+"name": "mv_master-closet_054",
 "sku": "master-closet",
 "kind": "door",
 "pivot": [
