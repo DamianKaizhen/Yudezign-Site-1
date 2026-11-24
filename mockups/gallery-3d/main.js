@@ -548,9 +548,11 @@ const leds = exhibitData.leds.map((d) => {
   const a = B(d.a[0], d.a[1], d.a[2]), b = B(d.b[0], d.b[1], d.b[2]);
   const strip = new THREE.Mesh(new THREE.BoxGeometry(a.distanceTo(b), 0.005, 0.014), ledMat);
   strip.position.copy(a).add(b).multiplyScalar(0.5);
-  strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), b.clone().sub(a).normalize());
+  const dir = b.clone().sub(a).normalize(), out = d.out && d.out.some(Boolean) ? B(d.out[0], d.out[1], d.out[2]).normalize() : null;          // out: the way an upright's strip faces
+  if (out) strip.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(dir, out.clone().negate(), new THREE.Vector3().crossVectors(dir, out.clone().negate())));
+  else strip.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), dir);
   scene.add(strip);
-  return { mid: strip.position, len: a.distanceTo(b), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
+  return { mid: strip.position, len: a.distanceTo(b), face: out || new THREE.Vector3(0, -1, 0), down: strip.quaternion.clone().multiply(new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), -Math.PI / 2)) };
 });
 if (leds.length) RectAreaLightUniformsLib.init();
 const ledLights = Array.from({ length: Math.min(lite ? 2 : 4, leds.length) }, () => {
@@ -564,7 +566,7 @@ function aimLeds(cam) {
   const near = leds.map((l) => ({ l, d: l.mid.distanceToSquared(cam) })).sort((x, y) => x.d - y.d);
   ledLights.forEach((p, i) => {
     const { l } = near[i];
-    p.position.set(l.mid.x, l.mid.y - 0.008, l.mid.z);
+    p.position.copy(l.mid).addScaledVector(l.face, 0.008);
     p.quaternion.copy(l.down);
     p.width = l.len;
     p.intensity = ledLevel * 50;
