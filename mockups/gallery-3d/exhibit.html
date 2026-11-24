@@ -10,43 +10,79 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root { --ink: #0b0a09; --cream: #f4efe7; --muted: rgba(244, 239, 231, 0.66); --line: rgba(244, 239, 231, 0.16); --gold: #d4a574; }
+    :root { --ink: #0b0a09; --cream: #f4efe7; --muted: rgba(244, 239, 231, 0.66); --line: rgba(244, 239, 231, 0.16); --gold: #d4a574; --glass: rgba(14, 12, 11, .78); --side: 272px; }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     html, body { height: 100%; margin: 0; background: var(--ink); color: var(--cream); font: 13px/1.4 Inter, system-ui, -apple-system, sans-serif; overflow: hidden; }
     canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
     canvas.over { cursor: pointer; }
-    .bar { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px; pointer-events: none; }
-    .bar > * { pointer-events: auto; }
-    button { font: inherit; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--cream); padding: 10px 14px; border: 1px solid var(--line); border-radius: 2px; background: rgba(14, 12, 11, .66); backdrop-filter: blur(14px); cursor: pointer; }
-    button:hover, button:focus-visible { border-color: var(--gold); outline: none; }
-    button[aria-pressed="true"] { border-color: var(--gold); color: var(--gold); }
-    .lights { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-    .sliders { display: none; width: min(240px, calc(100vw - 24px)); padding: 14px 16px; background: rgba(14, 12, 11, .8); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 3px; }
-    .lights.open .sliders { display: block; }
+    button { font: inherit; color: var(--cream); cursor: pointer; }
+    button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+    /* One toolbar, bottom centre. It never wraps: the labels are short and the buttons share the width on a phone. */
+    .bar { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; justify-content: center; pointer-events: none; transition: right .25s; }
+    .tools { display: flex; max-width: 100%; pointer-events: auto; background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+    .tools button { min-height: 42px; padding: 0 18px; border: 0; border-left: 1px solid var(--line); background: none; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; }
+    .tools button:first-child, .tools button[hidden] + button:not([hidden]):first-of-type { border-left: 0; }
+    .tools button:hover { background: rgba(244, 239, 231, .08); }
+    .tools button[aria-pressed="true"], .tools button[aria-expanded="true"] { color: var(--gold); background: rgba(212, 165, 116, .12); }
+    .tools .icon { padding: 0 14px; display: grid; place-items: center; }
+    .tools svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Panels: a sheet down the right side, so the model stays in view beside it (the camera moves over to make room). */
+    .panel { position: fixed; top: 12px; right: 12px; width: var(--side); max-height: calc(100% - 24px); display: flex; flex-direction: column; background: var(--glass); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    .panel header { display: flex; align-items: center; justify-content: space-between; padding: 10px 8px 10px 16px; border-bottom: 1px solid var(--line); }
+    .panel h2 { margin: 0; font: inherit; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+    .panel .x { width: 32px; height: 32px; border: 0; border-radius: 50%; background: none; font-size: 20px; line-height: 1; color: var(--muted); }
+    .panel .x:hover { color: var(--cream); background: rgba(244, 239, 231, .08); }
+    .panel .body { padding: 14px 16px 16px; overflow: auto; overscroll-behavior: contain; }
+    .nowrow { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 30px; }
+    .now { margin: 0; font-size: 14px; font-weight: 500; }
+    .now small { display: block; font-size: 10px; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .asbuilt { flex: none; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: none; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+    .asbuilt:hover { border-color: var(--gold); }
+    .asbuilt[aria-pressed="true"] { visibility: hidden; }
+    .grp h3 { margin: 14px 0 6px; font: inherit; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .grp .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+    .grp .row button { aspect-ratio: 1; padding: 0; border: 1px solid var(--line); border-radius: 50%; background-size: cover; background-position: center; transition: transform .15s; }
+    .grp .row button:hover { transform: scale(1.08); }
+    .grp .row button[aria-pressed="true"] { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .note { margin: 14px 0 0; font-size: 11px; color: var(--muted); }
+    .sliders { display: grid; gap: 14px; }
     label { display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-    label + label, #ledRows { margin-top: 12px; }
-    #ledRows { padding-top: 12px; border-top: 1px solid var(--line); }
+    #ledRows { display: contents; }
     output { float: right; color: var(--cream); letter-spacing: .04em; }
     input[type="range"] { display: block; width: 100%; margin-top: 7px; accent-color: var(--gold); }
-    label.check { color: var(--cream); cursor: pointer; }
+    label.check { padding-top: 14px; border-top: 1px solid var(--line); color: var(--cream); cursor: pointer; }
     label.check input { margin: 0 8px 0 0; vertical-align: -2px; accent-color: var(--gold); }
-    .finish { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
-    .swatches { display: none; width: min(292px, calc(100vw - 24px)); padding: 14px 16px; background: rgba(14, 12, 11, .8); backdrop-filter: blur(18px); border: 1px solid var(--line); border-radius: 3px; }
-    .finish.open .swatches { display: block; }
-    .swatches h3 { margin: 12px 0 6px; font: inherit; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-    .swatches h3:first-of-type { margin-top: 10px; }
-    .swatches .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-    .swatches .row button { aspect-ratio: 1; padding: 0; border-radius: 2px; background-size: cover; background-position: center; backdrop-filter: none; }
-    .swatches .row button[aria-pressed="true"] { outline: 2px solid var(--gold); outline-offset: 1px; }
-    .swatches .asbuilt { width: 100%; text-align: center; }
-    .swatches .now { margin: 0; font-size: 12px; color: var(--cream); }
-    .swatches .note { margin: 10px 0 0; font-size: 11px; color: var(--muted); letter-spacing: 0; text-transform: none; }
-    .left { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
-    .hint { position: fixed; top: 12px; left: 12px; right: 12px; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); pointer-events: none; transition: opacity .6s; }
+
+    .hint { position: fixed; top: 14px; left: 12px; right: 12px; margin: 0; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); pointer-events: none; transition: opacity .6s, right .25s; }
     .hint.off { opacity: 0; }
     .load { position: fixed; inset: 0; display: grid; place-items: center; background: var(--ink); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); transition: opacity .5s; }
     .load.off { opacity: 0; pointer-events: none; }
-    @media (prefers-reduced-motion: reduce) { .hint, .load { transition: none; } }
+
+    @media (min-width: 601px) {
+      body.paneled .bar, body.paneled .hint { right: calc(var(--side) + 24px); }
+    }
+    /* A narrow frame (a phone): the panel is a short sheet above the toolbar and the colours scroll sideways. */
+    @media (max-width: 600px) {
+      .bar { left: 8px; right: 8px; bottom: 8px; }
+      .tools { width: 100%; }
+      .tools button { flex: 1 1 auto; padding: 0 8px; letter-spacing: .1em; }
+      .tools .icon { flex: 0 0 44px; }
+      .panel { top: auto; left: 8px; right: 8px; bottom: 60px; width: auto; max-height: calc(100% - 120px); }
+      .panel header { padding: 4px 4px 4px 14px; }
+      .panel .body { padding: 10px 14px 12px; }
+      #swatchRows { display: flex; gap: 16px; margin: 0 -14px; padding: 0 14px 4px; overflow-x: auto; scrollbar-width: none; }
+      #swatchRows::-webkit-scrollbar { display: none; }
+      .grp { flex: none; }
+      .grp h3 { margin-top: 8px; }
+      .grp .row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 40px; }
+      .note { margin-top: 8px; }
+      .sliders { grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+      label.check { grid-column: 1 / -1; padding-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .hint, .load, .bar, .grp .row button { transition: none; } }
   </style>
   <script type="importmap">
     { "imports": {
@@ -57,31 +93,44 @@
 </head>
 <body>
   <canvas id="scene" role="img" aria-label="3D model of a YuDeZign design. Drag to turn it; select a door or drawer to open it."></canvas>
-  <p class="hint" id="hint">Drag to turn · select a door or drawer to open it</p>
-  <div class="bar">
-    <div class="left">
-      <button type="button" id="openAll" aria-pressed="false" hidden>Open doors and drawers</button>
-      <div class="finish" id="finish" hidden>
-        <div class="swatches" id="swatches">
-          <p class="now" id="finishNow">Finish: as built</p>
-          <div id="swatchRows"></div>
-          <button type="button" class="asbuilt" id="asBuilt" aria-pressed="true" style="margin-top:12px">As built</button>
-          <p class="note">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
-        </div>
-        <button type="button" id="finishBtn" aria-expanded="false" aria-controls="swatches">Change finish</button>
+  <p class="hint" id="hint">Drag to turn · scroll to zoom · select a door or drawer to open it</p>
+
+  <aside class="panel" id="finishPanel" aria-label="Change finish" hidden>
+    <header><h2>Finish</h2><button type="button" class="x" data-close aria-label="Close the finish panel">&times;</button></header>
+    <div class="body">
+      <div class="nowrow">
+        <p class="now" id="finishNow">As built</p>
+        <button type="button" class="asbuilt" id="asBuilt" aria-pressed="true">Reset</button>
+      </div>
+      <div id="swatchRows"></div>
+      <p class="note">Door and drawer fronts only. Screen colours are a guide: ask us for a sample.</p>
+    </div>
+  </aside>
+
+  <aside class="panel" id="lightsPanel" aria-label="Lighting" hidden>
+    <header><h2>Lighting</h2><button type="button" class="x" data-close aria-label="Close the lighting panel">&times;</button></header>
+    <div class="body sliders">
+      <label>Room light <output id="roomB">100%</output><input id="roomDim" type="range" min="15" max="160" value="100" aria-label="Room light level"></label>
+      <label>Room warmth <output id="roomK">3400 K</output><input id="roomWarm" type="range" min="2700" max="6000" step="50" value="3400" aria-label="Room light colour temperature"></label>
+      <div id="ledRows" hidden>
+        <label class="check"><input id="ledOn" type="checkbox" checked> Cabinet lights <output id="ledB">100%</output></label>
+        <label>Cabinet level<input id="ledDim" type="range" min="10" max="150" value="100" aria-label="Cabinet light level"></label>
+        <label>Cabinet warmth <output id="ledK">3000 K</output><input id="ledWarm" type="range" min="2700" max="6000" step="50" value="3000" aria-label="Cabinet light colour temperature"></label>
       </div>
     </div>
-    <div class="lights" id="lights">
-      <div class="sliders" id="sliders">
-        <label>Room light <output id="roomB">100%</output><input id="roomDim" type="range" min="15" max="160" value="100" aria-label="Room light level"></label>
-        <label>Room warmth <output id="roomK">3400 K</output><input id="roomWarm" type="range" min="2700" max="6000" step="50" value="3400" aria-label="Room light colour temperature"></label>
-        <div id="ledRows" hidden>
-          <label class="check"><input id="ledOn" type="checkbox" checked> Cabinet lights <output id="ledB">100%</output></label>
-          <label>Cabinet light level<input id="ledDim" type="range" min="10" max="150" value="100" aria-label="Cabinet light level"></label>
-          <label>Cabinet light colour <output id="ledK">3000 K</output><input id="ledWarm" type="range" min="2700" max="6000" step="50" value="3000" aria-label="Cabinet light colour temperature"></label>
-        </div>
-      </div>
-      <button type="button" id="lightsBtn" aria-expanded="false" aria-controls="sliders">Lighting</button>
+  </aside>
+
+  <div class="bar">
+    <div class="tools" role="toolbar" aria-label="Model controls">
+      <button type="button" id="openAll" aria-pressed="false" title="Open every door and drawer" hidden>Open all</button>
+      <button type="button" id="finishBtn" aria-expanded="false" aria-controls="finishPanel" hidden>Finish</button>
+      <button type="button" id="lightsBtn" aria-expanded="false" aria-controls="lightsPanel">Lighting</button>
+      <button type="button" id="resetView" class="icon" aria-label="Reset the view" title="Reset the view">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4"/><path d="M2.5 2.5v3h3"/></svg>
+      </button>
+      <button type="button" id="full" class="icon" aria-pressed="false" aria-label="Full screen" title="Full screen" hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"/></svg>
+      </button>
     </div>
   </div>
   <div class="load" id="load">Loading the model</div>

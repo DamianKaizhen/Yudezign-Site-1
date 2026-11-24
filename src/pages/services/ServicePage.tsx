@@ -62,37 +62,41 @@ const ServicePage: React.FC = () => {
       {service.exhibit && (
         <section className="py-16 bg-white" aria-labelledby="exhibit-heading">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-5 gap-10 items-center">
-              <div className="lg:col-span-2">
+            <div className="grid lg:grid-cols-2 gap-x-12 gap-y-6 items-end mb-8">
+              <div>
                 <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
                   Explore it in 3D
                 </p>
                 <h2 id="exhibit-heading" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                   {service.exhibit.title}
                 </h2>
-                <p className="text-lg text-slate-600 mb-6">{service.exhibit.text}</p>
-                <ul className="space-y-2 text-slate-600 list-disc pl-5">
-                  <li>{service.exhibit.room ? 'Drag to look around the room.' : 'Drag to turn the design.'}</li>
-                  <li>Select any door or drawer to open it.</li>
-                  <li>Use Change finish to see the door and drawer fronts in any of our 20 standard colours.</li>
-                  <li>Use Lighting to dim the room and change its colour temperature.</li>
-                </ul>
-                <p className="mt-6 text-sm text-slate-500">
-                  The model comes from the same design file we build from.
-                </p>
+                <p className="text-lg text-slate-600">{service.exhibit.text}</p>
               </div>
-              <div className="lg:col-span-3">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200 bg-black">
-                  <iframe
-                    src={`/gallery/exhibit.html?sku=${service.exhibit.sku}${service.exhibit.room ? '&room' : ''}`}
-                    title={`3D model: ${service.exhibit.title}`}
-                    loading="lazy"
-                    allow="fullscreen"
-                    className="w-full h-full border-0"
-                  />
-                </div>
-              </div>
+              <ul className="space-y-2 text-slate-600 list-disc pl-5">
+                <li>
+                  {service.exhibit.room
+                    ? 'Drag to look around the room.'
+                    : 'Drag to turn the design; scroll or pinch to zoom.'}
+                </li>
+                <li>Select any door or drawer to open it.</li>
+                <li>Use Finish to see the door and drawer fronts in any of our 20 standard colours.</li>
+                <li>Use Lighting to dim the room and change its colour temperature.</li>
+              </ul>
             </div>
+            {/* The viewer gets the full width: the model needs the room, and its panels dock beside it */}
+            <div className="h-[72vh] min-h-[460px] max-h-[720px] rounded-2xl overflow-hidden border border-slate-200 bg-black">
+              <iframe
+                src={`/gallery/exhibit.html?sku=${service.exhibit.sku}${service.exhibit.room ? '&room' : ''}`}
+                title={`3D model: ${service.exhibit.title}`}
+                loading="lazy"
+                allow="fullscreen"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
+            <p className="mt-4 text-sm text-slate-500">
+              The model comes from the same design file we build from.
+            </p>
           </div>
         </section>
       )}
