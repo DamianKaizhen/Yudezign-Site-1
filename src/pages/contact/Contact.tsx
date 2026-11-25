@@ -1,8 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Upload, X, FileText, Loader2, AlertTriangle } from 'lucide-react';
 import SEO from '../../components/SEO';
 import { generateWebPageSchema } from '../../lib/schema';
+import {
+  ALLOWED_ATTACHMENT_TYPES,
+  MAX_ATTACHMENT_BYTES,
+  MAX_ATTACHMENT_MB,
+  uploadAttachment,
+} from '../../lib/attachmentUpload';
 
 // Cloudflare Turnstile (invisible CAPTCHA). The widget only loads when a site
 // key is configured, so the form still works before keys are set.
@@ -48,6 +54,7 @@ const Contact = () => {
   const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({});
   const [fileErrors, setFileErrors] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileAlertRef = useRef<HTMLDivElement>(null);
 
   // Anti-spam state
   const [honeypot, setHoneypot] = useState('');
@@ -198,16 +205,16 @@ const Contact = () => {
 
     // Validate each file
     Array.from(files).forEach((file) => {
-      // Check file size (4MB limit)
-      if (file.size > 4 * 1024 * 1024) {
-        errors.push(`${file.name}: File size exceeds 4MB limit`);
+      if (file.size > MAX_ATTACHMENT_BYTES) {
+        errors.push(
+          `${file.name} is ${(file.size / 1024 / 1024).toFixed(1)} MB. The limit is ${MAX_ATTACHMENT_MB} MB per file.`
+        );
         return;
       }
 
       // Check file type
-      const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
-      if (!allowedTypes.includes(file.type)) {
-        errors.push(`${file.name}: Invalid file type. Only PDF, JPG, and PNG allowed`);
+      if (!ALLOWED_ATTACHMENT_TYPES.includes(file.type)) {
+        errors.push(`${file.name}: only PDF, JPG and PNG files can be attached.`);
         return;
       }
 
@@ -216,6 +223,12 @@ const Contact = () => {
 
     setFileErrors(errors);
     setSelectedFiles((prev) => [...prev, ...newFiles]);
+    if (errors.length > 0) {
+      // Bring the alert into view once it has rendered.
+      window.setTimeout(() => {
+        fileAlertRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
 
     // Reset input
     if (fileInputRef.current) {
@@ -238,18 +251,11 @@ const Contact = () => {
       for (const file of selectedFiles) {
         setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
 
-        const response = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(file.name)}`, {
-          method: 'POST',
-          body: file,
-        });
-
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || 'Failed to upload file');
-        }
-
-        const result = await response.json();
-        urls.push(result.url);
+        // Straight from the browser to storage, so large files are fine.
+        const url = await uploadAttachment(file, (percentage) =>
+          setUploadProgress((prev) => ({ ...prev, [file.name]: Math.min(99, Math.round(percentage)) }))
+        );
+        urls.push(url);
 
         setUploadProgress((prev) => ({ ...prev, [file.name]: 100 }));
       }
@@ -257,7 +263,7 @@ const Contact = () => {
       return urls;
     } catch (error) {
       console.error('File upload error:', error);
-      throw error;
+      throw new Error('Failed to upload files');
     } finally {
       setIsUploading(false);
     }
@@ -486,17 +492,31 @@ const Contact = () => {
                     <p className="text-body text-luxury-gray-600 mb-1">
                       Click to upload plans, inspiration photos, or measurements
                     </p>
-                    <p className="text-body-sm text-luxury-gray-500">PDF, JPG, PNG up to 4MB per file</p>
+                    <p className="text-body-sm text-luxury-gray-500">PDF, JPG, PNG up to {MAX_ATTACHMENT_MB}MB per file</p>
                   </div>
 
                   {/* File errors */}
                   {fileErrors.length > 0 && (
-                    <div className="mt-3 space-y-1">
-                      {fileErrors.map((error, index) => (
-                        <p key={index} className="text-body-sm text-red-600">
-                          ⚠ {error}
+                    <div ref={fileAlertRef} role="alert" className="form-alert mt-4">
+                      <AlertTriangle className="form-alert-icon" strokeWidth={1.75} aria-hidden="true" />
+                      <div className="min-w-0 flex-1">
+                        <p className="form-alert-title">
+                          {fileErrors.length === 1 ? 'This file was not added' : 'These files were not added'}
                         </p>
-                      ))}
+                        <ul className="form-alert-list">
+                          {fileErrors.map((error, index) => (
+                            <li key={index}>{error}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setFileErrors([])}
+                        className="form-alert-close"
+                        aria-label="Dismiss"
+                      >
+                        <X className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+                      </button>
                     </div>
                   )}
 
@@ -521,7 +541,12 @@ const Contact = () => {
                                 {uploadProgress[file.name] === 100 ? (
                                   <span className="text-green-600 text-body-sm">✓</span>
                                 ) : (
-                                  <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                                  <>
+                                    <span className="text-body-sm text-luxury-gray-500">
+                                      {uploadProgress[file.name]}%
+                                    </span>
+                                    <Loader2 className="w-4 h-4 text-primary animate-spin" />
+                                  </>
                                 )}
                               </div>
                             )}

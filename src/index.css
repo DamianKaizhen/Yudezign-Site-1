@@ -278,3 +278,15 @@
 .theme-gallery .g-hero-plain a.bg-primary:hover { background-color: #e2b98c; }
 .theme-gallery .g-hero-plain a[class*="bg-white/10"] { background-color: transparent; border: 1px solid rgba(244, 239, 231, 0.3); }
 .theme-gallery .g-hero-plain a[class*="bg-white/10"]:hover { border-color: #d4a574; color: #d4a574; }
+
+/* Form alerts: a file that was refused, or anything else the visitor must not miss. */
+.form-alert { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid #f1a9a0; border-left-width: 4px; border-left-color: #c0392b; border-radius: 4px; background: #fdf1ef; color: #7a1f14; animation: form-alert-in 0.35s ease-out; }
+.form-alert-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px; color: #c0392b; }
+.form-alert-title { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.35; }
+.form-alert-list { margin: 4px 0 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.form-alert-close { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin: -6px -8px 0 0; border-radius: 4px; color: inherit; opacity: 0.7; }
+.form-alert-close:hover { opacity: 1; }
+.theme-gallery .form-alert { border-color: rgba(255, 138, 110, 0.55); border-left-color: #ff8a6e; border-radius: 2px; background: rgba(255, 110, 80, 0.14); color: #ffe1d8; }
+.theme-gallery .form-alert-icon { color: #ff8a6e; }
+@keyframes form-alert-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .form-alert { animation: none; } }

@@ -618,7 +618,7 @@ const contactForm = (ptype = '') => `<p class="eyebrow">Start Your Project</p><h
     <label>Project details<textarea name="message" rows="4" placeholder="Room sizes, style, finishes, anything you already know"></textarea></label>
     <div class="files">
       <button type="button" id="filePick" class="pick">Attach plans or photos</button>
-      <span>PDF, JPG or PNG, up to 4 MB each</span>
+      <span>PDF, JPG or PNG, up to 25 MB each</span>
       <input id="fileInput" type="file" accept=".pdf,.jpg,.jpeg,.png" multiple hidden>
       <ul id="fileList"></ul>
     </div>
@@ -629,10 +629,12 @@ const contactForm = (ptype = '') => `<p class="eyebrow">Start Your Project</p><h
     <p class="alt">Prefer to talk? <a href="tel:+17135020399">(713) 502-0399</a> &nbsp;&middot;&nbsp; <a href="mailto:orders@yudezign.com">orders@yudezign.com</a></p>
   </form>`;
 let quoteFiles = [], formLoadedAt = 0, turnstileToken = '', turnstileId;
+const MAX_FILE_MB = 25;                                  // enforced again in /api/upload-token
+const cleanName = (n) => { const d = n.lastIndexOf('.'); const b = (d > -1 ? n.slice(0, d) : n).replace(/[^\w.-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 120); return (b || 'file') + (d > -1 ? n.slice(d).toLowerCase() : ''); };
 function initContactForm() {
   quoteFiles = []; formLoadedAt = Date.now(); turnstileToken = ''; turnstileId = undefined;
   const form = $('quoteForm'), msg = $('formMsg'), list = $('fileList'), input = $('fileInput');
-  const say = (t, ok) => { msg.textContent = t; msg.classList.toggle('ok', !!ok); };
+  const say = (t, ok) => { msg.textContent = t; msg.classList.toggle('ok', !!ok); if (t && !ok) msg.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
   const drawFiles = () => {
     list.innerHTML = quoteFiles.map((f, i) => `<li>${esc(f.name)} <button type="button" data-rm="${i}" aria-label="Remove ${esc(f.name)}">&times;</button></li>`).join('');
   };
@@ -640,8 +642,8 @@ function initContactForm() {
   input.onchange = () => {
     const errs = [];
     for (const f of input.files) {
-      if (f.size > 4 * 1024 * 1024) errs.push(`${f.name}: File size exceeds 4MB limit`);
-      else if (!['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'].includes(f.type)) errs.push(`${f.name}: Invalid file type. Only PDF, JPG, and PNG allowed`);
+      if (f.size > MAX_FILE_MB * 1024 * 1024) errs.push(`${f.name} is ${(f.size / 1048576).toFixed(1)} MB and was not added. The limit is ${MAX_FILE_MB} MB per file.`);
+      else if (!['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'].includes(f.type)) errs.push(`${f.name} was not added. Only PDF, JPG and PNG files can be attached.`);
       else quoteFiles.push(f);
     }
     input.value = ''; drawFiles(); say(errs.join(' '));
@@ -664,10 +666,16 @@ function initContactForm() {
     send.disabled = true; send.textContent = quoteFiles.length ? 'Uploading files' : 'Sending';
     try {
       const attachments = [];
-      for (const f of quoteFiles) {
-        const r = await fetch(`/api/upload-attachment?filename=${encodeURIComponent(f.name)}`, { method: 'POST', body: f });
-        if (!r.ok) throw new Error('Failed to upload files. Please try again or contact us directly.');
-        attachments.push((await r.json()).url);
+      if (quoteFiles.length) {                            // files go straight from the browser to storage, so large ones are fine
+        try {
+          const { upload } = await import('./blob-client.js');
+          for (const [i, f] of quoteFiles.entries()) {
+            const label = quoteFiles.length > 1 ? `Uploading file ${i + 1} of ${quoteFiles.length}` : 'Uploading file';
+            const blob = await upload(`${Date.now()}-${cleanName(f.name)}`, f, { access: 'public', handleUploadUrl: '/api/upload-token',
+              contentType: f.type === 'image/jpg' ? 'image/jpeg' : f.type, onUploadProgress: ({ percentage }) => { send.textContent = `${label} ${Math.round(percentage)}%`; } });
+            attachments.push(blob.url);
+          }
+        } catch (err) { console.error(err); throw new Error('Failed to upload files. Please try again or contact us directly.'); }
       }
       send.textContent = 'Sending';
       const r = await fetch('/api/contact-submit', { method: 'POST', headers: { 'Content-Type': 'application/json' },

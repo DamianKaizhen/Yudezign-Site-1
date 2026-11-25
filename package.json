@@ -10,6 +10,7 @@
     "build:spa": "node scripts/gallery-data.mjs && tsc -b && vite build",
     "prerender": "node scripts/prerender.mjs",
     "gallery:data": "node scripts/gallery-data.mjs",
+    "gallery:blob-client": "esbuild node_modules/@vercel/blob/dist/client.js --bundle --format=esm --platform=browser --minify --legal-comments=none --outfile=mockups/gallery-3d/blob-client.js",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "type-check": "tsc -b",
     "verify:bundle": "node scripts/check-bundle-leak.mjs",
