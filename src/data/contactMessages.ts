@@ -524,5 +524,18 @@ export const contactMessages: ContactMessage[] = [
     submittedAt: '2026-11-22T23:53:29.116Z',
     status: 'new',
     source: 'Yudezign Website',
+  },
+  {
+    id: 'msg_1795629063980_j26l74z',
+    name: 'test',
+    email: 'test@email.com',
+    phone: '1234567890',
+    projectType: 'kitchen',
+    timeline: '1-2months',
+    message: 'test',
+    attachments: ['https://owcahjzz8kidiuwp.public.blob.vercel-storage.com/1795629148185-FactoryPrice-Untitled-01-4.pdf'],
+    submittedAt: '2026-11-25T17:51:03.772Z',
+    status: 'new',
+    source: 'Yudezign Website',
   }
 ];
