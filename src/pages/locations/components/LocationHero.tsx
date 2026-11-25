@@ -1,109 +1,89 @@
 import React from 'react';
-import { Phone, ArrowRight, MapPin, Home, Truck } from 'lucide-react';
+import { Phone, ArrowRight } from 'lucide-react';
 import type { LocationData } from '../../../types';
 
 interface LocationHeroProps {
   location: LocationData;
 }
 
+/**
+ * Editorial split hero for the location pages: text on the left, a service-area
+ * panel running to the right edge. Stacks on phones. Styles: `.g-hero*` in
+ * index.css.
+ */
 const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
   return (
-    <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20 overflow-hidden">
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div>
-            <div className="w-16 h-1 bg-accent mb-8"></div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+    <section className="g-hero">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Text */}
+        <div className="flex w-full min-w-0 flex-col gap-7 px-4 pb-12 pt-28 sm:gap-8 sm:px-6 sm:pb-16 sm:pt-32 lg:ml-auto lg:max-w-[640px] lg:pb-20 lg:pt-36 lg:pl-8 lg:pr-12">
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <p className="g-hero-eyebrow">Service area</p>
+            <h1 className="g-hero-title g-hero-title-sm">
               Custom Cabinets in <br />
-              <span className="text-white">
-                {location.name}, Texas
-              </span>
+              {location.name}, Texas
             </h1>
-
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              {location.metaDescription}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
-              >
-                Get Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-              <a
-                href="tel:+17135020399"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
-              >
-                <Phone className="mr-2 w-5 h-5" />
-                (713) 502-0399
-              </a>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-12 pt-12 border-t border-white/20">
-              <div>
-                <div className="text-3xl font-bold text-accent">500+</div>
-                <div className="text-sm text-white/90 mt-1">Projects</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-accent">15+</div>
-                <div className="text-sm text-white/90 mt-1">Years</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-accent">5★</div>
-                <div className="text-sm text-white/90 mt-1">Rated</div>
-              </div>
-            </div>
           </div>
 
-          {/* Service Area Info Card */}
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-10 h-10 text-accent" />
-                </div>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Proudly Serving {location.name}
-                </h2>
-                <p className="text-white/80">
-                  & {location.neighborhoods.length} surrounding neighborhoods
-                </p>
-              </div>
+          <p className="g-hero-lede">{location.metaDescription}</p>
 
-              <div className="space-y-4">
-                <div className="flex items-center bg-white/10 rounded-lg p-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Home className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="ml-4">
-                    <div className="font-semibold text-white">In-Home Consultations</div>
-                    <div className="text-sm text-white/70">We come to you for free design meetings</div>
-                  </div>
-                </div>
+          <div className="g-hero-actions">
+            <a href="/contact" className="g-btn">
+              Get free consultation
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+            </a>
+            <a href="tel:+17135020399" className="g-tel">
+              <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+              (713) 502-0399
+            </a>
+          </div>
 
-                <div className="flex items-center bg-white/10 rounded-lg p-4">
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Truck className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="ml-4">
-                    <div className="font-semibold text-white">Professional Installation</div>
-                    <div className="text-sm text-white/70">Expert installation by our local team</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-white/20 text-center">
-                <p className="text-white/80 text-sm">
-                  Houston-based workshop • Local expertise since 2019
-                </p>
-              </div>
+          <dl className="g-hero-facts lg:mt-auto lg:pt-2">
+            <div>
+              <dt className="g-hero-fact-label">Projects</dt>
+              <dd className="g-hero-fact-value is-gold">500+</dd>
             </div>
+            <div>
+              <dt className="g-hero-fact-label">Years</dt>
+              <dd className="g-hero-fact-value is-gold">15+</dd>
+            </div>
+            <div>
+              <dt className="g-hero-fact-label">Rated</dt>
+              <dd className="g-hero-fact-value is-gold">5★</dd>
+            </div>
+          </dl>
+        </div>
+
+        {/* Service area panel */}
+        <div className="g-hero-panel">
+          <div className="flex h-full w-full flex-col justify-center gap-7 px-4 py-12 sm:px-6 sm:py-14 lg:max-w-[640px] lg:px-16 lg:py-20">
+            <div className="flex flex-col gap-2">
+              <h2 className="g-hero-h2">Proudly serving {location.name}</h2>
+              <p className="g-hero-lede">
+                &amp; {location.neighborhoods.length} surrounding neighborhoods
+              </p>
+            </div>
+
+            <ul className="g-hero-list is-single">
+              <li>
+                <span className="g-hero-num" aria-hidden="true">01</span>
+                <span>
+                  In-Home Consultations
+                  <span className="g-hero-note">We come to you for free design meetings</span>
+                </span>
+              </li>
+              <li>
+                <span className="g-hero-num" aria-hidden="true">02</span>
+                <span>
+                  Professional Installation
+                  <span className="g-hero-note">Expert installation by our local team</span>
+                </span>
+              </li>
+            </ul>
+
+            <p className="g-hero-note">
+              Houston-based workshop • Local expertise since 2019
+            </p>
           </div>
         </div>
       </div>

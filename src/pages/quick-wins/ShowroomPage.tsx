@@ -58,7 +58,7 @@ const ShowroomPage: React.FC = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
+      <section className="relative g-hero g-hero-plain text-white py-20">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>

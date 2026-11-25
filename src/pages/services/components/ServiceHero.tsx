@@ -1,93 +1,86 @@
 import React from 'react';
-import { CheckCircle, ArrowRight, Phone, Images } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import type { ServiceData } from '../../../types';
 
 interface ServiceHeroProps {
   service: ServiceData;
 }
 
+type HeroFeature = string | { title: string };
+
+/**
+ * Editorial split hero: text on the left, aligned to the site container; the
+ * photo runs to the top, right and bottom edges. On phones the photo stacks
+ * under the text and the main button spans the width. Styles: `.g-hero*` in
+ * index.css.
+ */
 const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
+  const features: HeroFeature[] = Array.isArray(service.features)
+    ? service.features.slice(0, 4)
+    : [];
+
   return (
-    <section className="relative bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div>
-            <div className="w-16 h-1 bg-accent mb-8"></div>
+    <section className="g-hero">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Text */}
+        <div className="flex w-full min-w-0 flex-col gap-7 px-4 pb-12 pt-28 sm:gap-8 sm:px-6 sm:pb-16 sm:pt-32 lg:ml-auto lg:max-w-[640px] lg:pb-20 lg:pt-36 lg:pl-8 lg:pr-12">
+          <div className="flex flex-col gap-4 sm:gap-5">
+            <p className="g-hero-eyebrow">Services</p>
+            <h1 className="g-hero-title">{service.name}</h1>
+          </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              {service.name}
-            </h1>
+          <p className="g-hero-lede">{service.overview}</p>
 
-            <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              {service.overview}
-            </p>
+          {features.length > 0 && (
+            <ul className="g-hero-list max-sm:order-1">
+              {features.map((feature, idx) => (
+                <li key={idx}>
+                  <span className="g-hero-num" aria-hidden="true">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                  <span>{typeof feature === 'string' ? feature : feature.title}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
-            {/* Key Features */}
-            {service.features && service.features.length > 0 && (
-              <div className="space-y-3 mb-8">
-                {service.features.slice(0, 4).map((feature: any, idx: number) => (
-                  <div key={idx} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-accent mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-white/90">{typeof feature === 'string' ? feature : feature.title}</span>
-                  </div>
-                ))}
-              </div>
+          <div className="g-hero-actions">
+            <a href="/contact" className="g-btn">
+              Get free consultation
+              <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+            </a>
+            {service.portfolioCategory && (
+              <a href={`/portfolio/${service.portfolioCategory}`} className="g-link">
+                View our work
+              </a>
             )}
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl"
-              >
-                Get Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-              <a
-                href="tel:+17135020399"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all"
-              >
-                <Phone className="mr-2 w-5 h-5" />
-                (713) 502-0399
-              </a>
-              {service.portfolioCategory && (
-                <a
-                  href={`/portfolio/${service.portfolioCategory}`}
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition-all"
-                >
-                  <Images className="mr-2 w-5 h-5" />
-                  View Our Work
-                </a>
-              )}
-            </div>
-
-            {/* Price Range */}
-            <div className="mt-8 pt-8 border-t border-white/20">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-slate-400">Starting From</div>
-                  <div className="text-2xl font-bold text-accent">Contact for Quote</div>
-                </div>
-                <div>
-                  <div className="text-sm text-slate-400">Lead Time, From</div>
-                  <div className="text-2xl font-bold text-white">2 weeks</div>
-                </div>
-              </div>
-            </div>
+            <a href="tel:+17135020399" className="g-tel">
+              <Phone className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+              (713) 502-0399
+            </a>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="rounded-2xl overflow-hidden shadow-2xl h-[500px]">
-              <img
-                src={service.heroImage}
-                alt={service.name}
-                className="w-full h-full object-cover"
-                loading="eager"
-              />
+          <dl className="g-hero-facts max-sm:order-2 lg:mt-auto lg:pt-2">
+            <div>
+              <dt className="g-hero-fact-label">Lead time, from</dt>
+              <dd className="g-hero-fact-value">2 weeks</dd>
             </div>
-          </div>
+            <div>
+              <dt className="g-hero-fact-label">Pricing</dt>
+              <dd className="g-hero-fact-value is-gold italic">By quote</dd>
+            </div>
+          </dl>
+        </div>
+
+        {/* Photo */}
+        <div className="relative h-[72vw] max-h-[520px] min-h-[260px] lg:h-auto lg:max-h-none lg:min-h-[560px]">
+          <img
+            src={service.heroImage}
+            alt={service.name}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
       </div>
     </section>

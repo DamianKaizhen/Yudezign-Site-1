@@ -229,3 +229,55 @@
 .theme-gallery [class*="shadow-gray-"], .theme-gallery [class*="shadow-slate-"], .theme-gallery [class*="shadow-neutral-"] { --tw-shadow-color: rgba(0, 0, 0, 0.55); }
 .theme-gallery [class*="from-slate-100"], .theme-gallery [class*="from-slate-200"], .theme-gallery [class*="from-slate-300"] { background-image: linear-gradient(135deg, rgba(244, 239, 231, 0.08), rgba(244, 239, 231, 0.03)); }
 .theme-gallery .bg-gradient-to-t[class*="from-slate-900"], .theme-gallery .bg-gradient-to-t[class*="from-primary"] { background-image: linear-gradient(to top, rgba(11, 10, 9, 0.88), rgba(11, 10, 9, 0)); }
+
+/* ------------------------------------------------------------------
+   Page heroes. `.g-hero` is the editorial hero used at the top of the
+   service and location pages (text left, photo or panel bleeding to the
+   right edge) and, with `.g-hero-plain`, the centred text-only heroes.
+   Ink ground, light serif title, gold square button, hairlines.
+   ------------------------------------------------------------------ */
+.g-hero { background-color: #0b0a09; background-image: none; color: #f4efe7; border-bottom: 1px solid rgba(244, 239, 231, 0.14); }
+.theme-gallery .g-hero { background-image: none; }
+.g-hero-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a574; }
+.g-hero-title { margin: 0; font-family: "Cormorant Garamond", "Times New Roman", serif; font-weight: 300; font-size: clamp(44px, 6.6vw, 88px); line-height: 0.98; letter-spacing: -0.01em; text-wrap: balance; overflow-wrap: break-word; }
+.g-hero-title-sm { font-size: clamp(40px, 5.4vw, 72px); line-height: 1.02; }
+.g-hero-h2 { margin: 0; font-family: "Cormorant Garamond", "Times New Roman", serif; font-weight: 400; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.1; }
+.g-hero-lede { margin: 0; max-width: 540px; font-size: 16px; line-height: 1.65; font-weight: 300; color: rgba(244, 239, 231, 0.74); }
+.g-hero-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 32px; max-width: 560px; border-bottom: 1px solid rgba(244, 239, 231, 0.14); }
+.g-hero-list li { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-top: 1px solid rgba(244, 239, 231, 0.14); font-size: 14px; line-height: 1.45; }
+.g-hero-num { flex-shrink: 0; font-family: "Cormorant Garamond", "Times New Roman", serif; font-style: italic; font-size: 17px; color: #d4a574; }
+.g-hero-note { display: block; margin-top: 2px; font-size: 13px; color: rgba(244, 239, 231, 0.66); }
+.g-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
+.g-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 26px; border-radius: 2px; background: #d4a574; color: #1c140b; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; transition: background-color 0.2s; }
+.g-btn:hover { background: #e2b98c; }
+.g-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #f4efe7; box-shadow: inset 0 -13px 0 -12px rgba(212, 165, 116, 0.7); transition: color 0.2s; }
+.g-tel { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; color: rgba(244, 239, 231, 0.78); transition: color 0.2s; }
+.g-link:hover, .g-tel:hover { color: #d4a574; }
+.g-btn:focus-visible, .g-link:focus-visible, .g-tel:focus-visible { outline: 2px solid #d4a574; outline-offset: 3px; border-radius: 2px; }
+.g-hero-facts { display: flex; flex-wrap: wrap; gap: 16px 48px; }
+.g-hero-fact-label { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244, 239, 231, 0.62); }
+.g-hero-fact-value { display: block; font-family: "Cormorant Garamond", "Times New Roman", serif; font-size: 28px; line-height: 1.1; }
+.g-hero-fact-value.is-gold { color: #d4a574; }
+.g-hero-panel { background: #15120f; border-top: 1px solid rgba(244, 239, 231, 0.14); }
+@media (max-width: 639px) {
+  .g-hero-actions .g-btn { width: 100%; }
+}
+@media (min-width: 640px) {
+  .g-hero-lede { font-size: 17px; line-height: 1.7; }
+  .g-hero-list:not(.is-single) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g-hero-fact-value { font-size: 30px; }
+}
+@media (min-width: 1024px) {
+  .g-hero-panel { border-top: 0; border-left: 1px solid rgba(244, 239, 231, 0.14); }
+}
+
+/* centred text-only heroes: same ground, type and buttons, existing markup */
+.theme-gallery .g-hero-plain { padding-top: clamp(112px, 13vw, 152px); padding-bottom: clamp(44px, 8vw, 88px); }
+.theme-gallery .g-hero-plain h1 { font-weight: 300; font-size: clamp(38px, 8.4vw, 68px); line-height: 1.03; letter-spacing: -0.01em; text-wrap: balance; }
+.theme-gallery .g-hero-plain h1 + p { font-size: clamp(16px, 2.1vw, 19px); line-height: 1.7; font-weight: 300; color: rgba(244, 239, 231, 0.74); }
+.theme-gallery .g-hero-plain .bg-accent.h-1 { height: 1px; }
+.theme-gallery .g-hero-plain a[class*="rounded-lg"] { min-height: 50px; padding: 0 26px; border-radius: 2px; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.theme-gallery .g-hero-plain a.bg-primary { background-color: #d4a574; color: #1c140b; }
+.theme-gallery .g-hero-plain a.bg-primary:hover { background-color: #e2b98c; }
+.theme-gallery .g-hero-plain a[class*="bg-white/10"] { background-color: transparent; border: 1px solid rgba(244, 239, 231, 0.3); }
+.theme-gallery .g-hero-plain a[class*="bg-white/10"]:hover { border-color: #d4a574; color: #d4a574; }

@@ -52,7 +52,7 @@ const ComparisonPage: React.FC = () => {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white py-20">
+      <section className="g-hero g-hero-plain text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <div className="w-16 h-1 bg-accent mx-auto mb-8"></div>

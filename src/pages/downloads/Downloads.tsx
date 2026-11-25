@@ -104,7 +104,7 @@ const Downloads = () => {
 
       <div className="min-h-screen bg-luxury-cream pt-24">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-primary via-primary-light to-primary-dark px-4 py-20 text-white">
+        <section className="g-hero g-hero-plain px-4 py-20 text-white">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
               className="mx-auto mb-8 h-1 w-16 bg-accent"

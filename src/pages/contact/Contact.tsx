@@ -279,7 +279,7 @@ const Contact = () => {
       />
       <div className="min-h-screen pt-24 bg-luxury-cream">
       {/* Hero Section - Minimal with green accent */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white">
+      <section className="py-20 px-4 g-hero g-hero-plain text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             className="w-16 h-1 bg-accent mx-auto mb-8"
