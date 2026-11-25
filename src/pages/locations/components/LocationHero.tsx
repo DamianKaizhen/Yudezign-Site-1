@@ -14,9 +14,9 @@ interface LocationHeroProps {
 const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
   return (
     <section className="g-hero">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-20 lg:pt-36">
         {/* Text */}
-        <div className="flex w-full min-w-0 flex-col gap-7 px-4 pb-12 pt-28 sm:gap-8 sm:px-6 sm:pb-16 sm:pt-32 lg:ml-auto lg:max-w-[640px] lg:pb-20 lg:pt-36 lg:pl-8 lg:pr-12">
+        <div className="flex w-full min-w-0 flex-col justify-center gap-7 sm:gap-8">
           <div className="flex flex-col gap-4 sm:gap-5">
             <p className="g-hero-eyebrow">Service area</p>
             <h1 className="g-hero-title g-hero-title-sm">
@@ -38,7 +38,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
             </a>
           </div>
 
-          <dl className="g-hero-facts lg:mt-auto lg:pt-2">
+          <dl className="g-hero-facts">
             <div>
               <dt className="g-hero-fact-label">Projects</dt>
               <dd className="g-hero-fact-value is-gold">500+</dd>
@@ -56,7 +56,7 @@ const LocationHero: React.FC<LocationHeroProps> = ({ location }) => {
 
         {/* Service area panel */}
         <div className="g-hero-panel">
-          <div className="flex h-full w-full flex-col justify-center gap-7 px-4 py-12 sm:px-6 sm:py-14 lg:max-w-[640px] lg:px-16 lg:py-20">
+          <div className="flex h-full w-full flex-col justify-center gap-7 px-5 py-10 sm:px-10 sm:py-12 lg:px-12 lg:py-14">
             <div className="flex flex-col gap-2">
               <h2 className="g-hero-h2">Proudly serving {location.name}</h2>
               <p className="g-hero-lede">

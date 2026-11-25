@@ -10,7 +10,7 @@ type HeroFeature = string | { title: string };
 
 /**
  * Editorial split hero: text on the left, aligned to the site container; the
- * photo runs to the top, right and bottom edges. On phones the photo stacks
+ * photo beside it, both inside the site container so they line up with the header. On phones the photo stacks
  * under the text and the main button spans the width. Styles: `.g-hero*` in
  * index.css.
  */
@@ -21,9 +21,9 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
 
   return (
     <section className="g-hero">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-12 pt-28 sm:px-6 sm:pb-16 sm:pt-32 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-20 lg:pt-36">
         {/* Text */}
-        <div className="flex w-full min-w-0 flex-col gap-7 px-4 pb-12 pt-28 sm:gap-8 sm:px-6 sm:pb-16 sm:pt-32 lg:ml-auto lg:max-w-[640px] lg:pb-20 lg:pt-36 lg:pl-8 lg:pr-12">
+        <div className="flex w-full min-w-0 flex-col justify-center gap-7 sm:gap-8">
           <div className="flex flex-col gap-4 sm:gap-5">
             <p className="g-hero-eyebrow">Services</p>
             <h1 className="g-hero-title">{service.name}</h1>
@@ -60,7 +60,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
             </a>
           </div>
 
-          <dl className="g-hero-facts max-sm:order-2 lg:mt-auto lg:pt-2">
+          <dl className="g-hero-facts max-sm:order-2">
             <div>
               <dt className="g-hero-fact-label">Lead time, from</dt>
               <dd className="g-hero-fact-value">2 weeks</dd>
@@ -73,7 +73,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ service }) => {
         </div>
 
         {/* Photo */}
-        <div className="relative h-[72vw] max-h-[520px] min-h-[260px] lg:h-auto lg:max-h-none lg:min-h-[560px]">
+        <div className="relative -mx-4 -mb-12 h-[72vw] max-h-[520px] min-h-[260px] sm:-mx-6 sm:-mb-16 lg:m-0 lg:h-auto lg:max-h-none lg:min-h-[560px]">
           <img
             src={service.heroImage}
             alt={service.name}

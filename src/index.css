@@ -258,7 +258,7 @@
 .g-hero-fact-label { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244, 239, 231, 0.62); }
 .g-hero-fact-value { display: block; font-family: "Cormorant Garamond", "Times New Roman", serif; font-size: 28px; line-height: 1.1; }
 .g-hero-fact-value.is-gold { color: #d4a574; }
-.g-hero-panel { background: #15120f; border-top: 1px solid rgba(244, 239, 231, 0.14); }
+.g-hero-panel { background: #15120f; border: 1px solid rgba(244, 239, 231, 0.14); }
 @media (max-width: 639px) {
   .g-hero-actions .g-btn { width: 100%; }
 }
@@ -266,9 +266,6 @@
   .g-hero-lede { font-size: 17px; line-height: 1.7; }
   .g-hero-list:not(.is-single) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .g-hero-fact-value { font-size: 30px; }
-}
-@media (min-width: 1024px) {
-  .g-hero-panel { border-top: 0; border-left: 1px solid rgba(244, 239, 231, 0.14); }
 }
 
 /* centred text-only heroes: same ground, type and buttons, existing markup */
